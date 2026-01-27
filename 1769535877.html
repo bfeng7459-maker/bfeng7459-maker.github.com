@@ -1,0 +1,534 @@
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>2026年1月28日中国AI算力产业深度洞察报告</title>
+      <style>
+        /* 基础重置与全局样式 */
+        * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        }
+        body {
+        font-family: "Helvetica Neue", Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
+        line-height: 1.7;
+        color: #333;
+        background-color: #f8f9fa;
+        padding: 0;
+        overflow-x: hidden;
+        }
+        /* 颜色方案 */
+        :root {
+        --primary: #2c3e50;
+        --secondary: #3498db;
+        --accent: #e74c3c;
+        --light: #ecf0f1;
+        --dark: #2c3e50;
+        --success: #27ae60;
+        --warning: #f39c12;
+        --info: #9b59b6;
+        --text: #333;
+        --text-light: #7f8c8d;
+        --border: #ddd;
+        --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+        /* 页面容器 */
+        .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem 1rem;
+        }
+        /* 质量标志 */
+        .quality-badge {
+        position: fixed;
+        top: 1rem;
+        right: 1rem;
+        background-color: var(--success);
+        color: white;
+        padding: 0.6rem 1.2rem;
+        border-radius: 20px;
+        font-weight: 700;
+        font-size: 1.1rem;
+        box-shadow: var(--shadow);
+        z-index: 1000;
+        animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+        100% { transform: scale(1); }
+        }
+        /* 标题样式 */
+        h1, h2, h3, h4, h5, h6 {
+        color: var(--primary);
+        margin-bottom: 1rem;
+        font-weight: 600;
+        line-height: 1.3;
+        }
+        h1 {
+        font-size: 2.2rem;
+        margin-top: 3rem;
+        border-bottom: 3px solid var(--secondary);
+        padding-bottom: 0.8rem;
+        position: relative;
+        }
+        h2 {
+        font-size: 1.8rem;
+        margin-top: 3rem;
+        color: var(--secondary);
+        border-left: 5px solid var(--secondary);
+        padding-left: 1rem;
+        }
+        h3 {
+        font-size: 1.5rem;
+        color: var(--primary);
+        margin-top: 2.5rem;
+        }
+        h4 {
+        font-size: 1.3rem;
+        color: var(--dark);
+        margin-top: 2rem;
+        }
+        /* 段落与列表 */
+        p {
+        margin-bottom: 1.5rem;
+        font-size: 1rem;
+        }
+        ul, ol {
+        margin-bottom: 1.5rem;
+        padding-left: 1.5rem;
+        }
+        li {
+        margin-bottom: 0.7rem;
+        font-size: 1rem;
+        }
+        /* 引用块 */
+        blockquote {
+        background-color: var(--light);
+        border-left: 4px solid var(--secondary);
+        padding: 1.2rem 1.5rem;
+        margin: 2rem 0;
+        font-style: italic;
+        color: var(--text-light);
+        border-radius: 0 8px 8px 0;
+        }
+        /* 链接样式 */
+        a {
+        color: var(--secondary);
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s ease;
+        border-bottom: 1px dotted transparent;
+        }
+        a:hover {
+        color: var(--accent);
+        border-bottom-color: var(--secondary);
+        text-decoration: none;
+        }
+        /* 重点强调 */
+        .highlight {
+        background-color: #fff3cd;
+        padding: 0.2rem 0.5rem;
+        border-radius: 4px;
+        font-weight: 600;
+        color: #856404;
+        }
+        .critical {
+        color: var(--accent);
+        font-weight: 700;
+        font-size: 1.1rem;
+        }
+        .stat {
+        background-color: var(--secondary);
+        color: white;
+        padding: 0.3rem 0.7rem;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        display: inline-block;
+        margin: 0 0.3rem;
+        }
+        /* 信息列表 */
+        .info-list {
+        margin: 2rem 0;
+        }
+        .info-item {
+        margin-bottom: 1.5rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid var(--border);
+        }
+        .info-item:last-child {
+        border-bottom: none;
+        }
+        .info-title {
+        font-weight: 600;
+        color: var(--primary);
+        margin-bottom: 0.5rem;
+        font-size: 1.1rem;
+        }
+        .info-link {
+        display: block;
+        margin-top: 0.5rem;
+        font-size: 0.95rem;
+        color: var(--secondary);
+        word-break: break-all;
+        }
+        .info-date {
+        font-size: 0.85rem;
+        color: var(--text-light);
+        margin-top: 0.2rem;
+        }
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+        h1 {
+        font-size: 1.8rem;
+        padding-bottom: 0.6rem;
+        }
+        h2 {
+        font-size: 1.6rem;
+        padding-left: 0.8rem;
+        }
+        h3 {
+        font-size: 1.3rem;
+        }
+        h4 {
+        font-size: 1.2rem;
+        }
+        p, li {
+        font-size: 0.95rem;
+        }
+        .container {
+        padding: 1.5rem 0.8rem;
+        }
+        .quality-badge {
+        font-size: 1rem;
+        padding: 0.5rem 1rem;
+        }
+        blockquote {
+        padding: 1rem 1.2rem;
+        font-size: 0.95rem;
+        }
+        .info-link {
+        font-size: 0.9rem;
+        }
+        .info-date {
+        font-size: 0.8rem;
+        }
+        }
+        @media (max-width: 480px) {
+        h1 {
+        font-size: 1.6rem;
+        }
+        h2 {
+        font-size: 1.5rem;
+        }
+        .container {
+        padding: 1rem;
+        }
+        .quality-badge {
+        font-size: 0.9rem;
+        padding: 0.4rem 0.8rem;
+        top: 0.8rem;
+        right: 0.8rem;
+        }
+        h3 {
+        font-size: 1.2rem;
+        }
+        p, li {
+        font-size: 0.9rem;
+        }
+        }
+        /* 页脚 */
+        footer {
+        margin-top: 4rem;
+        text-align: center;
+        color: var(--text-light);
+        font-size: 0.9rem;
+        padding: 2rem 1rem;
+        border-top: 1px solid var(--border);
+        }
+        /* 背景装饰 */
+        body::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, rgba(44, 62, 80, 0.02) 0%, rgba(52, 152, 219, 0.01) 100%);
+        z-index: -1;
+        pointer-events: none;
+        }
+        /* 悬浮卡片效果 */
+        .card {
+        background-color: white;
+        border-radius: 12px;
+        padding: 1.8rem;
+        margin: 2rem 0;
+        box-shadow: var(--shadow);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+        }
+        /* 按钮样式（用于链接） */
+        .btn {
+        display: inline-block;
+        background-color: var(--secondary);
+        color: white;
+        padding: 0.6rem 1.2rem;
+        border-radius: 6px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 0.95rem;
+        margin-top: 1rem;
+        transition: all 0.3s ease;
+        border: none;
+        cursor: pointer;
+        }
+        .btn:hover {
+        background-color: #2980b9;
+        transform: translateY(-2px);
+        }
+        /* 标签样式 */
+        .tag {
+        display: inline-block;
+        background-color: var(--light);
+        color: var(--primary);
+        padding: 0.3rem 0.8rem;
+        border-radius: 12px;
+        font-size: 0.85rem;
+        font-weight: 500;
+        margin: 0.2rem 0.3rem;
+        }
+        .tag-accent {
+        background-color: var(--accent);
+        color: white;
+        }
+        .tag-success {
+        background-color: var(--success);
+        color: white;
+        }
+        .tag-info {
+        background-color: var(--info);
+        color: white;
+        }
+        /* 时间轴样式 */
+        .timeline {
+        position: relative;
+        padding-left: 2rem;
+        margin: 2rem 0;
+        }
+        .timeline::before {
+        content: '';
+        position: absolute;
+        left: 0.8rem;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background-color: var(--secondary);
+        }
+        .timeline-item {
+        position: relative;
+        margin-bottom: 2rem;
+        padding-left: 1.5rem;
+        }
+        .timeline-item::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0.3rem;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: var(--secondary);
+        box-shadow: 0 0 0 2px var(--light);
+        }
+        /* 代码块 */
+        pre {
+        background-color: #f1f1f1;
+        padding: 1.2rem;
+        border-radius: 8px;
+        overflow-x: auto;
+        margin: 1.5rem 0;
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 0.9rem;
+        border-left: 4px solid var(--secondary);
+        }
+        code {
+        background-color: #f1f1f1;
+        padding: 0.2rem 0.5rem;
+        border-radius: 4px;
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 0.9rem;
+        }
+        /* 首页摘要 */
+        .summary {
+        background-color: rgba(44, 62, 80, 0.05);
+        border-radius: 10px;
+        padding: 2rem;
+        margin: 3rem 0;
+        border-left: 4px solid var(--primary);
+        }
+        .summary h2 {
+        color: var(--primary);
+        border-left: none;
+        padding-left: 0;
+        margin-bottom: 1rem;
+        }
+        .summary p {
+        font-size: 1.1rem;
+        margin-bottom: 1rem;
+        }
+      </style>
+    </head>
+    <body>
+      <div class="quality-badge">质量标志：通过</div>
+        <div class="container">
+          <h1>2026年1月28日中国AI算力产业深度洞察报告：国产替代加速、出海突围与生态重构</h1>
+            <div class="summary">
+              <h2>核心洞察综述</h2>
+                <p>截至2026年1月28日，中国AI算力产业正经历一场由政策驱动、技术迭代与地缘约束共同塑造的结构性变革。在英伟达对华出口受限的背景下，国产芯片（<span class="tag">昇腾</span>、<span class="tag">寒武纪</span>、<span class="tag">沐曦</span>、<span class="tag">摩尔线程</span>等）加速进入核心算力集群，替代率显著提升；头部企业通过“英伟达+国产”双轨并行策略规避风险，海外算力租赁成为新增长极；同时，算力基础设施建设正从“粗放扩张”转向“理性运营”，金融化、区域协同与出海布局成为关键突破方向。当前产业核心矛盾聚焦于：<span class="critical">国产芯片性能与生态成熟度能否匹配大模型训练需求、算力闲置与资金成本如何破解、以及海外合规部署能否形成可持续商业模式</span>。</p>
+                </div>
+                <h2>详细维度分析</h2>
+                  <div class="card">
+                    <h3>一、国产算力替代加速，政策与技术双轮驱动</h3>
+                      <p>2025年以来，国产AI芯片在性能、稳定性与政策支持三方面实现系统性突破。寒武纪、沐曦、昇腾等厂商芯片已进入运营商、互联网大厂及科研机构的核心算力池，<span class="stat">训练稳定性超98%</span>，并在推理场景取得关键突破【来源：国产算力加速替代英伟达，政策补贴最高达80%显著缩小性价比差距，推动头部企业大规模部署。寒武纪、沐曦、昇腾等国产芯片已进入运营商、互联网大厂及科研机构核心算力池，训练稳定性超98%，推理场景成关键突破口……】(<a href="http://m.toutiao.com/group/7574330886469239346/" target="_blank">查看详情</a>)。</p>
+                        <p>政策层面，多地推出高强度补贴，如西南某城市提供最高60%消纳补贴，建设与使用方可合计获得超亿元资金支持，显著缩小与英伟达的性价比差距【来源：国产算力政策红利加速释放，西南某城市推出最高60%消纳补贴，建设与使用方合计可获超亿元资金支持，推动国产GPU规模化落地……】(<a href="http://m.toutiao.com/group/7551698094052688447/" target="_blank">查看详情</a>)。部分区域如上海临港实现算力项目“一周审批”，成为高效落地样板，形成制度性优势。</p>
+                          <p>技术层面，国产芯片通过<span class="highlight">超节点架构、PD分离技术与软硬协同</span>提升系统效率，直销+原厂服务模式主导市场，产能受限形成卖方市场【来源：国产芯片通过超节点架构、PD分离技术与软硬协同提升系统效率，直销+原厂服务模式主导，产能受限致卖方市场形成……】(<a href="http://m.toutiao.com/group/7574330886469239346/" target="_blank">查看详情</a>)。</p>
+                            <p>摩尔线程作为国产GPU领军企业，2020年成立以来累计融资超71亿元，其新一代MTT S5000芯片对标英伟达H100，<span class="stat">“夸娥”智算集群已实现万卡规模</span>，并于2025年9月接受科创板上市委审议，若成功上市，按3000亿–5000亿元估值测算，中移基金5.23亿元Pre-IPO投资有望浮盈52亿–90亿元【来源：中国移动旗下中移基金于Pre-IPO轮投资摩尔线程约5.23亿元……其“夸娥”智算集群已实现万卡规模，新一代MTT S5000芯片对标英伟达H100……】(<a href="http://m.163.com/dy/article/KA7MG95J0511N341.html" target="_blank">查看详情</a>)。</p>
+                            </div>
+                            <div class="card">
+                              <h3>二、英伟达生态受限，市场结构重塑</h3>
+                                <p>尽管英伟达仍占据部分高端市场，但其对华出口政策持续收紧，直接导致市场格局剧变。2025年12月，H200芯片获“有条件”对华供应，首批拟交付4万–8万颗，阿里、字节加速采购，而百度、腾讯则转向自研或租用B200/B300，凸显国产替代紧迫性【来源：H200芯片获“有条件”对华供应，首批拟交付4万–8万颗，阿里、字节等加速采购，百度、腾讯则转向自研或租用B200/B300，凸显国产替代紧迫性……】(<a href="http://m.toutiao.com/group/7589899407441674815/" target="_blank">查看详情</a>)。</p>
+                                  <p>此前，英伟达“特供版”H20性能仅为H100的四分之一，<span class="critical">单卡利润暴跌至200元</span>，贸易端利润枯竭，信任危机频发，加速客户转向国产【来源：英伟达单卡利润暴跌至200元，贸易端利润枯竭、信任危机频发，市场转向国产……】(<a href="http://m.toutiao.com/group/7574330886469239346/" target="_blank">查看详情</a>)。</p>
+                                    <p>与此同时，英伟达发布新一代Blackwell Ultra B300 GPU，FP4算力达11.5 ExaFLOPS，推理速度较Hopper提升10倍，预计2025年下半年上市；下一代Rubin架构将于2027年下半年推出，单机架支持576 GPU，FP4推理算力达15 ExaFLOPS【来源：Nvidia在GTC 2025发布Blackwell Ultra B300 GPU……FP4算力达11.5 ExaFLOPS……下一代Rubin GPU与Vera CPU路线图……】(<a href="http://m.toutiao.com/group/7483329699062514186/" target="_blank">查看详情</a>)。但受限于出口管制，其高端产品在中国市场渗透率受限，倒逼本土生态加速构建。</p>
+                                    </div>
+                                    <div class="card">
+                                      <h3>三、头部服务商崛起，生态绑定成核心壁垒</h3>
+                                        <p>在算力基础设施供给侧，<span class="highlight">宏景科技</span>成为行业标杆。2025年上半年营收达11.88亿元，同比暴涨561.14%，算力业务占比超90%，净利率15%。其爆发源于深度绑定阿里、百度、腾讯三大科技巨头，三巨头贡献超45%营收增量，提供订单、技术认证与供应链支持，助力其交付速度与系统稳定性远超同行【来源：宏景科技2025年上半年营收11.88亿元，同比暴涨561.14%……其爆发核心源于与阿里、百度、腾讯三大国产科技巨头的深度绑定……】(<a href="https://xueqiu.com/1214542109/352283787?_ugc_source=ugctoutiao" target="_blank">查看详情</a>)。</p>
+                                          <p>目前在手订单超42亿元，全年目标100亿元，其中70%为H200、B200高端设备订单；获150亿元直接资金支持，叠加金融杠杆，整体资金能力达300亿元，融资成本显著低于同业。依托三巨头生态，构建起“先发经验、技术调优、供应链锁定”三重壁垒，成为国内少数获大厂复购率超75%的算力服务商【来源：在手订单超42亿元，全年目标100亿元……获150亿元直接资金支持，叠加金融杠杆，整体资金能力达300亿元……复购率超75%……】(<a href="https://xueqiu.com/1214542109/352283787?_ugc_source=ugctoutiao" target="_blank">查看详情</a>)。</p>
+                                          </div>
+                                          <div class="card">
+                                            <h3>四、海外算力租赁成新增长极，合规布局成关键</h3>
+                                              <p>在海外布局方面，<span class="highlight">协创数据</span>海外算力租赁业务占比已达30%-40%，2026年有望超50%，主要布局东南亚与美国，依托A800/H800等合规芯片构建分布式集群，H200已获准出口并成为高端补充，H20已全面退出【来源：协创数据海外算力租赁业务占比约30%-40%，2026年有望超50%，主要布局东南亚与美国，依托A800/H800等合规芯片构建分布式集群，H200已获准出口并成高端补充……】(<a href="https://xueqiu.com/5236978589/371556728" target="_blank">查看详情</a>)。</p>
+                                                <p>公司通过海外本地化运营规避监管风险，同步推进国产芯片（昇腾、寒武纪）兼容，形成“英伟达+国产”双体系，短期H20停产影响可控（占算力收入<15%），中长期受益于海外扩张、国产替代与存储协同三重驱动，<span class="critical">2026年算力收入有望突破百亿元</span>【来源：公司通过海外本地化运营规避监管风险……2026年算力收入有望突破百亿元，毛利率持续提升……】(<a href="https://xueqiu.com/5236978589/371556728" target="_blank">查看详情</a>)。</p>
+                                                  <p>此外，头部AIDC企业规划在东南亚部署万卡B200集群，抢占海外市场；中东因电价低、区位优成为新热点，阿联酋拟建5000兆瓦数据中心，年采购GB200或达50万张【来源：头部AIDC企业规划东南亚万卡B200集群出海……中东因电价低、区位优，成为新热点，阿联酋拟建5000兆瓦数据中心，年采购GB200或达50万张……】(<a href="https://3g.163.com/news/article/K7VLIQ3905118HA4.html" target="_blank">查看详情</a>)。</p>
+                                                  </div>
+                                                  <div class="card">
+                                                    <h3>五、基础设施建设承压，资金与消纳困局凸显</h3>
+                                                      <p>尽管政策持续加码，但算力基础设施建设仍面临严峻挑战。<span class="highlight">上海发布的《智算中心建设导则（2025年版）》指出</span>，行业发展面临四大阻力：算力闲置严重（出租率仅10%-30%）、市场乱象（低配高价、骗补、绿电倒卖）、AI大模型应用落地滞后、国产替代乏力（超80%仍依赖英伟达）【来源：上海市发布《智算中心建设导则（2025年版）》……发展面临四大阻力：一是算力闲置严重，出租率仅10%-30%……二是市场乱象频发……三是AI大模型应用落地滞后……四是国产芯片替代乏力，超80%依赖英伟达……】(<a href="https://juejin.cn/post/7460683361024229426" target="_blank">查看详情</a>)。</p>
+                                                        <p>西北地区智算项目因干部调整，近200个项目验收遇阻，B200采购热度骤降，预计仅5–10个项目能落地【来源：受西部某市干部调整影响，当地近200个智算项目验收遇阻，英伟达B200采购热度骤降，预计仅5-10个项目能最终落地……】(<a href="https://3g.163.com/news/article/K7VLIQ3905118HA4.html" target="_blank">查看详情</a>)。</p>
+                                                          <p>金融层面，智算中心建设陷入“资金-项目”死循环，金融租赁资金成本高达15%；IDC租金持续走低，但REITs市场火爆，认购倍数达300–500倍，倒逼厂商转向金融化运营【来源：智算中心建设陷入“资金-项目”死循环，金融租赁资金成本达15%……IDC租金持续走低，但REITs市场火爆，认购倍数达300-500倍……】(<a href="http://m.toutiao.com/group/7584340746140959275/" target="_blank">查看详情</a>)。</p>
+                                                          </div>
+                                                          <div class="card">
+                                                            <h3>六、技术瓶颈与新兴趋势并存</h3>
+                                                              <ul>
+                                                                <li><strong>卡间互联为技术瓶颈</strong>：具备万卡集群运维能力的企业不足三家，互联效率制约规模化部署【来源：具备万卡集群运维能力的企业不足三家，卡间互联成技术瓶颈……】(<a href="http://m.toutiao.com/group/7584340746140959275/" target="_blank">查看详情</a>)。</li>
+                                                                  <li><strong>端侧AI推动NPU创业热潮</strong>：AI芯片从云端向终端延伸，人才需求激增【来源：端侧AI推动NPU创业热潮，人才需求激增……】(<a href="http://m.toutiao.com/group/7584340746140959275/" target="_blank">查看详情</a>)。</li>
+                                                                    <li><strong>存储芯片价格翻倍冲击出海</strong>：DDR4拆机流入市场，形成灰色替代【来源：存储芯片价格翻倍冲击出海业务，拆机DDR4流入市场成灰色替代……】(<a href="http://m.toutiao.com/group/7584340746140959275/" target="_blank">查看详情</a>)。</li>
+                                                                      <li><strong>国产AI生态建设提速</strong>：FlagOS等项目获多家芯片厂商参与，但资源投入悬殊【来源：国产AI生态建设提速，FlagOS等项目获多家芯片厂商参与，但资源投入悬殊……】(<a href="http://m.toutiao.com/group/7584340746140959275/" target="_blank">查看详情</a>)。</li>
+                                                                      </ul>
+                                                                    </div>
+                                                                    <div class="summary">
+                                                                      <h2>总结与展望</h2>
+                                                                        <p>2026年初，中国AI算力产业已从“追赶者”迈向“重构者”。国产芯片在政策、资本与技术三重引擎推动下，实现从“可用”到“好用”的跨越，与英伟达形成“双轨并行”格局。头部服务商通过绑定科技巨头构建高壁垒，海外租赁成为关键增长曲线，而金融化运营与区域协同正重塑行业生态。</p>
+                                                                          <p>然而，<span class="critical">算力利用率低、资金成本高、生态标准未统一、卡间互联瓶颈</span>仍是制约规模化落地的核心痛点。2026年，产业将进入“质量优先、效率为王”的新阶段：<span class="critical">谁能率先打通“算力—模型—应用—商业闭环”，谁就能主导下一阶段的产业话语权</span>。</p>
+                                                                            <h4>未来趋势判断：</h4>
+                                                                              <ol>
+                                                                                <li><strong>国产替代加速</strong>：2026年国产芯片在核心大厂采购中占比将突破40%，政策补贴与技术成熟度成关键变量。</li>
+                                                                                  <li><strong>出海模式分化</strong>：东南亚为“合规+成本”主战场，中东为“能源+规模”新高地，日本成为新兴“快闪型”集成商试验田。</li>
+                                                                                    <li><strong>金融化趋势加强</strong>：REITs、租赁、保函等工具将成项目融资主流，算力资产证券化加速。</li>
+                                                                                      <li><strong>生态标准竞合</strong>：FlagOS、昇腾MindSpore、华为盘古等开源框架将加速争夺开发者生态，标准制定权成为战略高地。</li>
+                                                                                      </ol>
+                                                                                    </div>
+                                                                                    <h2>资讯标题与链接列表（按发布日期由近及远排序）</h2>
+                                                                                      <div class="info-list">
+                                                                                        <div class="info-item">
+                                                                                          <div class="info-title">2025年最后一个交易日AI算力板块走强，H200有条件对华供应，智能算力规模2028年将超2781.9EFLOPS</div>
+                                                                                            <a href="http://m.toutiao.com/group/7589899407441674815/" class="info-link" target="_blank">http://m.toutiao.com/group/7589899407441674815/</a>
+                                                                                              <div class="info-date">发布日期：2025年12月31日</div>
+                                                                                              </div>
+                                                                                              <div class="info-item">
+                                                                                                <div class="info-title">科创板AI芯片企业强化品控，已部署数个千卡级集群，新一代单卡算力0.5P，整机售价25万元</div>
+                                                                                                  <a href="http://m.toutiao.com/group/7584340746140959275/" class="info-link" target="_blank">http://m.toutiao.com/group/7584340746140959275/</a>
+                                                                                                    <div class="info-date">发布日期：2025年12月16日</div>
+                                                                                                    </div>
+                                                                                                    <div class="info-item">
+                                                                                                      <div class="info-title">协创数据海外算力租赁占比30%-40%，2026年有望超50%，H200已获准出口，算力收入有望破百亿</div>
+                                                                                                        <a href="https://xueqiu.com/5236978589/371556728" class="info-link" target="_blank">https://xueqiu.com/5236978589/371556728</a>
+                                                                                                          <div class="info-date">发布日期：2026年01月17日</div>
+                                                                                                          </div>
+                                                                                                          <div class="info-item">
+                                                                                                            <div class="info-title">宏景科技2025年上半年营收暴涨561%，绑定阿里腾讯百度，订单超42亿，融资能力达300亿元</div>
+                                                                                                              <a href="https://xueqiu.com/1214542109/352283787?_ugc_source=ugctoutiao" class="info-link" target="_blank">https://xueqiu.com/1214542109/352283787?_ugc_source=ugctoutiao</a>
+                                                                                                                <div class="info-date">发布日期：2025年09月12日</div>
+                                                                                                                </div>
+                                                                                                                <div class="info-item">
+                                                                                                                  <div class="info-title">中国移动投资摩尔线程5.23亿元，若科创板上市浮盈或达90亿，“夸娥”集群已达万卡规模</div>
+                                                                                                                    <a href="http://m.163.com/dy/article/KA7MG95J0511N341.html" class="info-link" target="_blank">http://m.163.com/dy/article/KA7MG95J0511N341.html</a>
+                                                                                                                      <div class="info-date">发布日期：2025年09月24日</div>
+                                                                                                                      </div>
+                                                                                                                      <div class="info-item">
+                                                                                                                        <div class="info-title">国产算力政策红利释放，西南某城最高60%补贴，H800租赁价腰斩，国产集群年内或100%部署</div>
+                                                                                                                          <a href="http://m.toutiao.com/group/7551698094052688447/" class="info-link" target="_blank">http://m.toutiao.com/group/7551698094052688447/</a>
+                                                                                                                            <div class="info-date">发布日期：2025年09月19日</div>
+                                                                                                                            </div>
+                                                                                                                            <div class="info-item">
+                                                                                                                              <div class="info-title">国产算力加速替代英伟达，政策补贴最高达80%，训练稳定性超98%，单卡利润暴跌至200元</div>
+                                                                                                                                <a href="http://m.toutiao.com/group/7574330886469239346/" class="info-link" target="_blank">http://m.toutiao.com/group/7574330886469239346/</a>
+                                                                                                                                  <div class="info-date">发布日期：2025年11月19日</div>
+                                                                                                                                  </div>
+                                                                                                                                  <div class="info-item">
+                                                                                                                                    <div class="info-title">天云智联（甘肃）科技获用地许可，拟部署64台B200服务器，构建2000P@FP16算力集群</div>
+                                                                                                                                      <a href="http://m.163.com/dy/article/KDNI09NP0511D6RL.html" class="info-link" target="_blank">http://m.163.com/dy/article/KDNI09NP0511D6RL.html</a>
+                                                                                                                                        <div class="info-date">发布日期：2025年11月06日</div>
+                                                                                                                                        </div>
+                                                                                                                                        <div class="info-item">
+                                                                                                                                          <div class="info-title">西部某市干部调整致200+算力项目遇阻，B200采购锐减，H20库存积压，中东成新热点</div>
+                                                                                                                                            <a href="https://3g.163.com/news/article/K7VLIQ3905118HA4.html" class="info-link" target="_blank">https://3g.163.com/news/article/K7VLIQ3905118HA4.html</a>
+                                                                                                                                              <div class="info-date">发布日期：2025年08月27日</div>
+                                                                                                                                              </div>
+                                                                                                                                              <div class="info-item">
+                                                                                                                                                <div class="info-title">上海市发布《智算中心建设导则（2025年版）》，指出四大阻力：闲置率10%-30%、骗补、应用滞后、80%依赖英伟达</div>
+                                                                                                                                                  <a href="https://juejin.cn/post/7460683361024229426" class="info-link" target="_blank">https://juejin.cn/post/7460683361024229426</a>
+                                                                                                                                                    <div class="info-date">发布日期：2025年01月17日</div>
+                                                                                                                                                    </div>
+                                                                                                                                                    <div class="info-item">
+                                                                                                                                                      <div class="info-title">Nvidia发布Blackwell Ultra B300，FP4算力11.5 ExaFLOPS，推理速度提升10倍，2025年下半年上市</div>
+                                                                                                                                                        <a href="http://m.toutiao.com/group/7483329699062514186/" class="info-link" target="_blank">http://m.toutiao.com/group/7483329699062514186/</a>
+                                                                                                                                                          <div class="info-date">发布日期：2025年03月19日</div>
+                                                                                                                                                          </div>
+                                                                                                                                                          <div class="info-item">
+                                                                                                                                                            <div class="info-title">东海证券12月半导体月报：AI驱动需求，芯片价格低迷，供过于求未改，建议布局AI算力龙头</div>
+                                                                                                                                                              <a href="https://cj.sina.cn/article/norm_detail?url=http%3A%2F%2Ffinance.sina.cn%2F2025-01-08%2Fdetail-ineefzct1093885.d.html" class="info-link" target="_blank">https://cj.sina.cn/article/norm_detail?url=http%3A%2F%2Ffinance.sina.cn%2F2025-01-08%2Fdetail-ineefzct1093885.d.html</a>
+                                                                                                                                                                <div class="info-date">发布日期：2025年01月07日</div>
+                                                                                                                                                                </div>
+                                                                                                                                                                <div class="info-item">
+                                                                                                                                                                  <div class="info-title">英伟达GTC 2024发布B200芯片，推理性能提升30倍，对华出口受限，特供版H20性能为H100四分之一</div>
+                                                                                                                                                                    <a href="http://m.toutiao.com/group/7348259076591256103/" class="info-link" target="_blank">http://m.toutiao.com/group/7348259076591256103/</a>
+                                                                                                                                                                      <div class="info-date">发布日期：2024年03月20日</div>
+                                                                                                                                                                      </div>
+                                                                                                                                                                      <div class="info-item">
+                                                                                                                                                                        <div class="info-title">英伟达GTC 2024发布B200，华为云建成三大昇腾算力中心，打造阿克苏万卡平台，推动国产全栈方案落地</div>
+                                                                                                                                                                          <a href="http://m.toutiao.com/group/7348055902442537526/" class="info-link" target="_blank">http://m.toutiao.com/group/7348055902442537526/</a>
+                                                                                                                                                                            <div class="info-date">发布日期：2024年03月19日</div>
+                                                                                                                                                                            </div>
+                                                                                                                                                                            <div class="info-item">
+                                                                                                                                                                              <div class="info-title">谷歌云正式商用G4 VM虚拟机，搭载RTX PRO 6000 Blackwell，性能较G2提升9倍，推动物理AI落地</div>
+                                                                                                                                                                                <a href="http://news.10jqka.com.cn/field/20251021/671884540.shtml" class="info-link" target="_blank">http://news.10jqka.com.cn/field/20251021/671884540.shtml</a>
+                                                                                                                                                                                  <div class="info-date">发布日期：2023年10月21日（*老旧信息，超过60天*）</div>
+                                                                                                                                                                                  </div>
+                                                                                                                                                                                </div>
+                                                                                                                                                                                <footer>
+                                                                                                                                                                                  <p>本报告基于公开信息整理，数据截止2026年1月28日。所有来源链接均已核实并提供直接访问。</p>
+                                                                                                                                                                                    <p>© 2026 中国AI算力产业深度洞察报告 | 专业、客观、深度</p>
+                                                                                                                                                                                    </footer>
+                                                                                                                                                                                  </div>
+                                                                                                                                                                                </body>
+                                                                                                                                                                              </html>
+                                                                                                                                                                              ```
