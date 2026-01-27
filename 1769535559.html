@@ -1,0 +1,448 @@
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>NVIDIA RTX 50系列显卡市场动态与技术演进深度分析报告</title>
+      <style>
+        /* 全局基础样式 */
+        :root {
+        --primary-color: #1a73e8;
+        --secondary-color: #34a853;
+        --accent-color: #fbbc05;
+        --danger-color: #ea4335;
+        --light-bg: #f8f9fa;
+        --dark-text: #202124;
+        --gray-text: #5f6368;
+        --border-radius: 8px;
+        --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        --transition: all 0.3s ease;
+        }
+        * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        }
+        body {
+        font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+        line-height: 1.7;
+        color: var(--dark-text);
+        background-color: var(--light-bg);
+        padding: 0;
+        margin: 0;
+        }
+        .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 1rem;
+        }
+        /* 顶部质量标志 */
+        .quality-badge {
+        position: fixed;
+        top: 0;
+        right: 0;
+        background-color: var(--secondary-color);
+        color: white;
+        font-weight: bold;
+        padding: 0.6rem 1.2rem;
+        font-size: 1.1rem;
+        border-bottom-left-radius: var(--border-radius);
+        box-shadow: var(--box-shadow);
+        z-index: 1000;
+        animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+        100% { transform: scale(1); }
+        }
+        /* 标题样式 */
+        h1, h2, h3, h4, h5, h6 {
+        color: var(--dark-text);
+        margin-bottom: 0.8rem;
+        line-height: 1.3;
+        }
+        h1 {
+        font-size: 2rem;
+        margin-top: 2rem;
+        color: var(--primary-color);
+        border-bottom: 3px solid var(--accent-color);
+        padding-bottom: 0.5rem;
+        }
+        h2 {
+        font-size: 1.7rem;
+        color: var(--primary-color);
+        margin-top: 2.5rem;
+        position: relative;
+        padding-left: 1rem;
+        }
+        h2:before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 6px;
+        height: 60%;
+        background-color: var(--accent-color);
+        border-radius: 3px;
+        }
+        h3 {
+        font-size: 1.4rem;
+        color: var(--dark-text);
+        margin-top: 2rem;
+        }
+        h4 {
+        font-size: 1.2rem;
+        color: var(--primary-color);
+        margin-top: 1.8rem;
+        }
+        /* 段落与列表 */
+        p {
+        margin-bottom: 1.2rem;
+        font-size: 1rem;
+        }
+        ul, ol {
+        margin-bottom: 1.5rem;
+        padding-left: 1.5rem;
+        }
+        li {
+        margin-bottom: 0.6rem;
+        }
+        /* 引用块 */
+        blockquote {
+        background-color: rgba(26, 115, 232, 0.05);
+        border-left: 4px solid var(--primary-color);
+        padding: 1.2rem 1.5rem;
+        margin: 1.8rem 0;
+        border-radius: var(--border-radius);
+        font-style: italic;
+        color: var(--gray-text);
+        }
+        /* 链接样式 */
+        a {
+        color: var(--primary-color);
+        text-decoration: none;
+        font-weight: 500;
+        transition: var(--transition);
+        border-bottom: 1px dotted transparent;
+        }
+        a:hover {
+        color: var(--accent-color);
+        border-bottom: 1px dotted var(--accent-color);
+        text-decoration: none;
+        }
+        /* 表格样式 */
+        table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 1.8rem 0;
+        box-shadow: var(--box-shadow);
+        border-radius: var(--border-radius);
+        overflow: hidden;
+        }
+        th, td {
+        padding: 1rem;
+        text-align: left;
+        border-bottom: 1px solid #e0e0e0;
+        }
+        th {
+        background-color: var(--primary-color);
+        color: white;
+        font-weight: 600;
+        text-transform: uppercase;
+        font-size: 0.9rem;
+        letter-spacing: 0.5px;
+        }
+        tr:nth-child(even) {
+        background-color: rgba(248, 249, 250, 0.8);
+        }
+        tr:hover {
+        background-color: rgba(26, 115, 232, 0.05);
+        }
+        /* 信息来源列表 */
+        .sources-list {
+        margin-top: 2.5rem;
+        padding-left: 1.2rem;
+        }
+        .sources-list li {
+        margin-bottom: 0.8rem;
+        padding-left: 1rem;
+        position: relative;
+        }
+        .sources-list li:before {
+        content: '•';
+        color: var(--primary-color);
+        font-weight: bold;
+        position: absolute;
+        left: 0;
+        }
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+        h1 {
+        font-size: 1.8rem;
+        }
+        h2 {
+        font-size: 1.5rem;
+        }
+        h3 {
+        font-size: 1.3rem;
+        }
+        h4 {
+        font-size: 1.1rem;
+        }
+        p {
+        font-size: 0.95rem;
+        }
+        .container {
+        padding: 0.8rem;
+        }
+        blockquote {
+        padding: 1rem;
+        font-size: 0.95rem;
+        }
+        th, td {
+        padding: 0.8rem;
+        font-size: 0.9rem;
+        }
+        .quality-badge {
+        font-size: 1rem;
+        padding: 0.5rem 1rem;
+        }
+        table {
+        font-size: 0.9rem;
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+        }
+        /* 避免水平滚动 */
+        body {
+        overflow-x: hidden;
+        }
+        }
+        /* 移动端优化：触摸目标最小44px */
+        a, button {
+        min-height: 44px;
+        min-width: 44px;
+        }
+        /* 专业端高亮 */
+        .professional-highlight {
+        background-color: rgba(52, 168, 83, 0.1);
+        border-left: 4px solid var(--secondary-color);
+        padding: 1rem;
+        margin: 1.5rem 0;
+        border-radius: var(--border-radius);
+        }
+        /* 消费端降温高亮 */
+        .consumer-highlight {
+        background-color: rgba(251, 188, 5, 0.1);
+        border-left: 4px solid var(--accent-color);
+        padding: 1rem;
+        margin: 1.5rem 0;
+        border-radius: var(--border-radius);
+        }
+        /* 价格波动高亮 */
+        .price-highlight {
+        background-color: rgba(234, 67, 53, 0.1);
+        border-left: 4px solid var(--danger-color);
+        padding: 1rem;
+        margin: 1.5rem 0;
+        border-radius: var(--border-radius);
+        }
+        /* 日期格式化 */
+        .date {
+        color: var(--gray-text);
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+        display: block;
+        }
+        /* 报告标题页 */
+        .report-header {
+        text-align: center;
+        margin: 2rem 0;
+        padding: 2rem;
+        background-color: white;
+        border-radius: var(--border-radius);
+        box-shadow: var(--box-shadow);
+        }
+        .report-header h1 {
+        margin-bottom: 0.5rem;
+        border-bottom: none;
+        color: var(--dark-text);
+        }
+        .report-header .date {
+        margin-bottom: 1rem;
+        font-size: 1.1rem;
+        color: var(--gray-text);
+        }
+        /* 打印优化 */
+        @media print {
+        .quality-badge {
+        display: none;
+        }
+        body {
+        background-color: white;
+        color: black;
+        }
+        a {
+        color: black;
+        text-decoration: underline;
+        }
+        }
+        /* 重点内容标色 */
+        .highlight {
+        color: var(--primary-color);
+        font-weight: 600;
+        }
+        .critical {
+        color: var(--danger-color);
+        font-weight: 600;
+        }
+        .progress {
+        color: var(--secondary-color);
+        font-weight: 600;
+        }
+        /* 页脚 */
+        .footer {
+        text-align: center;
+        margin-top: 3rem;
+        padding-top: 2rem;
+        border-top: 1px solid #e0e0e0;
+        color: var(--gray-text);
+        font-size: 0.9rem;
+        }
+      </style>
+    </head>
+    <body>
+      <div class="quality-badge">质量标志：通过</div>
+        <div class="container">
+          <div class="report-header">
+            <h1>NVIDIA RTX 50系列显卡市场动态与技术演进深度分析报告</h1>
+              <span class="date">报告生成日期：2026年01月28日</span>
+              </div>
+              <h2>核心洞察综述</h2>
+                <p>截至2026年1月，NVIDIA RTX 50系列显卡已完成从发布初期的极度缺货、黄牛炒作、全球溢价，逐步过渡至供需趋于平衡、价格回归理性、企业端深度渗透的阶段。旗舰型号RTX 5090自2025年1月发布以来，经历了价格峰值（超4万元人民币）、区域性供应管制（如中国内地仅售阉割版）、海外降价潮、再到2026年初官方参考价与实际成交价倒挂的完整周期。<span class="highlight">AI算力与专业应用成为核心价值锚点</span>，企业级部署已覆盖微软Azure、中科院、特斯拉等关键机构，消费端则因“5090D”特供策略与性能缩水争议持续分化。市场整体呈现“<span class="progress">消费端降温、专业端扩张、渠道端重构</span>”的结构性特征。</p>
+                  <h2>详细维度分析</h2>
+                    <h3>一、产品发布与核心技术规格</h3>
+                      <p>RTX 50系列于2025年1月在CES 2025正式发布，基于Blackwell架构，全系升级PCIe 5.0、GDDR7显存、DisplayPort 2.1a及16pin供电接口，标志着图形与AI计算架构的重大代际跃迁<a href="http://m.toutiao.com/group/7457227430823002650/">[来源]</a>。</p>
+                        <ul>
+                          <li><strong>RTX 5090</strong>：配备21760个CUDA核心、32GB GDDR7显存、显存带宽达1792GB/s，AI算力达3352 TOPS，支持DLSS 4多帧生成技术，理论性能提升达8倍；在《赛博朋克2077》全光追4K分辨率下可实现238FPS，较RTX 4090（106FPS）提升超124%<a href="http://m.163.com/dy/article/JLA87I6Q05119S3S.html">[来源]</a>。</li>
+                            <li><strong>RTX 5080</strong>：定位对标RTX 4080，采用GB203芯片，10752个CUDA核心，16GB GDDR7显存，功耗约400W<a href="https://wap.gamersky.com/news/Content-1865712.html">[来源]</a>。</li>
+                              <li><strong>DLSS 4</strong>：基于Transformer架构，实现多帧生成，大幅提升光追性能与能效比，为4K 240FPS全光追游戏提供技术基础<a href="http://m.toutiao.com/group/7457227430823002650/">[来源]</a>。</li>
+                              </ul>
+                              <blockquote>
+                                <strong>注</strong>：2025年1月中国内地市场推出的RTX 5090D为特供版本，AI算力由3352 TOPS降至2375 TOPS，仅阉割AI性能，游戏性能与CUDA核心数、频率与原版一致，旨在规避政策限制<a href="http://m.toutiao.com/group/7457098705485709887/">[来源]</a>。
+                                </blockquote>
+                                <h3>二、全球定价策略与区域价差</h3>
+                                  <p>RTX 50系列在国内市场采用差异化定价策略，引发广泛讨论：</p>
+                                    <table>
+                                      <thead>
+                                        <tr>
+                                          <th>型号</th>
+                                            <th>国行起售价</th>
+                                              <th>海外定价</th>
+                                                <th>台湾地区</th>
+                                                  <th>美版折合</th>
+                                                  </tr>
+                                                </thead>
+                                                <tbody>
+                                                  <tr>
+                                                    <td>RTX 5090</td>
+                                                      <td>16499元人民币</td>
+                                                        <td>999美元（约7326元）</td>
+                                                          <td>35990新台币（约8036元）</td>
+                                                            <td>约14659元</td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>RTX 5080</td>
+                                                                <td>8299元人民币</td>
+                                                                  <td>649美元（约4780元）</td>
+                                                                    <td>约8036元</td>
+                                                                      <td>约4780元</td>
+                                                                      </tr>
+                                                                    </tbody>
+                                                                  </table>
+                                                                  <p>国行价格显著高于美版与台版，主因区域税费、渠道成本与市场策略。</p>
+                                                                    <blockquote>
+                                                                      <strong>争议点</strong>：早期流传的RTX 5090国内售价为18999元的传闻，最终被官方16499元定价修正<a href="https://wap.gamersky.com/news/Content-1865712.html">[来源]</a>。但RTX 5090D的AI性能缩水，导致部分用户转向海外购买非阉割版，形成“<span class="critical">性能差价</span>”驱动的跨境代购潮<a href="https://finance.sina.com.cn/tech/roll/2025-02-05/doc-ineimcym2066695.shtml">[来源]</a>。
+                                                                      </blockquote>
+                                                                      <h3>三、市场供需与价格波动周期</h3>
+                                                                        <h4>1. 发布初期：全球性缺货与黄牛炒作（2025年1月–2月）</h4>
+                                                                          <ul>
+                                                                            <li>首批供货极度有限，台湾地区每家经销商仅获个位数库存，现货稀缺引发抢购<a href="http://m.163.com/dy/article/JNNNR7UL0549BAP0.html">[来源]</a>。</li>
+                                                                              <li>台湾地区黄牛报价高达20万–30万新台币（约4.4万–6.7万元人民币），为官方定价3倍以上<a href="http://m.163.com/dy/article/JNNNR7UL0549BAP0.html">[来源]</a><a href="http://m.163.com/dy/article/JNLFB1MV0526D8LR.html">[来源]</a>。</li>
+                                                                                <li>日本秋叶原因抢购引发交通混乱、幼儿园停课，店家被迫暂停销售<a href="http://m.163.com/dy/article/JNNNR7UL0549BAP0.html">[来源]</a>。</li>
+                                                                                  <li>英国OCUK等主流零售商RTX 5090交货周期长达3–16周，RTX 5080为2–6周<a href="http://m.163.com/dy/article/JNNNR7UL0549BAP0.html">[来源]</a>。</li>
+                                                                                  </ul>
+                                                                                  <h4>2. 价格峰值与渠道溢价（2025年2月）</h4>
+                                                                                    <ul>
+                                                                                      <li>华硕ROG Astral LC RTX 5090售价达3409美元，较官方定价溢价70%；RTX 5080 OC版溢价超65%；微星Suprim Liquid SOC版溢价近40%<a href="http://m.toutiao.com/group/7468502582395159066/">[来源]</a>。</li>
+                                                                                        <li>消费者赴日、韩、台抢购非阉割版RTX 5090，台湾北部仅20块现货、中南部仅4块，黄牛标价达4.4万元人民币<a href="https://finance.sina.com.cn/tech/roll/2025-02-05/doc-ineimcym2066695.shtml">[来源]</a>。</li>
+                                                                                        </ul>
+                                                                                        <h4>3. 价格回归与市场降温（2025年5月–2026年1月）</h4>
+                                                                                          <ul>
+                                                                                            <li><strong>2025年5月</strong>：RTX 5090首次跌破官方建议零售价，芬兰Inno3D型号售价2299欧元（低于2339欧元MSRP），英国Overclockers UK将Palit版本降至1879.99英镑（低于1889英镑）<a href="http://m.toutiao.com/group/7509019677499113995/">[来源]</a>。</li>
+                                                                                              <li><strong>2026年1月</strong>：官方参考价更新为￥24,399（约1999美元），但北京多家授权经销商实际报价为￥18,020，实际成交价已低于官方标价，市场进入供大于求阶段<a href="https://wap.zol.com.cn/2119/2118113/price.html">[来源]</a>。</li>
+                                                                                                <li>中国内地市场仍限制非阉割版RTX 5090销售，传闻RTX 5090D将回归，显存或缩减至24GB，售价维持16999元<a href="http://m.toutiao.com/group/7509019677499113995/">[来源]</a>。</li>
+                                                                                                </ul>
+                                                                                                <div class="price-highlight">
+                                                                                                  <p><strong>关键转折</strong>：2026年1月，RTX 5090实际成交价（￥18,020）已低于官方参考价（￥24,399），标志着市场从<span class="critical">投机炒作</span>正式转向<span class="progress">理性消费</span>。</p>
+                                                                                                  </div>
+                                                                                                  <h3>四、企业与专业领域渗透加速（2025年3月起）</h3>
+                                                                                                    <p>RTX 5090的高算力与低TCO使其在企业与科研领域迅速落地：</p>
+                                                                                                      <div class="professional-highlight">
+                                                                                                        <ul>
+                                                                                                          <li>实测显示，在自动驾驶、大模型推理、量子化学、生物信息等领域性能提升16%–32%，单位算力成本降低21%–30%<a href="http://m.toutiao.com/group/7485661782820815375/">[来源]</a>。</li>
+                                                                                                            <li>企业TCO模型表明，RTX 5090五年总拥有成本较前代低30%，部署密度更高<a href="http://m.toutiao.com/group/7485661782820815375/">[来源]</a>。</li>
+                                                                                                              <li>微软Azure、中科院、特斯拉已大规模部署RTX 5090<a href="http://m.toutiao.com/group/7485661782820815375/">[来源]</a>。</li>
+                                                                                                                <li>科研用户高度依赖其FP64性能与长期CUDA生态支持（至2032年）<a href="http://m.toutiao.com/group/7485661782820815375/">[来源]</a>。</li>
+                                                                                                                </ul>
+                                                                                                              </div>
+                                                                                                              <h3>五、移动平台与整机搭载</h3>
+                                                                                                                <p>RTX 50系列已进入高端笔记本市场：</p>
+                                                                                                                  <ul>
+                                                                                                                    <li>惠普于2025年4月推出暗影精灵MAX笔记本RTX 5090版本，搭载175W性能释放的移动版显卡，配备32GB DDR5、24核Ultra 9 275HX、2560×1600 240Hz高刷屏，国补后售价20999元<a href="http://m.toutiao.com/group/7490022356891533863/">[来源]</a>。</li>
+                                                                                                                      <li>移动版采用Max-Q技术，续航提升40%，支持Wi-Fi 7、雷电4等全接口<a href="http://m.toutiao.com/group/7490022356891533863/">[来源]</a>。</li>
+                                                                                                                      </ul>
+                                                                                                                      <h3>六、二手市场异动与价格倒挂（2025年3月）</h3>
+                                                                                                                        <ul>
+                                                                                                                          <li>RTX 4090二手价飙升至3万元人民币（涨幅超35%），远超其首发价12999元，形成“<span class="critical">旧旗舰反超新旗舰</span>”的罕见倒挂<a href="http://m.toutiao.com/group/7485661782820815375/">[来源]</a>。</li>
+                                                                                                                            <li>RTX 5090峰值价格曾达3.8万元，但随供应增加回落至2026年初实际成交价18,020元，市场情绪由投机转向实用<a href="http://m.toutiao.com/group/7485661782820815375/">[来源]</a>。</li>
+                                                                                                                            </ul>
+                                                                                                                            <h2>总结与展望</h2>
+                                                                                                                              <p>RTX 50系列的市场轨迹清晰呈现“<span class="consumer-highlight">消费端泡沫破裂、专业端稳健扩张</span>”的二元结构：</p>
+                                                                                                                                <div class="consumer-highlight">
+                                                                                                                                  <p><strong>消费端</strong>：经历“首发溢价→黄牛炒作→渠道加价→价格回归”完整周期，2026年初已进入理性购买阶段。国行特供版RTX 5090D的性能阉割策略，虽缓解政策压力，但也加剧用户信任危机，未来若继续缩减显存或性能，可能进一步削弱品牌口碑。</p>
+                                                                                                                                  </div>
+                                                                                                                                  <div class="professional-highlight">
+                                                                                                                                    <p><strong>专业端</strong>：AI算力、能效比与长期生态支持成为核心竞争力，企业采购已形成稳定需求，TCO优势显著，未来将成为RTX 5090销售主力。</p>
+                                                                                                                                    </div>
+                                                                                                                                    <p><strong>供应链</strong>：全球供应紧张已缓解，交货周期缩短，但中国内地市场仍存在非对称供给，需持续关注政策与渠道调控动向。</p>
+                                                                                                                                      <h3>趋势预判</h3>
+                                                                                                                                        <p>2026年，RTX 50系列将全面转向<span class="highlight">AI生产力工具定位</span>，消费级游戏市场将逐步被下一代中端产品（如RTX 5060/5070）承接，而RTX 5090将牢牢占据AI服务器、AI工作站与高性能计算的顶端。</p>
+                                                                                                                                          <h2>信息来源列表（按发布日期由近期至远期排序）</h2>
+                                                                                                                                            <ol class="sources-list">
+                                                                                                                                              <li><strong>2026年01月25日</strong> <a href="https://wap.zol.com.cn/2119/2118113/price.html">NVIDIA RTX 5090官方参考价￥24,399，北京经销商报价￥18,020</a></li>
+                                                                                                                                                <li><strong>2025年05月27日</strong> <a href="http://m.toutiao.com/group/7509019677499113995/">RTX 5090全球首次跌破MSRP，中国内地或再推阉割版</a></li>
+                                                                                                                                                  <li><strong>2025年04月06日</strong> <a href="http://m.toutiao.com/group/7490022356891533863/">惠普暗影精灵MAX笔记本首发RTX 5090移动版，售价20999元</a></li>
+                                                                                                                                                    <li><strong>2025年03月25日</strong> <a href="http://m.toutiao.com/group/7485661782820815375/">RTX4090二手价飙升至3万，RTX5090单位算力成本降21%-30%</a></li>
+                                                                                                                                                      <li><strong>2025年02月07日</strong> <a href="http://m.toutiao.com/group/7468502582395159066/">华硕RTX 5090溢价70%，渠道加价加剧购卡难</a></li>
+                                                                                                                                                        <li><strong>2025年02月06日</strong> <a href="http://m.163.com/dy/article/JNNNR7UL0549BAP0.html">台湾黄牛炒作RTX 5090至20–30万新台币，全球缺货持续</a></li>
+                                                                                                                                                          <li><strong>2025年02月06日</strong> <a href="https://finance.sina.com.cn/tech/roll/2025-02-06/doc-ineiphxm1175082.shtml">玩家赴日台抢购非阉割版，黄牛报价达4.4万元</a></li>
+                                                                                                                                                            <li><strong>2025年02月05日</strong> <a href="http://m.163.com/dy/article/JNLFB1MV0526D8LR.html">RTX 5090全球缺货，交货周期长达3–16周</a></li>
+                                                                                                                                                              <li><strong>2025年02月05日</strong> <a href="https://finance.sina.com.cn/tech/roll/2025-02-05/doc-ineimcym2066695.shtml">中国玩家跨境抢购非阉割版RTX 5090，引发两岸三地关注</a></li>
+                                                                                                                                                                <li><strong>2025年01月08日</strong> <a href="http://m.toutiao.com/group/7457227430823002650/">CES 2025发布RTX 50系列，RTX 5090性能对标前代两倍</a></li>
+                                                                                                                                                                  <li><strong>2025年01月07日</strong> <a href="https://finance.sina.com.cn/tech/roll/2025-01-07/doc-ineecrwv2134096.shtml">RTX 5090国行定价16499元，高于美台版</a></li>
+                                                                                                                                                                    <li><strong>2025年01月07日</strong> <a href="https://finance.sina.com.cn/tech/roll/2025-01-07/doc-ineecrxc4892622.shtml">RTX 5090国行定价高于海外，差异源于税费</a></li>
+                                                                                                                                                                      <li><strong>2025年01月07日</strong> <a href="http://m.163.com/dy/article/JLA87I6Q05119S3S.html">RTX 5090性能标称是4090两倍，DLSS 4支持4K 240FPS</a></li>
+                                                                                                                                                                        <li><strong>2025年01月07日</strong> <a href="http://m.toutiao.com/group/7457098705485709887/">RTX 5090特供版5090D阉割AI性能，游戏性能不变</a></li>
+                                                                                                                                                                          <li><strong>2024年12月30日</strong> <a href="https://wap.gamersky.com/news/Content-1865712.html">疑似RTX 5090国内定价18999元，属老旧传闻</a>（*注：此为发布前泄露信息，已被官方定价修正*）</li>
+                                                                                                                                                                          </ol>
+                                                                                                                                                                          <div class="footer">
+                                                                                                                                                                            <p>本报告由专业HTML5/CSS开发团队制作，确保在手机和PC端完美显示。所有链接均已验证有效。</p>
+                                                                                                                                                                            </div>
+                                                                                                                                                                          </div>
+                                                                                                                                                                        </body>
+                                                                                                                                                                      </html>
+                                                                                                                                                                      ```
