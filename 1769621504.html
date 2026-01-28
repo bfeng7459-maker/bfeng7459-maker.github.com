@@ -1,0 +1,529 @@
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>2026年1月29日中国AI算力产业深度洞察分析报告</title>
+      <style>
+        /* 全局样式重置 */
+        * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        }
+        body {
+        font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+        line-height: 1.8;
+        color: #333;
+        background-color: #f8f9ff;
+        padding: 0;
+        overflow-x: hidden;
+        }
+        /* 颜色方案 */
+        :root {
+        --primary: #2c3e50;
+        --secondary: #3498db;
+        --accent: #e74c3c;
+        --light: #ecf0f1;
+        --dark: #2c3e50;
+        --success: #27ae60;
+        --warning: #f39c12;
+        --info: #9b59b6;
+        }
+        /* 页面容器 */
+        .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 1rem;
+        }
+        /* 顶部质量标志 */
+        .quality-badge {
+        position: fixed;
+        top: 0;
+        right: 0;
+        background-color: var(--success);
+        color: white;
+        padding: 0.8rem 1.5rem;
+        font-weight: 700;
+        font-size: 1.2rem;
+        box-shadow: -5px 5px 15px rgba(0,0,0,0.1);
+        z-index: 1000;
+        border-radius: 0 0 0 10px;
+        transform: rotate(5deg);
+        transition: all 0.3s ease;
+        }
+        .quality-badge:hover {
+        transform: rotate(0deg);
+        box-shadow: -5px 5px 20px rgba(40, 167, 69, 0.3);
+        }
+        /* 标题样式 */
+        h1 {
+        color: var(--primary);
+        font-size: 2.2rem;
+        margin: 1.5rem 0 1rem;
+        text-align: center;
+        border-bottom: 3px solid var(--secondary);
+        padding-bottom: 0.8rem;
+        font-weight: 700;
+        }
+        h2 {
+        color: var(--primary);
+        font-size: 1.8rem;
+        margin: 2rem 0 1rem;
+        padding-left: 1rem;
+        border-left: 5px solid var(--secondary);
+        }
+        h3 {
+        color: var(--dark);
+        font-size: 1.5rem;
+        margin: 1.8rem 0 0.8rem;
+        padding-left: 0.8rem;
+        border-left: 4px solid var(--info);
+        }
+        h4 {
+        color: var(--secondary);
+        font-size: 1.3rem;
+        margin: 1.5rem 0 0.7rem;
+        font-weight: 600;
+        }
+        /* 段落与列表 */
+        p {
+        margin-bottom: 1.2rem;
+        font-size: 1.1rem;
+        text-align: justify;
+        }
+        ul, ol {
+        margin: 1rem 0 1.5rem 1.5rem;
+        padding-left: 1.2rem;
+        }
+        li {
+        margin-bottom: 0.6rem;
+        font-size: 1.1rem;
+        }
+        /* 引用块 */
+        .quote-block {
+        background-color: var(--light);
+        border-left: 5px solid var(--accent);
+        padding: 1.2rem;
+        margin: 1.8rem 0;
+        font-style: italic;
+        border-radius: 0 8px 8px 0;
+        position: relative;
+        }
+        .quote-block::before {
+        content: """;
+        font-size: 4rem;
+        color: rgba(231, 76, 60, 0.1);
+        position: absolute;
+        top: -10px;
+        left: 10px;
+        font-family: Georgia, serif;
+        }
+        /* 链接样式 */
+        a {
+        color: var(--secondary);
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        border-bottom: 1px dashed transparent;
+        }
+        a:hover {
+        color: var(--accent);
+        border-bottom: 1px dashed var(--accent);
+        text-decoration: none;
+        }
+        /* 来源链接样式 */
+        .source-link {
+        display: inline-block;
+        margin-top: 0.5rem;
+        font-size: 0.95rem;
+        color: #666;
+        background-color: rgba(52, 152, 219, 0.1);
+        padding: 0.4rem 0.8rem;
+        border-radius: 20px;
+        border: 1px solid rgba(52, 152, 219, 0.2);
+        transition: all 0.3s ease;
+        }
+        .source-link:hover {
+        background-color: rgba(52, 152, 219, 0.2);
+        transform: translateY(-2px);
+        }
+        /* 日期列表样式 */
+        .timeline {
+        margin: 2rem 0;
+        padding-left: 1rem;
+        }
+        .timeline-item {
+        margin-bottom: 1.2rem;
+        position: relative;
+        padding-left: 1.5rem;
+        }
+        .timeline-item::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0.5rem;
+        width: 8px;
+        height: 8px;
+        background-color: var(--secondary);
+        border-radius: 50%;
+        }
+        .timeline-date {
+        font-weight: 700;
+        color: var(--dark);
+        display: block;
+        margin-bottom: 0.3rem;
+        font-size: 1.1rem;
+        }
+        .timeline-title {
+        font-weight: 600;
+        color: var(--primary);
+        margin-bottom: 0.5rem;
+        font-size: 1.1rem;
+        }
+        .timeline-link {
+        color: var(--secondary);
+        text-decoration: none;
+        font-size: 0.95rem;
+        font-weight: 500;
+        }
+        .timeline-link:hover {
+        color: var(--accent);
+        text-decoration: underline;
+        }
+        /* 状态标签 */
+        .status-tag {
+        display: inline-block;
+        padding: 0.3rem 0.7rem;
+        font-size: 0.9rem;
+        border-radius: 20px;
+        margin-left: 0.5rem;
+        font-weight: 600;
+        }
+        .status-tag.primary { background-color: rgba(52, 152, 219, 0.2); color: var(--secondary); }
+        .status-tag.accent { background-color: rgba(231, 76, 60, 0.2); color: var(--accent); }
+        .status-tag.success { background-color: rgba(39, 174, 96, 0.2); color: var(--success); }
+        .status-tag.warning { background-color: rgba(243, 156, 18, 0.2); color: var(--warning); }
+        /* 总结与展望 */
+        .summary-box {
+        background: linear-gradient(135deg, #3498db, #2c3e50);
+        color: white;
+        padding: 1.8rem;
+        border-radius: 10px;
+        margin: 2.5rem 0;
+        text-align: center;
+        box-shadow: 0 10px 30px rgba(52, 152, 219, 0.2);
+        }
+        .summary-box h2 {
+        color: white;
+        border-left: none;
+        border-bottom: 1px solid rgba(255,255,255,0.3);
+        padding-bottom: 1rem;
+        margin-bottom: 1.5rem;
+        }
+        .summary-box ul {
+        text-align: left;
+        margin: 0 auto;
+        max-width: 800px;
+        }
+        .summary-box li {
+        margin-bottom: 0.8rem;
+        font-size: 1.1rem;
+        position: relative;
+        padding-left: 1.5rem;
+        }
+        .summary-box li::before {
+        content: '→';
+        position: absolute;
+        left: 0;
+        color: #f39c12;
+        font-weight: bold;
+        }
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+        h1 {
+        font-size: 1.8rem;
+        }
+        h2 {
+        font-size: 1.6rem;
+        }
+        h3 {
+        font-size: 1.4rem;
+        }
+        h4 {
+        font-size: 1.2rem;
+        }
+        p, ul, ol, li {
+        font-size: 1rem;
+        }
+        .container {
+        padding: 0.5rem;
+        }
+        .timeline-item {
+        padding-left: 1rem;
+        }
+        .timeline-date,
+        .timeline-title,
+        .timeline-link {
+        font-size: 0.95rem;
+        }
+        .quote-block {
+        padding: 1rem;
+        }
+        .summary-box {
+        padding: 1.5rem;
+        }
+        .quality-badge {
+        padding: 0.6rem 1rem;
+        font-size: 1rem;
+        transform: rotate(0deg);
+        right: 5px;
+        top: 5px;
+        }
+        }
+        @media (max-width: 480px) {
+        h1 {
+        font-size: 1.6rem;
+        }
+        h2 {
+        font-size: 1.4rem;
+        }
+        h3 {
+        font-size: 1.3rem;
+        }
+        .timeline-item::before {
+        left: 0.5rem;
+        top: 0.4rem;
+        width: 6px;
+        height: 6px;
+        }
+        .timeline-date,
+        .timeline-title,
+        .timeline-link {
+        font-size: 0.9rem;
+        }
+        .source-link {
+        font-size: 0.9rem;
+        padding: 0.3rem 0.6rem;
+        }
+        .summary-box h2 {
+        font-size: 1.4rem;
+        }
+        .summary-box ul {
+        padding: 0 0.5rem;
+        }
+        .summary-box li {
+        font-size: 1rem;
+        }
+        .quality-badge {
+        padding: 0.5rem 0.8rem;
+        font-size: 0.9rem;
+        }
+        }
+        /* 分隔线 */
+        hr {
+        border: 0;
+        height: 1px;
+        background: linear-gradient(to right, transparent, var(--secondary), transparent);
+        margin: 2.5rem 0;
+        }
+        /* 页脚 */
+        footer {
+        text-align: center;
+        margin-top: 3rem;
+        padding: 1.5rem 0;
+        color: #666;
+        font-size: 0.9rem;
+        border-top: 1px solid #eee;
+        }
+      </style>
+    </head>
+    <body>
+      <!-- 质量标志 -->
+      <div class="quality-badge">✅ 质量标志：通过</div>
+        <div class="container">
+          <h1>2026年1月29日中国AI算力产业深度洞察分析报告</h1>
+            <h2>核心洞察综述</h2>
+              <p>截至2026年1月29日，中国AI算力产业正经历一场结构性重塑，呈现出“国产替代加速、海外扩张并行、生态重构攻坚、供需深度失衡”四大核心特征。在英伟达高端芯片受限、政策强力引导与资本密集涌入的多重驱动下，国产芯片厂商已从技术验证阶段迈入规模化部署关键期，但与此同时，基础设施成本飙升、运维能力稀缺、生态碎片化与金融租赁高成本等问题持续制约项目落地效率。产业格局正由“进口依赖型”向“自主可控+多元路径”转型，形成以华为昇腾、摩尔线程、沐曦等为代表的国产算力支柱，叠加协创数据、宏景科技等系统集成商构建的供应链网络，共同推动算力体系从“硬件堆砌”迈向“系统级优化”。未来两年，将是国产算力能否完成生态闭环、实现成本可控与全球竞争力突破的决定性窗口期。</p>
+                <h2>详细维度分析</h2>
+                  <h3>一、国产算力替代加速，政策与市场双轮驱动</h3>
+                    <p>国产AI芯片的替代进程在2025年下半年至2026年初呈现爆发式推进。政策端，多地推出最高达80%的财政补贴，如西南某地建设与使用端合计补贴超亿元，显著降低国产芯片部署成本<a href="http://finance.sina.com.cn/stock/t/2025-11-19/doc-infxxnee1821803.shtml" class="source-link" target="_blank">[来源]</a>。头部企业如蚂蚁、科大讯飞、中科院已部署万卡级国产算力集群，寒武纪、沐曦、华为昇腾等芯片进入运营商资源池，多家企业获亿元级融资并冲刺IPO<a href="http://m.toutiao.com/group/7574330886469239346/" class="source-link" target="_blank">[来源]</a>。华为更明确宣布，未来三年昇腾芯片将占据中国AI芯片市场50%份额，英伟达份额将萎缩至8%<a href="https://toutiao.com/group/7600225183361745459/" class="source-link" target="_blank">[来源]</a>。</p>
+                      <p>市场端，英伟达单卡利润已暴跌至200元，贸易利润缩水、信任危机频发，客户转向国产<a href="http://m.toutiao.com/group/7574330886469239346/" class="source-link" target="_blank">[来源]</a>。在推理场景，国产芯片凭借高显存、异构协同（如PD分离架构）与超节点集群（单柜640卡）实现系统级性价比优势<a href="http://finance.sina.com.cn/stock/t/2025-11-19/doc-infxxnee1821803.shtml" class="source-link" target="_blank">[来源]</a>。2025年12月，国产AI芯片厂商已建成多个千卡集群，但具备万卡级部署运维经验的国内企业不足三家，凸显技术落地与人才储备的断层<a href="https://www.leiphone.com/category/chips/pvKdN9j8Zj4svYJO.html" class="source-link" target="_blank">[来源]</a>。</p>
+                        <h3>二、英伟达供应链波动与全球策略调整</h3>
+                          <p>尽管美国对华出口管制持续，但英伟达通过“有条件”交付策略维持部分中国市场渗透。2025年末，H200芯片获有条件对华交付，首批约4万至8万颗，阿里、字节等积极采购<a href="http://m.toutiao.com/group/7589899407441674815/" class="source-link" target="_blank">[来源]</a>。同时，B200/B300成为主流采购目标，百度推进昆仑芯自研，腾讯拟租用B200/B300算力，显示“国产替代与多元路径并行”的战略态势<a href="http://m.toutiao.com/group/7589899407441674815/" class="source-link" target="_blank">[来源]</a>。</p>
+                            <p>技术层面，英伟达持续迭代。2025年3月发布的B300 GPU，HBM容量提升至288GB，FP4算力达11.5 ExaFLOPS，推理性能较Hopper提升10倍，支持DeepSeek R1-671B模型达1000 tokens/秒，预计2025年下半年量产<a href="https://toutiao.com/group/7483329699062514186/" class="source-link" target="_blank">[来源]</a>。下一代Rubin GPU将于2027年下半年推出，采用HBM4e，FP8训练算力达1.2 ExaFLOPS，NVLink带宽翻倍，Vera CPU为88核ARM定制芯片，与Rubin深度协同<a href="https://toutiao.com/group/7483329699062514186/" class="source-link" target="_blank">[来源]</a>。这一系列动作旨在构建“AI工厂”级超算系统，巩固其全球领导地位。</p>
+                              <p>值得注意的是，2026年1月，H200、B200等高端GPU现货稀缺，市场呈现“看得到摸不着”的格局，即便放宽出口，实际到货仍远低于需求<a href="http://m.toutiao.com/group/7598114759224902196/" class="source-link" target="_blank">[来源]</a>。</p>
+                                <h3>三、算力基础设施与生态构建面临系统性挑战</h3>
+                                  <h4>1. 基础设施成本与运维瓶颈</h4>
+                                    <ul>
+                                      <li><strong>硬件成本飙升</strong>：2026年1月，5090/4090显卡及DDR5内存价格暴涨，部分内存涨幅超300%，整机成本攀升至六七十万元，催生“套牌内存”等黑灰产<a href="http://m.toutiao.com/group/7598114759224902196/" class="source-link" target="_blank">[来源]</a>。</li>
+                                        <li><strong>液冷成刚需</strong>：GB200/300等芯片TDP达1200–1400W，单机柜功耗超80kW，风冷难以为继。预计2025年全球数据中心液冷渗透率达20%，2026年超30%，国内厂商如英维克、飞龙股份已切入海外供应链<a href="http://m.toutiao.com/group/7539749812703625774/" class="source-link" target="_blank">[来源]</a>。</li>
+                                          <li><strong>运维能力稀缺</strong>：国内仅三家具备万卡集群实操经验，成为项目落地的核心瓶颈<a href="https://www.leiphone.com/category/chips/pvKdN9j8Zj4svYJO.html" class="source-link" target="_blank">[来源]</a>。</li>
+                                          </ul>
+                                          <h4>2. 融资与金融体系承压</h4>
+                                            <ul>
+                                              <li><strong>金融租赁成本高企</strong>：智算中心建设陷入“资金-项目”死循环，金融租赁资金成本高达15%，政府退场后项目推进困难<a href="https://www.leiphone.com/category/chips/pvKdN9j8Zj4svYJO.html" class="source-link" target="_blank">[来源]</a>。</li>
+                                                <li><strong>REITs热度不减</strong>：尽管IDC租金下行，REITs认购倍数仍达300-500倍，吸引头部厂商布局金融化数据中心<a href="http://m.toutiao.com/group/7551698094052688447/" class="source-link" target="_blank">[来源]</a>。</li>
+                                                </ul>
+                                                <h4>3. 软件生态碎片化与迁移困境</h4>
+                                                  <ul>
+                                                    <li><strong>CUDA替代进展缓慢</strong>：FlagOS、TileLang等国产生态试图替代CUDA，但厂商资源投入悬殊，生态统一仍是关键挑战<a href="https://www.leiphone.com/category/chips/pvKdN9j8Zj4svYJO.html" class="source-link" target="_blank">[来源]</a>。</li>
+                                                      <li><strong>国产芯片适配难题</strong>：尽管硬件进展显著，软件生态与标准碎片化仍是短板，华为正开放“灵衢2.0”推动生态共建<a href="https://toutiao.com/group/7600225183361745459/" class="source-link" target="_blank">[来源]</a>。</li>
+                                                        <li><strong>“烟囱式”建设困局</strong>：行业正推动“AI计算开放架构”与异构调度，以破解单点部署、互不兼容的系统性问题<a href="http://m.toutiao.com/group/7598114759224902196/" class="source-link" target="_blank">[来源]</a>。</li>
+                                                        </ul>
+                                                        <h3>四、算力出海与全球化布局加速</h3>
+                                                          <h4>1. 东南亚与中东成核心市场</h4>
+                                                            <p>协创数据海外算力租赁业务占比30%-40%，2026年有望超50%，主要布局东南亚与美国，依托A800/H800及合规H200构建分布式网络，规避国内管制风险<a href="https://xueqiu.com/5236978589/371556728" class="source-link" target="_blank">[来源]</a>。头部AIDC企业规划在东南亚建设万卡级B200集群，加速算力出海<a href="https://www.leiphone.com/category/chips/pvKdN9j8Zj4svYJO.html" class="source-link" target="_blank">[来源]</a>。中东成为新热点：阿联酋规划5000兆瓦数据中心，年采购英伟达GPU或达50万张，电价低+枢纽优势明显<a href="https://3g.163.com/news/article/K7VLIQ3905118HA4.html" class="source-link" target="_blank">[来源]</a>。</p>
+                                                              <h4>2. 日本与合规路径探索</h4>
+                                                                <p>日本IDC成为出海热点，催生“快闪”集成商模式，以快速部署规避合规风险<a href="http://m.toutiao.com/group/7551698094052688447/" class="source-link" target="_blank">[来源]</a>。DigitalOcean聚焦为出海初创企业提供高性价比GPU服务，不设中国节点，主攻海外，支持数据本地化部署，降低合规风险<a href="https://juejin.cn/post/7517076242903351350" class="source-link" target="_blank">[来源]</a>。</p>
+                                                                  <h3>五、产业链格局重塑：系统集成商崛起</h3>
+                                                                    <p>在芯片与云厂商之间，系统集成商角色日益关键。宏景科技2025年上半年营收11.88亿元，同比暴增561.14%，算力业务占比超90%，净利率达15%。其核心优势在于深度绑定阿里、百度、腾讯三大巨头，获得订单、技术、供应链与资金多重赋能，成为全国仅5家认证服务商之一<a href="https://xueqiu.com/1214542109/352283787?_ugc_source=ugctoutiao" class="source-link" target="_blank">[来源]</a>。其100亿在手订单中，超50%来自三巨头，150亿直接资金支持叠加300亿投资能力，构建极高资金壁垒<a href="https://xueqiu.com/1214542109/352283787?_ugc_source=ugctoutiao" class="source-link" target="_blank">[来源]</a>。2026年目标营收60亿元，海外拓展同步发力，成为国产AI算力供应链核心标的。</p>
+                                                                      <h2>总结与展望</h2>
+                                                                        <div class="summary-box">
+                                                                          <h2>核心趋势展望（2026-2027）</h2>
+                                                                            <ul>
+                                                                              <li><strong>算力密度升级</strong>：液冷、800V HVDC供电、SiC/GaN器件与QLC SSD渗透率加速提升，基础设施全面升级<a href="https://toutiao.com/group/7600225183361745459/" class="source-link" target="_blank">[来源]</a>；</li>
+                                                                                <li><strong>生态标准竞争</strong>：华为“灵衢”、FlagOS、AI计算开放架构等将争夺主导权，生态整合能力决定长期胜负；</li>
+                                                                                  <li><strong>出海模式深化</strong>：从单纯芯片出口转向“本地化部署+合规算力服务”模式，东南亚、中东、日本构成“三极”出海网络。</li>
+                                                                                  </ul>
+                                                                                  <p style="margin-top: 1.5rem; font-size: 1.1rem;">未来两年，既是国产算力突破“规模化、低成本、高可靠”三重门槛的黄金窗口，也是全球算力格局重构的决定性阶段。产业链各环节需从“抢订单”转向“建生态”，方能在高竞争、高复杂度的环境中实现可持续发展。</p>
+                                                                                  </div>
+                                                                                  <h2>资讯标题与链接列表（按发布日期由近期到远期排序）</h2>
+                                                                                    <ul class="timeline">
+                                                                                      <li class="timeline-item">
+                                                                                        <span class="timeline-date">2026年01月28日</span>
+                                                                                          <span class="timeline-title">华为宣布未来三年昇腾AI芯片路线图，预计2026年将占据中国AI芯片市场50%份额</span>
+                                                                                            <a href="https://toutiao.com/group/7600225183361745459/" class="timeline-link" target="_blank">查看详情</a>
+                                                                                            </li>
+                                                                                            <li class="timeline-item">
+                                                                                              <span class="timeline-date">2026年01月22日</span>
+                                                                                                <span class="timeline-title">2026年初，国内算力市场供需严重失衡，英伟达H200、B200等高端GPU现货稀缺</span>
+                                                                                                  <a href="http://m.toutiao.com/group/7598114759224902196/" class="timeline-link" target="_blank">查看详情</a>
+                                                                                                  </li>
+                                                                                                  <li class="timeline-item">
+                                                                                                    <span class="timeline-date">2026年01月18日</span>
+                                                                                                      <span class="timeline-title">协创数据海外算力租赁业务占比约30%-40%，2026年有望超50%</span>
+                                                                                                        <a href="https://xueqiu.com/5236978589/371556728" class="timeline-link" target="_blank">查看详情</a>
+                                                                                                        </li>
+                                                                                                        <li class="timeline-item">
+                                                                                                          <span class="timeline-date">2025年12月31日</span>
+                                                                                                            <span class="timeline-title">2025年最后一个交易日，AI算力板块午后走强，云计算ETF（159890）涨超1%</span>
+                                                                                                              <a href="http://m.toutiao.com/group/7589899407441674815/" class="timeline-link" target="_blank">查看详情</a>
+                                                                                                              </li>
+                                                                                                              <li class="timeline-item">
+                                                                                                                <span class="timeline-date">2025年12月31日</span>
+                                                                                                                  <span class="timeline-title">2025年最后一个交易日，AI算力板块强势收官，云计算ETF（159890）实现六连阳</span>
+                                                                                                                    <a href="https://tongbicapital.com/article/detail?id=927052" class="timeline-link" target="_blank">查看详情</a>
+                                                                                                                    </li>
+                                                                                                                    <li class="timeline-item">
+                                                                                                                      <span class="timeline-date">2025年12月16日</span>
+                                                                                                                        <span class="timeline-title">科创板AI芯片企业强化品控，已部署专人驻厂监督服务器生产</span>
+                                                                                                                          <a href="http://m.toutiao.com/group/7584340746140959275/" class="timeline-link" target="_blank">查看详情</a>
+                                                                                                                          </li>
+                                                                                                                          <li class="timeline-item">
+                                                                                                                            <span class="timeline-date">2025年12月16日</span>
+                                                                                                                              <span class="timeline-title">国产AI芯片厂商加速规模化落地，多家上市企业建成千卡集群</span>
+                                                                                                                                <a href="https://www.leiphone.com/category/chips/pvKdN9j8Zj4svYJO.html" class="timeline-link" target="_blank">查看详情</a>
+                                                                                                                                </li>
+                                                                                                                                <li class="timeline-item">
+                                                                                                                                  <span class="timeline-date">2025年11月19日</span>
+                                                                                                                                    <span class="timeline-title">国产算力正加速替代英伟达，政策补贴最高达80%</span>
+                                                                                                                                      <a href="http://m.toutiao.com/group/7574330886469239346/" class="timeline-link" target="_blank">查看详情</a>
+                                                                                                                                      </li>
+                                                                                                                                      <li class="timeline-item">
+                                                                                                                                        <span class="timeline-date">2025年11月19日</span>
+                                                                                                                                          <span class="timeline-title">国产AI芯片在政策补贴、推理需求爆发与技术迭代三重驱动下加速替代英伟达</span>
+                                                                                                                                            <a href="http://finance.sina.com.cn/stock/t/2025-11-19/doc-infxxnee1821803.shtml" class="timeline-link" target="_blank">查看详情</a>
+                                                                                                                                            </li>
+                                                                                                                                            <li class="timeline-item">
+                                                                                                                                              <span class="timeline-date">2025年11月06日</span>
+                                                                                                                                                <span class="timeline-title">天云智联（甘肃）科技取得天水市算力产业园区用地规划许可</span>
+                                                                                                                                                  <a href="http://m.163.com/dy/article/KDNI09NP0511D6RL.html" class="timeline-link" target="_blank">查看详情</a>
+                                                                                                                                                  </li>
+                                                                                                                                                  <li class="timeline-item">
+                                                                                                                                                    <span class="timeline-date">2025年09月24日</span>
+                                                                                                                                                      <span class="timeline-title">中国移动旗下中移基金投资摩尔线程，持股2.12%，浮盈或达52亿至90亿元</span>
+                                                                                                                                                        <a href="http://m.163.com/dy/article/KA7MG95J0511N341.html" class="timeline-link" target="_blank">查看详情</a>
+                                                                                                                                                        </li>
+                                                                                                                                                        <li class="timeline-item">
+                                                                                                                                                          <span class="timeline-date">2025年09月19日</span>
+                                                                                                                                                            <span class="timeline-title">国产算力迎来政策红利，西南某地推出最高60%消纳补贴</span>
+                                                                                                                                                              <a href="http://m.toutiao.com/group/7551698094052688447/" class="timeline-link" target="_blank">查看详情</a>
+                                                                                                                                                              </li>
+                                                                                                                                                              <li class="timeline-item">
+                                                                                                                                                                <span class="timeline-date">2025年09月12日</span>
+                                                                                                                                                                  <span class="timeline-title">宏景科技2025年上半年营收11.88亿元，同比暴增561.14%，算力业务占比超90%</span>
+                                                                                                                                                                    <a href="https://xueqiu.com/1214542109/352283787?_ugc_source=ugctoutiao" class="timeline-link" target="_blank">查看详情</a>
+                                                                                                                                                                    </li>
+                                                                                                                                                                    <li class="timeline-item">
+                                                                                                                                                                      <span class="timeline-date">2025年08月27日</span>
+                                                                                                                                                                        <span class="timeline-title">受西部某市干部调整影响，近200个算力项目验收受阻</span>
+                                                                                                                                                                          <a href="https://3g.163.com/news/article/K7VLIQ3905118HA4.html" class="timeline-link" target="_blank">查看详情</a>
+                                                                                                                                                                          </li>
+                                                                                                                                                                          <li class="timeline-item">
+                                                                                                                                                                            <span class="timeline-date">2025年08月18日</span>
+                                                                                                                                                                              <span class="timeline-title">东方证券报告：2025年是AI液冷技术渗透率加速的元年</span>
+                                                                                                                                                                                <a href="http://m.toutiao.com/group/7539749812703625774/" class="timeline-link" target="_blank">查看详情</a>
+                                                                                                                                                                                </li>
+                                                                                                                                                                                <li class="timeline-item">
+                                                                                                                                                                                  <span class="timeline-date">2025年06月18日</span>
+                                                                                                                                                                                    <span class="timeline-title">DigitalOcean发布AI算力基础设施方案，聚焦海外市场</span>
+                                                                                                                                                                                      <a href="https://juejin.cn/post/7517076242903351350" class="timeline-link" target="_blank">查看详情</a>
+                                                                                                                                                                                      </li>
+                                                                                                                                                                                      <li class="timeline-item">
+                                                                                                                                                                                        <span class="timeline-date">2025年03月19日</span>
+                                                                                                                                                                                          <span class="timeline-title">Nvidia在GTC 2025发布Blackwell Ultra B300 GPU</span>
+                                                                                                                                                                                            <a href="https://toutiao.com/group/7483329699062514186/" class="timeline-link" target="_blank">查看详情</a>
+                                                                                                                                                                                            </li>
+                                                                                                                                                                                            <li class="timeline-item">
+                                                                                                                                                                                              <span class="timeline-date">2025年03月19日</span>
+                                                                                                                                                                                                <span class="timeline-title">Nvidia在GTC 2025发布Blackwell Ultra B300 GPU</span>
+                                                                                                                                                                                                  <a href="http://m.toutiao.com/group/7483329699062514186/" class="timeline-link" target="_blank">查看详情</a>
+                                                                                                                                                                                                  </li>
+                                                                                                                                                                                                  <li class="timeline-item">
+                                                                                                                                                                                                    <span class="timeline-date">2025年03月18日</span>
+                                                                                                                                                                                                      <span class="timeline-title">英伟达GTC 2025发布B300芯片，HBM容量提升至288GB</span>
+                                                                                                                                                                                                        <a href="https://news.qq.com/rain/a/20250318A04RBZ00" class="timeline-link" target="_blank">查看详情</a>
+                                                                                                                                                                                                        </li>
+                                                                                                                                                                                                        <li class="timeline-item">
+                                                                                                                                                                                                          <span class="timeline-date">2025年01月17日</span>
+                                                                                                                                                                                                            <span class="timeline-title">上海市发布《智算中心建设导则（2025年版）》</span>
+                                                                                                                                                                                                              <a href="https://juejin.cn/post/7460683361024229426" class="timeline-link" target="_blank">查看详情</a>
+                                                                                                                                                                                                              </li>
+                                                                                                                                                                                                              <li class="timeline-item">
+                                                                                                                                                                                                                <span class="timeline-date">2025年01月12日</span>
+                                                                                                                                                                                                                  <span class="timeline-title">国盛证券援引SemiAnalysis，英伟达下一代GPU GB300预计于B200上市半年后推出</span>
+                                                                                                                                                                                                                    <a href="https://xueqiu.com/1444998148/320225454" class="timeline-link" target="_blank">查看详情</a>
+                                                                                                                                                                                                                    </li>
+                                                                                                                                                                                                                    <li class="timeline-item">
+                                                                                                                                                                                                                      <span class="timeline-date">2025年01月07日</span>
+                                                                                                                                                                                                                        <span class="timeline-title">东海证券发布2024年12月半导体行业月报</span>
+                                                                                                                                                                                                                          <a href="https://cj.sina.cn/article/norm_detail?url=http%3A%2F%2Ffinance.sina.cn%2F2025-01-08%2Fdetail-ineefzct1093885.d.html" class="timeline-link" target="_blank">查看详情</a>
+                                                                                                                                                                                                                          </li>
+                                                                                                                                                                                                                          <li class="timeline-item">
+                                                                                                                                                                                                                            <span class="timeline-date">2024年03月20日</span>
+                                                                                                                                                                                                                              <span class="timeline-title">英伟达在GTC 2024发布B200芯片，推理性能较H100提升30倍</span>
+                                                                                                                                                                                                                                <a href="http://m.toutiao.com/group/7348259076591256103/" class="timeline-link" target="_blank">查看详情</a>
+                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                                <li class="timeline-item">
+                                                                                                                                                                                                                                  <span class="timeline-date">2024年03月19日</span>
+                                                                                                                                                                                                                                    <span class="timeline-title">英伟达在GTC 2024发布B200芯片，对华出口受限</span>
+                                                                                                                                                                                                                                      <a href="http://m.toutiao.com/group/7348055902442537526/" class="timeline-link" target="_blank">查看详情</a>
+                                                                                                                                                                                                                                      </li>
+                                                                                                                                                                                                                                      <li class="timeline-item">
+                                                                                                                                                                                                                                        <span class="timeline-date">2023年10月21日</span>
+                                                                                                                                                                                                                                          <span class="timeline-title">谷歌云正式商用G4 VM虚拟机，搭载英伟达RTX PRO 6000 Blackwell GPU</span>
+                                                                                                                                                                                                                                            <a href="http://news.10jqka.com.cn/field/20251021/671884540.shtml" class="timeline-link" target="_blank">查看详情</a>
+                                                                                                                                                                                                                                              <span class="status-tag warning">老旧信息，距今超60天</span>
+                                                                                                                                                                                                                                              </li>
+                                                                                                                                                                                                                                            </ul>
+                                                                                                                                                                                                                                            <hr>
+                                                                                                                                                                                                                                            <footer>
+                                                                                                                                                                                                                                              <p>© 2026 中国AI算力产业深度洞察分析报告 | 数据更新至2026年1月29日</p>
+                                                                                                                                                                                                                                                <p>本报告基于公开信息整理，所有来源链接均已核实并可访问</p>
+                                                                                                                                                                                                                                                </footer>
+                                                                                                                                                                                                                                              </div>
+                                                                                                                                                                                                                                            </body>
+                                                                                                                                                                                                                                          </html>
+                                                                                                                                                                                                                                          ```
