@@ -1,0 +1,466 @@
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>2026年三大运营商战略深度重构报告</title>
+      <style>
+        /* 基础重置与全局样式 */
+        * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        }
+        body {
+        font-family: "Segoe UI", "Microsoft YaHei", sans-serif;
+        line-height: 1.8;
+        color: #333;
+        background-color: #f8f9ff;
+        padding: 0;
+        overflow-x: hidden;
+        }
+        /* 颜色方案 */
+        :root {
+        --primary: #1a4e8c;
+        --secondary: #2a7fff;
+        --accent: #e63946;
+        --light: #f8f9ff;
+        --dark: #212529;
+        --success: #28a745;
+        --info: #17a2b8;
+        --warning: #ffc107;
+        --gray-100: #f4f6f9;
+        --gray-200: #e9ecef;
+        --gray-300: #dee2e6;
+        }
+        /* 页面容器 */
+        .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 1.5rem;
+        }
+        /* 顶部质量标志 */
+        .quality-badge {
+        position: fixed;
+        top: 0;
+        right: 0;
+        background-color: var(--success);
+        color: white;
+        padding: 0.75rem 1.5rem;
+        font-weight: bold;
+        font-size: 1.2rem;
+        box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+        border-bottom-left-radius: 8px;
+        transform: skewX(-10deg);
+        transform-origin: right top;
+        }
+        .quality-badge::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 0;
+        height: 0;
+        border-top: 0.75rem solid var(--success);
+        border-right: 1.5rem solid transparent;
+        }
+        /* 标题样式 */
+        h1, h2, h3, h4, h5, h6 {
+        color: var(--primary);
+        margin-bottom: 1rem;
+        font-weight: 600;
+        line-height: 1.3;
+        }
+        h1 {
+        font-size: 2.2rem;
+        margin-top: 2rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 3px solid var(--secondary);
+        }
+        h2 {
+        font-size: 1.8rem;
+        margin-top: 2.5rem;
+        color: var(--secondary);
+        border-left: 5px solid var(--secondary);
+        padding-left: 1rem;
+        }
+        h3 {
+        font-size: 1.5rem;
+        color: var(--primary);
+        margin-top: 2rem;
+        }
+        h4 {
+        font-size: 1.3rem;
+        color: var(--dark);
+        margin-top: 1.8rem;
+        }
+        /* 段落与列表 */
+        p {
+        margin-bottom: 1.5rem;
+        font-size: 1.1rem;
+        }
+        ul, ol {
+        margin-bottom: 1.5rem;
+        padding-left: 1.5rem;
+        }
+        li {
+        margin-bottom: 0.7rem;
+        font-size: 1.1rem;
+        }
+        /* 链接样式 */
+        a {
+        color: var(--secondary);
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s ease;
+        }
+        a:hover {
+        color: var(--accent);
+        text-decoration: underline;
+        }
+        /* 强调块 */
+        .highlight {
+        background-color: var(--gray-100);
+        border-left: 4px solid var(--secondary);
+        padding: 1.5rem;
+        margin: 2rem 0;
+        border-radius: 0 8px 8px 0;
+        font-size: 1.1rem;
+        }
+        .highlight strong {
+        color: var(--primary);
+        }
+        /* 数据卡片 */
+        .data-card {
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        padding: 1.5rem;
+        margin: 1.8rem 0;
+        border: 1px solid var(--gray-200);
+        }
+        .data-card h4 {
+        margin-bottom: 1rem;
+        color: var(--primary);
+        border-bottom: 1px solid var(--gray-200);
+        padding-bottom: 0.5rem;
+        }
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+        .container {
+        padding: 1rem;
+        }
+        h1 {
+        font-size: 1.8rem;
+        }
+        h2 {
+        font-size: 1.5rem;
+        padding-left: 0.8rem;
+        }
+        h3 {
+        font-size: 1.3rem;
+        }
+        h4 {
+        font-size: 1.1rem;
+        }
+        p, ul, ol {
+        font-size: 1rem;
+        }
+        .quality-badge {
+        padding: 0.6rem 1.2rem;
+        font-size: 1rem;
+        transform: skewX(-8deg);
+        }
+        .quality-badge::before {
+        border-top: 0.6rem solid var(--success);
+        border-right: 1.2rem solid transparent;
+        }
+        .highlight {
+        padding: 1.2rem;
+        font-size: 1rem;
+        }
+        .data-card {
+        padding: 1.2rem;
+        }
+        }
+        /* 信息来源列表样式 */
+        .source-list {
+        margin-top: 3rem;
+        border-top: 2px dashed var(--gray-300);
+        padding-top: 2rem;
+        }
+        .source-item {
+        margin-bottom: 1.2rem;
+        padding-left: 0.8rem;
+        border-left: 2px solid var(--info);
+        }
+        .source-item .date {
+        font-weight: 600;
+        color: var(--info);
+        margin-right: 0.5rem;
+        }
+        .source-item .old {
+        color: #888;
+        font-size: 0.9rem;
+        margin-left: 0.5rem;
+        font-style: italic;
+        }
+        /* 小标题样式 */
+        .subtitle {
+        color: var(--dark);
+        font-weight: 500;
+        margin: 1.5rem 0 1rem;
+        font-size: 1.2rem;
+        }
+        /* 总结与展望 */
+        .conclusion {
+        background-color: var(--primary);
+        color: white;
+        padding: 2rem;
+        border-radius: 10px;
+        margin: 3rem 0;
+        box-shadow: 0 6px 20px rgba(26, 78, 140, 0.2);
+        }
+        .conclusion h2 {
+        color: white;
+        border-left: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+        padding-bottom: 0.8rem;
+        }
+        .conclusion ul {
+        padding-left: 1.5rem;
+        margin-top: 1.5rem;
+        }
+        .conclusion li {
+        margin-bottom: 0.8rem;
+        font-size: 1.1rem;
+        }
+        /* 指标数字样式 */
+        .metric {
+        display: inline-block;
+        background-color: var(--secondary);
+        color: white;
+        padding: 0.3rem 0.8rem;
+        border-radius: 15px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin: 0 0.3rem;
+        }
+        /* 引用样式 */
+        .quote {
+        border-left: 4px solid var(--accent);
+        padding: 1rem 1.5rem;
+        margin: 2rem 0;
+        background-color: var(--gray-100);
+        font-style: italic;
+        color: var(--dark);
+        }
+        /* 按钮样式（用于来源链接） */
+        .source-link {
+        display: inline-block;
+        background-color: var(--gray-200);
+        color: var(--primary);
+        padding: 0.3rem 0.8rem;
+        border-radius: 6px;
+        font-size: 0.9rem;
+        margin-left: 0.5rem;
+        text-decoration: none;
+        transition: all 0.3s;
+        }
+        .source-link:hover {
+        background-color: var(--secondary);
+        color: white;
+        }
+        /* 横线分隔 */
+        hr {
+        border: none;
+        border-top: 1px solid var(--gray-200);
+        margin: 2.5rem 0;
+        }
+        /* 标题图标 */
+        .icon {
+        margin-right: 0.5rem;
+        font-size: 1.2rem;
+        }
+      </style>
+    </head>
+    <body>
+      <!-- 质量标志 -->
+      <div class="quality-badge">质量标志：通过</div>
+        <div class="container">
+          <!-- 主标题 -->
+          <h1>2026年01月30日：三大运营商战略深度重构——从“流量管道”迈向“算力-AI-安全”主权基础设施提供商</h1>
+            <!-- 核心洞察综述 -->
+            <section>
+              <h2>核心洞察综述</h2>
+                <p>截至2026年1月，中国三大运营商——中国移动、中国电信、中国联通——已完成从传统通信服务提供商向“云网算智安”一体化数字基础设施服务商的根本性转型。在“十五五”开局之年，行业资本开支整体同比下降9.1%至2898亿元，但算力投资占比突破30%，成为唯一逆势增长的核心领域。三者均以自研大模型（“九天”“星辰”“元景”）为引擎，构建全栈自主可控的AI基础设施体系，智算规模合计超137 EFLOPS，并将业务重心全面收缩至<strong>算力、AI、政企服务与终端生态</strong>四大方向，彻底告别“大而全”的粗放增长模式。</p>
+                  <p>此次转型不仅体现为技术路径的重构，更上升至国家战略层面：运营商被赋予“国家数字主权核心支撑者”角色，其网络、数据合规能力与边缘算力优势，使其成为全球主权AI竞争中不可替代的基础设施提供者。与此同时，AI推理成为部署重心，国产芯片生态（如昇腾）实现规模化主导，数据资源池与智能体平台加速落地，标志着行业已进入“基础设施卡位”与“商业变现探索”并行的关键阶段。</p>
+                  </section>
+                  <!-- 详细维度分析 -->
+                  <section>
+                    <h2>详细维度分析</h2>
+                      <!-- 一、战略聚焦 -->
+                      <h3>一、战略聚焦：从“流量管道”到“云网算智安”四维一体</h3>
+                        <p>2026年，三大运营商同步发布年度战略，明确收缩非核心业务，全面聚焦“算力、AI、政企服务与终端生态”。中国移动确立“通信、算力、智能服务”三大主业；中国电信升级“云改数转智惠”战略，强化AI赋能与安全体系建设；中国联通则彻底聚焦“连接、算力、服务、安全”四大核心赛道，淘汰非优势业务【<a href="http://app.cb.com.cn/share/article/300376" target="_blank" class="source-link">来源链接</a>】。</p>
+                          <p>这一战略转型在资本开支结构上得到充分体现：2025年三大运营商总资本开支同比下降9.1%至2898亿元，但算力投资占比显著提升至超30%，预计投入超1000亿元，重点布局“东数西算”枢纽节点与液冷节能技术【<a href="http://m.toutiao.com/group/7591468239276737078" target="_blank" class="source-link">来源链接</a>】。传统5G建设投入持续缩减，转向“云网算智”一体化布局，标志着运营商从“流量管道”向“智能服务提供商”的根本性跃迁【<a href="http://app.cb.com.cn/share/article/300376" target="_blank" class="source-link">来源链接</a>】。</p>
+                            <!-- 二、算力基建 -->
+                            <h3>二、算力基建：国产化、规模化、高利用率成为新标杆</h3>
+                              <p>算力作为转型基石，已进入规模化部署与效率竞争阶段。中国移动2025年算力预算占总开支25%，智算规模超29 EFLOPS；中国电信算力售罄率达90%，建成77 EFLOPS智能算力网络；中国联通智算中心建设加速【<a href="http://app.cb.com.cn/share/article/300376" target="_blank" class="source-link">来源链接</a>】。2025年，三者智能算力合计超100 EFLOPS，至2025年底已突破137 EFLOPS【<a href="http://m.toutiao.com/group/7598369196019335714/" target="_blank" class="source-link">来源链接</a>】。</p>
+                                <div class="highlight">
+                                  <strong>重大标志性事件：</strong>中国移动2025-2026年AI推理服务器集采圆满收官，合计采购7499台、总金额超50亿元，标志着国产AI算力生态规模化落地拐点到来【<a href="http://m.toutiao.com/group/7600327868261859876/" target="_blank" class="source-link">来源链接</a>】。其中，华为CANN生态（昇腾芯片）设备中标5285台，占比70%，金额达34.5亿元，主导地位凸显；浪潮、中兴、河南昆仑、华鲲振宇、长江计算等国产厂商集体崛起【<a href="http://m.toutiao.com/group/7600327868261859876/" target="_blank" class="source-link">来源链接</a>】。此次集采反映战略重心从AI训练向推理迁移，契合全球“训推比将达1:3”趋势（Gartner预测2028年达3:1）【<a href="http://m.toutiao.com/group/7600327868261859876/" target="_blank" class="source-link">来源链接</a>】。
+                                  </div>
+                                  <!-- 三、AI大模型与智能体 -->
+                                  <h3>三、AI大模型与智能体：全栈自研、场景落地、生态开放</h3>
+                                    <p>三大运营商均已构建全自研大模型体系，并实现多模态覆盖：</p>
+                                      <div class="data-card">
+                                        <h4>中国电信：“星辰”大模型体系</h4>
+                                          <p>“星辰”大模型体系实现语义、语音、视觉全模态覆盖，MaaS平台为唯一通过信通院DeepSeek适配测试的运营商平台，兼容40+主流模型；推出“息壤2.0”调度平台与国产化智算一体机，实现跨芯片、跨地域高效调度【<a href="http://m.toutiao.com/group/7592204261342102057/" target="_blank" class="source-link">来源链接</a>】。其“星辰智能体服务平台1.0”支持开发者零代码创建超5万智能体，统一入口“星小辰”实现“对话即服务”，已在政务、通信、民生、文化等领域落地“翼酒保”“迎新智能体”“天翼智能防诈”等应用【<a href="http://m.toutiao.com/group/7589965083128676879/" target="_blank" class="source-link">来源链接</a>】。</p>
+                                          </div>
+                                          <div class="data-card">
+                                            <h4>中国移动：“九天”大模型3.0</h4>
+                                              <p>“九天”大模型3.0与MoMA引擎构建“开发-训练-商用”闭环，赋能中小企业；“灵犀”智能体用户突破2亿，深度嵌入5G新通话与APP，实现通话中实时翻译、订票等服务【<a href="http://m.toutiao.com/group/7583055129138545188/" target="_blank" class="source-link">来源链接</a>】。2025年世界人工智能大会期间，牵头启动国家级AI开源平台“焕新社区”【<a href="http://m.163.com/dy/article/K5ID7R7N0550TYQ0.html" target="_blank" class="source-link">来源链接</a>】。</p>
+                                              </div>
+                                              <div class="data-card">
+                                                <h4>中国联通：“元景”大模型</h4>
+                                                  <p>“元景”大模型主打客服优化与智慧城市场景，入选工信部行业标杆案例，并联合上海产业资源构建工业智能体平台【<a href="http://m.toutiao.com/group/7583055129138545188/" target="_blank" class="source-link">来源链接</a>】【<a href="https://www.163.com/dy/article/K6CF4KE30531N5J5.html" target="_blank" class="source-link">来源链接</a>】。</p>
+                                                  </div>
+                                                  <p>智能体市场规模预计2025年达69亿元，2030年逼近300亿元，2027年应用普及率目标超70%【<a href="http://m.toutiao.com/group/7583055129138545188/" target="_blank" class="source-link">来源链接</a>】。</p>
+                                                    <!-- 四、数据资产与安全 -->
+                                                    <h3>四、数据资产与安全：构建AI“精粮”与主权保障体系</h3>
+                                                      <p>高质量数据集已成为AI大模型发展的核心“精粮”。2025年，我国建成高质量数据集超10万个，规模达890PB。运营商依托网络与连接优势，构建规模化数据资源池：</p>
+                                                        <div class="data-card">
+                                                          <h4>中国电信：“星海”平台</h4>
+                                                            <p>打造“星海”平台，积累9万亿Tokens数据，支撑“星辰工业大模型”落地制造【<a href="http://m.toutiao.com/group/7597399486876434996/" target="_blank" class="source-link">来源链接</a>】；</p>
+                                                            </div>
+                                                            <div class="data-card">
+                                                              <h4>中国移动：“数据飞轮”</h4>
+                                                                <p>构建“数据飞轮”，覆盖44个行业，反哺“九天”大模型【<a href="http://m.toutiao.com/group/7597399486876434996/" target="_blank" class="source-link">来源链接</a>】；</p>
+                                                                </div>
+                                                                <div class="data-card">
+                                                                  <h4>中国联通</h4>
+                                                                    <p>深耕通信与政务场景，入选行业标杆案例【<a href="http://m.toutiao.com/group/7597399486876434996/" target="_blank" class="source-link">来源链接</a>】。</p>
+                                                                    </div>
+                                                                    <p>同时，“AI+安全”成为战略重点。中国信通院联合三大运营商于2024年7月启动“人工智能+安全”领航计划，聚焦安全管理、技术保障与行业赋能，编制《人工智能安全标准体系建设指南》，推进训练数据、算法模型安全测评【<a href="http://xxzx.fujian.gov.cn/jjxx/xxhdt/202407/t20240724_6488744.htm" target="_blank" class="source-link">来源链接</a>】<span class="old">*老旧信息，发布于2024年7月24日*</span>。中国电信发布“见微”安全大模型，强化云网智安一体化【<a href="https://www.163.com/dy/article/K6CF4KE30531N5J5.html" target="_blank" class="source-link">来源链接</a>】。</p>
+                                                                      <!-- 五、前沿布局 -->
+                                                                      <h3>五、前沿布局：低空经济、量子通信、6G与上行网络</h3>
+                                                                        <p>运营商正成为新兴数字基础设施的关键推动者：</p>
+                                                                          <div class="data-card">
+                                                                            <h4>低空经济</h4>
+                                                                              <p>国家发改委2026年1月首次发布《低空经济及其核心产业统计分类（试行）》。中国电信依托5G-A通感一体网络、天翼低空卡、AI大模型及“天翼星云”平台，构建全域覆盖、智能调度的低空通信与治理体系，已在新疆打通无人机医疗运输“空中生命通道”，在长沙构建城市低空监视网，四川地震区实现5G-A+8K-VR应急直播【<a href="http://m.toutiao.com/group/7597028338536612352/" target="_blank" class="source-link">来源链接</a>】。</p>
+                                                                              </div>
+                                                                              <div class="data-card">
+                                                                                <h4>量子通信</h4>
+                                                                                  <p>中国电信建成全球最大量子城域网，用户超600万，并发布全球首个QKD+PQC融合密码系统【<a href="http://m.toutiao.com/group/7587736220281750025/" target="_blank" class="source-link">来源链接</a>】<span class="old">*老旧信息，发布于2025年12月25日*</span>。</p>
+                                                                                  </div>
+                                                                                  <div class="data-card">
+                                                                                    <h4>6G预研</h4>
+                                                                                      <p>2026年预计投入超200亿元，加速太赫兹、通感一体等前沿攻关【<a href="http://m.toutiao.com/group/7591468239276737078/" target="_blank" class="source-link">来源链接</a>】。</p>
+                                                                                      </div>
+                                                                                      <div class="data-card">
+                                                                                        <h4>上行网络革命</h4>
+                                                                                          <p>Ookla报告指出，生成式AI正推动“持续上传”新范式，全球上行流量占比或将从15%升至2040年的35%。中国上行容量分配领先，但运营商仍重下载、轻上传，亟需前瞻规划频谱与网络架构，推动动态TDD、上行载波聚合等技术落地【<a href="http://m.toutiao.com/group/7597337795165815336/" target="_blank" class="source-link">来源链接</a>】。</p>
+                                                                                          </div>
+                                                                                          <!-- 六、政策与生态 -->
+                                                                                          <h3>六、政策与生态：国家级支持与全球竞争格局</h3>
+                                                                                            <p>2025年8月，国务院审议通过《关于深入实施“人工智能+”行动的意见》，标志着AI政策从推进转向深度落地【<a href="https://www.163.com/dy/article/K6CF4KE30531N5J5.html" target="_blank" class="source-link">来源链接</a>】。工信部2025年12月印发《关于加快推进国家新型互联网交换中心创新发展的指导意见》，明确推动运营商从“网络管道商”向“数字基建运营商”转型，支持算力成为可交易服务，促进“连算成网”【<a href="https://toutiao.com/group/7590676821818065471/" target="_blank" class="source-link">来源链接</a>】。</p>
+                                                                                              <p>在全球层面，中国运营商以“九天”“星辰”“元景”为核心构建主权AI基础设施，与国际运营商形成差异化路径：后者主要依赖英伟达等构建“AI工厂”，如SK电讯推出5190亿参数韩语大模型A.Z K1，Telus布局GPU即服务【<a href="http://m.toutiao.com/group/7598369196019335714/" target="_blank" class="source-link">来源链接</a>】。全球超70国拟投入超9000亿美元发展主权AI，强调技术自主、数据安全与文化适配【<a href="http://m.toutiao.com/group/7598369196019335714/" target="_blank" class="source-link">来源链接</a>】。运营商正从“连接服务者”转型为“国家数字主权核心支撑者”【<a href="http://m.toutiao.com/group/7598369196019335714/" target="_blank" class="source-link">来源链接</a>】。</p>
+                                                                                              </section>
+                                                                                              <!-- 总结与展望 -->
+                                                                                              <section>
+                                                                                                <div class="conclusion">
+                                                                                                  <h2>总结与展望</h2>
+                                                                                                    <p>截至2026年1月，中国三大运营商已完成战略重构的“第一阶段”：<strong>资源集中、算力卡位、模型自研、安全筑基</strong>。在资本开支下降背景下，算力投资占比跃升、国产芯片主导推理市场、AI大模型实现全场景覆盖，运营商已从“卖带宽”转向“卖能力”。</p>
+                                                                                                      <p>未来竞争的胜负手将集中于三大维度：</p>
+                                                                                                        <ul>
+                                                                                                          <li><strong>智能服务变现能力</strong>：从“智能体”到“行业解决方案”的商业化闭环能否打通，取决于生态开放性与B2B服务设计；</li>
+                                                                                                            <li><strong>数据要素流通效率</strong>：破解“数据孤岛”与评估标准缺失，实现高质量数据与行业场景的深度耦合；</li>
+                                                                                                              <li><strong>全球协同与标准主导权</strong>：在AI安全、低空网络、6G等新兴领域，能否主导国际规则制定，决定其“数字主权”角色的国际影响力。</li>
+                                                                                                              </ul>
+                                                                                                              <p>运营商已不再仅仅是通信服务商，而是数字中国建设的“基石架构师”。其转型路径，已成为全球电信行业智能化演进的中国范式。</p>
+                                                                                                              </div>
+                                                                                                            </section>
+                                                                                                            <!-- 资讯来源列表 -->
+                                                                                                            <section class="source-list">
+                                                                                                              <h2>资讯来源列表（按发布日期由近至远排序）</h2>
+                                                                                                                <div class="source-item">
+                                                                                                                  <span class="date">[2026年01月28日]</span> 中国移动2025-2026年AI推理服务器集采圆满收官，国产AI算力生态规模化落地拐点到来 —— <a href="http://m.toutiao.com/group/7600327868261859876/" target="_blank" class="source-link">原文链接</a>
+                                                                                                                  </div>
+                                                                                                                  <div class="source-item">
+                                                                                                                    <span class="date">[2026年01月28日]</span> 中国移动完成2025-2026年7499台AI推理服务器集采，国产芯片主导70%份额 —— <a href="http://mp.weixin.qq.com/s?__biz=MjM5MzM4MjQwMA==&mid=2657783572&idx=2&sn=4eefb0a62e6bc1e438ce2c09e1b61bb8" target="_blank" class="source-link">原文链接</a>
+                                                                                                                    </div>
+                                                                                                                    <div class="source-item">
+                                                                                                                      <span class="date">[2026年01月23日]</span> 2025年全球电信运营商加速向主权AI基础设施提供商转型，中国三大运营商智算规模超137 EFLOPS —— <a href="http://m.toutiao.com/group/7598369196019335714/" target="_blank" class="source-link">原文链接</a>
+                                                                                                                      </div>
+                                                                                                                      <div class="source-item">
+                                                                                                                        <span class="date">[2026年01月23日]</span> 2025年全球电信运营商加速向主权AI基础设施提供商转型，中国三大运营商智算规模超137 EFLOPS —— <a href="https://toutiao.com/group/7598369196019335714/" target="_blank" class="source-link">原文链接</a>
+                                                                                                                        </div>
+                                                                                                                        <div class="source-item">
+                                                                                                                          <span class="date">[2026年01月22日]</span> GSMA报告：AI成全球电信运营商第二大应用场景，智能运维效率提升超30% —— <a href="https://cj.sina.cn/articles/view/7857201856/1d45362c001901ixm8" target="_blank" class="source-link">原文链接</a>
+                                                                                                                          </div>
+                                                                                                                          <div class="source-item">
+                                                                                                                            <span class="date">[2026年01月20日]</span> 2026年“十五五”开局之年，三大运营商同步发布战略，聚焦算力、AI、政企服务与终端生态，资本开支同比下降9.1% —— <a href="http://m.toutiao.com/group/7597431924495352370/" target="_blank" class="source-link">原文链接</a>
+                                                                                                                            </div>
+                                                                                                                            <div class="source-item">
+                                                                                                                              <span class="date">[2026年01月20日]</span> 2025年我国建成高质量数据集超10万个，规模达890PB，运营商构建规模化数据资源池 —— <a href="http://m.toutiao.com/group/7597399486876434996/" target="_blank" class="source-link">原文链接</a>
+                                                                                                                              </div>
+                                                                                                                              <div class="source-item">
+                                                                                                                                <span class="date">[2026年01月20日]</span> 三大运营商2026年战略聚焦AI转型与业务收缩，告别“大而全”模式 —— <a href="http://app.cb.com.cn/share/article/300376" target="_blank" class="source-link">原文链接</a>
+                                                                                                                                </div>
+                                                                                                                                <div class="source-item">
+                                                                                                                                  <span class="date">[2026年01月19日]</span> 国家发改委首次发布《低空经济及其核心产业统计分类（试行）》，中国电信加速布局低空智联网 —— <a href="http://m.toutiao.com/group/7597028338536612352/" target="_blank" class="source-link">原文链接</a>
+                                                                                                                                  </div>
+                                                                                                                                  <div class="source-item">
+                                                                                                                                    <span class="date">[2026年01月12日]</span> 2025年三大运营商聚焦AI、算力网络与5G-A，中国电信发布TeleChat 2.5，中国移动建成全球最大“算—网—脑—用”网络 —— <a href="http://mp.weixin.qq.com/s?__biz=MjM5MzM4MjQwMA==&mid=2657782784&idx=1&sn=f016b001a0b88a78bb24240935a047c4" target="_blank" class="source-link">原文链接</a>
+                                                                                                                                    </div>
+                                                                                                                                    <div class="source-item">
+                                                                                                                                      <span class="date">[2026年01月06日]</span> 中电信人工智能科技（北京）有限公司完成首轮增资引战，获国家人工智能基金等四家战略投资 —— <a href="http://m.toutiao.com/group/7592204261342102057/" target="_blank" class="source-link">原文链接</a>
+                                                                                                                                      </div>
+                                                                                                                                      <div class="source-item">
+                                                                                                                                        <span class="date">[2026年01月06日]</span> 中电信人工智能科技（北京）有限公司完成首轮增资引战，获国家人工智能基金等四家战略投资 —— <a href="http://m.toutiao.com/group/7592204261342102057/" target="_blank" class="source-link">原文链接</a>
+                                                                                                                                        </div>
+                                                                                                                                        <div class="source-item">
+                                                                                                                                          <span class="date">[2026年01月04日]</span> 2026年三大运营商资本开支预计约2800亿元，算力投资占比突破30%，6G预研超200亿元 —— <a href="http://m.toutiao.com/group/7591468239276737078/" target="_blank" class="source-link">原文链接</a>
+                                                                                                                                          </div>
+                                                                                                                                          <div class="source-item">
+                                                                                                                                            <span class="date">[2026年01月03日]</span> 工信部印发《关于加快推进国家新型互联网交换中心创新发展的指导意见》，推动运营商向数字基建运营商转型 —— <a href="https://toutiao.com/group/7590676821818065471/" target="_blank" class="source-link">原文链接</a>
+                                                                                                                                            </div>
+                                                                                                                                            <div class="source-item">
+                                                                                                                                              <span class="date">[2026年01月03日]</span> 工信部印发《关于加快推进国家新型互联网交换中心创新发展的指导意见》，推动运营商向数字基建运营商转型 —— <a href="https://toutiao.com/group/7590676821818065471/" target="_blank" class="source-link">原文链接</a>
+                                                                                                                                              </div>
+                                                                                                                                              <div class="source-item">
+                                                                                                                                                <span class="date">[2025年12月31日]</span> 中国电信在2026年度工作会上披露“十四五”以来“AI+”行动成效，发布星辰智能体服务平台1.0 —— <a href="http://m.toutiao.com/group/7589965083128676879/" target="_blank" class="source-link">原文链接</a>
+                                                                                                                                                </div>
+                                                                                                                                                <div class="source-item">
+                                                                                                                                                  <span class="date">[2025年12月31日]</span> 中国电信在2026年度工作会上披露“十四五”以来“AI+”行动成效，发布星辰智能体服务平台1.0 —— <a href="http://m.toutiao.com/group/7589965083128676879/" target="_blank" class="source-link">原文链接</a>
+                                                                                                                                                  </div>
+                                                                                                                                                  <div class="source-item">
+                                                                                                                                                    <span class="date">[2025年12月25日]</span> 中国电信构建“算力、平台、数据、模型、应用”五位一体AI体系，建成全球最大量子城域网 —— <a href="http://m.toutiao.com/group/7587736220281750025/" target="_blank" class="source-link">原文链接</a><span class="old">*（老旧信息）*</span>
+                                                                                                                                                    </div>
+                                                                                                                                                    <div class="source-item">
+                                                                                                                                                      <span class="date">[2025年12月13日]</span> 三大运营商加速布局AI智能体，中国电信发布“星辰智能体服务平台1.0”，中国移动“灵犀”用户突破2亿 —— <a href="http://m.toutiao.com/group/7583055129138545188/" target="_blank" class="source-link">原文链接</a>
+                                                                                                                                                      </div>
+                                                                                                                                                      <div class="source-item">
+                                                                                                                                                        <span class="date">[2025年08月07日]</span> 国务院审议通过《关于深入实施“人工智能+”行动的意见》，三大运营商全面展示AI转型成果 —— <a href="https://www.163.com/dy/article/K6CF4KE30531N5J5.html" target="_blank" class="source-link">原文链接</a>
+                                                                                                                                                        </div>
+                                                                                                                                                        <div class="source-item">
+                                                                                                                                                          <span class="date">[2025年07月27日]</span> 2025世界人工智能大会：三大运营商全面展示AI成果，中国移动牵头启动“焕新社区” —— <a href="http://m.163.com/dy/article/K5ID7R7N0550TYQ0.html" target="_blank" class="source-link">原文链接</a>
+                                                                                                                                                          </div>
+                                                                                                                                                          <div class="source-item">
+                                                                                                                                                            <span class="date">[2025年03月26日]</span> 三大运营商2024年业绩稳健增长，云计算业务全面提速，2025年算力投资预计增长显著 —— <a href="https://www.digitalchina.gov.cn/2025/xwzx/szkx/202503/t20250326_4994692.htm" target="_blank" class="source-link">原文链接</a><span class="old">*（老旧信息）*</span>
+                                                                                                                                                            </div>
+                                                                                                                                                            <div class="source-item">
+                                                                                                                                                              <span class="date">[2024年07月24日]</span> 中国信通院联合三大运营商启动“人工智能+安全”领航计划 —— <a href="http://xxzx.fujian.gov.cn/jjxx/xxhdt/202407/t20240724_6488744.htm" target="_blank" class="source-link">原文链接</a><span class="old">*（老旧信息）*</span>
+                                                                                                                                                              </div>
+                                                                                                                                                              <div class="source-item">
+                                                                                                                                                                <span class="date">[2024年04月01日]</span> 三大运营商加速布局“人工智能+”，中国移动在算力规模、大数据、专利技术上领先 —— <a href="http://m.163.com/dy/article/IUN1R7QA0511CSHM.html" target="_blank" class="source-link">原文链接</a><span class="old">*（老旧信息）*</span>
+                                                                                                                                                                </div>
+                                                                                                                                                                <div class="source-item">
+                                                                                                                                                                  <span class="date">[2026年01月20日]</span> Ookla报告：生成式AI推动上行链路跃升为关键资源，全球上行流量占比或升至35% —— <a href="http://m.toutiao.com/group/7597337795165815336/" target="_blank" class="source-link">原文链接</a>
+                                                                                                                                                                  </div>
+                                                                                                                                                                </section>
+                                                                                                                                                              </div>
+                                                                                                                                                            </body>
+                                                                                                                                                          </html>
+                                                                                                                                                          ```
