@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RTX 5070 配置指南</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fafafa;
+        }
+        h1, h2, h3 {
+            color: #005a9c;
+            margin-top: 1.5em;
+        }
+        h2 {
+            border-bottom: 2px solid #007acc;
+            padding-bottom: 8px;
+        }
+        .styled-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5em 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .styled-table th,
+        .styled-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        .styled-table th {
+            background-color: #f8f9fa;
+            font-weight: bold;
+        }
+        .styled-table tr:nth-child(even) {
+            background-color: #fcfcfc;
+        }
+        blockquote.note {
+            background-color: #eef7ff;
+            border-left: 4px solid #007acc;
+            padding: 12px 16px;
+            margin: 1.5em 0;
+            border-radius: 0 4px 4px 0;
+            font-style: italic;
+            color: #005a9c;
+        }
+        pre {
+            background-color: #2d2d2d;
+            color: #f8f8f2;
+            padding: 16px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 1.5em 0;
+        }
+        code {
+            font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+            font-size: 0.95em;
+        }
+        ul {
+            padding-left: 24px;
+            margin: 1em 0;
+        }
+        li {
+            margin-bottom: 0.5em;
+        }
+        hr {
+            border: 0;
+            border-top: 1px solid #eee;
+            margin: 2em 0;
+        }
+        p {
+            margin: 0 0 1em 0;
+        }
+    </style>
+</head>
+<body>
+<p>
+作为河南联通的智算总工程师，我从<strong>AI训练/推理服务器或高性能计算（HPC）整机配置</strong>的角度来回答你关于 <strong>RTX 4090 整机配置</strong> 的问题。
+</p>
+<hr>
+<h3>一、RTX 4090 单卡关键参数回顾（用于参考）</h3>
+<ul><li><strong>GPU 芯片</strong>：NVIDIA GeForce RTX 4090（Ada Lovelace 架构）</li>
+<li><strong>CUDA 核心数</strong>：16,384</li>
+<li><strong>显存</strong>：24GB GDDR6X，384-bit，21 Gbps</li>
+<li><strong>TDP</strong>：约 450W（部分非公版可达 480W+）</li>
+<li><strong>接口</strong>：PCIe 4.0 x16</li>
+<li><strong>不支持 NVLink</strong>（重要！无法多卡显存池化）</li>
+<li><strong>尺寸</strong>：普遍在 330–350mm 长，占用 3~4 个 PCIe 槽位</li>
+<li><strong>电源需求</strong>：单卡建议 ≥850W PSU，需 16-pin 12VHPWR 接口</li>
+<p>
+</ul>&gt; ⚠️ 注意：RTX 4090 是<strong>消费级显卡</strong>，非 NVIDIA 官方认证的数据中心卡（如 A100/H100/L40S），在企业级部署中存在驱动、稳定性、虚拟化、ECC 显存缺失等限制。
+</p>
+<hr>
+<h3>二、典型 RTX 4090 整机配置（用于 AI/HPC 场景）</h3>
+<p>
+#### 1. <strong>单机 GPU 数量</strong>
+</p>
+<ul><li><strong>常见配置</strong>：<strong>1~4 张 RTX 4090</strong></li>
+<li><strong>极限配置</strong>：部分定制机箱（如 4U/塔式工作站）可塞入 <strong>8 张</strong>，但需解决：</li>
+<p>
+  </ul>- 散热（风道/水冷）
+  - 供电（双 1600W+ 电源或 2000W 金牌/铂金）
+  - 主板 PCIe 插槽间距（需 ≥3 槽位/卡）
+  - BIOS/UEFI 对多 GPU 的支持
+</p>
+<p>
+&gt; 📌 实际工程中，<strong>4 卡是性价比与稳定性的平衡点</strong>。超过 4 卡时，因无 NVLink，通信依赖 PCIe 带宽，效率下降明显。
+</p>
+<p>
+#### 2. <strong>CPU 配置</strong>
+</p>
+<ul><li><strong>推荐</strong>：Intel Core i9-14900K / AMD Ryzen 9 7950X  </li>
+<p>
+  </ul>或面向工作站的：<strong>Intel Xeon W7/W9 / AMD Threadripper PRO 7000WX</strong>
+</p>
+<ul><li><strong>作用</strong>：提供足够 PCIe 通道（至少 64 条）、内存带宽和 I/O 能力</li>
+<p>
+</ul>#### 3. <strong>系统内存（RAM）</strong>
+</p>
+<ul><li><strong>建议比例</strong>：每张 RTX 4090 配 <strong>32~64 GB 系统内存</strong></li>
+<li><strong>典型配置</strong>：</li>
+<p>
+  </ul>- 2 卡 → 128 GB DDR5
+  - 4 卡 → 256~512 GB DDR5 ECC（若主板支持）
+</p>
+<ul><li><strong>用途</strong>：数据预处理、模型加载、多任务调度</li>
+<p>
+</ul>#### 4. <strong>存储</strong>
+</p>
+<ul><li><strong>系统盘</strong>：1~2 TB NVMe SSD（PCIe 4.0，如 Samsung 990 Pro）</li>
+<li><strong>数据盘</strong>：4~8 TB NVMe RAID 0/10（用于高速数据集读取）</li>
+<li><strong>可选</strong>：U.2/U.3 企业级 SSD 或 NAS/SAN 对接</li>
+<p>
+</ul>#### 5. <strong>电源（PSU）</strong>
+</p>
+<ul><li>1 卡：≥850W 金牌全模组</li>
+<li>2 卡：≥1300W</li>
+<li>4 卡：<strong>双 1600W 或单 2000W</strong> 钛金/铂金电源（如 Corsair AX1600i ×2）</li>
+<p>
+</ul>#### 6. <strong>散热与机箱</strong>
+</p>
+<ul><li><strong>风冷</strong>：需高风量塔式机箱（如 Phanteks Enthoo Pro 2、Corsair 7000D）</li>
+<li><strong>水冷</strong>：高端方案采用分体水冷或一体式 420mm 冷排（尤其 ROG Strix LC 版本）</li>
+<p>
+</ul><hr>
+</p>
+<h3>三、典型应用场景下的配置示例</h3>
+<table class="styled-table"><thead><tr><th>场景</th><th>GPU 数量</th><th>CPU</th><th>内存</th><th>存储</th><th>电源</th></tr></thead><tbody><tr><td>AI 推理/微调（中小模型）</td><td>1~2</td><td>i9-14900K</td><td>64~128 GB</td><td>2TB NVMe</td><td>1000~1300W</td></tr><tr><td>大模型本地训练（如 Llama-3 8B）</td><td>2~4</td><td>Threadripper PRO 7975WX</td><td>256~512 GB</td><td>4TB NVMe + NAS</td><td>2×1600W</td></tr><tr><td>渲染/3D 制作工作站</td><td>1~2</td><td>Xeon W7-2465X</td><td>128 GB ECC</td><td>2TB NVMe + HDD</td><td>1200W</td></tr></tbody></table>---
+<h3>四、注意事项（企业部署视角）</h3>
+<p>
+1. <strong>驱动限制</strong>：GeForce 驱动不支持多实例 GPU（MIG）、vGPU 虚拟化。
+2. <strong>保修风险</strong>：长时间满载运行可能影响消费卡寿命。
+3. <strong>替代建议</strong>：若预算允许，<strong>L40S（48GB）或 H100</strong> 更适合生产环境。
+4. <strong>河南联通智算实践</strong>：我们在边缘智算节点中<strong>谨慎使用 RTX 4090</strong>，主要用于 PoC 或低成本推理场景，核心训练仍依赖 A/H 系列。
+</p>
+<hr>
+<p>
+如需具体 BOM 清单或功耗/散热仿真，可进一步提供应用场景（如大模型训练、视频渲染、AI 推理等），我可为你定制配置方案。
+</p>
+</body>
+</html>
