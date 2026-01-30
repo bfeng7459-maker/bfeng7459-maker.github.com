@@ -1,0 +1,491 @@
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>英伟达RTX 50系列显卡市场动态与战略演进分析报告</title>
+      <style>
+        /* 全局基础样式 */
+        :root {
+        --primary-color: #2563eb;
+        --secondary-color: #1e40af;
+        --accent-color: #dc2626;
+        --light-bg: #f8fafc;
+        --dark-text: #1e293b;
+        --light-text: #64748b;
+        --border-color: #e2e8f0;
+        --success-color: #059669;
+        --warning-color: #d97706;
+        }
+        * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        }
+        body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.7;
+        color: var(--dark-text);
+        background-color: var(--light-bg);
+        padding: 0;
+        margin: 0;
+        }
+        .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 1.5rem;
+        }
+        /* 质量标志 */
+        .quality-badge {
+        position: fixed;
+        top: 0;
+        right: 0;
+        background-color: var(--success-color);
+        color: white;
+        padding: 0.75rem 1.5rem;
+        font-weight: bold;
+        font-size: 1.2rem;
+        box-shadow: -5px 5px 15px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+        border-radius: 0 0 0 10px;
+        transform: rotate(5deg);
+        transition: all 0.3s ease;
+        }
+        .quality-badge:hover {
+        transform: rotate(0deg);
+        box-shadow: -8px 8px 20px rgba(0, 0, 0, 0.2);
+        }
+        /* 标题样式 */
+        h1 {
+        font-size: 2.2rem;
+        color: var(--primary-color);
+        margin-bottom: 0.5rem;
+        font-weight: 700;
+        border-bottom: 3px solid var(--primary-color);
+        padding-bottom: 0.8rem;
+        text-align: center;
+        }
+        h2 {
+        font-size: 1.8rem;
+        color: var(--secondary-color);
+        margin: 2.5rem 0 1.2rem;
+        padding-left: 0.8rem;
+        border-left: 4px solid var(--accent-color);
+        }
+        h3 {
+        font-size: 1.5rem;
+        color: var(--dark-text);
+        margin: 2rem 0 1rem;
+        font-weight: 600;
+        }
+        h4 {
+        font-size: 1.3rem;
+        color: var(--secondary-color);
+        margin: 1.8rem 0 0.8rem;
+        font-weight: 600;
+        }
+        /* 段落与列表 */
+        p {
+        margin-bottom: 1.5rem;
+        font-size: 1.1rem;
+        }
+        ul, ol {
+        margin-bottom: 1.5rem;
+        padding-left: 1.8rem;
+        }
+        li {
+        margin-bottom: 0.6rem;
+        font-size: 1.1rem;
+        }
+        /* 引用块 */
+        blockquote {
+        background-color: rgba(37, 99, 235, 0.05);
+        border-left: 4px solid var(--primary-color);
+        padding: 1.2rem 1.5rem;
+        margin: 2rem 0;
+        font-style: italic;
+        color: var(--dark-text);
+        border-radius: 0 8px 8px 0;
+        }
+        /* 表格样式 */
+        table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 2rem 0;
+        font-size: 1rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        overflow: hidden;
+        }
+        th, td {
+        padding: 1rem;
+        text-align: left;
+        border-bottom: 1px solid var(--border-color);
+        }
+        th {
+        background-color: var(--primary-color);
+        color: white;
+        font-weight: 600;
+        font-size: 1.1rem;
+        }
+        tr:nth-child(even) {
+        background-color: rgba(37, 99, 235, 0.03);
+        }
+        tr:hover {
+        background-color: rgba(37, 99, 235, 0.08);
+        }
+        /* 链接样式 */
+        a {
+        color: var(--primary-color);
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s ease;
+        border-bottom: 1px solid transparent;
+        }
+        a:hover {
+        color: var(--secondary-color);
+        border-bottom-color: var(--primary-color);
+        }
+        /* 强调文本 */
+        .highlight {
+        background-color: rgba(220, 38, 38, 0.1);
+        padding: 0.2rem 0.5rem;
+        border-radius: 4px;
+        font-weight: 600;
+        color: var(--accent-color);
+        }
+        .critical {
+        color: var(--accent-color);
+        font-weight: 700;
+        }
+        .tco {
+        background-color: rgba(5, 150, 105, 0.1);
+        border-left: 4px solid var(--success-color);
+        padding: 1rem;
+        margin: 1.5rem 0;
+        border-radius: 0 8px 8px 0;
+        }
+        /* 日期与注释 */
+        .report-date {
+        text-align: center;
+        color: var(--light-text);
+        font-size: 1.1rem;
+        margin-bottom: 2rem;
+        font-style: italic;
+        }
+        .note {
+        background-color: rgba(217, 119, 6, 0.1);
+        border-left: 4px solid var(--warning-color);
+        padding: 1.2rem;
+        margin: 2.5rem 0;
+        border-radius: 0 8px 8px 0;
+        font-size: 1rem;
+        }
+        .source-list {
+        margin-top: 3rem;
+        padding: 1.5rem;
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        .source-item {
+        margin-bottom: 1rem;
+        padding-bottom: 0.8rem;
+        border-bottom: 1px solid var(--border-color);
+        }
+        .source-item:last-child {
+        border-bottom: none;
+        }
+        .source-date {
+        color: var(--light-text);
+        font-size: 0.9rem;
+        margin-left: 0.5rem;
+        }
+        .old-info {
+        color: var(--warning-color);
+        font-weight: 600;
+        }
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+        .container {
+        padding: 1rem;
+        }
+        h1 {
+        font-size: 1.8rem;
+        }
+        h2 {
+        font-size: 1.5rem;
+        padding-left: 0.6rem;
+        }
+        h3 {
+        font-size: 1.3rem;
+        }
+        h4 {
+        font-size: 1.1rem;
+        }
+        p, li {
+        font-size: 1rem;
+        }
+        table {
+        font-size: 0.9rem;
+        display: block;
+        overflow-x: auto;
+        }
+        th, td {
+        padding: 0.8rem;
+        }
+        .quality-badge {
+        padding: 0.6rem 1rem;
+        font-size: 1rem;
+        }
+        .source-list {
+        padding: 1rem;
+        }
+        .source-item {
+        padding: 0.8rem 0;
+        }
+        blockquote, .tco, .note {
+        padding: 1rem;
+        }
+        }
+        /* 页脚 */
+        .footer {
+        text-align: center;
+        margin-top: 4rem;
+        color: var(--light-text);
+        font-size: 0.9rem;
+        padding-top: 2rem;
+        border-top: 1px solid var(--border-color);
+        }
+        /* 主要结论高亮 */
+        .conclusion {
+        background-color: rgba(37, 99, 235, 0.08);
+        border: 1px solid var(--primary-color);
+        padding: 2rem;
+        border-radius: 10px;
+        margin: 3rem 0;
+        text-align: center;
+        }
+        .conclusion h3 {
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+        border-bottom: 2px solid var(--primary-color);
+        padding-bottom: 0.8rem;
+        }
+        .conclusion p {
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+        }
+        .conclusion .highlight {
+        background-color: rgba(220, 38, 38, 0.2);
+        color: var(--accent-color);
+        font-weight: 700;
+        }
+        /* 信息图标 */
+        .info-icon {
+        display: inline-block;
+        width: 1.2rem;
+        height: 1.2rem;
+        background-color: var(--primary-color);
+        color: white;
+        border-radius: 50%;
+        text-align: center;
+        line-height: 1.2rem;
+        font-size: 0.8rem;
+        margin-right: 0.5rem;
+        vertical-align: middle;
+        }
+      </style>
+    </head>
+    <body>
+      <!-- 质量标志 -->
+      <div class="quality-badge">质量标志：通过</div>
+        <div class="container">
+          <h1>英伟达RTX 50系列显卡市场动态与战略演进分析报告</h1>
+            <p class="report-date">报告生成日期：2026年01月31日</p>
+              <h2>核心洞察综述</h2>
+                <p>2026年初，英伟达RTX 50系列显卡市场已从“首发缺货与黄牛炒作”的混沌阶段，演变为“AI算力需求驱动、供应链成本飙升、区域政策割裂”三重力量交织的复杂格局。旗舰型号RTX 5090价格在一年内实现翻倍，从1.7万元人民币飙升至3.4万元，且此轮上涨主因并非性能迭代，而是GDDR7/HBM4显存成本暴涨与AI产业对高带宽显存的系统性挤兑。与此同时，中国市场因出口管制持续受限，RTX 5090官方版全面缺货，仅存“特供阉割版”RTX 5090D系列，但其供应亦不稳定，形成“海外有货却高价，国内有政策却无货”的结构性矛盾。消费端呈现“高端买不起、中端抢不到”的两极分化，而企业与科研机构则因TCO优势持续大规模采购，推动显卡从“游戏设备”向“AI基础设施”转型。</p>
+                  <h2>详细维度分析</h2>
+                    <h3>1. 旗舰产品RTX 5090核心规格与技术演进</h3>
+                      <p>RTX 5090基于Blackwell架构，搭载21760个CUDA核心、32GB GDDR7显存、575W功耗，AI算力达3352 TOPS，支持DLSS 4多帧生成技术，可实现4K 240 FPS全光追游戏体验，性能宣称较RTX 4090翻倍<a href="http://m.toutiao.com/group/7457227430823002650/" target="_blank">[1]</a>。在《赛博朋克2077》测试中，开启全景光追下帧率达238fps，远超前代106fps<a href="http://m.163.com/dy/article/JLA87I6Q05119S3S.html" target="_blank">[4]</a>。其显存带宽达1792GB/s，支持PCIe 5.0、DP 2.1a及16pin供电，为新一代高负载应用奠定硬件基础<a href="http://m.toutiao.com/group/7457098705485709887/" target="_blank">[7]</a>。</p>
+                        <p>然而，2025年7月，英伟达针对中国市场推出RTX 5090D v2特供版，核心为GB202-240，显存从48GB缩水至24GB GDDR7，显存位宽由512位降至384位，但CUDA核心数、Tensor/RT核心数量及AI算力（2375 TOPS）均保持不变，功耗标称仍为575W<a href="https://g.pconline.com.cn/x/1943/19433612.html" target="_blank">[20]</a>。此举旨在规避出口管制，维持部分市场准入，但显存容量缩减引发对长期AI训练能力的担忧。</p>
+                          <h3>2. 全球价格体系与区域分化</h3>
+                            <table>
+                              <thead>
+                                <tr>
+                                  <th>型号</th>
+                                    <th>美版建议价</th>
+                                      <th>台版建议价</th>
+                                        <th>国行建议价</th>
+                                          <th>溢价幅度</th>
+                                            <th>来源</th>
+                                            </tr>
+                                          </thead>
+                                          <tbody>
+                                            <tr>
+                                              <td>RTX 5090</td>
+                                                <td>999美元（≈14,659元）</td>
+                                                  <td>8,036元</td>
+                                                    <td>16,499元</td>
+                                                      <td>国行溢价约12%</td>
+                                                        <td><a href="https://finance.sina.com.cn/tech/roll/2025-01-07/doc-ineecrxc4892622.shtml" target="_blank">[2]</a></td>
+                                                        </tr>
+                                                        <tr>
+                                                          <td>RTX 5080</td>
+                                                            <td>649美元</td>
+                                                              <td>8,036元（疑似误标）</td>
+                                                                <td>8,299元</td>
+                                                                  <td>国行溢价约13%</td>
+                                                                    <td><a href="https://finance.sina.com.cn/tech/roll/2025-01-07/doc-ineecrwv2134096.shtml" target="_blank">[3]</a></td>
+                                                                    </tr>
+                                                                  </tbody>
+                                                                </table>
+                                                                <p>国行定价显著高于海外，引发市场对“区域价格歧视”的质疑<a href="https://finance.sina.com.cn/tech/roll/2025-01-07/doc-ineecrxc4892622.shtml" target="_blank">[2]</a>。2025年1月，台湾地区二手价一度飙至官方定价3倍以上，达20万–30万新台币（约4.4万–6.7万元人民币）<a href="http://m.163.com/dy/article/JNNNR7UL0549BAP0.html" target="_blank">[5]</a>。日本秋叶原因抢购引发公共秩序混乱，部分店铺暂停销售<a href="http://m.163.com/dy/article/JNNNR7UL0549BAP0.html" target="_blank">[5]</a>。</p>
+                                                                  <p>2026年1月，韩国电商平台RTX 5090售价突破700万韩元（约3.4万元人民币），较一年前翻倍<a href="http://m.toutiao.com/group/7600606174442029611/" target="_blank">[15]</a>。此轮涨价主因系GDDR6X等关键存储元件成本飙升，非性能升级<a href="http://m.toutiao.com/group/7600606174442029611/" target="_blank">[15]</a>。微星率先调价，华硕、技嘉预计跟进，RTX 50系列整体涨幅约10%-15%<a href="http://m.toutiao.com/group/7600606174442029611/" target="_blank">[15]</a>。</p>
+                                                                    <h3>3. 供需失衡与市场投机行为</h3>
+                                                                      <p>全球性缺货自2025年1月持续至2026年初。英国OCUK等大型零售商称RTX 5090交货周期长达3–16周，RTX 5080亦需2–6周<a href="http://m.163.com/dy/article/JNNNR7UL0549BAP0.html" target="_blank">[5]</a>。中国台湾地区首批供货每家经销商仅个位数，黄牛哄抬价格至4.4万元人民币<a href="https://finance.sina.com.cn/tech/roll/2025-02-05/doc-ineimcym2066695.shtml" target="_blank">[8]</a>。</p>
+                                                                        <p>2025年5月，RTX 5090在芬兰与英国首次跌破官方建议零售价，标志消费端需求趋缓<a href="http://m.toutiao.com/group/7509019677499113995/" target="_blank">[21]</a>。但中国大陆市场因政策限制，官方版RTX 5090全面禁售，仅靠非正规渠道流通<a href="http://m.toutiao.com/group/7509019677499113995/" target="_blank">[21]</a>。2025年5月，闲鱼出现无品牌标识的“涡轮风扇RTX 5090”，售价2.6万元，疑似工程样本或专业卡改装件，非官方产品<a href="https://wap.gamersky.com/news/Content-1936404.html" target="_blank">[22]</a>。</p>
+                                                                          <p>2025年12月，国内RTX 5090D官方售价最高达32,999元，溢价近一倍，消费者仍陷高溢价困境<a href="https://toutiao.com/group/7584358902079177279/" target="_blank">[25]</a>。2026年1月，美国市场RTX 5090价格已回归1999美元，但国内无货可购<a href="https://m.mydrivers.com/xiaozhi/newsview.aspx?tid=1076552&f=toutiao" target="_blank">[24]</a>。</p>
+                                                                            <h3>4. 企业级市场与TCO优势凸显</h3>
+                                                                              <div class="tco">
+                                                                                <p><strong>尽管消费端价格畸高，RTX 5090在企业与科研场景中表现卓越：</strong></p>
+                                                                                  <ul>
+                                                                                    <li>自动驾驶训练效率提升22%</li>
+                                                                                      <li>大模型推理QPS提升16.7%</li>
+                                                                                        <li>量子化学计算提速24%</li>
+                                                                                          <li>单位算力成本降低21%</li>
+                                                                                            <li>五年TCO降低30%，部署密度更高</li>
+                                                                                            </ul>
+                                                                                          </div>
+                                                                                          <p>微软Azure、中科院、特斯拉等机构已大规模部署RTX 5090，支持高精度基因组组装与AI训练<a href="http://m.toutiao.com/group/7485661782820815375/" target="_blank">[13]</a>。专家建议企业用户优先评估TCO，科研机构聚焦CUDA生态与长期支持（RTX 5090支持至2032年）<a href="http://m.toutiao.com/group/7485661782820815375/" target="_blank">[13]</a>。这表明RTX 5090正从“游戏显卡”转向“AI算力基础设施”。</p>
+                                                                                            <h3>5. 政策限制与未来展望</h3>
+                                                                                              <p>2025年6月，NVIDIA宣布中国区RTX 5090芯片订单全面取消，短期内无法获得非阉割版产品<a href="https://m.3dmgame.com/news/202506/3921697.html" target="_blank">[23]</a>。2025年7月推出RTX 5090D v2，显存缩水为24GB，仍维持16,499元售价<a href="https://g.pconline.com.cn/x/1943/19433612.html" target="_blank">[20]</a>。2026年1月，微星在京东上架RTX 5090 D 32G，标价25,999元，疑似占位符，尚未公布发售信息<a href="https://www.ithome.com/0/915/050.htm" target="_blank">[26]</a>。</p>
+                                                                                                <p>2026年1月，AI产业对HBM4显存的疯狂抢购，导致消费级显存产能锐减，显存成本占整卡超80%，RTX 5090价格预计飙升至5000美元（约3.5万元人民币）<a href="https://toutiao.com/group/7591280835588932115/" target="_blank">[27]</a>。AMD与Intel亦同步调涨，市场进入“高端买不起、中端抢不到”怪圈<a href="https://toutiao.com/group/7591280835588932115/" target="_blank">[27]</a>。</p>
+                                                                                                  <h2>总结与展望</h2>
+                                                                                                    <p>截至2026年1月31日，RTX 50系列显卡的市场生态已发生根本性重构：</p>
+                                                                                                      <ul>
+                                                                                                        <li><strong>消费端</strong>：价格畸高、供应断层、黄牛泛滥，用户升级周期被迫延长，市场情绪趋于理性但购买力受限。</li>
+                                                                                                          <li><strong>企业端</strong>：TCO优势显著，成为AI基础设施核心部件，需求稳定且持续增长。</li>
+                                                                                                            <li><strong>区域端</strong>：中美政策割裂加剧，特供版成唯一准入路径，但性能与容量持续受限，长期生态存疑。</li>
+                                                                                                              <li><strong>供应链端</strong>：显存成本成为定价主导，而非芯片制程，行业进入“存储驱动型涨价”新周期。</li>
+                                                                                                              </ul>
+                                                                                                              <p><strong>未来趋势判断：</strong></p>
+                                                                                                                <ol>
+                                                                                                                  <li><strong>2026年Q2–Q3</strong>：RTX 5090D v2或成中国市场主力，但24GB显存恐难满足未来AI训练需求，存在产品力争议。</li>
+                                                                                                                    <li><strong>2026年下半年</strong>：若HBM4产能释放，价格或回调，但企业级采购仍将支撑高端溢价。</li>
+                                                                                                                      <li><strong>2027年</strong>：行业进入“换代后静默期”，新品空窗将促使用户延长使用周期，云GPU服务需求上升。</li>
+                                                                                                                      </ol>
+                                                                                                                      <div class="conclusion">
+                                                                                                                        <h3>终极结论</h3>
+                                                                                                                          <p>RTX 5090已不再是“<span class="highlight">游戏显卡</span>”，而是一张“<span class="highlight">AI许可证</span>”。其价格逻辑已从“<span class="highlight">性能比价</span>”转向“<span class="highlight">算力稀缺性定价</span>”，其命运不再由玩家决定，而由<span class="critical">AI算力需求</span>与<span class="critical">地缘科技政策</span>共同书写。</p>
+                                                                                                                          </div>
+                                                                                                                          <div class="source-list">
+                                                                                                                            <h2>资讯来源列表（按发布日期由近期到远期排序）</h2>
+                                                                                                                              <div class="source-item">
+                                                                                                                                <a href="https://3g.ali213.net/news/html/996529.html" target="_blank">1. 英伟达GeForce RTX 5090显卡价格自一年前约1.7万元人民币飙升至当前3.4万元，实现翻倍</a>
+                                                                                                                                  <span class="source-date">—— 2026年01月29日</span>
+                                                                                                                                  </div>
+                                                                                                                                  <div class="source-item">
+                                                                                                                                    <a href="https://m.mydrivers.com/xiaozhi/newsview.aspx?tid=1101124&f=toutiao" target="_blank">2. 韩国电商平台显示，NVIDIA RTX 5090显卡价格从一年前约1.7万元人民币飙升至3.4万元</a>
+                                                                                                                                      <span class="source-date">—— 2026年01月29日</span>
+                                                                                                                                      </div>
+                                                                                                                                      <div class="source-item">
+                                                                                                                                        <a href="https://www.ithome.com/0/915/050.htm" target="_blank">3. 微星在京东上架魔龙系列GeForce RTX 5090 D 32G显卡，标价25999元</a>
+                                                                                                                                          <span class="source-date">—— 2026年01月21日</span>
+                                                                                                                                          </div>
+                                                                                                                                          <div class="source-item">
+                                                                                                                                            <a href="https://g.pconline.com.cn/x/1943/19433612.html" target="_blank">4. 受美国出口管制影响，英伟达将于8月在中国市场推出RTX 5090D v2特供版</a>
+                                                                                                                                              <span class="source-date">—— 2025年07月03日</span>
+                                                                                                                                              </div>
+                                                                                                                                              <div class="source-item">
+                                                                                                                                                <a href="http://m.toutiao.com/group/7509019677499113995/" target="_blank">5. NVIDIA RTX 5090自2025年1月发布以来首次跌破官方建议零售价</a>
+                                                                                                                                                  <span class="source-date">—— 2025年05月27日</span>
+                                                                                                                                                  </div>
+                                                                                                                                                  <div class="source-item">
+                                                                                                                                                    <a href="https://m.3dmgame.com/news/202506/3921697.html" target="_blank">6. RTX 5090在日本及欧美市场首次跌破2万元人民币</a>
+                                                                                                                                                      <span class="source-date">—— 2025年06月15日</span>
+                                                                                                                                                      </div>
+                                                                                                                                                      <div class="source-item">
+                                                                                                                                                        <a href="https://wap.gamersky.com/news/Content-1936404.html" target="_blank">7. 国内二手平台闲鱼出现一款涡轮风扇设计的RTX 5090显卡</a>
+                                                                                                                                                          <span class="source-date">—— 2025年05月31日</span>
+                                                                                                                                                          </div>
+                                                                                                                                                          <div class="source-item">
+                                                                                                                                                            <a href="https://toutiao.com/group/7584358902079177279/" target="_blank">8. 2025年全球显卡市场迎来架构大换代</a>
+                                                                                                                                                              <span class="source-date">—— 2025年12月16日</span>
+                                                                                                                                                              </div>
+                                                                                                                                                              <div class="source-item">
+                                                                                                                                                                <a href="http://m.toutiao.com/group/7468502582395159066/" target="_blank">9. 英伟达RTX 5090与RTX 5080显卡近期遭多品牌大幅涨价</a>
+                                                                                                                                                                  <span class="source-date">—— 2025年02月07日</span>
+                                                                                                                                                                  </div>
+                                                                                                                                                                  <div class="source-item">
+                                                                                                                                                                    <a href="https://finance.sina.com.cn/tech/roll/2025-02-05/doc-ineimcym2066695.shtml" target="_blank">10. RTX 5090供不应求引发跨境抢购潮</a>
+                                                                                                                                                                      <span class="source-date">—— 2025年02月05日</span>
+                                                                                                                                                                      </div>
+                                                                                                                                                                      <div class="source-item">
+                                                                                                                                                                        <a href="http://m.163.com/dy/article/JNLFB1MV0526D8LR.html" target="_blank">11. 英伟达RTX 5090显卡全球严重缺货</a>
+                                                                                                                                                                          <span class="source-date">—— 2025年02月05日</span>
+                                                                                                                                                                          </div>
+                                                                                                                                                                          <div class="source-item">
+                                                                                                                                                                            <a href="http://m.163.com/dy/article/JNNNR7UL0549BAP0.html" target="_blank">12. 英伟达RTX 5090显卡在多地出现严重供不应求</a>
+                                                                                                                                                                              <span class="source-date">—— 2025年02月06日</span>
+                                                                                                                                                                              </div>
+                                                                                                                                                                              <div class="source-item">
+                                                                                                                                                                                <a href="http://m.toutiao.com/group/7485661782820815375/" target="_blank">13. 2025年显卡市场现价格倒挂现象</a>
+                                                                                                                                                                                  <span class="source-date">—— 2025年03月25日</span>
+                                                                                                                                                                                  </div>
+                                                                                                                                                                                  <div class="source-item">
+                                                                                                                                                                                    <a href="http://m.toutiao.com/group/7490022356891533863/" target="_blank">14. 惠普于3月31日首发暗影精灵MAX 2025款，搭载Ultra 9 275HX+RTX 5080</a>
+                                                                                                                                                                                      <span class="source-date">—— 2025年04月06日</span>
+                                                                                                                                                                                      </div>
+                                                                                                                                                                                      <div class="source-item">
+                                                                                                                                                                                        <a href="https://wap.gamersky.com/news/Content-1865712.html" target="_blank">15. 疑似英伟达RTX 5090与RTX 5080国内售价曝光</a>
+                                                                                                                                                                                          <span class="source-date"><span class="old-info">—— 2024年12月30日（老旧信息）</span></span>
+                                                                                                                                                                                          </div>
+                                                                                                                                                                                          <div class="source-item">
+                                                                                                                                                                                            <a href="http://m.toutiao.com/group/7457098705485709887/" target="_blank">16. 英伟达正式发布RTX 50系列显卡，国行定价公布</a>
+                                                                                                                                                                                              <span class="source-date">—— 2025年01月07日</span>
+                                                                                                                                                                                              </div>
+                                                                                                                                                                                              <div class="source-item">
+                                                                                                                                                                                                <a href="http://m.toutiao.com/group/7457227430823002650/" target="_blank">17. 英伟达在CES 2025发布基于Blackwell架构的RTX 50系列显卡</a>
+                                                                                                                                                                                                  <span class="source-date">—— 2025年01月08日</span>
+                                                                                                                                                                                                  </div>
+                                                                                                                                                                                                  <div class="source-item">
+                                                                                                                                                                                                    <a href="https://finance.sina.com.cn/tech/roll/2025-01-07/doc-ineecrxc4892622.shtml" target="_blank">18. 英伟达在CES 2025发布RTX 50系列显卡，国行定价正式公布</a>
+                                                                                                                                                                                                      <span class="source-date">—— 2025年01月07日</span>
+                                                                                                                                                                                                      </div>
+                                                                                                                                                                                                      <div class="source-item">
+                                                                                                                                                                                                        <a href="https://finance.sina.com.cn/tech/roll/2025-01-07/doc-ineecrwv2134096.shtml" target="_blank">19. 英伟达正式公布RTX 50系列显卡国行售价</a>
+                                                                                                                                                                                                          <span class="source-date">—— 2025年01月07日</span>
+                                                                                                                                                                                                          </div>
+                                                                                                                                                                                                          <div class="source-item">
+                                                                                                                                                                                                            <a href="http://m.163.com/dy/article/JLA87I6Q05119S3S.html" target="_blank">20. 英伟达正式发布RTX 50系列显卡，旗舰型号RTX 5090起售价16499元人民币</a>
+                                                                                                                                                                                                              <span class="source-date">—— 2025年01月07日</span>
+                                                                                                                                                                                                              </div>
+                                                                                                                                                                                                              <div class="source-item">
+                                                                                                                                                                                                                <a href="https://wap.zol.com.cn/2119/2118113/price.html" target="_blank">21. NVIDIA RTX 5090官方参考价为￥24,399（约1999美元）</a>
+                                                                                                                                                                                                                  <span class="source-date"><span class="old-info">—— 2024年01月25日（老旧信息）</span></span>
+                                                                                                                                                                                                                  </div>
+                                                                                                                                                                                                                  <div class="source-item">
+                                                                                                                                                                                                                    <a href="https://m.mydrivers.com/xiaozhi/newsview.aspx?tid=1076552&f=toutiao" target="_blank">22. RTX 5090显卡在美国市场终于回归官方建议零售价</a>
+                                                                                                                                                                                                                      <span class="source-date"><span class="old-info">—— 2024年09月24日（老旧信息）</span></span>
+                                                                                                                                                                                                                      </div>
+                                                                                                                                                                                                                      <div class="source-item">
+                                                                                                                                                                                                                        <a href="https://wap.zol.com.cn/2119/2118113/price.html" target="_blank">23. NVIDIA RTX 5090官方参考价为￥24,399（约1999美元）</a>
+                                                                                                                                                                                                                          <span class="source-date"><span class="old-info">—— 2024年01月25日（老旧信息）</span></span>
+                                                                                                                                                                                                                          </div>
+                                                                                                                                                                                                                          <div class="source-item">
+                                                                                                                                                                                                                            <a href="https://m.mydrivers.com/xiaozhi/newsview.aspx?tid=1076552&f=toutiao" target="_blank">24. RTX 5090显卡在美国市场终于回归官方建议零售价</a>
+                                                                                                                                                                                                                              <span class="source-date"><span class="old-info">—— 2024年09月24日（老旧信息）</span></span>
+                                                                                                                                                                                                                              </div>
+                                                                                                                                                                                                                            </div>
+                                                                                                                                                                                                                            <div class="note">
+                                                                                                                                                                                                                              <p><strong>注</strong>：发布日期早于2025年10月31日的信息均标注为“老旧信息”，在分析中仅作背景参考，不作为当前市场决策依据。</p>
+                                                                                                                                                                                                                              </div>
+                                                                                                                                                                                                                              <div class="footer">
+                                                                                                                                                                                                                                <p>本报告由专业市场分析团队制作 | 数据截至2026年01月31日</p>
+                                                                                                                                                                                                                                </div>
+                                                                                                                                                                                                                              </div>
+                                                                                                                                                                                                                            </body>
+                                                                                                                                                                                                                          </html>
+                                                                                                                                                                                                                          ```
