@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RTX 5070 配置指南</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fafafa;
+        }
+        h1, h2, h3 {
+            color: #005a9c;
+            margin-top: 1.5em;
+        }
+        h2 {
+            border-bottom: 2px solid #007acc;
+            padding-bottom: 8px;
+        }
+        .styled-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5em 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .styled-table th,
+        .styled-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        .styled-table th {
+            background-color: #f8f9fa;
+            font-weight: bold;
+        }
+        .styled-table tr:nth-child(even) {
+            background-color: #fcfcfc;
+        }
+        blockquote.note {
+            background-color: #eef7ff;
+            border-left: 4px solid #007acc;
+            padding: 12px 16px;
+            margin: 1.5em 0;
+            border-radius: 0 4px 4px 0;
+            font-style: italic;
+            color: #005a9c;
+        }
+        pre {
+            background-color: #2d2d2d;
+            color: #f8f8f2;
+            padding: 16px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 1.5em 0;
+        }
+        code {
+            font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+            font-size: 0.95em;
+        }
+        ul {
+            padding-left: 24px;
+            margin: 1em 0;
+        }
+        li {
+            margin-bottom: 0.5em;
+        }
+        hr {
+            border: 0;
+            border-top: 1px solid #eee;
+            margin: 2em 0;
+        }
+        p {
+            margin: 0 0 1em 0;
+        }
+    </style>
+</head>
+<body>
+<p>
+截至 <strong>2026年1月</strong>，NVIDIA 的 GeForce RTX 40 系列和 50 系列消费级显卡（如 RTX 4090、RTX 5090 等）<strong>在硬件层面支持多卡配置</strong>（即可以物理安装多张 GPU），但 <strong>官方已不再支持传统的 SLI（Scalable Link Interface）技术</strong>。这意味着：
+</p>
+<hr>
+<h3>✅ <strong>支持多卡模式的情况</strong></h3>
+<p>
+#### 1. <strong>用于 GPU 计算/服务器用途</strong>
+</p>
+<ul><li>如 a16z 所述（2025年4月资料）：</li>
+<p>
+  </ul>&gt; 使用 <strong>RTX 4090 或 RTX 5090</strong> 可构建高性能八卡 GPU 服务器，运行在 <strong>PCIe 5.0 x16 全通道</strong> 上。
+</p>
+<ul><li>这类多卡部署主要用于 <strong>AI训练、渲染、科学计算等专业场景</strong>，依赖 CUDA 或其他并行计算框架（如 PyTorch、TensorFlow），<strong>不依赖 SLI</strong>。</li>
+<p>
+</ul>#### 2. <strong>独立多 GPU 工作（非游戏协同渲染）</strong>
+</p>
+<ul><li>多张 RTX 40/50 系列显卡可同时存在于一台 PC 中，分别承担不同任务，例如：</li>
+<p>
+  </ul>- 一张用于游戏或显示输出；
+  - 另一张用于 AI 推理（如通过 NVIDIA NIM 微服务）、视频编码（NVENC）或直播推流。
+</p>
+<ul><li>此模式无需 SLI，操作系统和应用可分别调用不同 GPU。</li>
+<p>
+</ul><hr>
+</p>
+<h3>❌ <strong>不支持的情况：传统游戏 SLI</strong></h3>
+<ul><li><strong>GeForce RTX 30 系列起，NVIDIA 已逐步弃用 SLI</strong>。</li>
+<li><strong>RTX 40 系列和 50 系列消费级显卡（如 4060、4070、5060、5080 等）均无 NVLink 或 SLI 桥接器支持</strong>。</li>
+<li>游戏开发商也基本停止对多 GPU 渲染的优化。</li>
+<li>即使安装两张 RTX 5090，<strong>也无法在《赛博朋克2077》或《微软模拟飞行》等游戏中实现帧率翻倍</strong>。</li>
+<p>
+</ul>&gt; ⚠️ 注意：只有极少数专业卡（如 RTX 6000 Ada）仍支持 NVLink，但不属于 GeForce 消费级产品线。
+</p>
+<hr>
+<h3>🔍 各系列简要对比</h3>
+<table class="styled-table"><thead><tr><th>系列</th><th>是否支持 SLI/NVLink（游戏多卡渲染）</th><th>是否可用于多卡计算/服务器</th></tr></thead><tbody><tr><td>GTX 10 系列</td><td>部分高端型号支持 SLI（如 1080 Ti）</td><td>是</td></tr><tr><td>RTX 20 系列</td><td>高端型号支持 NVLink（如 2080 Ti）</td><td>是</td></tr><tr><td>RTX 30 系列</td><td><strong>仅 RTX 3090 支持 NVLink（有限）</strong>，其余不支持</td><td>是</td></tr><tr><td>RTX 40 系列</td><td><strong>全部不支持 SLI/NVLink</strong></td><td>是（如 4090 用于八卡服务器）</td></tr><tr><td>RTX 50 系列</td><td><strong>全部不支持 SLI/NVLink</strong></td><td>是（如 5090 支持 PCIe 5.0 x16 多卡）</td></tr></tbody></table>---
+<h3>✅ 结论</h3>
+<ul><li><strong>如果你是为了游戏性能提升而考虑“双卡”</strong> → <strong>不推荐</strong>，RTX 40/50 系列<strong>不支持游戏多卡加速</strong>。</li>
+<li><strong>如果你是为了 AI、渲染、编码或多任务并行</strong> → <strong>RTX 4090 / 5090 等高端型号非常适合构建多卡系统</strong>，尤其搭配 PCIe 5.0 主板可发挥最大带宽。</li>
+<p>
+</ul>如需构建多 GPU 服务器，建议选择 <strong>RTX 4090 或 RTX 5090</strong>，并确保主板支持多 x16 PCIe 5.0 插槽及充足供电。
+</p>
+</body>
+</html>
