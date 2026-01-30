@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RTX 5070 配置指南</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fafafa;
+        }
+        h1, h2, h3 {
+            color: #005a9c;
+            margin-top: 1.5em;
+        }
+        h2 {
+            border-bottom: 2px solid #007acc;
+            padding-bottom: 8px;
+        }
+        .styled-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5em 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .styled-table th,
+        .styled-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        .styled-table th {
+            background-color: #f8f9fa;
+            font-weight: bold;
+        }
+        .styled-table tr:nth-child(even) {
+            background-color: #fcfcfc;
+        }
+        blockquote.note {
+            background-color: #eef7ff;
+            border-left: 4px solid #007acc;
+            padding: 12px 16px;
+            margin: 1.5em 0;
+            border-radius: 0 4px 4px 0;
+            font-style: italic;
+            color: #005a9c;
+        }
+        pre {
+            background-color: #2d2d2d;
+            color: #f8f8f2;
+            padding: 16px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 1.5em 0;
+        }
+        code {
+            font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+            font-size: 0.95em;
+        }
+        ul {
+            padding-left: 24px;
+            margin: 1em 0;
+        }
+        li {
+            margin-bottom: 0.5em;
+        }
+        hr {
+            border: 0;
+            border-top: 1px solid #eee;
+            margin: 2em 0;
+        }
+        p {
+            margin: 0 0 1em 0;
+        }
+    </style>
+</head>
+<body>
+<p>
+&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;zh-CN&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;NVIDIA RTX 40/50 系列多卡支持指南&lt;/title&gt;
+    &lt;style&gt;
+        :root {
+            --primary: #76b900; /* NVIDIA 绿 */
+            --secondary: #1a1a1a;
+            --light: #f5f5f5;
+            --dark: #0d0d0d;
+            --gray: #666;
+            --card-bg: #ffffff;
+            --border: #e0e0e0;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: &#x27;Segoe UI&#x27;, &#x27;Microsoft YaHei&#x27;, sans-serif;
+            line-height: 1.6;
+            color: var(--secondary);
+            background-color: #fafafa;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: linear-gradient(135deg, var(--primary) 0%, #4a8c00 100%);
+            color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        .note {
+            background-color: #fff8e1;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+        .card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+            border: 1px solid var(--border);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+        }
+        .card h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+        .feature-list {
+            list-style: none;
+        }
+        .feature-list li {
+            padding: 8px 0;
+            display: flex;
+            align-items: flex-start;
+        }
+        .feature-list li::before {
+            content: &quot;✓&quot;;
+            color: var(--primary);
+            font-weight: bold;
+            margin-right: 10px;
+            min-width: 20px;
+        }
+        .warning {
+            color: #d32f2f;
+            font-weight: bold;
+        }
+        .highlight {
+            background-color: #e8f5e9;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        @media (max-width: 768px) {
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+            h1 {
+                font-size: 1.8rem;
+            }
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class=&quot;container&quot;&gt;
+        &lt;header&gt;
+            &lt;h1&gt;NVIDIA RTX 40/50 系列多卡支持指南&lt;/h1&gt;
+            &lt;p class=&quot;subtitle&quot;&gt;基于最新技术资料（截至 2026 年 1 月）的专业分析&lt;/p&gt;
+        &lt;/header&gt;
+</p>
+<p>
+        &lt;div class=&quot;note&quot;&gt;
+            &lt;strong&gt;重要说明：&lt;/strong&gt; NVIDIA 自 GeForce RTX 30 系列起已&lt;strong&gt;官方弃用 SLI 技术&lt;/strong&gt;。目前消费级显卡（GeForce RTX 40/50 系列）&lt;span class=&quot;warning&quot;&gt;不再支持传统意义上的多卡交火（如 SLI）&lt;/span&gt;。但“多卡模式”在特定场景下仍有意义，详见下文。
+        &lt;/div&gt;
+</p>
+<p>
+        &lt;div class=&quot;cards-grid&quot;&gt;
+            &lt;div class=&quot;card&quot;&gt;
+                &lt;h3&gt;🎮 游戏场景：不支持多卡加速&lt;/h3&gt;
+                &lt;ul class=&quot;feature-list&quot;&gt;
+                    &lt;li&gt;所有 RTX 40 系列（如 4090、4080、4070 等）和 RTX 50 系列（如 5090、5080、5060 等）&lt;span class=&quot;warning&quot;&gt;均无 SLI 桥接器支持&lt;/span&gt;。&lt;/li&gt;
+                    &lt;li&gt;NVIDIA 已移除驱动程序中的 SLI 配置选项。&lt;/li&gt;
+                    &lt;li&gt;即使主板有多个 PCIe x16 插槽，也无法通过多张消费级显卡提升单游戏性能。&lt;/li&gt;
+                    &lt;li&gt;现代游戏引擎普遍不再优化多 GPU 渲染，开发者已转向 DLSS 等 AI 升频技术。&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/div&gt;
+</p>
+<p>
+            &lt;div class=&quot;card&quot;&gt;
+                &lt;h3&gt;🖥️ 专业计算/服务器场景：支持多卡并行&lt;/h3&gt;
+                &lt;ul class=&quot;feature-list&quot;&gt;
+                    &lt;li&gt;&lt;span class=&quot;highlight&quot;&gt;RTX 4090 / 5090&lt;/span&gt; 等高端型号常用于构建多 GPU 服务器（如 a16z 提案中提到的八卡配置）。&lt;/li&gt;
+                    &lt;li&gt;通过 PCIe 5.0 x16 通道实现高带宽互联，适用于 AI 训练、渲染农场、科学计算等任务。&lt;/li&gt;
+                    &lt;li&gt;需依赖 CUDA、NVLink（仅限部分专业卡）或软件层面的并行框架（如 PyTorch、TensorFlow）。&lt;/li&gt;
+                    &lt;li&gt;消费级卡虽无 NVLink，但可通过 PCIe 总线协同工作，适合分布式计算任务。&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/div&gt;
+</p>
+<p>
+            &lt;div class=&quot;card&quot;&gt;
+                &lt;h3&gt;🤖 AI 与本地大模型：天然支持多卡&lt;/h3&gt;
+                &lt;ul class=&quot;feature-list&quot;&gt;
+                    &lt;li&gt;在 LM Studio、ComfyUI、ChatRTX 等 AI 应用中，可同时调用多张 RTX 显卡进行推理或微调。&lt;/li&gt;
+                    &lt;li&gt;DLSS 4 的多帧生成等新技术由单卡 Tensor Core 完成，无需多卡协作。&lt;/li&gt;
+                    &lt;li&gt;多卡可分别处理不同任务（如一张跑 Stable Diffusion，另一张跑 LLM），提升整体吞吐量。&lt;/li&gt;
+                    &lt;li&gt;需操作系统和应用软件支持设备枚举与负载分配。&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+</p>
+<p>
+        &lt;footer&gt;
+            &lt;p&gt;数据来源：NVIDIA 官方文档、a16z 技术报告、2025–2026 年公开技术评测 | 更新日期：2026 年 1 月 30 日&lt;/p&gt;
+            &lt;p&gt;注：RTX 50 系列部分型号（如 5060）采用 PCIe 5.0 x8 接口，仍可与其他 GPU 共存于系统中，但不用于图形渲染加速。&lt;/p&gt;
+        &lt;/footer&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</p>
+</body>
+</html>
