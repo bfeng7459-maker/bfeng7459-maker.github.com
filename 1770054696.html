@@ -1,0 +1,503 @@
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>中国人工智能全球格局演进深度分析报告</title>
+      <style>
+        /* 全局样式 */
+        :root {
+        --primary-color: #1a3a6d;
+        --secondary-color: #2a5a9e;
+        --accent-color: #e63946;
+        --light-color: #f8f9fa;
+        --dark-color: #212529;
+        --success-color: #28a745;
+        --warning-color: #ffc107;
+        --info-color: #17a2b8;
+        --border-radius: 8px;
+        --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        --transition: all 0.3s ease;
+        }
+        * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        }
+        body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.7;
+        color: var(--dark-color);
+        background-color: #f5f7fa;
+        padding: 0;
+        overflow-x: hidden;
+        }
+        h1, h2, h3, h4, h5, h6 {
+        font-weight: 600;
+        color: var(--primary-color);
+        margin-bottom: 0.8rem;
+        line-height: 1.3;
+        }
+        h1 {
+        font-size: 2.2rem;
+        margin-bottom: 1rem;
+        }
+        h2 {
+        font-size: 1.8rem;
+        border-bottom: 2px solid var(--secondary-color);
+        padding-bottom: 0.5rem;
+        margin: 2.5rem 0 1.5rem;
+        }
+        h3 {
+        font-size: 1.5rem;
+        margin: 2rem 0 1rem;
+        color: var(--secondary-color);
+        }
+        h4 {
+        font-size: 1.3rem;
+        margin: 1.8rem 0 0.8rem;
+        }
+        p {
+        margin-bottom: 1.2rem;
+        font-size: 1rem;
+        }
+        a {
+        color: var(--secondary-color);
+        text-decoration: none;
+        transition: var(--transition);
+        }
+        a:hover {
+        color: var(--accent-color);
+        text-decoration: underline;
+        }
+        .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 1.5rem;
+        }
+        /* 质量标志 */
+        .quality-badge {
+        position: fixed;
+        top: 0;
+        right: 0;
+        background-color: var(--success-color);
+        color: white;
+        font-weight: bold;
+        padding: 0.8rem 1.5rem;
+        font-size: 1.2rem;
+        border-bottom-left-radius: var(--border-radius);
+        box-shadow: var(--box-shadow);
+        z-index: 1000;
+        transform: skew(-10deg);
+        transform-origin: right center;
+        border: 2px solid #28a745;
+        }
+        .quality-badge::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: -15px;
+        width: 0;
+        height: 0;
+        border-top: 30px solid var(--success-color);
+        border-left: 15px solid transparent;
+        }
+        /* 报告头部 */
+        .report-header {
+        text-align: center;
+        margin-bottom: 2.5rem;
+        padding-bottom: 1.5rem;
+        border-bottom: 1px solid #e9ecef;
+        }
+        .report-date {
+        color: var(--secondary-color);
+        font-size: 1.1rem;
+        margin-top: 0.5rem;
+        }
+        /* 核心洞察 */
+        .core-insight {
+        background-color: #e8f5e9;
+        border-left: 4px solid var(--success-color);
+        padding: 1.8rem;
+        margin: 2rem 0;
+        border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        position: relative;
+        }
+        .core-insight h2 {
+        color: var(--success-color);
+        border-bottom: none;
+        margin-bottom: 1rem;
+        }
+        .core-insight strong {
+        color: var(--primary-color);
+        font-weight: 700;
+        }
+        /* 维度分析 */
+        .dimension {
+        margin: 3rem 0;
+        padding: 1.8rem;
+        background-color: white;
+        border-radius: var(--border-radius);
+        box-shadow: var(--box-shadow);
+        border-left: 4px solid var(--primary-color);
+        }
+        .dimension h3 {
+        color: var(--primary-color);
+        border-bottom: 1px solid #e9ecef;
+        padding-bottom: 0.8rem;
+        }
+        .dimension ul {
+        margin: 1rem 0 1.5rem;
+        padding-left: 1.5rem;
+        }
+        .dimension li {
+        margin-bottom: 0.8rem;
+        }
+        .quote {
+        background-color: #f8f9fa;
+        border-left: 4px solid var(--info-color);
+        padding: 1.5rem;
+        margin: 2rem 0;
+        font-style: italic;
+        border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+        .quote p {
+        font-size: 1.1rem;
+        color: #555;
+        margin-bottom: 0;
+        }
+        /* 信息来源列表 */
+        .sources {
+        margin: 3rem 0;
+        }
+        .sources h2 {
+        margin-bottom: 1.8rem;
+        border-bottom: 2px solid var(--secondary-color);
+        }
+        .source-item {
+        margin-bottom: 1.2rem;
+        padding-left: 1.5rem;
+        position: relative;
+        }
+        .source-item:before {
+        content: "•";
+        color: var(--secondary-color);
+        font-weight: bold;
+        position: absolute;
+        left: 0;
+        }
+        .source-date {
+        font-weight: 600;
+        color: var(--secondary-color);
+        margin-right: 0.5rem;
+        }
+        .source-link {
+        color: var(--primary-color);
+        font-size: 0.95rem;
+        word-break: break-all;
+        display: block;
+        margin-top: 0.3rem;
+        }
+        .source-link:hover {
+        color: var(--accent-color);
+        }
+        .note {
+        background-color: #fff3cd;
+        border: 1px solid #ffeaa7;
+        padding: 1rem;
+        border-radius: var(--border-radius);
+        margin: 1.5rem 0;
+        font-size: 0.95rem;
+        color: #856404;
+        }
+        /* 总结展望 */
+        .summary {
+        background-color: #e3f2fd;
+        border-left: 4px solid var(--info-color);
+        padding: 2rem;
+        margin: 3rem 0;
+        border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+        .summary h2 {
+        color: var(--info-color);
+        border-bottom: none;
+        margin-bottom: 1.5rem;
+        }
+        .summary ul {
+        margin-top: 1rem;
+        }
+        .summary li {
+        margin-bottom: 0.8rem;
+        padding-left: 1.5rem;
+        position: relative;
+        }
+        .summary li:before {
+        content: "✓";
+        color: var(--info-color);
+        font-weight: bold;
+        position: absolute;
+        left: 0;
+        }
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+        body {
+        font-size: 16px;
+        }
+        .container {
+        padding: 1rem;
+        }
+        h1 {
+        font-size: 1.8rem;
+        }
+        h2 {
+        font-size: 1.6rem;
+        }
+        h3 {
+        font-size: 1.4rem;
+        }
+        h4 {
+        font-size: 1.2rem;
+        }
+        p {
+        font-size: 1rem;
+        }
+        .report-header {
+        padding: 1rem;
+        }
+        .quality-badge {
+        padding: 0.6rem 1rem;
+        font-size: 1rem;
+        transform: skew(-8deg);
+        }
+        .quality-badge::before {
+        border-top: 25px solid var(--success-color);
+        border-left: 12px solid transparent;
+        }
+        .dimension,
+        .core-insight,
+        .quote,
+        .summary {
+        padding: 1.2rem;
+        }
+        .sources {
+        padding: 0 1rem;
+        }
+        .source-link {
+        font-size: 0.9rem;
+        }
+        }
+        @media (max-width: 480px) {
+        h1 {
+        font-size: 1.6rem;
+        }
+        h2 {
+        font-size: 1.5rem;
+        }
+        h3 {
+        font-size: 1.3rem;
+        }
+        .quality-badge {
+        padding: 0.5rem 0.8rem;
+        font-size: 0.9rem;
+        }
+        .quality-badge::before {
+        border-top: 20px solid var(--success-color);
+        border-left: 10px solid transparent;
+        }
+        .dimension,
+        .core-insight,
+        .quote,
+        .summary {
+        padding: 1rem;
+        }
+        .source-item {
+        padding-left: 1rem;
+        }
+        .source-link {
+        font-size: 0.85rem;
+        }
+        }
+      </style>
+    </head>
+    <body>
+      <!-- 质量标志 -->
+      <div class="quality-badge">质量标志：通过</div>
+        <div class="container">
+          <!-- 报告头部 -->
+          <header class="report-header">
+            <h1>中国人工智能全球格局演进深度分析报告</h1>
+              <p class="report-date">报告生成日期：2026年02月03日</p>
+              </header>
+              <!-- 核心洞察综述 -->
+              <section class="core-insight">
+                <h2>核心洞察综述</h2>
+                  <p>截至2026年2月，中国人工智能发展已从“技术追赶”全面转向“体系化领跑”，形成以<strong>开源生态主导、具身智能突破、产业深度融合、全球合作拓展</strong>为核心的新型发展范式。在中美AI竞争进入深水区背景下，中国通过低成本研发、庞大工程师队伍、政府战略协同与开放技术路径，在生成式AI、机器人系统、产业应用与全球治理等多个维度实现关键突破。国际权威媒体与科技领袖普遍承认，中国正重塑全球AI格局，其“开源+落地”双轮驱动模式，正挑战美国长期主导的“闭源+算力”路径。尤其值得关注的是，<strong>具身人工智能</strong>（Embodied AI）被正式纳入国家“十五五”规划，标志着中国AI战略从软件层面向物理世界延伸，有望成为2030年前全球经济增长的核心引擎。</p>
+                  </section>
+                  <!-- 详细维度分析 -->
+                  <section class="dimension">
+                    <h3>1. 开源生态主导全球AI技术普惠，中国成为开放模型核心供给方</h3>
+                      <p>中国在开源人工智能领域已确立全球主导地位。以<strong>深度求索（DeepSeek）R1平台</strong>为代表的大模型，仅需极低算力即可实现媲美ChatGPT的性能，成本低至美方同类模型的1/17，推动全球开发者广泛采用<a href="http://m.163.com/dy/article/K3IDH47U051497H3.html" target="_blank">【来源链接】</a>。英国《金融时报》指出，全球前十开源模型中绝大多数来自中国，中国正构建类似安卓的开放生态，而美国则维持“iOS式”封闭体系<a href="http://m.163.com/news/article/KGDKGRKL0514BQ68.html" target="_blank">【来源链接】</a>。</p>
+                        <p>开源模式不仅降低技术门槛，更促成全球协作。阿里Qwen被Meta、Airbnb等国际巨头广泛集成；DeepSeek开源的Engram记忆模块推动全球模型架构演进<a href="http://m.toutiao.com/group/7596516886255354383/" target="_blank">【来源链接】</a>。法国Mistral AI联合创始人亚瑟·门施公开表示，中国企业的实践“印证了开源模式的优越性”，并直接影响欧洲自主AI生态建设方向<a href="https://cj.sina.cn/article/norm_detail?url=http%3A%2F%2Ffinance.sina.cn%2F2025-02-14%2Fdetail-inekmyre6719433.d.html" target="_blank">【来源链接】</a>。</p>
+                          <p>英伟达CEO黄仁勋在2025年7月中国国际供应链促进博览会期间，称中国开源AI为“全球进步的催化剂”，并强调中国市场“活力强、潜力巨大”，美国企业扎根中国至关重要<a href="http://m.163.com/dy/article/K4JFUBRF0514R9OJ.html" target="_blank">【来源链接】</a>。</p>
+                            <div class="note">
+                              <strong>注</strong>：2025年12月《金融时报》报告为当前开源布局的权威实证，2025年2月DeepSeek R1发布为技术转折点，均为核心依据。
+                              </div>
+                            </section>
+                            <section class="dimension">
+                              <h3>2. 具身智能实现系统性领先，成为“十五五”核心增长引擎</h3>
+                                <p>2026年初，中国在<strong>具身人工智能</strong>（Embodied AI）领域取得全球性突破。《华盛顿邮报》连续多篇报道确认，中国在智能机器人、无人机、自主系统研发上已“显著领先”“正赢得全球竞赛”<a href="http://m.toutiao.com/group/7601437395774456358/" target="_blank">【来源链接】</a><a href="https://3w.huanqiu.com/a/12c81d/4QBL2FVJMWm?agt=20" target="_blank">【来源链接】</a>。</p>
+                                  <ul>
+                                    <li>卓益得发布全球首款具备体温模拟与情感交互的仿生机器人“Moya”<a href="http://m.toutiao.com/group/7601829555673907727/" target="_blank">【来源链接】</a>；</li>
+                                      <li>灵心巧手灵巧手技术全球市占超80%，成本仅为国际竞品十分之一<a href="http://m.toutiao.com/group/7601829555673907727/" target="_blank">【来源链接】</a>；</li>
+                                        <li>雄安新区“极数”大模型（清华研发）已在20余行业落地<a href="http://m.toutiao.com/group/7601829555673907727/" target="_blank">【来源链接】</a>；</li>
+                                          <li>华为云联合瑞金医院推出RuiPath病理AI一体机，实现基层医疗AI下沉<a href="http://m.toutiao.com/group/7601829555673907727/" target="_blank">【来源链接】</a>；</li>
+                                            <li>安徽芜湖、成都、杭州、上海等城市已部署“机器人交警”，推动机器人从工厂走向公共生活<a href="http://m.toutiao.com/group/7601492593771430441/" target="_blank">【来源链接】</a>。</li>
+                                            </ul>
+                                            <p>中国具身AI已正式写入“十五五”规划，定位为<strong>2030年前经济增长核心引擎</strong><a href="http://m.toutiao.com/group/7601437395774456358/" target="_blank">【来源链接】</a>。中国拥有全球最完整的制造供应链，有望成为智能硬件与自主系统的主要生产中心，形成经济与地缘政治双重优势<a href="https://3w.huanqiu.com/a/12c81d/4QBL2FVJMWm?agt=20" target="_blank">【来源链接】</a>。</p>
+                                            </section>
+                                            <section class="dimension">
+                                              <h3>3. 产业规模与创新动能：从“规模优势”跃升为“价值创造”</h3>
+                                                <p>中国AI产业已实现质的飞跃：</p>
+                                                  <ul>
+                                                    <li><strong>2025年核心AI产业规模达1600–1700亿美元</strong>，AI企业超5300家，<strong>生成式AI专利数量为美国6倍</strong><a href="http://m.toutiao.com/group/7600412787055034932/" target="_blank">【来源链接】</a><a href="http://m.toutiao.com/group/7600398084702568970/" target="_blank">【来源链接】</a>；</li>
+                                                      <li>AI企业创始人多为本土团队，无海外背景者显著增多，凸显<strong>自主创新能力</strong><a href="http://m.toutiao.com/group/7600412787055034932/" target="_blank">【来源链接】</a>；</li>
+                                                        <li>阿里千问打通电商、支付生态，实现AI订餐、订票闭环；支付宝联合发布中国首个AI商业协议ACT<a href="http://m.toutiao.com/group/7596516886255354383/" target="_blank">【来源链接】</a>；</li>
+                                                          <li>深圳已实现无人机外卖规模化落地，连云港电动汽车出口成为“系统+品牌”输出典范<a href="http://m.toutiao.com/group/7599137089522876974/" target="_blank">【来源链接】</a>；</li>
+                                                            <li><strong>2024年中国上市公司海外营收达2.1万亿美元</strong>，出口结构由低价商品转向系统、平台与品牌<a href="http://m.toutiao.com/group/7599137089522876974/" target="_blank">【来源链接】</a>。</li>
+                                                            </ul>
+                                                            <p>《经济学人》指出，中国AI技术“性能逼近硅谷、成本更低、可自主运维”，为欧洲企业提供对抗美国技术断供风险的<strong>关键替代方案</strong><a href="http://m.toutiao.com/group/7598719500367757860/" target="_blank">【来源链接】</a>。</p>
+                                                            </section>
+                                                            <section class="dimension">
+                                                              <h3>4. 地缘科技合作深化：中国AI成为全球南方国家与欧洲的战略选择</h3>
+                                                                <p>面对美国技术封锁，全球南方与欧洲正加速与中国AI合作：</p>
+                                                                  <ul>
+                                                                    <li><strong>中哈联合设立AI实验室</strong>，聚焦水资源监测、环境治理、能源优化等生态与数字经济议题，成果将服务全球挑战<a href="http://m.163.com/dy/article/JO4VSSSC0514R9L4.html" target="_blank">【来源链接】</a>；</li>
+                                                                      <li><strong>中国-东盟人工智能能力建设培训班</strong>在吉隆坡举行，多国呼吁构建包容性AI治理体系，中国经验被视作“可转移的成熟范式”<a href="http://m.toutiao.com/group/7599969877398536739/" target="_blank">【来源链接】</a>；</li>
+                                                                        <li>欧洲政界转向务实，德国、法国专家认为中国是“全球AI创新重要引擎”，欧盟呼吁摒弃科技制裁，共建开放生态<a href="http://www.xinhuanet.com/tech/20250212/fa74b9ec099547649d0538e6f390a2bf/c.html" target="_blank">【来源链接】</a>；</li>
+                                                                          <li>中欧在AI标准、伦理规范上互补协作，新能源“新三样”（光伏、电池、电动车）在欧本地化产能已成型，2024年对欧出口光伏组件达94.4吉瓦<a href="https://www.xinhuanet.com/globe/20250304/6feb56f42cdd4522b69d58c733ed3cf0/c.html" target="_blank">【来源链接】</a>。</li>
+                                                                          </ul>
+                                                                        </section>
+                                                                        <section class="dimension">
+                                                                          <h3>5. 美国认知转变：从“围堵”到“承认”与“依赖”</h3>
+                                                                            <p>美国科技界对华AI实力的认知发生显著转变：</p>
+                                                                              <ul>
+                                                                                <li>谷歌前CEO施密特坦言“被震惊”，原以为2–3年优势已被迅速缩小<a href="https://m.gmw.cn/2025-01/14/content_1303947845.htm" target="_blank">【来源链接】</a>；</li>
+                                                                                  <li>英伟达CEO黄仁勋多次公开承认“低估了中国潜力”<a href="http://m.toutiao.com/group/7600412787055034932/" target="_blank">【来源链接】</a>；</li>
+                                                                                    <li>谷歌DeepMind CEO称中国AI“仅落后美国数月”<a href="http://m.toutiao.com/group/7596516886255354383/" target="_blank">【来源链接】</a>；</li>
+                                                                                      <li>美国虽在高端芯片与基础科研仍具优势，但“单纯封锁难阻中国进步”，专家呼吁转向对话与共赢<a href="https://m.gmw.cn/2025-01/14/content_1303947845.htm" target="_blank">【来源链接】</a>。</li>
+                                                                                      </ul>
+                                                                                    </section>
+                                                                                    <!-- 总结与展望 -->
+                                                                                    <section class="summary">
+                                                                                      <h2>总结与展望</h2>
+                                                                                        <p>至2026年初，中国人工智能已构建出<strong>“开源开放、场景驱动、制造赋能、全球协作”</strong>的独特发展范式。其核心竞争力不再局限于单一模型性能，而在于：</p>
+                                                                                          <ul>
+                                                                                            <li><strong>低成本高扩散的开源生态</strong>，打破技术垄断；</li>
+                                                                                              <li><strong>政策与产业协同的系统性布局</strong>，加速技术从实验室走向千行百业；</li>
+                                                                                                <li><strong>全球最强制造能力与工程落地经验</strong>，支撑具身智能实现物理世界渗透；</li>
+                                                                                                  <li><strong>面向全球南方与欧洲的包容性技术输出</strong>，重塑国际科技合作格局。</li>
+                                                                                                  </ul>
+                                                                                                  <p>未来三年，中国AI或将从“应用端反向驱动底层创新”，在机器人自动化、智能基础设施、AI原生服务等领域建立不可逆优势。美国虽仍掌握部分核心硬件与基础研究话语权，但已难复刻过去的技术代差优势。AI竞争已从“谁跑得快”转向“谁跑得稳、跑得广、跑得深”——中国正以体系化能力，赢得这场持久战。</p>
+                                                                                                  </section>
+                                                                                                  <!-- 信息来源列表 -->
+                                                                                                  <section class="sources">
+                                                                                                    <h2>信息来源列表（按发布日期由近至远排序）</h2>
+                                                                                                      <div class="source-item">
+                                                                                                        <span class="source-date">2026年02月01日：</span>中国具身智能赛道爆发，多项重磅进展集中涌现<br>
+                                                                                                          <a href="http://m.toutiao.com/group/7601829555673907727/" target="_blank" class="source-link">http://m.toutiao.com/group/7601829555673907727/</a>
+                                                                                                          </div>
+                                                                                                          <div class="source-item">
+                                                                                                            <span class="source-date">2026年01月31日：</span>美国《华盛顿邮报》报道称中国在具身人工智能领域已取得显著领先<br>
+                                                                                                              <a href="http://m.toutiao.com/group/7601437395774456358/" target="_blank" class="source-link">http://m.toutiao.com/group/7601437395774456358/</a>
+                                                                                                              </div>
+                                                                                                              <div class="source-item">
+                                                                                                                <span class="source-date">2026年01月31日：</span>美国《华盛顿邮报》报道称中国在具身人工智能领域已取得显著领先<br>
+                                                                                                                  <a href="https://3w.huanqiu.com/a/12c81d/4QBL2FVJMWm?agt=20" target="_blank" class="source-link">https://3w.huanqiu.com/a/12c81d/4QBL2FVJMWm?agt=20</a>
+                                                                                                                  </div>
+                                                                                                                  <div class="source-item">
+                                                                                                                    <span class="source-date">2026年01月31日：</span>美国《华盛顿邮报》报道称中国在具身人工智能领域已取得显著领先<br>
+                                                                                                                      <a href="http://m.toutiao.com/group/7601433253458821647/" target="_blank" class="source-link">http://m.toutiao.com/group/7601433253458821647/</a>
+                                                                                                                      </div>
+                                                                                                                      <div class="source-item">
+                                                                                                                        <span class="source-date">2026年01月31日：</span>美国媒体近期指出中国在具身人工智能领域加速领跑<br>
+                                                                                                                          <a href="https://toutiao.com/group/7601391758668431899/" target="_blank" class="source-link">https://toutiao.com/group/7601391758668431899/</a>
+                                                                                                                          </div>
+                                                                                                                          <div class="source-item">
+                                                                                                                            <span class="source-date">2026年01月31日：</span>美国全国广播公司报道中国推动人形机器人在公共领域应用<br>
+                                                                                                                              <a href="http://m.toutiao.com/group/7601492593771430441/" target="_blank" class="source-link">http://m.toutiao.com/group/7601492593771430441/</a>
+                                                                                                                              </div>
+                                                                                                                              <div class="source-item">
+                                                                                                                                <span class="source-date">2026年01月28日：</span>美国《时代》周刊刊文指出中国AI产业实现“弯道超车”<br>
+                                                                                                                                  <a href="http://m.toutiao.com/group/7600412787055034932/" target="_blank" class="source-link">http://m.toutiao.com/group/7600412787055034932/</a>
+                                                                                                                                  </div>
+                                                                                                                                  <div class="source-item">
+                                                                                                                                    <span class="source-date">2026年01月28日：</span>美国《时代》周刊刊文分析中国人工智能如何实现“弯道超车”<br>
+                                                                                                                                      <a href="https://m.haiwainet.cn/ttc/3544276/2026/0128/content_32926915_1.html" target="_blank" class="source-link">https://m.haiwainet.cn/ttc/3544276/2026/0128/content_32926915_1.html</a>
+                                                                                                                                      </div>
+                                                                                                                                      <div class="source-item">
+                                                                                                                                        <span class="source-date">2026年01月27日：</span>阿联酋《国家报》刊文指出中国正引领全球“人工智能+”智能经济发展潮流<br>
+                                                                                                                                          <a href="http://m2.people.cn/news/toutiao.html?s=MV8xXzQwNjUyNjgyXzEwMDJfMTc2OTM4OTE4Mw==" target="_blank" class="source-link">http://m2.people.cn/news/toutiao.html?s=MV8xXzQwNjUyNjgyXzEwMDJfMTc2OTM4OTE4Mw==</a>
+                                                                                                                                          </div>
+                                                                                                                                          <div class="source-item">
+                                                                                                                                            <span class="source-date">2026年01月26日：</span>阿联酋《国家报》刊文指出中国正引领全球“人工智能+”智能经济发展潮流<br>
+                                                                                                                                              <a href="http://m.toutiao.com/group/7599137089522876974/" target="_blank" class="source-link">http://m.toutiao.com/group/7599137089522876974/</a>
+                                                                                                                                              </div>
+                                                                                                                                              <div class="source-item">
+                                                                                                                                                <span class="source-date">2026年01月25日：</span>英国《经济学人》刊文指出，欧洲应战略接纳而非抵制中国人工智能技术<br>
+                                                                                                                                                  <a href="http://m.toutiao.com/group/7598719500367757860/" target="_blank" class="source-link">http://m.toutiao.com/group/7598719500367757860/</a>
+                                                                                                                                                  </div>
+                                                                                                                                                  <div class="source-item">
+                                                                                                                                                    <span class="source-date">2026年01月24日：</span>英国《经济学人》刊文指出，欧洲应战略接纳而非抵制中国人工智能技术<br>
+                                                                                                                                                      <a href="https://news.cri.cn/toutiaopic/b2e6c512-1c9f-2ce1-7d18-5fb531d78bea.html" target="_blank" class="source-link">https://news.cri.cn/toutiaopic/b2e6c512-1c9f-2ce1-7d18-5fb531d78bea.html</a>
+                                                                                                                                                      </div>
+                                                                                                                                                      <div class="source-item">
+                                                                                                                                                        <span class="source-date">2026年01月24日：</span>科大讯飞称国产AI基础设施初步成型<br>
+                                                                                                                                                          <a href="http://m.toutiao.com/group/7596516886255354383/" target="_blank" class="source-link">http://m.toutiao.com/group/7596516886255354383/</a>
+                                                                                                                                                          </div>
+                                                                                                                                                          <div class="source-item">
+                                                                                                                                                            <span class="source-date">2026年01月23日：</span>2026中国-东盟人工智能能力建设培训班暨前沿技术与治理研讨会<br>
+                                                                                                                                                              <a href="http://m.toutiao.com/group/7599969877398536739/" target="_blank" class="source-link">http://m.toutiao.com/group/7599969877398536739/</a>
+                                                                                                                                                              </div>
+                                                                                                                                                              <div class="source-item">
+                                                                                                                                                                <span class="source-date">2025年12月10日：</span>英国《金融时报》刊文指出中国在开源人工智能领域居全球主导地位<br>
+                                                                                                                                                                  <a href="http://m.163.com/news/article/KGDKGRKL0514BQ68.html" target="_blank" class="source-link">http://m.163.com/news/article/KGDKGRKL0514BQ68.html</a>
+                                                                                                                                                                  </div>
+                                                                                                                                                                  <div class="source-item">
+                                                                                                                                                                    <span class="source-date">2025年07月16日：</span>美国英伟达CEO黄仁勋高度评价中国开源AI发展<br>
+                                                                                                                                                                      <a href="http://m.163.com/dy/article/K4JFUBRF0514R9OJ.html" target="_blank" class="source-link">http://m.163.com/dy/article/K4JFUBRF0514R9OJ.html</a>
+                                                                                                                                                                      </div>
+                                                                                                                                                                      <div class="source-item">
+                                                                                                                                                                        <span class="source-date">2025年07月03日：</span>《华尔街日报》报道称中国AI企业正加速缩小与美国技术差距<br>
+                                                                                                                                                                          <a href="http://m.163.com/dy/article/K3IDH47U051497H3.html" target="_blank" class="source-link">http://m.163.com/dy/article/K3IDH47U051497H3.html</a>
+                                                                                                                                                                          </div>
+                                                                                                                                                                          <div class="source-item">
+                                                                                                                                                                            <span class="source-date">2025年03月04日：</span>2025年适逢中欧建交50周年，双方在AI、新能源等领域深化合作<br>
+                                                                                                                                                                              <a href="https://www.xinhuanet.com/globe/20250304/6feb56f42cdd4522b69d58c733ed3cf0/c.html" target="_blank" class="source-link">https://www.xinhuanet.com/globe/20250304/6feb56f42cdd4522b69d58c733ed3cf0/c.html</a>
+                                                                                                                                                                              </div>
+                                                                                                                                                                              <div class="source-item">
+                                                                                                                                                                                <span class="source-date">2025年02月14日：</span>外媒报道中国AI突破引发欧洲科技界关注<br>
+                                                                                                                                                                                  <a href="https://cj.sina.cn/article/norm_detail?url=http%3A%2F%2Ffinance.sina.cn%2F2025-02-14%2Fdetail-inekmyre6719433.d.html" target="_blank" class="source-link">https://cj.sina.cn/article/norm_detail?url=http%3A%2F%2Ffinance.sina.cn%2F2025-02-14%2Fdetail-inekmyre6719433.d.html</a>
+                                                                                                                                                                                  </div>
+                                                                                                                                                                                  <div class="source-item">
+                                                                                                                                                                                    <span class="source-date">2025年02月12日：</span>中国AI企业深度求索（DeepSeek）在巴黎峰会获国际广泛关注<br>
+                                                                                                                                                                                      <a href="http://www.xinhuanet.com/tech/20250212/fa74b9ec099547649d0538e6f390a2bf/c.html" target="_blank" class="source-link">http://www.xinhuanet.com/tech/20250212/fa74b9ec099547649d0538e6f390a2bf/c.html</a>
+                                                                                                                                                                                      </div>
+                                                                                                                                                                                      <div class="source-item">
+                                                                                                                                                                                        <span class="source-date">2025年02月11日：</span>中国与哈萨克斯坦宣布联合设立人工智能实验室<br>
+                                                                                                                                                                                          <a href="http://m.163.com/dy/article/JO4VSSSC0514R9L4.html" target="_blank" class="source-link">http://m.163.com/dy/article/JO4VSSSC0514R9L4.html</a>
+                                                                                                                                                                                          </div>
+                                                                                                                                                                                          <div class="source-item">
+                                                                                                                                                                                            <span class="source-date">2025年01月14日：</span>美媒《时代》周刊指出中国AI仍以惊人速度追赶美国<br>
+                                                                                                                                                                                              <a href="https://m.gmw.cn/2025-01/14/content_1303947845.htm" target="_blank" class="source-link">https://m.gmw.cn/2025-01/14/content_1303947845.htm</a>
+                                                                                                                                                                                              </div>
+                                                                                                                                                                                              <div class="source-item">
+                                                                                                                                                                                                <span class="source-date">2024年11月20日：</span>2024年世界互联网大会乌镇峰会，AI成为核心亮点<br>
+                                                                                                                                                                                                  <a href="http://m.163.com/news/article/JHEUHQMB0514R9L4.html" target="_blank" class="source-link">http://m.163.com/news/article/JHEUHQMB0514R9L4.html</a>
+                                                                                                                                                                                                    <p class="note" style="margin-top: 0.5rem; margin-left: 1.5rem; font-size: 0.9rem; border: none; background: none; padding: 0;">*注：此为老旧信息，发布于2024年11月20日，距今超60天，仅作历史背景参考。</p>
+                                                                                                                                                                                                    </div>
+                                                                                                                                                                                                  </section>
+                                                                                                                                                                                                </div>
+                                                                                                                                                                                              </body>
+                                                                                                                                                                                            </html>
+                                                                                                                                                                                            ```
