@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>英伟达 B200 与 B300 集群最小规模解析</title>
+      <style>
+        :root {
+        --primary: #76b900;
+        --secondary: #1a1a1a;
+        --accent: #00a0ce;
+        --light: #f5f7fa;
+        --gray: #6c757d;
+        }
+        * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        }
+        body {
+        font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+        line-height: 1.6;
+        color: var(--secondary);
+        background-color: var(--light);
+        }
+        .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+        }
+        header {
+        text-align: center;
+        margin-bottom: 2.5rem;
+        padding-bottom: 1.5rem;
+        border-bottom: 2px solid var(--primary);
+        }
+        h1 {
+        font-size: 2.2rem;
+        color: var(--secondary);
+        margin-bottom: 0.5rem;
+        }
+        .subtitle {
+        font-size: 1.1rem;
+        color: var(--gray);
+        }
+        .summary-card {
+        background: white;
+        border-radius: 12px;
+        padding: 1.8rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        border-left: 4px solid var(--primary);
+        }
+        .summary-title {
+        font-size: 1.4rem;
+        margin-bottom: 1rem;
+        color: var(--secondary);
+        }
+        .summary-text {
+        font-size: 1.05rem;
+        line-height: 1.7;
+        }
+        .comparison-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+        }
+        .card {
+        background: white;
+        border-radius: 12px;
+        padding: 1.5rem;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 25px rgba(0,0,0,0.1);
+        }
+        .card-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1rem;
+        }
+        .card-icon {
+        width: 40px;
+        height: 40px;
+        background: var(--primary);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 12px;
+        color: white;
+        font-weight: bold;
+        }
+        .card-title {
+        font-size: 1.3rem;
+        color: var(--secondary);
+        }
+        .spec-list {
+        list-style: none;
+        }
+        .spec-item {
+        padding: 0.6rem 0;
+        border-bottom: 1px dashed #eaeaea;
+        display: flex;
+        justify-content: space-between;
+        }
+        .spec-item:last-child {
+        border-bottom: none;
+        }
+        .spec-label {
+        font-weight: 600;
+        color: var(--secondary);
+        }
+        .spec-value {
+        color: var(--accent);
+        font-weight: 500;
+        }
+        .note-section {
+        background: #fff8e1;
+        border-radius: 12px;
+        padding: 1.5rem;
+        margin-top: 2rem;
+        border-left: 4px solid #ffc107;
+        }
+        .note-title {
+        font-size: 1.2rem;
+        margin-bottom: 0.8rem;
+        color: #5d4037;
+        }
+        .note-text {
+        color: #5d4037;
+        line-height: 1.7;
+        }
+        footer {
+        text-align: center;
+        margin-top: 3rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid #eee;
+        color: var(--gray);
+        font-size: 0.9rem;
+        }
+        @media (max-width: 768px) {
+        .container {
+        padding: 1.5rem;
+        }
+        h1 {
+        font-size: 1.8rem;
+        }
+        .comparison-grid {
+        grid-template-columns: 1fr;
+        }
+        }
+      </style>
+    </head>
+    <body>
+      <div class="container">
+        <header>
+          <h1>英伟达 B200 与 B300 集群最小规模解析</h1>
+            <p class="subtitle">基于最新官方资料与行业实践（截至 2026 年 2 月）</p>
+            </header>
+            <div class="summary-card">
+              <h2 class="summary-title">核心结论</h2>
+                <p class="summary-text">
+                  根据 NVIDIA 官方发布的 SuperPod 参考架构及行业部署实践，<strong>B200 和 B300 的最小集群规模并非固定为 128 台或 144 台</strong>。实际最小部署单元通常以“机柜”（Rack）或“超节点”（SuperNode）为单位，而非单纯按服务器台数计算。B200 最小可从单台服务器起步，而 GB200/GB300 系统则以整柜（如 NVL72，含 72 GPU）为基本单元。所谓“128 台”或“144 台”更可能指特定高性能训练场景下的推荐配置，而非硬性下限。
+                </p>
+              </div>
+              <div class="comparison-grid">
+                <div class="card">
+                  <div class="card-header">
+                    <div class="card-icon">B2</div>
+                      <h3 class="card-title">B200 集群</h3>
+                      </div>
+                      <ul class="spec-list">
+                        <li class="spec-item">
+                          <span class="spec-label">最小部署单元</span>
+                            <span class="spec-value">单台服务器（8×B200 GPU）</span>
+                            </li>
+                            <li class="spec-item">
+                              <span class="spec-label">典型最小集群</span>
+                                <span class="spec-value">1–4 台服务器（8–32 GPU）</span>
+                                </li>
+                                <li class="spec-item">
+                                  <span class="spec-label">风冷支持</span>
+                                    <span class="spec-value">✅ 是（兼容现有数据中心）</span>
+                                    </li>
+                                    <li class="spec-item">
+                                      <span class="spec-label">扩展性</span>
+                                        <span class="spec-value">通过 NVLink + InfiniBand 灵活扩展</span>
+                                        </li>
+                                        <li class="spec-item">
+                                          <span class="spec-label">是否需整柜部署</span>
+                                            <span class="spec-value">❌ 否</span>
+                                            </li>
+                                          </ul>
+                                        </div>
+                                        <div class="card">
+                                          <div class="card-header">
+                                            <div class="card-icon">B3</div>
+                                              <h3 class="card-title">B300 / GB300 集群</h3>
+                                              </div>
+                                              <ul class="spec-list">
+                                                <li class="spec-item">
+                                                  <span class="spec-label">最小部署单元</span>
+                                                    <span class="spec-value">整柜超节点（如 GB300 NVL72）</span>
+                                                    </li>
+                                                    <li class="spec-item">
+                                                      <span class="spec-label">GPU 数量/机柜</span>
+                                                        <span class="spec-value">72 张 GPU（36×GB300 模块）</span>
+                                                        </li>
+                                                        <li class="spec-item">
+                                                          <span class="spec-label">冷却方式</span>
+                                                            <span class="spec-value">✅ 液冷（强制要求）</span>
+                                                            </li>
+                                                            <li class="spec-item">
+                                                              <span class="spec-label">功率/机柜</span>
+                                                                <span class="spec-value">约 240 千瓦</span>
+                                                                </li>
+                                                                <li class="spec-item">
+                                                                  <span class="spec-label">是否可单台部署</span>
+                                                                    <span class="spec-value">❌ 否（依赖整柜架构）</span>
+                                                                    </li>
+                                                                  </ul>
+                                                                </div>
+                                                              </div>
+                                                              <div class="note-section">
+                                                                <h3 class="note-title">重要说明</h3>
+                                                                  <p class="note-text">
+                                                                    所谓“B200 最小 128 台、B300 最小 144 台”的说法<strong>缺乏官方依据</strong>。NVIDIA 官方文档中，B200 可作为标准 HGX 服务器独立部署；而 GB200/GB300 系统采用“Grace-Blackwell 超芯片”设计，必须以整柜（如 DGX GB200/GB300 SuperPod）形式交付。一个 GB300 机柜即含 72 GPU，若按每台服务器含 8 GPU 计，则相当于 9 台服务器，远低于 144 台。128 或 144 更可能是某些客户为达到特定算力目标（如万亿参数模型训练）而选择的配置规模，而非技术上的最小门槛。
+                                                                  </p>
+                                                                </div>
+                                                                <footer>
+                                                                  <p>数据来源：NVIDIA 官方 SuperPod 架构文档、行业部署案例（截至 2026 年 1 月） | 生成时间：2026 年 2 月 3 日</p>
+                                                                  </footer>
+                                                                </div>
+                                                              </body>
+                                                            </html>
