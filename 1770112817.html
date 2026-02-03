@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>英伟达 SuperPod 最小配置澄清</title>
+      <style>
+        :root {
+        --primary: #76b900;
+        --secondary: #1a1a1a;
+        --light-bg: #f9f9f9;
+        --border: #e0e0e0;
+        --text: #333;
+        --warning: #ff6b35;
+        }
+        * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        }
+        body {
+        font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        line-height: 1.6;
+        color: var(--text);
+        background-color: #fff;
+        }
+        .container {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 2rem;
+        }
+        header {
+        text-align: center;
+        margin-bottom: 2.5rem;
+        border-bottom: 1px solid var(--border);
+        padding-bottom: 1.5rem;
+        }
+        h1 {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: var(--secondary);
+        margin-bottom: 0.5rem;
+        }
+        .subtitle {
+        color: #666;
+        font-size: 1rem;
+        }
+        .card {
+        background: var(--light-bg);
+        border-radius: 12px;
+        padding: 1.8rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        border-left: 4px solid var(--warning);
+        }
+        .conclusion {
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: var(--warning);
+        margin-bottom: 1rem;
+        }
+        .details {
+        margin-top: 1.2rem;
+        font-size: 0.95rem;
+        }
+        .specs-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 1.5rem 0;
+        font-size: 0.95rem;
+        }
+        .specs-table th {
+        background-color: var(--secondary);
+        color: white;
+        padding: 0.8rem;
+        text-align: left;
+        }
+        .specs-table td {
+        padding: 0.8rem;
+        border-bottom: 1px solid var(--border);
+        }
+        .specs-table tr:nth-child(even) {
+        background-color: #fafafa;
+        }
+        .note {
+        background-color: #fff8e1;
+        padding: 1rem;
+        border-radius: 8px;
+        margin-top: 1.5rem;
+        font-size: 0.9rem;
+        color: #5d4037;
+        }
+        footer {
+        text-align: center;
+        margin-top: 2rem;
+        color: #777;
+        font-size: 0.85rem;
+        }
+        @media (max-width: 768px) {
+        .container {
+        padding: 1.2rem;
+        }
+        h1 {
+        font-size: 1.5rem;
+        }
+        }
+      </style>
+    </head>
+    <body>
+      <div class="container">
+        <header>
+          <h1>关于 B200/B300 SuperPod 最小配置的说法核查</h1>
+            <div class="subtitle">基于 NVIDIA 官方资料与公开技术文档（截至 2026 年 2 月）</div>
+            </header>
+            <div class="card">
+              <div class="conclusion">❌ 该说法不准确。</div>
+                <p>目前<strong>没有可靠证据表明</strong> NVIDIA 官方定义了“B200 SuperPod 的最小配置为 32 节点（256 GPU）”或“B300 SuperPod 的最小配置为 16 节点（128 GPU）”。</p>
+                  <div class="details">
+                    <h3>事实依据：</h3>
+                      <ul style="margin-left: 1.2rem; margin-top: 0.8rem;">
+                        <li>NVIDIA 官方发布的 <strong>DGX SuperPOD 参考架构</strong> 中，Blackwell 世代（B200/B300）的最小部署单元通常以 <strong>“SuperPOD-64”</strong> 或 <strong>“SuperPOD-128”</strong> 等形式命名，但这些数字指的是 <strong>GPU 数量</strong>，而非固定节点数。</li>
+                          <li>一个 DGX B200 节点包含 <strong>8 颗 B200 GPU</strong>；DGX B300 同样为 8 GPU/节点（根据 2026 年初发布信息）。</li>
+                            <li>因此，256 GPU 对应 <strong>32 个节点</strong>（256 ÷ 8 = 32），128 GPU 对应 <strong>16 个节点</strong>。但这只是数学换算，并非 NVIDIA 官方定义的“最小配置”。</li>
+                              <li>实际上，NVIDIA 允许客户按需部署更小规模的 SuperPOD，例如 <strong>16-GPU（2 节点）</strong> 或 <strong>64-GPU（8 节点）</strong> 配置，尤其在早期采用阶段。</li>
+                                <li>官方重点推广的是 <strong>GB200 NVL72</strong> 超节点架构（单机柜含 72 GPU），并以此为基础构建大规模 SuperPOD（如 576 GPU），但并未强制规定“最小必须 256 GPU”。</li>
+                                </ul>
+                                <table class="specs-table">
+                                  <thead>
+                                    <tr>
+                                      <th>系统类型</th>
+                                        <th>每节点 GPU 数</th>
+                                          <th>常见 SuperPOD 规模（GPU）</th>
+                                            <th>是否官方“最小”？</th>
+                                            </tr>
+                                          </thead>
+                                          <tbody>
+                                            <tr>
+                                              <td>DGX B200</td>
+                                                <td>8</td>
+                                                  <td>64, 128, 256, 576</td>
+                                                    <td>否</td>
+                                                    </tr>
+                                                    <tr>
+                                                      <td>DGX B300</td>
+                                                        <td>8</td>
+                                                          <td>64, 128, 256+</td>
+                                                            <td>否</td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>GB200 NVL72</td>
+                                                                <td>72（超节点）</td>
+                                                                  <td>72, 144, 576</td>
+                                                                    <td>是（超节点为单位）</td>
+                                                                    </tr>
+                                                                  </tbody>
+                                                                </table>
+                                                                <div class="note">
+                                                                  <strong>注意：</strong>虽然 256-GPU（32 节点）和 128-GPU（16 节点）是常见的参考部署规模，但 NVIDIA 并未在任何官方文档中将其定义为“最小配置”。实际部署可根据客户需求灵活调整。
+                                                                  </div>
+                                                                </div>
+                                                              </div>
+                                                              <footer>
+                                                                数据来源：NVIDIA 官网、DGX SuperPOD 参考架构文档、Blackwell 产品发布会（2024–2026）<br>
+                                                                更新时间：2026 年 2 月 3 日
+                                                              </footer>
+                                                            </div>
+                                                          </body>
+                                                        </html>
