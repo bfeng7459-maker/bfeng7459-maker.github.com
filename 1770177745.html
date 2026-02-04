@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>英伟达 A100 与 A800 算力与功耗对比</title>
+      <style>
+        * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        }
+        body {
+        font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+        background: linear-gradient(135deg, #f5f7fa 0%, #e4edf9 100%);
+        color: #333;
+        line-height: 1.6;
+        padding: 2rem;
+        }
+        .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        }
+        header {
+        text-align: center;
+        margin-bottom: 2.5rem;
+        }
+        h1 {
+        font-size: 2.4rem;
+        color: #0066cc;
+        margin-bottom: 0.5rem;
+        font-weight: 700;
+        }
+        .subtitle {
+        color: #666;
+        font-size: 1.1rem;
+        }
+        .cards {
+        display: flex;
+        gap: 2rem;
+        flex-wrap: wrap;
+        justify-content: center;
+        }
+        .card {
+        background: white;
+        border-radius: 16px;
+        box-shadow: 0 8px 24px rgba(0, 102, 204, 0.12);
+        padding: 2rem;
+        flex: 1;
+        min-width: 300px;
+        max-width: 500px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 12px 32px rgba(0, 102, 204, 0.2);
+        }
+        .card-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1.5rem;
+        }
+        .logo {
+        width: 60px;
+        height: 60px;
+        background: #76b900;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 1rem;
+        color: white;
+        font-weight: bold;
+        font-size: 1.4rem;
+        }
+        .model-name {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: #0066cc;
+        }
+        .spec-table {
+        width: 100%;
+        border-collapse: collapse;
+        }
+        .spec-table th,
+        .spec-table td {
+        padding: 0.8rem 1rem;
+        text-align: left;
+        border-bottom: 1px solid #eee;
+        }
+        .spec-table th {
+        background-color: #f0f7ff;
+        color: #0066cc;
+        font-weight: 600;
+        width: 40%;
+        }
+        .highlight {
+        font-weight: 600;
+        color: #d32f2f;
+        }
+        .note {
+        margin-top: 1.5rem;
+        padding: 1rem;
+        background-color: #fff8e1;
+        border-left: 4px solid #ffc107;
+        border-radius: 0 8px 8px 0;
+        font-size: 0.95rem;
+        color: #5d4037;
+        }
+        @media (max-width: 768px) {
+        body {
+        padding: 1rem;
+        }
+        h1 {
+        font-size: 1.8rem;
+        }
+        .cards {
+        flex-direction: column;
+        }
+        }
+      </style>
+    </head>
+    <body>
+      <div class="container">
+        <header>
+          <h1>英伟达 A100 与 A800 算力与功耗对比</h1>
+            <p class="subtitle">基于截至 2026 年 2 月的权威技术资料整理</p>
+            </header>
+            <div class="cards">
+              <div class="card">
+                <div class="card-header">
+                  <div class="logo">A100</div>
+                    <h2 class="model-name">NVIDIA A100</h2>
+                    </div>
+                    <table class="spec-table">
+                      <tr>
+                        <th>架构</th>
+                          <td>Ampere</td>
+                          </tr>
+                          <tr>
+                            <th>制程工艺</th>
+                              <td>7nm</td>
+                              </tr>
+                              <tr>
+                                <th>CUDA 核心数</th>
+                                  <td>6,912</td>
+                                  </tr>
+                                  <tr>
+                                    <th>晶体管数量</th>
+                                      <td>542 亿</td>
+                                      </tr>
+                                      <tr>
+                                        <th>显存容量</th>
+                                          <td>40GB HBM2 / HBM2e</td>
+                                          </tr>
+                                          <tr>
+                                            <th>显存带宽</th>
+                                              <td>1,555–1,935 GB/s（视版本）</td>
+                                              </tr>
+                                              <tr>
+                                                <th>FP32 算力</th>
+                                                  <td>19.5 TFLOPS</td>
+                                                  </tr>
+                                                  <tr>
+                                                    <th>TF32 算力</th>
+                                                      <td>156 TFLOPS</td>
+                                                      </tr>
+                                                      <tr>
+                                                        <th>FP64 算力</th>
+                                                          <td>9.7 TFLOPS</td>
+                                                          </tr>
+                                                          <tr>
+                                                            <th>TDP 功耗</th>
+                                                              <td class="highlight">250W 或 400W（依配置）</td>
+                                                              </tr>
+                                                            </table>
+                                                          </div>
+                                                          <div class="card">
+                                                            <div class="card-header">
+                                                              <div class="logo">A800</div>
+                                                                <h2 class="model-name">NVIDIA A800</h2>
+                                                                </div>
+                                                                <table class="spec-table">
+                                                                  <tr>
+                                                                    <th>架构</th>
+                                                                      <td>Ampere（特供版）</td>
+                                                                      </tr>
+                                                                      <tr>
+                                                                        <th>制程工艺</th>
+                                                                          <td>7nm</td>
+                                                                          </tr>
+                                                                          <tr>
+                                                                            <th>CUDA 核心数</th>
+                                                                              <td>6,912</td>
+                                                                              </tr>
+                                                                              <tr>
+                                                                                <th>晶体管数量</th>
+                                                                                  <td>542 亿</td>
+                                                                                  </tr>
+                                                                                  <tr>
+                                                                                    <th>显存容量</th>
+                                                                                      <td class="highlight">80GB HBM2e</td>
+                                                                                      </tr>
+                                                                                      <tr>
+                                                                                        <th>显存带宽</th>
+                                                                                          <td>约 2,039 GB/s</td>
+                                                                                          </tr>
+                                                                                          <tr>
+                                                                                            <th>FP32 算力</th>
+                                                                                              <td>19.5 TFLOPS</td>
+                                                                                              </tr>
+                                                                                              <tr>
+                                                                                                <th>TF32 算力</th>
+                                                                                                  <td>312 TFLOPS（80GB 版本）</td>
+                                                                                                  </tr>
+                                                                                                  <tr>
+                                                                                                    <th>FP64 算力</th>
+                                                                                                      <td>9.7 TFLOPS</td>
+                                                                                                      </tr>
+                                                                                                      <tr>
+                                                                                                        <th>TDP 功耗</th>
+                                                                                                          <td class="highlight">400W</td>
+                                                                                                          </tr>
+                                                                                                        </table>
+                                                                                                      </div>
+                                                                                                    </div>
+                                                                                                    <div class="note">
+                                                                                                      <strong>说明：</strong>
+                                                                                                        A800 是 NVIDIA 为符合美国出口管制规定而推出的 A100 特供版本，主要区别在于：
+                                                                                                        （1）显存容量通常为 80GB；
+                                                                                                        （2）NVLink 互联带宽被限制（未在表中列出）；
+                                                                                                        （3）算力参数与 A100 80GB 版本基本一致，但部分 I/O 性能受限。
+                                                                                                        功耗方面，A100 存在 250W（PCIe 版）和 400W（SXM 版）两种主流配置，而 A800 通常采用 400W 配置以支持大显存高带宽运行。
+                                                                                                      </div>
+                                                                                                    </div>
+                                                                                                  </body>
+                                                                                                </html>
