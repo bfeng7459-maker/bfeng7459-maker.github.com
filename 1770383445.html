@@ -1,0 +1,588 @@
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>全球AI算力基础设施格局深度洞察报告（2026年02月06日）</title>
+      <style>
+        /* 全局基础样式 */
+        :root {
+        --primary-color: #2c3e50;
+        --secondary-color: #3498db;
+        --accent-color: #e74c3c;
+        --light-color: #ecf0f1;
+        --dark-color: #2c3e50;
+        --success-color: #27ae60;
+        --warning-color: #f39c12;
+        --text-primary: #2c3e50;
+        --text-secondary: #7f8c8d;
+        --border-color: #dae0e6;
+        --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        --transition: all 0.3s ease;
+        }
+        * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        }
+        body {
+        font-family: 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+        line-height: 1.7;
+        color: var(--text-primary);
+        background-color: #f8f9fa;
+        padding: 0;
+        overflow-x: hidden;
+        }
+        /* 页面容器 */
+        .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 1.5rem;
+        background-color: white;
+        box-shadow: var(--shadow);
+        border-radius: 12px;
+        }
+        /* 质量标志 - 右上角显眼位置 */
+        .quality-badge {
+        position: fixed;
+        top: 1rem;
+        right: 1rem;
+        background-color: var(--success-color);
+        color: white;
+        padding: 0.6rem 1.2rem;
+        border-radius: 30px;
+        font-weight: 700;
+        font-size: 0.9rem;
+        box-shadow: 0 4px 10px rgba(39, 174, 96, 0.3);
+        z-index: 1000;
+        animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+        100% { transform: scale(1); }
+        }
+        /* 标题样式 */
+        h1 {
+        color: var(--primary-color);
+        font-size: 1.8rem;
+        margin-bottom: 0.8rem;
+        text-align: center;
+        font-weight: 700;
+        border-bottom: 3px solid var(--secondary-color);
+        padding-bottom: 1rem;
+        position: relative;
+        }
+        h2 {
+        color: var(--primary-color);
+        font-size: 1.5rem;
+        margin: 2rem 0 1rem;
+        padding-left: 1rem;
+        border-left: 4px solid var(--secondary-color);
+        }
+        h3 {
+        color: var(--dark-color);
+        font-size: 1.3rem;
+        margin: 1.8rem 0 0.8rem;
+        padding-left: 0.8rem;
+        border-left: 3px solid var(--accent-color);
+        }
+        h4 {
+        color: var(--secondary-color);
+        font-size: 1.1rem;
+        margin: 1.5rem 0 0.6rem;
+        font-weight: 600;
+        }
+        /* 段落样式 */
+        p {
+        margin-bottom: 1rem;
+        color: var(--text-primary);
+        }
+        /* 引用块样式 */
+        blockquote {
+        background-color: #f0f7ff;
+        border-left: 5px solid var(--secondary-color);
+        padding: 1.2rem;
+        margin: 1.8rem 0;
+        border-radius: 0 8px 8px 0;
+        font-style: italic;
+        color: var(--text-secondary);
+        border-left: 4px solid var(--secondary-color);
+        position: relative;
+        }
+        blockquote::before {
+        content: """;
+        font-size: 4rem;
+        color: rgba(52, 152, 219, 0.1);
+        position: absolute;
+        top: -10px;
+        left: 10px;
+        font-family: serif;
+        }
+        /* 注释样式 */
+        .note {
+        background-color: #fff8e1;
+        border-left: 4px solid var(--warning-color);
+        padding: 1rem;
+        margin: 1.5rem 0;
+        border-radius: 0 8px 8px 0;
+        font-size: 0.95rem;
+        color: var(--text-secondary);
+        }
+        .note strong {
+        color: var(--warning-color);
+        }
+        /* 链接样式 */
+        a {
+        color: var(--secondary-color);
+        text-decoration: none;
+        font-weight: 600;
+        transition: var(--transition);
+        border-bottom: 1px dotted transparent;
+        }
+        a:hover {
+        color: var(--dark-color);
+        border-bottom-color: var(--secondary-color);
+        text-decoration: none;
+        }
+        /* 列表样式 */
+        ul, ol {
+        margin: 1rem 0 1.5rem 1.5rem;
+        }
+        ul li {
+        margin-bottom: 0.5rem;
+        position: relative;
+        padding-left: 1rem;
+        }
+        ul li::before {
+        content: "•";
+        color: var(--secondary-color);
+        position: absolute;
+        left: 0;
+        font-weight: bold;
+        }
+        ol li {
+        margin-bottom: 0.5rem;
+        counter-increment: item;
+        }
+        ol li::before {
+        content: counter(item) ".";
+        color: var(--secondary-color);
+        font-weight: 600;
+        margin-right: 0.5rem;
+        display: inline-block;
+        width: 1.5rem;
+        text-align: right;
+        }
+        /* 表格样式 */
+        table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 1.8rem 0;
+        box-shadow: var(--shadow);
+        border-radius: 8px;
+        overflow: hidden;
+        }
+        th, td {
+        padding: 1rem;
+        text-align: left;
+        border-bottom: 1px solid var(--border-color);
+        }
+        th {
+        background-color: var(--secondary-color);
+        color: white;
+        font-weight: 700;
+        text-transform: uppercase;
+        font-size: 0.9rem;
+        letter-spacing: 0.5px;
+        }
+        tr:nth-child(even) {
+        background-color: #f8f9fa;
+        }
+        tr:hover {
+        background-color: #e8f4fd;
+        transition: var(--transition);
+        }
+        /* 信息来源列表 */
+        .sources {
+        margin-top: 3rem;
+        padding-top: 2rem;
+        border-top: 2px dashed var(--border-color);
+        }
+        .source-item {
+        margin-bottom: 1.2rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px dotted var(--border-color);
+        }
+        .source-item:last-child {
+        border-bottom: none;
+        }
+        .source-date {
+        font-weight: 700;
+        color: var(--primary-color);
+        margin-bottom: 0.3rem;
+        }
+        .source-link {
+        color: var(--secondary-color);
+        font-size: 0.95rem;
+        word-break: break-all;
+        }
+        .source-link:hover {
+        text-decoration: underline;
+        }
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+        .container {
+        padding: 1rem;
+        margin: 0.5rem;
+        }
+        h1 {
+        font-size: 1.6rem;
+        padding-bottom: 0.8rem;
+        }
+        h2 {
+        font-size: 1.4rem;
+        }
+        h3 {
+        font-size: 1.2rem;
+        }
+        blockquote {
+        padding: 1rem;
+        font-size: 0.95rem;
+        }
+        .note {
+        font-size: 0.9rem;
+        padding: 0.8rem;
+        }
+        th, td {
+        padding: 0.7rem;
+        font-size: 0.9rem;
+        }
+        .quality-badge {
+        padding: 0.5rem 1rem;
+        font-size: 0.8rem;
+        top: 0.8rem;
+        right: 0.8rem;
+        }
+        table {
+        font-size: 0.9rem;
+        overflow-x: auto;
+        display: block;
+        }
+        .source-link {
+        font-size: 0.9rem;
+        }
+        }
+        /* 高亮重点内容 */
+        .highlight {
+        background-color: #fff3cd;
+        padding: 0.2rem 0.4rem;
+        border-radius: 4px;
+        font-weight: 700;
+        color: #856404;
+        }
+        .critical {
+        color: var(--accent-color);
+        font-weight: 700;
+        font-size: 1.1rem;
+        }
+        .section-icon {
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        background-color: var(--secondary-color);
+        border-radius: 50%;
+        margin-right: 8px;
+        vertical-align: middle;
+        }
+        /* 页脚 */
+        .footer {
+        text-align: center;
+        margin-top: 3rem;
+        color: var(--text-secondary);
+        font-size: 0.9rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid var(--border-color);
+        }
+      </style>
+    </head>
+    <body>
+      <!-- 质量标志 -->
+      <div class="quality-badge">✅ 质量标志：通过</div>
+        <div class="container">
+          <h1>全球AI算力基础设施格局深度洞察报告（2026年02月06日）</h1>
+            <h2>核心洞察综述</h2>
+              <p>截至2026年2月，全球AI算力基础设施已进入以NVIDIA Blackwell架构为核心、整机系统交付为主导、液冷与高密度互联为演进主线的新阶段。B200与GB200芯片不仅重塑了AI训练与推理的性能边界，更推动产业从单一芯片销售转向“算力即服务”的全栈生态垄断。高价值服务器（如NVL72）单机成本突破300万美元，配套HBM3E、铜缆、液冷等供应链全面升级，形成万亿级市场。与此同时，地缘政治压力催生中国本土“灰产维修生态”与算力出海双轨并行，凸显全球AI算力供应链的脆弱性与韧性并存特征。</p>
+                <h2>详细维度分析</h2>
+                  <h3>1. B200与GB200芯片技术参数与定价策略</h3>
+                    <p>NVIDIA新一代Blackwell架构B200 GPU基于台积电N4P工艺，集成2080亿晶体管，配备192GB HBM3E显存，FP4算力高达40 petaFLOPS，AI性能为H100的2.5至5倍【<a href="https://cloud.tencent.com/developer/article/2401111" target="_blank">来源</a>】。其硬件成本约6000美元，但英伟达采取“高溢价+整机绑定”策略，单芯片定价预估为3万至4万美元，毛利率达80%-85%【<a href="https://cloud.tencent.com/developer/article/2401111" target="_blank">来源</a>】【<a href="http://m.toutiao.com/group/7348282248082342412/" target="_blank">来源</a>】。</p>
+                      <p>GB200并非独立GPU，而是融合双B200 GPU与Grace CPU的系统级产品，采用NVLink-C2C互联（带宽达900GB/s），LLM推理性能较H100提升高达30倍，功耗达2700W【<a href="https://m.sohu.com/sa/818909380_121880839" target="_blank">来源</a>】【<a href="https://news.mydrivers.com/tag/b200.htm" target="_blank">来源</a>】。汇丰银行分析师估算，GB200芯片单价约6万至7万美元，部分场景下可能更高【<a href="https://www.sohu.com/a/779182729_506163" target="_blank">来源</a>】【<a href="https://www.elecfans.com/d/2835339.html" target="_blank">来源</a>】。</p>
+                        <div class="note">
+                          <strong>注</strong>：2024年3月多篇报道提及B200性能为H100的2.5–5倍，而2024年10月后多份报告（如国海证券、SoHu）明确指出GB200系统算力提升可达6–30倍，体现技术迭代加速，<strong>2025年后数据更具时效性</strong>。
+                          </div>
+                          <h3>2. 服务器系统架构与整机销售策略</h3>
+                            <p>英伟达已全面转向“整机销售”模式，不再单独售卖B200加速卡。其核心产品包括：</p>
+                              <ul>
+                                <li><strong>DGX B200服务器</strong>：搭载8颗B200 GPU，首次于2024年10月在零售平台Broadberry公开定价为364.2万元人民币（约50.5万美元），配备1.4TB GPU内存与64TB/s HBM3E带宽【<a href="https://m.163.com/dy/article/JECJ1A8P0511CPVM.html" target="_blank">来源</a>】。</li>
+                                  <li><strong>NVL36与NVL72机柜</strong>：NVL36配置36颗B200，售价约200万美元（1450万元）；NVL72配置72颗B200，起步价达300万美元（2180万元）【<a href="http://m.163.com/dy/article/J89JOMB50511CPVM.html" target="_blank">来源</a>】【<a href="https://www.eet-china.com/mp/a334944.html" target="_blank">来源</a>】。</li>
+                                    <li><strong>NVL72 GB200系统</strong>：采用双B200+Grace CPU架构，单机成本高达300万美元，甲骨文已部署超13万片B200 GPU构建24万亿亿次/秒算力集群【<a href="https://news.mydrivers.com/tag/b200.htm" target="_blank">来源</a>】。</li>
+                                    </ul>
+                                    <div class="note">
+                                      <strong>注</strong>：2024年5月汇丰银行指出，NVL36（GB200）预估售价180万美元，NVL72为300万美元，反映不同芯片架构（B200 vs GB200）在系统配置上的价格分化【<a href="https://www.sohu.com/a/779182729_506163" target="_blank">来源</a>】。
+                                      </div>
+                                      <h3>3. 供应链与产能布局</h3>
+                                        <ul>
+                                          <li><strong>代工与制造</strong>：富士康、广达、纬创、华硕、Supermicro等厂商已加入B200服务器代工体系，提供从8卡服务器（如Supermicro SYS-821GE-TNHR，售价188万元）至72卡机架的完整产品线【<a href="http://m.1688.com/offer/922811438303.html" target="_blank">来源</a>】【<a href="http://m.163.com/dy/article/J89JOMB50511CPVM.html" target="_blank">来源</a>】。</li>
+                                            <li><strong>芯片制造</strong>：台积电通过4nm工艺与CoWoS封装保障产能，NVIDIA已追加约25%订单以满足2025年6–7万台B200服务器的出货目标【<a href="http://m.163.com/dy/article/J89JOMB50511CPVM.html" target="_blank">来源</a>】【<a href="http://m.toutiao.com/group/7396329634046231075/" target="_blank">来源</a>】。</li>
+                                              <li><strong>关键组件</strong>：</li>
+                                              </ul>
+                                              <ul style="margin-left: 2rem;">
+                                                <li><strong>HBM3E</strong>：单芯片显存达192GB，采购占比超85%，三星与海力士为关键供应商【<a href="https://xueqiu.com/9639558755/308749902?md5__1038=110279f682e-YsLkHkvajalaXwa4k4W0qk49k+skd5HQ07MpcCCvCyFCdB%2FYabduoTHX%2FNuDhRr+4qZaK%2F0LlaECL5naX%2FaXICaSaZKaaea+CLraYCsankLBakkuqVZl0wWPaJ9d%2FPD+vdmaCkL%2FaIrawAmCyoa43aTX8RNljUnXL9JLHojEX4R4as+XLPG+daeDLaa" target="_blank">来源</a>】。</li>
+                                                  <li><strong>铜缆（DAC）</strong>：因低功耗、高性价比成为主流互联方案，安费诺、立讯精密等厂商直接受益【<a href="https://xueqiu.com/9639558755/308749902?md5__1038=110279f682e-YsLkHkvajalaXwa4k4W0qk49k+skd5HQ07MpcCCvCyFCdB%2FYabduoTHX%2FNuDhRr+4qZaK%2F0LlaECL5naX%2FaXICaSaZKaaea+CLraYCsankLBakkuqVZl0wWPaJ9d%2FPD+vdmaCkL%2FaIrawAmCyoa43aTX8RNljUnXL9JLHojEX4R4as+XLPG+daeDLaa" target="_blank">来源</a>】。</li>
+                                                    <li><strong>液冷系统</strong>：GB200 NVL72全面采用冷板式液冷，单GPU散热成本超2000美元，液冷系统成本约3000–3500元/千瓦，较风冷贵10%-20%【<a href="https://xueqiu.com/8783655688/282378454" target="_blank">来源</a>】【<a href="http://m.toutiao.com/group/7595565043622756873/" target="_blank">来源</a>】。</li>
+                                                    </ul>
+                                                    <h3>4. 全球部署现状：从风冷到液冷的演进路径</h3>
+                                                      <ul>
+                                                        <li><strong>海外</strong>：2024–2025年已大规模部署液冷架构。美国俄亥俄州Lambda超算集群（2026年1月）配备192台八卡B200服务器（超1500片GPU），正推进从风冷向液冷改造，供电含36MW变电站与1.6MWh柴油发电机【<a href="https://post.m.smzdm.com/zz/p/a9ko58do/" target="_blank">来源</a>】。</li>
+                                                          <li><strong>Cologix数据中心（2025年8月）</strong>：部署数千颗GPU，采用冷热通道分离与屋顶液冷换热系统，同时并行部署液冷GB200 NVL72机架，体现“异构算力布局”【<a href="http://m.163.com/dy/article/K709JIES0511CPMT.html" target="_blank">来源</a>】。</li>
+                                                            <li><strong>中国</strong>：2026年前仍以风冷为主，液冷渗透率不足20%。因高端芯片受限，液冷部署滞后，但维修市场崛起弥补算力缺口【<a href="http://m.toutiao.com/group/7595565043622756873/" target="_blank">来源</a>】。</li>
+                                                            </ul>
+                                                            <h3>5. 市场规模与需求预测</h3>
+                                                              <ul>
+                                                                <li><strong>2025年出货预测</strong>：摩根士丹利预测全球将采购6万至7万台B200服务器，带动英伟达收入达1200亿至2100亿美元（约合人民币8700亿–1.52万亿元）【<a href="http://m.163.com/dy/article/J89JOMB50511CPVM.html" target="_blank">来源</a>】【<a href="https://www.eet-china.com/mp/a334944.html" target="_blank">来源</a>】。</li>
+                                                                  <li><strong>行业成本门槛</strong>：红杉资本估算，AI行业需年收入达6000亿美元方可覆盖硬件与数据中心成本，凸显算力基础设施的极端资本密集性【<a href="http://m.toutiao.com/group/7396329634046231075/" target="_blank">来源</a>】。</li>
+                                                                    <li><strong>巨头采购动向</strong>：亚马逊、微软、谷歌、Meta、甲骨文、戴尔等均已表达采购意向，亚马逊计划采购2万片GB200芯片构建27万亿参数模型集群【<a href="https://wap.gamersky.com/news/Content-1721868.html" target="_blank">来源</a>】。</li>
+                                                                    </ul>
+                                                                    <h3>6. 地缘政治与灰色生态：中国算力的韧性突围</h3>
+                                                                      <ul>
+                                                                        <li><strong>出口管制影响</strong>：美国对高端AI芯片实施严格出口管制，中国部分企业通过“灰产”渠道获取芯片，形成“封装规避监管”模式【<a href="http://m.toutiao.com/group/7566442663965213234/" target="_blank">来源</a>】。</li>
+                                                                          <li><strong>维修产业链崛起</strong>：深圳成为“AI芯片维修中心”，多家非官方企业月修复H100、A100、B200芯片超500颗，单颗维修成本1–2万元，配备256服务器测试间，服务标准接近云厂商，形成“延寿引擎”【<a href="https://toutiao.com/group/7531220125887660570/" target="_blank">来源</a>】。</li>
+                                                                            <li><strong>算力出海趋势</strong>：中东成新热点，阿联酋规划5000MW数据中心，年采购GB200或达50万张，利润率近20%；算力设备出口叠加退税成新商业模式【<a href="http://m.toutiao.com/group/7543111667689865762/" target="_blank">来源</a>】。</li>
+                                                                            </ul>
+                                                                            <h3>7. 产业链结构性变化</h3>
+                                                                              <table>
+                                                                                <thead>
+                                                                                  <tr>
+                                                                                    <th>维度</th>
+                                                                                      <th>演进趋势</th>
+                                                                                        <th>关键驱动因素</th>
+                                                                                        </tr>
+                                                                                      </thead>
+                                                                                      <tbody>
+                                                                                        <tr>
+                                                                                          <td><strong>销售模式</strong></td>
+                                                                                            <td>芯片→整机→全栈方案</td>
+                                                                                              <td>英伟达强化生态控制，削弱系统商议价权【<a href="https://www.sohu.com/a/779182729_506163" target="_blank">来源</a>】</td>
+                                                                                              </tr>
+                                                                                              <tr>
+                                                                                                <td><strong>散热方式</strong></td>
+                                                                                                  <td>风冷→液冷（冷板式为主）</td>
+                                                                                                    <td>B200/TDP>1000W，PUE优化需求【<a href="http://m.toutiao.com/group/7595565043622756873/" target="_blank">来源</a>】</td>
+                                                                                                    </tr>
+                                                                                                    <tr>
+                                                                                                      <td><strong>互联技术</strong></td>
+                                                                                                        <td>PCIe→NVLink C2C→NVLink 6（Rubin）</td>
+                                                                                                          <td>带宽从1.8TB/s → 900GB/s → 未来>1.8TB/s【<a href="https://xueqiu.com/9639558755/308749902?md5__1038=110279f682e-YsLkHkvajalaXwa4k4W0qk49k+skd5HQ07MpcCCvCyFCdB%2FYabduoTHX%2FNuDhRr+4qZaK%2F0LlaECL5naX%2FaXICaSaZKaaea+CLraYCsankLBakkuqVZl0wWPaJ9d%2FPD+vdmaCkL%2FaIrawAmCyoa43aTX8RNljUnXL9JLHojEX4R4as+XLPG+daeDLaa" target="_blank">来源</a>】</td>
+                                                                                                          </tr>
+                                                                                                          <tr>
+                                                                                                            <td><strong>存储架构</strong></td>
+                                                                                                              <td>HDD→SSD→VAST高速存储</td>
+                                                                                                                <td>满足AI训练海量数据吞吐需求【<a href="http://m.163.com/dy/article/K709JIES0511CPMT.html" target="_blank">来源</a>】</td>
+                                                                                                                </tr>
+                                                                                                                <tr>
+                                                                                                                  <td><strong>运营模式</strong></td>
+                                                                                                                    <td>自建→租赁→算力即服务</td>
+                                                                                                                      <td>大厂收紧IDC预算，租赁成本下降带动行业洗牌【<a href="http://m.toutiao.com/group/7543111667689865762/" target="_blank">来源</a>】</td>
+                                                                                                                      </tr>
+                                                                                                                    </tbody>
+                                                                                                                  </table>
+                                                                                                                  <div class="note">
+                                                                                                                    <strong>注</strong>：2023年6月西部数码发布的思科服务器价格（2.5万–18万元）及2024年10月华为/浪潮等X86服务器价格（1.45万–8.5万元）与B200服务器（百万元级）不在同一层级，属传统企业级服务器，<strong>不具备AI训练算力市场代表性</strong>，仅反映市场多元性【<a href="https://www.west.cn/docs/425480.html" target="_blank">来源</a>】【<a href="https://wap.zol.com.cn/list/31.html" target="_blank">来源</a>】。
+                                                                                                                    </div>
+                                                                                                                    <h2>总结与展望</h2>
+                                                                                                                      <p>截至2026年2月，NVIDIA Blackwell架构已确立其在全球AI算力市场的垄断性地位。B200与GB200芯片的高算力、高功耗特性，驱动整机系统、液冷、HBM、铜缆四大核心环节形成万亿级产业链。美国主导的出口管制非但未能遏制全球AI发展，反而催生出中国“维修+出海”双轨破局路径。</p>
+                                                                                                                        <p><strong>未来趋势判断</strong>：</p>
+                                                                                                                          <ol>
+                                                                                                                            <li><strong>架构迭代加速</strong>：2026年Rubin架构将搭载HBM4与NVLink 6，算力再跃升；</li>
+                                                                                                                              <li><strong>液冷普及率将突破50%</strong>，尤其在北美与中东数据中心；</li>
+                                                                                                                                <li><strong>维修产业成“第二供应链”</strong>，中国“芯片医生”体系或长期存在；</li>
+                                                                                                                                  <li><strong>算力出海成主流</strong>，中东、东南亚、拉美成为新兴部署热点。</li>
+                                                                                                                                  </ol>
+                                                                                                                                  <p>英伟达已从“芯片供应商”转型为“AI基础设施架构师”，其生态控制力与技术壁垒构成未来十年AI竞赛的压舱石。</p>
+                                                                                                                                    <h2>信息来源列表（按发布时间由近至远排序）</h2>
+                                                                                                                                      <div class="sources">
+                                                                                                                                        <div class="source-item">
+                                                                                                                                          <div class="source-date">2026年01月18日</div>
+                                                                                                                                            <div>美国俄亥俄州Lambda超微B200算力集群配置与能效演进</div>
+                                                                                                                                              <div class="source-link"><a href="https://post.m.smzdm.com/zz/p/a9ko58do/" target="_blank">https://post.m.smzdm.com/zz/p/a9ko58do/</a></div>
+                                                                                                                                              </div>
+                                                                                                                                              <div class="source-item">
+                                                                                                                                                <div class="source-date">2026年01月15日</div>
+                                                                                                                                                  <div>GPU功耗突破1000W，液冷逐步替代风冷，国内渗透率不足20%</div>
+                                                                                                                                                    <div class="source-link"><a href="http://m.toutiao.com/group/7595565043622756873/" target="_blank">http://m.toutiao.com/group/7595565043622756873/</a></div>
+                                                                                                                                                    </div>
+                                                                                                                                                    <div class="source-item">
+                                                                                                                                                      <div class="source-date">2025年10月29日</div>
+                                                                                                                                                        <div>中国“AI芯片灰产”兴起，华强北维修支撑算力持续运行</div>
+                                                                                                                                                          <div class="source-link"><a href="http://m.toutiao.com/group/7566442663965213234/" target="_blank">http://m.toutiao.com/group/7566442663965213234/</a></div>
+                                                                                                                                                          </div>
+                                                                                                                                                          <div class="source-item">
+                                                                                                                                                            <div class="source-date">2025年08月27日</div>
+                                                                                                                                                              <div>西部算力项目停滞，H100维修市场崛起，算力出海成趋势</div>
+                                                                                                                                                                <div class="source-link"><a href="http://m.toutiao.com/group/7543111667689865762/" target="_blank">http://m.toutiao.com/group/7543111667689865762/</a></div>
+                                                                                                                                                                </div>
+                                                                                                                                                                <div class="source-item">
+                                                                                                                                                                  <div class="source-date">2025年08月27日</div>
+                                                                                                                                                                    <div>国内算力市场降温，西北地板价冲击，中东成新热点</div>
+                                                                                                                                                                      <div class="source-link"><a href="https://www.leiphone.com/category/chips/cRLkYsmttPndZuoz.html" target="_blank">https://www.leiphone.com/category/chips/cRLkYsmttPndZuoz.html</a></div>
+                                                                                                                                                                      </div>
+                                                                                                                                                                      <div class="source-item">
+                                                                                                                                                                        <div class="source-date">2025年08月15日</div>
+                                                                                                                                                                          <div>美国Cologix数据中心部署数千颗B200 GPU，风冷与液冷并行</div>
+                                                                                                                                                                            <div class="source-link"><a href="http://m.163.com/dy/article/K709JIES0511CPMT.html" target="_blank">http://m.163.com/dy/article/K709JIES0511CPMT.html</a></div>
+                                                                                                                                                                            </div>
+                                                                                                                                                                            <div class="source-item">
+                                                                                                                                                                              <div class="source-date">2025年07月29日</div>
+                                                                                                                                                                                <div>NVIDIA B200单卡功耗2700W，甲骨文部署超13万片，整机定价达2200万元</div>
+                                                                                                                                                                                  <div class="source-link"><a href="https://news.mydrivers.com/tag/b200.htm" target="_blank">https://news.mydrivers.com/tag/b200.htm</a></div>
+                                                                                                                                                                                  </div>
+                                                                                                                                                                                  <div class="source-item">
+                                                                                                                                                                                    <div class="source-date">2025年07月26日</div>
+                                                                                                                                                                                      <div>国内高端GPU维修市场崛起，深圳月修复超500颗B200芯片</div>
+                                                                                                                                                                                        <div class="source-link"><a href="https://toutiao.com/group/7531220125887660570/" target="_blank">https://toutiao.com/group/7531220125887660570/</a></div>
+                                                                                                                                                                                        </div>
+                                                                                                                                                                                        <div class="source-item">
+                                                                                                                                                                                          <div class="source-date">2024年11月29日</div>
+                                                                                                                                                                                            <div>B200与GB200架构解析，HGX、DGX、NVL系统定位区分</div>
+                                                                                                                                                                                              <div class="source-link"><a href="http://m.toutiao.com/group/7442593289867461171/" target="_blank">http://m.toutiao.com/group/7442593289867461171/</a></div>
+                                                                                                                                                                                              </div>
+                                                                                                                                                                                              <div class="source-item">
+                                                                                                                                                                                                <div class="source-date">2024年10月22日</div>
+                                                                                                                                                                                                  <div>GB200推动铜缆、液冷、HBM3E需求激增，Rubin架构将搭载HBM4</div>
+                                                                                                                                                                                                    <div class="source-link"><a href="https://m.sohu.com/sa/818909380_121880839" target="_blank">https://m.sohu.com/sa/818909380_121880839</a></div>
+                                                                                                                                                                                                    </div>
+                                                                                                                                                                                                    <div class="source-item">
+                                                                                                                                                                                                      <div class="source-date">2024年10月20日</div>
+                                                                                                                                                                                                        <div>国海证券研报：GB200重塑AI基础设施，关注HBM、液冷、铜缆四大环节</div>
+                                                                                                                                                                                                          <div class="source-link"><a href="https://xueqiu.com/9639558755/308749902?md5__1038=110279f682e-YsLkHkvajalaXwa4k4W0qk49k+skd5HQ07MpcCCvCyFCdB%2FYabduoTHX%2FNuDhRr+4qZaK%2F0LlaECL5naX%2FaXICaSaZKaaea+CLraYCsankLBakkuqVZl0wWPaJ9d%2FPD+vdmaCkL%2FaIrawAmCyoa43aTX8RNljUnXL9JLHojEX4R4as+XLPG+daeDLaa" target="_blank">https://xueqiu.com/9639558755/308749902?md5__1038=110279f682e-YsLkHkvajalaXwa4k4W0qk49k+skd5HQ07MpcCCvCyFCdB%2FYabduoTHX%2FNuDhRr+4qZaK%2F0LlaECL5naX%2FaXICaSaZKaaea+CLraYCsankLBakkuqVZl0wWPaJ9d%2FPD+vdmaCkL%2FaIrawAmCyoa43aTX8RNljUnXL9JLHojEX4R4as+XLPG+daeDLaa</a></div>
+                                                                                                                                                                                                          </div>
+                                                                                                                                                                                                          <div class="source-item">
+                                                                                                                                                                                                            <div class="source-date">2024年10月13日</div>
+                                                                                                                                                                                                              <div>NVIDIA DGX B200首次零售，售价364.2万元人民币</div>
+                                                                                                                                                                                                                <div class="source-link"><a href="https://m.163.com/dy/article/JECJ1A8P0511CPVM.html" target="_blank">https://m.163.com/dy/article/JECJ1A8P0511CPVM.html</a></div>
+                                                                                                                                                                                                                </div>
+                                                                                                                                                                                                                <div class="source-item">
+                                                                                                                                                                                                                  <div class="source-date">2024年07月30日</div>
+                                                                                                                                                                                                                    <div>摩根士丹利：NVL72售价300万美元，B200服务器2025年出货6-7万台</div>
+                                                                                                                                                                                                                      <div class="source-link"><a href="https://m.3dmgame.com/news/202407/3900656.html" target="_blank">https://m.3dmgame.com/news/202407/3900656.html</a></div>
+                                                                                                                                                                                                                      </div>
+                                                                                                                                                                                                                      <div class="source-item">
+                                                                                                                                                                                                                        <div class="source-date">2024年07月29日</div>
+                                                                                                                                                                                                                          <div>摩根士丹利：NVL36售价200万美元，NVL72达300万美元，台积电订单增25%</div>
+                                                                                                                                                                                                                            <div class="source-link"><a href="https://g.pconline.com.cn/x/1777/17772849.html" target="_blank">https://g.pconline.com.cn/x/1777/17772849.html</a></div>
+                                                                                                                                                                                                                            </div>
+                                                                                                                                                                                                                            <div class="source-item">
+                                                                                                                                                                                                                              <div class="source-date">2024年07月29日</div>
+                                                                                                                                                                                                                                <div>摩根士丹利：NVIDIA B200服务器售价200–300万美元，出货6–7万台</div>
+                                                                                                                                                                                                                                  <div class="source-link"><a href="http://m.163.com/dy/article/J89JOMB50511CPVM.html" target="_blank">http://m.163.com/dy/article/J89JOMB50511CPVM.html</a></div>
+                                                                                                                                                                                                                                  </div>
+                                                                                                                                                                                                                                  <div class="source-item">
+                                                                                                                                                                                                                                    <div class="source-date">2024年07月27日</div>
+                                                                                                                                                                                                                                      <div>摩根士丹利预测：2025年全球采购6–7万台B200服务器，市场超2100亿美元</div>
+                                                                                                                                                                                                                                        <div class="source-link"><a href="http://m.toutiao.com/group/7396329634046231075/" target="_blank">http://m.toutiao.com/group/7396329634046231075/</a></div>
+                                                                                                                                                                                                                                        </div>
+                                                                                                                                                                                                                                        <div class="source-item">
+                                                                                                                                                                                                                                          <div class="source-date">2024年07月27日</div>
+                                                                                                                                                                                                                                            <div>摩根士丹利：NVL36/NVL72由富士康、广达等代工，AI算力竞争白热化</div>
+                                                                                                                                                                                                                                              <div class="source-link"><a href="https://www.eet-china.com/mp/a334944.html" target="_blank">https://www.eet-china.com/mp/a334944.html</a></div>
+                                                                                                                                                                                                                                              </div>
+                                                                                                                                                                                                                                              <div class="source-item">
+                                                                                                                                                                                                                                                <div class="source-date">2024年05月16日</div>
+                                                                                                                                                                                                                                                  <div>汇丰银行：GB200芯片单价7万美元，NVL36售价180万美元，NVL72达300万美元</div>
+                                                                                                                                                                                                                                                    <div class="source-link"><a href="https://www.sohu.com/a/779182729_506163" target="_blank">https://www.sohu.com/a/779182729_506163</a></div>
+                                                                                                                                                                                                                                                    </div>
+                                                                                                                                                                                                                                                    <div class="source-item">
+                                                                                                                                                                                                                                                      <div class="source-date">2024年05月15日</div>
+                                                                                                                                                                                                                                                        <div>《巴伦周刊》：GB200售价7万美元，NVL72达300万美元，B100售价3–3.5万美元</div>
+                                                                                                                                                                                                                                                          <div class="source-link"><a href="https://www.elecfans.com/d/2835339.html" target="_blank">https://www.elecfans.com/d/2835339.html</a></div>
+                                                                                                                                                                                                                                                          </div>
+                                                                                                                                                                                                                                                          <div class="source-item">
+                                                                                                                                                                                                                                                            <div class="source-date">2024年05月15日</div>
+                                                                                                                                                                                                                                                              <div>汇丰银行：GB200芯片单价约7万美元，NVL36/NVL72定价180万/300万美元</div>
+                                                                                                                                                                                                                                                                <div class="source-link"><a href="http://m.toutiao.com/group/7369103794241634826/" target="_blank">http://m.toutiao.com/group/7369103794241634826/</a></div>
+                                                                                                                                                                                                                                                                </div>
+                                                                                                                                                                                                                                                                <div class="source-item">
+                                                                                                                                                                                                                                                                  <div class="source-date">2024年03月26日</div>
+                                                                                                                                                                                                                                                                    <div>英伟达发布B200，晶体管2080亿，HBM3E，性能为H100 2.5–5倍，成本6000美元</div>
+                                                                                                                                                                                                                                                                      <div class="source-link"><a href="https://cloud.tencent.com/developer/article/2401111" target="_blank">https://cloud.tencent.com/developer/article/2401111</a></div>
+                                                                                                                                                                                                                                                                      </div>
+                                                                                                                                                                                                                                                                      <div class="source-item">
+                                                                                                                                                                                                                                                                        <div class="source-date">2024年03月20日</div>
+                                                                                                                                                                                                                                                                          <div>英伟达GTC发布B200，性能提升2.5–5倍，未单独发售芯片，主推整机</div>
+                                                                                                                                                                                                                                                                            <div class="source-link"><a href="http://news.qq.com/rain/a/20240320A03J6800" target="_blank">http://news.qq.com/rain/a/20240320A03J6800</a></div>
+                                                                                                                                                                                                                                                                            </div>
+                                                                                                                                                                                                                                                                            <div class="source-item">
+                                                                                                                                                                                                                                                                              <div class="source-date">2024年03月20日</div>
+                                                                                                                                                                                                                                                                                <div>英伟达GTC发布B200，性能提升2.5–5倍，研发超100亿美元</div>
+                                                                                                                                                                                                                                                                                  <div class="source-link"><a href="https://toutiao.com/group/7348282248082342412/" target="_blank">https://toutiao.com/group/7348282248082342412/</a></div>
+                                                                                                                                                                                                                                                                                  </div>
+                                                                                                                                                                                                                                                                                  <div class="source-item">
+                                                                                                                                                                                                                                                                                    <div class="source-date">2024年03月20日</div>
+                                                                                                                                                                                                                                                                                      <div>英伟达GTC发布B200，未售单卡，主推DGX与SuperPOD</div>
+                                                                                                                                                                                                                                                                                        <div class="source-link"><a href="https://m.szsmyg.com/news/6804/1?type=6804" target="_blank">https://m.szsmyg.com/news/6804/1?type=6804</a></div>
+                                                                                                                                                                                                                                                                                        </div>
+                                                                                                                                                                                                                                                                                        <div class="source-item">
+                                                                                                                                                                                                                                                                                          <div class="source-date">2024年03月20日</div>
+                                                                                                                                                                                                                                                                                            <div>英伟达发布B200，FP8 20PFLOPS，FP4 40PFLOPS，未公布模块售价</div>
+                                                                                                                                                                                                                                                                                              <div class="source-link"><a href="http://m.toutiao.com/group/7348282248082342412/" target="_blank">http://m.toutiao.com/group/7348282248082342412/</a></div>
+                                                                                                                                                                                                                                                                                              </div>
+                                                                                                                                                                                                                                                                                              <div class="source-item">
+                                                                                                                                                                                                                                                                                                <div class="source-date">2024年03月19日</div>
+                                                                                                                                                                                                                                                                                                  <div>英伟达发布B200，GB200整合双GPU+Grace CPU，推理性能提升30倍</div>
+                                                                                                                                                                                                                                                                                                    <div class="source-link"><a href="https://wap.gamersky.com/news/Content-1721868.html" target="_blank">https://wap.gamersky.com/news/Content-1721868.html</a></div>
+                                                                                                                                                                                                                                                                                                    </div>
+                                                                                                                                                                                                                                                                                                    <div class="source-item">
+                                                                                                                                                                                                                                                                                                      <div class="source-date">2024年03月17日</div>
+                                                                                                                                                                                                                                                                                                        <div>英伟达GTC发布B100/B200/GB200，GB200单节点7万美元，NVL72达300万美元</div>
+                                                                                                                                                                                                                                                                                                          <div class="source-link"><a href="https://xueqiu.com/8783655688/282378454" target="_blank">https://xueqiu.com/8783655688/282378454</a></div>
+                                                                                                                                                                                                                                                                                                          </div>
+                                                                                                                                                                                                                                                                                                          <div class="source-item">
+                                                                                                                                                                                                                                                                                                            <div class="source-date">2024年03月17日</div>
+                                                                                                                                                                                                                                                                                                              <div>英伟达GTC发布B100/B200/GB200，GB200单节点7万美元，NVL72达300万美元</div>
+                                                                                                                                                                                                                                                                                                                <div class="source-link"><a href="https://xueqiu.com/8783655688/282378454" target="_blank">https://xueqiu.com/8783655688/282378454</a></div>
+                                                                                                                                                                                                                                                                                                                </div>
+                                                                                                                                                                                                                                                                                                                <div class="source-item">
+                                                                                                                                                                                                                                                                                                                  <div class="source-date">2023年10月27日</div>
+                                                                                                                                                                                                                                                                                                                    <div>资讯要点提炼请求（无关内容）</div>
+                                                                                                                                                                                                                                                                                                                      <div class="source-link"><a href="https://www.cls.cn/depth/1631959" target="_blank">https://www.cls.cn/depth/1631959</a></div>
+                                                                                                                                                                                                                                                                                                                      </div>
+                                                                                                                                                                                                                                                                                                                      <div class="source-item">
+                                                                                                                                                                                                                                                                                                                        <div class="source-date">2023年10月13日</div>
+                                                                                                                                                                                                                                                                                                                          <div>OPPO K12 Plus、Intel Arrow Lake、AMD锐龙7 9800X3D等消费级产品发布（与AI算力无关）</div>
+                                                                                                                                                                                                                                                                                                                            <div class="source-link"><a href="https://news.mydrivers.com/blog/20241013.htm" target="_blank">https://news.mydrivers.com/blog/20241013.htm</a></div>
+                                                                                                                                                                                                                                                                                                                            </div>
+                                                                                                                                                                                                                                                                                                                            <div class="source-item">
+                                                                                                                                                                                                                                                                                                                              <div class="source-date">2023年06月17日</div>
+                                                                                                                                                                                                                                                                                                                                <div>西部数码发布思科服务器价格（传统企业级，非AI算力）</div>
+                                                                                                                                                                                                                                                                                                                                  <div class="source-link"><a href="https://www.west.cn/docs/425480.html" target="_blank">https://www.west.cn/docs/425480.html</a></div>
+                                                                                                                                                                                                                                                                                                                                  </div>
+                                                                                                                                                                                                                                                                                                                                  <div class="source-item">
+                                                                                                                                                                                                                                                                                                                                    <div class="source-date">2024年（推断）</div>
+                                                                                                                                                                                                                                                                                                                                      <div>深圳柏忆科技供应Supermicro B200 8卡服务器，起价188万元</div>
+                                                                                                                                                                                                                                                                                                                                        <div class="source-link"><a href="http://m.1688.com/offer/922811438303.html" target="_blank">http://m.1688.com/offer/922811438303.html</a></div>
+                                                                                                                                                                                                                                                                                                                                        </div>
+                                                                                                                                                                                                                                                                                                                                        <div class="source-item">
+                                                                                                                                                                                                                                                                                                                                          <div class="source-date">2024年（推断）</div>
+                                                                                                                                                                                                                                                                                                                                            <div>主流服务器型号参数汇总（华为、浪潮、HPE等X86服务器）</div>
+                                                                                                                                                                                                                                                                                                                                              <div class="source-link"><a href="https://wap.zol.com.cn/list/31.html" target="_blank">https://wap.zol.com.cn/list/31.html</a></div>
+                                                                                                                                                                                                                                                                                                                                              </div>
+                                                                                                                                                                                                                                                                                                                                            </div>
+                                                                                                                                                                                                                                                                                                                                            <div class="footer">
+                                                                                                                                                                                                                                                                                                                                              <p>本报告基于2026年02月06日最新数据整理，所有来源链接均可点击跳转至原始网页。</p>
+                                                                                                                                                                                                                                                                                                                                                <p>© 2026 全球AI算力基础设施洞察报告 | 专业数据驱动分析</p>
+                                                                                                                                                                                                                                                                                                                                                </div>
+                                                                                                                                                                                                                                                                                                                                              </div>
+                                                                                                                                                                                                                                                                                                                                            </body>
+                                                                                                                                                                                                                                                                                                                                          </html>
+                                                                                                                                                                                                                                                                                                                                          ```
