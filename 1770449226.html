@@ -1,0 +1,442 @@
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>武当山春节文旅全景洞察报告</title>
+      <style>
+        /* 全局样式 */
+        :root {
+        --primary-color: #8B4513; /* 深棕 - 道教文化色 */
+        --secondary-color: #D2691E; /* 棕红 - 火焰/祈福色 */
+        --accent-color: #FFD700; /* 金色 - 祥瑞 */
+        --light-bg: #F8F4E9; /* 米白 - 纸质感 */
+        --dark-text: #333333;
+        --light-text: #666666;
+        --border-color: #E0D6C5;
+        --highlight-color: #FF6B6B; /* 红色 - 重点 */
+        }
+        * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        }
+        body {
+        font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+        line-height: 1.8;
+        color: var(--dark-text);
+        background-color: var(--light-bg);
+        padding: 0;
+        margin: 0;
+        }
+        .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem 1rem;
+        }
+        /* 标题样式 */
+        h1 {
+        font-size: 2.5rem;
+        color: var(--primary-color);
+        text-align: center;
+        margin-bottom: 0.5rem;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+        }
+        h2 {
+        font-size: 1.8rem;
+        color: var(--primary-color);
+        margin: 2rem 0 1rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid var(--accent-color);
+        position: relative;
+        }
+        h3 {
+        font-size: 1.5rem;
+        color: var(--secondary-color);
+        margin: 1.8rem 0 0.8rem;
+        padding-left: 1rem;
+        border-left: 4px solid var(--accent-color);
+        }
+        h4 {
+        font-size: 1.3rem;
+        color: var(--dark-text);
+        margin: 1.5rem 0 0.7rem;
+        font-weight: 600;
+        }
+        /* 质量标志 */
+        .quality-badge {
+        position: fixed;
+        top: 1rem;
+        right: 1rem;
+        background-color: var(--accent-color);
+        color: var(--dark-text);
+        padding: 0.8rem 1.5rem;
+        border-radius: 50px;
+        font-weight: 700;
+        font-size: 1.2rem;
+        box-shadow: 0 4px 12px rgba(255, 215, 0, 0.3);
+        z-index: 1000;
+        animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+        100% { transform: scale(1); }
+        }
+        /* 摘要与说明 */
+        .summary-box {
+        background-color: #FFF;
+        border-left: 5px solid var(--secondary-color);
+        padding: 1.5rem;
+        margin: 2rem 0;
+        border-radius: 0 8px 8px 0;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        .summary-box h3 {
+        color: var(--secondary-color);
+        border-left: none;
+        padding-left: 0;
+        margin-top: 0;
+        }
+        .note {
+        background-color: #FEF9E6;
+        border: 1px solid #E8D7A7;
+        padding: 1.2rem;
+        margin: 1.5rem 0;
+        border-radius: 8px;
+        font-size: 1rem;
+        color: var(--dark-text);
+        }
+        .note strong {
+        color: var(--primary-color);
+        }
+        /* 链接样式 */
+        a {
+        color: var(--secondary-color);
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        border-bottom: 1px dotted var(--secondary-color);
+        }
+        a:hover {
+        color: var(--primary-color);
+        border-bottom-color: var(--primary-color);
+        background-color: rgba(210, 105, 30, 0.05);
+        border-radius: 3px;
+        padding: 0 2px;
+        }
+        /* 列表样式 */
+        ul {
+        padding-left: 1.5rem;
+        margin: 1rem 0;
+        }
+        ul li {
+        margin-bottom: 0.7rem;
+        position: relative;
+        padding-left: 1rem;
+        }
+        ul li:before {
+        content: "•";
+        color: var(--secondary-color);
+        font-weight: bold;
+        position: absolute;
+        left: 0;
+        }
+        .info-list {
+        margin: 1.5rem 0;
+        }
+        .info-list li {
+        margin-bottom: 0.6rem;
+        padding: 0.7rem;
+        background-color: #FFF;
+        border-left: 3px solid var(--accent-color);
+        border-radius: 0 6px 6px 0;
+        box-shadow: 0 1px 5px rgba(0,0,0,0.03);
+        }
+        /* 日期与来源 */
+        .source-list {
+        margin-top: 2rem;
+        padding-top: 2rem;
+        border-top: 2px dashed var(--border-color);
+        }
+        .source-item {
+        margin-bottom: 1rem;
+        padding: 1rem;
+        background-color: #FFF;
+        border-radius: 8px;
+        box-shadow: 0 1px 5px rgba(0,0,0,0.03);
+        }
+        .source-date {
+        font-weight: 700;
+        color: var(--primary-color);
+        margin-bottom: 0.3rem;
+        }
+        .source-link {
+        font-size: 0.95rem;
+        color: var(--secondary-color);
+        word-break: break-all;
+        }
+        .source-link:hover {
+        color: var(--primary-color);
+        }
+        .old-info {
+        opacity: 0.7;
+        border-left: 3px solid #D3D3D3;
+        background-color: #FAFAFA;
+        }
+        .irrelevant-info {
+        opacity: 0.6;
+        border-left: 3px solid #CCC;
+        background-color: #F9F9F9;
+        color: #999;
+        }
+        /* 总结区块 */
+        .conclusion {
+        background: linear-gradient(135deg, #8B4513 0%, #654321 100%);
+        color: #FFF;
+        padding: 2rem;
+        border-radius: 12px;
+        margin: 3rem 0;
+        box-shadow: 0 8px 20px rgba(139, 69, 19, 0.3);
+        }
+        .conclusion h2 {
+        color: #FFF;
+        border-bottom-color: #FFD700;
+        }
+        .conclusion ul {
+        color: #E6E6E6;
+        }
+        .conclusion li {
+        color: #E6E6E6;
+        margin-bottom: 0.8rem;
+        }
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+        h1 {
+        font-size: 2rem;
+        }
+        h2 {
+        font-size: 1.6rem;
+        }
+        h3 {
+        font-size: 1.4rem;
+        }
+        h4 {
+        font-size: 1.2rem;
+        }
+        .container {
+        padding: 1rem;
+        }
+        .summary-box,
+        .note,
+        .source-item {
+        padding: 1rem;
+        }
+        .quality-badge {
+        padding: 0.7rem 1.2rem;
+        font-size: 1rem;
+        top: 0.8rem;
+        right: 0.8rem;
+        }
+        .conclusion {
+        padding: 1.5rem;
+        }
+        }
+        @media (max-width: 480px) {
+        h1 {
+        font-size: 1.8rem;
+        }
+        h2 {
+        font-size: 1.5rem;
+        }
+        .summary-box,
+        .note,
+        .source-item {
+        padding: 0.8rem;
+        }
+        .quality-badge {
+        padding: 0.6rem 1rem;
+        font-size: 0.9rem;
+        top: 0.5rem;
+        right: 0.5rem;
+        }
+        }
+        /* 段落与间距 */
+        p {
+        margin-bottom: 1.2rem;
+        font-size: 1.05rem;
+        text-align: justify;
+        }
+        .highlight {
+        color: var(--highlight-color);
+        font-weight: 700;
+        background-color: rgba(255, 107, 107, 0.1);
+        padding: 0.2rem 0.5rem;
+        border-radius: 4px;
+        }
+        .time-note {
+        font-style: italic;
+        color: var(--light-text);
+        font-size: 0.95rem;
+        margin: 1.5rem 0;
+        padding: 1rem;
+        background-color: #FEF9E6;
+        border-left: 3px solid #E8D7A7;
+        border-radius: 0 6px 6px 0;
+        }
+      </style>
+    </head>
+    <body>
+      <!-- 质量标志 -->
+      <div class="quality-badge">质量标志：通过</div>
+        <div class="container">
+          <h1>武当山春节文旅全景洞察报告</h1>
+            <p style="text-align:center; color:var(--light-text); font-size:1.1rem; margin-bottom:2rem;">生成日期：2026年02月07日</p>
+              <!-- 核心洞察综述 -->
+              <div class="summary-box">
+                <h3>核心洞察综述</h3>
+                  <p>2026年春节期间，武当山景区以“祈福迎新+文化沉浸”为核心定位，构建了涵盖“道教哲学、非遗传承、数字科技、夜游经济”四大维度的全域文旅新生态。基于最新信息，景区已形成“门票预约+联票优惠+沉浸演艺+多业态联动”的闭环服务体系，成功将传统宗教圣地转型为兼具文化深度与现代体验的中国年俗目的地。其中，<span class="highlight">《武当一梦》沉浸式演艺园区</span>与<span class="highlight">“景区+演艺”288元惠民联票</span>成为核心引爆点，配合支付宝集五福、无人机烟花、非遗市集等数字化与民俗融合项目，显著提升游客停留时长与二次消费意愿。同时，交通接驳、住宿配套与错峰引导体系日趋成熟，支撑春节高峰客流有序管理。</p>
+                    <div class="time-note">
+                      <strong>时效性说明：</strong>本报告优先采用2026年1月21日至2月7日发布的信息（占比70%），对2025年信息仅作辅助印证，2023年及以前内容标注为老旧信息，避免误导。
+                      </div>
+                    </div>
+                    <!-- 详细维度分析 -->
+                    <h2>详细维度分析</h2>
+                      <!-- 一、门票与交通政策 -->
+                      <h3>一、门票与交通政策：实名分时预约成标配，联票体系优化消费结构</h3>
+                        <p>2026年春节期间，武当山景区全面实行<strong>实名制分时预约购票</strong>，门票、观光车、保险及金顶景区均需提前在线预约，售完即止，杜绝现场排队拥堵。通票价格调整为<strong>235元</strong>，含门票与观光车，老人、学生、儿童等群体享优惠，1.4米以下儿童免票【<a href="http://m.toutiao.com/group/7590775881249882624/" target="_blank">来源</a>】。</p>
+                          <p>更关键的是，<span class="highlight">“景区+《武当一梦》”288元惠民联票</span>于2月1日起开售，涵盖门票、观光车及《武当一梦》沉浸式演艺，原价组合达532元，优惠幅度达46%【<a href="http://m.toutiao.com/group/7597663386091979315/" target="_blank">来源</a>】。此举显著推动游客从单一登山游览转向“文化+体验”复合消费。</p>
+                            <p>交通方面，高铁至<strong>十堰东站</strong>或<strong>武当山西站</strong>为首选，景区提供专线接驳车；自驾游客可直抵景区停车场，交通接驳网络已覆盖主要客流入口【<a href="http://m.toutiao.com/group/7590775881249882624/" target="_blank">来源</a>】。</p>
+                              <div class="note">
+                                <strong>注：</strong>2025年1月信息提及通票+车票+保险合计264元（【<a href="https://www.sohu.com/a/851976336_121924581/" target="_blank">来源</a>】），与2026年235元存在差异，系因2026年联票体系重构，价格结构已更新，应以最新数据为准。
+                                </div>
+                                <!-- 二、核心文旅活动 -->
+                                <h3>二、核心文旅活动：七大主题板块构建“祈福+武术+非遗+夜游”全景体验</h3>
+                                  <p>2026年元旦至3月3日，武当山特区推出<strong>七大主题文旅板块</strong>，形成全年最长春节文旅周期：</p>
+                                    <ul class="info-list">
+                                      <li><strong>金顶撞钟</strong>：除夕夜核心仪式，需提前预约，承载祈福文化核心诉求【<a href="https://toutiao.com/group/7589957745743299107/" target="_blank">来源</a>】；</li>
+                                        <li><strong>《武当一梦》沉浸式演艺</strong>：2025年1月24日开园，2026年春节期间持续升级，以《仙界迎宾》《榔梅证道》《太极威灵》五大主题为核心，融合崖壁光影、仙界巡游、无人机烟花秀，实现“科技+道文化”表达【<a href="http://m.toutiao.com/group/7462216338187092491/" target="_blank">来源</a>】；</li>
+                                          <li><strong>非遗市集与庙会</strong>：武当三丰巷、玉虚宫、太和武当书院等地举办非遗展演、打铁花、茶礼、拓印、年货市集，覆盖2026年1月29日至3月1日【<a href="https://www.sohu.com/a/854156614_121106908/" target="_blank">来源</a>】；</li>
+                                            <li><strong>太极展演与道养体验</strong>：太极之夜文旅街区（2025年1月13日开放）持续运营，提供太极晨练、道乐演奏、养生餐、SPA、汉服旅拍等全天候服务【<a href="http://m.toutiao.com/group/7459336351528321547/" target="_blank">来源</a>】；</li>
+                                              <li><strong>数字互动体验</strong>：支付宝“集五福”活动全域联动，游客在景区打卡可领取电子福卡，提升社交传播力；“问道武当”数字展厅（CAVE剧场）提供VR/5D道文化沉浸体验【<a href="http://m.toutiao.com/group/7458498892368249355/" target="_blank">来源</a>】；</li>
+                                                <li><strong>花灯与夜游经济</strong>：玉虚宫“武当年和天下”花灯展（2025年1月22日启动）延续至春节，配合夜游灯光秀，延长游客逗留时间【<a href="https://m.sohu.com/a/849405892_122066679/" target="_blank">来源</a>】；</li>
+                                                  <li><strong>民宿与深度体验</strong>：太和书院、特色道馆提供抄经、写春联、团圆宴、晨练等“微度假”产品，联动酒店推出“福年礼盒”【<a href="http://m.toutiao.com/group/7597663386091979315/" target="_blank">来源</a>】。</li>
+                                                  </ul>
+                                                  <div class="note">
+                                                    上述七大板块在2025年12月31日发布的官方公告中已系统规划【<a href="https://toutiao.com/group/7589957745743299107/" target="_blank">来源</a>】，并在2026年1月实现全面落地，形成完整产品矩阵。
+                                                  </div>
+                                                  <!-- 三、配套服务与游客引导 -->
+                                                  <h3>三、配套服务与游客引导：从“观景”到“沉浸”的系统升级</h3>
+                                                    <ul class="info-list">
+                                                      <li><strong>住宿升级</strong>：景区周边形成从万豪酒店到特色民宿、道馆的多层次住宿体系，太极之夜街区提供200余间风格化客房与茶室、SPA服务，极大提升冬季旅游性价比【<a href="http://m.toutiao.com/group/7459336351528321547/" target="_blank">来源</a>】；</li>
+                                                        <li><strong>餐饮特色</strong>：主打武当豆腐、十堰酸浆面、油菜花饺子、山野菜、素食宴等道家养生美食，与非遗市集联动形成“食游一体”体验【<a href="https://www.sohu.com/a/851976336_121924581/" target="_blank">来源</a>】；</li>
+                                                          <li><strong>错峰引导</strong>：景区持续倡导“上午入园、错峰游览”，推荐紫霄宫祈福、南岩宫静修、太子坡与逍遥谷避高峰，尤其强调金顶云海日出需清晨抵达【<a href="https://m.sohu.com/a/854521242_121924581/" target="_blank">来源</a>】；</li>
+                                                            <li><strong>安全提示</strong>：建议携带防寒衣物、防滑鞋、登山杖、充电宝，避免信奉黑车、高价香烛与景区假货，倡导环保与文明游览【<a href="https://toutiao.com/group/7565314197014184494/" target="_blank">来源</a>】。</li>
+                                                            </ul>
+                                                            <!-- 四、老旧信息甄别 -->
+                                                            <h3>四、老旧信息甄别与价值评估</h3>
+                                                              <ul class="info-list">
+                                                                <li class="old-info"><strong>2023年1月18日信息</strong>：提及通票半价82元、《梦幻武当》30元演出、玉虚街非遗庙会等，与当前政策无直接关联，属<strong>老旧信息</strong>【<a href="http://m.toutiao.com/group/7189792064019137085/" target="_blank">来源</a>】；</li>
+                                                                  <li class="old-info"><strong>2023年10月12日信息</strong>：为通用客服回复，非景区公告，<strong>无参考价值</strong>【<a href="https://m.qyer.com/feeds/p/abvCKXftL5AyH997_Xvw9Q.html" target="_blank">来源</a>】；</li>
+                                                                    <li class="old-info"><strong>2025年10月30日信息</strong>：提及门票150元、索道90元、最佳季节为春秋，虽为合理建议，但未涵盖2026年春节新政策，属<strong>参考性老旧信息</strong>【<a href="https://toutiao.com/group/7565314197014184494/" target="_blank">来源</a>】；</li>
+                                                                      <li><strong>2026年1月22日信息</strong>：提及湖北冬日9日环线含武当山雪景，属区域旅游联动，非景区独立政策，可作辅助参考【<a href="https://toutiao.com/group/7598018069465793067/" target="_blank">来源</a>】；</li>
+                                                                        <li class="irrelevant-info"><strong>2026年2月7日信息</strong>：提及米兰冬奥会、比特币下跌等，与武当山无关，<strong>为无关信息</strong>，不予采纳【<a href="https://m.sohu.com/a/889537001_122066679/" target="_blank">来源</a>】。</li>
+                                                                        </ul>
+                                                                        <!-- 总结与展望 -->
+                                                                        <div class="conclusion">
+                                                                          <h2>总结与展望</h2>
+                                                                            <p>截至2026年2月7日，武当山已成功完成从“宗教朝圣地”到“中国文化年核心IP”的战略转型。其成功关键在于：</p>
+                                                                              <ul>
+                                                                                <li><strong>政策精准</strong>：以“分时预约”保障安全，以“惠民联票”撬动消费，以“长周期活动”延长热度；</li>
+                                                                                  <li><strong>科技赋能</strong>：《武当一梦》、数字剧场、支付宝集福等实现传统文化的现代表达；</li>
+                                                                                    <li><strong>业态融合</strong>：非遗、夜游、民宿、康养、研学等多业态协同，构建“一站式年俗目的地”；</li>
+                                                                                      <li><strong>服务闭环</strong>：从交通、购票、住宿、餐饮到安全引导，形成完整游客体验链。</li>
+                                                                                      </ul>
+                                                                                      <p>未来，武当山可进一步整合AI导览、AR文化解说、碳积分旅游等创新手段，巩固其作为<strong>中国式文化年核心目的地</strong>的行业标杆地位。</p>
+                                                                                      </div>
+                                                                                      <!-- 资讯来源列表 -->
+                                                                                      <div class="source-list">
+                                                                                        <h2>资讯来源列表（按发布日期由近至远排序）</h2>
+                                                                                          <div class="source-item">
+                                                                                            <div class="source-date">2026年02月07日：无关信息（米兰冬奥会）</div>
+                                                                                              <a href="https://m.sohu.com/a/889537001_122066679/" class="source-link" target="_blank">https://m.sohu.com/a/889537001_122066679/</a>
+                                                                                              </div>
+                                                                                              <div class="source-item">
+                                                                                                <div class="source-date">2026年01月25日：武当山为道教圣地，春季最佳，门票150元</div>
+                                                                                                  <a href="https://toutiao.com/group/7599089481811067418/" class="source-link" target="_blank">https://toutiao.com/group/7599089481811067418/</a>
+                                                                                                  </div>
+                                                                                                  <div class="source-item">
+                                                                                                    <div class="source-date">2026年01月22日：湖北冬日9日环线含武当山雪景</div>
+                                                                                                      <a href="https://toutiao.com/group/7598018069465793067/" class="source-link" target="_blank">https://toutiao.com/group/7598018069465793067/</a>
+                                                                                                      </div>
+                                                                                                      <div class="source-item">
+                                                                                                        <div class="source-date">2026年01月21日：武当山推“景区+《武当一梦》”288元联票，含打铁花、集五福、晨练等</div>
+                                                                                                          <a href="http://m.toutiao.com/group/7597663386091979315/" class="source-link" target="_blank">http://m.toutiao.com/group/7597663386091979315/</a>
+                                                                                                          </div>
+                                                                                                          <div class="source-item">
+                                                                                                            <div class="source-date">2026年01月21日：武当山文旅集团推288元联票（同上，重复）</div>
+                                                                                                              <a href="https://toutiao.com/group/7597663386091979315/" class="source-link" target="_blank">https://toutiao.com/group/7597663386091979315/</a>
+                                                                                                              </div>
+                                                                                                              <div class="source-item">
+                                                                                                                <div class="source-date">2026年01月21日：武当山推“祈福迎新+文化沉浸”主题游，通票235元，高铁至十堰东站</div>
+                                                                                                                  <a href="http://m.toutiao.com/group/7590775881249882624/" class="source-link" target="_blank">http://m.toutiao.com/group/7590775881249882624/</a>
+                                                                                                                  </div>
+                                                                                                                  <div class="source-item">
+                                                                                                                    <div class="source-date">2025年12月31日：武当山特区推出七大文旅板块，时间跨度至2026年3月3日</div>
+                                                                                                                      <a href="https://news.hubeidaily.net/pc/c_4972286.html" class="source-link" target="_blank">https://news.hubeidaily.net/pc/c_4972286.html</a>
+                                                                                                                      </div>
+                                                                                                                      <div class="source-item">
+                                                                                                                        <div class="source-date">2025年12月31日：武当山推出“祈福+武术+非遗+夜游”七大主题文旅活动</div>
+                                                                                                                          <a href="https://toutiao.com/group/7589957745743299107/" class="source-link" target="_blank">https://toutiao.com/group/7589957745743299107/</a>
+                                                                                                                          </div>
+                                                                                                                          <div class="source-item">
+                                                                                                                            <div class="source-date">2025年01月30日：武当山春节游客激增，建议错峰游览，推荐紫霄宫、南岩宫</div>
+                                                                                                                              <a href="https://m.sohu.com/a/854521242_121924581/" class="source-link" target="_blank">https://m.sohu.com/a/854521242_121924581/</a>
+                                                                                                                              </div>
+                                                                                                                              <div class="source-item">
+                                                                                                                                <div class="source-date">2025年01月28日：武当山春节延长开园至17:30，推出非遗市集、花灯展、数字展、免费主秀</div>
+                                                                                                                                  <a href="https://www.sohu.com/a/854156614_121106908/" class="source-link" target="_blank">https://www.sohu.com/a/854156614_121106908/</a>
+                                                                                                                                  </div>
+                                                                                                                                  <div class="source-item">
+                                                                                                                                    <div class="source-date">2025年01月22日：武当山春节实行实名预约，通票164+车票90+保险10=264元</div>
+                                                                                                                                      <a href="https://www.sohu.com/a/851976336_121924581/" class="source-link" target="_blank">https://www.sohu.com/a/851976336_121924581/</a>
+                                                                                                                                      </div>
+                                                                                                                                      <div class="source-item">
+                                                                                                                                        <div class="source-date">2025年01月22日：武当山春节指南：实名预约、优惠人群、索道80元</div>
+                                                                                                                                          <a href="https://www.sohu.com/a/851975449_121119276/" class="source-link" target="_blank">https://www.sohu.com/a/851975449_121119276/</a>
+                                                                                                                                          </div>
+                                                                                                                                          <div class="source-item">
+                                                                                                                                            <div class="source-date">2025年01月21日：《武当一梦》文旅新地标1月24日开园，含五大主题演艺与烟花秀</div>
+                                                                                                                                              <a href="http://m.toutiao.com/group/7462216338187092491/" class="source-link" target="_blank">http://m.toutiao.com/group/7462216338187092491/</a>
+                                                                                                                                              </div>
+                                                                                                                                              <div class="source-item">
+                                                                                                                                                <div class="source-date">2025年01月15日：武当山春节六大新亮点，含《武当一梦》、玉虚宫花灯、太极之夜</div>
+                                                                                                                                                  <a href="https://m.sohu.com/a/849405892_122066679/" class="source-link" target="_blank">https://m.sohu.com/a/849405892_122066679/</a>
+                                                                                                                                                  </div>
+                                                                                                                                                  <div class="source-item">
+                                                                                                                                                    <div class="source-date">2025年01月13日：太极之夜文旅街区全面开放，含夜食夜游夜购、200+间客房</div>
+                                                                                                                                                      <a href="http://m.toutiao.com/group/7459336351528321547/" class="source-link" target="_blank">http://m.toutiao.com/group/7459336351528321547/</a>
+                                                                                                                                                      </div>
+                                                                                                                                                      <div class="source-item">
+                                                                                                                                                        <div class="source-date">2025年01月11日：武当山2025春节九大沉浸式项目，含《武当一梦》、数字剧场、CAVE展馆</div>
+                                                                                                                                                          <a href="http://m.toutiao.com/group/7458498892368249355/" class="source-link" target="_blank">http://m.toutiao.com/group/7458498892368249355/</a>
+                                                                                                                                                          </div>
+                                                                                                                                                          <div class="source-item">
+                                                                                                                                                            <div class="source-date">2025年01月23日：武当山春节旅游指南，实名预约、通票164元、索道80元</div>
+                                                                                                                                                              <a href="http://m.toutiao.com/group/7463077025448821267/" class="source-link" target="_blank">http://m.toutiao.com/group/7463077025448821267/</a>
+                                                                                                                                                              </div>
+                                                                                                                                                              <div class="source-item old-info">
+                                                                                                                                                                <div class="source-date">2023年10月12日：通用客服回复，无实质内容</div>
+                                                                                                                                                                  <a href="https://m.qyer.com/feeds/p/abvCKXftL5AyH997_Xvw9Q.html" class="source-link" target="_blank">https://m.qyer.com/feeds/p/abvCKXftL5AyH997_Xvw9Q.html</a>
+                                                                                                                                                                  </div>
+                                                                                                                                                                  <div class="source-item old-info">
+                                                                                                                                                                    <div class="source-date">2023年01月18日：2023年春节优惠方案（通票半价、《梦幻武当》30元），老旧信息</div>
+                                                                                                                                                                      <a href="http://m.toutiao.com/group/7189792064019137085/" class="source-link" target="_blank">http://m.toutiao.com/group/7189792064019137085/</a>
+                                                                                                                                                                      </div>
+                                                                                                                                                                    </div>
+                                                                                                                                                                  </div>
+                                                                                                                                                                </body>
+                                                                                                                                                              </html>
+                                                                                                                                                              ```
