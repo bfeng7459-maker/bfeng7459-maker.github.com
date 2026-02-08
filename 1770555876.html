@@ -1,0 +1,545 @@
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>北京天坛春节文化传承与遗址活化全息洞察报告</title>
+      <style>
+        /* 基础变量定义 */
+        :root {
+        --primary-color: #8B4513; /* 深棕 - 礼制庄严 */
+        --secondary-color: #D2691E; /* 巧克力棕 - 古建木色 */
+        --accent-color: #E63946; /* 红色 - 春节元素 */
+        --light-color: #F8F4E3; /* 米白 - 古纸色调 */
+        --dark-color: #2E2E2E; /* 深灰 - 文字主色 */
+        --success-color: #2A9D8F; /* 青绿 - 生态 */
+        --warning-color: #F4A261; /* 橙黄 - 警示 */
+        --border-radius: 12px;
+        --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        --transition: all 0.3s ease;
+        }
+        /* 全局样式 */
+        * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        }
+        body {
+        font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+        line-height: 1.7;
+        color: var(--dark-color);
+        background-color: var(--light-color);
+        padding: 0;
+        overflow-x: hidden;
+        }
+        .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 1.5rem;
+        }
+        /* 质量标志 - 右上角显眼位置 */
+        .quality-badge {
+        position: fixed;
+        top: 1rem;
+        right: 1rem;
+        background-color: var(--success-color);
+        color: white;
+        padding: 0.6rem 1rem;
+        border-radius: 50px;
+        font-weight: 700;
+        font-size: 0.9rem;
+        box-shadow: var(--box-shadow);
+        z-index: 1000;
+        animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+        100% { transform: scale(1); }
+        }
+        /* 标题样式 */
+        h1 {
+        font-size: 2.2rem;
+        color: var(--primary-color);
+        margin-bottom: 0.5rem;
+        text-align: center;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+        position: relative;
+        padding-bottom: 1rem;
+        }
+        h1::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100px;
+        height: 4px;
+        background: var(--accent-color);
+        border-radius: 2px;
+        }
+        h2 {
+        font-size: 1.8rem;
+        color: var(--secondary-color);
+        margin: 2rem 0 1rem;
+        padding-left: 1rem;
+        border-left: 5px solid var(--accent-color);
+        font-weight: 700;
+        }
+        h3 {
+        font-size: 1.5rem;
+        color: var(--primary-color);
+        margin: 1.8rem 0 0.8rem;
+        font-weight: 600;
+        }
+        h4 {
+        font-size: 1.3rem;
+        color: var(--dark-color);
+        margin: 1.5rem 0 0.7rem;
+        font-weight: 600;
+        }
+        /* 正文样式 */
+        p {
+        margin-bottom: 1.2rem;
+        font-size: 1.1rem;
+        }
+        .highlight {
+        background-color: rgba(230, 57, 70, 0.1);
+        border-left: 4px solid var(--accent-color);
+        padding: 1rem 1.5rem;
+        margin: 1.5rem 0;
+        border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        font-style: italic;
+        color: var(--dark-color);
+        }
+        .trend-indicator {
+        color: var(--accent-color);
+        font-weight: 700;
+        background-color: rgba(230, 57, 70, 0.1);
+        padding: 0.2rem 0.6rem;
+        border-radius: 20px;
+        font-size: 0.95rem;
+        display: inline-block;
+        margin: 0 0.3rem;
+        }
+        /* 链接样式 */
+        a {
+        color: var(--primary-color);
+        text-decoration: none;
+        font-weight: 600;
+        position: relative;
+        transition: var(--transition);
+        }
+        a:hover {
+        color: var(--accent-color);
+        text-decoration: underline;
+        }
+        a::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 0;
+        height: 1px;
+        background-color: var(--primary-color);
+        transition: var(--transition);
+        }
+        a:hover::after {
+        width: 100%;
+        }
+        /* 列表样式 */
+        ul, ol {
+        margin: 1.2rem 0;
+        padding-left: 1.8rem;
+        }
+        ul li {
+        margin-bottom: 0.7rem;
+        position: relative;
+        padding-left: 1rem;
+        }
+        ul li::before {
+        content: '•';
+        color: var(--accent-color);
+        font-weight: bold;
+        position: absolute;
+        left: 0;
+        font-size: 1.3rem;
+        }
+        ol li {
+        margin-bottom: 0.7rem;
+        position: relative;
+        padding-left: 1.5rem;
+        }
+        ol li::before {
+        color: var(--secondary-color);
+        font-weight: 700;
+        position: absolute;
+        left: 0;
+        font-size: 1rem;
+        }
+        /* 数据表格 - 信息列表 */
+        .info-list {
+        margin: 2rem 0;
+        }
+        .info-item {
+        background-color: white;
+        padding: 1.3rem;
+        margin-bottom: 1rem;
+        border-radius: var(--border-radius);
+        box-shadow: var(--box-shadow);
+        border-left: 4px solid var(--secondary-color);
+        transition: var(--transition);
+        }
+        .info-item:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+        }
+        .info-date {
+        color: var(--primary-color);
+        font-weight: 700;
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+        display: block;
+        }
+        .info-link {
+        color: var(--accent-color);
+        font-weight: 600;
+        text-decoration: none;
+        display: inline-block;
+        margin-top: 0.5rem;
+        padding: 0.5rem 1rem;
+        background-color: rgba(230, 57, 70, 0.1);
+        border-radius: 20px;
+        font-size: 0.9rem;
+        border: 1px solid rgba(230, 57, 70, 0.3);
+        transition: var(--transition);
+        }
+        .info-link:hover {
+        background-color: var(--accent-color);
+        color: white;
+        text-decoration: none;
+        }
+        .old-info {
+        border-left-color: var(--warning-color);
+        }
+        .old-info .info-date {
+        color: var(--warning-color);
+        }
+        /* 总结与展望 */
+        .conclusion {
+        background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+        color: white;
+        padding: 2rem;
+        border-radius: var(--border-radius);
+        margin: 2.5rem 0;
+        box-shadow: var(--box-shadow);
+        }
+        .conclusion h2 {
+        color: white;
+        border-left-color: #FFD166;
+        }
+        .conclusion ul {
+        padding-left: 2rem;
+        margin-top: 1rem;
+        }
+        .conclusion li {
+        margin-bottom: 0.8rem;
+        position: relative;
+        padding-left: 1.5rem;
+        }
+        .conclusion li::before {
+        content: '✓';
+        color: #FFD166;
+        position: absolute;
+        left: 0;
+        font-weight: bold;
+        }
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+        .container {
+        padding: 1rem;
+        }
+        h1 {
+        font-size: 1.8rem;
+        }
+        h2 {
+        font-size: 1.5rem;
+        padding-left: 0.8rem;
+        }
+        h3 {
+        font-size: 1.3rem;
+        }
+        h4 {
+        font-size: 1.1rem;
+        }
+        p {
+        font-size: 1rem;
+        }
+        .info-item {
+        padding: 1.2rem;
+        }
+        .info-date {
+        font-size: 1rem;
+        }
+        .info-link {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.85rem;
+        }
+        .quality-badge {
+        font-size: 0.8rem;
+        padding: 0.5rem 0.8rem;
+        }
+        .conclusion {
+        padding: 1.5rem;
+        }
+        }
+        @media (max-width: 480px) {
+        h1 {
+        font-size: 1.6rem;
+        }
+        h2 {
+        font-size: 1.4rem;
+        }
+        h3 {
+        font-size: 1.2rem;
+        }
+        .info-item {
+        padding: 1rem;
+        }
+        .info-date {
+        font-size: 0.95rem;
+        }
+        .info-link {
+        padding: 0.3rem 0.7rem;
+        font-size: 0.8rem;
+        }
+        .conclusion {
+        padding: 1.2rem;
+        }
+        .highlight {
+        padding: 0.8rem;
+        font-size: 0.95rem;
+        }
+        }
+        /* 简洁分隔线 */
+        hr {
+        border: 0;
+        height: 1px;
+        background: linear-gradient(to right, transparent, var(--secondary-color), transparent);
+        margin: 2.5rem 0;
+        }
+        .report-date {
+        text-align: center;
+        color: var(--dark-color);
+        font-size: 1rem;
+        margin-bottom: 2rem;
+        font-style: italic;
+        }
+        /* 标题增强 */
+        .section-title {
+        position: relative;
+        display: inline-block;
+        margin-bottom: 1rem;
+        padding: 0.5rem 1rem;
+        background-color: rgba(139, 69, 19, 0.1);
+        border-radius: 30px;
+        border: 1px solid rgba(139, 69, 19, 0.2);
+        }
+        .timeline-marker {
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        background-color: var(--accent-color);
+        border-radius: 50%;
+        margin-right: 8px;
+        vertical-align: middle;
+        }
+      </style>
+    </head>
+    <body>
+      <!-- 质量标志 -->
+      <div class="quality-badge">质量标志：通过</div>
+        <div class="container">
+          <h1>北京天坛春节文化传承与遗址活化全息洞察报告</h1>
+            <div class="report-date">报告生成日期：2026年02月08日</div>
+              <hr>
+              <h2>核心洞察综述</h2>
+                <p>2026年春节期间，北京天坛公园作为世界文化遗产与中轴线核心节点，持续深化“文化+科技+民俗”融合路径，通过高密度非遗展演、沉浸式古建体验与智慧化服务系统，全面呈现中华礼制文明的活态传承。最新信息显示，天坛已从单一观光景区转型为兼具仪式感、教育性与生活美学的“城市文化客厅”，其春节活动体系呈现出<span class="trend-indicator">主题持续深化</span>、<span class="trend-indicator">技术手段迭代</span>、<span class="trend-indicator">游客行为引导精细化</span>、<span class="trend-indicator">时空布局系统化</span>四大核心趋势。</p>
+                  <p>其中，<strong>2026年2月6日</strong>的实时报道揭示了天坛在极端低温环境下仍实现文化景观的高强度运营，红灯笼、福马、民俗大鼓展、清代服饰打卡等元素构建出强烈的“穿越式年俗场域”，并首次明确提及公园内<span class="trend-indicator">3562棵古树</span>、<span class="trend-indicator">620年九龙柏</span>等生态—文化复合资产，标志着其从“建筑遗产”向“生态-礼制-民俗”三位一体的系统性保护升级。</p>
+                    <p>相较之下，2024年春节“寻龙探宝”“五谷福袋”“线上韶乐展演”等已成年度标配，而2025年推出的“生肖转盘”“古建福寿文化小程序”“中英双语导览”则体现国际化与数字化渗透。<span class="trend-indicator">所有最新策略均以“预约制”“联票主导”“清晨避峰”为运营基石，游客行为管理趋于制度化。</span></p>
+                      <hr>
+                      <h2>详细维度分析</h2>
+                        <h3>一、年度文化活动主题演进：从节庆点缀到体系化仪式建构</h3>
+                          <p>天坛春节活动已形成明确的年度演进脉络，从2022年以“坛乐清音”直播+拓福为主，到2024年“寻龙探宝”“五谷福袋”“灯谜花灯”等多主题并行，再到2025年“非遗版春节”与蛇年IP“灵宝”深度绑定，最终在2026年实现<span class="trend-indicator">民俗符号系统化植入</span>。</p>
+                            <ul>
+                              <li><strong>2026年2月6日</strong>报道显示，西门至二道门沿线设“民俗大鼓展”，详解腊月传统习俗，首次系统性将节气仪式转化为公众可参与的展陈内容 <a href="https://toutiao.com/group/7603692935153975834/" target="_blank">[来源链接]</a>。</li>
+                                <li><strong>2025年1月26日</strong>启动“吉祥瓷器展”“中英双语生肖转盘”“古建福寿文化小程序”，实现非遗体验与数字交互深度融合 <a href="http://m.toutiao.com/group/7464075220463157823/" target="_blank">[来源链接]</a>。</li>
+                                  <li><strong>2024年2月</strong>活动聚焦“神乐署《坛乐清音》直播”“圜丘坛科学文化讲解”“元宵灯谜”，延续礼乐与科学解读双轨模式 <a href="https://m.bj.bendibao.com/mip/338309.html" target="_blank">[来源链接]</a>。</li>
+                                  </ul>
+                                  <div class="highlight">
+                                    <strong>趋势判断</strong>：活动设计已从“节庆事件”升维为“文化仪式”的周期性复现，形成“春节—清明—中秋”全年度文化日历雏形。
+                                    </div>
+                                    <h3>二、遗产空间利用与游览动线优化：从景点导览到时空秩序重构</h3>
+                                      <p>天坛的游览路径已从“建议路线”演变为“官方推荐+时空分流”策略，尤其强调<strong>清晨与黄昏的黄金时段价值</strong>。</p>
+                                        <ul>
+                                          <li><strong>2026年2月6日</strong>建议“西门进北门出”，并指出东、南门景观待探，说明动线规划正从“经典中轴线”向“多入口均衡分流”拓展 <a href="https://toutiao.com/group/7603692935153975834/" target="_blank">[来源链接]</a>。</li>
+                                            <li><strong>2025年10月5日</strong>明确推荐“清晨6:30前由北门入园”，以捕捉祈年殿光影，并指出“东门进西门出”为经典路线，同时提出“南门进亲子平缓路线”满足家庭需求 <a href="https://toutiao.com/group/7557681597512679971/" target="_blank">[来源链接]</a>。</li>
+                                              <li><strong>2024年3月16日</strong>攻略提出“东门进→七星石→圜丘→皇穹宇→丹陛桥→祈年殿→斋宫出”，路径完整覆盖声学与礼制核心 <a href="http://m.toutiao.com/group/7344970426042712576/" target="_blank">[来源链接]</a>。</li>
+                                              </ul>
+                                              <div class="highlight">
+                                                <strong>关键变化</strong>：2025年起，“避开人流”成为高频关键词，官方首次将“清晨6:30前”作为推荐时间点，体现从“吸引游客”向“优化体验”转型。
+                                                </div>
+                                                <h3>三、门票与预约制度：从弹性开放到刚性管理</h3>
+                                                  <p>天坛门票体系趋于标准化，<span class="trend-indicator">联票制度全面主导</span>，且预约成为强制前提。</p>
+                                                    <ul>
+                                                      <li><strong>2025年10月5日</strong>明确指出：“门票仅10元无参观价值”，联票34元含祈年殿、皇穹宇、圜丘坛三大核心，<span class="trend-indicator">并强调“必须提前预约”</span> <a href="https://toutiao.com/group/7557681597512679971/" target="_blank">[来源链接]</a>。</li>
+                                                        <li><strong>2025年3月14日</strong>要求通过“微信或支付宝‘天坛公园官方购票平台’”预约，避开端午高峰，强化线上渠道 <a href="https://toutiao.com/group/7481499150253638182/" target="_blank">[来源链接]</a>。</li>
+                                                          <li><strong>2023年7月30日</strong>尚称“现场扫码购票即可，无需提前预订”，<span class="old-info">属老旧信息（距今1014天）</span> <a href="http://m.toutiao.com/group/7260784014499037751/" target="_blank">[来源链接]</a>。</li>
+                                                            <li><strong>2020年5月11日</strong>起已要求“微信公众号实名预约”，说明预约制已推行六年，<span class="trend-indicator">2025年后已全面制度化</span> <a href="http://m.163.com/dy/article/FCC339FS0544DQ5F.html" target="_blank">[来源链接]</a>。</li>
+                                                            </ul>
+                                                            <div class="highlight">
+                                                              <strong>结论</strong>：门票结构已从“经济引流”转向“遗产保护+体验控制”双目标，预约制为文化承载力管理的核心工具。
+                                                              </div>
+                                                              <h3>四、科技融合与传播创新：从线上直播到AI赋能的文化叙事</h3>
+                                                                <p>天坛的数字创新逐步从“辅助传播”升级为“沉浸式认知载体”。</p>
+                                                                  <ul>
+                                                                    <li><strong>2025年1月26日</strong>推出“古韵韶音”系列线上展演，以初一、初三、初五、十五为节点，系统呈现皇家礼乐内涵，实现文化内容的<span class="trend-indicator">周期性、系列化、可回溯传播</span> <a href="http://m.toutiao.com/group/7464075220463157823/" target="_blank">[来源链接]</a>。</li>
+                                                                      <li><strong>2024年2月7日</strong>中轴线整体活动提及“AI赋诗”“数字打更人研学”“云展览”，虽非天坛专属，但体现北京整体文化科技生态 <a href="http://m.toutiao.com/group/7332715764430127625/" target="_blank">[来源链接]</a>。</li>
+                                                                        <li><strong>2025年1月26日</strong>“中英双语生肖转盘”与“冬鸟纸艺科普”表明内容已具备国际传播适配性 <a href="http://m.toutiao.com/group/7464075220463157823/" target="_blank">[来源链接]</a>。</li>
+                                                                        </ul>
+                                                                        <div class="highlight">
+                                                                          <strong>趋势判断</strong>：数字内容不再仅作为引流工具，而成为文化价值的<span class="trend-indicator">独立表达载体</span>，具备教育属性与国际传播潜力。
+                                                                          </div>
+                                                                          <h3>五、生态与城市功能融合：古树群落成为文化新符号</h3>
+                                                                            <p>天坛的生态资产被赋予文化叙事功能，已超越“绿化景观”范畴。</p>
+                                                                              <ul>
+                                                                                <li><strong>2026年2月6日</strong>首次公布：公园拥有<span class="trend-indicator">3562棵古树</span>，其中一级古树超千棵，占全市三分之一，<span class="trend-indicator">620年树龄的九龙柏</span>被单独标定为文化地标 <a href="https://toutiao.com/group/7603692935153975834/" target="_blank">[来源链接]</a>。</li>
+                                                                                  <li><strong>2025年8月31日</strong>提及“丹陛桥旁草坪野餐”“清晨偶遇晨练人群”，凸显其作为“城市静谧绿洲”的市民功能 <a href="http://m.toutiao.com/group/7544514616894784026/" target="_blank">[来源链接]</a>。</li>
+                                                                                    <li><strong>2020年5月11日</strong>提及“3000余株古树”，<span class="old-info">属老旧信息（距今2085天）</span>，但2026年数据印证其长期生态积累 <a href="http://m.163.com/dy/article/FCC339FS0544DQ5F.html" target="_blank">[来源链接]</a>。</li>
+                                                                                    </ul>
+                                                                                    <div class="highlight">
+                                                                                      <strong>新认知</strong>：天坛已成为“活着的生态博物馆”，古树与古建共同构成“时间层叠”的文化记忆。
+                                                                                      </div>
+                                                                                      <h3>六、周边联动与消费引导：从单点游览到“文化-美食-交通”闭环</h3>
+                                                                                        <p>天坛的旅游生态正构建“遗产+市井”融合的消费链。</p>
+                                                                                          <ul>
+                                                                                            <li><strong>2025年10月5日</strong>推荐“磁器口尝豆汁、肉饼”“法华寺街品京味小吃”，明确打通景点与美食动线 <a href="https://toutiao.com/group/7557681597512679971/" target="_blank">[来源链接]</a>。</li>
+                                                                                              <li><strong>2025年8月31日</strong>建议北门附近尝“豆汁儿配焦圈”，强化老北京烟火气体验 <a href="http://m.toutiao.com/group/7544514616894784026/" target="_blank">[来源链接]</a>。</li>
+                                                                                                <li><strong>2024年3月16日</strong>建议联动自然博物馆、古建博物馆，并前往大栅栏、鲜鱼口美食街 <a href="http://m.toutiao.com/group/7344970426042712576/" target="_blank">[来源链接]</a>。</li>
+                                                                                                </ul>
+                                                                                                <div class="highlight">
+                                                                                                  <strong>结论</strong>：官方不再回避商业联动，而是主动引导“文化游览—市井消费—交通接驳”闭环，提升游客停留时长与消费转化。
+                                                                                                  </div>
+                                                                                                  <hr>
+                                                                                                  <div class="conclusion">
+                                                                                                    <h2>总结与展望</h2>
+                                                                                                      <p>截至2026年2月8日，北京天坛公园已从单一的世界文化遗产景点，进化为<span class="trend-indicator">中华礼制文明的活态展演平台</span>、<span class="trend-indicator">城市公共文化的创新引擎</span>与<span class="trend-indicator">生态记忆的守护者</span>。其成功关键在于：</p>
+                                                                                                        <ul>
+                                                                                                          <li>以“预约+联票”实现遗产保护与体验平衡；</li>
+                                                                                                            <li>以“四季主题+数字叙事”构建持续性文化吸引力；</li>
+                                                                                                              <li>以“古树+古建+民俗”三位一体重构文化叙事维度；</li>
+                                                                                                                <li>以“清晨避峰+美食联动”优化游客生命周期体验。</li>
+                                                                                                                </ul>
+                                                                                                                <p>未来，天坛可进一步探索：</p>
+                                                                                                                  <ul>
+                                                                                                                    <li>基于AI生成的“定制化礼乐解说”（如根据游客身份推荐不同文化解读路径）；</li>
+                                                                                                                      <li>开发“天坛文化数字藏品”体系，连接年轻群体；</li>
+                                                                                                                        <li>与中轴线申遗成果联动，打造“中轴线上春节”统一品牌。</li>
+                                                                                                                        </ul>
+                                                                                                                        <p>天坛的深度活化，不仅是中国遗产保护的典范，更是全球城市中“神圣空间与市民生活共生”的东方样本。</p>
+                                                                                                                        </div>
+                                                                                                                        <hr>
+                                                                                                                        <h2>所有资讯标题与链接列表（按发布日期由近期到远期排序）</h2>
+                                                                                                                          <div class="info-list">
+                                                                                                                            <div class="info-item">
+                                                                                                                              <span class="info-date">2026年02月06日</span>
+                                                                                                                                <p>北京今日气温-4℃，天坛迎春景观布展，民俗大鼓展亮相，九龙柏成新地标</p>
+                                                                                                                                  <a href="https://toutiao.com/group/7603692935153975834/" target="_blank" class="info-link">查看详情</a>
+                                                                                                                                  </div>
+                                                                                                                                  <div class="info-item">
+                                                                                                                                    <span class="info-date">2026年01月15日</span>
+                                                                                                                                      <p>春节北京三日跟团游体验分享：天坛、故宫、长城全程覆盖，沉浸式年俗活动受青睐</p>
+                                                                                                                                        <a href="https://toutiao.com/group/7595344455041876532/" target="_blank" class="info-link">查看详情</a>
+                                                                                                                                        </div>
+                                                                                                                                        <div class="info-item">
+                                                                                                                                          <span class="info-date">2025年10月05日</span>
+                                                                                                                                            <p>天坛是明清帝王祭天祈谷的国家级礼制建筑群，建议清晨北门入园，联票34元为首选</p>
+                                                                                                                                              <a href="https://toutiao.com/group/7557681597512679971/" target="_blank" class="info-link">查看详情</a>
+                                                                                                                                              </div>
+                                                                                                                                              <div class="info-item">
+                                                                                                                                                <span class="info-date">2025年10月05日</span>
+                                                                                                                                                  <p>（重复来源，内容与上条一致）</p>
+                                                                                                                                                    <a href="https://toutiao.com/group/7557681597512679971/" target="_blank" class="info-link">查看详情</a>
+                                                                                                                                                    </div>
+                                                                                                                                                    <div class="info-item">
+                                                                                                                                                      <span class="info-date">2025年08月31日</span>
+                                                                                                                                                        <p>北京天坛公园：避开人潮的静谧古建之旅，东门进、丹陛桥野餐、夕阳圜丘摄影推荐</p>
+                                                                                                                                                          <a href="http://m.toutiao.com/group/7544514616894784026/" target="_blank" class="info-link">查看详情</a>
+                                                                                                                                                          </div>
+                                                                                                                                                          <div class="info-item">
+                                                                                                                                                            <span class="info-date">2025年08月31日</span>
+                                                                                                                                                              <p>（重复来源，内容高度重合）</p>
+                                                                                                                                                                <a href="https://toutiao.com/group/7544514616894784026/" target="_blank" class="info-link">查看详情</a>
+                                                                                                                                                                </div>
+                                                                                                                                                                <div class="info-item">
+                                                                                                                                                                  <span class="info-date">2025年03月14日</span>
+                                                                                                                                                                    <p>天坛深度游攻略：推荐南门进、联票预约、拍照点位与避坑指南</p>
+                                                                                                                                                                      <a href="https://toutiao.com/group/7481499150253638182/" target="_blank" class="info-link">查看详情</a>
+                                                                                                                                                                      </div>
+                                                                                                                                                                      <div class="info-item">
+                                                                                                                                                                        <span class="info-date">2025年01月26日</span>
+                                                                                                                                                                          <p>天坛春节推24场非遗活动，蛇年IP“灵宝”、中英双语转盘、线上韶乐展演开启</p>
+                                                                                                                                                                            <a href="http://m.toutiao.com/group/7464075220463157823/" target="_blank" class="info-link">查看详情</a>
+                                                                                                                                                                            </div>
+                                                                                                                                                                            <div class="info-item">
+                                                                                                                                                                              <span class="info-date">2024年03月16日</span>
+                                                                                                                                                                                <p>天坛深度游攻略：动线推荐、古建文化解读、联动博物馆与美食街</p>
+                                                                                                                                                                                  <a href="http://m.toutiao.com/group/7344970426042712576/" target="_blank" class="info-link">查看详情</a>
+                                                                                                                                                                                  </div>
+                                                                                                                                                                                  <div class="info-item">
+                                                                                                                                                                                    <span class="info-date">2024年02月07日</span>
+                                                                                                                                                                                      <p>2024年春节北京中轴线六大主题文化活动全面启动，AI赋诗、点亮中轴等科技融合亮点</p>
+                                                                                                                                                                                        <a href="http://m.toutiao.com/group/7332715764430127625/" target="_blank" class="info-link">查看详情</a>
+                                                                                                                                                                                        </div>
+                                                                                                                                                                                        <div class="info-item">
+                                                                                                                                                                                          <span class="info-date">2024年02月06日</span>
+                                                                                                                                                                                            <p>天坛公园2024春节活动清单：寻龙探宝、坛乐清音、五谷福袋、元宵灯谜全攻略</p>
+                                                                                                                                                                                              <a href="https://m.bj.bendibao.com/mip/338309.html" target="_blank" class="info-link">查看详情</a>
+                                                                                                                                                                                              </div>
+                                                                                                                                                                                              <div class="info-item old-info">
+                                                                                                                                                                                                <span class="info-date">2023年07月30日（老旧信息，距今1014天）</span>
+                                                                                                                                                                                                  <p>天坛公园门票与游览攻略，建议购买联票，交通便利</p>
+                                                                                                                                                                                                    <a href="http://m.toutiao.com/group/7260784014499037751/" target="_blank" class="info-link">查看详情</a>
+                                                                                                                                                                                                    </div>
+                                                                                                                                                                                                    <div class="info-item old-info">
+                                                                                                                                                                                                      <span class="info-date">2023年04月19日（老旧信息，距今1025天）</span>
+                                                                                                                                                                                                        <p>天坛景点介绍：祈年殿、圜丘、回音壁、斋宫等核心建筑详解</p>
+                                                                                                                                                                                                          <a href="http://m.163.com/dy/article/I2MEOGGL05562WYX.html" target="_blank" class="info-link">查看详情</a>
+                                                                                                                                                                                                          </div>
+                                                                                                                                                                                                          <div class="info-item old-info">
+                                                                                                                                                                                                            <span class="info-date">2022年02月01日（老旧信息，距今1468天）</span>
+                                                                                                                                                                                                              <p>2022年春节天坛线上“坛乐清音”音乐会+福字拓印等科普活动</p>
+                                                                                                                                                                                                                <a href="http://m.toutiao.com/group/7059636781054231053/" target="_blank" class="info-link">查看详情</a>
+                                                                                                                                                                                                                </div>
+                                                                                                                                                                                                                <div class="info-item old-info">
+                                                                                                                                                                                                                  <span class="info-date">2020年11月09日（老旧信息，距今2037天）</span>
+                                                                                                                                                                                                                    <p>天坛建筑结构解析：天圆地方、九数象征、丹陛桥等级制度</p>
+                                                                                                                                                                                                                      <a href="http://m.toutiao.com/group/6892944700479635972/" target="_blank" class="info-link">查看详情</a>
+                                                                                                                                                                                                                      </div>
+                                                                                                                                                                                                                      <div class="info-item old-info">
+                                                                                                                                                                                                                        <span class="info-date">2020年05月23日（老旧信息，距今2082天）</span>
+                                                                                                                                                                                                                          <p>天坛建筑布局、声学奇迹与门票政策说明</p>
+                                                                                                                                                                                                                            <a href="http://m.toutiao.com/group/6829903322921566735/" target="_blank" class="info-link">查看详情</a>
+                                                                                                                                                                                                                            </div>
+                                                                                                                                                                                                                            <div class="info-item old-info">
+                                                                                                                                                                                                                              <span class="info-date">2020年05月11日（老旧信息，距今2085天）</span>
+                                                                                                                                                                                                                                <p>天坛恢复开放，需实名预约，提供多语种导览</p>
+                                                                                                                                                                                                                                  <a href="http://m.163.com/dy/article/FCC339FS0544DQ5F.html" target="_blank" class="info-link">查看详情</a>
+                                                                                                                                                                                                                                  </div>
+                                                                                                                                                                                                                                </div>
+                                                                                                                                                                                                                              </div>
+                                                                                                                                                                                                                            </body>
+                                                                                                                                                                                                                          </html>
+                                                                                                                                                                                                                          ```
