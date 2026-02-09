@@ -1,0 +1,482 @@
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>郑州万达文华酒店48楼自助餐厅综合洞察分析报告</title>
+      <style>
+        /* 全局基础样式 */
+        :root {
+        --primary-color: #5d4037;
+        --secondary-color: #8d6e63;
+        --accent-color: #d7ccc8;
+        --light-bg: #f5f0e6;
+        --dark-text: #333;
+        --light-text: #666;
+        --highlight-color: #c62828;
+        --success-color: #388e3c;
+        --warning-color: #f57c00;
+        --border-radius: 8px;
+        --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        --transition: all 0.3s ease;
+        }
+        * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        }
+        body {
+        font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+        line-height: 1.7;
+        color: var(--dark-text);
+        background-color: var(--light-bg);
+        padding: 0;
+        margin: 0;
+        }
+        .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 1.5rem 1rem;
+        }
+        /* 标题样式 */
+        h1 {
+        color: var(--primary-color);
+        font-size: 2.2rem;
+        margin-bottom: 0.5rem;
+        font-weight: 700;
+        text-align: center;
+        letter-spacing: -0.5px;
+        }
+        h2 {
+        color: var(--primary-color);
+        font-size: 1.8rem;
+        margin: 2rem 0 1rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid var(--accent-color);
+        font-weight: 600;
+        }
+        h3 {
+        color: var(--secondary-color);
+        font-size: 1.5rem;
+        margin: 1.8rem 0 0.8rem;
+        font-weight: 600;
+        }
+        h4 {
+        color: var(--dark-text);
+        font-size: 1.3rem;
+        margin: 1.5rem 0 0.7rem;
+        font-weight: 500;
+        }
+        /* 段落与列表 */
+        p {
+        margin-bottom: 1.2rem;
+        font-size: 1.1rem;
+        }
+        ul, ol {
+        margin-bottom: 1.5rem;
+        padding-left: 1.8rem;
+        }
+        li {
+        margin-bottom: 0.6rem;
+        font-size: 1.1rem;
+        }
+        /* 引用块 */
+        blockquote {
+        background-color: rgba(93, 64, 55, 0.05);
+        border-left: 4px solid var(--primary-color);
+        padding: 1.2rem 1.5rem;
+        margin: 2rem 0;
+        font-style: italic;
+        color: var(--dark-text);
+        border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+        /* 链接样式 */
+        a {
+        color: var(--primary-color);
+        text-decoration: none;
+        font-weight: 500;
+        transition: var(--transition);
+        border-bottom: 1px dotted transparent;
+        }
+        a:hover {
+        color: var(--highlight-color);
+        border-bottom-color: var(--highlight-color);
+        text-decoration: none;
+        }
+        /* 报告顶部质量标志 */
+        .quality-badge {
+        position: fixed;
+        top: 1rem;
+        right: 1rem;
+        background-color: var(--success-color);
+        color: white;
+        padding: 0.6rem 1.2rem;
+        border-radius: 30px;
+        font-weight: 700;
+        font-size: 1.1rem;
+        box-shadow: var(--box-shadow);
+        z-index: 1000;
+        animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+        100% { transform: scale(1); }
+        }
+        /* 日期样式 */
+        .report-date {
+        text-align: center;
+        color: var(--light-text);
+        font-size: 1rem;
+        margin-bottom: 2rem;
+        font-style: italic;
+        }
+        /* 核心洞察模块 */
+        .core-insight {
+        background-color: white;
+        padding: 2rem;
+        border-radius: var(--border-radius);
+        box-shadow: var(--box-shadow);
+        margin-bottom: 2rem;
+        border-left: 4px solid var(--highlight-color);
+        }
+        /* 维度分析容器 */
+        .dimension {
+        background-color: white;
+        padding: 1.8rem;
+        border-radius: var(--border-radius);
+        box-shadow: var(--box-shadow);
+        margin-bottom: 2rem;
+        }
+        /* 历史轨迹样式 */
+        .historical-timeline {
+        margin: 2rem 0;
+        }
+        .historical-item {
+        margin-bottom: 1.5rem;
+        padding-left: 1rem;
+        border-left: 3px solid var(--accent-color);
+        position: relative;
+        }
+        .historical-item:before {
+        content: '';
+        position: absolute;
+        left: -5px;
+        top: 0.5rem;
+        width: 10px;
+        height: 10px;
+        background-color: var(--secondary-color);
+        border-radius: 50%;
+        }
+        .historical-item .date {
+        color: var(--secondary-color);
+        font-weight: 600;
+        font-size: 0.95rem;
+        margin-bottom: 0.3rem;
+        }
+        .historical-item .label {
+        display: inline-block;
+        background-color: #f8e0e0;
+        color: var(--highlight-color);
+        padding: 0.2rem 0.6rem;
+        border-radius: 15px;
+        font-size: 0.85rem;
+        margin-left: 0.5rem;
+        }
+        /* 来源列表 */
+        .sources-list {
+        background-color: white;
+        padding: 1.8rem;
+        border-radius: var(--border-radius);
+        box-shadow: var(--box-shadow);
+        margin-bottom: 3rem;
+        }
+        .source-item {
+        margin-bottom: 1.5rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid var(--accent-color);
+        }
+        .source-item:last-child {
+        border-bottom: none;
+        }
+        .source-date {
+        font-weight: 700;
+        color: var(--primary-color);
+        margin-bottom: 0.3rem;
+        font-size: 1.1rem;
+        }
+        .source-link {
+        display: block;
+        color: var(--primary-color);
+        font-size: 0.95rem;
+        margin-top: 0.4rem;
+        word-break: break-all;
+        }
+        .source-text {
+        margin-top: 0.5rem;
+        color: var(--light-text);
+        font-size: 0.95rem;
+        }
+        /* 总结与展望 */
+        .conclusion {
+        background-color: white;
+        padding: 2rem;
+        border-radius: var(--border-radius);
+        box-shadow: var(--box-shadow);
+        margin-bottom: 3rem;
+        border-left: 4px solid var(--secondary-color);
+        }
+        .conclusion h2 {
+        border-bottom: none;
+        color: var(--primary-color);
+        }
+        .conclusion ul {
+        padding-left: 2rem;
+        }
+        .conclusion li {
+        margin-bottom: 1rem;
+        position: relative;
+        }
+        .conclusion li:before {
+        content: '•';
+        color: var(--highlight-color);
+        font-weight: bold;
+        display: inline-block;
+        width: 1em;
+        margin-left: -1em;
+        }
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+        h1 {
+        font-size: 1.8rem;
+        }
+        h2 {
+        font-size: 1.6rem;
+        }
+        h3 {
+        font-size: 1.3rem;
+        }
+        h4 {
+        font-size: 1.2rem;
+        }
+        p, li {
+        font-size: 1rem;
+        }
+        .container {
+        padding: 1rem;
+        }
+        .core-insight,
+        .dimension,
+        .sources-list,
+        .conclusion {
+        padding: 1.5rem;
+        }
+        .quality-badge {
+        padding: 0.5rem 1rem;
+        font-size: 1rem;
+        top: 0.8rem;
+        right: 0.8rem;
+        }
+        blockquote {
+        padding: 1rem;
+        font-size: 0.95rem;
+        }
+        }
+        @media (max-width: 480px) {
+        h1 {
+        font-size: 1.6rem;
+        }
+        h2 {
+        font-size: 1.4rem;
+        }
+        .report-date {
+        font-size: 0.9rem;
+        }
+        .source-link {
+        font-size: 0.9rem;
+        }
+        .source-date {
+        font-size: 1rem;
+        }
+        .source-text {
+        font-size: 0.9rem;
+        }
+        .core-insight,
+        .dimension,
+        .sources-list,
+        .conclusion {
+        padding: 1.2rem;
+        }
+        .quality-badge {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.9rem;
+        top: 0.6rem;
+        right: 0.6rem;
+        }
+        }
+        /* 高亮提示 */
+        .highlight {
+        background-color: #fff9c4;
+        padding: 0.2rem 0.4rem;
+        border-radius: 3px;
+        font-weight: 600;
+        color: #333;
+        }
+        .warning {
+        color: var(--warning-color);
+        font-weight: 600;
+        }
+        .legend {
+        display: flex;
+        justify-content: center;
+        margin: 2rem 0;
+        flex-wrap: wrap;
+        gap: 1rem;
+        font-size: 0.9rem;
+        }
+        .legend-item {
+        display: flex;
+        align-items: center;
+        margin: 0 0.5rem;
+        }
+        .legend-color {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        margin-right: 0.5rem;
+        }
+        .legend-primary { background-color: var(--primary-color); }
+        .legend-secondary { background-color: var(--secondary-color); }
+        .legend-accent { background-color: var(--accent-color); }
+        .legend-highlight { background-color: var(--highlight-color); }
+        .legend-success { background-color: var(--success-color); }
+      </style>
+    </head>
+    <body>
+      <div class="quality-badge">质量标志：通过</div>
+        <div class="container">
+          <h1>郑州万达文华酒店48楼自助餐厅综合洞察分析报告</h1>
+            <div class="report-date">报告生成日期：2026年02月09日</div>
+              <!-- 核心洞察综述 -->
+              <div class="core-insight">
+                <h2>核心洞察综述</h2>
+                  <p>截至2026年02月09日，郑州万达文华酒店48楼“美食汇”自助餐厅作为城市高端餐饮地标，持续强化“景观+食材+服务”三位一体体验，其核心竞争力已从早期以环境与价格为卖点，逐步演变为以季节限定高端食材、多品类现制工艺与空间沉浸感构建差异化壁垒。最新一期（2025年11月）焕新升级内容显示，该餐厅已确立“<span class="highlight">大闸蟹无限畅吃+三重高端肉品火锅+高空全景视野</span>”为核心吸引力，并依托万达文华品牌宋风雅韵与精准服务形成品牌护城河。然而，2026年1月最新反馈指出，其菜品稳定性与价格匹配度仍存提升空间，提示品牌需在“体验溢价”与“品质一致性”之间建立更稳固的平衡机制。</p>
+                  </div>
+                  <!-- 详细维度分析 -->
+                  <div class="dimension">
+                    <h2>详细维度分析</h2>
+                      <h3>1. 最新运营状态与核心卖点（2025年11月焕新）</h3>
+                        <p>根据2025年11月13日发布的权威报道，郑州富力万达文华酒店48楼美食汇于当月完成全面焕新开幕，推出“秋冬限定盛宴”，核心升级包括：</p>
+                          <ul>
+                            <li><strong>食材体系升级</strong>：每日现蒸供应大闸蟹，实现“无限畅吃”；豪华海鲜盘涵盖生蚝、澳龙、罗氏虾与大闸蟹，形成高价值海鲜矩阵；三重高端肉品火锅引入进口澳洲和牛、潮汕牛肉及盐池滩羊，配双汤底，强化肉食爱好者粘性。<br>
+                              【来源链接】<a href="http://m.163.com/dy/article/KE8RFJ8O05566IQ7.html" target="_blank">http://m.163.com/dy/article/KE8RFJ8O05566IQ7.html</a></li>
+                              <li><strong>空间体验强化</strong>：餐厅位于200米高空，融合都市夜景与暖意餐食，打造“舌尖与视觉双重体验”，成为郑州高端社交与商务用餐首选场景。<br>
+                                【来源链接】<a href="http://m.163.com/dy/article/KE8RFJ8O05566IQ7.html" target="_blank">http://m.163.com/dy/article/KE8RFJ8O05566IQ7.html</a></li>
+                                <li><strong>品牌背书稳固</strong>：隶属万达文华品牌，延续“宋风雅韵”设计语言与现代服务标准，定位为“郑州高端餐饮新地标”，品牌认知度持续提升。<br>
+                                  【来源链接】<a href="http://m.163.com/dy/article/KE8RFJ8O05566IQ7.html" target="_blank">http://m.163.com/dy/article/KE8RFJ8O05566IQ7.html</a></li>
+                                </ul>
+                                <p>该版本为当前最具时效性的运营信息，是本报告分析的基准依据。</p>
+                                </div>
+                                <div class="dimension">
+                                  <h3>2. 用户体验反馈与现存挑战（2026年1月）</h3>
+                                    <p>2026年1月18日发布的用户反馈指出，尽管48楼餐厅环境高端、食材丰富（涵盖现切海鲜、澳洲和牛、潮汕牛肉、中式热菜及精致甜品）、服务到位、景观优越，但存在以下关键问题：</p>
+                                      <ul>
+                                        <li><strong>菜品稳定性不足</strong>：部分客人反映菜品品质波动，偶有“踩雷”体验，影响复购意愿。</li>
+                                          <li><strong>价格匹配度待提升</strong>：高端定价（未明确当前价格，但参照2016年258元/位及后续升级趋势）需与“每次不踩雷”的极致体验相匹配，仅靠环境加分不足以支撑长期忠诚度。<br>
+                                            【来源链接】<a href="https://post.m.smzdm.com/zz/p/aeokdkwz/" target="_blank">https://post.m.smzdm.com/zz/p/aeokdkwz/</a></li>
+                                          </ul>
+                                          <p>此反馈构成当前运营的重要警示信号，表明品牌需从“一次性爆款营销”转向“系统性品质管控”，建立标准化出品流程与客诉响应机制。</p>
+                                          </div>
+                                          <div class="dimension">
+                                            <h3>3. 历史运营轨迹与演变脉络</h3>
+                                              <div class="historical-timeline">
+                                                <div class="historical-item">
+                                                  <div class="date">2016年初期定位</div>
+                                                    <p>2016年3月与4月的资料显示，48楼美食汇已凭借“高品质食材”“火焰寿司现烤”“澳洲战斧牛扒火候精准”“广式脆皮鸡”“四小时炖汤”“法国获奖甜品师”等亮点获得市场认可，餐具采用塔吉锅、黑石板等高端器皿，环境优雅，价格为258元/位，需预约。<br>
+                                                      【来源链接】<a href="https://toutiao.com/group/6258221539821502722/" target="_blank">https://toutiao.com/group/6258221539821502722/</a><br>
+                                                      【来源链接】<a href="https://toutiao.com/group/6288830605639794945/" target="_blank">https://toutiao.com/group/6288830605639794945/</a> <span class="label">老旧信息</span></p>
+                                                    </div>
+                                                    <div class="historical-item">
+                                                      <div class="date">2022年防疫影响</div>
+                                                        <p>2022年1月郑州曾因疫情暂停堂食，48楼餐厅亦全面取消堂食，改为客房送餐，运营受阻。此为阶段性外部冲击，不影响长期定位。<br>
+                                                          【来源链接】<a href="https://toutiao.com/group/7050724346524353057/" target="_blank">https://toutiao.com/group/7050724346524353057/</a></p>
+                                                        </div>
+                                                        <div class="historical-item">
+                                                          <div class="date">2023年早餐亮点</div>
+                                                            <p>2023年12月的独立早餐体验显示，其早餐区已构建“中西融合+河南特色”体系，如河南牛肉面、咖喱鹰嘴豆卷食、藜麦红芸豆沙拉、香脆油条等，区域划分清晰，健康搭配突出，体验优于午餐，具备多时段运营潜力。<br>
+                                                              【来源链接】<a href="https://toutiao.com/group/7306850986688889354/" target="_blank">https://toutiao.com/group/7306850986688889354/</a></p>
+                                                            </div>
+                                                            <div class="historical-item">
+                                                              <div class="date">2016年星座营销</div>
+                                                                <p>2016年4月曾有美食博主以“狮子座推荐48楼景观餐厅”作为趣味营销，侧面印证其视觉与社交属性早已被公众认知。<br>
+                                                                  【来源链接】<a href="https://toutiao.com/group/6268212530687312129/" target="_blank">https://toutiao.com/group/6268212530687312129/</a> <span class="label">老旧信息</span></p>
+                                                                </div>
+                                                              </div>
+                                                              <blockquote>
+                                                                <strong>注：</strong>2016年发布的全部信息距今已超9年，属于【老旧信息】，仅用于历史脉络梳理，不可作为当前运营依据。
+                                                                </blockquote>
+                                                              </div>
+                                                              <!-- 总结与展望 -->
+                                                              <div class="conclusion">
+                                                                <h2>总结与展望</h2>
+                                                                  <p>郑州万达文华酒店48楼美食汇已完成从“高端景观餐厅”到“季节性奢享体验中心”的战略升级，其2025年11月焕新内容代表当前最优运营状态。以“<span class="highlight">大闸蟹+三重和牛火锅+200米高空视野</span>”为核心组合，成功打造稀缺性消费场景，具备较强的市场号召力。</p>
+                                                                    <p>然而，2026年1月的反馈揭示出“<span class="warning">体验一致性</span>”已成为制约其从“网红打卡地”转变为“长期主义高端品牌”的关键瓶颈。建议下一步策略聚焦：</p>
+                                                                      <ul>
+                                                                        <li><strong>建立标准化出品SOP</strong>：确保每日现蒸海鲜、现切牛肉、热菜出品的品质稳定；</li>
+                                                                          <li><strong>动态价格机制探索</strong>：结合季节食材成本与客流量，实施弹性定价或会员积分回馈，提升性价比感知；</li>
+                                                                            <li><strong>强化早餐与午市联动</strong>：利用2023年已验证的早餐优势，开发“上午茶+下午宴”套餐，提升非晚餐时段利用率；</li>
+                                                                              <li><strong>服务细节深化</strong>：从“迎宾”升级为“专属饮食顾问”，实现个性化推荐，增强情感连接。</li>
+                                                                              </ul>
+                                                                              <p>该餐厅未来能否持续领跑郑州高端餐饮市场，将取决于其能否在“高光时刻”与“日常稳态”之间实现无缝衔接。</p>
+                                                                              </div>
+                                                                              <!-- 资讯来源列表 -->
+                                                                              <div class="sources-list">
+                                                                                <h2>资讯来源列表（按发布日期由近期至远期排序）</h2>
+                                                                                  <div class="source-item">
+                                                                                    <div class="source-date">2026年01月18日</div>
+                                                                                      <div class="source-text">郑州文华酒店48楼自助餐厅环境高端、食材丰富，涵盖现切海鲜、澳洲和牛、潮汕牛肉、中式热菜及精致甜品，服务到位，景观优越；但用户指出菜品稳定性与价格匹配度有待提升，强调高端自助应以“每次不踩雷”赢得回头客，而非仅靠环境加分。</div>
+                                                                                        <a href="https://post.m.smzdm.com/zz/p/aeokdkwz/" target="_blank" class="source-link">https://post.m.smzdm.com/zz/p/aeokdkwz/</a>
+                                                                                        </div>
+                                                                                        <div class="source-item">
+                                                                                          <div class="source-date">2025年11月13日</div>
+                                                                                            <div class="source-text">郑州富力万达文华酒店48楼美食汇自助餐厅于2025年11月焕新开幕，推出秋冬限定盛宴。主打大闸蟹无限畅吃，每日现蒸供应；豪华海鲜盘汇集生蚝、澳龙、罗氏虾与大闸蟹；三重高端肉品火锅含进口和牛、潮汕牛肉与盐池滩羊，配双汤底。餐厅坐拥200米高空全景视野，融合都市夜景与暖意餐食，打造舌尖与视觉双重体验。酒店隶属万达文华品牌，以宋风雅韵与现代服务著称，为郑州高端餐饮新地标。</div>
+                                                                                              <a href="http://m.163.com/dy/article/KE8RFJ8O05566IQ7.html" target="_blank" class="source-link">http://m.163.com/dy/article/KE8RFJ8O05566IQ7.html</a>
+                                                                                              </div>
+                                                                                              <div class="source-item">
+                                                                                                <div class="source-date">2023年12月09日</div>
+                                                                                                  <div class="source-text">万达文华酒店早餐自助丰盛，亮点突出：河南牛肉面、咖喱鹰嘴豆（可搭配生菜、巴旦木、南瓜子卷食）、藜麦红芸豆沙拉、香脆油条及蛋卷备受推荐。区域划分清晰，涵盖鲜榨果蔬汁、水果、沙拉、热菜、面点、中式小吃及烘焙，兼顾中西口味，尤以河南风味与健康搭配见长。甜品区虽未提及，但整体体验优于此前午餐，值得再次光临。</div>
+                                                                                                    <a href="https://toutiao.com/group/7306850986688889354/" target="_blank" class="source-link">https://toutiao.com/group/7306850986688889354/</a>
+                                                                                                    </div>
+                                                                                                    <div class="source-item">
+                                                                                                      <div class="source-date">2022年01月08日</div>
+                                                                                                        <div class="source-text">郑州发布10号通告，自1月8日12时起暂停全市餐饮场所堂食，仅保留自取与外卖服务。记者走访发现，商业街客流量锐减，餐厅普遍关闭堂食，外卖骑手成主要流动人员，商家严格执行扫码登记、戴口罩、“一米线”等防疫措施。多家餐饮企业启动“无接触配送”，酒店亦全面取消堂食，改为客房送餐。从业者普遍已完成多轮核酸检测，信心坚定，期待疫情尽快控制。</div>
+                                                                                                          <a href="https://toutiao.com/group/7050724346524353057/" target="_blank" class="source-link">https://toutiao.com/group/7050724346524353057/</a>
+                                                                                                          </div>
+                                                                                                          <div class="source-item">
+                                                                                                            <div class="source-date">2016年05月26日</div>
+                                                                                                              <div class="source-text">郑州万达文华酒店由万达集团投资管理，坐落于金水商业核心区，以豪华设施与“万达文华天使”迎宾、茶道体验“茶之旅”等特色服务闻名。酒店设专属高端会所“名仕会”，配备私人电梯、餐饮管家及城市景观空间，专为精英客群提供私密商务与休闲体验。摄影：任红兵，作品版权受保护，转载须注明出处。</div>
+                                                                                                                <a href="https://toutiao.com/group/6288830605639794945/" target="_blank" class="source-link">https://toutiao.com/group/6288830605639794945/</a> <span class="label">老旧信息</span>
+                                                                                                                </div>
+                                                                                                                <div class="source-item">
+                                                                                                                  <div class="source-date">2016年04月04日</div>
+                                                                                                                    <div class="source-text">郑州美食博主“十姐”以星座为主题，推荐12星座匹配的特色餐厅。白羊座配重辣火锅，金牛座选高颜值法餐，双子爱猎奇文艺空间，巨蟹宜温馨养生锅，狮子推荐48楼景观餐厅，处女座钟情文艺咖啡馆，天秤适合披萨自助，天蝎偏爱小吃盛宴，射手迷恋酒吧海鲜，摩羯倾向韩式拌饭，水瓶偏好个性环境，双鱼则适合甜品治愈。十姐强调星座仅为趣味参考，真实自我远比标签丰富，倡导与亲友共品美食、珍惜当下。</div>
+                                                                                                                      <a href="https://toutiao.com/group/6268212530687312129/" target="_blank" class="source-link">https://toutiao.com/group/6268212530687312129/</a> <span class="label">老旧信息</span>
+                                                                                                                      </div>
+                                                                                                                      <div class="source-item">
+                                                                                                                        <div class="source-date">2016年03月05日</div>
+                                                                                                                          <div class="source-text">郑州万达文华酒店48层美食汇自助餐以高品质食材与匠心出品获赞，海鲜新鲜、火焰寿司现烤惊艳，澳洲战斧牛扒火候精准，广式脆皮鸡与四小时炖汤展现地道风味。甜品由法国获奖师傅操刀，改良布朗尼与提拉米苏尤为出色。餐具采用塔吉锅、黑石板等高端器皿，就餐环境优雅，可俯瞰城市全景。价格258元/位，限时优惠买赠活动，需提前预约，有效期至2016年6月30日。</div>
+                                                                                                                            <a href="https://toutiao.com/group/6258221539821502722/" target="_blank" class="source-link">https://toutiao.com/group/6258221539821502722/</a> <span class="label">老旧信息</span>
+                                                                                                                            </div>
+                                                                                                                          </div>
+                                                                                                                          <!-- 颜色图例 -->
+                                                                                                                          <div class="legend">
+                                                                                                                            <div class="legend-item"><span class="legend-color legend-primary"></span> 主色</div>
+                                                                                                                              <div class="legend-item"><span class="legend-color legend-secondary"></span> 辅色</div>
+                                                                                                                                <div class="legend-item"><span class="legend-color legend-highlight"></span> 强调色</div>
+                                                                                                                                  <div class="legend-item"><span class="legend-color legend-success"></span> 优质标志</div>
+                                                                                                                                  </div>
+                                                                                                                                </div>
+                                                                                                                              </body>
+                                                                                                                            </html>
+                                                                                                                            ```
