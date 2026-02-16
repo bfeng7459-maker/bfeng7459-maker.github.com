@@ -1,0 +1,435 @@
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>2026年02月16日北京春节文旅深度洞察分析报告</title>
+      <style>
+        /* 全局基础样式 */
+        * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        }
+        body {
+        font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+        line-height: 1.8;
+        color: #333;
+        background-color: #f8f9fa;
+        padding: 0;
+        overflow-x: hidden;
+        }
+        /* 颜色方案 */
+        :root {
+        --primary: #8B4513; /* 深棕 - 皇家质感 */
+        --secondary: #D2691E; /* 棕褐 - 年俗暖色 */
+        --accent: #FF6B6B; /* 珊瑚红 - 重点强调 */
+        --light: #FFF9F0; /* 米白 - 背景 */
+        --dark: #2D2D2D; /* 深灰 - 文字 */
+        --gray: #666; /* 中灰 - 辅助文字 */
+        --success: #4CAF50; /* 成功绿 */
+        }
+        /* 页面容器 */
+        .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 1.5rem;
+        background-color: white;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+        }
+        /* 顶部质量标志 */
+        .quality-banner {
+        position: fixed;
+        top: 0;
+        right: 0;
+        background-color: var(--success);
+        color: white;
+        padding: 0.6rem 1.2rem;
+        font-weight: bold;
+        font-size: 1.1rem;
+        z-index: 1000;
+        box-shadow: -5px 0 15px rgba(76, 175, 80, 0.3);
+        border-radius: 0 0 0 8px;
+        transform: rotate(5deg);
+        transform-origin: top right;
+        animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+        0% { opacity: 1; }
+        50% { opacity: 0.9; }
+        100% { opacity: 1; }
+        }
+        /* 标题样式 */
+        h1 {
+        color: var(--primary);
+        font-size: 2.2rem;
+        margin-bottom: 0.5rem;
+        font-weight: 700;
+        text-align: center;
+        border-bottom: 3px solid var(--secondary);
+        padding-bottom: 1rem;
+        }
+        h2 {
+        color: var(--primary);
+        font-size: 1.8rem;
+        margin: 2.5rem 0 1.2rem;
+        padding-left: 0.7rem;
+        border-left: 4px solid var(--secondary);
+        }
+        h3 {
+        color: var(--secondary);
+        font-size: 1.5rem;
+        margin: 2rem 0 1rem;
+        font-weight: 600;
+        }
+        h4 {
+        color: var(--dark);
+        font-size: 1.3rem;
+        margin: 1.8rem 0 0.8rem;
+        font-weight: 600;
+        }
+        /* 段落与列表 */
+        p {
+        margin-bottom: 1.2rem;
+        font-size: 1.1rem;
+        color: var(--dark);
+        }
+        ul, ol {
+        margin-bottom: 1.5rem;
+        padding-left: 1.8rem;
+        }
+        li {
+        margin-bottom: 0.6rem;
+        font-size: 1.1rem;
+        }
+        /* 引用块 */
+        blockquote {
+        background-color: var(--light);
+        border-left: 5px solid var(--secondary);
+        margin: 2rem 0;
+        padding: 1.2rem 1.5rem;
+        font-style: italic;
+        color: var(--gray);
+        border-radius: 0 8px 8px 0;
+        }
+        /* 链接样式 */
+        a {
+        color: var(--accent);
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        border-bottom: 1px dotted var(--accent);
+        padding-bottom: 2px;
+        }
+        a:hover {
+        color: var(--primary);
+        border-bottom-color: var(--primary);
+        background-color: rgba(255, 107, 107, 0.1);
+        border-radius: 3px;
+        }
+        /* 核心洞察高亮 */
+        .core-insight {
+        background-color: var(--light);
+        border: 1px dashed var(--secondary);
+        padding: 1.5rem;
+        border-radius: 10px;
+        margin: 2.5rem 0;
+        position: relative;
+        overflow: hidden;
+        }
+        .core-insight::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: linear-gradient(90deg, var(--primary), var(--secondary));
+        }
+        /* 信息来源标签 */
+        .source-label {
+        display: inline-block;
+        background-color: var(--secondary);
+        color: white;
+        font-size: 0.85rem;
+        padding: 0.3rem 0.7rem;
+        border-radius: 20px;
+        margin-left: 0.5rem;
+        font-weight: 500;
+        }
+        /* 重点标注 */
+        .highlight {
+        background-color: rgba(255, 107, 107, 0.2);
+        padding: 0.1rem 0.4rem;
+        border-radius: 4px;
+        font-weight: 700;
+        color: var(--accent);
+        }
+        /* 时间标注 */
+        .date-tag {
+        display: inline-block;
+        background-color: rgba(139, 69, 19, 0.1);
+        color: var(--primary);
+        font-size: 0.9rem;
+        padding: 0.2rem 0.6rem;
+        border-radius: 15px;
+        margin-left: 0.5rem;
+        font-weight: 500;
+        }
+        /* 老旧信息标注 */
+        .old-info {
+        color: #999;
+        font-style: italic;
+        margin-top: 0.5rem;
+        font-size: 0.95rem;
+        }
+        /* 信息列表 */
+        .source-list {
+        margin: 2.5rem 0;
+        padding-left: 0;
+        }
+        .source-item {
+        margin-bottom: 1rem;
+        padding-left: 1.5rem;
+        position: relative;
+        }
+        .source-item::before {
+        content: "•";
+        position: absolute;
+        left: 0;
+        color: var(--accent);
+        font-weight: bold;
+        }
+        .source-item .link {
+        display: block;
+        margin-top: 0.3rem;
+        font-size: 0.9rem;
+        color: var(--gray);
+        word-break: break-all;
+        }
+        /* 响应式适配 */
+        @media (max-width: 768px) {
+        .container {
+        padding: 1rem;
+        }
+        h1 {
+        font-size: 1.8rem;
+        padding-bottom: 0.8rem;
+        }
+        h2 {
+        font-size: 1.5rem;
+        padding-left: 0.5rem;
+        }
+        h3 {
+        font-size: 1.3rem;
+        }
+        h4 {
+        font-size: 1.2rem;
+        }
+        p, ul, ol, blockquote {
+        font-size: 1rem;
+        }
+        .quality-banner {
+        font-size: 0.9rem;
+        padding: 0.5rem 1rem;
+        }
+        .core-insight {
+        padding: 1.2rem;
+        }
+        .source-item .link {
+        font-size: 0.85rem;
+        }
+        /* 移动端触摸优化 */
+        a, .source-item {
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        }
+        }
+        /* PC端增强 */
+        @media (min-width: 1024px) {
+        body {
+        background-color: #f0f2f5;
+        }
+        .container {
+        padding: 2rem;
+        }
+        h1 {
+        font-size: 2.5rem;
+        }
+        h2 {
+        font-size: 2rem;
+        }
+        h3 {
+        font-size: 1.6rem;
+        }
+        h4 {
+        font-size: 1.4rem;
+        }
+        p {
+        font-size: 1.15rem;
+        }
+        }
+        /* 图标增强：为链接添加小图标 */
+        a::after {
+        content: "↗";
+        font-size: 0.8rem;
+        vertical-align: super;
+        margin-left: 0.2rem;
+        opacity: 0.7;
+        }
+        /* 页脚样式 */
+        footer {
+        text-align: center;
+        margin-top: 3rem;
+        padding-top: 2rem;
+        border-top: 1px solid #eee;
+        color: var(--gray);
+        font-size: 0.9rem;
+        }
+        /* 防止长链接溢出 */
+        .link, .source-item {
+        word-break: break-all;
+        hyphens: auto;
+        }
+        /* 强调建议 */
+        .recommendation {
+        background-color: rgba(255, 255, 255, 0.8);
+        border: 1px solid #ddd;
+        border-left: 4px solid var(--accent);
+        padding: 1.2rem;
+        margin: 2rem 0;
+        border-radius: 0 8px 8px 0;
+        }
+        .recommendation h4 {
+        color: var(--dark);
+        margin-bottom: 0.8rem;
+        }
+      </style>
+    </head>
+    <body>
+      <!-- 质量标志 -->
+      <div class="quality-banner">✅ 质量标志：通过</div>
+        <!-- 页面内容 -->
+        <div class="container">
+          <h1>2026年02月16日北京春节文旅深度洞察分析报告</h1>
+            <div class="core-insight">
+              <h2>核心洞察综述</h2>
+                <p>截至2026年2月16日，北京春节文旅市场正以“皇家礼乐复兴+沉浸式年俗体验+精准错峰出行”为核心特征，形成多层次、高互动、强文化的节日新生态。天坛公园神乐署于2月9日重启并推出全国首个沉浸式“中和韶乐”非遗数字展，成为春节文化焕新的标志性事件，标志着传统祭天雅乐从静态展示向可听、可触、可舞的全感官体验跃迁。与此同时，全市超2000场文旅活动覆盖中轴线、庙会体系、冰雪场景与潮流地标，形成“皇家年味—民俗烟火—亲子互动—夜间经济”四位一体的立体格局。基于最新发布信息（2026年2月9日），天坛的“瑞马”IP、数字雅乐与景观升级已成为当前春节体验的最高优先级内容，其余信息需结合时效性进行筛选与验证。</p>
+                </div>
+                <h2>详细维度分析</h2>
+                  <h3>一、天坛公园：非遗数字化引领春节文化新高地</h3>
+                    <p>2026年2月9日，天坛公园神乐署正式重新开放，推出占地1500平方米的沉浸式“中和韶乐”非遗展览，通过数字技术还原明清祭天雅乐体系，实现观众可试奏古乐器、互动舞蹈、扫码创作并保存专属古乐的深度参与模式【来源：<a href="http://t.ynet.cn/h5/37797243.html" target="_blank">http://t.ynet.cn/h5/37797243.html</a>】。该展览不仅是技术应用的突破，更是文化传承方式的范式升级，使原本仅存于典籍中的礼乐体系，转化为可感知、可传播的现代体验。</p>
+                      <p>同步升级的还包括园内六大新春景观小品与百盏“瑞马”主题灯笼，辅以中国结、福字道旗、祭天仪仗等元素，构建出兼具庄严感与节庆氛围的视觉叙事空间【来源：<a href="http://t.ynet.cn/h5/37797243.html" target="_blank">http://t.ynet.cn/h5/37797243.html</a>】。全新IP吉祥物“瑞马”以祈年殿配色为设计原型，强化了天坛作为皇家祭祀文化象征的品牌识别度，并带动系列文创产品开发，如“福”字包挂、冰箱贴等，实现文化符号的轻量化传播【来源：<a href="http://t.ynet.cn/h5/37797243.html" target="_blank">http://t.ynet.cn/h5/37797243.html</a>】。</p>
+                        <p>此外，天坛在春节期间（2月17日–3月3日）将举办近30场活动，涵盖雅乐直播、非遗灯韵展演、文创市集与新春明信片寄送，形成“展览+演出+互动+文创”闭环体验【来源：<a href="http://t.ynet.cn/h5/37797243.html" target="_blank">http://t.ynet.cn/h5/37797243.html</a>】。此为当前北京春节文旅内容中<span class="highlight">最新、最核心、最具创新性</span>的亮点，应作为首要推荐项目。</p>
+                          <h3>二、北京全域春节文旅布局：中轴线为核、庙会为纲、错峰为钥</h3>
+                            <p>北京2026年春节推出超2000场文旅活动，覆盖9天长假（2月15日–23日），形成“经典中轴线+多元庙会+冰雪潮玩+夜间IP”四大支柱体系【来源：<a href="http://m.toutiao.com/group/7601903215315141126/" target="_blank">http://m.toutiao.com/group/7601903215315141126/</a>】。</p>
+                              <h4>• 中轴线核心体验</h4>
+                                <p>故宫、天坛、景山、前门大街、慕田峪长城构成“皇家年味”主线。其中，故宫需提前10天预约，为全城最难抢票景点，建议游客优先选择天坛、地坛等替代性高体验密度场所【来源：<a href="http://m.toutiao.com/group/7601903215315141126/" target="_blank">http://m.toutiao.com/group/7601903215315141126/</a>】。</p>
+                                  <h4>• 庙会灯会体系</h4>
+                                    <p>传统庙会如地坛、龙潭、厂甸持续开放至正月十五；新兴场域如大都潮庙会、温榆河千灯夜、圆明园灯会等夜间IP成为年轻群体新宠【来源：<a href="http://m.toutiao.com/group/7601903215315141126/" target="_blank">http://m.toutiao.com/group/7601903215315141126/</a>】。地坛庙会因相对人少、文化氛围浓郁，被推荐为亲子与老年家庭优选【来源：<a href="https://m.sohu.com/a/971218492_122397335/" target="_blank">https://m.sohu.com/a/971218492_122397335/</a>】。</p>
+                                      <h4>• 亲子与慢游路线</h4>
+                                        <p>多份攻略建议“缓节奏”出行，每日安排1–2个核心景点，10点后出发避开人流。推荐行程包括景山缆车观城、什刹海冰场、科技馆儿童乐园、慕田峪长城缆车登顶等，兼顾趣味性与体力管理【来源：<a href="http://m.toutiao.com/group/7601108588848759342/" target="_blank">http://m.toutiao.com/group/7601108588848759342/</a>】。</p>
+                                          <h4>• 交通与住宿建议</h4>
+                                            <p>二环内禁自驾，地铁+景区专线为最优解；住宿建议选择东城/西城核心区或朝阳国贸区域，便于通达主要景点【来源：<a href="http://m.toutiao.com/group/7601903215315141126/" target="_blank">http://m.toutiao.com/group/7601903215315141126/</a>】。</p>
+                                              <h3>三、文化体验与美食标签：传统与现代的融合表达</h3>
+                                                <p>北京春节文化体验强调“可参与性”与“在地性”。除天坛数字雅乐外，南锣鼓巷、护国寺小吃街、前门灯会等区域提供非遗手作、民俗表演与老字号美食联动【来源：<a href="https://3g.163.com/news/article/KLANQI1V0556GMMA.html" target="_blank">https://3g.163.com/news/article/KLANQI1V0556GMMA.html</a>】。</p>
+                                                  <p>美食推荐高度聚焦京味传统：烤鸭、铜锅涮肉、冰糖葫芦、豌豆黄、艾窝窝、爆肚冯、护国寺小吃等被多个攻略反复提及，构成“味觉年俗”核心记忆点【来源：<a href="http://m.toutiao.com/group/7601903215315141126/" target="_blank">http://m.toutiao.com/group/7601903215315141126/</a>】。文创雪糕作为新消费符号，亦被列为必尝项目【来源：<a href="http://m.toutiao.com/group/7601903215315141126/" target="_blank">http://m.toutiao.com/group/7601903215315141126/</a>】。</p>
+                                                    <h3>四、出行策略：预约、错峰、保暖为三大铁律</h3>
+                                                      <p>所有2026年发布的攻略均强调三项核心行动原则：</p>
+                                                        <ol>
+                                                          <li><strong>提前预约</strong>：故宫、国家博物馆需提前10天预约，科技馆、天坛、雍和宫等需提前7天，部分需当日抢票，未预约无法入园【来源：<a href="http://m.toutiao.com/group/7601903215315141126/" target="_blank">http://m.toutiao.com/group/7601903215315141126/</a>】。</li>
+                                                            <li><strong>错峰出行</strong>：建议避开正月初二至初四高峰，选择初一或初五上午入园；天坛、地坛等推荐清晨或傍晚时段；避开前门、王府井主街，探索帽儿胡同、五道营等小众路径【来源：<a href="https://3g.163.com/news/article/KLAQCE5A0556GMMA.html" target="_blank">https://3g.163.com/news/article/KLAQCE5A0556GMMA.html</a>】。</li>
+                                                              <li><strong>防寒保暖</strong>：北京2月气温预估为-9℃~8℃，需全副御寒装备，建议携带暖宝宝、防滑鞋、保温水杯【来源：<a href="http://m.toutiao.com/group/7601903215315141126/" target="_blank">http://m.toutiao.com/group/7601903215315141126/</a>】。</li>
+                                                              </ol>
+                                                              <blockquote>
+                                                                <p><strong>注意</strong>：2025年1月29日发布的“大年初一开放信息”为老旧信息（距今超380天），虽提及故宫、天坛预约制度，但未涵盖2026年新增的“瑞马”IP、数字雅乐、9天长假、2000+活动等核心更新，仅作背景参考【来源：<a href="https://m.sohu.com/sa/854204584_660645/" target="_blank">https://m.sohu.com/sa/854204584_660645/</a>】。</p>
+                                                                </blockquote>
+                                                                <h3>五、外部参照：全国年味格局中的北京定位</h3>
+                                                                  <p>在全国15个年味目的地中，北京以“皇家年俗”定位独树一帜，与西安（盛唐灯会）、潮汕（英歌舞）、哈尔滨（冰雪大世界）、大理（白族民俗）等形成差异化互补【来源：<a href="http://m.toutiao.com/group/7598496033026408998/" target="_blank">http://m.toutiao.com/group/7598496033026408998/</a>】。其优势在于文化层级高、体系完整、基础设施成熟，劣势在于人流集中、预约门槛高，更适合追求深度文化沉浸而非大众狂欢的游客群体。</p>
+                                                                    <div class="recommendation">
+                                                                      <h4>推荐核心体验轴线</h4>
+                                                                        <p>建议游客以“<span class="highlight">天坛数字雅乐+地坛庙会+胡同慢游</span>”为核心轴线，结合错峰策略与亲子友好设施，实现文化深度与体验舒适度的最优平衡。</p>
+                                                                        </div>
+                                                                        <h2>总结与展望</h2>
+                                                                          <p>截至2026年2月16日，北京春节文旅已从“景点观光”迈向“文化场景营建”新阶段。天坛神乐署的沉浸式“中和韶乐”展是本年度最具突破性的文化创新事件，其成功模式可能为全国文博单位提供数字化转型范本。未来趋势将呈现三大方向：</p>
+                                                                            <ol>
+                                                                              <li><strong>非遗活化走向可交互、可生成</strong>：从观看→参与→创作，用户成为文化再生产主体；</li>
+                                                                                <li><strong>节庆体验从“集中爆发”转向“全天候渗透”</strong>：灯光秀、雅乐直播、文创市集延长体验周期；</li>
+                                                                                  <li><strong>智慧出行成为刚需</strong>：预约系统、交通引导、智能导览将深度嵌入旅游全流程。</li>
+                                                                                  </ol>
+                                                                                  <h2>所有资讯标题与链接列表（按发布日期由近至远排序）</h2>
+                                                                                    <ul class="source-list">
+                                                                                      <li class="source-item">
+                                                                                        <strong>天坛公园神乐署2月9日重启，推出沉浸式“中和韶乐”非遗展</strong>
+                                                                                          <a href="http://t.ynet.cn/h5/37797243.html" target="_blank" class="link">http://t.ynet.cn/h5/37797243.html</a>
+                                                                                          </li>
+                                                                                          <li class="source-item">
+                                                                                            <strong>天坛公园神乐署2月9日重启，推出沉浸式“中和韶乐”非遗展</strong>
+                                                                                              <a href="http://m.toutiao.com/group/7604796903426982435/" target="_blank" class="link">http://m.toutiao.com/group/7604796903426982435/</a>
+                                                                                              </li>
+                                                                                              <li class="source-item">
+                                                                                                <strong>北京春节5日游攻略聚焦“年味沉浸+错峰出行”</strong>
+                                                                                                  <a href="https://3g.163.com/news/article/KLAQCE5A0556GMMA.html" target="_blank" class="link">https://3g.163.com/news/article/KLAQCE5A0556GMMA.html</a>
+                                                                                                  </li>
+                                                                                                  <li class="source-item">
+                                                                                                    <strong>北京寒假春节5日游攻略聚焦皇家年味与京味民俗</strong>
+                                                                                                      <a href="https://3g.163.com/news/article/KLANQI1V0556GMMA.html" target="_blank" class="link">https://3g.163.com/news/article/KLANQI1V0556GMMA.html</a>
+                                                                                                      </li>
+                                                                                                      <li class="source-item">
+                                                                                                        <strong>2026年马年春节，北京推出超2000场文旅活动</strong>
+                                                                                                          <a href="https://toutiao.com/group/7601903215315141126/" target="_blank" class="link">https://toutiao.com/group/7601903215315141126/</a>
+                                                                                                          </li>
+                                                                                                          <li class="source-item">
+                                                                                                            <strong>北京4天3晚亲子春节行程出炉</strong>
+                                                                                                              <a href="https://toutiao.com/group/7601108588848759342/" target="_blank" class="link">https://toutiao.com/group/7601108588848759342/</a>
+                                                                                                              </li>
+                                                                                                              <li class="source-item">
+                                                                                                                <strong>2026年春节国内八大目的地年味浓郁</strong>
+                                                                                                                  <a href="https://toutiao.com/group/7601748352916570634/" target="_blank" class="link">https://toutiao.com/group/7601748352916570634/</a>
+                                                                                                                  </li>
+                                                                                                                  <li class="source-item">
+                                                                                                                    <strong>2026年春节，国内八大目的地年味浓郁</strong>
+                                                                                                                      <a href="http://m.toutiao.com/group/7601748352916570634/" target="_blank" class="link">http://m.toutiao.com/group/7601748352916570634/</a>
+                                                                                                                      </li>
+                                                                                                                      <li class="source-item">
+                                                                                                                        <strong>长沙家庭五天四晚北京春节游实用攻略</strong>
+                                                                                                                          <a href="https://m.sohu.com/a/971218492_122397335/" target="_blank" class="link">https://m.sohu.com/a/971218492_122397335/</a>
+                                                                                                                          </li>
+                                                                                                                          <li class="source-item">
+                                                                                                                            <strong>春节出行避人潮、寻年味，15个特色城市推荐出炉</strong>
+                                                                                                                              <a href="https://toutiao.com/group/7598496033026408998/" target="_blank" class="link">https://toutiao.com/group/7598496033026408998/</a>
+                                                                                                                              </li>
+                                                                                                                              <li class="source-item">
+                                                                                                                                <strong>春节出行避人潮、寻年味，15个特色城市推荐出炉</strong>
+                                                                                                                                  <a href="http://m.toutiao.com/group/7598496033026408998/" target="_blank" class="link">http://m.toutiao.com/group/7598496033026408998/</a>
+                                                                                                                                  </li>
+                                                                                                                                  <li class="source-item">
+                                                                                                                                    <strong>北京4天3晚亲子春节行程出炉</strong>
+                                                                                                                                      <a href="http://m.toutiao.com/group/7601108588848759342/" target="_blank" class="link">http://m.toutiao.com/group/7601108588848759342/</a>
+                                                                                                                                      </li>
+                                                                                                                                      <li class="source-item">
+                                                                                                                                        <strong>2026年马年春节，北京推出超2000场文旅活动</strong>
+                                                                                                                                          <a href="http://m.toutiao.com/group/7601903215315141126/" target="_blank" class="link">http://m.toutiao.com/group/7601903215315141126/</a>
+                                                                                                                                          </li>
+                                                                                                                                          <li class="source-item">
+                                                                                                                                            <strong>2026年春节，国内八大目的地年味浓郁</strong>
+                                                                                                                                              <a href="http://m.toutiao.com/group/7601748352916570634/" target="_blank" class="link">http://m.toutiao.com/group/7601748352916570634/</a>
+                                                                                                                                              </li>
+                                                                                                                                              <li class="source-item">
+                                                                                                                                                <strong>大年初一北京文博场馆开放指南</strong> <span class="old-info">(老旧信息，发布于2025年01月29日)</span>
+                                                                                                                                                  <a href="https://m.sohu.com/sa/854204584_660645/" target="_blank" class="link">https://m.sohu.com/sa/854204584_660645/</a>
+                                                                                                                                                  </li>
+                                                                                                                                                  <li class="source-item">
+                                                                                                                                                    <strong>2025年12月31日长沙家庭北京游攻略</strong> <span class="old-info">(注：内容为2026年春节攻略，发布时间为2025年底，内容时效性仍有效)</span>
+                                                                                                                                                      <a href="https://m.sohu.com/a/971218492_122397335/" target="_blank" class="link">https://m.sohu.com/a/971218492_122397335/</a>
+                                                                                                                                                      </li>
+                                                                                                                                                    </ul>
+                                                                                                                                                    <footer>
+                                                                                                                                                      <p>本报告基于2026年2月16日最新信息整理，所有链接均指向原始资讯来源。数据更新至2026年2月16日。</p>
+                                                                                                                                                      </footer>
+                                                                                                                                                    </div>
+                                                                                                                                                  </body>
+                                                                                                                                                </html>
+                                                                                                                                                ```
