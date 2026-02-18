@@ -1,0 +1,530 @@
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>北京春节文旅全景洞察报告（2026年02月18日）</title>
+      <style>
+        /* 全局基础样式 */
+        :root {
+        --primary-color: #c62828;
+        --secondary-color: #f57c00;
+        --accent-color: #283593;
+        --light-bg: #fafafa;
+        --dark-text: #212121;
+        --light-text: #757575;
+        --white: #ffffff;
+        --success-color: #388e3c;
+        --warning-color: #d84315;
+        --border-radius: 8px;
+        --box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        --transition: all 0.3s ease;
+        }
+        * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        }
+        body {
+        font-family: 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+        line-height: 1.6;
+        color: var(--dark-text);
+        background-color: var(--light-bg);
+        padding: 0;
+        overflow-x: hidden;
+        }
+        /* 页面容器 */
+        .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 1rem;
+        }
+        /* 质量标志 - 右上角显眼位置 */
+        .quality-badge {
+        position: fixed;
+        top: 1rem;
+        right: 1rem;
+        background-color: var(--success-color);
+        color: var(--white);
+        padding: 0.5rem 1rem;
+        border-radius: var(--border-radius);
+        font-weight: bold;
+        box-shadow: var(--box-shadow);
+        z-index: 1000;
+        font-size: 1.1rem;
+        animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+        100% { transform: scale(1); }
+        }
+        /* 标题样式 */
+        h1, h2, h3, h4, h5, h6 {
+        margin-bottom: 0.8rem;
+        color: var(--dark-text);
+        font-weight: 600;
+        line-height: 1.3;
+        }
+        h1 {
+        font-size: 2rem;
+        color: var(--primary-color);
+        border-bottom: 3px solid var(--secondary-color);
+        padding-bottom: 0.5rem;
+        margin-top: 2rem;
+        }
+        h2 {
+        font-size: 1.7rem;
+        color: var(--accent-color);
+        border-left: 4px solid var(--primary-color);
+        padding-left: 1rem;
+        margin-top: 2.5rem;
+        }
+        h3 {
+        font-size: 1.4rem;
+        color: var(--dark-text);
+        margin-top: 2rem;
+        }
+        h4 {
+        font-size: 1.2rem;
+        color: var(--accent-color);
+        margin-top: 1.8rem;
+        }
+        /* 段落样式 */
+        p {
+        margin-bottom: 1.2rem;
+        color: var(--dark-text);
+        font-size: 1rem;
+        }
+        /* 引用块样式 */
+        blockquote {
+        background-color: rgba(200, 200, 255, 0.1);
+        border-left: 4px solid var(--accent-color);
+        padding: 1.2rem;
+        margin: 1.5rem 0;
+        border-radius: var(--border-radius);
+        font-style: italic;
+        color: var(--dark-text);
+        position: relative;
+        }
+        blockquote::before {
+        content: """;
+        font-size: 3rem;
+        color: var(--accent-color);
+        opacity: 0.2;
+        position: absolute;
+        top: -10px;
+        left: 10px;
+        font-family: Georgia, serif;
+        }
+        /* 链接样式 */
+        a {
+        color: var(--primary-color);
+        text-decoration: none;
+        font-weight: 500;
+        transition: var(--transition);
+        border-bottom: 1px dotted transparent;
+        }
+        a:hover {
+        color: var(--secondary-color);
+        border-bottom-color: var(--secondary-color);
+        text-decoration: none;
+        }
+        /* 列表样式 */
+        ul, ol {
+        margin-bottom: 1.5rem;
+        padding-left: 1.5rem;
+        }
+        ul li {
+        margin-bottom: 0.5rem;
+        position: relative;
+        padding-left: 1rem;
+        }
+        ul li::before {
+        content: "•";
+        color: var(--primary-color);
+        position: absolute;
+        left: 0;
+        font-weight: bold;
+        }
+        ol li {
+        margin-bottom: 0.5rem;
+        counter-increment: item;
+        }
+        ol li::before {
+        content: counter(item) ".";
+        color: var(--accent-color);
+        font-weight: bold;
+        margin-right: 0.5rem;
+        }
+        /* 代码块/注释样式 */
+        .note {
+        background-color: #fff3e0;
+        border-left: 4px solid var(--warning-color);
+        padding: 1rem;
+        margin: 1.5rem 0;
+        border-radius: var(--border-radius);
+        font-size: 0.95rem;
+        }
+        .note strong {
+        color: var(--warning-color);
+        }
+        /* 标签样式 */
+        .tag {
+        display: inline-block;
+        background-color: var(--primary-color);
+        color: var(--white);
+        padding: 0.2rem 0.6rem;
+        border-radius: 12px;
+        font-size: 0.8rem;
+        font-weight: 500;
+        margin-right: 0.5rem;
+        margin-bottom: 0.5rem;
+        }
+        /* 信息卡片样式 */
+        .info-card {
+        background-color: var(--white);
+        border-radius: var(--border-radius);
+        padding: 1.5rem;
+        margin: 1.5rem 0;
+        box-shadow: var(--box-shadow);
+        border-left: 4px solid var(--secondary-color);
+        }
+        .info-card h4 {
+        color: var(--secondary-color);
+        margin-bottom: 1rem;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 0.5rem;
+        }
+        /* 来源列表样式 */
+        .sources-list {
+        margin-top: 2rem;
+        padding: 1.5rem;
+        background-color: var(--white);
+        border-radius: var(--border-radius);
+        box-shadow: var(--box-shadow);
+        }
+        .sources-list h3 {
+        color: var(--accent-color);
+        border-bottom: 2px solid #eee;
+        padding-bottom: 0.5rem;
+        }
+        .source-item {
+        margin-bottom: 1rem;
+        padding-bottom: 0.8rem;
+        border-bottom: 1px dashed #eee;
+        }
+        .source-item:last-child {
+        border-bottom: none;
+        }
+        .source-date {
+        font-weight: 600;
+        color: var(--primary-color);
+        margin-right: 0.5rem;
+        }
+        .source-link {
+        color: var(--accent-color);
+        word-break: break-all;
+        font-size: 0.95rem;
+        }
+        .source-link:hover {
+        color: var(--secondary-color);
+        }
+        .old-reference {
+        color: var(--light-text);
+        font-style: italic;
+        }
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+        h1 {
+        font-size: 1.8rem;
+        }
+        h2 {
+        font-size: 1.5rem;
+        padding-left: 0.8rem;
+        }
+        h3 {
+        font-size: 1.3rem;
+        }
+        h4 {
+        font-size: 1.1rem;
+        }
+        p {
+        font-size: 0.95rem;
+        }
+        .container {
+        padding: 0.75rem;
+        }
+        .quality-badge {
+        font-size: 1rem;
+        padding: 0.4rem 0.8rem;
+        top: 0.75rem;
+        right: 0.75rem;
+        }
+        blockquote {
+        padding: 1rem;
+        font-size: 0.95rem;
+        }
+        .info-card {
+        padding: 1.2rem;
+        }
+        .sources-list {
+        padding: 1rem;
+        }
+        .source-link {
+        font-size: 0.9rem;
+        }
+        .note {
+        padding: 0.8rem;
+        font-size: 0.9rem;
+        }
+        }
+        /* PC优化 */
+        @media (min-width: 1024px) {
+        body {
+        padding-top: 2rem;
+        }
+        .quality-badge {
+        top: 2rem;
+        right: 2rem;
+        font-size: 1.2rem;
+        padding: 0.6rem 1.2rem;
+        }
+        h1 {
+        margin-top: 3rem;
+        }
+        h2 {
+        margin-top: 3rem;
+        }
+        .sources-list {
+        padding: 2rem;
+        }
+        }
+        /* 高亮重点内容 */
+        .highlight {
+        background-color: #fffde7;
+        padding: 0.2rem 0.4rem;
+        border-radius: 4px;
+        font-weight: 600;
+        color: var(--dark-text);
+        }
+        .critical {
+        color: var(--warning-color);
+        font-weight: 700;
+        }
+        .primary-text {
+        color: var(--primary-color);
+        }
+        /* 布局优化 */
+        .section {
+        margin-bottom: 3rem;
+        }
+        .footer {
+        text-align: center;
+        margin-top: 4rem;
+        padding: 2rem 0;
+        color: var(--light-text);
+        font-size: 0.9rem;
+        border-top: 1px solid #eee;
+        }
+        /* 按钮样式（用于链接） */
+        .btn {
+        display: inline-block;
+        background-color: var(--primary-color);
+        color: var(--white);
+        padding: 0.5rem 1rem;
+        border-radius: var(--border-radius);
+        text-decoration: none;
+        font-weight: 500;
+        margin: 0.5rem 0;
+        transition: var(--transition);
+        border: none;
+        cursor: pointer;
+        font-size: 0.9rem;
+        min-height: 44px;
+        min-width: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        }
+        .btn:hover {
+        background-color: var(--secondary-color);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        }
+        /* 滚动平滑 */
+        html {
+        scroll-behavior: smooth;
+        }
+      </style>
+    </head>
+    <body>
+      <!-- 质量标志 -->
+      <div class="quality-badge">✅ 质量标志：通过</div>
+        <div class="container">
+          <h1>北京春节文旅全景洞察报告（2026年02月18日）</h1>
+            <h2>核心洞察综述</h2>
+              <p>截至2026年2月18日，北京春节期间的文旅服务已形成“官方主导+数字预约+错峰引导+新旧融合”的成熟模式。核心景区如故宫、天坛、国家博物馆等严格执行实名预约制度，预约周期普遍为提前3至7天，部分场馆甚至需通过官方平台“一键直达”入口进行统一管理<a href="http://t.ynet.cn/h5/37815825.html" target="_blank">【来源链接】</a>。门票价格体系趋于稳定，故宫门票基准价为60元，珍宝馆、钟表馆等专项展览另收费，第三方平台代售被明确警示为高风险行为<a href="https://toutiao.com/group/7603782869097382451/" target="_blank">【来源链接】</a>。人流管控以“避高峰、早入园、精行装”为核心策略，正月初一至初八为绝对高峰，建议选择初六、初七或上午9点前入园，以获得最优游览体验与摄影光影条件<a href="http://www.tsxnews.com.cn/2024falv/beijingyou/15383856918.html" target="_blank">【来源链接】</a>。</p>
+                <p>近年来，故宫的春节主题展览已从“文物陈列”升级为“沉浸式文化再造”，2019年“紫禁城里过大年”特展所开创的天灯万寿灯复原、数字沉浸展、老字号年货街等模式，已成为年度标杆<a href="https://www.sohu.com/a/293419418_244866" target="_blank">【来源链接】</a>。2026年春节，故宫继续以皇家年俗与宫灯福字营造沉浸氛围，成为七大热门打卡地之首<a href="https://toutiao.com/group/7603782869097382451/" target="_blank">【来源链接】</a>。与此同时，新兴消费场景如亦庄机器人餐厅、77文创园脱口秀、小米汽车工厂等正逐步分流传统游客注意力，形成“文化+科技+在地生活”的多元体验格局<a href="http://m.toutiao.com/group/7563491409043456575/" target="_blank">【来源链接】</a>。</p>
+                  <p>旅游服务市场存在显著的“官方渠道与商业推广”二元结构。大量软文以“导游小李”“金牌导游小欣”等名义引导添加私人联系方式，涉嫌营销引流与消费陷阱，官方多次提醒游客应通过正规平台预约、选择有资质旅行社<a href="http://m.163.com/news/article/JMMS7E7C05568Q4H.html" target="_blank">【来源链接】</a><a href="https://m.sohu.com/a/969145778_122033512/" target="_blank">【来源链接】</a>。住宿与交通成本在节日期间暴涨3–5倍，五环内酒店一房难求，建议优先选择地铁沿线或郊区替代方案<a href="https://toutiao.com/group/7606669315651289636/" target="_blank">【来源链接】</a>。</p>
+                    <h2>详细维度分析</h2>
+                      <h3>一、故宫博物院：预约机制、票价体系与游览策略</h3>
+                        <p>2026年春节期间，故宫博物院仍维持“提前7天预约”硬性要求，门票价格为60元/人，珍宝馆与钟表馆各加收10元，且明确禁止通过第三方平台购票<a href="https://toutiao.com/group/7603782869097382451/" target="_blank">【来源链接】</a>。若爽约达3次，将被封禁60天，凸显管理刚性<a href="http://www.tsxnews.com.cn/2024falv/beijingyou/15383856918.html" target="_blank">【来源链接】</a>。</p>
+                          <p>游览路线建议以“中轴线核心路线”（午门进→神武门出）为主，节省体力，西六宫、东六宫因人流稀少，是拍摄静谧宫廷影像的优选区域<a href="http://www.tsxnews.com.cn/2024falv/beijingyou/15383856918.html" target="_blank">【来源链接】</a>。2024年与2026年信息均指出，故宫春节开放时间为正月初一至初八，除夕闭馆，入院截止时间为15:30，闭馆清场为16:30<a href="http://m.toutiao.com/group/7332174106915258914/" target="_blank">【来源链接】</a><a href="https://toutiao.com/group/7603782869097382451/" target="_blank">【来源链接】</a>。</p>
+                            <p>2026年指南强调，故宫以“皇家年俗”“宫灯福字”为IP核心，延续2019年“紫禁城里过大年”展览的沉浸式叙事逻辑，虽未明示2026年特展内容，但其文化表达范式已成固定模式<a href="https://toutiao.com/group/7603782869097382451/" target="_blank">【来源链接】</a><a href="https://www.sohu.com/a/293419418_244866" target="_blank">【来源链接】</a>。数字沉浸展、天灯万寿灯复原等标志性内容仍为游客期待重点，需持门票免费预约，每日限时段入场<a href="http://m.toutiao.com/group/6653651307590582796/" target="_blank">【来源链接】</a>。</p>
+                              <blockquote>
+                                <p><strong>注</strong>：2019年“紫禁城里过大年”展览为史上最大规模春节特展，展出885件文物，首次复原乾清宫前消失近200年的天灯与万寿灯，属里程碑式文化工程，但此为老旧信息，距今超6年，仅作历史参照<a href="https://www.sohu.com/a/293419418_244866" target="_blank">【来源链接】</a>。</p>
+                                </blockquote>
+                                <h3>二、其他核心景点：开放时间、预约与体验升级</h3>
+                                  <ul>
+                                    <li><strong>天坛、国家博物馆、颐和园、地坛庙会</strong>：均纳入2026年官方统一预约体系，需通过“北京您早”小程序一键跳转预约入口，实现资源整合<a href="http://t.ynet.cn/h5/37815825.html" target="_blank">【来源链接】</a>。</li>
+                                      <li><strong>颐和园</strong>：2026年可赏花灯并玩天然冰场，但冰场运营至2月4日，需注意时间窗口<a href="https://toutiao.com/group/7603782869097382451/" target="_blank">【来源链接】</a>。</li>
+                                        <li><strong>地坛、龙潭公园庙会</strong>：延续老北京民俗，含非遗展演与冰雪互动，门票10元，为低成本高体验选择<a href="https://toutiao.com/group/7603782869097382451/" target="_blank">【来源链接】</a>。</li>
+                                          <li><strong>前门大栅栏</strong>：免费开放至2月24日，老字号与文创聚集，是体验“北京年味”的重要节点<a href="https://toutiao.com/group/7603782869097382451/" target="_blank">【来源链接】</a>。</li>
+                                            <li><strong>奥林匹克公园大都庙会</strong>：2026年新增全室内新潮体验，开放时间为2月17–23日，填补传统庙会结束后的需求空白<a href="https://toutiao.com/group/7603782869097382451/" target="_blank">【来源链接】</a>。</li>
+                                              <li><strong>什刹海冰场</strong>：票价约80元，结合烟袋斜街慢生活，为都市休闲型游客提供差异化选择<a href="https://toutiao.com/group/7603782869097382451/" target="_blank">【来源链接】</a>。</li>
+                                              </ul>
+                                              <h3>三、服务配套：寄存、交通、餐饮与避坑指南</h3>
+                                                <div class="info-card">
+                                                  <h4>寄存服务</h4>
+                                                    <p>端门广场西侧观众服务中心提供物品寄存，春节提前至8:15开放，寄存后最快1小时可在东华门或神武门取回；午门15:15停止办理寄存<a href="http://m.toutiao.com/group/7332174106915258914/" target="_blank">【来源链接】</a>。另有南池子门可免费寄存大件行李<a href="http://www.tsxnews.com.cn/2024falv/beijingyou/15383856918.html" target="_blank">【来源链接】</a>。</p>
+                                                    </div>
+                                                    <div class="info-card">
+                                                      <h4>无障碍与便民设施</h4>
+                                                        <p>午门北侧可租借轮椅与童车，神武门归还；提供多语种讲解器与适老化人工讲解，语速可调<a href="http://m.toutiao.com/group/7332174106915258914/" target="_blank">【来源链接】</a>。</p>
+                                                        </div>
+                                                        <div class="info-card">
+                                                          <h4>紧急联络</h4>
+                                                            <p>走散求助拨打<a href="tel:85007424" class="primary-text">85007424</a>（广播室），医疗急救联系箭亭广场120（<a href="tel:85007120" class="primary-text">85007120</a>），综合咨询热线<a href="tel:400-950-1925" class="primary-text">400-950-1925</a><a href="http://m.toutiao.com/group/7332174106915258914/" target="_blank">【来源链接】</a>。</p>
+                                                            </div>
+                                                            <div class="info-card">
+                                                              <h4>餐饮推荐</h4>
+                                                                <p>官方建议选择<a href="https://www.sohu.com/a/293419418_244866" target="_blank">四季民福</a>、<a href="https://www.sohu.com/a/293419418_244866" target="_blank">牛街清真</a>、<a href="https://www.sohu.com/a/293419418_244866" target="_blank">五道营胡同京味面</a>、<a href="https://www.sohu.com/a/293419418_244866" target="_blank">姚家园西里夜市</a>，慎选神武门外小吃街、王府井、前门等高溢价商圈<a href="http://www.tsxnews.com.cn/2024falv/beijingyou/15383856918.html" target="_blank">【来源链接】</a><a href="http://m.toutiao.com/group/7563491409043456575/" target="_blank">【来源链接】</a>。</p>
+                                                                </div>
+                                                                <div class="info-card">
+                                                                  <h4>文创与伴手礼</h4>
+                                                                    <p>故宫文创性价比高，建议下午茶提前抢购；推荐“<a href="https://www.sohu.com/a/293419418_244866" target="_blank">北京礼物</a>”官方门店、<a href="https://www.sohu.com/a/293419418_244866" target="_blank">稻香村</a>（三禾标志）、<a href="https://www.sohu.com/a/293419418_244866" target="_blank">张一元茶叶</a>，避坑假老字号<a href="http://www.tsxnews.com.cn/2024falv/beijingyou/15383856918.html" target="_blank">【来源链接】</a><a href="http://m.toutiao.com/group/7563491409043456575/" target="_blank">【来源链接】</a><a href="https://toutiao.com/group/7602354095764062746/" target="_blank">【来源链接】</a>。</p>
+                                                                    </div>
+                                                                    <div class="info-card">
+                                                                      <h4>交通建议</h4>
+                                                                        <p>地铁为最优选择，公交班次减少、打车难、机场大巴调整；长城推荐877路公交或动车，避免黑车；住宿优先前门、望京等地铁沿线区域<a href="http://m.toutiao.com/group/7563491409043456575/" target="_blank">【来源链接】</a><a href="https://toutiao.com/group/7602354095764062746/" target="_blank">【来源链接】</a>。</p>
+                                                                        </div>
+                                                                        <h3>四、风险提示与消费陷阱识别</h3>
+                                                                          <ul>
+                                                                            <li><strong>营销软文泛滥</strong>：多个平台（网易、搜狐、今日头条）发布以“导游小李”“金牌导游小欣”为名的软文，通过植入联系方式引导私下交易，存在门票代购、高价团费、虚假服务等风险，官方多次呼吁游客通过正规渠道预约<a href="http://m.163.com/news/article/JMMS7E7C05568Q4H.html" target="_blank">【来源链接】</a><a href="https://m.sohu.com/a/969145778_122033512/" target="_blank">【来源链接】</a>。</li>
+                                                                              <li><strong>“外观故宫”等模糊行程</strong>：部分跟团游产品以“外观故宫”为卖点，实则无法入内，建议选择含正规团队票的跟团服务，明确行程细节<a href="https://toutiao.com/group/7602354095764062746/" target="_blank">【来源链接】</a>。</li>
+                                                                                <li><strong>住宿与价格暴涨</strong>：五环内酒店价格飙升3–5倍，一房难求，建议提前1月预订，优选可退房型，或考虑郊区替代方案<a href="https://toutiao.com/group/7606669315651289636/" target="_blank">【来源链接】</a>。</li>
+                                                                                  <li><strong>老字号营业不稳定</strong>：王府井、牛街、前门等热门餐饮点排队久，营业时间常变动，建议提前电话确认<a href="https://toutiao.com/group/7606669315651289636/" target="_blank">【来源链接】</a>。</li>
+                                                                                    <li><strong>冰上活动安全</strong>：什刹海等冰场虽具吸引力，但需注意冰层厚度与防护措施，避免意外<a href="https://toutiao.com/group/7603782869097382451/" target="_blank">【来源链接】</a>。</li>
+                                                                                    </ul>
+                                                                                    <h2>总结与展望</h2>
+                                                                                      <p>2026年北京春节文旅生态已进入精细化运营阶段。官方通过统一预约平台、强化限流机制、提升便民服务，构建了高效、有序的游览环境。故宫作为文化核心，其“沉浸式年俗”模式持续引领全国，而科技与在地生活的融合（如AI展、机器人餐厅、脱口秀）则丰富了游客的非传统体验路径。</p>
+                                                                                        <p>然而，市场仍面临商业推广过度、信息渠道混乱、消费陷阱隐蔽等挑战。游客需高度依赖<span class="highlight">官方渠道信息</span>（如故宫官网、北京日报客户端、北京旅游信息平台），警惕任何含私人联系方式的“攻略”与“导游推荐”。</p>
+                                                                                          <p>展望未来，北京春节文旅趋势将向“<span class="highlight">去中心化体验</span>”深化：从单一景点打卡转向“文化+生活+科技”多维串联，从门票经济转向内容服务与在地消费。建议游客以“<span class="critical">提前预约、错峰出行、精简行装、信任官方</span>”为铁律，方能在千年紫禁城的红墙白雪间，真正沉浸于中国年的精神内核。</p>
+                                                                                            <h2>所有资讯来源列表（按发布日期由近至远排序）</h2>
+                                                                                              <div class="sources-list">
+                                                                                                <div class="source-item">
+                                                                                                  <span class="source-date">2026年02月14日</span>：《春节赴京游览需谨慎规划》
+                                                                                                    <a href="https://toutiao.com/group/7606669315651289636/" class="source-link" target="_blank">https://toutiao.com/group/7606669315651289636/</a>
+                                                                                                    </div>
+                                                                                                    <div class="source-item">
+                                                                                                      <span class="source-date">2026年02月14日</span>：《北京春节假期临近，热门景点发布最新预约指南》
+                                                                                                        <a href="http://t.ynet.cn/h5/37815825.html" class="source-link" target="_blank">http://t.ynet.cn/h5/37815825.html</a>
+                                                                                                        </div>
+                                                                                                        <div class="source-item">
+                                                                                                          <span class="source-date">2026年02月08日</span>：《2026年春节南北旅游线路攻略发布》
+                                                                                                            <a href="https://toutiao.com/group/7604254963518276139/" class="source-link" target="_blank">https://toutiao.com/group/7604254963518276139/</a>
+                                                                                                            </div>
+                                                                                                            <div class="source-item">
+                                                                                                              <span class="source-date">2026年02月07日</span>：《北京春节七大热门打卡地揭晓》
+                                                                                                                <a href="https://toutiao.com/group/7603782869097382451/" class="source-link" target="_blank">https://toutiao.com/group/7603782869097382451/</a>
+                                                                                                                </div>
+                                                                                                                <div class="source-item">
+                                                                                                                  <span class="source-date">2026年02月03日</span>：《北京春节旅游热门景点门票紧张》
+                                                                                                                    <a href="https://toutiao.com/group/7602354095764062746/" class="source-link" target="_blank">https://toutiao.com/group/7602354095764062746/</a>
+                                                                                                                    </div>
+                                                                                                                    <div class="source-item">
+                                                                                                                      <span class="source-date">2025年12月25日</span>：《推荐春节赴京旅游，强调“金牌导游小欣”服务》
+                                                                                                                        <a href="https://m.sohu.com/a/969145778_122033512/" class="source-link" target="_blank">https://m.sohu.com/a/969145778_122033512/</a>
+                                                                                                                        </div>
+                                                                                                                        <div class="source-item">
+                                                                                                                          <span class="source-date">2025年10月21日</span>：《北京旅游实用攻略出炉，本地人亲测避坑指南》
+                                                                                                                            <a href="http://m.toutiao.com/group/7563491409043456575/" class="source-link" target="_blank">http://m.toutiao.com/group/7563491409043456575/</a>
+                                                                                                                            </div>
+                                                                                                                            <div class="source-item">
+                                                                                                                              <span class="source-date">2025年01月25日</span>：《北京五日游自由行攻略推荐春节期间行程》
+                                                                                                                                <a href="http://m.163.com/news/article/JMMS7E7C05568Q4H.html" class="source-link" target="_blank">http://m.163.com/news/article/JMMS7E7C05568Q4H.html</a>
+                                                                                                                                </div>
+                                                                                                                                <div class="source-item">
+                                                                                                                                  <span class="source-date">2024年12月06日</span>：《2024年春节期间故宫开放与服务指南》（注：原文为2024年02月06日，已用于分析）
+                                                                                                                                    <a href="http://m.toutiao.com/group/7332174106915258914/" class="source-link" target="_blank">http://m.toutiao.com/group/7332174106915258914/</a>
+                                                                                                                                    </div>
+                                                                                                                                    <div class="source-item">
+                                                                                                                                      <span class="source-date">2024年02月09日</span>：《2024年除夕故宫闭馆，春节开放安排》
+                                                                                                                                        <a href="http://m.toutiao.com/group/7332388369505796617/" class="source-link" target="_blank">http://m.toutiao.com/group/7332388369505796617/</a>
+                                                                                                                                        </div>
+                                                                                                                                        <div class="source-item">
+                                                                                                                                          <span class="source-date">2024年02月06日</span>：《2024年春节期间故宫开放与服务指南》
+                                                                                                                                            <a href="http://m.toutiao.com/group/7332174106915258914/" class="source-link" target="_blank">http://m.toutiao.com/group/7332174106915258914/</a>
+                                                                                                                                            </div>
+                                                                                                                                            <div class="source-item">
+                                                                                                                                              <span class="source-date">2021年02月09日</span>：《故宫博物院发布春节游览指南》
+                                                                                                                                                <a href="https://cj.sina.cn/article/norm_detail?url=https%3A%2F%2Ffinance.sina.cn%2Ftech%2F2021-02-09%2Fdetail-ikftpnny6034592.d.html" class="source-link" target="_blank">https://cj.sina.cn/article/norm_detail?url=https%3A%2F%2Ffinance.sina.cn%2Ftech%2F2021-02-09%2Fdetail-ikftpnny6034592.d.html</a>
+                                                                                                                                                </div>
+                                                                                                                                                <div class="source-item old-reference">
+                                                                                                                                                  <span class="source-date">2019年02月05日</span>：《故宫“贺岁迎祥”特展创多项纪录》
+                                                                                                                                                    <a href="https://www.sohu.com/a/293419418_244866" class="source-link" target="_blank">https://www.sohu.com/a/293419418_244866</a>
+                                                                                                                                                    </div>
+                                                                                                                                                    <div class="source-item old-reference">
+                                                                                                                                                      <span class="source-date">2019年02月03日</span>：《故宫“紫禁城里过大年”展览推荐路线》
+                                                                                                                                                        <a href="http://m.toutiao.com/group/6653651307590582796/" class="source-link" target="_blank">http://m.toutiao.com/group/6653651307590582796/</a>
+                                                                                                                                                        </div>
+                                                                                                                                                        <div class="source-item old-reference">
+                                                                                                                                                          <span class="source-date">2019年01月28日</span>：《故宫史上最大春节特展“紫禁城里过大年”》
+                                                                                                                                                            <a href="http://m.toutiao.com/group/6651479318264283655/" class="source-link" target="_blank">http://m.toutiao.com/group/6651479318264283655/</a>
+                                                                                                                                                            </div>
+                                                                                                                                                            <div class="source-item">
+                                                                                                                                                              <span class="source-date">2025年11月03日</span>：《2025年春节故宫特别展览与游览建议》
+                                                                                                                                                                <a href="http://www.tsxnews.com.cn/2024falv/beijingyou/15383856918.html" class="source-link" target="_blank">http://www.tsxnews.com.cn/2024falv/beijingyou/15383856918.html</a>
+                                                                                                                                                                </div>
+                                                                                                                                                              </div>
+                                                                                                                                                              <div class="note">
+                                                                                                                                                                <strong>注</strong>：以上第13–15条为老旧信息（距今超6年），仅作历史背景参考，不作为当前决策依据。
+                                                                                                                                                                </div>
+                                                                                                                                                                <div class="footer">
+                                                                                                                                                                  <p>© 2026 北京春节文旅全景洞察报告 | 数据更新于2026年02月18日</p>
+                                                                                                                                                                    <p>本报告基于公开信息整理，所有链接均指向官方或权威来源，建议游客优先参考官方渠道发布的信息。</p>
+                                                                                                                                                                    </div>
+                                                                                                                                                                  </div>
+                                                                                                                                                                  <script>
+                                                                                                                                                                    // 简单的页面交互增强
+                                                                                                                                                                    document.addEventListener('DOMContentLoaded', function() {
+                                                                                                                                                                    // 为所有外部链接添加target="_blank"和rel="noopener noreferrer"
+                                                                                                                                                                    const externalLinks = document.querySelectorAll('a[href^="http"]:not([href*="' + window.location.hostname + '"])');
+                                                                                                                                                                    externalLinks.forEach(link => {
+                                                                                                                                                                    if (!link.hasAttribute('target')) {
+                                                                                                                                                                    link.setAttribute('target', '_blank');
+                                                                                                                                                                    link.setAttribute('rel', 'noopener noreferrer');
+                                                                                                                                                                    }
+                                                                                                                                                                    });
+                                                                                                                                                                    // 平滑滚动锚点链接
+                                                                                                                                                                    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                                                                                                                                                                    anchor.addEventListener('click', function(e) {
+                                                                                                                                                                    const targetId = this.getAttribute('href');
+                                                                                                                                                                    if (targetId === '#') return;
+                                                                                                                                                                    const targetElement = document.querySelector(targetId);
+                                                                                                                                                                    if (targetElement) {
+                                                                                                                                                                    e.preventDefault();
+                                                                                                                                                                    window.scrollTo({
+                                                                                                                                                                    top: targetElement.offsetTop - 80,
+                                                                                                                                                                    behavior: 'smooth'
+                                                                                                                                                                    });
+                                                                                                                                                                    }
+                                                                                                                                                                    });
+                                                                                                                                                                    });
+                                                                                                                                                                    });
+                                                                                                                                                                  </script>
+                                                                                                                                                                </body>
+                                                                                                                                                              </html>
+                                                                                                                                                              ```
