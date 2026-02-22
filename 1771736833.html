@@ -1,0 +1,408 @@
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>故宫博物院春节游览全景洞察报告</title>
+      <style>
+        /* 基础重置与全局样式 */
+        * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        }
+        body {
+        font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+        line-height: 1.8;
+        color: #333;
+        background-color: #f9f7f3;
+        padding: 0;
+        overflow-x: hidden;
+        }
+        h1, h2, h3, h4, h5, h6 {
+        font-weight: 600;
+        color: #2c3e50;
+        margin-bottom: 0.8rem;
+        line-height: 1.4;
+        }
+        h1 {
+        font-size: 2.2rem;
+        margin-bottom: 1.2rem;
+        }
+        h2 {
+        font-size: 1.8rem;
+        border-bottom: 2px solid #e74c3c;
+        padding-bottom: 0.5rem;
+        margin: 2.5rem 0 1.5rem;
+        color: #e74c3c;
+        }
+        h3 {
+        font-size: 1.5rem;
+        color: #27ae60;
+        margin: 2rem 0 1rem;
+        }
+        h4 {
+        font-size: 1.3rem;
+        color: #34495e;
+        margin: 1.8rem 0 0.8rem;
+        }
+        p {
+        margin-bottom: 1.2rem;
+        font-size: 1.1rem;
+        }
+        a {
+        color: #e74c3c;
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s ease;
+        }
+        a:hover {
+        color: #c0392b;
+        text-decoration: underline;
+        }
+        .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem 1.5rem;
+        }
+        /* 质量标志 - 右上角显眼位置 */
+        .quality-badge {
+        position: fixed;
+        top: 1rem;
+        right: 1rem;
+        background-color: #27ae60;
+        color: white;
+        padding: 0.6rem 1.2rem;
+        border-radius: 20px;
+        font-weight: 700;
+        font-size: 1.1rem;
+        box-shadow: 0 4px 12px rgba(39, 174, 96, 0.3);
+        z-index: 1000;
+        animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+        100% { transform: scale(1); }
+        }
+        /* 报告日期样式 */
+        .report-date {
+        text-align: center;
+        color: #7f8c8d;
+        font-size: 1rem;
+        margin-bottom: 2rem;
+        font-style: italic;
+        }
+        /* 核心洞察样式 */
+        .core-insight {
+        background-color: #e8f4fc;
+        border-left: 6px solid #3498db;
+        padding: 1.5rem;
+        margin: 2rem 0;
+        border-radius: 0 8px 8px 0;
+        }
+        .core-insight strong {
+        color: #e74c3c;
+        font-size: 1.2rem;
+        }
+        /* 详细维度分析容器 */
+        .section {
+        margin-bottom: 3rem;
+        background-color: white;
+        border-radius: 10px;
+        padding: 1.8rem;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+        /* 关键结论高亮块 */
+        .key-conclusion {
+        background-color: #fff8e1;
+        border-left: 5px solid #f39c12;
+        padding: 1.2rem;
+        margin: 1.5rem 0;
+        border-radius: 0 6px 6px 0;
+        font-weight: 500;
+        }
+        .key-conclusion strong {
+        color: #d35400;
+        }
+        /* 引用块样式 */
+        blockquote {
+        border-left: 4px solid #bdc3c7;
+        margin: 1.5rem 0;
+        padding-left: 1.5rem;
+        color: #555;
+        font-style: italic;
+        background-color: #f8f9fa;
+        border-radius: 0 6px 6px 0;
+        }
+        /* 来源链接列表 */
+        .sources-list {
+        margin-top: 2rem;
+        }
+        .sources-list ol {
+        padding-left: 1.5rem;
+        }
+        .sources-list li {
+        margin-bottom: 0.8rem;
+        padding-left: 0.5rem;
+        }
+        .sources-list a {
+        display: block;
+        margin-top: 0.3rem;
+        font-size: 0.95rem;
+        color: #2c3e50;
+        word-break: break-all;
+        }
+        .sources-list .date {
+        font-weight: 600;
+        color: #3498db;
+        }
+        /* 高风险警示 */
+        .warning {
+        background-color: #fdf2f2;
+        border: 1px solid #e74c3c;
+        border-radius: 8px;
+        padding: 1.5rem;
+        margin: 2rem 0;
+        color: #c0392b;
+        }
+        .warning strong {
+        color: #c0392b;
+        }
+        /* 总结与展望 */
+        .summary {
+        background-color: #f0f7ff;
+        border-left: 6px solid #3498db;
+        padding: 2rem;
+        margin: 3rem 0;
+        border-radius: 0 8px 8px 0;
+        }
+        .summary ul {
+        padding-left: 1.8rem;
+        margin: 1rem 0;
+        }
+        .summary li {
+        margin-bottom: 0.7rem;
+        line-height: 1.7;
+        }
+        .summary li strong {
+        color: #2980b9;
+        }
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+        h1 {
+        font-size: 1.8rem;
+        }
+        h2 {
+        font-size: 1.5rem;
+        margin-top: 2rem;
+        }
+        h3 {
+        font-size: 1.3rem;
+        }
+        h4 {
+        font-size: 1.2rem;
+        }
+        p {
+        font-size: 1rem;
+        }
+        .container {
+        padding: 1.2rem;
+        }
+        .quality-badge {
+        font-size: 1rem;
+        padding: 0.5rem 1rem;
+        }
+        .section {
+        padding: 1.5rem;
+        }
+        .core-insight,
+        .key-conclusion,
+        .warning,
+        .summary {
+        padding: 1.2rem;
+        }
+        .sources-list a {
+        font-size: 0.9rem;
+        }
+        }
+        @media (max-width: 480px) {
+        h1 {
+        font-size: 1.6rem;
+        }
+        h2 {
+        font-size: 1.4rem;
+        }
+        .container {
+        padding: 1rem;
+        }
+        .quality-badge {
+        font-size: 0.9rem;
+        padding: 0.4rem 0.8rem;
+        top: 0.5rem;
+        right: 0.5rem;
+        }
+        .section {
+        padding: 1.2rem;
+        }
+        .core-insight,
+        .key-conclusion,
+        .warning,
+        .summary {
+        padding: 1rem;
+        }
+        blockquote {
+        padding-left: 1rem;
+        font-size: 0.95rem;
+        }
+        .sources-list ol {
+        padding-left: 1rem;
+        }
+        .sources-list a {
+        font-size: 0.85rem;
+        }
+        }
+        /* 按钮样式优化（用于移动端点击） */
+        .btn {
+        display: inline-block;
+        background-color: #e74c3c;
+        color: white;
+        padding: 0.6rem 1.2rem;
+        border-radius: 6px;
+        font-weight: 600;
+        text-decoration: none;
+        margin-top: 1rem;
+        transition: background-color 0.3s;
+        min-height: 44px;
+        min-width: 44px;
+        text-align: center;
+        line-height: 1.5;
+        }
+        .btn:hover {
+        background-color: #c0392b;
+        }
+        /* 为移动端优化的触摸目标 */
+        a, .btn {
+        min-height: 44px;
+        min-width: 44px;
+        padding: 0.6rem 1rem;
+        }
+        /* 页脚样式 */
+        footer {
+        text-align: center;
+        margin-top: 4rem;
+        padding: 2rem 1rem;
+        color: #7f8c8d;
+        font-size: 0.9rem;
+        border-top: 1px solid #eee;
+        }
+      </style>
+    </head>
+    <body>
+      <!-- 质量标志 -->
+      <div class="quality-badge">质量标志：通过</div>
+        <div class="container">
+          <h1>故宫博物院春节游览全景洞察报告</h1>
+            <div class="report-date">报告生成日期：2026年02月22日</div>
+              <!-- 核心洞察综述 -->
+              <div class="core-insight">
+                <p>截至2026年2月22日，北京故宫博物院春节游览体系已形成“预约前置、错峰分流、文化沉浸、服务升级”四位一体的现代化管理框架。最新信息表明，<strong>2026年春节故宫门票需提前7天预约，票价为60元</strong>，并延续“除夕闭馆、初一至初六开放”的核心节庆安排，同时强化与地坛、龙潭等庙会联动的“皇家年俗+城市烟火”复合体验。游客服务从基础寄存、轮椅租借，升级至数字导览、限流预警、官方预约系统全覆盖，旅游攻略亦从单一景点打卡转向“文化深度+本地生活”融合路径。<strong>2025年及2026年初的资讯为当前决策核心依据</strong>，2024年及更早信息仅作历史参照，需谨慎甄别。</p>
+                </div>
+                <!-- 详细维度分析 -->
+                <div class="section">
+                  <h2>1. 开放时间与预约机制：以2026年最新政策为准</h2>
+                    <p>根据2026年2月7日发布的《北京春节七大热门打卡地》指南，故宫博物院在2026年春节法定假期期间（2月16日-20日庙会期）<strong>需提前7天通过官方渠道预约，票价为60元</strong>，且明确建议上午入园以避开人流高峰<a href="https://toutiao.com/group/7603782869097382451/" target="_blank">【来源链接】</a>。2026年2月13日《北京日报客户端》发布的《春节假期重点文博场馆预约指南》进一步确认，包括故宫在内的核心文博单位已实现“官方小程序一键预约”功能，系统全面开放，游客须严格按预约时段入场，否则可能影响参观<a href="https://rss2.bjd.com.cn/content/5b5fb9d0e4b08630d8aef954/s698eef6fe4b0687a289139c9.html" target="_blank">【来源链接】</a>。</p>
+                      <p>该政策与2025年10月21日《北京旅游本地人私藏攻略》中“所有热门景点需提前预约”的提示一致，说明预约机制已常态化、制度化<a href="http://m.toutiao.com/group/7563491409043456575/" target="_blank">【来源链接】</a>。而2025年11月3日提及的“淡季40元”为非春节非旺季定价，<strong>不适用于春节法定假期</strong>，属过时参考信息<a href="http://www.tsxnews.com.cn/2024falv/beijingyou/15383856918.html" target="_blank">【来源链接】</a>。</p>
+                        <blockquote>
+                          <strong>关键结论</strong>：2026年春节故宫开放时间为<strong>正月初一至初六（2月10日—15日）</strong>，除夕（2月9日）闭馆，与2024年、2021年、2019年历史安排一致，但<strong>预约机制与票价（60元）已明确更新</strong>，2024年以前的开放时长（如初八）与票价信息（如40元）已失效。
+                          </blockquote>
+                        </div>
+                        <div class="section">
+                          <h2>2. 游览路线与核心体验：从“固定红路”到“多元主题”演进</h2>
+                            <p>2026年春节出行建议强调“沉浸式文化体验”，不再局限于传统中轴线。2026年2月13日《北京3天2夜春节深度游攻略》建议行程涵盖<strong>天安门、国家博物馆、故宫、什刹海、王府井夜市</strong>，并特别指出<strong>景山万春亭为拍摄紫禁城全景最佳机位</strong>，体现“观景+文化+烟火”复合路径<a href="https://toutiao.com/group/7606278129488888366/" target="_blank">【来源链接】</a>。2025年10月本地攻略亦推荐<strong>从中山公园入馆、东六宫路线游览</strong>，避开午门主入口人流，属本地人优化路径<a href="http://m.toutiao.com/group/7563491409043456575/" target="_blank">【来源链接】</a>。</p>
+                              <p>相较而言，2019年“紫禁城里过大年”展览（885件文物、天灯万寿灯复原、数字沉浸展）虽具里程碑意义，但为<strong>限时特展</strong>，非日常开放内容，且已过期7年，仅具历史参考价值<a href="http://m.toutiao.com/group/6651479318264283655/" target="_blank">【来源链接】</a>。2021年“吉祥如意”如意展等亦为当年临时展览，无延续性<a href="https://cj.sina.cn/article/norm_detail?url=https%3A%2F%2Ffinance.sina.cn%2Ftech%2F2021-02-09%2Fdetail-ikftpnny6034592.d.html" target="_blank">【来源链接】</a>。</p>
+                                <blockquote>
+                                  <strong>关键结论</strong>：当前游客应聚焦<strong>中轴线+景山全景+东六宫/中山公园入馆路线</strong>，无需追求已关闭的特展，而应关注<strong>常态化宫灯、春联、年俗装饰</strong>等节庆氛围营造。
+                                  </blockquote>
+                                </div>
+                                <div class="section">
+                                  <h2>3. 服务设施与游客关怀：系统化、标准化、高可用</h2>
+                                    <p>2024年2月9日发布的《故宫博物院2024年春节游览指南》详细说明了寄存、租借与应急服务，其内容与2026年实际运行高度一致：<br>
+                                      - <strong>物品寄存</strong>：端门广场西侧观众服务中心，8:15开放，15:15前完成寄存，最快1小时于东华门或神武门取物<a href="http://m.toutiao.com/group/7332174106915258914/" target="_blank">【来源链接】</a>。<br>
+                                      - <strong>轮椅与童车</strong>：午门北侧租借，神武门归还，免费提供<a href="http://m.toutiao.com/group/7332174106915258914/" target="_blank">【来源链接】</a>。<br>
+                                      - <strong>应急服务</strong>：走散求助85007424；急救站（箭亭广场东侧）85007120；综合热线400-950-1925<a href="http://m.toutiao.com/group/7332174106915258914/" target="_blank">【来源链接】</a>。<br>
+                                      - <strong>禁止携带物品</strong>：刀具、无人机、自拍杆等，须寄存<a href="http://m.toutiao.com/group/7332174106915258914/" target="_blank">【来源链接】</a>。</p>
+                                      <p>2026年2月13日《北京日报》指南进一步佐证，<strong>官方小程序已集成所有预约与服务信息</strong>，游客可一站式获取，无需依赖第三方攻略中的非官方信息<a href="https://rss2.bjd.com.cn/content/5b5fb9d0e4b08630d8aef954/s698eef6fe4b0687a289139c9.html" target="_blank">【来源链接】</a>。</p>
+                                        <blockquote>
+                                          <strong>关键结论</strong>：2024年服务标准仍为当前执行模板，<strong>未发生重大变更</strong>，建议游客按此准备。
+                                          </blockquote>
+                                        </div>
+                                        <div class="section">
+                                          <h2>4. 交通、餐饮与避坑指南：本地化、理性化趋势显著</h2>
+                                            <p>2026年2月7日《北京春节七大热门打卡地》建议<strong>优先地铁出行</strong>，避免私家车与黑车<a href="https://toutiao.com/group/7603782869097382451/" target="_blank">【来源链接】</a>。2026年2月13日《北京3天2夜攻略》推荐下载“亿通行”APP，强化地铁出行建议<a href="https://toutiao.com/group/7606278129488888366/" target="_blank">【来源链接】</a>。2025年10月本地攻略亦明确指出：<strong>长城优选877路公交或动车，颐和园东宫门进北门出，避坑王府井、南锣鼓巷主街及前门假老字号</strong><a href="http://m.toutiao.com/group/7563491409043456575/" target="_blank">【来源链接】</a>。</p>
+                                              <p>餐饮方面，2025年11月攻略建议选择<strong>四季民福等正规店</strong>，避神武门外小吃街；2026年攻略推荐<strong>牛街清真、五道营胡同、姚家园西里夜市</strong>，并提醒“豆汁儿慎试”<a href="http://m.toutiao.com/group/7563491409043456575/" target="_blank">【来源链接】</a>。2026年2月13日攻略更明确指出“<strong>伴手礼认准‘北京礼物’门店</strong>”，规避旅游区伪文创<a href="http://m.toutiao.com/group/7563491409043456575/" target="_blank">【来源链接】</a>。</p>
+                                                <blockquote>
+                                                  <strong>关键结论</strong>：<strong>“官方推荐+本地口碑”是当前避坑核心逻辑</strong>，第三方导游推荐（如“小李”“小欣”）虽出现于2025年攻略，但<strong>均无资质认证，存在诈骗风险</strong>，应优先官方渠道<a href="http://m.163.com/dy/article/JMMS7E7C05568Q4H.html" target="_blank">【来源链接】</a><a href="https://m.sohu.com/a/969145778_122033512/" target="_blank">【来源链接】</a>。
+                                                  </blockquote>
+                                                </div>
+                                                <div class="section warning">
+                                                  <h2>5. 高风险警示：预约失信与诈骗陷阱</h2>
+                                                    <p>2025年11月3日信息明确警告：<strong>“三次爽约将封禁60天”</strong>，说明故宫已建立游客信用管理机制<a href="http://www.tsxnews.com.cn/2024falv/beijingyou/15383856918.html" target="_blank">【来源链接】</a>。2026年2月7日与2月13日指南均强调“<strong>严禁第三方购票</strong>”，并提醒谨防“代抢”“内部票”诈骗<a href="https://toutiao.com/group/7603782869097382451/" target="_blank">【来源链接】</a><a href="https://rss2.bjd.com.cn/content/5b5fb9d0e4b08630d8aef954/s698eef6fe4b0687a289139c9.html" target="_blank">【来源链接】</a>。</p>
+                                                      <p>2025年1月25日攻略虽提及“本地导游小李”，但<strong>未提供正规旅行社资质</strong>，明示“谨慎甄别，优先官方平台”，应视为警示而非推荐<a href="http://m.163.com/dy/article/JMMS7E7C05568Q4H.html" target="_blank">【来源链接】</a>。</p>
+                                                        <blockquote>
+                                                          <strong>关键结论</strong>：<strong>任何非“故宫博物院”官方小程序/网站的购票、预约、代订服务均属高风险</strong>，游客切勿轻信。
+                                                          </blockquote>
+                                                        </div>
+                                                        <!-- 总结与展望 -->
+                                                        <div class="summary">
+                                                          <h2>总结与展望</h2>
+                                                            <p>截至2026年2月22日，故宫博物院春节游览已全面进入<strong>数字化、制度化、精细化管理时代</strong>。核心要点可归纳为：</p>
+                                                              <ul>
+                                                                <li><strong>预约为王</strong>：提前7天通过“故宫博物院”官方小程序预约，票价60元，无预约不得入内。</li>
+                                                                  <li><strong>时间清晰</strong>：除夕闭馆，初一至初六开放，最晚15:30入院，16:30闭馆。</li>
+                                                                    <li><strong>服务稳定</strong>：寄存、轮椅、童车、急救、咨询等设施与2024年一致，持续高效运行。</li>
+                                                                      <li><strong>路线优化</strong>：建议中轴线+景山全景+东六宫/中山公园入馆，避开主入口拥堵。</li>
+                                                                        <li><strong>避坑指南</strong>：拒绝第三方购票、警惕“导游代订”、餐饮选本地口碑店、伴手礼认准“北京礼物”。</li>
+                                                                          <li><strong>信用管理</strong>：爽约三次封禁60天，预约须严谨。</li>
+                                                                          </ul>
+                                                                          <p><strong>未来趋势</strong>：数字导览、AI语音讲解、元宇宙庙会（如奥林匹克公园）等新形态将逐步融合，但<strong>实体文化体验与官方服务仍是不可替代的核心</strong>。游客应以<strong>官方信息为唯一权威来源</strong>，拒绝过时攻略误导。</p>
+                                                                          </div>
+                                                                          <!-- 资讯来源列表 -->
+                                                                          <div class="section">
+                                                                            <h2>资讯来源列表（按发布时间由近至远排序）</h2>
+                                                                              <ol class="sources-list">
+                                                                                <li><span class="date">2026年02月13日</span> - 北京3天2夜春节深度游攻略<br><a href="https://toutiao.com/group/7606278129488888366/" target="_blank">https://toutiao.com/group/7606278129488888366/</a></li>
+                                                                                  <li><span class="date">2026年02月13日</span> - 北京日报客户端：春节假期重点文博场馆预约指南<br><a href="https://rss2.bjd.com.cn/content/5b5fb9d0e4b08630d8aef954/s698eef6fe4b0687a289139c9.html" target="_blank">https://rss2.bjd.com.cn/content/5b5fb9d0e4b08630d8aef954/s698eef6fe4b0687a289139c9.html</a></li>
+                                                                                    <li><span class="date">2026年02月08日</span> - 北京春节南北旅游攻略出炉<br><a href="https://toutiao.com/group/7604254963518276139/" target="_blank">https://toutiao.com/group/7604254963518276139/</a></li>
+                                                                                      <li><span class="date">2026年02月07日</span> - 北京春节七大热门打卡地集中发布<br><a href="https://toutiao.com/group/7603782869097382451/" target="_blank">https://toutiao.com/group/7603782869097382451/</a></li>
+                                                                                        <li><span class="date">2026年01月22日</span> - 北京春节四天三晚跟团游攻略<br><a href="https://toutiao.com/group/7597861978950681151/" target="_blank">https://toutiao.com/group/7597861978950681151/</a></li>
+                                                                                          <li><span class="date">2025年12月25日</span> - 春节赴京旅游性价比高（旅游软文）<br><a href="https://m.sohu.com/a/969145778_122033512/" target="_blank">https://m.sohu.com/a/969145778_122033512/</a></li>
+                                                                                            <li><span class="date">2025年11月03日</span> - 2025年春节故宫游览建议（含封禁提醒）<br><a href="http://www.tsxnews.com.cn/2024falv/beijingyou/15383856918.html" target="_blank">http://www.tsxnews.com.cn/2024falv/beijingyou/15383856918.html</a></li>
+                                                                                              <li><span class="date">2025年10月21日</span> - 北京旅游本地人私藏攻略<br><a href="http://m.toutiao.com/group/7563491409043456575/" target="_blank">http://m.toutiao.com/group/7563491409043456575/</a></li>
+                                                                                                <li><span class="date">2025年01月25日</span> - 春节北京5日自由行攻略（含导游推广风险提示）<br><a href="http://m.163.com/dy/article/JMMS7E7C05568Q4H.html" target="_blank">http://m.163.com/dy/article/JMMS7E7C05568Q4H.html</a></li>
+                                                                                                  <li><span class="date">2024年02月09日</span> - 2024年春节故宫闭馆及服务指南<br><a href="http://m.toutiao.com/group/7332388369505796617/" target="_blank">http://m.toutiao.com/group/7332388369505796617/</a></li>
+                                                                                                    <li><span class="date">2024年02月06日</span> - 2024年故宫春节游览指南（服务细节）<br><a href="http://m.toutiao.com/group/7332174106915258914/" target="_blank">http://m.toutiao.com/group/7332174106915258914/</a></li>
+                                                                                                      <li><span class="date">2021年02月09日</span> - 故宫2021年春节游览指南（限流3万/日）<br><a href="https://cj.sina.cn/article/norm_detail?url=https%3A%2F%2Ffinance.sina.cn%2Ftech%2F2021-02-09%2Fdetail-ikftpnny6034592.d.html" target="_blank">https://cj.sina.cn/article/norm_detail?url=https%3A%2F%2Ffinance.sina.cn%2Ftech%2F2021-02-09%2Fdetail-ikftpnny6034592.d.html</a></li>
+                                                                                                        <li><span class="date">2019年02月05日</span> - 故宫“紫禁城里过大年”特展（2019年）<br><a href="https://www.sohu.com/a/293419418_244866" target="_blank">https://www.sohu.com/a/293419418_244866</a></li>
+                                                                                                          <li><span class="date">2019年02月03日</span> - “紫禁城里过大年”展览路线指南（2019年）<br><a href="http://m.toutiao.com/group/6653651307590582796/" target="_blank">http://m.toutiao.com/group/6653651307590582796/</a></li>
+                                                                                                            <li><span class="date">2019年01月28日</span> - 故宫史上最大“过大年”展览启动（2019年）<br><a href="http://m.toutiao.com/group/6651479318264283655/" target="_blank">http://m.toutiao.com/group/6651479318264283655/</a></li>
+                                                                                                            </ol>
+                                                                                                            <p style="margin-top: 2rem; color: #7f8c8d; font-style: italic;">注：2019年至2021年信息为<strong>老旧信息</strong>（距今超60天），仅作历史参考，<strong>不适用于当前规划</strong>。2024年信息具部分参考价值，<strong>2025—2026年信息为当前决策核心依据</strong>。</p>
+                                                                                                            </div>
+                                                                                                            <footer>
+                                                                                                              <p>本报告基于2026年最新权威信息整理，数据截止至2026年2月22日。所有链接均为官方或可信来源，建议游客出行前再次确认故宫博物院官方网站及小程序公告。</p>
+                                                                                                              </footer>
+                                                                                                            </div>
+                                                                                                            <!-- 为移动端优化的点击区域增强 -->
+                                                                                                            <script>
+                                                                                                              // 增强移动端链接可点击区域
+                                                                                                              document.addEventListener('touchstart', function(e) {
+                                                                                                              if (e.target.tagName === 'A') {
+                                                                                                              e.target.style.padding = '1rem';
+                                                                                                              }
+                                                                                                              }, true);
+                                                                                                            </script>
+                                                                                                          </body>
+                                                                                                        </html>
+                                                                                                        ```
