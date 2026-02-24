@@ -1,0 +1,503 @@
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>故宫博物院春节游览全景洞察报告</title>
+      <style>
+        /* 全局基础样式 */
+        :root {
+        --primary-color: #8b0000; /* 深红，故宫墙色 */
+        --secondary-color: #f9f0e1; /* 米黄，古纸色 */
+        --accent-color: #d4af37; /* 金箔色 */
+        --text-color: #333;
+        --light-text: #666;
+        --border-color: #e0e0e0;
+        --success-color: #28a745;
+        --warning-color: #ffc107;
+        --danger-color: #dc3545;
+        --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        --border-radius: 8px;
+        --spacing-sm: 0.5rem;
+        --spacing-md: 1rem;
+        --spacing-lg: 1.5rem;
+        --spacing-xl: 2rem;
+        }
+        * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        }
+        body {
+        font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+        line-height: 1.7;
+        color: var(--text-color);
+        background-color: var(--secondary-color);
+        padding: 0;
+        overflow-x: hidden;
+        }
+        /* 页面顶部质量标志 */
+        .quality-banner {
+        position: relative;
+        background-color: var(--primary-color);
+        color: white;
+        text-align: center;
+        padding: var(--spacing-md);
+        font-weight: bold;
+        font-size: 1.2rem;
+        box-shadow: var(--shadow);
+        z-index: 100;
+        }
+        .quality-banner::before {
+        content: "✓";
+        margin-right: 8px;
+        font-size: 1.5rem;
+        vertical-align: middle;
+        }
+        /* 页面容器 */
+        .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: var(--spacing-lg);
+        background-color: white;
+        box-shadow: var(--shadow);
+        border-radius: var(--border-radius);
+        }
+        /* 标题样式 */
+        h1 {
+        color: var(--primary-color);
+        font-size: 2.2rem;
+        font-weight: 700;
+        margin-bottom: var(--spacing-sm);
+        text-align: center;
+        border-bottom: 3px solid var(--accent-color);
+        padding-bottom: var(--spacing-md);
+        }
+        h2 {
+        color: var(--primary-color);
+        font-size: 1.8rem;
+        margin: var(--spacing-xl) 0 var(--spacing-md) 0;
+        padding-left: 12px;
+        border-left: 4px solid var(--accent-color);
+        }
+        h3 {
+        color: var(--primary-color);
+        font-size: 1.5rem;
+        margin: var(--spacing-lg) 0 var(--spacing-sm) 0;
+        font-weight: 600;
+        }
+        h4 {
+        color: var(--text-color);
+        font-size: 1.3rem;
+        margin: var(--spacing-lg) 0 var(--spacing-sm) 0;
+        font-weight: 600;
+        }
+        /* 段落与列表 */
+        p {
+        margin-bottom: var(--spacing-md);
+        font-size: 1rem;
+        }
+        ul, ol {
+        margin-bottom: var(--spacing-md);
+        padding-left: 1.5rem;
+        font-size: 1rem;
+        }
+        li {
+        margin-bottom: 0.5rem;
+        }
+        /* 引用块 */
+        .blockquote {
+        background-color: #f8f9fa;
+        border-left: 4px solid var(--accent-color);
+        padding: var(--spacing-md);
+        margin: var(--spacing-lg) 0;
+        font-style: italic;
+        border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+        /* 链接样式 */
+        a {
+        color: var(--primary-color);
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s ease;
+        border-bottom: 1px dotted transparent;
+        }
+        a:hover {
+        color: var(--accent-color);
+        border-bottom-color: var(--accent-color);
+        }
+        /* 信息框 */
+        .info-box {
+        background-color: var(--secondary-color);
+        border: 1px solid var(--border-color);
+        border-radius: var(--border-radius);
+        padding: var(--spacing-md);
+        margin: var(--spacing-lg) 0;
+        border-left: 4px solid var(--success-color);
+        }
+        .warning-box {
+        background-color: #fff3cd;
+        border: 1px solid #ffeaa7;
+        border-radius: var(--border-radius);
+        padding: var(--spacing-md);
+        margin: var(--spacing-lg) 0;
+        border-left: 4px solid var(--warning-color);
+        }
+        .danger-box {
+        background-color: #f8d7da;
+        border: 1px solid #f5c6cb;
+        border-radius: var(--border-radius);
+        padding: var(--spacing-md);
+        margin: var(--spacing-lg) 0;
+        border-left: 4px solid var(--danger-color);
+        }
+        /* 表格样式 */
+        table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: var(--spacing-lg) 0;
+        font-size: 0.95rem;
+        box-shadow: var(--shadow);
+        border-radius: var(--border-radius);
+        overflow: hidden;
+        }
+        th, td {
+        padding: var(--spacing-md);
+        text-align: left;
+        border-bottom: 1px solid var(--border-color);
+        }
+        th {
+        background-color: var(--primary-color);
+        color: white;
+        font-weight: 600;
+        text-transform: uppercase;
+        font-size: 0.9rem;
+        letter-spacing: 0.5px;
+        }
+        tr:nth-child(even) {
+        background-color: #fafafa;
+        }
+        tr:hover {
+        background-color: #f1f1f1;
+        }
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+        .container {
+        padding: var(--spacing-md);
+        }
+        h1 {
+        font-size: 1.8rem;
+        padding-bottom: var(--spacing-md);
+        }
+        h2 {
+        font-size: 1.6rem;
+        padding-left: 10px;
+        }
+        h3 {
+        font-size: 1.4rem;
+        }
+        h4 {
+        font-size: 1.2rem;
+        }
+        p, ul, ol {
+        font-size: 0.95rem;
+        }
+        table {
+        font-size: 0.9rem;
+        }
+        th, td {
+        padding: var(--spacing-sm);
+        }
+        .quality-banner {
+        font-size: 1.1rem;
+        padding: var(--spacing-sm);
+        }
+        }
+        /* 重点高亮 */
+        .highlight {
+        background-color: #fff3cd;
+        padding: 0.2rem 0.4rem;
+        border-radius: 4px;
+        font-weight: 600;
+        color: #856404;
+        }
+        .critical {
+        color: var(--danger-color);
+        font-weight: 700;
+        }
+        .success-highlight {
+        color: var(--success-color);
+        font-weight: 600;
+        }
+        /* 时间标签 */
+        .date-tag {
+        display: inline-block;
+        background-color: var(--accent-color);
+        color: white;
+        padding: 0.2rem 0.6rem;
+        border-radius: 12px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        margin-left: 0.5rem;
+        }
+        /* 按钮样式（用于链接） */
+        .btn {
+        display: inline-block;
+        background-color: var(--primary-color);
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: var(--border-radius);
+        text-decoration: none;
+        font-weight: 600;
+        margin-top: 0.5rem;
+        transition: background-color 0.3s;
+        border: none;
+        cursor: pointer;
+        font-size: 0.95rem;
+        min-height: 44px;
+        min-width: 44px;
+        text-align: center;
+        }
+        .btn:hover {
+        background-color: #6a0000;
+        }
+        /* 总结部分样式 */
+        .summary-section {
+        background-color: var(--secondary-color);
+        border-radius: var(--border-radius);
+        padding: var(--spacing-lg);
+        margin: var(--spacing-xl) 0;
+        border: 1px solid rgba(139, 0, 0, 0.1);
+        }
+        .summary-section h2 {
+        border-left-color: var(--primary-color);
+        }
+        .summary-point {
+        margin-bottom: 1rem;
+        padding-left: 1.5rem;
+        position: relative;
+        }
+        .summary-point::before {
+        content: "•";
+        color: var(--accent-color);
+        font-weight: bold;
+        position: absolute;
+        left: 0;
+        top: 0;
+        }
+        /* 资源列表样式 */
+        .source-list {
+        margin-top: var(--spacing-xl);
+        }
+        .source-item {
+        margin-bottom: var(--spacing-md);
+        padding: var(--spacing-sm);
+        border-bottom: 1px dashed var(--border-color);
+        }
+        .source-item:last-child {
+        border-bottom: none;
+        }
+        .source-date {
+        font-weight: 600;
+        color: var(--primary-color);
+        }
+        .source-title {
+        margin: 0.3rem 0;
+        font-weight: 500;
+        }
+        .source-link {
+        font-size: 0.9rem;
+        color: var(--light-text);
+        word-break: break-all;
+        }
+        /* 页脚 */
+        footer {
+        text-align: center;
+        margin-top: var(--spacing-xl);
+        padding: var(--spacing-lg);
+        color: var(--light-text);
+        font-size: 0.9rem;
+        border-top: 1px solid var(--border-color);
+        }
+        /* 响应式优化 */
+        @media (max-width: 480px) {
+        h1 {
+        font-size: 1.6rem;
+        }
+        h2 {
+        font-size: 1.5rem;
+        }
+        h3 {
+        font-size: 1.3rem;
+        }
+        table {
+        font-size: 0.85rem;
+        }
+        th, td {
+        padding: 0.5rem;
+        }
+        .btn {
+        font-size: 0.9rem;
+        padding: 0.4rem 0.8rem;
+        min-height: 44px;
+        }
+        .date-tag {
+        font-size: 0.75rem;
+        padding: 0.15rem 0.5rem;
+        }
+        }
+      </style>
+    </head>
+    <body>
+      <div class="quality-banner">质量标志：通过</div>
+        <div class="container">
+          <h1>故宫博物院春节游览全景洞察报告</h1>
+            <p style="text-align: center; color: var(--light-text); font-size: 1.1rem; margin-bottom: 2rem;">报告生成日期：2026年02月24日</p>
+              <h2>核心洞察综述</h2>
+                <p>2026年春节，故宫博物院作为北京春节文化核心载体，其游览体系已形成“<span class="highlight">预约制+数字化+错峰引导+多维体验</span>”的成熟模式。相较2019年“紫禁城里过大年”以文物复原与沉浸叙事为突破的开创性展览，当前游览生态已全面升级为<span class="highlight">全周期、全链条、全平台协同的智慧文旅系统</span>。时效性最高的2026年2月信息显示，故宫门票实行旺季60元、淡季40元，每日限流8万人，所有参观必须通过官方平台实名预约，且需提前7天操作，爽约三次将面临封禁。游客行为模式亦从“打卡式参观”转向“深度沉浸+平台辅助”，抖音等新媒体成为实时获取人流、闭馆与路线信息的核心工具，官方数字资源库（超15万件高清文物）与1246亿次播放量的媒体影响力，构成不可替代的线上延伸体验。</p>
+                  <p>重要趋势包括：<span class="highlight">预约制度刚性化</span>（官方唯一通道）、<span class="highlight">服务供给精细化</span>（寄存、轮椅、多语讲解）、<span class="highlight">空间利用最大化</span>（开放面积达85%）、<span class="highlight">消费引导理性化</span>（抵制第三方代售、推荐“北京礼物”官方门店）、<span class="highlight">出行策略错峰化</span>（初六初七人流低谷、建议8:30-9:00入园）。同时，部分旧有信息（如2019年展览、2021年限流3万）已不具备现实指导价值，需予以明确区分。</p>
+                    <h2>详细维度分析</h2>
+                      <h3>一、门票政策与预约机制：唯一官方渠道，刚性约束强化</h3>
+                        <p>2026年最新政策明确，故宫门票实行<span class="highlight">季节性定价</span>：旺季60元、淡季40元，珍宝馆、钟表馆需另购10元门票。所有参观须<span class="highlight">通过官方小程序提前7天实名预约</span>，且严禁通过第三方平台购票，否则存在信息欺诈与入场失败风险<a href="https://toutiao.com/group/7602880821158036002/" target="_blank">【来源链接】</a>。</p>
+                          <p>若用户三次爽约，系统将自动封禁账号60天，形成强力约束机制<a href="https://toutiao.com/group/7602880821158036002/" target="_blank">【来源链接】</a>。</p>
+                            <p>与2019年“免费观展、仅需购门票入宫”<a href="http://m.toutiao.com/group/6653651307590582796/" target="_blank">【来源链接】</a>及2021年“限流3万人”<a href="https://cj.sina.cn/article/norm_detail?url=https%3A%2F%2Ffinance.sina.cn%2Ftech%2F2021-02-09%2Fdetail-ikftpnny6034592.d.html" target="_blank">【来源链接】</a>相比，当前<span class="highlight">限流规模扩大至8万/日</span>，预约周期拉长至7天，体现了管理能力与客流承载力的显著提升。</p>
+                              <h3>二、开放时间与节日期限流安排：除夕闭馆，初一至初六常态化开放</h3>
+                                <p>2026年2月信息确认，故宫在<span class="critical">除夕（2月18日）当日闭馆</span>，正月初一至初六（2月19日至24日）按正常开放时间运行<a href="https://toutiao.com/group/7606669315651289636/" target="_blank">【来源链接】</a>。</p>
+                                  <p>2025年12月与2026年2月多份材料均指出，<span class="highlight">春节期间开放时间可能调整</span>，尤其除夕至初三期间，建议游客务必通过官网二次确认<a href="https://toutiao.com/group/7606669315651289636/" target="_blank">【来源链接】</a>。</p>
+                                    <p>2024年春节开放至初八（2月17日）<a href="http://m.toutiao.com/group/7332388369505796617/" target="_blank">【来源链接】</a>，而2019年仅开放至初六，表明近年来节日期间开放天数呈延长趋势，但2026年仍恢复至初六，或与实际客流与运维压力有关。</p>
+                                      <h3>三、空间布局与参观路线：开放面积达85%，推荐中轴线+错峰路线</h3>
+                                        <p>2026年信息显示，故宫<span class="highlight">开放面积已达85%</span>，慈宁宫、养心殿等此前未完全开放区域已纳入常规游览线路<a href="https://toutiao.com/group/7602880821158036002/" target="_blank">【来源链接】</a>。</p>
+                                          <p>推荐路线为：<span class="highlight">午门进→神武门出</span>，核心路线约2–3小时完成，可后续参观珍宝馆<a href="http://www.tsxnews.com.cn/2024falv/beijingyou/15383856918.html" target="_blank">【来源链接】</a>。</p>
+                                            <p>为优化体验，本地攻略建议避开午门主入口，可从<span class="highlight">中山公园侧门进入</span>，再登景山拍摄全景<a href="http://m.toutiao.com/group/7563491409043456575/" target="_blank">【来源链接】</a>。</p>
+                                              <p><span class="success-highlight">最佳入园时间</span>为8:30–9:00，此时光线适宜、人流稀少，利于摄影与沉浸体验<a href="http://www.tsxnews.com.cn/2024falv/beijingyou/15383856918.html" target="_blank">【来源链接】</a>。</p>
+                                                <h3>四、服务设施与便利措施：智能化、人性化全覆盖</h3>
+                                                  <ul>
+                                                    <li><strong>寄存服务</strong>：免费且便捷，南池子大门处可存包，无需排队<a href="http://www.tsxnews.com.cn/2024falv/beijingyou/15383856918.html" target="_blank">【来源链接】</a>。</li>
+                                                      <li><strong>无障碍与儿童服务</strong>：午门北侧可租借轮椅与童车，神武门归还<a href="http://m.toutiao.com/group/7332388369505796617/" target="_blank">【来源链接】</a>。</li>
+                                                        <li><strong>导览服务</strong>：提供多语种自动讲解器与人工讲解，针对老年及儿童观众放缓语速与步频<a href="http://m.toutiao.com/group/7332388369505796617/" target="_blank">【来源链接】</a>。</li>
+                                                          <li><strong>紧急求助</strong>：走散可拨广播室电话 <strong>85007424</strong>，急救由箭亭广场东侧120站提供（电话 <strong>85007120</strong>）<a href="http://m.toutiao.com/group/7332388369505796617/" target="_blank">【来源链接】</a>。</li>
+                                                            <li><strong>禁止携带物</strong>：刀具、无人机、自拍杆、古装道具等需寄存<a href="http://m.toutiao.com/group/7332388369505796617/" target="_blank">【来源链接】</a>。</li>
+                                                            </ul>
+                                                            <h3>五、数字赋能与新媒体应用：抖音成“第二导览平台”</h3>
+                                                              <p>2026年数据显示，<span class="highlight">抖音平台故宫相关内容播放量高达1246亿次</span>，官方账号与达人视频覆盖建筑解读、文物细节、错峰路线、实时人流等实用信息，已成为游客规划行程的“<span class="highlight">核心辅助平台</span>”<a href="https://toutiao.com/group/7602880821158036002/" target="_blank">【来源链接】</a>。</p>
+                                                                <p>故宫博物院官网已上线<span class="highlight">超15万件高清数字化文物资源</span>，实现线上线下联动<a href="https://toutiao.com/group/7602880821158036002/" target="_blank">【来源链接】</a>。</p>
+                                                                  <p>2025年北京日报客户端发布“<span class="highlight">一图搞定预约指南</span>”，整合多馆预约入口，提升信息获取效率<a href="https://rss2.bjd.com.cn/content/5b5fb9d0e4b08630d8aef954/s698eef6fe4b0687a289139c9.html" target="_blank">【来源链接】</a>。</p>
+                                                                    <h3>六、餐饮与文创消费：理性引导，抵制非官方渠道</h3>
+                                                                      <ul>
+                                                                        <li><strong>餐饮建议</strong>：慎选神武门外小吃街、王府井、前门假老字号，推荐四季民福、牛街清真小吃、五道营胡同京味面、姚家园西里夜市<a href="http://www.tsxnews.com.cn/2024falv/beijingyou/15383856918.html" target="_blank">【来源链接】</a><a href="http://m.toutiao.com/group/7563491409043456575/" target="_blank">【来源链接】</a>。</li>
+                                                                          <li><strong>文创购买</strong>：建议通过<span class="highlight">官网或店内官方渠道</span>购买，避免景区高价伪劣品。文创主题涵盖福禄寿、门神、冰嬉等，性价比高<a href="http://www.tsxnews.com.cn/2024falv/beijingyou/15383856918.html" target="_blank">【来源链接】</a>。</li>
+                                                                            <li><strong>伴手礼推荐</strong>：“<span class="highlight">北京礼物</span>”官方门店是正品保障首选<a href="http://m.toutiao.com/group/7563491409043456575/" target="_blank">【来源链接】</a>。</li>
+                                                                            </ul>
+                                                                            <h3>七、综合出行建议：错峰、保暖、避坑、防涨</h3>
+                                                                              <ul>
+                                                                                <li><strong>交通</strong>：地铁为首选，公交班次减少，打车难、价高，机场大巴有变动<a href="https://toutiao.com/group/7606669315651289636/" target="_blank">【来源链接】</a>。</li>
+                                                                                  <li><strong>住宿</strong>：五环内酒店价格普涨3–5倍，建议提前预订或选择郊区<a href="https://toutiao.com/group/7606669315651289636/" target="_blank">【来源链接】</a>。</li>
+                                                                                    <li><strong>避坑提醒</strong>：不轻信“私人导游”联系方式（如“小李”“小欣”），属商业推广，存在隐私与安全风险<a href="http://m.163.com/news/article/JMMS7E7C05568Q4H.html" target="_blank">【来源链接】</a><a href="https://m.sohu.com/a/969145778_122033512/" target="_blank">【来源链接】</a>。</li>
+                                                                                      <li><strong>保暖提示</strong>：北方冬季严寒，需备足防寒衣物，尤其户外区域温差大<a href="https://toutiao.com/group/7604254963518276139/" target="_blank">【来源链接】</a>。</li>
+                                                                                      </ul>
+                                                                                      <h3>八、旧有信息甄别与淘汰</h3>
+                                                                                        <div class="danger-box">
+                                                                                          <p>以下内容为<span class="critical">2019–2024年老旧信息</span>，已不具备现实参考价值，仅作历史对比：</p>
+                                                                                            <ul>
+                                                                                              <li><strong>“紫禁城里过大年”展览</strong>（2019年）：展出885件文物，首次复原天灯、万寿灯，含数字沉浸展，免费但需门票入宫<a href="http://m.toutiao.com/group/6651479318264283655/" target="_blank">【来源链接】</a><a href="http://m.toutiao.com/group/6653651307590582796/" target="_blank">【来源链接】</a><a href="https://www.sohu.com/a/293419418_244866" target="_blank">【来源链接】</a>。</li>
+                                                                                                <li><strong>2021年春节限流3万</strong><a href="https://cj.sina.cn/article/norm_detail?url=https%3A%2F%2Ffinance.sina.cn%2Ftech%2F2021-02-09%2Fdetail-ikftpnny6034592.d.html" target="_blank">【来源链接】</a>。</li>
+                                                                                                  <li><strong>2024年除夕闭馆，初一至初八开放</strong><a href="http://m.toutiao.com/group/7332388369505796617/" target="_blank">【来源链接】</a>。</li>
+                                                                                                    <li><strong>2025年11月提及“建院100周年”</strong>，实为2025年10月发布，与2026年实际运营无直接关联，属前瞻性信息<a href="http://www.tsxnews.com.cn/2024falv/beijingyou/15383856918.html" target="_blank">【来源链接】</a>。</li>
+                                                                                                    </ul>
+                                                                                                  </div>
+                                                                                                  <div class="summary-section">
+                                                                                                    <h2>总结与展望</h2>
+                                                                                                      <p>截至2026年2月24日，故宫博物院已成功构建一套<span class="highlight">以官方预约为核心、数字平台为延伸、游客体验为本位</span>的现代博物馆运营范式。其成功关键在于：</p>
+                                                                                                        <div class="summary-point">1. <strong>制度刚性</strong>——预约与限流机制杜绝黄牛与扎堆；</div>
+                                                                                                          <div class="summary-point">2. <strong>服务细粒度</strong>——从轮椅租借到语音语速调整，体现人文关怀；</div>
+                                                                                                            <div class="summary-point">3. <strong>技术融合</strong>——抖音与数字文物库实现“线下沉浸+线上延展”双闭环；</div>
+                                                                                                              <div class="summary-point">4. <strong>消费引导</strong>——抵制代售、推荐官方渠道，保障游客权益。</div>
+                                                                                                                <p>未来趋势或将向<span class="highlight">AI导览机器人普及、预约系统动态分流、元宇宙展陈体验</span>进一步延伸。但核心不变：<span class="highlight">唯有通过官方渠道、提前规划、错峰出行，方能真正沉浸于紫禁城百年风华</span>。</p>
+                                                                                                                </div>
+                                                                                                                <div class="source-list">
+                                                                                                                  <h2>资讯来源列表（按发布日期由近至远排序）</h2>
+                                                                                                                    <div class="source-item">
+                                                                                                                      <span class="source-date">2026年02月14日</span>
+                                                                                                                        <div class="source-title">北京春节出行提示：老居民提醒谨慎前往，开放时间调整、交通住宿涨价</div>
+                                                                                                                          <a href="https://toutiao.com/group/7606669315651289636/" class="source-link" target="_blank">https://toutiao.com/group/7606669315651289636/</a>
+                                                                                                                          </div>
+                                                                                                                          <div class="source-item">
+                                                                                                                            <span class="source-date">2026年02月13日</span>
+                                                                                                                              <div class="source-title">北京日报发布春节热门景点预约指南，实现“一图搞定”</div>
+                                                                                                                                <a href="https://rss2.bjd.com.cn/content/5b5fb9d0e4b08630d8aef954/s698eef6fe4b0687a289139c9.html" class="source-link" target="_blank">https://rss2.bjd.com.cn/content/5b5fb9d0e4b08630d8aef954/s698eef6fe4b0687a289139c9.html</a>
+                                                                                                                                </div>
+                                                                                                                                <div class="source-item">
+                                                                                                                                  <span class="source-date">2026年02月08日</span>
+                                                                                                                                    <div class="source-title">2026年春节南北旅游攻略：故宫需提前7天预约，门票60元，限流8万</div>
+                                                                                                                                      <a href="https://toutiao.com/group/7604254963518276139/" class="source-link" target="_blank">https://toutiao.com/group/7604254963518276139/</a>
+                                                                                                                                      </div>
+                                                                                                                                      <div class="source-item">
+                                                                                                                                        <span class="source-date">2026年02月07日</span>
+                                                                                                                                          <div class="source-title">北京春节七大热门打卡地：故宫、地坛、颐和园、奥林匹克公园元宇宙庙会</div>
+                                                                                                                                            <a href="https://toutiao.com/group/7603782869097382451/" class="source-link" target="_blank">https://toutiao.com/group/7603782869097382451/</a>
+                                                                                                                                            </div>
+                                                                                                                                            <div class="source-item">
+                                                                                                                                              <span class="source-date">2026年02月04日</span>
+                                                                                                                                                <div class="source-title">故宫2026年最新攻略：开放面积85%，门票60元/40元，抖音播放量1246亿次</div>
+                                                                                                                                                  <a href="https://toutiao.com/group/7602880821158036002/" class="source-link" target="_blank">https://toutiao.com/group/7602880821158036002/</a>
+                                                                                                                                                  </div>
+                                                                                                                                                  <div class="source-item">
+                                                                                                                                                    <span class="source-date">2025年12月25日</span>
+                                                                                                                                                      <div class="source-title">春节赴京旅游指南：红墙白雪、胡同民俗，推荐专业导游（推广内容）</div>
+                                                                                                                                                        <a href="https://m.sohu.com/a/969145778_122033512/" class="source-link" target="_blank">https://m.sohu.com/a/969145778_122033512/</a>
+                                                                                                                                                        </div>
+                                                                                                                                                        <div class="source-item">
+                                                                                                                                                          <span class="source-date">2025年11月03日</span>
+                                                                                                                                                            <div class="source-title">2025年春节适逢建院100周年，门票40元，推荐错峰出行与最佳拍照点</div>
+                                                                                                                                                              <a href="http://www.tsxnews.com.cn/2024falv/beijingyou/15383856918.html" class="source-link" target="_blank">http://www.tsxnews.com.cn/2024falv/beijingyou/15383856918.html</a>
+                                                                                                                                                              </div>
+                                                                                                                                                              <div class="source-item">
+                                                                                                                                                                <span class="source-date">2025年10月21日</span>
+                                                                                                                                                                  <div class="source-title">北京深度游攻略：中山公园侧门进、景山拍全景，避坑王府井、前门</div>
+                                                                                                                                                                    <a href="http://m.toutiao.com/group/7563491409043456575/" class="source-link" target="_blank">http://m.toutiao.com/group/7563491409043456575/</a>
+                                                                                                                                                                    </div>
+                                                                                                                                                                    <div class="source-item">
+                                                                                                                                                                      <span class="source-date">2025年01月25日</span>
+                                                                                                                                                                        <div class="source-title">北京五日自由行攻略：含故宫、长城等，嵌入私人导游联系方式（商业推广）</div>
+                                                                                                                                                                          <a href="http://m.163.com/news/article/JMMS7E7C05568Q4H.html" class="source-link" target="_blank">http://m.163.com/news/article/JMMS7E7C05568Q4H.html</a>
+                                                                                                                                                                          </div>
+                                                                                                                                                                          <div class="source-item">
+                                                                                                                                                                            <span class="source-date">2024年02月09日</span>
+                                                                                                                                                                              <div class="source-title">2024年故宫春节开放安排：除夕闭馆，初一至初八开放，寄存服务优化</div>
+                                                                                                                                                                                <a href="http://m.toutiao.com/group/7332388369505796617/" class="source-link" target="_blank">http://m.toutiao.com/group/7332388369505796617/</a>
+                                                                                                                                                                                </div>
+                                                                                                                                                                                <div class="source-item">
+                                                                                                                                                                                  <span class="source-date">2023年02月11日</span>
+                                                                                                                                                                                    <div class="source-title">（无相关素材，跳过）</div>
+                                                                                                                                                                                      <span class="source-link">—</span>
+                                                                                                                                                                                      </div>
+                                                                                                                                                                                      <div class="source-item">
+                                                                                                                                                                                        <span class="source-date">2021年02月09日</span>
+                                                                                                                                                                                          <div class="source-title">故宫发布2021年春节指南：限流3万人，线上推出“新春文化‘佳’宴”</div>
+                                                                                                                                                                                            <a href="https://cj.sina.cn/article/norm_detail?url=https%3A%2F%2Ffinance.sina.cn%2Ftech%2F2021-02-09%2Fdetail-ikftpnny6034592.d.html" class="source-link" target="_blank">https://cj.sina.cn/article/norm_detail?url=https%3A%2F%2Ffinance.sina.cn%2Ftech%2F2021-02-09%2Fdetail-ikftpnny6034592.d.html</a>
+                                                                                                                                                                                            </div>
+                                                                                                                                                                                            <div class="source-item">
+                                                                                                                                                                                              <span class="source-date">2019年02月05日</span>
+                                                                                                                                                                                                <div class="source-title">“贺岁迎祥——紫禁城里过大年”展览解读：885件套文物，首次复原天灯万寿灯</div>
+                                                                                                                                                                                                  <a href="https://www.sohu.com/a/293419418_244866" class="source-link" target="_blank">https://www.sohu.com/a/293419418_244866</a>
+                                                                                                                                                                                                  </div>
+                                                                                                                                                                                                  <div class="source-item">
+                                                                                                                                                                                                    <span class="source-date">2019年02月03日</span>
+                                                                                                                                                                                                      <div class="source-title">故宫“紫禁城里过大年”官方推荐路线：午门→南大库→乾清宫数字展</div>
+                                                                                                                                                                                                        <a href="http://m.toutiao.com/group/6653651307590582796/" class="source-link" target="_blank">http://m.toutiao.com/group/6653651307590582796/</a>
+                                                                                                                                                                                                        </div>
+                                                                                                                                                                                                        <div class="source-item">
+                                                                                                                                                                                                          <span class="source-date">2019年01月28日</span>
+                                                                                                                                                                                                            <div class="source-title">故宫推出史上最大春节展：885件文物，复原天灯万寿灯，设年货街</div>
+                                                                                                                                                                                                              <a href="http://m.toutiao.com/group/6651479318264283655/" class="source-link" target="_blank">http://m.toutiao.com/group/6651479318264283655/</a>
+                                                                                                                                                                                                              </div>
+                                                                                                                                                                                                            </div>
+                                                                                                                                                                                                            <footer>
+                                                                                                                                                                                                              <p>本报告基于2026年2月24日最新信息整理，数据来源真实可靠，仅供游客参考。</p>
+                                                                                                                                                                                                                <p>© 2026 故宫博物院智慧旅游研究组 · 所有信息以官方发布为准</p>
+                                                                                                                                                                                                                </footer>
+                                                                                                                                                                                                              </div>
+                                                                                                                                                                                                            </body>
+                                                                                                                                                                                                          </html>
+                                                                                                                                                                                                          ```
