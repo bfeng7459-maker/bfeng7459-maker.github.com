@@ -1,0 +1,465 @@
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>2026年北京春节京味美食文化深度洞察报告</title>
+      <style>
+        /* 全局样式定义 */
+        :root {
+        --primary-color: #c62828;
+        --secondary-color: #e53935;
+        --accent-color: #ff6b35;
+        --light-bg: #fdf6f0;
+        --dark-text: #2e2e2e;
+        --light-text: #555;
+        --card-bg: #fffaf0;
+        --border-color: #e0e0e0;
+        --highlight: #ffd54f;
+        --success: #388e3c;
+        }
+        * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        }
+        body {
+        font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+        line-height: 1.7;
+        color: var(--dark-text);
+        background-color: var(--light-bg);
+        padding: 0;
+        margin: 0;
+        }
+        .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 1rem;
+        }
+        /* 头部质量标志 */
+        .quality-banner {
+        position: fixed;
+        top: 0;
+        right: 0;
+        background-color: var(--success);
+        color: white;
+        padding: 0.6rem 1.2rem;
+        font-weight: bold;
+        font-size: 1.1rem;
+        z-index: 1000;
+        box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+        border-bottom-left-radius: 8px;
+        border: 1px solid #2e7d32;
+        }
+        /* 标题样式 */
+        h1 {
+        font-size: 2.2rem;
+        color: var(--primary-color);
+        margin: 1.5rem 0 0.8rem;
+        text-align: center;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+        position: relative;
+        padding-bottom: 0.8rem;
+        }
+        h1::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100px;
+        height: 3px;
+        background: var(--accent-color);
+        border-radius: 2px;
+        }
+        h2 {
+        font-size: 1.8rem;
+        color: var(--secondary-color);
+        margin: 2rem 0 1rem;
+        padding-left: 0.8rem;
+        border-left: 4px solid var(--accent-color);
+        font-weight: 600;
+        }
+        h3 {
+        font-size: 1.5rem;
+        color: var(--dark-text);
+        margin: 1.8rem 0 0.8rem;
+        font-weight: 600;
+        }
+        h4 {
+        font-size: 1.3rem;
+        color: var(--primary-color);
+        margin: 1.5rem 0 0.7rem;
+        font-weight: 600;
+        }
+        p {
+        margin-bottom: 1rem;
+        font-size: 1.1rem;
+        }
+        /* 引用块 */
+        .quote-block {
+        background-color: var(--card-bg);
+        border-left: 5px solid var(--highlight);
+        padding: 1.5rem;
+        margin: 2rem 0;
+        border-radius: 0 8px 8px 0;
+        font-style: italic;
+        color: var(--dark-text);
+        position: relative;
+        }
+        .quote-block::before {
+        content: ''';
+        font-size: 4rem;
+        color: var(--light-text);
+        opacity: 0.2;
+        position: absolute;
+        top: -1rem;
+        left: 1rem;
+        font-family: Georgia, serif;
+        }
+        /* 关键词高亮 */
+        .keyword {
+        background-color: var(--highlight);
+        color: var(--dark-text);
+        padding: 0.2rem 0.5rem;
+        border-radius: 4px;
+        font-weight: 600;
+        font-size: 0.95rem;
+        }
+        /* 链接样式 */
+        a {
+        color: var(--accent-color);
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        border-bottom: 1px dashed var(--accent-color);
+        }
+        a:hover {
+        color: var(--primary-color);
+        border-bottom-color: var(--primary-color);
+        background-color: rgba(255, 107, 53, 0.1);
+        border-radius: 3px;
+        }
+        /* 列表样式 */
+        ul, ol {
+        margin: 1rem 0 1.5rem 1.8rem;
+        }
+        ul {
+        list-style-type: disc;
+        }
+        ol {
+        list-style-type: decimal;
+        }
+        li {
+        margin-bottom: 0.6rem;
+        font-size: 1.1rem;
+        }
+        /* 表格样式 */
+        .info-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 1.8rem 0;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        border-radius: 8px;
+        overflow: hidden;
+        }
+        .info-table th, .info-table td {
+        padding: 0.9rem;
+        text-align: left;
+        border-bottom: 1px solid var(--border-color);
+        }
+        .info-table th {
+        background-color: var(--primary-color);
+        color: white;
+        font-weight: 600;
+        font-size: 1.1rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        }
+        .info-table tr:nth-child(even) {
+        background-color: var(--light-bg);
+        }
+        .info-table tr:hover {
+        background-color: #fff9f5;
+        }
+        .info-table td {
+        font-size: 1rem;
+        color: var(--dark-text);
+        }
+        /* 日期标签 */
+        .date-tag {
+        display: inline-block;
+        background-color: var(--secondary-color);
+        color: white;
+        padding: 0.3rem 0.7rem;
+        border-radius: 12px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        margin-right: 0.8rem;
+        margin-bottom: 0.5rem;
+        }
+        /* 段落强调 */
+        .emphasis {
+        color: var(--primary-color);
+        font-weight: 600;
+        font-style: normal;
+        }
+        /* 总结区块 */
+        .summary-box {
+        background: linear-gradient(135deg, #fff6f0, #fff0e6);
+        border: 1px solid var(--border-color);
+        border-radius: 12px;
+        padding: 2rem;
+        margin: 2.5rem 0;
+        border-left: 5px solid var(--accent-color);
+        }
+        .summary-box h3 {
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+        padding-left: 0;
+        border-left: none;
+        }
+        .summary-box ul {
+        margin-left: 1.5rem;
+        }
+        /* 资讯列表 */
+        .info-list {
+        margin: 2rem 0;
+        padding-left: 1.2rem;
+        }
+        .info-item {
+        margin-bottom: 1rem;
+        padding: 0.8rem;
+        border-left: 3px solid var(--accent-color);
+        background-color: white;
+        border-radius: 0 6px 6px 0;
+        box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+        }
+        .info-item .link {
+        color: var(--accent-color);
+        text-decoration: none;
+        font-weight: 500;
+        }
+        .info-item .link:hover {
+        color: var(--primary-color);
+        text-decoration: underline;
+        }
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+        h1 {
+        font-size: 1.9rem;
+        padding: 0 1rem;
+        }
+        h2 {
+        font-size: 1.6rem;
+        padding-left: 0.6rem;
+        }
+        h3 {
+        font-size: 1.4rem;
+        }
+        h4 {
+        font-size: 1.2rem;
+        }
+        p, li {
+        font-size: 1rem;
+        }
+        .quote-block {
+        padding: 1.2rem;
+        }
+        .info-table {
+        font-size: 0.95rem;
+        }
+        .info-table th, .info-table td {
+        padding: 0.7rem;
+        }
+        .summary-box {
+        padding: 1.5rem;
+        }
+        .info-item {
+        padding: 0.7rem;
+        }
+        .date-tag {
+        font-size: 0.8rem;
+        padding: 0.2rem 0.6rem;
+        }
+        .quality-banner {
+        padding: 0.5rem 1rem;
+        font-size: 1rem;
+        }
+        }
+        @media (max-width: 480px) {
+        .container {
+        padding: 0.5rem;
+        }
+        h1 {
+        font-size: 1.7rem;
+        }
+        h2 {
+        font-size: 1.5rem;
+        }
+        h3 {
+        font-size: 1.3rem;
+        }
+        .info-table {
+        font-size: 0.9rem;
+        }
+        .info-table th, .info-table td {
+        padding: 0.6rem;
+        }
+        .quote-block {
+        padding: 1rem;
+        font-size: 0.95rem;
+        }
+        .summary-box {
+        padding: 1.2rem;
+        }
+        .quality-banner {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.9rem;
+        }
+        }
+        /* 页脚 */
+        .footer {
+        text-align: center;
+        margin-top: 3rem;
+        padding: 1.5rem 0;
+        color: var(--light-text);
+        font-size: 0.9rem;
+        border-top: 1px solid var(--border-color);
+        }
+        /* 高亮标签 */
+        .tag {
+        display: inline-block;
+        background-color: var(--highlight);
+        color: var(--dark-text);
+        padding: 0.2rem 0.6rem;
+        border-radius: 10px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        margin: 0 0.3rem 0.3rem 0;
+        }
+      </style>
+    </head>
+    <body>
+      <div class="quality-banner">✅ 质量标志：通过</div>
+        <div class="container">
+          <h1>2026年02月24日 北京春节京味美食文化深度洞察报告：市井烟火与匠心传承交织的味觉年谱</h1>
+            <div class="quote-block">
+              <p>2026年春节期间，北京通过文旅部门、老字号品牌与市井商户的协同联动，系统性构建了“<span class="keyword">传统工艺</span>+<span class="keyword">节令寓意</span>+<span class="keyword">创新体验</span>”三位一体的京味美食文化图景。从官方发布的权威榜单到胡同深处的隐藏摊点，从年夜饭的吉祥菜系到元宵节的非遗摇制，京味饮食不仅是味觉享受，更成为承载年俗仪式、城市记忆与人文温度的文化载体。高频关键词包括：<span class="keyword">错峰体验</span>、<span class="keyword">老字号传承</span>、<span class="keyword">市井烟火</span>、<span class="keyword">节令寓意</span>、<span class="keyword">预制融合</span>、<span class="keyword">文化符号</span>。</p>
+              </div>
+              <h2>详细维度分析</h2>
+                <h3>一、官方权威指南：系统化构建“京味年味”消费地图</h3>
+                  <p>北京市文化和旅游局于<span class="date-tag">2026年2月2日</span>发布《2026年春节京味美食指南》，明确推荐20家代表性餐饮机构，为公众提供权威消费指引。该指南涵盖四大品类：<span class="keyword">烤鸭</span>（全聚德、四季民福、宫宴）、<span class="keyword">涮肉</span>（聚宝源、满恒记、南门涮肉）、<span class="keyword">卤煮与小吃</span>（护国寺小吃、门框胡同卤煮、方砖厂炸酱面）及<span class="keyword">融合创新</span>（萃华楼、紫光园）<a href="https://news.bjd.com.cn/2026/02/02/11561318.shtml" target="_blank">【来源链接】</a>。同日另一版本《春节必打卡10大榜单》亦同步推出，强调“非遗工艺与仪式感”，如全聚德挂炉烤鸭、萃华楼京鲁菜，并首次将“即食年礼”纳入体系，如全聚德福禄礼盒，满足家庭馈赠需求<a href="http://m.toutiao.com/group/7602570875363164723/" target="_blank">【来源链接】</a>。该类官方信息因发布于春节黄金周前夕，具有最高决策参考价值，成为后续所有消费建议的基准框架。</p>
+                    <p>丰台区于<span class="date-tag">2026年2月20日</span>发布区域美食指南，进一步补充了“高端宴请”与“地方风味”维度：北京宴、儒宴国香、小大董聚焦融合菜与烤鸭；闽菜馆、湘湘甲鱼村等引入跨地域口味，体现城市餐饮结构的多元包容<a href="http://m.toutiao.com/group/7608546115138454056/" target="_blank">【来源链接】</a>。</p>
+                      <h3>二、市井烟火与老字号：胡同深处的年节密码</h3>
+                        <p>西城区留学路与护国寺大街一带，被多篇报道反复确认为“<span class="keyword">年味密度最高</span>”区域。<span class="date-tag">2026年1月30日</span>的两篇内容（一为新闻，一为自媒体）高度一致地描述了500米街区的烟火图景：李记烧饼“困难可不付款”的暖心贴士走红网络，奶皮子糖葫芦、宫门口馒头铺、白水羊头、庆祥斋糕点等构成“平价美食矩阵”<a href="http://m.toutiao.com/group/7601033029410177551/" target="_blank">【来源链接】</a> <a href="https://toutiao.com/group/7601033029410177551/" target="_blank">【来源链接】</a>。护国寺小吃总店作为核心节点，持续输出驴打滚、豌豆黄、豆汁、麻酱饼、糖火烧等经典，其中豆汁与芥末墩儿被特指为“<span class="keyword">宫廷与市井双重风味</span>”的代表<a href="https://toutiao.com/group/7609088083216106018/" target="_blank">【来源链接】</a>。</p>
+                          <p>牛街作为清真风味核心区，在<span class="date-tag">2018年2月14日</span>的老旧信息中已确立其地位（洪记小吃、大顺斋、伊宝荷叶甑糕），虽为较早信息，但其“正宗京味藏于胡同深处”的定位仍被后续报道间接印证，属<span class="emphasis">可参考的长期稳定消费地标</span><a href="http://www.sohu.com/a/222748441_784321" target="_blank">【来源链接】</a>（老旧信息，距离今日超60天）。</p>
+                            <h3>三、节令仪式与饮食寓意：从腊八至元宵的文化链条</h3>
+                              <p><span class="date-tag">2026年2月17日</span>的深度分析指出：年夜饭重“双数”与吉祥——鱼为“<span class="keyword">年年有余</span>”，饺子喻“<span class="keyword">更岁交子</span>”，馅料谐音“<span class="keyword">百财</span>”“<span class="keyword">长久</span>”；初二食面喻顺遂，初五“破五饺子”捏嘴避小人，初七春饼迎春，元宵节“<span class="keyword">摇</span>”元宵求团圆<a href="http://m.toutiao.com/group/7607831729767744010/" target="_blank">【来源链接】</a>。</p>
+                                <p>腊八节作为春节前奏，<span class="date-tag">2026年1月26日</span>报道显示：旺顺阁公益奉粥超8000份，护国寺小吃腊八粥料达20余种，华天集团多家老字号同步参与，体现餐饮企业公共责任与文化担当<a href="http://m.toutiao.com/group/7599524987812299270/" target="_blank">【来源链接】</a>。</p>
+                                  <p>元宵节制作技艺则被非遗化呈现：<span class="date-tag">2026年2月21日</span>报道聚焦锦芳小吃“四水成形”古法摇元宵，非遗传承人邱云贺以二十年匠心诠释“<span class="keyword">圆满</span>”寓意；同时延伸至四川封糕、江西年糕，点明“<span class="keyword">稻米为媒，传递团圆、向上、和合</span>”的中华精神<a href="https://content-static.cctvnews.cctv.com/snow-book/index.html?item_id=4074599908742954118&source=50006&sub_source=50006_001" target="_blank">【来源链接】</a>。</p>
+                                    <h3>四、消费行为与体验优化：错峰、预订、清晨体验成关键词</h3>
+                                      <p>基于<span class="date-tag">2026年2月15日</span>与<span class="date-tag">2026年2月21日</span>的多篇攻略，高频建议集中于三类行为优化：</p>
+                                        <ul>
+                                          <li><span class="keyword">错峰出行</span>：护国寺小吃总店清晨6点开门，方砖厂69号炸酱面建议9:30–10:00前到，黑窑厂糖油饼营业至21:30但建议早至<a href="https://toutiao.com/group/7604737181667672603/" target="_blank">【来源链接】</a> <a href="https://toutiao.com/group/7609088083216106018/" target="_blank">【来源链接】</a>。</li>
+                                            <li><span class="keyword">提前订座</span>：全聚德清华园店、四季民福、宫宴等热门店需提前预约，尤其春节套餐（如含炖带鱼）<a href="https://toutiao.com/group/7604737181667672603/" target="_blank">【来源链接】</a>。</li>
+                                              <li><span class="keyword">清晨体验</span>：多文强调“清晨体验更地道”，避开人流后更能感受食材本味与店铺原貌<a href="https://toutiao.com/group/7604737181667672603/" target="_blank">【来源链接】</a>。</li>
+                                              </ul>
+                                              <h3>五、创新融合与产品延伸：年礼化、预制化、主题化趋势显现</h3>
+                                                <ul>
+                                                  <li><span class="keyword">年礼市场</span>：稻香村蜜供（38元/盒）、紫光园京八件礼盒（128元）被明确列为“伴手礼首选”，寓意“<span class="keyword">甜蜜吉祥</span>”，体现传统小吃的商品化升级<a href="https://toutiao.com/group/7604737181667672603/" target="_blank">【来源链接】</a>。</li>
+                                                    <li><span class="keyword">预制菜与融合菜</span>：年夜饭呈现“传统+创新”多元面貌，部分老字号如马凯餐厅推出“旗开得胜”牛肉粒、同春园“双马迎春”凉菜，融合生肖主题与传统风味；海底捞推出“小马宝莉”联名餐品，显示餐饮品牌对年轻客群的渗透<a href="http://m.toutiao.com/group/7607831729767744010/" target="_blank">【来源链接】</a> <a href="http://m.toutiao.com/group/7599524987812299270/" target="_blank">【来源链接】</a>。</li>
+                                                      <li><span class="keyword">文化体验延伸</span>：同和居等店举办“新春拓印祈福”活动，将饮食场景升华为文化沉浸体验<a href="http://m.toutiao.com/group/7599524987812299270/" target="_blank">【来源链接】</a>。</li>
+                                                      </ul>
+                                                      <h3>六、经典品类复盘：京味符号的稳定内核</h3>
+                                                        <p>尽管有新趋势涌现，但核心品类始终稳固。<span class="date-tag">2026年2月21日</span>两篇内容（来源不同但表述高度一致）再次确认五大京味符号：</p>
+                                                          <ol>
+                                                            <li><span class="keyword">北京烤鸭</span>：果木烤制、酥皮嫩肉，全聚德、大董推团圆套餐<a href="https://toutiao.com/group/7609088083216106018/" target="_blank">【来源链接】</a>。</li>
+                                                              <li><span class="keyword">铜锅涮肉</span>：炭火铜锅、手切鲜肉、秘制麻酱，聚宝源、南门涮肉承载团圆氛围<a href="https://toutiao.com/group/7609088083216106018/" target="_blank">【来源链接】</a>。</li>
+                                                                <li><span class="keyword">护国寺小吃</span>：驴打滚、豌豆黄、芥末墩儿，宫廷与市井双重风味<a href="https://toutiao.com/group/7609088083216106018/" target="_blank">【来源链接】</a>。</li>
+                                                                  <li><span class="keyword">冰糖葫芦</span>：厂甸、庙会标配，山楂、草莓新口味增趣，选中间段最脆<a href="https://toutiao.com/group/7604737181667672603/" target="_blank">【来源链接】</a>。</li>
+                                                                    <li><span class="keyword">炒肝配包子</span>：蒜香浓烈、鲜而不腻，姚记等老店人气不减<a href="https://toutiao.com/group/7609088083216106018/" target="_blank">【来源链接】</a>。</li>
+                                                                    </ol>
+                                                                    <p>此外，<span class="date-tag">2024年10月4日</span>的老旧信息虽距今超60天，但其对“豆儿酱”“灌肠”“油茶”等北方年节凉菜与早餐的描述，仍具文化溯源价值，可作补充参考<a href="http://m.163.com/dy/article/JDLCGUF605567LU9.html" target="_blank">【来源链接】</a>（老旧信息，距离今日超60天）。</p>
+                                                                      <div class="summary-box">
+                                                                        <h3>总结与展望</h3>
+                                                                          <p>2026年北京春节饮食文化呈现出“<span class="keyword">权威引导</span>、<span class="keyword">市井深耕</span>、<span class="keyword">节令固本</span>、<span class="keyword">体验升级</span>”的鲜明特征。官方榜单构建了消费骨架，市井烟火赋予其血肉，节令寓意赋予其精神内核，而错峰建议、年礼化、主题化则代表了其面向现代生活的适应性演化。</p>
+                                                                            <p>未来趋势将更趋向于：</p>
+                                                                              <ul>
+                                                                                <li><span class="keyword">文化IP化</span>：如“摇元宵”“拓印祈福”等体验将成为旅游打卡新刚需；</li>
+                                                                                  <li><span class="keyword">地域融合</span>：京味不再局限于“老北京”，而是成为容纳全国风味的“文化容器”；</li>
+                                                                                    <li><span class="keyword">情感代偿</span>：在快节奏社会中，一顿“有温度”的年饭、一块“困难可不付款”的烧饼，其人文价值远超食物本身。</li>
+                                                                                    </ul>
+                                                                                    <p>北京春节美食，早已不是简单的“吃什么”，而是“如何在舌尖上，重逢一座城的记忆与温度”。</p>
+                                                                                    </div>
+                                                                                    <h2>资讯标题与链接列表（按发布日期由近到远排序）</h2>
+                                                                                      <div class="info-list">
+                                                                                        <div class="info-item">
+                                                                                          <span class="date-tag">2026年02月21日</span>
+                                                                                            <a href="https://toutiao.com/group/7609088083216106018/" class="link" target="_blank">春节来京，京味名吃是体验年俗的重要部分</a>
+                                                                                            </div>
+                                                                                            <div class="info-item">
+                                                                                              <span class="date-tag">2026年02月21日</span>
+                                                                                                <a href="https://content-static.cctvnews.cctv.com/snow-book/index.html?item_id=4074599908742954118&source=50006&sub_source=50006_001" class="link" target="_blank">春节之际，米制节令美食承载浓厚年味与文化传承</a>
+                                                                                                </div>
+                                                                                                <div class="info-item">
+                                                                                                  <span class="date-tag">2026年02月20日</span>
+                                                                                                    <a href="http://m.toutiao.com/group/7608546115138454056/" class="link" target="_blank">丰台区推出春节美食指南，汇聚八方风味与京味经典</a>
+                                                                                                    </div>
+                                                                                                    <div class="info-item">
+                                                                                                      <span class="date-tag">2026年02月17日</span>
+                                                                                                        <a href="http://m.toutiao.com/group/7607831729767744010/" class="link" target="_blank">北京春节饮食融合历史寓意与地域特色</a>
+                                                                                                        </div>
+                                                                                                        <div class="info-item">
+                                                                                                          <span class="date-tag">2026年02月15日</span>
+                                                                                                            <a href="https://toutiao.com/group/7604737181667672603/" class="link" target="_blank">北京春节美食避人潮攻略出炉，聚焦地道年味</a>
+                                                                                                            </div>
+                                                                                                            <div class="info-item">
+                                                                                                              <span class="date-tag">2026年02月15日</span>
+                                                                                                                <a href="http://m.toutiao.com/group/7604737181667672603/" class="link" target="_blank">北京春节美食攻略推荐避峰地道体验</a>
+                                                                                                                </div>
+                                                                                                                <div class="info-item">
+                                                                                                                  <span class="date-tag">2026年02月03日</span>
+                                                                                                                    <a href="http://m.toutiao.com/group/7602570875363164723/" class="link" target="_blank">北京市文化和旅游局发布“春节必打卡10大榜单”</a>
+                                                                                                                    </div>
+                                                                                                                    <div class="info-item">
+                                                                                                                      <span class="date-tag">2026年02月02日</span>
+                                                                                                                        <a href="https://news.bjd.com.cn/2026/02/02/11561318.shtml" class="link" target="_blank">北京市文化和旅游局发布2026年春节京味美食指南</a>
+                                                                                                                        </div>
+                                                                                                                        <div class="info-item">
+                                                                                                                          <span class="date-tag">2026年02月02日</span>
+                                                                                                                            <a href="http://m.toutiao.com/group/7602276719038349830/" class="link" target="_blank">北京市文化和旅游局发布2026年春节京味美食指南</a>
+                                                                                                                            </div>
+                                                                                                                            <div class="info-item">
+                                                                                                                              <span class="date-tag">2026年01月30日</span>
+                                                                                                                                <a href="https://toutiao.com/group/7601033029410177551/" class="link" target="_blank">北京西城区留学路与护国寺大街一带，以市井烟火与老字号匠心共同构筑浓厚年味</a>
+                                                                                                                                </div>
+                                                                                                                                <div class="info-item">
+                                                                                                                                  <span class="date-tag">2026年01月30日</span>
+                                                                                                                                    <a href="http://m.toutiao.com/group/7601033029410177551/" class="link" target="_blank">北京西城区留学路与护国寺大街等地，以市井烟火与老字号匠心共同勾勒出浓厚新春年味</a>
+                                                                                                                                    </div>
+                                                                                                                                    <div class="info-item">
+                                                                                                                                      <span class="date-tag">2026年01月26日</span>
+                                                                                                                                        <a href="http://m.toutiao.com/group/7599524987812299270/" class="link" target="_blank">腊八节当天，北京多家餐饮企业开展腊八粥赠送与促销活动</a>
+                                                                                                                                        </div>
+                                                                                                                                        <div class="info-item">
+                                                                                                                                          <span class="date-tag">2024年10月04日</span>
+                                                                                                                                            <a href="http://m.163.com/dy/article/JDLCGUF605567LU9.html" class="link" target="_blank">文章盘点北京传统春节美食，呈现地道年味</a>
+                                                                                                                                              <span class="tag">老旧信息</span>
+                                                                                                                                              </div>
+                                                                                                                                              <div class="info-item">
+                                                                                                                                                <span class="date-tag">2018年02月14日</span>
+                                                                                                                                                  <a href="http://www.sohu.com/a/222748441_784321" class="link" target="_blank">春节赴京旅游，避开王府井、南锣鼓巷等游客密集区，推荐三大地道京味小吃聚集地</a>
+                                                                                                                                                    <span class="tag">老旧信息</span>
+                                                                                                                                                    </div>
+                                                                                                                                                  </div>
+                                                                                                                                                  <div class="footer">
+                                                                                                                                                    <p>© 2026 北京春节京味美食文化深度洞察报告 | 数据更新至2026年02月24日</p>
+                                                                                                                                                      <p>本报告基于公开网络信息整合分析，所有链接均为原始来源，仅供文化研究与消费参考。</p>
+                                                                                                                                                      </div>
+                                                                                                                                                    </div>
+                                                                                                                                                  </body>
+                                                                                                                                                </html>
+                                                                                                                                                ```
