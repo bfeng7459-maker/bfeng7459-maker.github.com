@@ -1,0 +1,601 @@
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>A股投资趋势与资产配置洞察报告（2026年02月25日）</title>
+      <style>
+        /* 全局样式 */
+        :root {
+        --primary-color: #1a3a6e;
+        --secondary-color: #2c5aa0;
+        --accent-color: #e63946;
+        --light-color: #f8f9fa;
+        --dark-color: #212529;
+        --success-color: #28a745;
+        --warning-color: #ffc107;
+        --info-color: #17a2b8;
+        --border-radius: 8px;
+        --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        --transition: all 0.3s ease;
+        }
+        * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        }
+        body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.7;
+        color: var(--dark-color);
+        background-color: #f5f7fa;
+        padding: 0;
+        overflow-x: hidden;
+        }
+        .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 1rem;
+        }
+        /* 质量标志 */
+        .quality-badge {
+        position: fixed;
+        top: 0;
+        right: 0;
+        background-color: var(--success-color);
+        color: white;
+        font-weight: bold;
+        padding: 0.6rem 1.2rem;
+        font-size: 1.1rem;
+        border-bottom-left-radius: var(--border-radius);
+        box-shadow: var(--box-shadow);
+        z-index: 1000;
+        transform: rotate(5deg);
+        transition: var(--transition);
+        }
+        .quality-badge:hover {
+        transform: rotate(0deg);
+        box-shadow: 0 6px 16px rgba(40, 167, 69, 0.3);
+        }
+        /* 标题样式 */
+        h1 {
+        color: var(--primary-color);
+        text-align: center;
+        font-size: 2.2rem;
+        margin: 1.5rem 0 1rem;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+        position: relative;
+        padding-bottom: 0.8rem;
+        }
+        h1:after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100px;
+        height: 3px;
+        background: var(--accent-color);
+        border-radius: 2px;
+        }
+        h2 {
+        color: var(--secondary-color);
+        font-size: 1.8rem;
+        margin: 2rem 0 1rem;
+        padding-left: 0.8rem;
+        border-left: 4px solid var(--primary-color);
+        }
+        h3 {
+        color: var(--primary-color);
+        font-size: 1.5rem;
+        margin: 1.8rem 0 0.8rem;
+        font-weight: 600;
+        }
+        h4 {
+        color: var(--dark-color);
+        font-size: 1.3rem;
+        margin: 1.5rem 0 0.7rem;
+        font-weight: 600;
+        }
+        /* 段落与列表 */
+        p {
+        margin-bottom: 1.2rem;
+        font-size: 1.1rem;
+        }
+        ul, ol {
+        margin-bottom: 1.5rem;
+        padding-left: 1.8rem;
+        }
+        li {
+        margin-bottom: 0.6rem;
+        font-size: 1.1rem;
+        }
+        /* 引用块 */
+        blockquote {
+        background-color: rgba(26, 58, 110, 0.05);
+        border-left: 4px solid var(--primary-color);
+        padding: 1.2rem;
+        margin: 1.8rem 0;
+        border-radius: var(--border-radius);
+        font-style: italic;
+        color: #555;
+        font-size: 1.1rem;
+        box-shadow: var(--box-shadow);
+        }
+        /* 链接样式 */
+        a {
+        color: var(--secondary-color);
+        text-decoration: none;
+        font-weight: 600;
+        transition: var(--transition);
+        position: relative;
+        }
+        a:hover {
+        color: var(--accent-color);
+        text-decoration: underline;
+        }
+        a:after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 1px;
+        bottom: -2px;
+        left: 0;
+        background-color: var(--secondary-color);
+        transition: var(--transition);
+        }
+        a:hover:after {
+        width: 100%;
+        }
+        /* 表格样式 */
+        table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 1.8rem 0;
+        box-shadow: var(--box-shadow);
+        border-radius: var(--border-radius);
+        overflow: hidden;
+        background-color: white;
+        }
+        th, td {
+        padding: 1rem;
+        text-align: left;
+        border-bottom: 1px solid #eee;
+        }
+        th {
+        background-color: var(--primary-color);
+        color: white;
+        font-weight: 600;
+        font-size: 1.1rem;
+        }
+        tr:nth-child(even) {
+        background-color: #f8f9fa;
+        }
+        tr:hover {
+        background-color: #e9ecef;
+        transform: scale(1.005);
+        transition: var(--transition);
+        }
+        /* 关键词高亮 */
+        .highlight {
+        background-color: #fff3cd;
+        padding: 0.2rem 0.4rem;
+        border-radius: 4px;
+        font-weight: 700;
+        color: #856404;
+        }
+        .critical {
+        color: var(--accent-color);
+        font-weight: 700;
+        background-color: #ffebee;
+        padding: 0.2rem 0.4rem;
+        border-radius: 4px;
+        }
+        .recommend {
+        color: var(--success-color);
+        font-weight: 700;
+        background-color: #e8f5e9;
+        padding: 0.2rem 0.4rem;
+        border-radius: 4px;
+        }
+        /* 信息块 */
+        .info-block {
+        background-color: rgba(23, 162, 184, 0.1);
+        border-left: 4px solid var(--info-color);
+        padding: 1rem 1.5rem;
+        margin: 1.8rem 0;
+        border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+        .warning-block {
+        background-color: rgba(255, 193, 7, 0.1);
+        border-left: 4px solid var(--warning-color);
+        padding: 1rem 1.5rem;
+        margin: 1.8rem 0;
+        border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+        .old-info {
+        opacity: 0.7;
+        border-left: 4px solid #ccc;
+        background-color: #f8f9fa;
+        margin: 1.2rem 0;
+        padding: 1rem 1.5rem;
+        border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+        .old-info a {
+        color: #666;
+        }
+        .old-info a:hover {
+        color: #444;
+        }
+        /* 日期列表 */
+        .timeline {
+        margin: 2rem 0;
+        padding-left: 0;
+        list-style: none;
+        }
+        .timeline li {
+        margin-bottom: 1.5rem;
+        padding-left: 1.8rem;
+        position: relative;
+        }
+        .timeline li:before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0.5rem;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background-color: var(--primary-color);
+        }
+        .timeline .date {
+        font-weight: 600;
+        color: var(--secondary-color);
+        margin-right: 0.5rem;
+        }
+        .timeline .link-container {
+        margin-top: 0.5rem;
+        }
+        .timeline .link-container a {
+        display: inline-block;
+        margin-top: 0.3rem;
+        font-size: 0.95rem;
+        color: var(--info-color);
+        word-break: break-all;
+        }
+        /* 总结部分 */
+        .summary {
+        background-color: rgba(26, 58, 110, 0.03);
+        border: 1px solid #e0e0e0;
+        border-radius: var(--border-radius);
+        padding: 2rem;
+        margin: 2.5rem 0;
+        border-left: 5px solid var(--primary-color);
+        }
+        .summary h3 {
+        color: var(--primary-color);
+        margin-top: 0;
+        border-left: none;
+        padding-left: 0;
+        }
+        .summary .risk-points {
+        background-color: rgba(230, 57, 70, 0.05);
+        border-left: 3px solid var(--accent-color);
+        padding: 1rem 1.5rem;
+        margin: 1.5rem 0;
+        border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+        .summary .watch-points {
+        background-color: rgba(40, 167, 69, 0.05);
+        border-left: 3px solid var(--success-color);
+        padding: 1rem 1.5rem;
+        margin: 1.5rem 0;
+        border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+        h1 {
+        font-size: 1.8rem;
+        }
+        h2 {
+        font-size: 1.6rem;
+        padding-left: 0.5rem;
+        }
+        h3 {
+        font-size: 1.3rem;
+        }
+        h4 {
+        font-size: 1.1rem;
+        }
+        p, li, blockquote, .summary {
+        font-size: 1rem;
+        }
+        table {
+        font-size: 0.9rem;
+        overflow-x: auto;
+        display: block;
+        }
+        th, td {
+        padding: 0.8rem;
+        }
+        .timeline li {
+        padding-left: 1.2rem;
+        }
+        .timeline li:before {
+        left: 0.5rem;
+        top: 0.4rem;
+        }
+        .quality-badge {
+        padding: 0.5rem 1rem;
+        font-size: 1rem;
+        transform: rotate(0deg);
+        }
+        }
+        @media (max-width: 480px) {
+        h1 {
+        font-size: 1.6rem;
+        }
+        h2 {
+        font-size: 1.4rem;
+        }
+        h3 {
+        font-size: 1.2rem;
+        }
+        p, li, blockquote, .summary {
+        font-size: 0.95rem;
+        }
+        table {
+        font-size: 0.9rem;
+        }
+        th, td {
+        padding: 0.6rem;
+        }
+        .container {
+        padding: 0.5rem;
+        }
+        .quality-badge {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.9rem;
+        top: 0.5rem;
+        right: 0.5rem;
+        }
+        .timeline li {
+        padding-left: 1rem;
+        }
+        .timeline li:before {
+        left: 0.3rem;
+        top: 0.3rem;
+        width: 6px;
+        height: 6px;
+        }
+        }
+        /* 按钮样式（用于链接） */
+        .btn {
+        display: inline-block;
+        background-color: var(--secondary-color);
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: var(--border-radius);
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 0.95rem;
+        margin: 0.3rem 0.2rem;
+        transition: var(--transition);
+        border: none;
+        cursor: pointer;
+        min-height: 44px;
+        min-width: 44px;
+        text-align: center;
+        line-height: 1.5;
+        }
+        .btn:hover {
+        background-color: var(--accent-color);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+        .btn:active {
+        transform: translateY(0);
+        }
+        /* 背景装饰 */
+        body::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, rgba(26, 58, 110, 0.02) 0%, transparent 50%);
+        pointer-events: none;
+        z-index: -1;
+        }
+      </style>
+    </head>
+    <body>
+      <!-- 质量标志 -->
+      <div class="quality-badge">质量标志：通过</div>
+        <div class="container">
+          <h1>A股投资趋势与资产配置洞察报告（2026年02月25日）</h1>
+            <h2>核心洞察综述</h2>
+              <p>截至2026年2月25日，市场主流投资逻辑已从短期题材炒作转向“业绩驱动+风格适配+长期配置”三位一体的理性框架。近期（2026年1月）的多份分析均指向三大主线：<span class="critical">保险板块迎来负债与资产端双重拐点</span>、<span class="critical">军工与硬科技具备中长期政策红利</span>、<span class="recommend">指数基金成为普通投资者主流配置工具</span>。与此同时，过往三年（2022–2025）的基金推荐与板块轮动数据表明，<span class="highlight">基金经理能力、规模适配性、风格稳定性</span>仍是筛选优质产品的关键维度。老旧信息（如2022年前）虽具历史参考价值，但已不构成当前决策依据。</p>
+                <h2>详细维度分析</h2>
+                  <h3>一、2026年核心资产推荐：保险、军工与硬科技三大主线</h3>
+                    <p>2026年1月下旬至下旬，多个权威渠道集中发布对<span class="critical">保险、军工、硬科技</span>三大板块的深度研判，构成当前最具时效性的布局框架。</p>
+                      <h4>1. 保险板块：负债端改善+资产端回暖，估值修复空间超40%</h4>
+                        <p>2026年1月26日与1月26日（两篇内容高度重合，来源链接相同）的分析指出，A股保险板块正迎来“<span class="highlight">负债端改善+资产端回暖</span>”的双驱动拐点。中国平安、中国人寿、中国太保、新华保险、中国人保五大龙头险企因估值处于历史低位、分红险与银保渠道增长强劲，被重点推荐。<span class="critical">短期受春节前资金兑现影响震荡，但MLF加码、人民币升值、开门红超预期构成强力支撑</span>。长期向上趋势明确，<span class="critical">估值修复空间预计超40%</span>，建议<span class="recommend">逢低分批布局龙头股与核心ETF，回避追高</span>。</p>
+                          <blockquote>【来源链接】：<a href="http://m.toutiao.com/group/7599531335060832818/" target="_blank">A股保险板块迎来“负债改善+资产修复”双驱动</a></blockquote>
+                            <p>同期推荐的保险概念ETF包括：易方达512070、鹏华515630、港股通非银513750，适配不同策略投资者。</p>
+                              <h4>2. 军工板块：订单充足+“十五五”规划驱动，中长期景气度明确</h4>
+                                <p>2026年1月24日分析指出，军工整机龙头如<span class="highlight">中航沈飞、中航成飞、中国船舶、航发动力、中国卫通</span>基本面扎实，订单充足，中长期景气度明确。商业航天、军贸、大飞机成为新增长极。军工ETF（512660、512810）流动性佳，适合一键布局。</p>
+                                  <p>配置策略分三阶：</p>
+                                    <ol>
+                                      <li><strong>短线</strong>：待个股站稳20日线、ETF缩量企稳时轻仓试错；</li>
+                                        <li><strong>中线</strong>：春节后回调10%-15%分批建仓；</li>
+                                          <li><strong>长线</strong>：优选龙头与高流动性标的，严控仓位，规避破位放量行情。</li>
+                                          </ol>
+                                          <blockquote>【来源链接】：<a href="https://toutiao.com/group/7598786630266143267/" target="_blank">军工板块结构性分化，中长期景气度明确</a></blockquote>
+                                            <h4>3. 硬科技与指数基金：底层配置核心，政策红利持续释放</h4>
+                                              <p>2026年1月28日报告系统提出“<span class="recommend">指数基金为稳健投资优选</span>”的结论，指出其因<span class="highlight">分散风险、政策红利与低费率优势</span>，成为普通投资者主流工具。推荐五大核心基金配置方案：</p>
+                                                <table>
+                                                  <thead>
+                                                    <tr>
+                                                      <th>基金类型</th>
+                                                        <th>推荐标的</th>
+                                                          <th>配置比例</th>
+                                                            <th>功能定位</th>
+                                                            </tr>
+                                                          </thead>
+                                                          <tbody>
+                                                            <tr>
+                                                              <td>宽基指数</td>
+                                                                <td>沪深300</td>
+                                                                  <td>40%</td>
+                                                                    <td>核心底仓，稳定收益</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                      <td>宽基指数</td>
+                                                                        <td>中证500</td>
+                                                                          <td>20%</td>
+                                                                            <td>中小盘成长</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                              <td>行业指数</td>
+                                                                                <td>科创50</td>
+                                                                                  <td>10%</td>
+                                                                                    <td>硬科技进攻</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                      <td>策略指数</td>
+                                                                                        <td>中证红利</td>
+                                                                                          <td>20%</td>
+                                                                                            <td>高股息防御</td>
+                                                                                            </tr>
+                                                                                            <tr>
+                                                                                              <td>海外指数</td>
+                                                                                                <td>中概互联50</td>
+                                                                                                  <td>10%</td>
+                                                                                                    <td>海外估值修复</td>
+                                                                                                    </tr>
+                                                                                                  </tbody>
+                                                                                                </table>
+                                                                                                <p>建议采用“<span class="highlight">4:2:1:2:1</span>”比例分散配置，坚持定投与长期持有，规避高估追涨、频繁换仓、单一重仓三大误区。</p>
+                                                                                                  <blockquote>【来源链接】：<a href="https://toutiao.com/group/7600090628156621339/" target="_blank">2025年指数基金成稳健投资优选</a></blockquote>
+                                                                                                    <p>此配置方案与2025年12月24日提出的“<span class="highlight">5基金配置法</span>”（3宽基+2行业）逻辑一致，印证了<span class="highlight">宽基为锚、行业为矛</span>的底层共识。</p>
+                                                                                                      <blockquote>【来源链接】：<a href="https://toutiao.com/group/7587295729165533723/" target="_blank">适合普通人的指数基金投资方案</a></blockquote>
+                                                                                                        <h3>二、2025年延续性信号：行业景气与配置工具</h3>
+                                                                                                          <p>2025年12月的分析延续了对<span class="highlight">高景气细分行业</span>的跟踪：</p>
+                                                                                                            <ul>
+                                                                                                              <li><strong>变压器行业</strong>受益于电网升级、新能源消纳、海外基建三大驱动，特变电工、中国西电、金盘科技、伊戈尔、扬电科技五家企业业绩亮眼。虽无纯ETF，但可通过<span class="recommend">智能电网ETF（161728）、电力ETF（159611）</span>间接配置，建议于年报季或回调时分批建仓。</li>
+                                                                                                                <blockquote>【来源链接】：<a href="https://toutiao.com/group/7579640307008930330/" target="_blank">变压器行业景气度持续高位</a></blockquote>
+                                                                                                                </ul>
+                                                                                                                <p><strong>新能源与半导体</strong>仍为行业基金重点布局方向，与2022年2月“大基金持股”五大龙头（江丰电子、北方华创、士兰微、三安光电、兆易创新）形成技术路径延续，但<span class="highlight">2026年更强调以ETF工具实现系统性配置</span>，而非个股押注。</p>
+                                                                                                                  <h3>三、2023–2024年基金筛选逻辑：风格适配与规模约束</h3>
+                                                                                                                    <p>2023年的基金推荐逻辑已明确转向“<span class="highlight">基金经理能力+规模适配性</span>”：</p>
+                                                                                                                      <ul>
+                                                                                                                        <li>2023年1月推荐的交银启诚（杨金金）、建信潜力新蓝筹（周智硕）等基金，强调基金经理正值职业黄金期、业绩驱动强、规模适中利于发挥，<span class="critical">回避佛系或规模过大的产品</span>。</li>
+                                                                                                                          <blockquote>【来源链接】：<a href="https://cj.sina.cn/article/norm_detail?url=https%3A%2F%2Ffinance.sina.cn%2F2023-01-22%2Fdetail-imycasyc5015954.d.html" target="_blank">2023年值得关注的五只基金</a></blockquote>
+                                                                                                                            <li>2023年11月筛选的9只主动权益基金（如中泰星元价值优选A、银华鑫盛灵活A）因<span class="highlight">回撤低于24%、年化收益超20%</span>被重点推荐，强调在小盘股震荡中寻找“<span class="recommend">稳健选择</span>”。</li>
+                                                                                                                              <blockquote>【来源链接】：<a href="https://mguba.eastmoney.com/mguba/article/0/1375831541" target="_blank">小盘股震荡中大盘风格基金机会</a></blockquote>
+                                                                                                                                <li>2022年12月“搬砖小浪哥”对黑马基金的盘点表明，<span class="highlight">规模不足1亿制约操作，仓位与风格稳定性决定表现</span>，诺安低碳经济股票C因均衡配置表现最佳。</li>
+                                                                                                                                  <blockquote>【来源链接】：<a href="https://xueqiu.com/8887254704/238068606" target="_blank">十只潜力黑马基金周表现分析</a></blockquote>
+                                                                                                                                  </ul>
+                                                                                                                                  <h3>四、2022年及以前信息：历史性参考，已属老旧</h3>
+                                                                                                                                    <p>以下信息发布于2022年及以前，距今超过60天，<span class="critical">时效性严重不足</span>，仅作历史背景参考：</p>
+                                                                                                                                      <div class="old-info">
+                                                                                                                                        <p><strong>2022年2月</strong>：大基金持股五大半导体龙头（江丰电子、北方华创、士兰微、三安光电、兆易创新）被视作优质标的。<br>
+                                                                                                                                          > 【来源链接】：<a href="https://m.hupu.com/2019/bbs/52138308_96220351764650-1.html" target="_blank">大基金持股五大半导体龙头企业</a>（老旧信息）</p>
+                                                                                                                                        </div>
+                                                                                                                                        <div class="old-info">
+                                                                                                                                          <p><strong>2022年12月</strong>：社保基金新进六只A股（楚天科技、亚太科技、平煤股份、云天化、中国核电、卫星化学），市盈率低于15，覆盖新能源、国企改革等赛道。<br>
+                                                                                                                                            > 【来源链接】：<a href="https://xueqiu.com/7581902414/236986976" target="_blank">2022Q3社保基金新进持仓</a>（老旧信息）</p>
+                                                                                                                                          </div>
+                                                                                                                                          <div class="old-info">
+                                                                                                                                            <p><strong>2022年2月</strong>：湘财证券用马尔科夫模型筛选26只高潜力基金，神爱前、王睿等三年收益超200%。<br>
+                                                                                                                                              > 【来源链接】：<a href="http://m.toutiao.com/group/7065875025618027038/" target="_blank">2022年高潜力基金筛选</a>（老旧信息）</p>
+                                                                                                                                            </div>
+                                                                                                                                            <div class="old-info">
+                                                                                                                                              <p><strong>2021年12月</strong>：大盘价值股反弹，推荐广发多因子、中欧红利优享等5只价值型基金。<br>
+                                                                                                                                                > 【来源链接】：<a href="https://mguba.eastmoney.com/mguba/article/0/1117704233" target="_blank">2021年底大盘价值风格基金推荐</a>（老旧信息）</p>
+                                                                                                                                              </div>
+                                                                                                                                              <div class="old-info">
+                                                                                                                                                <p><strong>2020年11月</strong>：推荐长期持有公募基金理念，提及贵州茅台、隆基股份等，传递长期投资观。<br>
+                                                                                                                                                  > 【来源链接】：<a href="https://xueqiu.com/4184573208/162957603" target="_blank">适合普通投资者的长期基金持有理念</a>（老旧信息）</p>
+                                                                                                                                                </div>
+                                                                                                                                                <div class="old-info">
+                                                                                                                                                  <p><strong>2005年7月</strong>：基金“护盘蓝筹、掘金小盘”双线策略，背景为早期市场分化。<br>
+                                                                                                                                                    > 【来源链接】：<a href="https://cj.sina.cn/article/norm_detail?url=https%3A%2F%2Ffinance.sina.cn%2Fsa%2F2005-07-20%2Fdetail-ikkntiak9326585.d.html" target="_blank">2005年基金二季度重仓股分析</a>（极端老旧信息）</p>
+                                                                                                                                                  </div>
+                                                                                                                                                  <h2>总结与展望</h2>
+                                                                                                                                                    <div class="summary">
+                                                                                                                                                      <p><strong>2026年投资主线清晰</strong>：<span class="critical">保险板块估值修复</span>、<span class="critical">军工与硬科技政策驱动</span>、<span class="recommend">指数基金系统配置</span>构成三大支柱。投资者应摒弃对“概念龙头”或“短期黑马”的盲目追逐，转向<span class="highlight">以ETF为工具、以宽基为锚、以行业为矛、以定投为纪律</span>的理性框架。基金经理能力虽仍重要，但<span class="highlight">规模适配性、风格稳定性与低费率产品优势</span>已成为主流共识。</p>
+                                                                                                                                                        <div class="risk-points">
+                                                                                                                                                          <strong>市场核心风险点</strong>：短期资金面波动（如春节效应）、美股与债市联动、政策落地不及预期。建议严控仓位、分批建仓、拒绝追高，坚持“<span class="highlight">避虚就实、以长打短</span>”原则。
+                                                                                                                                                          </div>
+                                                                                                                                                          <div class="watch-points">
+                                                                                                                                                            <strong>未来3–6个月关键观察点</strong>：
+                                                                                                                                                              <ol>
+                                                                                                                                                                <li>保险板块“开门红”数据是否兑现；</li>
+                                                                                                                                                                  <li>军工“十五五”规划具体细则出台节奏；</li>
+                                                                                                                                                                    <li>科创50、中概互联50等科技类ETF是否迎来估值中枢上移。</li>
+                                                                                                                                                                    </ol>
+                                                                                                                                                                  </div>
+                                                                                                                                                                </div>
+                                                                                                                                                                <h2>资讯标题与链接列表（按发布日期由近期到远期排序）</h2>
+                                                                                                                                                                  <ul class="timeline">
+                                                                                                                                                                    <li><span class="date">2026年01月28日</span>：2025年指数基金因分散风险、政策红利与低费率优势，成为稳健投资优选<br>
+                                                                                                                                                                      <div class="link-container"><a href="https://toutiao.com/group/7600090628156621339/" target="_blank">https://toutiao.com/group/7600090628156621339/</a></div>
+                                                                                                                                                                      </li>
+                                                                                                                                                                      <li><span class="date">2026年01月27日</span>：A股5家业绩预增大盘股与5家科技股获重点推荐，入场时机分三阶<br>
+                                                                                                                                                                        <div class="link-container"><a href="http://m.toutiao.com/group/7599910352390586930/" target="_blank">http://m.toutiao.com/group/7599910352390586930/</a></div>
+                                                                                                                                                                        </li>
+                                                                                                                                                                        <li><span class="date">2026年01月26日</span>：A股保险板块迎来“负债改善+资产修复”双驱动<br>
+                                                                                                                                                                          <div class="link-container"><a href="http://m.toutiao.com/group/7599531335060832818/" target="_blank">http://m.toutiao.com/group/7599531335060832818/</a></div>
+                                                                                                                                                                          </li>
+                                                                                                                                                                          <li><span class="date">2026年01月26日</span>：A股保险板块迎来“负债端改善+资产端回暖”拐点<br>
+                                                                                                                                                                            <div class="link-container"><a href="https://toutiao.com/group/7599531335060832818/" target="_blank">https://toutiao.com/group/7599531335060832818/</a></div>
+                                                                                                                                                                            </li>
+                                                                                                                                                                            <li><span class="date">2026年01月24日</span>：军工板块现结构性分化，整机龙头订单充足，中长期景气度明确<br>
+                                                                                                                                                                              <div class="link-container"><a href="https://toutiao.com/group/7598786630266143267/" target="_blank">https://toutiao.com/group/7598786630266143267/</a></div>
+                                                                                                                                                                              </li>
+                                                                                                                                                                              <li><span class="date">2025年12月24日</span>：一套适合普通人的指数基金投资方案：5只基金配置，定投为主<br>
+                                                                                                                                                                                <div class="link-container"><a href="https://toutiao.com/group/7587295729165533723/" target="_blank">https://toutiao.com/group/7587295729165533723/</a></div>
+                                                                                                                                                                                </li>
+                                                                                                                                                                                <li><span class="date">2025年12月03日</span>：变压器行业景气度持续高位，五家企业业绩亮眼，建议分批建仓<br>
+                                                                                                                                                                                  <div class="link-container"><a href="https://toutiao.com/group/7579640307008930330/" target="_blank">https://toutiao.com/group/7579640307008930330/</a></div>
+                                                                                                                                                                                  </li>
+                                                                                                                                                                                  <li><span class="date">2025年08月12日</span>：中国江西网推荐五只基金：永赢医药创新智选A、中欧纯债E等<br>
+                                                                                                                                                                                    <div class="link-container"><a href="https://cj.sina.cn/article/norm_detail?url=http%3A%2F%2Ffinance.sina.cn%2F2025-08-12%2Fdetail-infkszqc8871045.d.html" target="_blank">https://cj.sina.cn/article/norm_detail?url=http%3A%2F%2Ffinance.sina.cn%2F2025-08-12%2Fdetail-infkszqc8871045.d.html</a></div>
+                                                                                                                                                                                    </li>
+                                                                                                                                                                                    <li><span class="date">2023年11月30日</span>：小盘股高位震荡背景下，筛选9只回撤可控、年化收益超20%的主动权益基金<br>
+                                                                                                                                                                                      <div class="link-container"><a href="https://mguba.eastmoney.com/mguba/article/0/1375831541" target="_blank">https://mguba.eastmoney.com/mguba/article/0/1375831541</a></div>
+                                                                                                                                                                                      </li>
+                                                                                                                                                                                      <li><span class="date">2023年01月22日</span>：推荐2023年值得关注的五只基金，聚焦基金经理能力与规模适配性<br>
+                                                                                                                                                                                        <div class="link-container"><a href="https://cj.sina.cn/article/norm_detail?url=https%3A%2F%2Ffinance.sina.cn%2F2023-01-22%2Fdetail-imycasyc5015954.d.html" target="_blank">https://cj.sina.cn/article/norm_detail?url=https%3A%2F%2Ffinance.sina.cn%2F2023-01-22%2Fdetail-imycasyc5015954.d.html</a></div>
+                                                                                                                                                                                        </li>
+                                                                                                                                                                                        <li><span class="date">2022年12月17日</span>：基金投资人盘点十只潜力黑马基金，规模与风格适配性成关键<br>
+                                                                                                                                                                                          <div class="link-container"><a href="https://xueqiu.com/8887254704/238068606" target="_blank">https://xueqiu.com/8887254704/238068606</a></div>
+                                                                                                                                                                                          </li>
+                                                                                                                                                                                          <li><span class="date">2022年12月04日</span>：2022年三季度社保基金新进六只A股标的，覆盖新能源、国企改革等赛道<br>
+                                                                                                                                                                                            <div class="link-container"><a href="https://xueqiu.com/7581902414/236986976" target="_blank">https://xueqiu.com/7581902414/236986976</a></div>
+                                                                                                                                                                                            </li>
+                                                                                                                                                                                            <li><span class="date">2022年02月23日</span>：梳理“大基金持股”五大半导体龙头企业<br>
+                                                                                                                                                                                              <div class="link-container"><a href="https://m.hupu.com/2019/bbs/52138308_96220351764650-1.html" target="_blank">https://m.hupu.com/2019/bbs/52138308_96220351764650-1.html</a></div>
+                                                                                                                                                                                              </li>
+                                                                                                                                                                                              <li><span class="date">2022年02月18日</span>：湘财证券用马尔科夫模型筛选26只高潜力基金，神爱前、王睿三年收益超200%<br>
+                                                                                                                                                                                                <div class="link-container"><a href="http://m.toutiao.com/group/7065875025618027038/" target="_blank">http://m.toutiao.com/group/7065875025618027038/</a></div>
+                                                                                                                                                                                                </li>
+                                                                                                                                                                                                <li><span class="date">2021年12月10日</span>：大盘价值股反弹，推荐5只大盘价值型基金<br>
+                                                                                                                                                                                                  <div class="link-container"><a href="https://mguba.eastmoney.com/mguba/article/0/1117704233" target="_blank">https://mguba.eastmoney.com/mguba/article/0/1117704233</a></div>
+                                                                                                                                                                                                  </li>
+                                                                                                                                                                                                  <li><span class="date">2020年11月10日</span>：博主推荐5只适合普通投资者长期持有的公募基金<br>
+                                                                                                                                                                                                    <div class="link-container"><a href="https://xueqiu.com/4184573208/162957603" target="_blank">https://xueqiu.com/4184573208/162957603</a></div>
+                                                                                                                                                                                                    </li>
+                                                                                                                                                                                                    <li><span class="date">2005年07月20日</span>：基金二季度重仓股披露，呈现“护盘蓝筹、掘金小盘”双线特征<br>
+                                                                                                                                                                                                      <div class="link-container"><a href="https://cj.sina.cn/article/norm_detail?url=https%3A%2F%2Ffinance.sina.cn%2Fsa%2F2005-07-20%2Fdetail-ikkntiak9326585.d.html" target="_blank">https://cj.sina.cn/article/norm_detail?url=https%3A%2F%2Ffinance.sina.cn%2Fsa%2F2005-07-20%2Fdetail-ikkntiak9326585.d.html</a></div>
+                                                                                                                                                                                                      </li>
+                                                                                                                                                                                                    </ul>
+                                                                                                                                                                                                  </div>
+                                                                                                                                                                                                </body>
+                                                                                                                                                                                              </html>
+                                                                                                                                                                                              ```
