@@ -1,0 +1,436 @@
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>万科危机深度剖析与市场情绪演化报告</title>
+      <style>
+        /* 全局基础样式 */
+        :root {
+        --primary-color: #1a3a6d;
+        --secondary-color: #2c5a9e;
+        --accent-color: #e74c3c;
+        --light-color: #f8f9fa;
+        --dark-color: #212529;
+        --success-color: #28a745;
+        --warning-color: #ffc107;
+        --info-color: #17a2b8;
+        --border-radius: 8px;
+        --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        --transition: all 0.3s ease;
+        }
+        * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        }
+        body {
+        font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+        line-height: 1.8;
+        color: var(--dark-color);
+        background-color: var(--light-color);
+        padding: 0;
+        overflow-x: hidden;
+        }
+        .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 1rem;
+        }
+        /* 质量标志 */
+        .quality-badge {
+        position: fixed;
+        top: 0;
+        right: 0;
+        background-color: var(--success-color);
+        color: white;
+        padding: 0.8rem 1.5rem;
+        font-weight: bold;
+        font-size: 1.2rem;
+        border-bottom-left-radius: var(--border-radius);
+        box-shadow: var(--box-shadow);
+        z-index: 1000;
+        text-align: center;
+        transform: rotate(5deg);
+        transition: var(--transition);
+        }
+        .quality-badge:hover {
+        transform: rotate(0deg);
+        box-shadow: 0 6px 16px rgba(40, 167, 69, 0.3);
+        }
+        /* 标题样式 */
+        h1 {
+        font-size: 2.2rem;
+        color: var(--primary-color);
+        text-align: center;
+        margin: 1.5rem 0 0.5rem;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+        }
+        h2 {
+        font-size: 1.8rem;
+        color: var(--secondary-color);
+        margin: 2rem 0 1rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid var(--info-color);
+        font-weight: 600;
+        }
+        h3 {
+        font-size: 1.5rem;
+        color: var(--primary-color);
+        margin: 1.8rem 0 0.8rem;
+        font-weight: 600;
+        }
+        h4 {
+        font-size: 1.3rem;
+        color: var(--dark-color);
+        margin: 1.5rem 0 0.7rem;
+        font-weight: 500;
+        }
+        /* 段落样式 */
+        p {
+        margin-bottom: 1.2rem;
+        font-size: 1.1rem;
+        text-align: justify;
+        }
+        /* 引用块 */
+        blockquote {
+        background-color: rgba(231, 76, 60, 0.05);
+        border-left: 4px solid var(--accent-color);
+        padding: 1.2rem 1.5rem;
+        margin: 2rem 0;
+        font-style: italic;
+        color: #555;
+        border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        font-size: 1.1rem;
+        }
+        /* 列表样式 */
+        ul, ol {
+        margin: 1.2rem 0;
+        padding-left: 1.8rem;
+        }
+        li {
+        margin-bottom: 0.6rem;
+        font-size: 1.1rem;
+        }
+        /* 链接样式 */
+        a {
+        color: var(--secondary-color);
+        text-decoration: none;
+        font-weight: 500;
+        transition: var(--transition);
+        border-bottom: 1px dashed var(--secondary-color);
+        padding-bottom: 2px;
+        }
+        a:hover {
+        color: var(--accent-color);
+        border-bottom-color: var(--accent-color);
+        text-decoration: none;
+        }
+        /* 源列表样式 */
+        .source-list {
+        margin: 2rem 0;
+        padding-left: 0;
+        }
+        .source-item {
+        margin-bottom: 1rem;
+        padding: 1rem;
+        background-color: white;
+        border-radius: var(--border-radius);
+        box-shadow: var(--box-shadow);
+        border-left: 3px solid var(--primary-color);
+        }
+        .source-date {
+        font-weight: bold;
+        color: var(--primary-color);
+        margin-bottom: 0.3rem;
+        }
+        .source-link {
+        display: inline-block;
+        margin-top: 0.5rem;
+        font-size: 0.95rem;
+        color: var(--info-color);
+        }
+        .source-link:hover {
+        color: var(--accent-color);
+        }
+        /* 老旧信息提示 */
+        .old-info {
+        background-color: rgba(255, 193, 7, 0.1);
+        border-left: 4px solid var(--warning-color);
+        padding: 1rem;
+        margin: 1.5rem 0;
+        font-size: 1rem;
+        color: #856404;
+        border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+        /* 总结与展望区块 */
+        .summary {
+        background-color: rgba(26, 58, 109, 0.05);
+        padding: 2rem;
+        border-radius: var(--border-radius);
+        margin: 3rem 0;
+        border: 1px solid rgba(26, 58, 109, 0.1);
+        }
+        .summary h2 {
+        border-bottom: none;
+        color: var(--primary-color);
+        margin-top: 0;
+        }
+        .investment-insights {
+        background-color: white;
+        padding: 1.5rem;
+        border-radius: var(--border-radius);
+        box-shadow: var(--box-shadow);
+        margin: 2rem 0;
+        }
+        .investment-insights h4 {
+        color: var(--accent-color);
+        margin-bottom: 1rem;
+        }
+        .investment-insights ul {
+        padding-left: 1.5rem;
+        }
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+        h1 {
+        font-size: 1.8rem;
+        }
+        h2 {
+        font-size: 1.5rem;
+        }
+        h3 {
+        font-size: 1.3rem;
+        }
+        h4 {
+        font-size: 1.1rem;
+        }
+        p, li {
+        font-size: 1rem;
+        }
+        .container {
+        padding: 0.8rem;
+        }
+        .quality-badge {
+        padding: 0.6rem 1rem;
+        font-size: 1rem;
+        transform: rotate(0deg);
+        right: 10px;
+        top: 10px;
+        }
+        blockquote {
+        padding: 1rem;
+        font-size: 1rem;
+        }
+        .source-item {
+        padding: 0.8rem;
+        font-size: 0.95rem;
+        }
+        .summary {
+        padding: 1.5rem;
+        }
+        .investment-insights {
+        padding: 1.2rem;
+        }
+        }
+        /* 优先级提升：确保移动端没有水平滚动 */
+        html {
+        overflow-x: hidden;
+        }
+        /* 按钮风格的链接（用于源链接） */
+        .source-link-btn {
+        display: inline-block;
+        background-color: var(--info-color);
+        color: white;
+        padding: 0.4rem 0.8rem;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        text-decoration: none;
+        margin-top: 0.5rem;
+        transition: var(--transition);
+        border: none;
+        cursor: pointer;
+        }
+        .source-link-btn:hover {
+        background-color: var(--secondary-color);
+        transform: translateY(-2px);
+        }
+        /* 悬浮效果优化 */
+        .source-item:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+        }
+        /* 重点内容高亮 */
+        .highlight {
+        background-color: rgba(231, 76, 60, 0.15);
+        padding: 0.2rem 0.4rem;
+        border-radius: 4px;
+        font-weight: 600;
+        color: var(--accent-color);
+        }
+        .critical {
+        color: var(--accent-color);
+        font-weight: 700;
+        }
+        .info-box {
+        background-color: rgba(23, 162, 184, 0.08);
+        border-left: 4px solid var(--info-color);
+        padding: 1rem;
+        margin: 1.5rem 0;
+        border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        font-size: 1rem;
+        }
+        /* 页脚 */
+        footer {
+        text-align: center;
+        margin-top: 4rem;
+        padding: 2rem 0;
+        color: #6c757d;
+        font-size: 0.9rem;
+        border-top: 1px solid #eee;
+        }
+      </style>
+    </head>
+    <body>
+      <!-- 质量标志 -->
+      <div class="quality-badge">✅ 质量标志：通过</div>
+        <div class="container">
+          <h1>万科危机深度剖析与市场情绪演化报告</h1>
+            <p style="text-align: center; color: #666; font-size: 1.1rem; margin-bottom: 3rem;">报告生成日期：2026年02月26日</p>
+              <h2>核心洞察综述</h2>
+                <p>2025年第四季度以来，万科A股股价与境内债券同步崩跌，标志着此前市场对“国资兜底”的预期彻底破灭，企业风险由隐性积累转向公开暴露。其根本动因在于深铁集团明确转向“市场化处置债务”，终结了长期存在的隐性担保预期。叠加公司长期依赖“小股合作”模式隐藏表外负债、销售持续萎缩、巨额亏损累积及债务集中到期压力，引发股债双杀。相较中海、华润等稳健央企，万科因治理结构不稳、股东更迭频繁、资本结构复杂，成为行业出清的标志性案例。尽管系统性金融风险可控，但市场信心仍处低位，政策托底预期升温，但基本面修复需时。最新动态显示，公司于2026年1月重申不预测股价、强调合规披露，反映其进入“静默期”应对危机，市场焦点已从短期情绪博弈转向对2026年资产腾挪与行业企稳的观望。</p>
+                  <h2>详细维度分析</h2>
+                    <h3>1. 股债双杀事件的直接诱因：债务展期与股东支持退潮</h3>
+                      <p>2025年11月下旬，万科拟对“22万科MTN004”20亿元中期票据展期，成为市场情绪转折点。该债券原定于2025年12月10日召开持有人会议审议展期方案，引发投资者对偿债能力的系统性担忧<a href="http://m.toutiao.com/group/7577652031733662260/" target="_blank" rel="noopener noreferrer">【来源链接】</a>。与此同时，大股东深铁集团虽累计提供借款达291.3亿元<a href="http://m.toutiao.com/group/7577675251664814607/" target="_blank" rel="noopener noreferrer">【来源链接】</a>，但其明确表示将不再“无限输血”，转向市场化方式处置风险<a href="http://finance.sina.com.cn/roll/2025-11-28/doc-infyxfiq7635453.shtml" target="_blank" rel="noopener noreferrer">【来源链接】</a>。</p>
+                        <p>这一转变直接击穿市场对“国企背景=安全垫”的幻想。2025年11月28日，万科A股股价单日暴跌7.13%，多只债券跌幅超30%触发临停，标普将万科及其子公司评级下调至“CCC-”并列入负面观察名单<a href="https://m.jiemian.com/article/13696374_toutiao.html" target="_blank" rel="noopener noreferrer">【来源链接】</a>。至12月18日，公司回应投资者时仅表示“股价受多重因素影响”，未对短期波动作任何承诺，客观上强化了市场对其流动性困境的悲观预期<a href="http://m.toutiao.com/group/7585200181533098530/" target="_blank" rel="noopener noreferrer">【来源链接】</a>。</p>
+                          <h3>2. 财务基本面：巨额亏损与债务结构恶化</h3>
+                            <p>万科基本面持续恶化，2025年前三季度净亏损达280.2亿元，累计亏损超770亿元，境内有息负债超3600亿元，其中一年内到期占比高达42.7%<a href="http://m.toutiao.com/group/7577652031733662260/" target="_blank" rel="noopener noreferrer">【来源链接】</a>。2024年全年净亏损达487亿元，2025年前三季度亏损已超2024年全年亏损的57%，显示恶化速度加快<a href="https://www.sohu.com/a/878855215_121976703" target="_blank" rel="noopener noreferrer">【来源链接】</a>。</p>
+                              <p>2025年11月11日，万科在互动平台披露亏损主因包括：开发业务结算规模下降、毛利率持续低位、新增存货跌价准备计提、部分资产与股权处置价格低于账面价值<a href="http://m.toutiao.com/group/7571407697485070898/" target="_blank" rel="noopener noreferrer">【来源链接】</a>。2025年11月27日数据显示，公司面临2025年12月约218亿元的集中兑付高峰，资金缺口达63.9亿元<a href="http://m.163.com/dy/article/KFBVP1SU0552H092.html" target="_blank" rel="noopener noreferrer">【来源链接】</a>，而深铁剩余担保额度仅22.9亿元，远不足以覆盖缺口<a href="https://toutiao.com/group/7577286324378534434/" target="_blank" rel="noopener noreferrer">【来源链接】</a>。</p>
+                                <h3>3. 治理与模式积弊：小股合作与股东更迭的长期隐忧</h3>
+                                  <p>万科的危机并非突发，而是长期结构性问题的集中爆发。其长期采用“小股合作”模式，使大量表外负债未体现在合并报表中，资产结构复杂、风险难以穿透<a href="http://finance.sina.com.cn/roll/2025-11-28/doc-infyxfiq7635453.shtml" target="_blank" rel="noopener noreferrer">【来源链接】</a>。相较之下，中海、华润等央企因财务透明、股权结构清晰，未受波及，凸显万科模式的脆弱性<a href="http://finance.sina.com.cn/roll/2025-11-28/doc-infyxfiq7635453.shtml" target="_blank" rel="noopener noreferrer">【来源链接】</a>。</p>
+                                    <p>2025年10月13日，董事长辛杰突发辞职，任职仅9个月，创万科史上最短任期记录，且辞职前25天未公开露面，由深铁系高管黄力平接任，反映控制权过渡剧烈，治理稳定性严重受损<a href="http://m.toutiao.com/group/7560561851877032491/" target="_blank" rel="noopener noreferrer">【来源链接】</a>。深铁虽为第一大股东，但自身亦连年巨亏，持续注资能力存疑，市场对“输血可持续性”产生根本性质疑<a href="http://m.toutiao.com/group/7560561851877032491/" target="_blank" rel="noopener noreferrer">【来源链接】</a>。</p>
+                                      <h3>4. 市场情绪与政策预期：恐慌底点是否已现？</h3>
+                                        <p>2025年11月28日，多家分析指出，市场或已触碰恐慌底点，政策托底预期升温<a href="http://finance.sina.com.cn/roll/2025-11-28/doc-infyxfiq7635453.shtml" target="_blank" rel="noopener noreferrer">【来源链接】</a>。12月9日，有投资者在雪球平台推测中央经济工作会议将出台地产支持政策，类比2023年“924”窗口，主张“越跌越补”<a href="https://xueqiu.com/6084262600/365112247" target="_blank" rel="noopener noreferrer">【来源链接】</a>。但该观点属个体判断，市场分歧显著，多数机构仍以基本面为锚，警惕政策落空风险。</p>
+                                          <p>东方财富股吧有用户指出，股价下跌主因系机构间缺乏协同，不愿“抬轿子”，反映市场流动性枯竭与共识崩塌<a href="https://mguba.eastmoney.com/mguba/article/0/1632022439" target="_blank" rel="noopener noreferrer">【来源链接】</a>。截至2025年12月，万科市值已跌至702亿元，股价低至5.38元，创2015年12月以来新低<a href="https://m.jiemian.com/article/13696374_toutiao.html" target="_blank" rel="noopener noreferrer">【来源链接】</a>。</p>
+                                            <h3>5. 最新动态与未来路径：静默期与结构性出清</h3>
+                                              <p>2026年1月30日，万科在互动平台再度回应股价波动，重申“股价受多重因素影响”，并强调“停牌需严格遵循监管规定”，未对走势作任何预测，显示公司进入高度谨慎的合规披露阶段<a href="http://m.toutiao.com/group/7601171767217881640/" target="_blank" rel="noopener noreferrer">【来源链接】</a>。机构普遍预测，万科化解路径依赖三项协同：资产腾挪、债权人展期、市场化手段<a href="http://m.toutiao.com/group/7577363142989152808/" target="_blank" rel="noopener noreferrer">【来源链接】</a>。行业整体或于2026-2027年触底，但万科能否复苏，取决于其自身改革实效与行业企稳节奏<a href="http://m.toutiao.com/group/7471991357130506789/" target="_blank" rel="noopener noreferrer">【来源链接】</a>。</p>
+                                                <blockquote>
+                                                  <strong>老旧信息提示：</strong><br>
+                                                    - 2023年10月12日内容为系统引导文本，与万科无实质关联，属无关信息<a href="http://mp.weixin.qq.com/s?__biz=MTU1OTI4NDM4MQ==&mid=2652284292&idx=3&sn=35e32dab327e7adbb8176c768642a8c0" target="_blank" rel="noopener noreferrer">【来源链接】</a>；<br>
+                                                    - 2025年4月2日关于亏损487亿元的信息，虽为真实数据，但距今超过300天，已属老旧信息，仅用于历史背景参考<a href="https://www.sohu.com/a/878855215_121976703" target="_blank" rel="noopener noreferrer">【来源链接】</a>。
+                                                  </blockquote>
+                                                  <div class="summary">
+                                                    <h2>总结与展望</h2>
+                                                      <p>万科危机本质是“模式失效+治理失序+债务集中到期”三重冲击下的系统性出清事件，其标志性意义远超个体企业风险。深铁从“隐形担保者”转为“市场化处置主导者”，标志着中国房地产行业“国进民退”下半场正式开启，国资不再为历史遗留问题无底线埋单。</p>
+                                                        <p>当前市场处于“政策预期”与“基本面真空”拉锯阶段。短期波动仍受情绪驱动，但中长期修复路径清晰：<span class="highlight">资产处置变现、债务展期重组、销售逐步回暖</span>。若2026年下半年行业销售数据企稳，叠加REITs等创新工具落地，万科或迎来估值修复窗口。但若销售持续疲软，债务压力将向银行体系传导，风险可能外溢。</p>
+                                                        </div>
+                                                        <div class="investment-insights">
+                                                          <h4>投资启示：</h4>
+                                                            <ul>
+                                                              <li>避免博弈“政策救市”幻想，警惕“越跌越补”陷阱；</li>
+                                                                <li>关注2026年Q2-Q3万科资产处置进展及展期协议落地情况；</li>
+                                                                  <li>行业层面，优先配置央企背景、财务透明、现金流稳定的头部企业；</li>
+                                                                    <li>万科作为“高风险高波动标的”，仅适合极低仓位、高风险承受能力的逆向投资者。</li>
+                                                                    </ul>
+                                                                  </div>
+                                                                  <h2>资讯来源列表（按发布日期由近至远排序）</h2>
+                                                                    <ol class="source-list">
+                                                                      <li class="source-item">
+                                                                        <div class="source-date">2026年01月30日</div>
+                                                                          <p>万科A在互动平台回应股价波动，强调合规性与信息披露规范性</p>
+                                                                            <a href="http://m.toutiao.com/group/7601171767217881640/" target="_blank" rel="noopener noreferrer" class="source-link-btn">查看原文</a>
+                                                                            </li>
+                                                                            <li class="source-item">
+                                                                              <div class="source-date">2025年12月18日</div>
+                                                                                <p>万科回应投资者提问，称股价受多重因素影响，不作短期预测</p>
+                                                                                  <a href="http://m.toutiao.com/group/7585200181533098530/" target="_blank" rel="noopener noreferrer" class="source-link-btn">查看原文</a>
+                                                                                  </li>
+                                                                                  <li class="source-item">
+                                                                                    <div class="source-date">2025年12月09日</div>
+                                                                                      <p>投资者推测中央经济工作会议或出台地产政策，主张“越跌越补”</p>
+                                                                                        <a href="https://xueqiu.com/6084262600/365112247" target="_blank" rel="noopener noreferrer" class="source-link-btn">查看原文</a>
+                                                                                        </li>
+                                                                                        <li class="source-item">
+                                                                                          <div class="source-date">2025年11月29日</div>
+                                                                                            <p>东方财富股吧用户分析万科股价下跌主因系机构缺乏协同</p>
+                                                                                              <a href="https://mguba.eastmoney.com/mguba/article/0/1632022439" target="_blank" rel="noopener noreferrer" class="source-link-btn">查看原文</a>
+                                                                                              </li>
+                                                                                              <li class="source-item">
+                                                                                                <div class="source-date">2025年11月28日</div>
+                                                                                                  <p>万科股价创十年新低，债券多只临停，标普下调评级至CCC-</p>
+                                                                                                    <a href="https://m.jiemian.com/article/13696374_toutiao.html" target="_blank" rel="noopener noreferrer" class="source-link-btn">查看原文</a>
+                                                                                                    </li>
+                                                                                                    <li class="source-item">
+                                                                                                      <div class="source-date">2025年11月28日</div>
+                                                                                                        <p>深铁拟市场化处置债务，终结国资兜底预期，深层源于小股合作模式</p>
+                                                                                                          <a href="http://finance.sina.com.cn/roll/2025-11-28/doc-infyxfiq7635453.shtml" target="_blank" rel="noopener noreferrer" class="source-link-btn">查看原文</a>
+                                                                                                          </li>
+                                                                                                          <li class="source-item">
+                                                                                                            <div class="source-date">2025年11月28日</div>
+                                                                                                              <p>万科拟展期20亿中期票据，前三季度亏损280亿元，有息负债超3600亿</p>
+                                                                                                                <a href="http://m.toutiao.com/group/7577652031733662260/" target="_blank" rel="noopener noreferrer" class="source-link-btn">查看原文</a>
+                                                                                                                </li>
+                                                                                                                <li class="source-item">
+                                                                                                                  <div class="source-date">2025年11月28日</div>
+                                                                                                                    <p>万科A与债券同日暴跌，源于深铁债务市场化处置传闻兑现</p>
+                                                                                                                      <a href="http://m.toutiao.com/group/7577591724878135846/" target="_blank" rel="noopener noreferrer" class="source-link-btn">查看原文</a>
+                                                                                                                      </li>
+                                                                                                                      <li class="source-item">
+                                                                                                                        <div class="source-date">2025年11月27日</div>
+                                                                                                                          <p>万科拟展期债券，深铁累计借款291.3亿元，仍有63.9亿资金缺口</p>
+                                                                                                                            <a href="http://m.163.com/dy/article/KFBVP1SU0552H092.html" target="_blank" rel="noopener noreferrer" class="source-link-btn">查看原文</a>
+                                                                                                                            </li>
+                                                                                                                            <li class="source-item">
+                                                                                                                              <div class="source-date">2025年11月27日</div>
+                                                                                                                                <p>万科股债双杀，深铁担保额度不足覆盖债务缺口</p>
+                                                                                                                                  <a href="https://toutiao.com/group/7577286324378534434/" target="_blank" rel="noopener noreferrer" class="source-link-btn">查看原文</a>
+                                                                                                                                  </li>
+                                                                                                                                  <li class="source-item">
+                                                                                                                                    <div class="source-date">2025年11月27日</div>
+                                                                                                                                      <p>A股分化剧烈，万科股债双杀，ST股退市监管趋严</p>
+                                                                                                                                        <a href="http://m.toutiao.com/group/7577064962460336676/" target="_blank" rel="noopener noreferrer" class="source-link-btn">查看原文</a>
+                                                                                                                                        </li>
+                                                                                                                                        <li class="source-item">
+                                                                                                                                          <div class="source-date">2025年11月27日</div>
+                                                                                                                                            <p>万科A股价跌至5.89元，创十年新低，深铁借款197.1亿元</p>
+                                                                                                                                              <a href="http://m.toutiao.com/group/7577363142989152808/" target="_blank" rel="noopener noreferrer" class="source-link-btn">查看原文</a>
+                                                                                                                                              </li>
+                                                                                                                                              <li class="source-item">
+                                                                                                                                                <div class="source-date">2025年11月26日</div>
+                                                                                                                                                  <p>深铁承诺220亿元借款，但远不足以覆盖待偿本息，万科需“造血”自救</p>
+                                                                                                                                                    <a href="http://m.toutiao.com/group/7577015051563942440/" target="_blank" rel="noopener noreferrer" class="source-link-btn">查看原文</a>
+                                                                                                                                                    </li>
+                                                                                                                                                    <li class="source-item">
+                                                                                                                                                      <div class="source-date">2025年11月11日</div>
+                                                                                                                                                        <p>万科披露三季度亏损主因：结算下降、毛利率低、资产处置亏损</p>
+                                                                                                                                                          <a href="http://m.toutiao.com/group/7571407697485070898/" target="_blank" rel="noopener noreferrer" class="source-link-btn">查看原文</a>
+                                                                                                                                                          </li>
+                                                                                                                                                          <li class="source-item">
+                                                                                                                                                            <div class="source-date">2025年10月13日</div>
+                                                                                                                                                              <p>董事长辛杰突发辞职，深铁系接任，九次注资近260亿，市场疑虑持续</p>
+                                                                                                                                                                <a href="http://m.toutiao.com/group/7560561851877032491/" target="_blank" rel="noopener noreferrer" class="source-link-btn">查看原文</a>
+                                                                                                                                                                </li>
+                                                                                                                                                                <li class="source-item">
+                                                                                                                                                                  <div class="source-date">2025年04月02日</div>
+                                                                                                                                                                    <p>万科股价跌至7.04元，市值840亿，受2024年净亏487亿元拖累（老旧信息）</p>
+                                                                                                                                                                      <a href="https://www.sohu.com/a/878855215_121976703" target="_blank" rel="noopener noreferrer" class="source-link-btn">查看原文</a>
+                                                                                                                                                                      </li>
+                                                                                                                                                                      <li class="source-item">
+                                                                                                                                                                        <div class="source-date">2025年02月16日</div>
+                                                                                                                                                                          <p>万科连续七年下跌，2025年或成转折点，深铁接管推动改革（老旧信息）</p>
+                                                                                                                                                                            <a href="http://m.toutiao.com/group/7471991357130506789/" target="_blank" rel="noopener noreferrer" class="source-link-btn">查看原文</a>
+                                                                                                                                                                            </li>
+                                                                                                                                                                            <li class="source-item">
+                                                                                                                                                                              <div class="source-date">2023年10月12日</div>
+                                                                                                                                                                                <p>系统引导文本，与万科无实质关联（无关信息）</p>
+                                                                                                                                                                                  <a href="http://mp.weixin.qq.com/s?__biz=MTU1OTI4NDM4MQ==&mid=2652284292&idx=3&sn=35e32dab327e7adbb8176c768642a8c0" target="_blank" rel="noopener noreferrer" class="source-link-btn">查看原文</a>
+                                                                                                                                                                                  </li>
+                                                                                                                                                                                </ol>
+                                                                                                                                                                              </div>
+                                                                                                                                                                              <footer>
+                                                                                                                                                                                &copy; 2026 万科危机深度剖析与市场情绪演化报告 | 本报告基于公开信息整理，不构成任何投资建议
+                                                                                                                                                                              </footer>
+                                                                                                                                                                            </body>
+                                                                                                                                                                          </html>
+                                                                                                                                                                          ```
