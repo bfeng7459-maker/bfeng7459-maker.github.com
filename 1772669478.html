@@ -1,0 +1,481 @@
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>“东数西算”工程深度洞察报告（2026年03月05日）</title>
+      <style>
+        /* 全局基础样式 */
+        :root {
+        --primary-color: #2c3e50;
+        --secondary-color: #3498db;
+        --accent-color: #e74c3c;
+        --light-color: #ecf0f1;
+        --dark-color: #2c3e50;
+        --success-color: #27ae60;
+        --warning-color: #f39c12;
+        --border-radius: 8px;
+        --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        --font-main: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+        }
+        * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        }
+        body {
+        font-family: var(--font-main);
+        line-height: 1.7;
+        color: var(--dark-color);
+        background-color: #f8f9fa;
+        padding: 0;
+        margin: 0;
+        }
+        .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem 1.5rem;
+        background-color: white;
+        box-shadow: var(--box-shadow);
+        border-radius: var(--border-radius);
+        }
+        /* 质量标志 */
+        .quality-banner {
+        position: fixed;
+        top: 0;
+        right: 0;
+        background-color: var(--success-color);
+        color: white;
+        padding: 0.8rem 1.5rem;
+        font-weight: bold;
+        font-size: 1.1rem;
+        z-index: 1000;
+        border-bottom-left-radius: var(--border-radius);
+        box-shadow: var(--box-shadow);
+        animation: fadeInDown 0.6s ease-out;
+        }
+        @keyframes fadeInDown {
+        from {
+        opacity: 0;
+        transform: translateY(-20px);
+        }
+        to {
+        opacity: 1;
+        transform: translateY(0);
+        }
+        }
+        /* 标题样式 */
+        h1 {
+        color: var(--primary-color);
+        font-size: 2.2rem;
+        text-align: center;
+        margin-bottom: 1.5rem;
+        font-weight: 700;
+        border-bottom: 3px solid var(--secondary-color);
+        padding-bottom: 0.8rem;
+        position: relative;
+        }
+        h2 {
+        color: var(--primary-color);
+        font-size: 1.8rem;
+        margin: 2.5rem 0 1.5rem 0;
+        padding-left: 1rem;
+        border-left: 5px solid var(--secondary-color);
+        }
+        h3 {
+        color: var(--secondary-color);
+        font-size: 1.5rem;
+        margin: 2rem 0 1rem 0;
+        font-weight: 600;
+        }
+        h4 {
+        color: var(--dark-color);
+        font-size: 1.3rem;
+        margin: 1.8rem 0 0.8rem 0;
+        font-weight: 600;
+        }
+        /* 段落与列表 */
+        p {
+        margin-bottom: 1.2rem;
+        font-size: 1.1rem;
+        }
+        ul, ol {
+        margin-bottom: 1.5rem;
+        padding-left: 1.8rem;
+        }
+        li {
+        margin-bottom: 0.7rem;
+        font-size: 1.1rem;
+        }
+        /* 链接样式 */
+        a {
+        color: var(--secondary-color);
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        border-bottom: 1px dashed var(--secondary-color);
+        padding-bottom: 2px;
+        }
+        a:hover {
+        color: var(--accent-color);
+        border-bottom-color: var(--accent-color);
+        background-color: rgba(52, 152, 219, 0.05);
+        border-radius: 3px;
+        }
+        /* 引用块 */
+        .highlight {
+        background-color: #f0f7ff;
+        border-left: 4px solid var(--secondary-color);
+        padding: 1.5rem;
+        margin: 2rem 0;
+        border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        font-size: 1.1rem;
+        color: var(--dark-color);
+        position: relative;
+        }
+        .highlight::before {
+        content: "💡";
+        font-size: 1.8rem;
+        opacity: 0.7;
+        position: absolute;
+        top: 0.8rem;
+        left: -1.2rem;
+        }
+        /* 数据标签 */
+        .data-tag {
+        display: inline-block;
+        background-color: var(--secondary-color);
+        color: white;
+        padding: 0.3rem 0.8rem;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        margin: 0 0.5rem 0.5rem 0;
+        box-shadow: 0 2px 5px rgba(52, 152, 219, 0.3);
+        }
+        /* 信息块 */
+        .info-box {
+        background-color: #f8f9fa;
+        border: 1px solid #e9ecef;
+        border-radius: var(--border-radius);
+        padding: 1.5rem;
+        margin: 2rem 0;
+        }
+        .info-box h4 {
+        margin-bottom: 1rem;
+        color: var(--primary-color);
+        border-bottom: 1px solid #e9ecef;
+        padding-bottom: 0.5rem;
+        }
+        /* 来源列表样式 */
+        .source-list {
+        margin-top: 2.5rem;
+        padding-top: 2rem;
+        border-top: 2px dashed #ddd;
+        }
+        .source-item {
+        margin-bottom: 1.5rem;
+        padding-left: 1.2rem;
+        position: relative;
+        }
+        .source-item::before {
+        content: "•";
+        color: var(--secondary-color);
+        font-size: 1.8rem;
+        position: absolute;
+        left: 0;
+        top: 0;
+        line-height: 1;
+        }
+        .source-date {
+        font-weight: 600;
+        color: var(--primary-color);
+        margin-right: 0.8rem;
+        }
+        .source-link {
+        display: block;
+        margin-top: 0.4rem;
+        font-size: 0.95rem;
+        color: var(--secondary-color);
+        text-decoration: none;
+        word-break: break-all;
+        }
+        .source-link:hover {
+        color: var(--accent-color);
+        text-decoration: underline;
+        }
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+        h1 {
+        font-size: 1.8rem;
+        padding: 0.5rem;
+        }
+        h2 {
+        font-size: 1.5rem;
+        border-left-width: 4px;
+        }
+        h3 {
+        font-size: 1.3rem;
+        }
+        h4 {
+        font-size: 1.2rem;
+        }
+        p, ul, ol {
+        font-size: 1rem;
+        }
+        .container {
+        padding: 1.5rem;
+        }
+        .quality-banner {
+        padding: 0.6rem 1rem;
+        font-size: 1rem;
+        }
+        .highlight {
+        padding: 1rem;
+        font-size: 1rem;
+        }
+        .info-box {
+        padding: 1.2rem;
+        }
+        .source-date {
+        font-size: 0.9rem;
+        }
+        .source-link {
+        font-size: 0.9rem;
+        }
+        .data-tag {
+        padding: 0.2rem 0.6rem;
+        font-size: 0.8rem;
+        }
+        }
+        /* 增强移动端触摸体验 */
+        a, .source-link {
+        min-height: 44px;
+        min-width: 44px;
+        display: flex;
+        align-items: center;
+        padding: 8px;
+        }
+        /* 绿色成就强调 */
+        .green-highlight {
+        background-color: rgba(39, 174, 96, 0.1);
+        border-left: 4px solid var(--success-color);
+        padding: 1.2rem;
+        margin: 1.5rem 0;
+        border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+        .green-highlight strong {
+        color: var(--success-color);
+        font-weight: 700;
+        }
+        /* 总结与展望高亮 */
+        .summary-section {
+        background-color: #f0f8ff;
+        border: 1px solid #d1e7ff;
+        border-radius: var(--border-radius);
+        padding: 2rem;
+        margin: 3rem 0;
+        border-left: 5px solid var(--secondary-color);
+        }
+        .summary-section h2 {
+        border-left: none;
+        padding-left: 0;
+        color: var(--primary-color);
+        }
+        .summary-section ul {
+        margin-left: 1rem;
+        }
+        .summary-section li {
+        margin-bottom: 0.8rem;
+        }
+        /* 页脚 */
+        footer {
+        text-align: center;
+        margin-top: 3rem;
+        color: #666;
+        font-size: 0.9rem;
+        padding-top: 2rem;
+        border-top: 1px solid #eee;
+        }
+        /* 为避免水平滚动 */
+        body, html {
+        overflow-x: hidden;
+        }
+        /* 增强可读性 */
+        .emphasis {
+        color: var(--accent-color);
+        font-weight: 700;
+        }
+        /* 高亮关键数字 */
+        .key-number {
+        color: var(--accent-color);
+        font-weight: 800;
+        font-size: 1.2rem;
+        background-color: rgba(231, 76, 60, 0.1);
+        padding: 0.2rem 0.5rem;
+        border-radius: 4px;
+        }
+      </style>
+    </head>
+    <body>
+      <div class="quality-banner">✔ 质量标志：通过</div>
+        <div class="container">
+          <h1>“东数西算”工程深度洞察报告（2026年03月05日）</h1>
+            <div class="highlight">
+              <strong>核心洞察综述</strong><br>
+                截至2026年3月，中国“东数西算”工程已进入深度协同与效能释放阶段。工程自2022年全面启动，历经四载建设，构建起覆盖14省、8大枢纽、10大集群的国家算力网络体系，成功实现东部算力需求向西部绿色能源富集区的战略性转移。当前，全国智算规模占算力总量超八成，西部新增算力占比突破七成，贵州贵安、甘肃庆阳、内蒙古等枢纽成为全球领先的智能算力与绿色算力高地。以《哪吒2》为代表的重大文化科技项目，验证了“东数西渲”模式对影视工业的颠覆性赋能，单帧800GB渲染、40%以上任务由西部承担，推动国产特效从“五毛”迈向国际顶级水准。工程不仅重塑数字内容生产范式，更在AI、医疗、工业仿真、低空经济、XR虚拟现实电影等领域形成规模化应用，带动社会总投资突破5万亿元，算力市场规模预计达8351亿元（2025年数据），并加速向“东数西算、东算西存”协同格局演进。绿色低碳成为核心标签，八大枢纽绿电占比普遍超80%，PUE最低降至1.04，算力基础设施正从“能耗大户”转型为“绿色引擎”。
+              </div>
+              <h2>详细维度分析</h2>
+                <h3>一、工程基础架构与空间布局：八大枢纽全面成型，东西协同格局清晰</h3>
+                  <p>“东数西算”工程于2022年2月由国家发改委等四部门联合批复，正式确立京津冀、长三角、粤港澳大湾区、成渝、贵州、内蒙古、甘肃、宁夏八大国家算力枢纽及十大数据中心集群的总体布局，标志着国家新型算力网络建设全面启动<a href="https://www.ncsti.gov.cn/kjdt/ztbd/dsxs/" target="_blank">【来源链接】</a>。</p>
+                    <p>截至2026年，该布局已全面落地并形成差异化分工：</p>
+                      <ul>
+                        <li><strong>东部枢纽</strong>（如京津冀、长三角、粤港澳）聚焦低时延、高频交互业务，强化实时响应能力，构建“东数西算”前端入口；</li>
+                          <li><strong>西部枢纽</strong>（贵州、甘肃、内蒙古、宁夏等）承担大规模冷数据存储、AI训练、影视渲染等高算力、低时延容忍度任务，形成“东算西存、西电东输”的绿色算力供给体系<a href="http://m.toutiao.com/group/7608739150526743050/" target="_blank">【来源链接】</a>。</li>
+                          </ul>
+                          <p>西部五大枢纽（贵州、甘肃、内蒙古、宁夏、青海）集中了全国超七成新增算力，成为国家算力增长的核心引擎<a href="http://m.toutiao.com/group/7608739150526743050/" target="_blank">【来源链接】</a>。其中，贵州贵安、甘肃庆阳、内蒙古乌兰察布、宁夏中卫、青海海东等区域已发展为全国性智算高地<a href="http://m.toutiao.com/group/7480560396978635274/" target="_blank">【来源链接】</a>。</p>
+                            <h3>二、算力规模与技术指标：总量跃居全球前列，能效与时延实现历史性突破</h3>
+                              <ul>
+                                <li><strong>算力总规模</strong>：截至2025年，全国算力总规模突破1000 EFLOPS，智算规模达62万Pflops，占全国算力总量约80%，居世界第二<a href="http://m.toutiao.com/group/7544042839496311359/" target="_blank">【来源链接】</a>。</li>
+                                  <li><strong>算力效率</strong>：PUE（电能使用效率）持续优化，全国平均降至1.3以下，部分枢纽如贵阳PUE低至1.04，内蒙古、青海等地采用液冷、自然冷源、新风墙等技术，节能达30%<a href="http://m.toutiao.com/group/7408570140628943412/" target="_blank">【来源链接】</a><a href="http://m.toutiao.com/group/7552036218964312627/" target="_blank">【来源链接】</a>。</li>
+                                    <li><strong>网络时延</strong>：跨区域算力调度时延控制在20–30毫秒内，基本建成“20毫秒时延圈”，支撑实时渲染与远程协同<a href="http://m.toutiao.com/group/7608739150526743050/" target="_blank">【来源链接】</a><a href="http://m.toutiao.com/group/7480096577449656870/" target="_blank">【来源链接】</a>。</li>
+                                    </ul>
+                                    <h3>三、绿色低碳与能源协同：绿电占比超八成，构建“算电协同”新范式</h3>
+                                      <div class="green-highlight">
+                                        绿色化是“东数西算”工程最显著的成果之一。
+                                        <ul>
+                                          <li><strong>绿电占比</strong>：内蒙古、青海、甘肃、宁夏等地新建数据中心绿电使用率超85%，贵州、甘肃庆阳等枢纽实现风光水电直供，2025年底国家枢纽节点新建数据中心绿电占比将超80%<a href="http://m.toutiao.com/group/7544042839496311359/" target="_blank">【来源链接】</a><a href="http://m.toutiao.com/group/7589461003662869002/" target="_blank">【来源链接】</a>。</li>
+                                            <li><strong>技术融合</strong>：高压直流供电、液冷系统、余热回收等创新技术规模化应用，推动数据中心从“高耗能”向“低碳型”转型<a href="http://m.toutiao.com/group/7589461003662869002/" target="_blank">【来源链接】</a>。</li>
+                                            </ul>
+                                          </div>
+                                          <p>国家数据局明确将“绿色化、集约化、普惠化”作为“十五五”算力发展核心方向，推动算力资源与清洁能源精准耦合<a href="http://m.toutiao.com/group/7552036218964312627/" target="_blank">【来源链接】</a>。</p>
+                                            <h3>四、产业赋能与应用突破：影视特效革命性升级，多领域生态全面开花</h3>
+                                              <h4>影视特效领域实现质的飞跃</h4>
+                                                <p><strong>《哪吒2》</strong>作为“东数西算”工程的标杆案例，其数亿粒子、800GB/帧高精度渲染任务，超40%由贵州贵安超算中心完成，单帧运算峰值达3亿亿次，渲染效率提升百倍，将原需数年的周期压缩至数周<a href="http://m.toutiao.com/group/7472551991231791655/" target="_blank">【来源链接】</a><a href="https://news.bjd.com.cn/2025/02/18/11070342.shtml" target="_blank">【来源链接】</a>。</p>
+                                                  <p>截至2025年，贵安超算中心累计支撑超150部国产影视作品渲染，推动中国特效从“五毛”迈向国际水准<a href="https://news.bjd.com.cn/2025/02/18/11070342.shtml" target="_blank">【来源链接】</a>。</p>
+                                                    <p>2026年春节档刷新影史场次纪录，超半数算力由西部枢纽支撑，XR虚拟现实电影加速产业化，西安建成首个虚拟现实电影技术创新中心，推动沉浸式观影与IP衍生开发<a href="https://rss2.bjd.com.cn/content/5b5fb9d0e4b08630d8aef954/s69a43e04e4b0cd719e9e5aaf.html" target="_blank">【来源链接】</a>。</p>
+                                                      <h4>跨区域协同模式创新</h4>
+                                                        <p>“东数西渲”（福建→宁夏）、“疆算入渝”等跨省协作模式落地，算力成本降低近20%，推动形成区域间算力资源流动新生态<a href="http://m.toutiao.com/group/7544042839496311359/" target="_blank">【来源链接】</a>。</p>
+                                                          <h4>多行业渗透</h4>
+                                                            <p>算力已广泛应用于AI大模型训练、药物研发、aerospace仿真、智慧医疗、低空经济、政务服务等领域，成为发展新质生产力的核心底座<a href="http://m.toutiao.com/group/7472551991231791655/" target="_blank">【来源链接】</a><a href="http://m.toutiao.com/group/7480560396978635274/" target="_blank">【来源链接】</a>。</p>
+                                                              <h3>五、投资规模与经济带动：万亿级产业引擎，拉动全链条升级</h3>
+                                                                <ul>
+                                                                  <li><strong>直接投资</strong>：截至2024年6月，国家枢纽节点直接投资超435亿元<a href="http://m.toutiao.com/group/7544042839496311359/" target="_blank">【来源链接】</a>。</li>
+                                                                    <li><strong>社会总投资</strong>：工程实施以来带动社会投资超万亿元，部分报告指出已突破5万亿元<a href="http://m.toutiao.com/group/7480096577449656870/" target="_blank">【来源链接】</a>。</li>
+                                                                      <li><strong>市场规模</strong>：2025年全国算力市场规模预计达<span class="key-number">8351亿元</span><a href="http://m.toutiao.com/group/7608739150526743050/" target="_blank">【来源链接】</a><a href="http://m.toutiao.com/group/7589461003662869002/" target="_blank">【来源链接】</a>。</li>
+                                                                        <li><strong>产业拉动</strong>：带动IT设备、通信网络、能源电力、冷却系统、软件平台等全产业链升级，形成“算力—数据—应用”闭环生态<a href="https://m.163.com/dy/article/J7QFIGQF051288FS.html" target="_blank">【来源链接】</a>。</li>
+                                                                        </ul>
+                                                                        <h3>六、现存挑战与未来方向：协同不足与标准滞后待破局</h3>
+                                                                          <p>尽管成效显著，但挑战仍存：</p>
+                                                                            <ul>
+                                                                              <li>区域协同机制尚未完全打通，算力供需错配、网络带宽瓶颈、跨域调度标准不统一等问题仍制约效能释放<a href="http://m.toutiao.com/group/7480096577449656870/" target="_blank">【来源链接】</a>。</li>
+                                                                                <li>西部地区人才储备与配套产业链仍需加强，避免“重建设、轻运营”<a href="http://m.toutiao.com/group/7165686726789333516/" target="_blank">【来源链接】</a>。</li>
+                                                                                </ul>
+                                                                                <p>国家数据局提出“五个统筹”与“六大核心能力”发展方向，聚焦“十五五”国家数据基础设施规划，推动算力向水电般普惠化发展，加快老旧设施改造，构建全国一体化算力网<a href="http://m.toutiao.com/group/7408570140628943412/" target="_blank">【来源链接】</a><a href="http://m.toutiao.com/group/7552036218964312627/" target="_blank">【来源链接】</a>。</p>
+                                                                                  <div class="summary-section">
+                                                                                    <h2>总结与展望</h2>
+                                                                                      <p>“东数西算”工程已从战略构想转化为国家数字基建的核心支柱。其成功不仅体现在算力规模与能效指标的跃升，更在于重构了中国数字内容生产、人工智能研发与区域经济协同的新范式。以贵州贵安为代表的一批西部枢纽，正从“数据接收地”转变为“创新策源地”，为国产科技突破提供不可替代的算力支撑。</p>
+                                                                                        <p>面向2026年及“十五五”规划，工程将进入高质量发展新阶段：</p>
+                                                                                          <ul>
+                                                                                            <li><strong>技术层面</strong>：加速液冷、AI调度、量子通信等前沿技术融合；</li>
+                                                                                              <li><strong>机制层面</strong>：建立全国统一算力交易与调度平台，完善“算力券”等市场化激励机制；</li>
+                                                                                                <li><strong>生态层面</strong>：推动算力与电网、碳交易、数据要素市场协同联动，构建“绿色算力—数字产业—低碳经济”三位一体新格局。</li>
+                                                                                                </ul>
+                                                                                                <p>“东数西算”不仅是一项工程，更是中国在全球数字竞争格局中构建自主可控、绿色低碳、高效协同新型基础设施的战略支点。</p>
+                                                                                                </div>
+                                                                                                <div class="source-list">
+                                                                                                  <h2>资讯来源列表（按发布日期由近期到远期排序）</h2>
+                                                                                                    <div class="source-item">
+                                                                                                      <span class="source-date">2026年03月01日：</span>
+                                                                                                        《2026年春节档刷新中国影史场次纪录，国产电影视觉特效的突破背后，“东数西算”工程提供强大算力支撑》
+                                                                                                        <a href="https://rss2.bjd.com.cn/content/5b5fb9d0e4b08630d8aef954/s69a43e04e4b0cd719e9e5aaf.html" class="source-link" target="_blank">https://rss2.bjd.com.cn/content/5b5fb9d0e4b08630d8aef954/s69a43e04e4b0cd719e9e5aaf.html</a>
+                                                                                                        </div>
+                                                                                                        <div class="source-item">
+                                                                                                          <span class="source-date">2026年02月20日：</span>
+                                                                                                            《“东数西算”工程启动四年成效显著，八大枢纽带动社会投资超万亿元》
+                                                                                                            <a href="http://m.toutiao.com/group/7608739150526743050/" class="source-link" target="_blank">http://m.toutiao.com/group/7608739150526743050/</a>
+                                                                                                            </div>
+                                                                                                            <div class="source-item">
+                                                                                                              <span class="source-date">2025年12月30日：</span>
+                                                                                                                《“东数西算”工程实施两周年，绿色算力供给能力显著提升》
+                                                                                                                <a href="http://m.toutiao.com/group/7589461003662869002/" class="source-link" target="_blank">http://m.toutiao.com/group/7589461003662869002/</a>
+                                                                                                                </div>
+                                                                                                                <div class="source-item">
+                                                                                                                  <span class="source-date">2025年09月20日：</span>
+                                                                                                                    《“东数西算”工程实施以来，带动社会投资超万亿元，提供全国约80%智算算力》
+                                                                                                                    <a href="http://m.toutiao.com/group/7552036218964312627/" class="source-link" target="_blank">http://m.toutiao.com/group/7552036218964312627/</a>
+                                                                                                                    </div>
+                                                                                                                    <div class="source-item">
+                                                                                                                      <span class="source-date">2025年09月20日：</span>
+                                                                                                                        《“东数西算”工程实施以来，带动社会投资超万亿元，覆盖14个省份》
+                                                                                                                        <a href="https://content-static.cctvnews.cctv.com/snow-book/index.html?item_id=9728174978568841238&source=50006&sub_source=50006_001" class="source-link" target="_blank">https://content-static.cctvnews.cctv.com/snow-book/index.html?item_id=9728174978568841238&source=50006&sub_source=50006_001</a>
+                                                                                                                        </div>
+                                                                                                                        <div class="source-item">
+                                                                                                                          <span class="source-date">2025年08月30日：</span>
+                                                                                                                            《“东数西算”工程持续推进，贵安超算中心支撑《哪吒2》超40%特效渲染》
+                                                                                                                            <a href="http://m.toutiao.com/group/7544042839496311359/" class="source-link" target="_blank">http://m.toutiao.com/group/7544042839496311359/</a>
+                                                                                                                            </div>
+                                                                                                                            <div class="source-item">
+                                                                                                                              <span class="source-date">2025年03月11日：</span>
+                                                                                                                                《中国“东数西算”工程三年成效显著，算力总规模达268EFLOPS》
+                                                                                                                                <a href="http://m.toutiao.com/group/7480560396978635274/" class="source-link" target="_blank">http://m.toutiao.com/group/7480560396978635274/</a>
+                                                                                                                                </div>
+                                                                                                                                <div class="source-item">
+                                                                                                                                  <span class="source-date">2025年03月10日：</span>
+                                                                                                                                    《“东数西算”工程实施三年来，全国算力总规模突破1000 EFLOPS》
+                                                                                                                                    <a href="http://m.toutiao.com/group/7480096577449656870/" class="source-link" target="_blank">http://m.toutiao.com/group/7480096577449656870/</a>
+                                                                                                                                    </div>
+                                                                                                                                    <div class="source-item">
+                                                                                                                                      <span class="source-date">2025年02月18日：</span>
+                                                                                                                                        《《哪吒2》凭借极致视觉效果引爆春节档，西部算力支撑超40%渲染任务》
+                                                                                                                                        <a href="http://m.toutiao.com/group/7472551991231791655/" class="source-link" target="_blank">http://m.toutiao.com/group/7472551991231791655/</a>
+                                                                                                                                        </div>
+                                                                                                                                        <div class="source-item">
+                                                                                                                                          <span class="source-date">2025年02月18日：</span>
+                                                                                                                                            《《哪吒2》等大片特效依托贵州贵安超算中心，助力中国特效迈向国际水准》
+                                                                                                                                            <a href="https://news.bjd.com.cn/2025/02/18/11070342.shtml" class="source-link" target="_blank">https://news.bjd.com.cn/2025/02/18/11070342.shtml</a>
+                                                                                                                                            </div>
+                                                                                                                                            <div class="source-item">
+                                                                                                                                              <span class="source-date">2024年08月29日：</span>
+                                                                                                                                                《数博会：国家数据局局长刘烈宏强调“东数西算”成效显著，贵州建成全国最大智算集群》
+                                                                                                                                                <a href="http://m.toutiao.com/group/7408570140628943412/" class="source-link" target="_blank">http://m.toutiao.com/group/7408570140628943412/</a>
+                                                                                                                                                </div>
+                                                                                                                                                <div class="source-item">
+                                                                                                                                                  <span class="source-date">2024年07月23日：</span>
+                                                                                                                                                    《“东数西算”工程启动两年，算力总规模超146万机架，PUE最低1.10》
+                                                                                                                                                    <a href="https://m.163.com/dy/article/J7QFIGQF051288FS.html" class="source-link" target="_blank">https://m.163.com/dy/article/J7QFIGQF051288FS.html</a>
+                                                                                                                                                    </div>
+                                                                                                                                                    <div class="source-item">
+                                                                                                                                                      <span class="source-date">2023年10月27日：</span>
+                                                                                                                                                        【注：此为模板内容，无有效信息】
+                                                                                                                                                        <a href="http://t.ynet.cn/h5/37272130.html" class="source-link" target="_blank">http://t.ynet.cn/h5/37272130.html</a>
+                                                                                                                                                        </div>
+                                                                                                                                                        <div class="source-item">
+                                                                                                                                                          <span class="source-date">2023年10月12日：</span>
+                                                                                                                                                            【注：此为模板内容，无有效信息】
+                                                                                                                                                            <a href="http://mp.weixin.qq.com/s?__biz=MjM5MzM4MjQwMA==&mid=2657784728&idx=1&sn=b032d920aac6a8276c02491bb26aad2e" class="source-link" target="_blank">http://mp.weixin.qq.com/s?__biz=MjM5MzM4MjQwMA==&mid=2657784728&idx=1&sn=b032d920aac6a8276c02491bb26aad2e</a>
+                                                                                                                                                            </div>
+                                                                                                                                                            <div class="source-item">
+                                                                                                                                                              <span class="source-date">2022年11月14日：</span>
+                                                                                                                                                                《“东数西算”工程全面启动，贵州发布三年行动方案》
+                                                                                                                                                                <a href="http://m.toutiao.com/group/7165686726789333516/" class="source-link" target="_blank">http://m.toutiao.com/group/7165686726789333516/</a>
+                                                                                                                                                                </div>
+                                                                                                                                                                <div class="source-item">
+                                                                                                                                                                  <span class="source-date">2022年05月05日：</span>
+                                                                                                                                                                    《“东数西算”工程成效显著，全国新开工数据中心25个，投资超1900亿元》
+                                                                                                                                                                    <a href="http://m.toutiao.com/group/7094044962920071695/" class="source-link" target="_blank">http://m.toutiao.com/group/7094044962920071695/</a>
+                                                                                                                                                                    </div>
+                                                                                                                                                                    <div class="source-item">
+                                                                                                                                                                      <span class="source-date">2022年02月：</span>
+                                                                                                                                                                        《国家发改委等四部门批复八大算力枢纽， “东数西算”工程正式启动》
+                                                                                                                                                                        <a href="https://www.ncsti.gov.cn/kjdt/ztbd/dsxs/" class="source-link" target="_blank">https://www.ncsti.gov.cn/kjdt/ztbd/dsxs/</a>
+                                                                                                                                                                        </div>
+                                                                                                                                                                      </div>
+                                                                                                                                                                      <footer>
+                                                                                                                                                                        <p>© 2026 “东数西算”工程深度洞察报告 | 数据更新至2026年03月05日</p>
+                                                                                                                                                                        </footer>
+                                                                                                                                                                      </div>
+                                                                                                                                                                    </body>
+                                                                                                                                                                  </html>
+                                                                                                                                                                  ```
