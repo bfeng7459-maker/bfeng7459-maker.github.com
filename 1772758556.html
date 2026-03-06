@@ -1,0 +1,426 @@
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>河南算力基础设施与人工智能发展洞察报告</title>
+      <style>
+        /* 基础样式与颜色方案 */
+        :root {
+        --primary-color: #1a3a7a;
+        --secondary-color: #2a5a9e;
+        --accent-color: #e63946;
+        --light-color: #f8f9fa;
+        --dark-color: #212529;
+        --success-color: #28a745;
+        --warning-color: #ffc107;
+        --info-color: #17a2b8;
+        --border-radius: 8px;
+        --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        --transition: all 0.3s ease;
+        }
+        * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        }
+        body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.7;
+        color: var(--dark-color);
+        background-color: var(--light-color);
+        padding: 0;
+        overflow-x: hidden;
+        }
+        /* 页面顶部质量标志 */
+        .quality-banner {
+        background: linear-gradient(135deg, var(--success-color), #1e88e5);
+        color: white;
+        text-align: center;
+        padding: 1rem;
+        font-weight: bold;
+        font-size: 1.2rem;
+        box-shadow: var(--box-shadow);
+        position: relative;
+        z-index: 100;
+        }
+        .quality-banner::before {
+        content: "✓";
+        margin-right: 8px;
+        font-size: 1.5rem;
+        vertical-align: middle;
+        }
+        /* 页面容器 */
+        .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 1.5rem;
+        }
+        /* 标题样式 */
+        h1, h2, h3, h4, h5, h6 {
+        color: var(--primary-color);
+        margin-bottom: 0.8rem;
+        font-weight: 600;
+        line-height: 1.3;
+        }
+        h1 {
+        font-size: 2.2rem;
+        border-bottom: 3px solid var(--secondary-color);
+        padding-bottom: 0.8rem;
+        margin-bottom: 1.5rem;
+        }
+        h2 {
+        font-size: 1.8rem;
+        border-left: 5px solid var(--accent-color);
+        padding-left: 1rem;
+        margin: 2rem 0 1.2rem;
+        position: relative;
+        }
+        h3 {
+        font-size: 1.5rem;
+        color: var(--secondary-color);
+        margin: 1.8rem 0 1rem;
+        }
+        h4 {
+        font-size: 1.3rem;
+        color: var(--dark-color);
+        margin: 1.5rem 0 0.8rem;
+        }
+        /* 段落样式 */
+        p {
+        margin-bottom: 1rem;
+        font-size: 1rem;
+        }
+        /* 引用块 */
+        blockquote {
+        background: linear-gradient(90deg, rgba(26, 58, 122, 0.05), transparent);
+        border-left: 4px solid var(--primary-color);
+        padding: 1.2rem 1.5rem;
+        margin: 1.8rem 0;
+        font-style: italic;
+        border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        position: relative;
+        }
+        blockquote::before {
+        content: """;
+        font-size: 4rem;
+        color: rgba(26, 58, 122, 0.1);
+        position: absolute;
+        top: -10px;
+        left: 10px;
+        line-height: 1;
+        }
+        /* 列表样式 */
+        ul, ol {
+        margin: 1rem 0 1.5rem 1.5rem;
+        padding-left: 1rem;
+        }
+        ul li {
+        margin-bottom: 0.6rem;
+        position: relative;
+        padding-left: 1rem;
+        }
+        ul li::before {
+        content: "•";
+        color: var(--accent-color);
+        position: absolute;
+        left: 0;
+        font-weight: bold;
+        }
+        ol li {
+        margin-bottom: 0.6rem;
+        counter-increment: item;
+        }
+        ol li::before {
+        content: counter(item) ".";
+        color: var(--secondary-color);
+        font-weight: bold;
+        margin-right: 0.6rem;
+        }
+        /* 链接样式 */
+        a {
+        color: var(--secondary-color);
+        text-decoration: none;
+        font-weight: 500;
+        transition: var(--transition);
+        border-bottom: 1px dashed transparent;
+        }
+        a:hover {
+        color: var(--accent-color);
+        border-bottom-color: var(--accent-color);
+        text-decoration: none;
+        }
+        /* 数据高亮 */
+        .highlight {
+        background-color: rgba(230, 57, 70, 0.1);
+        color: var(--accent-color);
+        padding: 0.2rem 0.5rem;
+        border-radius: 4px;
+        font-weight: 700;
+        font-size: 1.1rem;
+        }
+        .pflops {
+        background-color: rgba(26, 58, 122, 0.15);
+        color: var(--primary-color);
+        padding: 0.2rem 0.6rem;
+        border-radius: 4px;
+        font-weight: 700;
+        font-size: 1.1rem;
+        }
+        /* 信息注释 */
+        .note {
+        background-color: #fff3cd;
+        border: 1px solid #ffeaa7;
+        border-radius: var(--border-radius);
+        padding: 1rem;
+        margin: 1.5rem 0;
+        font-size: 0.95rem;
+        color: #856404;
+        }
+        /* 来源列表 */
+        .sources {
+        margin-top: 2.5rem;
+        border-top: 2px solid var(--secondary-color);
+        padding-top: 2rem;
+        }
+        .source-item {
+        margin-bottom: 1rem;
+        padding: 1rem;
+        background-color: white;
+        border-radius: var(--border-radius);
+        box-shadow: var(--box-shadow);
+        }
+        .source-date {
+        font-weight: 600;
+        color: var(--primary-color);
+        margin-bottom: 0.3rem;
+        }
+        .source-link {
+        display: block;
+        margin-top: 0.5rem;
+        font-size: 0.95rem;
+        word-break: break-all;
+        }
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+        .container {
+        padding: 1rem;
+        }
+        h1 {
+        font-size: 1.8rem;
+        }
+        h2 {
+        font-size: 1.5rem;
+        padding-left: 0.8rem;
+        border-left-width: 4px;
+        }
+        h3 {
+        font-size: 1.3rem;
+        }
+        h4 {
+        font-size: 1.1rem;
+        }
+        p {
+        font-size: 0.95rem;
+        }
+        blockquote {
+        padding: 1rem;
+        font-size: 0.95rem;
+        }
+        .source-link {
+        font-size: 0.9rem;
+        }
+        .quality-banner {
+        font-size: 1.1rem;
+        padding: 0.8rem;
+        }
+        /* 确保触摸目标最小44px */
+        a, li {
+        min-height: 44px;
+        min-width: 44px;
+        padding: 0.5rem;
+        }
+        }
+        /* 增强移动端体验 */
+        @media (max-width: 480px) {
+        h1 {
+        font-size: 1.6rem;
+        }
+        h2 {
+        font-size: 1.4rem;
+        }
+        .container {
+        padding: 0.8rem;
+        }
+        .source-item {
+        padding: 0.8rem;
+        }
+        .pflops, .highlight {
+        font-size: 1rem;
+        padding: 0.15rem 0.4rem;
+        }
+        }
+      </style>
+    </head>
+    <body>
+      <!-- 质量标志 -->
+      <div class="quality-banner">质量标志：通过</div>
+        <!-- 页面内容 -->
+        <div class="container">
+          <h1>河南算力基础设施与人工智能发展洞察报告</h1>
+            <p style="text-align: center; color: #666; font-size: 1.1rem; margin-bottom: 2.5rem;"><strong>报告生成日期：2026年03月06日</strong></p>
+              <!-- 核心洞察综述 -->
+              <h2>核心洞察综述</h2>
+                <p>截至2026年3月，河南省以“东数西算”国家战略为牵引，依托电信与移动两大主体，构建起“通算+智算”双轮驱动、多主体协同、全栈国产化落地的算力发展格局。当前，河南已形成以郑州为核心、许昌为标杆、多点布局的算力网络体系，<span class="pflops">智能算力规模突破2000PFlops</span>，建成全国首个社会算力并网商用项目，并实现国产大模型DeepSeek在政务、工业、医疗等场景的规模化部署。政策端与产业端加速联动，政府与运营商签署“人工智能+”战略合作，推动算力由“供给导向”转向“调度与运营主导”，逐步构建覆盖中原、辐射全国的智算枢纽。</p>
+                  <!-- 详细维度分析 -->
+                  <h2>详细维度分析</h2>
+                    <h3>一、算力规模与基础设施布局演进</h3>
+                      <p>河南算力体系呈现“分层推进、梯度扩张”特征，由基础通算向高密度智算跃迁。</p>
+                        <h4>河南电信</h4>
+                          <p>2024年9月公布通算能力达<span class="pflops">4100PFlops</span>、智算能力<span class="pflops">280PFlops</span>，建成<span class="pflops">5650架</span>高品质机架，规划中部数据中心达<span class="pflops">1.9万架</span>，并依托“2+18+X”布局推动政务云、工业互联网落地<a href="http://www.chinatelecom.com.cn/ct/news/yunjisuanjisuanli/154875.html?CT6T=217c90&CT6TS=1cWpWGisp_1NgGVL11JPL94v_aU6pW-cor8ujQTm12fl4XUMonACBeiddHdVx5--" target="_blank">[1]</a>。其5G基站建设已覆盖全省乡镇及以上区域（7.5万座），并建成中部数据中心与省级智算中心，算力达<span class="pflops">8.5PFlops</span><a href="https://m.sohu.com/a/789048996_121375869/" target="_blank">[2]</a>。2024年2月起，启动中原科技城数据中心增建与信阳人工智能计算中心建设，并自研“云骁”“息壤”平台支撑AI大模型<a href="https://news.dahe.cn/2024/02-01/1708881.html" target="_blank">[3]</a>。</p>
+                            <h4>河南移动</h4>
+                              <p>2025年11月披露，“十四五”期间建成5G基站<span class="pflops">12.9万座</span>，实现乡镇及以上全域覆盖，并率先部署5G-A与低空通感基站。其算力总规模达<span class="pflops">2000PFlops</span>，建成郑州中部智算中心、许昌中原人工智能计算中心等重大项目，规划千卡级昇腾与英伟达算力超<span class="pflops">1300PFlops</span>，打造“市域1毫秒”低时延算力圈<a href="https://wxb.xzdw.gov.cn/xxh/202409/t20240927_510890.html" target="_blank">[4]</a>。2025年4月，许昌中原人工智能计算中心算力达<span class="pflops">300PFLOPS</span>，已投用<span class="pflops">100PFLOPS</span>，采用昇腾910B芯片、九天智算平台及5G专网，实现国产全栈部署<a href="https://www.sohu.com/a/879456859_121956424" target="_blank">[5]</a>。</p>
+                                <blockquote>
+                                  <p>注：2024年9月河南移动曾公布算力总规模为<span class="pflops">511.8PFlops</span>，而2025年11月数据更新为<span class="pflops">2000PFlops</span>，表明其在一年内实现近四倍增长，印证算力扩张加速趋势。</p>
+                                  </blockquote>
+                                  <h3>二、全国首创：社会算力并网商用与国产化突破</h3>
+                                    <p>2025年4月，河南移动联合许昌市投集团建成全国首个<span class="highlight">社会算力并网商用项目</span>——中原人工智能计算中心，实现“百川平台+九天AI”模式打通，算力利用率提升35%、响应速度提高40%<a href="http://m.toutiao.com/group/7489006770502648355/" target="_blank">[6]</a>。该项目部署“满血版”DeepSeek大模型，参数全系开放，赋能政务公文生成（3分钟完成）、AI反诈、工业质检（精度99.9%）、中医四诊仪、农业遥感（病虫害识别92%）等十余项场景<a href="https://www.sohu.com/a/879456879_121956424" target="_blank">[7]</a>。中心采用国产化架构，涵盖昇腾910B芯片、九天平台、5G专网、云-网-智-安一体化体系<a href="http://m.toutiao.com/group/7489023173418156578/" target="_blank">[8]</a>。</p>
+                                      <p>该项目被定义为“全国首个社会算力商业并网案例”，标志着算力从“自建自用”向“开放共享、市场交易”模式转型，为全国提供可复制范本<a href="https://app.dahecube.com/nweb/news/20250403/231141n2ac5e76cd7e.htm?artid=231141" target="_blank">[9]</a>。</p>
+                                        <h3>三、绿色低碳与新型数据中心建设</h3>
+                                          <p>河南正加速构建绿色低碳数据中心体系：</p>
+                                            <ul>
+                                              <li>河南电信在中部数据中心推进液冷技术与超万卡算力储备<a href="https://wxb.xzdw.gov.cn/xxh/202409/t20240927_510890.html" target="_blank">[10]</a>。</li>
+                                                <li>维谛技术（Vertiv）2025年9月发布《智算基础设施前沿技术指南》，并实地考察<span class="highlight">河南空港智算中心</span>——该中心规划算力高达<span class="pflops">100,000P（100EFLOPS）</span>，已对接DeepSeek-R1等大模型，率先实现<span class="highlight">电力-算力联动与智能调度</span>，成为中部标杆项目<a href="https://news.ikanchai.com/2025/0925/639018.shtml" target="_blank">[11]</a>。</li>
+                                                  <li>河南移动推动液冷数据中心建设，强化绿色低碳运行<a href="https://www.sohu.com/a/879456879_121956424" target="_blank">[12]</a>。</li>
+                                                  </ul>
+                                                  <h3>四、应用场景深化：从“工具辅助”迈向“智能驱动”</h3>
+                                                    <p>算力应用已从试点走向规模化：</p>
+                                                      <ul>
+                                                        <li><strong>政务</strong>：DeepSeek大模型实现公务员3分钟生成公文，支撑决策分析<a href="https://www.sohu.com/a/879456859_121956424" target="_blank">[13]</a>。</li>
+                                                          <li><strong>工业</strong>：AI质检应用于再生金属分拣（精度98.5%）、德通振动、上汽行业云等<a href="http://app-dahecube-com.nweb.news/20231115/180985nbde00411119.htm?artid=180985" target="_blank">[14]</a>。</li>
+                                                            <li><strong>农业</strong>：5G智慧农田、“蓝天卫士”火情监控、农业遥感病虫害识别系统落地<a href="https://wxb.xzdw.gov.cn/xxh/202409/t20240927_510890.html" target="_blank">[15]</a>。</li>
+                                                              <li><strong>医疗</strong>：中医四诊仪、智慧医疗应用覆盖基层<a href="https://app.dahecube.com/nweb/news/20250403/231141n2ac5e76cd7e.htm?artid=231141" target="_blank">[16]</a>。</li>
+                                                                <li><strong>教育</strong>：河南电信自研“星辰教育大模型”已服务1.2万师生，实现作文智能批改<a href="https://news.dahe.cn/2024/02-01/1708881.html" target="_blank">[17]</a>。</li>
+                                                                </ul>
+                                                                <p>2025年7月，河南移动智算中心负责人与高校（河南工业大学）达成产学研合作意向，拟共建自主可控算力支撑体系，推动“5G+智慧教育”与数字化教学<a href="https://aidata.haut.edu.cn/info/1008/9378.htm" target="_blank">[18]</a>。</p>
+                                                                  <h3>五、政策协同与战略升级</h3>
+                                                                    <ul>
+                                                                      <li><strong>省企协同</strong>：2025年6月，河南省政府与中国移动签署《“人工智能+”重点场景应用合作协议》，省委书记、省长亲自见证，明确将聚焦算力基础设施建设，协同推动AI产业高质量发展<a href="http://m.163.com/dy/article/K19Q5EMM0519D45U.html" target="_blank">[19]</a>。</li>
+                                                                        <li><strong>代表建言</strong>：2026年1月，河南省人大代表、河南移动总经理首建国在两会期间建言，指出河南面临电价高、生态薄弱短板，建议<span class="highlight">弱化算力供给、强化调度运营</span>，建设全国算力统一调度平台，聚焦农业、工业、文旅等垂直场景“重点捕鱼”，并出台补贴与招商政策构建产业生态<a href="http://m.163.com/dy/article/KKH8UUP60511N341.html" target="_blank">[20]</a>。此观点标志战略重心从“建算力”转向“用算力”，契合全国统一大市场导向。</li>
+                                                                        </ul>
+                                                                        <h2>总结与展望</h2>
+                                                                          <p>截至2026年3月，河南已从“算力基础设施建设”全面迈向“算力服务运营与生态构建”阶段。核心成就包括：</p>
+                                                                            <ol>
+                                                                              <li><strong>规模领先</strong>：智能算力规模超<span class="pflops">2000PFlops</span>，中部智算中心与空港智算中心将成为全国高密度算力标杆；</li>
+                                                                                <li><strong>模式创新</strong>：全国首个社会算力并网商用项目落地，打通“百川+九天”商业化路径；</li>
+                                                                                  <li><strong>国产自主</strong>：全栈国产化部署（昇腾芯片、DeepSeek、九天平台）实现关键技术安全可控；</li>
+                                                                                    <li><strong>生态协同</strong>：政府、运营商、高校、设备商（华为、Vertiv）多方联动，构建“技术—场景—政策—人才”闭环。</li>
+                                                                                    </ol>
+                                                                                    <p>未来，河南有望依托“东数西算”枢纽定位，成为全国算力调度中枢。但需突破电价高、生态薄弱等瓶颈，推动算力交易机制、AI企业招商、跨域调度平台等制度性建设。</p>
+                                                                                      <!-- 资讯来源列表 -->
+                                                                                      <div class="sources">
+                                                                                        <h2>资讯来源列表（按发布时间由近至远排序）</h2>
+                                                                                          <div class="source-item">
+                                                                                            <div class="source-date">2025年11月10日</div>
+                                                                                              <div>河南移动“十四五”期间建成5G基站12.9万座，算力规模达2000P</div>
+                                                                                                <a href="https://www.dingxinwen.cn/detail/145AD4E547B94576" target="_blank" class="source-link">https://www.dingxinwen.cn/detail/145AD4E547B94576</a>
+                                                                                                </div>
+                                                                                                <div class="source-item">
+                                                                                                  <div class="source-date">2025年09月25日</div>
+                                                                                                    <div>维谛技术发布《智算基础设施前沿技术指南》，河南空港智算中心规划100,000P</div>
+                                                                                                      <a href="https://news.ikanchai.com/2025/0925/639018.shtml" target="_blank" class="source-link">https://news.ikanchai.com/2025/0925/639018.shtml</a>
+                                                                                                      </div>
+                                                                                                      <div class="source-item">
+                                                                                                        <div class="source-date">2025年07月02日</div>
+                                                                                                          <div>河南移动与河南工业大学共商5G+智慧教育与国产算力生态合作</div>
+                                                                                                            <a href="https://aidata.haut.edu.cn/info/1008/9378.htm" target="_blank" class="source-link">https://aidata.haut.edu.cn/info/1008/9378.htm</a>
+                                                                                                            </div>
+                                                                                                            <div class="source-item">
+                                                                                                              <div class="source-date">2025年06月05日</div>
+                                                                                                                <div>河南省政府与中国移动签署《“人工智能+”重点场景应用合作协议》</div>
+                                                                                                                  <a href="http://m.163.com/dy/article/K19Q5EMM0519D45U.html" target="_blank" class="source-link">http://m.163.com/dy/article/K19Q5EMM0519D45U.html</a>
+                                                                                                                  </div>
+                                                                                                                  <div class="source-item">
+                                                                                                                    <div class="source-date">2025年04月03日</div>
+                                                                                                                      <div>中原人工智能计算中心建成，全国首个“百川+九天”算力并网商用项目</div>
+                                                                                                                        <a href="https://www.sohu.com/a/879456859_121956424" target="_blank" class="source-link">https://www.sohu.com/a/879456859_121956424</a>
+                                                                                                                        </div>
+                                                                                                                        <div class="source-item">
+                                                                                                                          <div class="source-date">2025年04月03日</div>
+                                                                                                                            <div>中原人工智能计算中心部署满血版DeepSeek，实现政务、工业、中医四诊仪落地</div>
+                                                                                                                              <a href="https://www.sohu.com/a/879456879_121956424" target="_blank" class="source-link">https://www.sohu.com/a/879456879_121956424</a>
+                                                                                                                              </div>
+                                                                                                                              <div class="source-item">
+                                                                                                                                <div class="source-date">2025年04月03日</div>
+                                                                                                                                  <div>中原人工智能计算中心实现算力并网商用，支撑AI反诈、工业质检</div>
+                                                                                                                                    <a href="https://app.dahecube.com/nweb/news/20250403/231141n2ac5e76cd7e.htm?artid=231141" target="_blank" class="source-link">https://app.dahecube.com/nweb/news/20250403/231141n2ac5e76cd7e.htm?artid=231141</a>
+                                                                                                                                    </div>
+                                                                                                                                    <div class="source-item">
+                                                                                                                                      <div class="source-date">2025年04月03日</div>
+                                                                                                                                        <div>中原人工智能计算中心为全国首个“百川并网平台+九天AI”商业化项目</div>
+                                                                                                                                          <a href="http://m.toutiao.com/group/7489023173418156578/" target="_blank" class="source-link">http://m.toutiao.com/group/7489023173418156578/</a>
+                                                                                                                                          </div>
+                                                                                                                                          <div class="source-item">
+                                                                                                                                            <div class="source-date">2025年04月03日</div>
+                                                                                                                                              <div>许昌落地全国首个社会算力并网项目，支持AI质检、农业遥感等</div>
+                                                                                                                                                <a href="http://m.toutiao.com/group/7489006770502648355/" target="_blank" class="source-link">http://m.toutiao.com/group/7489006770502648355/</a>
+                                                                                                                                                </div>
+                                                                                                                                                <div class="source-item">
+                                                                                                                                                  <div class="source-date">2026年01月30日</div>
+                                                                                                                                                    <div>河南省人大代表建议强化算力调度运营，聚焦垂直场景“重点捕鱼”</div>
+                                                                                                                                                      <a href="http://m.163.com/dy/article/KKH8UUP60511N341.html" target="_blank" class="source-link">http://m.163.com/dy/article/KKH8UUP60511N341.html</a>
+                                                                                                                                                      </div>
+                                                                                                                                                      <div class="source-item">
+                                                                                                                                                        <div class="source-date">2024年09月29日</div>
+                                                                                                                                                          <div>2024中国算力大会发布三大运营商算力成果，移动智能算力达26.5EFLOPS</div>
+                                                                                                                                                            <a href="http://m.163.com/dy/article/JD98HHV60512D3VJ.html" target="_blank" class="source-link">http://m.163.com/dy/article/JD98HHV60512D3VJ.html</a>
+                                                                                                                                                            </div>
+                                                                                                                                                            <div class="source-item">
+                                                                                                                                                              <div class="source-date">2024年09月27日</div>
+                                                                                                                                                                <div>河南电信公布通算4100PFlops、智算280PFlops，建成5650架机架</div>
+                                                                                                                                                                  <a href="http://www.chinatelecom.com.cn/ct/news/yunjisuanjisuanli/154875.html?CT6T=217c90&CT6TS=1cWpWGisp_1NgGVL11JPL94v_aU6pW-cor8ujQTm12fl4XUMonACBeiddHdVx5--" target="_blank" class="source-link">http://www.chinatelecom.com.cn/ct/news/yunjisuanjisuanli/154875.html?CT6T=217c90&CT6TS=1cWpWGisp_1NgGVL11JPL94v_aU6pW-cor8ujQTm12fl4XUMonACBeiddHdVx5--</a>
+                                                                                                                                                                  </div>
+                                                                                                                                                                  <div class="source-item">
+                                                                                                                                                                    <div class="source-date">2024年09月27日</div>
+                                                                                                                                                                      <div>河南移动建成“1+18+X”智算体系，算力总规模达511.8PFlops</div>
+                                                                                                                                                                        <a href="https://wxb.xzdw.gov.cn/xxh/202409/t20240927_510890.html" target="_blank" class="source-link">https://wxb.xzdw.gov.cn/xxh/202409/t20240927_510890.html</a>
+                                                                                                                                                                        </div>
+                                                                                                                                                                        <div class="source-item">
+                                                                                                                                                                          <div class="source-date">2024年06月28日</div>
+                                                                                                                                                                            <div>河南电信建成7.5万座5G基站，智算中心算力达8.5PFlops</div>
+                                                                                                                                                                              <a href="https://m.sohu.com/a/789048996_121375869/" target="_blank" class="source-link">https://m.sohu.com/a/789048996_121375869/</a>
+                                                                                                                                                                              </div>
+                                                                                                                                                                              <div class="source-item">
+                                                                                                                                                                                <div class="source-date">2024年06月27日</div>
+                                                                                                                                                                                  <div>河南电信5G基站7.5万座，建成8.5PFlops智算中心</div>
+                                                                                                                                                                                    <a href="http://app-api.henandaily.cn/mobile/view/news/327730383065972736472648" target="_blank" class="source-link">http://app-api.henandaily.cn/mobile/view/news/327730383065972736472648</a>
+                                                                                                                                                                                    </div>
+                                                                                                                                                                                    <div class="source-item">
+                                                                                                                                                                                      <div class="source-date">2024年02月01日</div>
+                                                                                                                                                                                        <div>河南电信拟增建数据中心，自研“云骁”“息壤”平台，应用星辰教育大模型</div>
+                                                                                                                                                                                          <a href="https://news.dahe.cn/2024/02-01/1708881.html" target="_blank" class="source-link">https://news.dahe.cn/2024/02-01/1708881.html</a>
+                                                                                                                                                                                          </div>
+                                                                                                                                                                                          <div class="source-item">
+                                                                                                                                                                                            <div class="source-date">2023年11月15日</div>
+                                                                                                                                                                                              <div>河南电信承建中部数据中心，支撑“东数西算”，落地东方红云农机等项目</div>
+                                                                                                                                                                                                <a href="https://app.dahecube.com/nweb/news/20231115/180985nbde00411119.htm?artid=180985" target="_blank" class="source-link">https://app.dahecube.com/nweb/news/20231115/180985nbde00411119.htm?artid=180985</a>
+                                                                                                                                                                                                </div>
+                                                                                                                                                                                                <div class="source-item">
+                                                                                                                                                                                                  <div class="source-date">2023年07月17日</div>
+                                                                                                                                                                                                    <div>河南移动建成5G基站9.1万座，云计算能力达210万核vCPU，AI算力居集团首位</div>
+                                                                                                                                                                                                      <a href="https://news.dahe.cn/2023/07-17/1272306.html" target="_blank" class="source-link">https://news.dahe.cn/2023/07-17/1272306.html</a>
+                                                                                                                                                                                                      </div>
+                                                                                                                                                                                                      <div class="source-item">
+                                                                                                                                                                                                        <div class="source-date">2022年09月27日</div>
+                                                                                                                                                                                                          <div>河南移动建成5G基站6.9万座，打造700余个5G示范项目</div>
+                                                                                                                                                                                                            <a href="https://cj.sina.cn/article/norm_detail?url=https%3A%2F%2Ffinance.sina.cn%2Ftech%2F2022-09-27%2Fdetail-imqqsmrp0632419.d.html" target="_blank" class="source-link">https://cj.sina.cn/article/norm_detail?url=https%3A%2F%2Ffinance.sina.cn%2Ftech%2F2022-09-27%2Fdetail-imqqsmrp0632419.d.html</a>
+                                                                                                                                                                                                            </div>
+                                                                                                                                                                                                          </div>
+                                                                                                                                                                                                          <div class="note">
+                                                                                                                                                                                                            <strong>注：</strong>以上21条信息中，<strong>2022年9月27日、2023年10月12日、2023年7月17日、2023年11月15日</strong>等为老旧信息（距今超60天），已标注并保留用于历史演进分析，但核心结论以2024年9月后更新数据为准。
+                                                                                                                                                                                                            </div>
+                                                                                                                                                                                                          </div>
+                                                                                                                                                                                                        </body>
+                                                                                                                                                                                                      </html>
+                                                                                                                                                                                                      ```
