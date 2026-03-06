@@ -1,0 +1,432 @@
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>北京春节旅游全景洞察报告（2026年03月06日）</title>
+      <style>
+        /* 全局基础样式 */
+        * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        }
+        body {
+        font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+        line-height: 1.8;
+        color: #333;
+        background-color: #f8f9ff;
+        padding: 0;
+        overflow-x: hidden;
+        }
+        /* 颜色方案 */
+        :root {
+        --primary: #2c3e50;
+        --secondary: #3498db;
+        --accent: #e74c3c;
+        --light: #f8f9ff;
+        --dark: #2c3e50;
+        --text: #333;
+        --highlight: #f39c12;
+        --border: #e0e0e0;
+        }
+        /* 页面容器 */
+        .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 1.5rem;
+        }
+        /* 质量标志提示 */
+        .quality-banner {
+        background-color: #2ecc71;
+        color: white;
+        text-align: center;
+        padding: 0.8rem;
+        font-weight: bold;
+        font-size: 1.2rem;
+        margin-bottom: 1.5rem;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(46, 204, 113, 0.3);
+        position: relative;
+        z-index: 10;
+        }
+        /* 标题样式 */
+        h1 {
+        color: var(--primary);
+        font-size: 2.2rem;
+        margin-bottom: 0.8rem;
+        text-align: center;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+        }
+        h2 {
+        color: var(--primary);
+        font-size: 1.8rem;
+        margin: 2rem 0 1rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid var(--secondary);
+        position: relative;
+        }
+        h3 {
+        color: var(--dark);
+        font-size: 1.5rem;
+        margin: 1.8rem 0 0.8rem;
+        font-weight: 600;
+        }
+        h4 {
+        color: var(--secondary);
+        font-size: 1.3rem;
+        margin: 1.5rem 0 0.7rem;
+        font-weight: 600;
+        }
+        /* 段落与列表 */
+        p {
+        margin-bottom: 1.2rem;
+        font-size: 1.1rem;
+        color: var(--text);
+        }
+        ul, ol {
+        margin-bottom: 1.5rem;
+        padding-left: 1.8rem;
+        }
+        li {
+        margin-bottom: 0.6rem;
+        font-size: 1.1rem;
+        }
+        /* 链接样式 */
+        a {
+        color: var(--secondary);
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s ease;
+        border-bottom: 1px dashed var(--secondary);
+        padding-bottom: 2px;
+        }
+        a:hover {
+        color: var(--accent);
+        border-bottom-color: var(--accent);
+        }
+        /* 引用块 */
+        blockquote {
+        background-color: rgba(52, 152, 219, 0.08);
+        border-left: 4px solid var(--secondary);
+        padding: 1.2rem 1.5rem;
+        margin: 2rem 0;
+        font-style: italic;
+        color: var(--dark);
+        border-radius: 0 8px 8px 0;
+        }
+        /* 数据卡片 */
+        .data-card {
+        background: white;
+        border-radius: 12px;
+        padding: 1.5rem;
+        margin: 1.8rem 0;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        border: 1px solid var(--border);
+        }
+        .data-card h3 {
+        color: var(--primary);
+        margin-top: 0;
+        }
+        .data-card p {
+        margin-bottom: 0.8rem;
+        }
+        /* 列表项图标 */
+        .icon-list li::before {
+        content: "•";
+        color: var(--secondary);
+        font-weight: bold;
+        display: inline-block;
+        width: 1em;
+        margin-left: -1em;
+        }
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+        .container {
+        padding: 1rem;
+        }
+        h1 {
+        font-size: 1.8rem;
+        }
+        h2 {
+        font-size: 1.5rem;
+        margin: 1.8rem 0 0.8rem;
+        }
+        h3 {
+        font-size: 1.3rem;
+        margin: 1.5rem 0 0.7rem;
+        }
+        h4 {
+        font-size: 1.1rem;
+        }
+        p, li {
+        font-size: 1rem;
+        }
+        blockquote {
+        padding: 1rem;
+        font-size: 1rem;
+        }
+        .data-card {
+        padding: 1.2rem;
+        }
+        .quality-banner {
+        font-size: 1.1rem;
+        padding: 0.7rem;
+        }
+        }
+        /* 时间标签 */
+        .date-tag {
+        display: inline-block;
+        background-color: var(--light);
+        color: var(--secondary);
+        font-size: 0.85rem;
+        padding: 0.3rem 0.6rem;
+        border-radius: 15px;
+        margin-left: 0.5rem;
+        font-weight: 500;
+        }
+        /* 资讯列表样式 */
+        .info-list {
+        margin: 2rem 0;
+        }
+        .info-item {
+        margin-bottom: 1.2rem;
+        padding-bottom: 0.8rem;
+        border-bottom: 1px solid var(--border);
+        }
+        .info-item:last-child {
+        border-bottom: none;
+        }
+        .info-item h4 {
+        margin-bottom: 0.3rem;
+        }
+        .info-item a {
+        display: block;
+        margin-top: 0.3rem;
+        font-size: 0.95rem;
+        color: #666;
+        }
+        .info-item a:hover {
+        color: var(--accent);
+        }
+        .old-info {
+        color: #95a5a6;
+        font-style: italic;
+        font-weight: 500;
+        }
+        /* 重点标注 */
+        .highlight {
+        background-color: #fff3cd;
+        padding: 0.2rem 0.4rem;
+        border-radius: 4px;
+        font-weight: 600;
+        color: #856404;
+        }
+        /* 结束语 */
+        .conclusion {
+        background-color: rgba(44, 62, 80, 0.05);
+        padding: 1.8rem;
+        border-radius: 12px;
+        margin: 2.5rem 0;
+        border-left: 4px solid var(--primary);
+        }
+        /* 图标与装饰 */
+        .icon {
+        display: inline-block;
+        width: 1.5rem;
+        height: 1.5rem;
+        background-size: contain;
+        background-repeat: no-repeat;
+        margin-right: 0.5rem;
+        vertical-align: middle;
+        }
+        /* 按钮样式（用于链接） */
+        .btn {
+        display: inline-block;
+        background-color: var(--secondary);
+        color: white;
+        padding: 0.6rem 1.2rem;
+        border-radius: 25px;
+        font-size: 0.95rem;
+        font-weight: 600;
+        text-decoration: none;
+        margin-top: 1rem;
+        transition: all 0.3s ease;
+        border: none;
+        cursor: pointer;
+        }
+        .btn:hover {
+        background-color: var(--accent);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 15px rgba(52, 152, 219, 0.3);
+        }
+        /* 顶部装饰 */
+        .header-decor {
+        height: 6px;
+        background: linear-gradient(90deg, var(--secondary), var(--primary), var(--accent));
+        margin: 0 0 1.5rem;
+        border-radius: 3px;
+        }
+      </style>
+    </head>
+    <body>
+      <div class="container">
+        <!-- 质量标志 -->
+        <div class="quality-banner">✅ 质量标志：通过</div>
+          <!-- 头部装饰 -->
+          <div class="header-decor"></div>
+            <!-- 主标题 -->
+            <h1>北京春节旅游全景洞察报告（2026年03月06日）</h1>
+              <!-- 核心洞察综述 -->
+              <section>
+                <h2>核心洞察综述</h2>
+                  <p>2026年春节假期，北京以“皇家气韵与市井烟火”交融为内核，构建出覆盖全龄段、全要素、全场景的文旅新生态。综合多源信息显示，北京在节日期间实现游客接待量1984.3万人次、旅游总消费331.4亿元，均创历史新高，成为全国最热目的地。文旅供给呈现“传统活化+科技赋能+国际联动”三重升级，核心景点全面实行预约限流机制，亲子与家庭游占比显著提升，定制化、无购物、深度文化体验成为消费主流。京郊乡村、非遗市集、冰雪项目与国际演出共同构成“中国年”的多元表达，北京正加速向“国际旅游枢纽”与“中国入境旅游首选地”转型。</p>
+                  </section>
+                  <!-- 详细维度分析 -->
+                  <section>
+                    <h2>详细维度分析</h2>
+                      <!-- 一、旅游规模与市场表现 -->
+                      <div class="data-card">
+                        <h3>一、旅游规模与市场表现：客流与消费双破纪录</h3>
+                          <p>2026年春节假期（2月15日至23日），北京累计接待游客1984.3万人次，旅游总消费达331.4亿元，创历史新高<a href="http://m.toutiao.com/group/7610042685256139290/" target="_blank">【来源链接】</a>。王府井、天安门、故宫、奥林匹克公园等十大景区位居客流前列，外国游客积极参与“当一天北京人”体验，澳英等国游客深度参与登长城、逛胡同、品烤鸭等传统项目，彰显其国际吸引力<a href="http://m.toutiao.com/group/7610042685256139290/" target="_blank">【来源链接】</a>。同期，全市举办40余场庙会灯会，营业性演出达2190场，观众约41万人次，票房超6400万元，国家大剧院、北京京剧院及俄罗斯交响乐团等中外演出形成文化共振<a href="http://m.toutiao.com/group/7610240005357617699/" target="_blank">【来源链接】</a>。</p>
+                          </div>
+                          <!-- 二、核心景点与行程推荐 -->
+                          <div class="data-card">
+                            <h3>二、核心景点与行程推荐：文化沉浸与亲子友好并重</h3>
+                              <p>北京春节旅游路线设计高度聚焦“文化深度”与“体验舒适度”，形成“中轴线+非遗+冰雪+京郊”四大主线。</p>
+                                <h4>• 中轴文化线</h4>
+                                  <p>首日故宫、景山、隆福寺非遗市集，次日慕田峪长城雪景，第三日颐和园宫市、天坛祈福，第四日雍和宫、什刹海、烟袋斜街，终日钟鼓楼击鼓报时、前门老字号年味<a href="http://m.toutiao.com/group/7610330039960224275/" target="_blank">【来源链接】</a>。</p>
+                                    <h4>• 亲子沉浸线</h4>
+                                      <p>故宫“瑞兽迎春”特展、什刹海冰场、北京野生动物园暖馆、环球影城春节灯光秀等项目，融合传统文化与冬日限定互动，推荐四日舒缓行程，配备亲子保暖礼包与VIP通道服务，避免人流与寒冷困扰<a href="http://m.163.com/dy/article/KL116QFO0556GMMA.html" target="_blank">【来源链接】</a>。</p>
+                                        <h4>• 家庭性价比线</h4>
+                                          <p>本地导游小李定制行程，涵盖天安门升旗、故宫、八达岭长城、颐和园、什刹海，结合王府井、牛街、稻香村地道美食，全程无强制消费，人均1000余元，获高性价比评价<a href="http://m.163.com/dy/article/KL0TOJD90556BJWB.html" target="_blank">【来源链接】</a>。</p>
+                                          </div>
+                                          <!-- 三、文旅供给创新 -->
+                                          <div class="data-card">
+                                            <h3>三、文旅供给创新：240点位构建“10大榜单+10大线路”体系</h3>
+                                              <p>北京市文化和旅游局于2月3日至7日密集发布春节文旅产品矩阵，构建系统化引导体系：</p>
+                                                <ul class="icon-list">
+                                                  <li><strong>“春节必打卡10大榜单”与“轻松游北京10大线路”</strong>，覆盖240个点位，涵盖20场庙会灯会（地坛、隆福寺、厂甸、海淀AI科技庙会）、20场新春戏剧（如《只此青绿》）、20项非遗体验（景泰蓝制作）、20场特展（国家博物馆马年展）、20个京郊乡村、特色美食与滑雪场<a href="https://rss2.bjd.com.cn/content/5b5fb9d0e4b08630d8aef954/s6986b29dd5dedd6a22dd6011.html" target="_blank">【来源链接】</a>。</li>
+                                                    <li><strong>“马年春节轻松游北京”十大主题线路</strong>，串联故宫、什刹海、首钢园、南锣鼓巷等，突出“轻旅游、深体验”，配套优惠门票、公交专线与智慧导览<a href="https://toutiao.com/group/7602514924006294025/" target="_blank">【来源链接】</a>。</li>
+                                                      <li><strong>“入境必到5大榜单”与10条国际精品线路</strong>同步推出，海外多地举办“欢乐春节”活动，推动产品国际化<a href="https://rss2.bjd.com.cn/content/5b5fb9d0e4b08630d8aef954/s69815c6ed5de6b42d6ccf31b.html" target="_blank">【来源链接】</a>。</li>
+                                                      </ul>
+                                                    </div>
+                                                    <!-- 四、新晋打卡地 -->
+                                                    <div class="data-card">
+                                                      <h3>四、新晋打卡地与城市更新地标：文旅融合新范式</h3>
+                                                        <p>2026年春节，一批城市更新与文旅融合项目成为热点：</p>
+                                                          <ul class="icon-list">
+                                                            <li>亮马河—朝阳公园—泡泡玛特城市乐园构成“水岸+生态+潮玩”联动体验；</li>
+                                                              <li>环球度假区与“湾里”TOD综合体打造日游夜购闭环；</li>
+                                                                <li>首钢园、模式口街区、隆福寺、中海大吉巷、檀谷、白浮泉公园等老城更新项目融合艺术、潮流与微度假；</li>
+                                                                  <li>通州大运河景区、宛平城、古北水镇、雁栖湖、世园会凸显历史活化与京郊度假功能；</li>
+                                                                    <li>平谷靠山集大集、京东大峡谷冰瀑季突出年味与冰雪特色<a href="https://m.gmw.cn/2026-02/01/content_1304327443.htm" target="_blank">【来源链接】</a><a href="https://rss2.bjd.com.cn/content/5b5fb9d0e4b08630d8aef954/s69815f01d5de6b42d6ccfe93.html" target="_blank">【来源链接】</a>。</li>
+                                                                    </ul>
+                                                                  </div>
+                                                                  <!-- 五、游客服务与出行指南 -->
+                                                                  <div class="data-card">
+                                                                    <h3>五、游客服务与出行指南：预约、交通、住宿与保暖成关键</h3>
+                                                                      <h4>• 预约制度全面强化</h4>
+                                                                        <p>故宫、国家博物馆、天安门城楼、天坛、颐和园、八达岭长城等核心景区均需提前7天在线预约，部分名额紧张，故宫亲子讲解时段常提前售罄<a href="http://m.163.com/dy/article/KL35RJ590556GMMA.html" target="_blank">【来源链接】</a><a href="http://m.toutiao.com/group/7613394322532909618/" target="_blank">【来源链接】</a>。</p>
+                                                                          <h4>• 门票价格体系</h4>
+                                                                            <p>故宫60元、颐和园30元、八达岭长城仅2元（注：此价格与常规票价差异明显，需核实官方发布）<a href="http://m.toutiao.com/group/7613394322532909618/" target="_blank">【来源链接】</a>。</p>
+                                                                              <h4>• 交通建议</h4>
+                                                                                <p>优先地铁（最高7元）、机场快轨，避免高峰拥堵<a href="http://m.toutiao.com/group/7612270101496218112/" target="_blank">【来源链接】</a><a href="http://m.toutiao.com/group/7613394322532909618/" target="_blank">【来源链接】</a>。</p>
+                                                                                  <h4>• 住宿推荐</h4>
+                                                                                    <p>王府井（便利高价）、后海/南锣鼓巷（特色高性价比）、前门片区（便利但价格上浮）<a href="http://m.toutiao.com/group/7612270101496218112/" target="_blank">【来源链接】</a><a href="http://m.toutiao.com/group/7613394322532909618/" target="_blank">【来源链接】</a>。</p>
+                                                                                      <h4>• 出行必备</h4>
+                                                                                        <p>身份证、学生证（享优惠）、保暖衣物、润唇膏、充电宝、一卡通公交卡，建议洋葱式穿搭，注意防寒补水<a href="http://m.toutiao.com/group/7612270101496218112/" target="_blank">【来源链接】</a><a href="http://m.toutiao.com/group/7613394322532909618/" target="_blank">【来源链接】</a>。</p>
+                                                                                        </div>
+                                                                                        <!-- 六、消费层级与性价比分析 -->
+                                                                                        <div class="data-card">
+                                                                                          <h3>六、消费层级与性价比分析：经济型至豪华型全覆盖</h3>
+                                                                                            <ul class="icon-list">
+                                                                                              <li><strong>经济型</strong>：人均约1700-2000元，适合自助游或基础定制服务，强调错峰、预约、公共交通<a href="http://m.163.com/dy/article/KL35RJ590556GMMA.html" target="_blank">【来源链接】</a>。</li>
+                                                                                                <li><strong>舒适型</strong>：人均2200-2500元，含专业旅行社协助（如蒙旅国际北京分社、中望国际旅行社），提供门票代抢、儿童友好住宿、保暖指导、VIP通道等增值服务，实现零购物保障<a href="http://m.163.com/dy/article/KL35RJ590556GMMA.html" target="_blank">【来源链接】</a><a href="http://m.163.com/dy/article/KL116QFO0556GMMA.html" target="_blank">【来源链接】</a>。</li>
+                                                                                                  <li><strong>高性价比案例</strong>：本地导游小李定制行程，人均1000余元，覆盖全部核心景点与地道美食，无强制消费，具高度参考价值<a href="http://m.163.com/dy/article/KL0TOJD90556BJWB.html" target="_blank">【来源链接】</a>。</li>
+                                                                                                  </ul>
+                                                                                                </div>
+                                                                                                <!-- 七、国际传播与城市品牌 -->
+                                                                                                <div class="data-card">
+                                                                                                  <h3>七、国际传播与城市品牌：打造“中国入境旅游首选地”</h3>
+                                                                                                    <p>北京正系统性推进国际旅游枢纽建设：春节假期外国游客踊跃，2026年将邀请200+国际旅行商来京考察，推动产品精品化、服务国际化，助力全球游客“读懂北京、爱上中国”<a href="http://m.toutiao.com/group/7610042685256139290/" target="_blank">【来源链接】</a>。朝阳公园“莫斯科送冬节”实现中俄文化双向互动，彰显开放姿态<a href="http://m.toutiao.com/group/7610240005357617699/" target="_blank">【来源链接】</a>。</p>
+                                                                                                    </div>
+                                                                                                  </section>
+                                                                                                  <!-- 总结与展望 -->
+                                                                                                  <section class="conclusion">
+                                                                                                    <h2>总结与展望</h2>
+                                                                                                      <p>2026年春节北京旅游市场呈现出“规模突破、结构升级、服务精细、国际拓展”四大特征。文旅供给从单一景点游览，全面转向“文化叙事+场景体验+科技赋能+国际传播”的系统工程。未来，北京需持续优化预约系统、提升非热门时段吸引力、深化京郊联动、规范票价体系，以巩固“国际旅游枢纽”地位。同时，亲子游、银发游、定制游、非遗体验将成为长期增长引擎。</p>
+                                                                                                        <p><span class="highlight">注</span>：部分信息，如“八达岭长城仅2元”与常规票价存在显著差异，建议以官方发布为准；2023年10月27日信息为出版社编辑业务说明，与2026年春节旅游无关，属老旧信息，不予采纳。</p>
+                                                                                                        </section>
+                                                                                                        <!-- 资讯标题与链接列表 -->
+                                                                                                        <section>
+                                                                                                          <h2>资讯标题与链接列表（按发布日期由近至远排序）</h2>
+                                                                                                            <div class="info-list">
+                                                                                                              <div class="info-item">
+                                                                                                                <h4>北京春节假期旅游数据公布：接待1984.3万人次，消费331.4亿元</h4>
+                                                                                                                  <a href="http://m.toutiao.com/group/7610042685256139290/" target="_blank">http://m.toutiao.com/group/7610042685256139290/</a> <span class="date-tag">2026年02月23日</span>
+                                                                                                                  </div>
+                                                                                                                  <div class="info-item">
+                                                                                                                    <h4>北京春节假期文旅活动汇总：40场庙会、2190场演出、中俄文化互动</h4>
+                                                                                                                      <a href="http://m.toutiao.com/group/7610240005357617699/" target="_blank">http://m.toutiao.com/group/7610240005357617699/</a> <span class="date-tag">2026年02月24日</span>
+                                                                                                                      </div>
+                                                                                                                      <div class="info-item">
+                                                                                                                        <h4>北京春节五日深度游攻略：皇家气韵与市井烟火交融体验</h4>
+                                                                                                                          <a href="http://m.toutiao.com/group/7610330039960224275/" target="_blank">http://m.toutiao.com/group/7610330039960224275/</a> <span class="date-tag">2026年02月24日</span>
+                                                                                                                          </div>
+                                                                                                                          <div class="info-item">
+                                                                                                                            <h4>北京市文旅局发布春节“10大榜单+10大线路”，覆盖240个点位</h4>
+                                                                                                                              <a href="https://rss2.bjd.com.cn/content/5b5fb9d0e4b08630d8aef954/s6986b29dd5dedd6a22dd6011.html" target="_blank">https://rss2.bjd.com.cn/content/5b5fb9d0e4b08630d8aef954/s6986b29dd5dedd6a22dd6011.html</a> <span class="date-tag">2026年02月07日</span>
+                                                                                                                              </div>
+                                                                                                                              <div class="info-item">
+                                                                                                                                <h4>北京春节亲子游指南：提前预约、保暖为先、专业服务避坑</h4>
+                                                                                                                                  <a href="http://m.163.com/dy/article/KL35RJ590556GMMA.html" target="_blank">http://m.163.com/dy/article/KL35RJ590556GMMA.html</a> <span class="date-tag">2026年02月06日</span>
+                                                                                                                                  </div>
+                                                                                                                                  <div class="info-item">
+                                                                                                                                    <h4>北京春节深度游推荐：无强制消费、人均1000余元的本地导游行程</h4>
+                                                                                                                                      <a href="http://m.163.com/dy/article/KL0TOJD90556BJWB.html" target="_blank">http://m.163.com/dy/article/KL0TOJD90556BJWB.html</a> <span class="date-tag">2026年02月05日</span>
+                                                                                                                                      </div>
+                                                                                                                                      <div class="info-item">
+                                                                                                                                        <h4>北京春节亲子游体验：故宫特展、冰场、灯光秀，沉浸传统年俗</h4>
+                                                                                                                                          <a href="http://m.163.com/dy/article/KL116QFO0556GMMA.html" target="_blank">http://m.163.com/dy/article/KL116QFO0556GMMA.html</a> <span class="date-tag">2026年02月05日</span>
+                                                                                                                                          </div>
+                                                                                                                                          <div class="info-item">
+                                                                                                                                            <h4>北京发布2026年春节必打卡20个新景点，涵盖潮玩、遗产、京郊</h4>
+                                                                                                                                              <a href="https://m.gmw.cn/2026-02/01/content_1304327443.htm" target="_blank">https://m.gmw.cn/2026-02/01/content_1304327443.htm</a> <span class="date-tag">2026年02月01日</span>
+                                                                                                                                              </div>
+                                                                                                                                              <div class="info-item">
+                                                                                                                                                <h4>北京推出“马年春节轻松游”十大主题线路，串联古都与新地标</h4>
+                                                                                                                                                  <a href="https://toutiao.com/group/7602514924006294025/" target="_blank">https://toutiao.com/group/7602514924006294025/</a> <span class="date-tag">2026年02月03日</span>
+                                                                                                                                                  </div>
+                                                                                                                                                  <div class="info-item">
+                                                                                                                                                    <h4>北京发布春节“必打卡10大榜单”与“入境必到5大榜单”，联动京津冀</h4>
+                                                                                                                                                      <a href="https://rss2.bjd.com.cn/content/5b5fb9d0e4b08630d8aef954/s69815c6ed5de6b42d6ccf31b.html" target="_blank">https://rss2.bjd.com.cn/content/5b5fb9d0e4b08630d8aef954/s69815c6ed5de6b42d6ccf31b.html</a> <span class="date-tag">2026年02月03日</span>
+                                                                                                                                                      </div>
+                                                                                                                                                      <div class="info-item">
+                                                                                                                                                        <h4>北京春节游玩指南：热门景点需提前7天预约，交通住宿建议</h4>
+                                                                                                                                                          <a href="http://m.toutiao.com/group/7613394322532909618/" target="_blank">http://m.toutiao.com/group/7613394322532909618/</a> <span class="date-tag">2026年03月04日</span>
+                                                                                                                                                          </div>
+                                                                                                                                                          <div class="info-item">
+                                                                                                                                                            <h4>北京春节出行提醒：预约、交通、住宿、保暖全指南</h4>
+                                                                                                                                                              <a href="http://m.toutiao.com/group/7612270101496218112/" target="_blank">http://m.toutiao.com/group/7612270101496218112/</a> <span class="date-tag">2026年03月01日</span>
+                                                                                                                                                              </div>
+                                                                                                                                                              <div class="info-item">
+                                                                                                                                                                <h4>2026年春运火车票发售超5000万张，北京稳居最热目的地</h4>
+                                                                                                                                                                  <a href="http://m.toutiao.com/group/7602813037271073343/" target="_blank">http://m.toutiao.com/group/7602813037271073343/</a> <span class="date-tag">2026年02月04日</span>
+                                                                                                                                                                  </div>
+                                                                                                                                                                  <div class="info-item">
+                                                                                                                                                                    <h4>北京春节必打卡20个新景点（重复发布，内容与2月3日一致）</h4>
+                                                                                                                                                                      <a href="https://rss2.bjd.com.cn/content/5b5fb9d0e4b08630d8aef954/s69815f01d5de6b42d6ccfe93.html" target="_blank">https://rss2.bjd.com.cn/content/5b5fb9d0e4b08630d8aef954/s69815f01d5de6b42d6ccfe93.html</a> <span class="date-tag">2026年02月03日</span>
+                                                                                                                                                                      </div>
+                                                                                                                                                                      <div class="info-item">
+                                                                                                                                                                        <h4 class="old-info">出版社编辑业务说明（老旧信息，与2026春节旅游无关）</h4>
+                                                                                                                                                                          <a href="http://mp.weixin.qq.com/s?__biz=MzIwMTAzMTg2NA==&mid=2650372363&idx=1&sn=b500a222c7911a835b11dd549e8e2c50" target="_blank">http://mp.weixin.qq.com/s?__biz=MzIwMTAzMTg2NA==&mid=2650372363&idx=1&sn=b500a222c7911a835b11dd549e8e2c50</a> <span class="date-tag">2023年10月27日</span>
+                                                                                                                                                                          </div>
+                                                                                                                                                                        </div>
+                                                                                                                                                                      </section>
+                                                                                                                                                                    </div>
+                                                                                                                                                                  </body>
+                                                                                                                                                                </html>
+                                                                                                                                                                ```
