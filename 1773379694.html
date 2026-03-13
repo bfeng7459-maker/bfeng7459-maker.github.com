@@ -1,0 +1,404 @@
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>国电南瑞股价强势反弹与市场情绪深度分析报告</title>
+      <style>
+        /* 基础重置与全局样式 */
+        * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        }
+        body {
+        font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+        line-height: 1.8;
+        color: #333;
+        background-color: #f8f9fa;
+        padding: 0;
+        overflow-x: hidden;
+        }
+        .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 1.5rem;
+        background-color: white;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+        border-radius: 10px;
+        }
+        /* 质量标志 - 右上角显眼位置 */
+        .quality-badge {
+        position: fixed;
+        top: 1rem;
+        right: 1rem;
+        background-color: #28a745;
+        color: white;
+        padding: 0.6rem 1.2rem;
+        border-radius: 20px;
+        font-weight: bold;
+        font-size: 1.1rem;
+        box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
+        z-index: 1000;
+        animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+        100% { transform: scale(1); }
+        }
+        /* 标题样式 */
+        h1 {
+        font-size: 2rem;
+        color: #1a3a6e;
+        margin-bottom: 0.5rem;
+        text-align: center;
+        font-weight: 700;
+        border-bottom: 3px solid #e9ecef;
+        padding-bottom: 1rem;
+        }
+        h2 {
+        font-size: 1.75rem;
+        color: #2c3e50;
+        margin: 2.5rem 0 1.5rem;
+        padding-left: 0.8rem;
+        border-left: 4px solid #3498db;
+        }
+        h3 {
+        font-size: 1.5rem;
+        color: #2c3e50;
+        margin: 2rem 0 1rem;
+        font-weight: 600;
+        }
+        h4 {
+        font-size: 1.3rem;
+        color: #34495e;
+        margin: 1.8rem 0 0.8rem;
+        font-weight: 600;
+        }
+        /* 正文段落 */
+        p {
+        margin-bottom: 1.2rem;
+        font-size: 1.1rem;
+        text-align: justify;
+        }
+        /* 引用块 */
+        blockquote {
+        background-color: #f0f7ff;
+        border-left: 5px solid #3498db;
+        padding: 1.2rem;
+        margin: 2rem 0;
+        color: #2c3e50;
+        font-style: italic;
+        border-radius: 0 6px 6px 0;
+        font-size: 1.1rem;
+        }
+        /* 链接样式 */
+        a {
+        color: #3498db;
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s ease;
+        border-bottom: 1px dotted transparent;
+        }
+        a:hover {
+        color: #2980b9;
+        border-bottom-color: #3498db;
+        }
+        /* 列表样式 */
+        ul, ol {
+        margin: 1.5rem 0;
+        padding-left: 1.8rem;
+        }
+        li {
+        margin-bottom: 0.6rem;
+        font-size: 1.1rem;
+        }
+        /* 结论强调 */
+        .conclusion {
+        background-color: #e8f5e9;
+        border-left: 5px solid #4caf50;
+        padding: 1.2rem;
+        margin: 2rem 0;
+        border-radius: 0 6px 6px 0;
+        font-weight: 500;
+        color: #2e7d32;
+        }
+        /* 风险提示 */
+        .risk {
+        background-color: #fff3cd;
+        border-left: 5px solid #ffc107;
+        padding: 1.2rem;
+        margin: 2rem 0;
+        border-radius: 0 6px 6px 0;
+        color: #856404;
+        }
+        /* 操作建议 */
+        .recommendation {
+        background-color: #d1ecf1;
+        border-left: 5px solid #17a2b8;
+        padding: 1.2rem;
+        margin: 2rem 0;
+        border-radius: 0 6px 6px 0;
+        font-weight: 500;
+        color: #0c5460;
+        }
+        /* 日期样式 */
+        .report-date {
+        text-align: center;
+        color: #6c757d;
+        font-size: 1.1rem;
+        margin-bottom: 2rem;
+        font-style: italic;
+        }
+        /* 资讯来源列表 */
+        .source-list {
+        margin-top: 3rem;
+        padding-top: 2rem;
+        border-top: 2px dashed #dee2e6;
+        }
+        .source-item {
+        margin-bottom: 1.2rem;
+        padding-bottom: 0.8rem;
+        border-bottom: 1px solid #eee;
+        }
+        .source-item:last-child {
+        border-bottom: none;
+        }
+        .source-date {
+        font-weight: 600;
+        color: #495057;
+        margin-bottom: 0.3rem;
+        }
+        .source-link {
+        color: #3498db;
+        font-size: 0.95rem;
+        word-break: break-all;
+        }
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+        .container {
+        padding: 1rem;
+        }
+        h1 {
+        font-size: 1.8rem;
+        padding-bottom: 0.8rem;
+        }
+        h2 {
+        font-size: 1.5rem;
+        padding-left: 0.6rem;
+        }
+        h3 {
+        font-size: 1.3rem;
+        }
+        h4 {
+        font-size: 1.1rem;
+        }
+        p, li, blockquote, .conclusion, .risk, .recommendation {
+        font-size: 1rem;
+        }
+        .quality-badge {
+        font-size: 1rem;
+        padding: 0.5rem 1rem;
+        top: 0.8rem;
+        right: 0.8rem;
+        }
+        .source-link {
+        font-size: 0.9rem;
+        }
+        }
+        @media (max-width: 480px) {
+        h1 {
+        font-size: 1.6rem;
+        }
+        h2 {
+        font-size: 1.4rem;
+        }
+        .container {
+        padding: 0.8rem;
+        }
+        .quality-badge {
+        font-size: 0.9rem;
+        padding: 0.4rem 0.8rem;
+        top: 0.6rem;
+        right: 0.6rem;
+        }
+        blockquote, .conclusion, .risk, .recommendation {
+        padding: 1rem;
+        font-size: 0.95rem;
+        }
+        .source-date {
+        font-size: 0.95rem;
+        }
+        }
+        /* 高亮重点 */
+        .highlight {
+        color: #e74c3c;
+        font-weight: 700;
+        }
+        .strong {
+        font-weight: 700;
+        color: #2c3e50;
+        }
+        .green {
+        color: #27ae60;
+        }
+        .blue {
+        color: #3498db;
+        }
+        .orange {
+        color: #e67e22;
+        }
+        .gray {
+        color: #7f8c8d;
+        }
+      </style>
+    </head>
+    <body>
+      <!-- 质量标志 -->
+      <div class="quality-badge">质量标志：通过</div>
+        <div class="container">
+          <h1>国电南瑞股价强势反弹与市场情绪深度分析报告</h1>
+            <div class="report-date">报告生成日期：2026年03月13日</div>
+              <h2>核心洞察综述</h2>
+                <p>截至2026年3月13日，国电南瑞（<span class="strong">600406</span>）在连续三日强势上涨后进入短期震荡整理阶段，股价在<span class="highlight">30.40–31.59元</span>区间高位运行，总市值稳定在<span class="highlight">2439–2537亿元</span>之间，创历史新高。市场情绪由前期谨慎（2026年1月）转为显著回暖，主力资金与融资资金同步流入，反映机构对“<span class="blue">算电协同</span>”“<span class="blue">数字电网</span>”政策落地的强烈预期。公司基本面持续向好，2025年前三季度净利润同比增长<span class="green">8.43%</span>，2026年机构预测净利润中值达<span class="green">86.3亿元</span>，对应PE约<span class="green">26.8倍</span>，显著低于行业均值，估值具备吸引力。国泰基金旗下电网设备ETF重仓持有，单日浮盈超<span class="green">360万元</span>，凸显专业资金配置偏好。然而，短期融资净流出、主力无控盘迹象及市盈率仍处高位，提示市场或进入高位震荡，需警惕电网投资节奏与行业竞争加剧风险。</p>
+                  <h2>详细维度分析</h2>
+                    <h3>1. 近期股价走势与市值表现（2026年3月4日–3月11日）</h3>
+                      <p>国电南瑞自2026年3月4日起开启连续上涨行情：</p>
+                        <ul>
+                          <li><strong>3月4日</strong>：股价上涨<span class="green">3.25%</span>至<span class="highlight">28.60元</span>，成交额<span class="highlight">41.25亿元</span>居电力设备板块首位，主力资金净流入<span class="highlight">4.28亿元</span>，受电网投资预期升温驱动<a href="https://toutiao.com/group/7613387737252545051/" target="_blank">【来源链接】</a>。</li>
+                            <li><strong>3月6日</strong>：股价再涨<span class="green">4.03%</span>至<span class="highlight">30.70元</span>，创历史新高，总市值达<span class="highlight">2465.75亿元</span>，两融余额<span class="highlight">25.69亿元</span>，近10日融资余额增长<span class="green">4.47%</span><a href="https://wap.stockstar.com/detail/IG2026030600015921/" target="_blank">【来源链接】</a>。</li>
+                              <li><strong>3月9日</strong>：股价强势冲高<span class="green">5.03%</span>至<span class="highlight">31.52元</span>（另一源报<span class="highlight">31.59元</span>），市值达<span class="highlight">2531.6–2537亿元</span>，单日成交活跃，资金关注度显著提升<a href="http://m.toutiao.com/group/7615155667678085642/" target="_blank">【来源链接】</a><a href="https://www.stcn.com/article/detail/3667586.html" target="_blank">【来源链接】</a>。</li>
+                                <li><strong>3月11日</strong>：股价回调至<span class="highlight">30.40元</span>（跌<span class="red">1.30%</span>）与<span class="highlight">30.80元</span>（跌<span class="red">2.30%</span>），成交额维持在<span class="highlight">41.34–52.31亿元</span>高位，换手率提升至<span class="highlight">1.68%–2.11%</span>，显示多空博弈加剧。融资余额升至<span class="highlight">27.89亿元</span>（连续两日大额融资买入），但5日累计主力净流出超<span class="red">4.6亿元</span>，无控盘迹象，技术面短期强势减弱<a href="https://stockpage.10jqka.com.cn/600406/" target="_blank">【来源链接】</a><a href="https://xueqiu.com/2994586302/378872538" target="_blank">【来源链接】</a>。</li>
+                                </ul>
+                                <blockquote>结论：3月上旬股价呈现“快速拉升—高位震荡”典型结构，短期动能由资金面与政策预期驱动，非基本面突变所致。</blockquote>
+                                  <h3>2. 基本面支撑：营收、利润与估值优势</h3>
+                                    <p>公司基本面呈现稳健增长态势，构成股价上行核心支撑：</p>
+                                      <ul>
+                                        <li><strong>2025年前三季度</strong>：营收<span class="highlight">385.77亿元</span>（同比+<span class="green">18.45%</span>），净利润<span class="highlight">48.55亿元</span>（同比+<span class="green">8.43%</span>），基本每股收益<span class="highlight">0.61元</span>，加权平均净资产收益率<span class="highlight">9.68%</span><a href="https://wap.stockstar.com/detail/IG2026030600015921/" target="_blank">【来源链接】</a><a href="https://www.stcn.com/article/detail/3664430.html" target="_blank">【来源链接】</a>。</li>
+                                          <li><strong>2025年全年净利润预测</strong>：<span class="highlight">72.8亿元</span>（基于3月4日分析）<a href="https://toutiao.com/group/7613387737252545051/" target="_blank">【来源链接】</a>。</li>
+                                            <li><strong>2026年机构预测</strong>：净利润中值<span class="highlight">86.3亿元</span>，若以3月11日股价<span class="highlight">30.80元</span>计，对应2026年PE约<span class="highlight">26.8倍</span>，TTM市盈率<span class="highlight">30.97倍</span>，显著低于新能源设备板块均值<a href="https://toutiao.com/group/7613387737252545051/" target="_blank">【来源链接】</a><a href="https://xueqiu.com/2994586302/378872538" target="_blank">【来源链接】</a>。</li>
+                                              <li><strong>市净率与股息</strong>：市净率<span class="highlight">5.03倍</span>，股息率<span class="highlight">1.88%</span>，估值处于合理区间（2026年3月11日数据）<a href="https://xueqiu.com/2994586302/378872538" target="_blank">【来源链接】</a>。</li>
+                                                <li><strong>财务健康度</strong>：资产负债率<span class="highlight">43.18%</span>，经营现金流充沛，订单储备充足，抗周期能力强<a href="https://toutiao.com/group/7613387737252545051/" target="_blank">【来源链接】</a>。</li>
+                                                </ul>
+                                                <blockquote>结论：公司基本面扎实，盈利增长稳定，估值具备相对优势，是本轮上涨的核心逻辑支撑。</blockquote>
+                                                  <h3>3. 政策与业务驱动：算电协同与新型电力系统</h3>
+                                                    <p>股价上行与国家政策导向高度契合：</p>
+                                                      <ul>
+                                                        <li><strong>政策催化</strong>：公司受益“<span class="blue">算电协同</span>”政策升温（2026年3月11日），以及数字电网、新型电力系统建设加速<a href="https://stockpage.10jqka.com.cn/600406/" target="_blank">【来源链接】</a><a href="https://xueqiu.com/2994586302/378872538" target="_blank">【来源链接】</a>。</li>
+                                                          <li><strong>业务结构</strong>：主营收入中电网智能占<span class="highlight">50.43%</span>、能源低碳占<span class="highlight">26.98%</span>，覆盖特高压、新能源并网、储能、虚拟电厂等新兴赛道<a href="https://m.sohu.com/a/994115762_122014422/" target="_blank">【来源链接】</a><a href="https://toutiao.com/group/7613387737252545051/" target="_blank">【来源链接】</a>。</li>
+                                                            <li><strong>行业地位</strong>：国家电网旗下核心企业，电力自动化市占率超<span class="highlight">70%</span>，技术壁垒高<a href="https://xueqiu.com/2994586302/378872538/" target="_blank">【来源链接】</a>。</li>
+                                                              <li><strong>海外拓展</strong>：海外业务稳步拓展（2026年2月6日数据），增强增长韧性<a href="https://toutiao.com/group/7603760177535386162/" target="_blank">【来源链接】</a>。</li>
+                                                              </ul>
+                                                              <blockquote>结论：公司深度绑定国家能源转型战略，业务结构与政策方向高度共振，长期成长逻辑清晰。</blockquote>
+                                                                <h3>4. 资金面与机构配置行为</h3>
+                                                                  <ul>
+                                                                    <li><strong>融资活跃</strong>：3月11日融资余额达<span class="highlight">27.89亿元</span>，连续两日大额买入，显示杠杆资金积极入场<a href="https://stockpage.10jqka.com.cn/600406/" target="_blank">【来源链接】</a>。</li>
+                                                                      <li><strong>主力资金</strong>：3月4日净流入<span class="highlight">4.28亿元</span>，但3月11日5日累计净流出超<span class="highlight">4.6亿元</span>，显示短期获利盘兑现压力<a href="https://toutiao.com/group/7613387737252545051/" target="_blank">【来源链接】</a><a href="https://stockpage.10jqka.com.cn/600406/" target="_blank">【来源链接】</a>。</li>
+                                                                        <li><strong>ETF重仓</strong>：国泰恒生A股电网设备ETF（<span class="strong">561380</span>）重仓持有<span class="highlight">233.64万股</span>，占基金净值<span class="highlight">9.51%</span>（第二大重仓股），3月9日单日浮盈<span class="highlight">369万元</span>，三日累计浮盈<span class="highlight">539万元</span>。该基金成立于2024年12月，成立以来收益<span class="highlight">123.9%</span>，年内收益<span class="highlight">36.04%</span>，基金经理吴中昊管理规模<span class="highlight">240.55亿元</span><a href="https://m.sohu.com/a/994115762_122014422/" target="_blank">【来源链接】</a>。</li>
+                                                                        </ul>
+                                                                        <blockquote>结论：专业资金持续配置，显示机构对板块长期价值的认可；但主力资金短期流出，提示市场进入分歧阶段。</blockquote>
+                                                                          <h3>5. 风险提示</h3>
+                                                                            <div class="risk">
+                                                                              <ul>
+                                                                                <li><strong>短期技术压力</strong>：股价位于52周区间（<span class="highlight">20.77–32.06</span>）中上部，支撑位关注<span class="highlight">30.50元</span>，若跌破或引发技术性回调<a href="https://xueqiu.com/2994586302/378872538/" target="_blank">【来源链接】</a>。</li>
+                                                                                  <li><strong>政策与行业风险</strong>：电网投资不及预期、行业竞争加剧、毛利率承压为潜在下行风险<a href="https://toutiao.com/group/7613387737252545051/" target="_blank">【来源链接】</a><a href="https://xueqiu.com/2994586302/378872538" target="_blank">【来源链接】</a>。</li>
+                                                                                    <li><strong>估值仍处高位</strong>：动态市盈率<span class="highlight">37.68–38.21倍</span>，虽低于行业均值，但绝对水平仍高，需盈利兑现支撑<a href="https://stockpage.10jqka.com.cn/600406/" target="_blank">【来源链接】</a><a href="https://xueqiu.com/2994586302/378872538" target="_blank">【来源链接】</a>。</li>
+                                                                                    </ul>
+                                                                                  </div>
+                                                                                  <h2>总结与展望</h2>
+                                                                                    <p>截至2026年3月13日，国电南瑞正处于“基本面支撑+政策驱动+资金入场”三位一体的强势周期中，股价创历史新高，市值稳居<span class="highlight">2500亿元</span>上方。短期虽出现技术性回调与主力资金流出，但融资余额持续攀升、ETF重仓加持、机构预测净利润增长明确，构成中长期向上动能。</p>
+                                                                                      <p>当前股价已充分反映市场对“算电协同”与数字电网建设的乐观预期，后续走势将高度依赖：</p>
+                                                                                        <ol>
+                                                                                          <li>电网投资具体落地节奏；</li>
+                                                                                            <li>储能与虚拟电厂等新兴业务的订单兑现；</li>
+                                                                                              <li>毛利率能否稳中有升。</li>
+                                                                                              </ol>
+                                                                                              <div class="recommendation">
+                                                                                                <strong>操作建议：</strong><br>
+                                                                                                  <strong>中长期投资者</strong>：可逢回调布局，关注<span class="highlight">30.50元</span>技术支撑，公司具备高壁垒、高成长、低估值（相对行业）三重优势，配置价值突出<a href="https://xueqiu.com/2994586302/378872538" target="_blank">【来源链接】</a>。<br>
+                                                                                                    <strong>短期交易者</strong>：警惕高位震荡风险，避免追高，关注5日均线与换手率变化。
+                                                                                                    </div>
+                                                                                                    <div class="source-list">
+                                                                                                      <h2>资讯来源列表（按发布日期由近至远排序）</h2>
+                                                                                                        <div class="source-item">
+                                                                                                          <div class="source-date">2026年03月11日</div>
+                                                                                                            <div>国电南瑞股价报30.40元，融资买入活跃，主力净流出，市盈率37.68倍，技术面转震荡</div>
+                                                                                                              <a href="https://stockpage.10jqka.com.cn/600406/" class="source-link" target="_blank">https://stockpage.10jqka.com.cn/600406/</a>
+                                                                                                              </div>
+                                                                                                              <div class="source-item">
+                                                                                                                <div class="source-date">2026年03月11日</div>
+                                                                                                                  <div>国电南瑞股价报30.80元，市盈率38.21倍，市净率5.03倍，估值合理，建议中长期关注</div>
+                                                                                                                    <a href="https://xueqiu.com/2994586302/378872538" class="source-link" target="_blank">https://xueqiu.com/2994586302/378872538</a>
+                                                                                                                    </div>
+                                                                                                                    <div class="source-item">
+                                                                                                                      <div class="source-date">2026年03月09日</div>
+                                                                                                                        <div>国电南瑞股价上涨5.26%至31.59元，总市值2537亿元，国泰基金ETF重仓持股</div>
+                                                                                                                          <a href="https://m.sohu.com/a/994115762_122014422/" class="source-link" target="_blank">https://m.sohu.com/a/994115762_122014422/</a>
+                                                                                                                          </div>
+                                                                                                                          <div class="source-item">
+                                                                                                                            <div class="source-date">2026年03月09日</div>
+                                                                                                                              <div>国电南瑞股价大涨5.03%至31.52元，创历史新高，市值2531.6亿元</div>
+                                                                                                                                <a href="http://m.toutiao.com/group/7615155667678085642/" class="source-link" target="_blank">http://m.toutiao.com/group/7615155667678085642/</a>
+                                                                                                                                </div>
+                                                                                                                                <div class="source-item">
+                                                                                                                                  <div class="source-date">2026年03月09日</div>
+                                                                                                                                    <div>国电南瑞股价大涨5.03%至31.52元，反映市场对公司新能源与智能电网业务看好</div>
+                                                                                                                                      <a href="https://www.stcn.com/article/detail/3667586.html" class="source-link" target="_blank">https://www.stcn.com/article/detail/3667586.html</a>
+                                                                                                                                      </div>
+                                                                                                                                      <div class="source-item">
+                                                                                                                                        <div class="source-date">2026年03月06日</div>
+                                                                                                                                          <div>国电南瑞股价涨4.03%至30.70元，创历史新高，两融余额25.69亿元，三季报业绩向好</div>
+                                                                                                                                            <a href="https://wap.stockstar.com/detail/IG2026030600015921/" class="source-link" target="_blank">https://wap.stockstar.com/detail/IG2026030600015921/</a>
+                                                                                                                                            </div>
+                                                                                                                                            <div class="source-item">
+                                                                                                                                              <div class="source-date">2026年03月06日</div>
+                                                                                                                                                <div>国电南瑞股价上涨4.03%，三季报营收385.77亿，净利48.55亿，两融余额增长</div>
+                                                                                                                                                  <a href="https://www.stcn.com/article/detail/3664430.html" class="source-link" target="_blank">https://www.stcn.com/article/detail/3664430.html</a>
+                                                                                                                                                  </div>
+                                                                                                                                                  <div class="source-item">
+                                                                                                                                                    <div class="source-date">2026年03月04日</div>
+                                                                                                                                                      <div>国电南瑞股价涨3.25%至28.60元，主力净流入4.28亿，2026年预测净利润86.3亿，PE约26.8倍</div>
+                                                                                                                                                        <a href="http://m.toutiao.com/group/7613387737252545051/" class="source-link" target="_blank">http://m.toutiao.com/group/7613387737252545051/</a>
+                                                                                                                                                        </div>
+                                                                                                                                                        <div class="source-item">
+                                                                                                                                                          <div class="source-date">2026年03月04日</div>
+                                                                                                                                                            <div>国电南瑞股价上涨3.25%，成交额居板块首位，基本面稳健，中长期配置价值突出</div>
+                                                                                                                                                              <a href="https://toutiao.com/group/7613387737252545051/" class="source-link" target="_blank">https://toutiao.com/group/7613387737252545051/</a>
+                                                                                                                                                              </div>
+                                                                                                                                                              <div class="source-item">
+                                                                                                                                                                <div class="source-date">2026年02月06日</div>
+                                                                                                                                                                  <div>国电南瑞股价25.21元，2025年前三季度营收385.77亿，净利48.55亿，政策利好电网投资</div>
+                                                                                                                                                                    <a href="https://toutiao.com/group/7603760177535386162/" class="source-link" target="_blank">https://toutiao.com/group/7603760177535386162/</a>
+                                                                                                                                                                    </div>
+                                                                                                                                                                    <div class="source-item">
+                                                                                                                                                                      <div class="source-date">2025年09月05日</div>
+                                                                                                                                                                        <div>国泰集团（603977）股价12.50元，震荡回升，52周区间8.93–15.35元（<em>注：非国电南瑞，老旧信息</em>）</div>
+                                                                                                                                                                          <a href="https://cn.investing.com/equities/jiangxi-guotai-industrial-explosive-historical-data" class="source-link" target="_blank">https://cn.investing.com/equities/jiangxi-guotai-industrial-explosive-historical-data</a>
+                                                                                                                                                                          </div>
+                                                                                                                                                                          <div class="source-item">
+                                                                                                                                                                            <div class="source-date">2025年07月29日</div>
+                                                                                                                                                                              <div>国电南瑞股价22.10元，大宗交易成交50万股，主力净流出1.37亿，融资余额降至18.48亿（<em>老旧信息</em>）</div>
+                                                                                                                                                                                <a href="https://www.stcn.com/article/detail/2811610.html" class="source-link" target="_blank">https://www.stcn.com/article/detail/2811610.html</a>
+                                                                                                                                                                                </div>
+                                                                                                                                                                                <div class="source-item">
+                                                                                                                                                                                  <div class="source-date">2025年07月29日</div>
+                                                                                                                                                                                    <div>国电南瑞股价22.10元，微跌0.18%，大宗交易成交价与收盘价持平（<em>老旧信息</em>）</div>
+                                                                                                                                                                                      <a href="http://m.163.com/dy/article/K5LPVPIB0519QIKK.html" class="source-link" target="_blank">http://m.163.com/dy/article/K5LPVPIB0519QIKK.html</a>
+                                                                                                                                                                                      </div>
+                                                                                                                                                                                      <div class="source-item">
+                                                                                                                                                                                        <div class="source-date">2026年01月18日</div>
+                                                                                                                                                                                          <div>国电南瑞股价29.91元，下跌2.57%，买盘承接弱，市盈率37.11倍（<em>老旧信息</em>）</div>
+                                                                                                                                                                                            <a href="https://wap.eastmoney.com/quote/stock/1.600406.html" class="source-link" target="_blank">https://wap.eastmoney.com/quote/stock/1.600406.html</a>
+                                                                                                                                                                                            </div>
+                                                                                                                                                                                            <div class="source-item">
+                                                                                                                                                                                              <div class="source-date">2026年03月06日</div>
+                                                                                                                                                                                                <div>国泰集团（603977）股价15.31元，业绩下滑，非国电南瑞相关（<em>老旧信息</em>）</div>
+                                                                                                                                                                                                  <a href="http://m.toutiao.com/group/7614041079519691274/" class="source-link" target="_blank">http://m.toutiao.com/group/7614041079519691274/</a>
+                                                                                                                                                                                                  </div>
+                                                                                                                                                                                                </div>
+                                                                                                                                                                                              </div>
+                                                                                                                                                                                            </body>
+                                                                                                                                                                                          </html>
+                                                                                                                                                                                          ```
