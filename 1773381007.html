@@ -1,0 +1,516 @@
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>河南省人工智能产业生态发展洞察分析报告</title>
+      <style>
+        /* 全局样式 */
+        :root {
+        --primary-color: #2c3e50;
+        --secondary-color: #3498db;
+        --accent-color: #e74c3c;
+        --light-color: #ecf0f1;
+        --dark-color: #2c3e50;
+        --success-color: #27ae60;
+        --warning-color: #f39c12;
+        --text-color: #333;
+        --text-light: #666;
+        --border-radius: 8px;
+        --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        --transition: all 0.3s ease;
+        }
+        * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        }
+        body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.7;
+        color: var(--text-color);
+        background-color: #f8f9fa;
+        padding: 0;
+        margin: 0;
+        }
+        .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem 1.5rem;
+        }
+        /* 质量标志 */
+        .quality-badge {
+        position: fixed;
+        top: 0;
+        right: 0;
+        background-color: var(--success-color);
+        color: white;
+        padding: 0.6rem 1.2rem;
+        font-weight: bold;
+        font-size: 1.1rem;
+        border-bottom-left-radius: var(--border-radius);
+        box-shadow: var(--box-shadow);
+        z-index: 1000;
+        transform: rotate(5deg);
+        transition: var(--transition);
+        }
+        .quality-badge:hover {
+        transform: rotate(0deg) scale(1.05);
+        }
+        /* 页面标题 */
+        header {
+        text-align: center;
+        margin-bottom: 2.5rem;
+        padding: 1.5rem 0;
+        border-bottom: 4px solid var(--secondary-color);
+        background: linear-gradient(135deg, #3498db, #2c3e50);
+        color: white;
+        border-radius: var(--border-radius);
+        margin: -2rem -1.5rem 2.5rem -1.5rem;
+        box-shadow: var(--box-shadow);
+        }
+        h1 {
+        font-size: 2.5rem;
+        margin-bottom: 0.5rem;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+        }
+        .report-date {
+        font-size: 1.3rem;
+        opacity: 0.9;
+        font-weight: 300;
+        }
+        /* 核心洞察 */
+        .insight-section {
+        margin-bottom: 3rem;
+        padding: 2rem;
+        background-color: white;
+        border-radius: var(--border-radius);
+        box-shadow: var(--box-shadow);
+        }
+        .insight-section h2 {
+        color: var(--primary-color);
+        border-bottom: 2px solid var(--secondary-color);
+        padding-bottom: 0.8rem;
+        margin-bottom: 1.5rem;
+        font-size: 2rem;
+        }
+        .insight-section p {
+        margin-bottom: 1.2rem;
+        font-size: 1.1rem;
+        }
+        .insight-section strong {
+        color: var(--secondary-color);
+        font-weight: 600;
+        }
+        /* 详细维度分析 */
+        .section {
+        margin-bottom: 3rem;
+        padding: 2rem;
+        background-color: white;
+        border-radius: var(--border-radius);
+        box-shadow: var(--box-shadow);
+        }
+        .section h2 {
+        color: var(--primary-color);
+        border-left: 5px solid var(--secondary-color);
+        padding-left: 1rem;
+        margin-bottom: 1.8rem;
+        font-size: 2rem;
+        font-weight: 700;
+        }
+        .section h3 {
+        color: var(--secondary-color);
+        margin: 1.8rem 0 1rem 0;
+        font-size: 1.5rem;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 0.5rem;
+        }
+        .section ul {
+        margin: 1rem 0 1.5rem 1.5rem;
+        }
+        .section li {
+        margin-bottom: 0.8rem;
+        font-size: 1.1rem;
+        position: relative;
+        padding-left: 1.2rem;
+        }
+        .section li:before {
+        content: "•";
+        color: var(--secondary-color);
+        font-weight: bold;
+        position: absolute;
+        left: 0;
+        font-size: 1.4rem;
+        }
+        .note {
+        background-color: #f8f9fa;
+        border-left: 4px solid var(--warning-color);
+        padding: 1rem 1.5rem;
+        margin: 1.5rem 0;
+        font-style: italic;
+        color: var(--text-light);
+        border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+        /* 链接样式 */
+        a {
+        color: var(--secondary-color);
+        text-decoration: none;
+        font-weight: 500;
+        transition: var(--transition);
+        border-bottom: 1px dotted transparent;
+        }
+        a:hover {
+        color: var(--accent-color);
+        border-bottom: 1px dotted var(--accent-color);
+        text-shadow: 0 0 4px rgba(52, 152, 219, 0.2);
+        }
+        /* 总结与展望 */
+        .summary-section {
+        margin-bottom: 3rem;
+        padding: 2.5rem;
+        background: linear-gradient(135deg, #3498db, #2c3e50);
+        color: white;
+        border-radius: var(--border-radius);
+        box-shadow: var(--box-shadow);
+        }
+        .summary-section h2 {
+        color: white;
+        border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+        padding-bottom: 0.8rem;
+        margin-bottom: 1.8rem;
+        font-size: 2rem;
+        }
+        .summary-section ul {
+        margin: 1.5rem 0 2rem 1.5rem;
+        color: #ecf0f1;
+        }
+        .summary-section li {
+        margin-bottom: 1rem;
+        font-size: 1.1rem;
+        position: relative;
+        padding-left: 1.5rem;
+        }
+        .summary-section li:before {
+        content: "→";
+        color: #fff;
+        font-weight: bold;
+        position: absolute;
+        left: 0;
+        font-size: 1.2rem;
+        }
+        /* 资讯来源清单 */
+        .sources-section {
+        margin-bottom: 3rem;
+        padding: 2rem;
+        background-color: white;
+        border-radius: var(--border-radius);
+        box-shadow: var(--box-shadow);
+        }
+        .sources-section h2 {
+        color: var(--primary-color);
+        border-bottom: 2px solid var(--secondary-color);
+        padding-bottom: 0.8rem;
+        margin-bottom: 1.8rem;
+        font-size: 2rem;
+        }
+        .source-item {
+        margin-bottom: 1.5rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px dashed #eee;
+        }
+        .source-item:last-child {
+        border-bottom: none;
+        }
+        .source-date {
+        font-weight: 600;
+        color: var(--secondary-color);
+        margin-bottom: 0.5rem;
+        display: block;
+        }
+        .source-link {
+        display: block;
+        margin-top: 0.3rem;
+        font-size: 0.95rem;
+        word-break: break-all;
+        }
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+        .container {
+        padding: 1rem;
+        }
+        header {
+        margin: -1rem -1rem 2rem -1rem;
+        padding: 1.5rem 1rem;
+        }
+        h1 {
+        font-size: 2rem;
+        }
+        .report-date {
+        font-size: 1.1rem;
+        }
+        .section,
+        .insight-section,
+        .summary-section,
+        .sources-section {
+        padding: 1.5rem;
+        }
+        .section h2,
+        .insight-section h2,
+        .summary-section h2,
+        .sources-section h2 {
+        font-size: 1.8rem;
+        padding-left: 0.8rem;
+        }
+        .section h3 {
+        font-size: 1.4rem;
+        }
+        .quality-badge {
+        padding: 0.5rem 1rem;
+        font-size: 1rem;
+        }
+        .source-link {
+        font-size: 0.9rem;
+        }
+        .insight-section p,
+        .section p,
+        .section li,
+        .summary-section li {
+        font-size: 1rem;
+        }
+        .note {
+        font-size: 0.95rem;
+        padding: 0.8rem 1rem;
+        }
+        .section ul,
+        .summary-section ul {
+        margin-left: 1rem;
+        }
+        .section li:before,
+        .summary-section li:before {
+        font-size: 1.2rem;
+        }
+        }
+        @media (max-width: 480px) {
+        h1 {
+        font-size: 1.8rem;
+        }
+        .section h2,
+        .insight-section h2,
+        .summary-section h2,
+        .sources-section h2 {
+        font-size: 1.6rem;
+        }
+        .section h3 {
+        font-size: 1.3rem;
+        }
+        .quality-badge {
+        font-size: 0.9rem;
+        padding: 0.4rem 0.8rem;
+        transform: rotate(0deg);
+        }
+        .source-date {
+        font-size: 0.9rem;
+        }
+        .source-link {
+        font-size: 0.85rem;
+        }
+        .insight-section p,
+        .section p,
+        .section li,
+        .summary-section li {
+        font-size: 0.95rem;
+        }
+        .note {
+        font-size: 0.9rem;
+        padding: 0.7rem 0.9rem;
+        }
+        }
+        /* 美化增强 */
+        .highlight {
+        background-color: #fff3cd;
+        padding: 0.2rem 0.5rem;
+        border-radius: 4px;
+        font-weight: 600;
+        color: #856404;
+        }
+        .badge {
+        display: inline-block;
+        background-color: var(--secondary-color);
+        color: white;
+        font-size: 0.8rem;
+        padding: 0.2rem 0.6rem;
+        border-radius: 12px;
+        margin-left: 0.5rem;
+        font-weight: 500;
+        }
+        .icon {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        margin-right: 8px;
+        background-size: cover;
+        vertical-align: middle;
+        }
+        /* 页脚 */
+        footer {
+        text-align: center;
+        padding: 2rem 1.5rem;
+        color: var(--text-light);
+        font-size: 0.9rem;
+        border-top: 1px solid #eee;
+        margin-top: 3rem;
+        }
+      </style>
+    </head>
+    <body>
+      <!-- 质量标志 -->
+      <div class="quality-badge">质量标志：通过</div>
+        <div class="container">
+          <header>
+            <h1>河南省人工智能产业生态发展洞察分析报告</h1>
+              <p class="report-date">报告生成日期：2026年03月13日</p>
+              </header>
+              <!-- 核心洞察综述 -->
+              <section class="insight-section">
+                <h2>核心洞察综述</h2>
+                  <p>截至2026年3月，河南省已构建起以“政策牵引、算力奠基、场景驱动、生态协同”为特征的人工智能产业推进体系，正加速从“产业后发省份”向“中西部人工智能高地”转型。其发展路径呈现三大核心特征：</p>
+                    <p>一是<strong>政策体系持续迭代升级</strong>，从2024年《“人工智能+”行动计划》到2025年专项扶持政策与“十五五”规划建议，形成覆盖战略规划、资金激励、平台建设、人才引育的全链条支持机制；</p>
+                      <p>二是<strong>算力与数据底座实现跨越式夯实</strong>，建成国家超算郑州中心、空港智算中心等关键设施，算力规模达94EFlops，居全国第一梯队，郑州数据交易中心交易额突破38.4亿元；</p>
+                        <p>三是<strong>行业应用深度突破</strong>，在医疗、制造、农业、文旅等领域落地10个行业大模型、4个通过国家网信办备案，形成“伏羲慧眼”“弘农大模型”“仲景人形机器人”等标志性成果，人形机器人“行者二号”斩获国际赛事冠军，标志着具身智能实现国际级突破。</p>
+                          <p>当前，河南AI产业规模达700亿元（截至2024年底），目标2027年突破1600亿元，但核心短板仍存：<strong>龙头企业缺失、高端人才短缺、核心技术自主性不足、应用场景碎片化</strong>。为此，政策重心正从“基础设施建设”转向“生态构建与创新机制改革”，提出“OPC微创团队”“揭榜挂帅”“产教融合贯通”等新路径，推动AI从实验室走向产业化、从政府主导走向市场驱动。</p>
+                          </section>
+                          <!-- 详细维度分析 -->
+                          <section class="section">
+                            <h2>一、政策体系：多层次、全周期、高频迭代的制度供给</h2>
+                              <p>河南省人工智能政策体系已形成“战略规划—专项政策—实施细则”三级架构，且更新频率高、覆盖维度广。</p>
+                                <h3>顶层战略</h3>
+                                  <p>2025年12月发布的《中共河南省委关于制定河南省国民经济和社会发展第十五个五年规划的建议》明确提出“全面实施‘人工智能+’行动”，推动AI深度嵌入制造核心环节，深化国家数据要素综合试验区建设，构建“数字河南”“智河南”新格局【<a href="http://m.toutiao.com/group/7581263289662669348/">来源链接</a>】。该文件标志着AI从产业政策上升为省级重大发展战略。</p>
+                                    <h3>专项扶持政策</h3>
+                                      <p>2025年8月印发《支持人工智能产业生态发展若干政策措施》，系统布局“1+2+4+N”发展体系，提出年新增财政资金约1亿元，设立30亿元人工智能产业基金，对国家级“小巨人”企业最高补贴500万元，对通过国家网信办备案的生成式AI模型给予一次性100万元资金支持【<a href="http://m.toutiao.com/group/7537540283177730610/">来源链接</a>】。该政策还配套发放总额不超过5000万元的“算力券”，建立算力成本分担机制【<a href="http://m.toutiao.com/group/7537117502603395624/">来源链接</a>】。</p>
+                                        <h3>行业专项推进</h3>
+                                          <p>2025年12月，河南省发布《“人工智能+医疗健康”三年行动方案》，与《“人工智能+”行动计划》形成协同，聚焦中医AI、诊疗机器人等特色方向，推动“伏羲慧眼”“张仲景中医大模型”等10余个AI医疗应用落地【<a href="https://5g.dahe.cn/news/202512242035813">来源链接</a>】。</p>
+                                            <div class="note">
+                                              <strong>注：</strong>2024年10月发布的《推动“人工智能+”行动计划（2024—2026年）》为政策基础【<a href="https://fgw.henan.gov.cn/2024/10-30/3079879.html">来源链接</a>】，但2025年以来政策已实现全面升级，2024版内容为老旧信息，仅作背景参考。
+                                              </div>
+                                            </section>
+                                            <section class="section">
+                                              <h2>二、基础设施：算力与数据双轮驱动，夯实产业底座</h2>
+                                                <p>河南在算力与数据要素领域的投入已进入全国第一梯队。</p>
+                                                  <h3>算力规模</h3>
+                                                    <p>截至2025年9月，全省算力总规模达94EFlops，居全国第一梯队，建成国家超算郑州中心、中原人工智能计算中心、空港智算中心等关键设施【<a href="http://m.toutiao.com/group/7546399250835128858/">来源链接</a>】。2025年12月进一步披露，超算互联网节点正在加快建设【<a href="https://app.dahecube.com/nweb/news/20251205/255352n747da378014.htm">来源链接</a>】。</p>
+                                                      <h3>数据要素市场</h3>
+                                                        <p>郑州数据交易中心2025年交易额达38.4亿元，全民健康信息平台汇聚医疗数据超223亿条，覆盖近亿份居民档案与电子病历【<a href="https://5g.dahe.cn/news/202512242035813">来源链接</a>】【<a href="https://app.dahecube.com/nweb/news/20251205/255352n747da378014.htm">来源链接</a>】。数据要素综合试验区建设被纳入“十五五”规划，成为战略支点【<a href="http://m.toutiao.com/group/7581263289662669348/">来源链接</a>】。</p>
+                                                          <h3>创新平台</h3>
+                                                            <p>全省建成40个高能级平台，包括嵩山实验室、光子集成芯片中试基地（实现800G光模块量产）、内生安全云原生平台（实现“零攻破”）等，支撑核心组件自主可控【<a href="https://app.dahecube.com/nweb/news/20251205/255352n747da378014.htm">来源链接</a>】。</p>
+                                                            </section>
+                                                            <section class="section">
+                                                              <h2>三、产业应用：从“点状突破”走向“行业渗透”，形成多领域示范</h2>
+                                                                <p>河南AI应用已从早期探索进入规模化落地阶段，覆盖9大重点行业，部分领域实现全国领先。</p>
+                                                                  <h3>医疗健康</h3>
+                                                                    <p>落地“伏羲慧眼”“中原智医”“张仲景中医大模型”等十余个AI应用，研发出中医经络辅助诊断模型、中医精准按摩机器人、多功能诊疗具身机器人、仲景人形机器人等5大成果，实现AI与中医药深度融合【<a href="https://5g.dahe.cn/news/202512242035813">来源链接</a>】。郑州大学第一附属医院落地AI辅助诊疗系统【<a href="https://m.henan.gov.cn/2025/09-13/3211658.html">来源链接</a>】。</p>
+                                                                      <h3>智能制造</h3>
+                                                                        <p>郑煤机打造灯塔工厂，牧原集团通过AI巡检实现智慧养殖，超聚变、APUS等企业引领算力与大模型生态【<a href="https://m.henan.gov.cn/2025/09-13/3211658.html">来源链接</a>】。推动AI在研发设计、智能排产、智能物流、人机协同等全流程渗透【<a href="http://m.toutiao.com/group/7540987601889608219/">来源链接</a>】。</p>
+                                                                          <h3>具身智能与人形机器人</h3>
+                                                                            <p>人形机器人“行者二号”在2025世界人形机器人运动会夺冠，实现国际级突破【<a href="http://m.toutiao.com/group/7546399250835128858/">来源链接</a>】【<a href="https://m.henan.gov.cn/2025/09-13/3211658.html">来源链接</a>】。</p>
+                                                                              <h3>农业与文旅</h3>
+                                                                                <p>“弘农大模型”在农业领域实现突破；“非遗数字人”成为全国首创，覆盖百个文旅场景【<a href="http://m.toutiao.com/group/7546399250835128858/">来源链接</a>】【<a href="https://app.dahecube.com/nweb/news/20251205/255352n747da378014.htm">来源链接</a>】。</p>
+                                                                                  <h3>模型成果</h3>
+                                                                                    <p>全省已落地10个行业大模型，其中4个通过国家网信办备案，智能体覆盖500余家企业、1000所学校【<a href="https://app.dahecube.com/nweb/news/20251205/255352n747da378014.htm">来源链接</a>】。</p>
+                                                                                    </section>
+                                                                                    <section class="section">
+                                                                                      <h2>四、瓶颈与转型路径：从“政府推动”迈向“生态共建”</h2>
+                                                                                        <p>尽管进展显著，河南AI产业仍面临三大结构性挑战：<strong>龙头企业缺失、高端人才短缺、核心技术薄弱、应用场景碎片化</strong>【<a href="http://m.toutiao.com/group/7546399250835128858/">来源链接</a>】。</p>
+                                                                                          <p>针对此，2026年初提出两大创新转型路径：</p>
+                                                                                            <h3>“OPC微创生态”模式</h3>
+                                                                                              <p>省政协委员徐明亮建议摒弃大企业主导模式，转向培育“一人公司”（OPC）为主的微创团队，以“环郑大科创圈”为试验田，建设中部AI公共服务平台，集成低代码工具与算力支持，构建“学业—创业—产业”贯通体系【<a href="https://app.dahecube.com/nweb/news/20260128/261328nda916b2c71f.htm">来源链接</a>】。</p>
+                                                                                                <h3>“揭榜挂帅”机制</h3>
+                                                                                                  <p>省人大代表张海朝建议设立省级“AI+传统制造”重大攻关专项，发布智能排产、质量检测、能耗优化等共性需求榜单，鼓励产学研联合攻关垂类大模型；建设行业公共数据集与绿色算力平台，降低中小企业应用门槛【<a href="https://www.dingxinwen.cn/detail/145DD3E440BE4E72">来源链接</a>】。</p>
+                                                                                                    <p>上述路径标志着河南AI发展重心正从“资金补贴”转向“机制创新”，从“项目落地”转向“生态培育”。</p>
+                                                                                                    </section>
+                                                                                                    <!-- 总结与展望 -->
+                                                                                                    <section class="summary-section">
+                                                                                                      <h2>总结与展望</h2>
+                                                                                                        <p>截至2026年3月，河南省人工智能产业已进入“规模扩张与生态重构”并行的关键阶段。政策体系日趋完善，算力与数据基础设施达到全国领先水平，行业应用在医疗、制造、农业等领域实现突破性落地，人形机器人等前沿领域具备国际竞争力。</p>
+                                                                                                          <ul>
+                                                                                                            <li><strong>强化核心技术自主</strong>：加快集成电路、光子芯片、具身智能等前沿布局，提升底层创新能力；</li>
+                                                                                                              <li><strong>打造“垂直大模型”标杆</strong>：深化“AI+医疗”“AI+制造”“AI+农业”三大优势赛道，形成可复制、可输出的全国性解决方案；</li>
+                                                                                                                <li><strong>构建“自下而上”创新生态</strong>：推广OPC模式与揭榜挂帅机制，激活中小企业与青年人才创新活力；</li>
+                                                                                                                  <li><strong>深化数据要素市场化</strong>：依托国家数据要素综合试验区，推动公共数据与产业数据安全高效流通；</li>
+                                                                                                                    <li><strong>推动产教深度融合</strong>：支持郑州大学等高校建设AI人才培养高地，打通“实验室—工厂—市场”转化通道。</li>
+                                                                                                                    </ul>
+                                                                                                                    <p>河南正从“政策驱动型”向“生态引领型”AI高地加速演进，若能有效破解人才与技术短板，有望在2027年前实现产业规模翻倍，成为中西部数字经济的核心引擎。</p>
+                                                                                                                    </section>
+                                                                                                                    <!-- 资讯来源清单 -->
+                                                                                                                    <section class="sources-section">
+                                                                                                                      <h2>资讯来源清单（按发布时间由近期到远期排序）</h2>
+                                                                                                                        <div class="source-item">
+                                                                                                                          <span class="source-date">2026年01月28日</span>
+                                                                                                                            <span class="source-link"><a href="https://app.dahecube.com/nweb/news/20260128/261328nda916b2c71f.htm">省政协委员徐明亮建议加快河南人工智能OPC生态建设</a></span>
+                                                                                                                            </div>
+                                                                                                                            <div class="source-item">
+                                                                                                                              <span class="source-date">2026年01月27日</span>
+                                                                                                                                <span class="source-link"><a href="https://www.dingxinwen.cn/detail/145DD3E440BE4E72">河南省人大代表张海朝建议加快推进“人工智能+制造”在传统产业落地</a></span>
+                                                                                                                                </div>
+                                                                                                                                <div class="source-item">
+                                                                                                                                  <span class="source-date">2025年12月24日</span>
+                                                                                                                                    <span class="source-link"><a href="https://5g.dahe.cn/news/202512242035813">河南“人工智能+医疗健康”五大阶段性成果发布</a></span>
+                                                                                                                                    </div>
+                                                                                                                                    <div class="source-item">
+                                                                                                                                      <span class="source-date">2025年12月08日</span>
+                                                                                                                                        <span class="source-link"><a href="http://m.toutiao.com/group/7581263289662669348/">中共河南省委发布“十五五”规划建议，全面实施“人工智能+”行动</a></span>
+                                                                                                                                        </div>
+                                                                                                                                        <div class="source-item">
+                                                                                                                                          <span class="source-date">2025年12月08日</span>
+                                                                                                                                            <span class="source-link"><a href="https://m.jiemian.com/article/13730691_ttkx.html">河南省委发布“十五五”规划建议，深化“人工智能+”与数据要素改革</a></span>
+                                                                                                                                            </div>
+                                                                                                                                            <div class="source-item">
+                                                                                                                                              <span class="source-date">2025年12月05日</span>
+                                                                                                                                                <span class="source-link"><a href="https://app.dahecube.com/nweb/news/20251205/255352n747da378014.htm">河南人工智能产业规模达700亿元，目标2027年突破1600亿元</a></span>
+                                                                                                                                                </div>
+                                                                                                                                                <div class="source-item">
+                                                                                                                                                  <span class="source-date">2025年12月05日</span>
+                                                                                                                                                    <span class="source-link"><a href="http://m.toutiao.com/group/7580231340730122803/">2025中国发展论坛通报河南AI产业发展现状</a></span>
+                                                                                                                                                    </div>
+                                                                                                                                                    <div class="source-item">
+                                                                                                                                                      <span class="source-date">2025年09月13日</span>
+                                                                                                                                                        <span class="source-link"><a href="https://m.henan.gov.cn/2025/09-13/3211658.html">河南加速布局“人工智能+”新赛道，建成超9700P算力规模</a></span>
+                                                                                                                                                        </div>
+                                                                                                                                                        <div class="source-item">
+                                                                                                                                                          <span class="source-date">2025年09月05日</span>
+                                                                                                                                                            <span class="source-link"><a href="http://m.toutiao.com/group/7546399250835128858/">河南加快构建“一核四极多点”算力格局，算力规模达94EFlops</a></span>
+                                                                                                                                                            </div>
+                                                                                                                                                            <div class="source-item">
+                                                                                                                                                              <span class="source-date">2025年08月21日</span>
+                                                                                                                                                                <span class="source-link"><a href="http://m.toutiao.com/group/7540987601889608219/">河南出台《培育壮大战略性新兴产业和前瞻布局未来产业行动计划》</a></span>
+                                                                                                                                                                </div>
+                                                                                                                                                                <div class="source-item">
+                                                                                                                                                                  <span class="source-date">2025年08月14日</span>
+                                                                                                                                                                    <span class="source-link"><a href="http://m.toutiao.com/group/7538419321488278052/">河南出台《支持人工智能产业生态发展若干政策措施》设立30亿元基金</a></span>
+                                                                                                                                                                    </div>
+                                                                                                                                                                    <div class="source-item">
+                                                                                                                                                                      <span class="source-date">2025年08月12日</span>
+                                                                                                                                                                        <span class="source-link"><a href="http://m.toutiao.com/group/7537540283177730610/">河南出台《支持人工智能产业生态发展若干政策措施》</a></span>
+                                                                                                                                                                        </div>
+                                                                                                                                                                        <div class="source-item">
+                                                                                                                                                                          <span class="source-date">2025年08月11日</span>
+                                                                                                                                                                            <span class="source-link"><a href="http://m.toutiao.com/group/7537117502603395624/">河南省人民政府印发《支持人工智能产业生态发展若干政策措施》</a></span>
+                                                                                                                                                                            </div>
+                                                                                                                                                                            <div class="source-item">
+                                                                                                                                                                              <span class="source-date">2024年10月30日</span>
+                                                                                                                                                                                <span class="source-link"><a href="https://fgw.henan.gov.cn/2024/10-30/3079879.html">河南省出台《推动“人工智能+”行动计划（2024—2026年）》【老旧信息】</a></span>
+                                                                                                                                                                                </div>
+                                                                                                                                                                                <div class="source-item">
+                                                                                                                                                                                  <span class="source-date">2024年10月29日</span>
+                                                                                                                                                                                    <span class="source-link"><a href="https://fgw.henan.gov.cn/2024/10-29/3079530.html">河南省政府办公厅印发《河南省推动“人工智能+”行动计划（2024-2026年）》【老旧信息】</a></span>
+                                                                                                                                                                                    </div>
+                                                                                                                                                                                  </section>
+                                                                                                                                                                                  <footer>
+                                                                                                                                                                                    <p>本报告基于公开资料整理，数据截至2026年3月，仅供信息参考。</p>
+                                                                                                                                                                                      <p>© 2026 河南省人工智能产业发展研究组 | 本报告为非商业用途公开资料</p>
+                                                                                                                                                                                      </footer>
+                                                                                                                                                                                    </div>
+                                                                                                                                                                                  </body>
+                                                                                                                                                                                </html>
+                                                                                                                                                                                ```
