@@ -1,0 +1,260 @@
+你好！我是专业的HTML5和CSS开发人员。根据你提供的洞察分析报告内容，我为你设计了一个美观、专业且完全响应式的单页HTML应用。
+该页面采用了现代化的卡片式布局，针对“素材为空”的特殊情况进行了专门的视觉设计（使用警告色和空状态提示），并严格遵循了你对响应式、移动端优化和质量标志显示的要求。
+以下是完整的HTML5代码：
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>2026年03月26日洞察分析报告</title>
+      <style>
+        /* 全局变量定义：颜色方案 */
+        :root {
+        --primary-color: #2563eb;       /* 主色调：专业蓝 */
+        --primary-light: #eff6ff;       /* 浅蓝背景 */
+        --text-main: #1f2937;           /* 主要文字颜色 */
+        --text-secondary: #4b5563;      /* 次要文字颜色 */
+        --bg-body: #f3f4f6;             /* 页面背景色 */
+        --bg-card: #ffffff;             /* 卡片背景色 */
+        --border-color: #e5e7eb;        /* 边框颜色 */
+        --warning-color: #d97706;       /* 警告/不完整状态颜色 */
+        --warning-bg: #fffbeb;          /* 警告背景色 */
+        --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+        --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        --radius: 12px;                 /* 圆角大小 */
+        }
+        /* 基础重置 */
+        * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        }
+        body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+        background-color: var(--bg-body);
+        color: var(--text-main);
+        line-height: 1.6;
+        font-size: 16px;
+        -webkit-font-smoothing: antialiased;
+        padding-bottom: 40px;
+        }
+        /* 布局容器 */
+        .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 0 1rem;
+        }
+        /* 头部设计 */
+        header {
+        background-color: var(--bg-card);
+        padding: 1.5rem 0;
+        margin-bottom: 1.5rem;
+        box-shadow: var(--shadow-sm);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        }
+        .header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        gap: 1rem;
+        }
+        h1 {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: var(--text-main);
+        line-height: 1.3;
+        flex: 1;
+        min-width: 200px;
+        }
+        /* 质量标志徽章 - 右上角显眼位置 */
+        .quality-badge {
+        display: inline-flex;
+        align-items: center;
+        background-color: var(--warning-bg);
+        color: var(--warning-color);
+        border: 1px solid #fcd34d;
+        padding: 0.35rem 0.75rem;
+        border-radius: 9999px;
+        font-size: 0.875rem;
+        font-weight: 600;
+        white-space: nowrap;
+        box-shadow: var(--shadow-sm);
+        }
+        .quality-badge::before {
+        content: "⚠️";
+        margin-right: 0.4rem;
+        font-size: 1rem;
+        }
+        /* 通用卡片样式 */
+        .card {
+        background-color: var(--bg-card);
+        border-radius: var(--radius);
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+        box-shadow: var(--shadow-md);
+        border: 1px solid var(--border-color);
+        }
+        .card h2 {
+        font-size: 1.125rem;
+        font-weight: 600;
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid var(--primary-light);
+        display: flex;
+        align-items: center;
+        }
+        .card h2::before {
+        content: "";
+        display: inline-block;
+        width: 4px;
+        height: 1.2em;
+        background-color: var(--primary-color);
+        margin-right: 0.75rem;
+        border-radius: 2px;
+        }
+        p {
+        margin-bottom: 1rem;
+        color: var(--text-secondary);
+        }
+        /* 强调文字 */
+        strong {
+        color: var(--text-main);
+        font-weight: 600;
+        }
+        /* 空状态/警告提示框样式 */
+        .empty-state {
+        text-align: center;
+        padding: 2rem 1rem;
+        background-color: #f9fafb;
+        border-radius: 8px;
+        border: 1px dashed var(--border-color);
+        }
+        .empty-icon {
+        font-size: 2.5rem;
+        margin-bottom: 0.5rem;
+        display: block;
+        }
+        .empty-text {
+        color: var(--text-secondary);
+        font-style: italic;
+        }
+        /* 重要提示区域 */
+        .important-notice {
+        background: linear-gradient(to right, #fffbeb, #ffffff);
+        border-left: 4px solid var(--warning-color);
+        padding: 1.25rem;
+        border-radius: 4px;
+        margin-top: 2rem;
+        }
+        .important-notice h3 {
+        color: var(--warning-color);
+        font-size: 1rem;
+        margin-bottom: 0.5rem;
+        display: flex;
+        align-items: center;
+        }
+        /* 底部 */
+        footer {
+        text-align: center;
+        font-size: 0.875rem;
+        color: #9ca3af;
+        margin-top: 3rem;
+        border-top: 1px solid var(--border-color);
+        padding-top: 1.5rem;
+        }
+        /* 链接样式 */
+        a {
+        color: var(--primary-color);
+        text-decoration: none;
+        transition: color 0.2s;
+        }
+        a:hover {
+        color: #1d4ed8;
+        text-decoration: underline;
+        }
+        /* 响应式设计：移动端优化 */
+        @media (max-width: 600px) {
+        h1 {
+        font-size: 1.1rem;
+        }
+        .header-content {
+        flex-direction: column;
+        align-items: flex-start; /* 移动端靠左对齐，或者保持flex-start让徽章在标题下方 */
+        }
+        /* 如果希望移动端徽章依然在右上角，可以使用绝对定位，但通常放在标题下方更易读 */
+        /* 这里选择放在标题下方，符合移动端垂直流 */
+        .quality-badge {
+        align-self: flex-start;
+        margin-top: 0.5rem;
+        }
+        .card {
+        padding: 1.25rem;
+        }
+        .card h2 {
+        font-size: 1rem;
+        }
+        /* 确保触摸目标足够大 */
+        .empty-state {
+        padding: 1.5rem 1rem;
+        }
+        }
+      </style>
+    </head>
+    <body>
+      <!-- 顶部导航与标题 -->
+      <header>
+        <div class="container header-content">
+          <h1>2026年03月26日洞察分析报告：无素材内容分析说明</h1>
+            <!-- 质量标志：显眼位置 -->
+            <div class="quality-badge">质量标志：不完整（因素材为空导致无法完成分析）</div>
+            </div>
+          </header>
+          <main class="container">
+            <!-- 一、核心洞察综述 -->
+            <section class="card">
+              <h2>一、核心洞察综述</h2>
+                <div class="empty-state">
+                  <span class="empty-icon">📂</span>
+                    <p class="empty-text"><strong>说明：</strong> 本次分析任务依赖用户提供的素材，但当前素材内容为空列表[]，无法提取任何有效信息，因此无法形成具体的洞察分析结论。请补充有效的素材内容后再次提交需求。</p>
+                    </div>
+                  </section>
+                  <!-- 二、详细维度分析 -->
+                  <section class="card">
+                    <h2>二、详细维度分析</h2>
+                      <div class="empty-state">
+                        <span class="empty-icon">📊</span>
+                          <p class="empty-text">（因素材为空，无数据支撑，无法进行维度分析）</p>
+                          </div>
+                        </section>
+                        <!-- 三、总结与展望 -->
+                        <section class="card">
+                          <h2>三、总结与展望</h2>
+                            <p><strong>说明：</strong> 由于缺少原始素材，无法开展信息交叉验证、溯源引用及结构化分析等工作。需用户提供包含具体内容、来源链接和发布日期的素材，以便生成符合要求的深度洞察报告。</p>
+                            </section>
+                            <!-- 四、资讯标题与链接列表 -->
+                            <section class="card">
+                              <h2>四、资讯标题与链接列表</h2>
+                                <div class="empty-state">
+                                  <span class="empty-icon">🔗</span>
+                                    <p class="empty-text">（因无素材内容，无相关资讯标题及链接）</p>
+                                    </div>
+                                  </section>
+                                  <!-- 重要提示 -->
+                                  <div class="important-notice">
+                                    <h3>💡 重要提示</h3>
+                                      <p style="margin-bottom: 0;">请补充具体素材内容（如新闻报道链接、行业数据、政策文件等），并确保包含发布日期和来源URL，以便进行信息验证与分析输出。</p>
+                                      </div>
+                                    </main>
+                                    <footer>
+                                      <div class="container">
+                                        <p>报告生成日期：2026年03月26日</p>
+                                        </div>
+                                      </footer>
+                                    </body>
+                                  </html>
+                                  ```
