@@ -1,0 +1,342 @@
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>国泰恒生A股电网设备ETF（561380）及重仓股国电南瑞近期市场表现分析报告</title>
+      <style>
+        /* --- 全局变量与重置 --- */
+        :root {
+        --primary-color: #0056b3; /* 专业深蓝 */
+        --accent-color: #007bff; /* 亮蓝 */
+        --bg-color: #f4f7f9; /* 浅灰背景 */
+        --card-bg: #ffffff;
+        --text-main: #333333;
+        --text-secondary: #666666;
+        --border-color: #e1e4e8;
+        /* 股市颜色 (A股习惯：红涨绿跌) */
+        --stock-up: #d93025;
+        --stock-down: #1a8c4c;
+        --spacing-unit: 1rem;
+        --radius: 8px;
+        --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+        * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        }
+        body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+        background-color: var(--bg-color);
+        color: var(--text-main);
+        line-height: 1.6;
+        font-size: 16px;
+        -webkit-font-smoothing: antialiased;
+        }
+        a {
+        text-decoration: none;
+        color: var(--accent-color);
+        transition: color 0.2s ease;
+        }
+        a:hover {
+        color: var(--primary-color);
+        text-decoration: underline;
+        }
+        /* --- 布局容器 --- */
+        .container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 20px;
+        }
+        /* --- 头部区域 --- */
+        header {
+        background-color: var(--card-bg);
+        padding: 2rem;
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        margin-bottom: 2rem;
+        position: relative;
+        border-top: 4px solid var(--primary-color);
+        }
+        .header-content h1 {
+        font-size: 1.5rem;
+        color: var(--text-main);
+        margin-bottom: 0.5rem;
+        line-height: 1.4;
+        }
+        .report-date {
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+        font-weight: 500;
+        }
+        /* 质量标志 */
+        .quality-badge {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background-color: #e6f4ea;
+        color: #1e7e34;
+        border: 1px solid #c3e6cb;
+        padding: 6px 12px;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        }
+        .quality-badge::before {
+        content: '✓';
+        font-weight: 900;
+        }
+        /* --- 核心洞察 --- */
+        .section-card {
+        background: var(--card-bg);
+        padding: 1.5rem;
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        margin-bottom: 1.5rem;
+        }
+        .section-title {
+        font-size: 1.25rem;
+        color: var(--primary-color);
+        border-left: 4px solid var(--accent-color);
+        padding-left: 12px;
+        margin-bottom: 1.2rem;
+        font-weight: 700;
+        }
+        .insight-text {
+        background-color: #f8faff;
+        border-left: 4px solid #8ab4f8;
+        padding: 1rem;
+        border-radius: 4px;
+        color: #2c3e50;
+        font-weight: 500;
+        }
+        /* --- 详细分析 --- */
+        .analysis-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        }
+        .sub-section h3 {
+        font-size: 1.1rem;
+        margin-bottom: 1rem;
+        color: #444;
+        border-bottom: 1px solid var(--border-color);
+        padding-bottom: 0.5rem;
+        }
+        .data-point {
+        margin-bottom: 1.2rem;
+        padding-bottom: 1.2rem;
+        border-bottom: 1px dashed var(--border-color);
+        }
+        .data-point:last-child {
+        border-bottom: none;
+        }
+        .data-date {
+        font-weight: bold;
+        color: var(--text-main);
+        display: block;
+        margin-bottom: 0.3rem;
+        }
+        .data-desc {
+        font-size: 0.95rem;
+        color: var(--text-secondary);
+        margin-bottom: 0.5rem;
+        }
+        .source-link {
+        display: inline-flex;
+        align-items: center;
+        font-size: 0.85rem;
+        padding: 4px 8px;
+        background-color: #f0f2f5;
+        border-radius: 4px;
+        color: var(--primary-color);
+        margin-top: 4px;
+        }
+        .source-link:hover {
+        background-color: #e1e4e8;
+        text-decoration: none;
+        }
+        .source-link::before {
+        content: "🔗 ";
+        margin-right: 4px;
+        }
+        /* --- 资讯列表 --- */
+        .news-list {
+        list-style: none;
+        }
+        .news-item {
+        display: flex;
+        flex-direction: column;
+        padding: 1rem 0;
+        border-bottom: 1px solid var(--border-color);
+        gap: 0.5rem;
+        }
+        .news-meta {
+        font-size: 0.85rem;
+        color: var(--text-secondary);
+        font-weight: 600;
+        background: #eee;
+        align-self: flex-start;
+        padding: 2px 8px;
+        border-radius: 4px;
+        }
+        .news-content {
+        font-size: 0.95rem;
+        }
+        /* --- 辅助类 --- */
+        .trend-up { color: var(--stock-up); font-weight: bold; }
+        .trend-down { color: var(--stock-down); font-weight: bold; }
+        .highlight { background-color: #fff3cd; padding: 0 2px; border-radius: 2px; }
+        /* --- 响应式设计 --- */
+        @media (min-width: 768px) {
+        .header-content h1 {
+        font-size: 1.8rem;
+        }
+        .analysis-grid {
+        grid-template-columns: repeat(2, 1fr);
+        }
+        /* 让行业背景跨两列 */
+        .full-width {
+        grid-column: span 2;
+        }
+        .news-item {
+        flex-direction: row;
+        align-items: baseline;
+        }
+        .news-meta {
+        min-width: 140px;
+        }
+        }
+        @media (max-width: 767px) {
+        .container {
+        padding: 15px;
+        }
+        header {
+        padding: 1.5rem;
+        }
+        .quality-badge {
+        position: static;
+        margin-top: 1rem;
+        align-self: flex-start;
+        }
+        }
+      </style>
+    </head>
+    <body>
+      <div class="container">
+        <!-- 头部 -->
+        <header>
+          <div class="header-content">
+            <h1>国泰恒生A股电网设备ETF（561380）及重仓股国电南瑞近期市场表现分析报告</h1>
+              <div class="report-date">2026年03月28日</div>
+              </div>
+              <div class="quality-badge">质量标志：通过</div>
+              </header>
+              <main>
+                <!-- 核心洞察 -->
+                <section class="section-card">
+                  <h2 class="section-title">核心洞察综述</h2>
+                    <div class="insight-text">
+                      <p>国泰恒生A股电网设备ETF（561380）近期表现波动显著，受行业资金流动及大盘情绪影响，近一个月累计下跌<span class="trend-down">6.30%</span>，但长期规模增长与业绩稳健。其重仓股国电南瑞（SH600406）作为行业龙头，股价受短期资金流出、技术调整影响震荡回落，但长期受益于国家电网“十五五”投资规划及智能电网战略，基本面支撑明确。当前市场对其估值与短期走势存在分歧，投资者需关注政策落地与资金流向变化。</p>
+                      </div>
+                    </section>
+                    <!-- 详细维度分析 -->
+                    <section class="section-card">
+                      <h2 class="section-title">详细维度分析</h2>
+                        <div class="analysis-grid">
+                          <!-- ETF 表现 -->
+                          <div class="sub-section">
+                            <h3>一、国泰恒生A股电网设备ETF（561380）表现</h3>
+                              <div class="data-point">
+                                <span class="data-date">3月27日</span>
+                                  <p class="data-desc">开盘下跌<span class="trend-down">2.25%</span>，十大重仓股全线低开，亨通光电、中天科技、精达股份跌幅居前，近一个月回报<span class="trend-down">-6.30%</span>，自成立以来累计回报<span class="trend-up">99.85%</span>。</p>
+                                    <a href="https://m.sohu.com/a/1001710360_122014422/" target="_blank" class="source-link">2026年3月27日资讯</a>
+                                    </div>
+                                    <div class="data-point">
+                                      <span class="data-date">3月26日午盘</span>
+                                        <p class="data-desc">下跌<span class="trend-down">1.12%</span>，成交额1.20亿元，重仓股多数下跌，东方电缆跌幅<span class="trend-down">3.86%</span>，近一个月回报<span class="trend-down">-1.31%</span>，成立以来累计回报<span class="trend-up">104.23%</span>。</p>
+                                          <a href="https://cj.sina.cn/articles/view/5952915720/162d2490806703k8a0" target="_blank" class="source-link">2026年3月26日资讯</a>
+                                          </div>
+                                          <div class="data-point">
+                                            <span class="data-date">3月24日</span>
+                                              <p class="data-desc">收盘上涨<span class="trend-up">2.32%</span>，当日成交额2.18亿元，截至3月23日规模达55.37亿元，较2025年末增长<span class="highlight">903%</span>，今年以来日均成交额2.48亿元，基金经理吴中昊任职回报<span class="trend-up">99.24%</span>。</p>
+                                                <a href="https://m.sohu.com/a/1000511189_122014422/" target="_blank" class="source-link">2026年3月24日资讯</a>
+                                                </div>
+                                                <div class="data-point">
+                                                  <span class="data-date">规模与流动性</span>
+                                                    <p class="data-desc">该基金规模增长显著，截至3月23日最新规模55.37亿元，流动性良好，日均成交额稳定在2.48亿元，机构持有占比或较高（推测）。</p>
+                                                    </div>
+                                                  </div>
+                                                  <!-- 重仓股国电南瑞表现 -->
+                                                  <div class="sub-section">
+                                                    <h3>二、ETF重仓股国电南瑞（SH600406）表现</h3>
+                                                      <div class="data-point">
+                                                        <span class="data-date">3月27日</span>
+                                                          <p class="data-desc">收盘微涨<span class="trend-up">0.52%</span>，报27.13元，推测受电网设备行业整体利好驱动。</p>
+                                                            <a href="https://toutiao.com/group/7622115238883705390/" target="_blank" class="source-link">2026年3月28日资讯</a>
+                                                            </div>
+                                                            <div class="data-point">
+                                                              <span class="data-date">3月26日</span>
+                                                                <p class="data-desc">当日下跌<span class="trend-down">1.93%</span>（受电力物联网板块整体下跌及主力资金净流出影响），股价报27.06元，总市值约2173亿元，动态市盈率33.57倍。</p>
+                                                                  <div style="margin-top:4px;">
+                                                                    <a href="https://stockpage.10jqka.com.cn/600406/" target="_blank" class="source-link">同花顺数据</a>
+                                                                      <a href="https://toutiao.com/group/7621560295554695690/" target="_blank" class="source-link">今日头条资讯</a>
+                                                                      </div>
+                                                                    </div>
+                                                                    <div class="data-point">
+                                                                      <span class="data-date">3月17日</span>
+                                                                        <p class="data-desc">下跌<span class="trend-down">2.16%</span>收28.08元，技术面位于多条均线下方，MACD指标偏弱，资金面近一个月主力净流出。</p>
+                                                                          <a href="https://toutiao.com/group/7618131268777574962/" target="_blank" class="source-link">2026年3月17日资讯</a>
+                                                                          </div>
+                                                                          <div class="data-point">
+                                                                            <span class="data-date">历史高点</span>
+                                                                              <p class="data-desc">3月9日大涨<span class="trend-up">5.03%</span>，收盘价31.52元，创历史新高，总市值2531.6亿元。</p>
+                                                                                <a href="https://www.stcn.com/article/detail/3667586.html" target="_blank" class="source-link">2026年3月9日资讯</a>
+                                                                                </div>
+                                                                                <div class="data-point">
+                                                                                  <span class="data-date">基本面 (2025年前三季度)</span>
+                                                                                    <p class="data-desc">营收385.77亿元（同比<span class="trend-up">+18.45%</span>），净利润48.55亿元（同比<span class="trend-up">+8.43%</span>），毛利率有所下滑。</p>
+                                                                                      <a href="https://www.stcn.com/article/detail/3664430.html" target="_blank" class="source-link">2026年3月6日资讯</a>
+                                                                                      </div>
+                                                                                    </div>
+                                                                                    <!-- 行业背景 -->
+                                                                                    <div class="sub-section full-width">
+                                                                                      <h3>三、行业背景与长期驱动因素</h3>
+                                                                                        <p class="data-desc" style="margin-bottom: 1rem;">
+                                                                                          <strong>政策支撑：</strong>国家电网“十五五”计划投资约4万亿元，特高压与智能电网建设需求明确，国电南瑞作为行业龙头直接受益。
+                                                                                            <a href="https://toutiao.com/group/7622115238883705390/" target="_blank" class="source-link">查看详情</a>
+                                                                                            </p>
+                                                                                            <p class="data-desc">
+                                                                                              <strong>短期波动原因：</strong>市场避险情绪、资金流出、技术面调整导致短期调整，但长期发展具备基本面支撑（营收利润稳健增长、订单充沛）。
+                                                                                                <a href="https://toutiao.com/group/7621560295554695690/" target="_blank" class="source-link">查看详情</a>
+                                                                                                </p>
+                                                                                              </div>
+                                                                                            </div>
+                                                                                          </section>
+                                                                                          <!-- 总结与展望 -->
+                                                                                          <section class="section-card">
+                                                                                            <h2 class="section-title">总结与展望</h2>
+                                                                                              <p class="data-desc">
+                                                                                                国泰恒生A股电网设备ETF（561380）短期受资金流出与行业估值调整影响，表现波动较大，但规模增长显著、流动性良好，长期受益于电网投资加大。其重仓股国电南瑞作为行业龙头，基本面稳健、技术壁垒高，长期受政策红利支撑，但短期需关注资金流向与市场情绪变化。投资者应结合国家电网“十五五”投资落地进度及公司业绩兑现情况，理性评估短期波动与长期价值。
+                                                                                              </p>
+                                                                                            </section>
+                                                                                            // 资讯列表
+                                                                                            <section class="section-card">
+                                                                                              <h2 class="section-title">资讯列表（按发布时间从近到远排序）</h2>
+                                                                                                <ul class="news-list">
+                                                                                                  <li class="news-item">
+                                                                                                    <span class="news-meta">2026年03月28日</span>
+                                                                                                      <span class="news-content">国电南瑞3月27日股价上涨0.52%，受益于国家电网“十五五”投资规划及行业利好，长期投资价值受政策支撑，短期需关注资金流向 <a href="https://toutiao.com/group/7622115238883705390/" target="_blank" class="source-link">来源</a></span>
+                                                                                                      </li>
+                                                                                                      <li class="news-item">
+                                                                                                        <span class="news-meta">2026年03月27日</span>
+                                                                                                          <span class="news-content">国泰电网设备ETF下跌2.25%，十大重仓股全线低开，近一个月回报-6.30%，成立以来累计回报99.85% <a href="https://m.sohu.com/a/1001710360_122014422/" target="_blank" class="source-link">来源</a></span>
+                                                                                                          </li>
+                                                                                                          <li class="news-item">
+                                                                                                            <span class="news-meta">2026年03月27日</span>
+                                                                                                              <span class="news-content">国电南瑞（SH600406）3月27日收盘报
