@@ -1,0 +1,343 @@
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>2026年“算电协同”战略纵深发展报告</title>
+      <style>
+        /* --- CSS Reset & Variables --- */
+        :root {
+        --primary-color: #1a365d; /* 深蓝：代表科技、稳重 */
+        --secondary-color: #2c7a7b; /* 青色：代表绿色能源 */
+        --accent-color: #dd6b20; /* 橙色：重点强调 */
+        --bg-color: #f7fafc;
+        --card-bg: #ffffff;
+        --text-main: #2d3748;
+        --text-light: #718096;
+        --border-color: #e2e8f0;
+        --spacing-sm: 0.5rem;
+        --spacing-md: 1rem;
+        --spacing-lg: 2rem;
+        --radius: 8px;
+        --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        }
+        body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        line-height: 1.6;
+        color: var(--text-main);
+        background-color: var(--bg-color);
+        font-size: 16px;
+        padding-bottom: 40px;
+        }
+        /* --- Layout & Container --- */
+        .container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 0 var(--spacing-md);
+        }
+        /* --- Header --- */
+        header {
+        background: linear-gradient(135deg, var(--primary-color), #2a4365);
+        color: white;
+        padding: var(--spacing-lg) 0;
+        text-align: center;
+        margin-bottom: var(--spacing-lg);
+        box-shadow: var(--shadow);
+        }
+        h1 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: var(--spacing-sm);
+        line-height: 1.3;
+        }
+        .report-date {
+        font-size: 0.875rem;
+        opacity: 0.8;
+        background: rgba(255,255,255,0.1);
+        display: inline-block;
+        padding: 2px 10px;
+        border-radius: 20px;
+        }
+        /* --- Quality Flag --- */
+        .quality-flag {
+        position: fixed;
+        top: 1rem;
+        right: 1rem;
+        background-color: #38a169; /* Green */
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 50px;
+        font-size: 0.875rem;
+        font-weight: bold;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        z-index: 1000;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        }
+        /* --- Navigation --- */
+        nav {
+        position: sticky;
+        top: 0;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid var(--border-color);
+        z-index: 100;
+        margin-bottom: var(--spacing-lg);
+        overflow-x: auto;
+        white-space: nowrap;
+        padding: var(--spacing-sm) 0;
+        -webkit-overflow-scrolling: touch; /* Smooth scroll on iOS */
+        box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        nav .container {
+        display: flex;
+        gap: var(--spacing-sm);
+        }
+        nav a {
+        text-decoration: none;
+        color: var(--text-main);
+        font-size: 0.9rem;
+        padding: 0.5rem 1rem;
+        border-radius: var(--radius);
+        background: #edf2f7;
+        transition: all 0.2s;
+        flex-shrink: 0;
+        }
+        nav a:hover, nav a.active {
+        background: var(--primary-color);
+        color: white;
+        }
+        /* --- Sections & Cards --- */
+        section {
+        background: var(--card-bg);
+        border-radius: var(--radius);
+        padding: var(--spacing-lg);
+        margin-bottom: var(--spacing-lg);
+        box-shadow: var(--shadow);
+        scroll-margin-top: 80px; /* Offset for sticky nav */
+        }
+        h2 {
+        font-size: 1.25rem;
+        color: var(--primary-color);
+        border-left: 4px solid var(--secondary-color);
+        padding-left: var(--spacing-md);
+        margin-bottom: var(--spacing-md);
+        }
+        h3 {
+        font-size: 1.1rem;
+        color: var(--text-main);
+        margin-top: var(--spacing-lg);
+        margin-bottom: var(--spacing-sm);
+        font-weight: 600;
+        }
+        p {
+        margin-bottom: var(--spacing-md);
+        text-align: justify;
+        }
+        ul, ol {
+        padding-left: 1.5rem;
+        margin-bottom: var(--spacing-md);
+        }
+        li {
+        margin-bottom: 0.5rem;
+        }
+        /* --- Highlighting & Links --- */
+        strong.highlight {
+        color: var(--accent-color);
+        }
+        a {
+        color: var(--primary-color);
+        text-decoration: none;
+        border-bottom: 1px dotted var(--primary-color);
+        }
+        a:hover {
+        color: var(--secondary-color);
+        border-bottom-style: solid;
+        }
+        .source-link {
+        font-size: 0.85rem;
+        color: var(--text-light);
+        display: block;
+        margin-top: 0.5rem;
+        background: #f7fafc;
+        padding: 0.5rem;
+        border-radius: 4px;
+        }
+        /* --- Table Styling --- */
+        .table-wrapper {
+        overflow-x: auto;
+        margin-bottom: var(--spacing-md);
+        border-radius: var(--radius);
+        border: 1px solid var(--border-color);
+        }
+        table {
+        width: 100%;
+        border-collapse: collapse;
+        min-width: 600px; /* Ensure table doesn't squish too much */
+        font-size: 0.9rem;
+        }
+        th, td {
+        padding: 0.75rem;
+        text-align: left;
+        border-bottom: 1px solid var(--border-color);
+        }
+        th {
+        background-color: #edf2f7;
+        color: var(--primary-color);
+        font-weight: 600;
+        }
+        tr:nth-child(even) {
+        background-color: #f7fafc;
+        }
+        /* --- Footer --- */
+        footer {
+        text-align: center;
+        color: var(--text-light);
+        font-size: 0.875rem;
+        margin-top: var(--spacing-lg);
+        padding-top: var(--spacing-lg);
+        border-top: 1px solid var(--border-color);
+        }
+        /* --- Responsive Tweaks --- */
+        @media (min-width: 768px) {
+        h1 { font-size: 2rem; }
+        section { padding: 2.5rem; }
+        .container { padding: 0 2rem; }
+        }
+      </style>
+    </head>
+    <body>
+      <!-- Quality Flag -->
+      <div class="quality-flag">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          质量标志：通过
+        </div>
+        <!-- Header -->
+        <header>
+          <div class="container">
+            <h1>2026年“算电协同”战略纵深发展：国家新基建核心方向与区域实践、产业布局分析</h1>
+              <div class="report-date">生成日期：2026年03月29日</div>
+              </div>
+            </header>
+            <!-- Navigation -->
+            <nav>
+              <div class="container">
+                <a href="#summary">核心洞察</a>
+                  <a href="#policy">政策背景</a>
+                    <a href="#regional">区域实践</a>
+                      <a href="#industry">产业链</a>
+                        <a href="#evolution">行业演化</a>
+                          <a href="#outlook">总结展望</a>
+                            <a href="#references">资讯列表</a>
+                            </div>
+                          </nav>
+                          <main class="container">
+                            <!-- Section 1: Core Insights -->
+                            <section id="summary">
+                              <h2>一、核心洞察综述</h2>
+                                <p>2026年，“算电协同”首次写入政府工作报告并上升为国家战略，标志着数字经济与绿色能源深度融合进入关键阶段。其核心目标是通过“算优化电、电支撑算”，解决“东数西算”空间错配（东部算力需求与西部能源供给布局）和绿电间歇性时间错配，重塑能源与算力资源配置效率。</p>
+                                  <p>当前，四川凭借水电装机全国首位（超1亿千瓦）和“东数西算”枢纽地位，青海依托高原大数据中心集群建设，已形成区域实践标杆；产业链聚焦六大核心赛道（智能调度、绿电直供、液冷、储能、电网互动、基建总包），头部企业通过技术壁垒与资源整合抢占先机。</p>
+                                    <p style="background: #ebf8ff; padding: 1rem; border-left: 4px solid var(--accent-color); border-radius: 4px;">
+                                      <strong class="highlight">关键结论</strong>：算电协同将成为未来3-5年新基建核心赛道。短期调度、液冷、储能优先受益，中长期绿电直供与柔性用电模式成熟，需关注区域政策落地与技术迭代风险。
+                                      </p>
+                                    </section>
+                                    <!-- Section 2: Policy Background -->
+                                    <section id="policy">
+                                      <h2>二、详细维度分析：政策背景与战略定位</h2>
+                                        <p>“算电协同”作为2026年政府工作报告新增战略方向，核心是打通电力网与算力网，实现系统协同：</p>
+                                          <ul>
+                                            <li><strong>目标</strong>：提升国家枢纽节点算力占比至目标水平，新建数据中心绿电比例显著提高，将数据中心转化为电网柔性负荷以消纳绿电、稳定电网。</li>
+                                              <li><strong>政策背书</strong>：明确要求“加强全国一体化算力调度，支持公共云”，推动算力向清洁能源富集地区（如内蒙古、青海、四川）转移，优化“东数西算”效能。</li>
+                                                <li><strong>核心矛盾</strong>：AI算力爆发驱动电力需求激增（尤其是高耗能训练/推理场景），绿电间歇性（如风电、水电波动）导致算力稳定性不足，需通过技术与机制突破。</li>
+                                                </ul>
+                                                <a href="http://m.toutiao.com/group/7614889252152754726/" target="_blank" class="source-link">来源：2026年3月9日文章（东数西算与算电协同深度解读）</a>
+                                                  <a href="http://m.toutiao.com/group/7614305213108797986/" target="_blank" class="source-link">来源：2026年3月07日文章（产业链核心环节梳理）</a>
+                                                  </section>
+                                                  <!-- Section 3: Regional Practice -->
+                                                  <section id="regional">
+                                                    <h2>区域实践：四川与青海的差异化布局</h2>
+                                                      <h3>1. 四川省：水电优势转化“绿电+算力”双输出</h3>
+                                                        <ul>
+                                                          <li><strong>核心优势</strong>：2025年水电装机突破1亿千瓦（全国首位），作为“东数西算”八大国家枢纽之一，已建成超算、智算等算力设施，2026年智算规模占比近60%。</li>
+                                                            <li><strong>挑战</strong>：“东算西电”空间错配、绿电间歇性时间错配（水电丰枯季节波动）。</li>
+                                                              <li><strong>破局路径</strong>：
+                                                                <ul>
+                                                                  <li><strong>绿电直供</strong>：建设数据中心与清洁能源富集区（如攀枝花、阿坝）直连通道，电价成本较当地平均水平降低30%以上。</li>
+                                                                    <li><strong>技术创新</strong>：布局全国首个高海拔岩洞式零碳算力中心（PUE接近1.0）。</li>
+                                                                      <li><strong>政策先行</strong>：率先出台省级算电融合专项政策，明确从“单纯能源输出”向“绿电+算力服务”转型。</li>
+                                                                      </ul>
+                                                                    </li>
+                                                                  </ul>
+                                                                  <a href="http://www.sc.gov.cn/10462/10464/10797/2026/3/25/350dc8a3c8eb4e74b63232ca65d0116f.shtml/" target="_blank" class="source-link">来源：2026年3月25日四川政府官网文章</a>
+                                                                    <a href="https://cbgc.scol.com.cn/news/7412150?from_source=toutiao" target="_blank" class="source-link">来源：2026年3月23日四川在线文章</a>
+                                                                      <h3>2. 青海省：绿色智算集群标杆项目落地</h3>
+                                                                        <ul>
+                                                                          <li><strong>项目案例</strong>：中国移动高原大数据中心（二期）于2024年11月26日奠基，规划投资20亿元，PUE低于1.15，网络带宽达20Tbps。</li>
+                                                                            <li><strong>区域定位</strong>：依托青海新能源（光伏、风电）富集优势，打造“高原绿色算力体系”，推动算力中心与电网、储能协同联动。</li>
+                                                                            </ul>
+                                                                            <a href="http://www.qinghai.gov.cn/zwgk/system/2024/11/27/030059243.shtml/" target="_blank" class="source-link">来源：2024年11月27日青海政府官网文章（注：距2026-03-29已超60天，属老旧信息）</a>
+                                                                            </section>
+                                                                            <!-- Section 4: Industry Chain -->
+                                                                            <section id="industry">
+                                                                              <h2>产业链核心赛道与头部企业布局</h2>
+                                                                                <p>根据2026年3月多篇深度文章，算电协同覆盖八大核心领域，其中六大关键赛道及龙头企业如下：</p>
+                                                                                  <div class="table-wrapper">
+                                                                                    <table>
+                                                                                      <thead>
+                                                                                        <tr>
+                                                                                          <th>赛道</th>
+                                                                                            <th>核心能力要求</th>
+                                                                                              <th>代表企业及布局</th>
+                                                                                              </tr>
+                                                                                            </thead>
+                                                                                            <tbody>
+                                                                                              <tr>
+                                                                                                <td><strong>智能调度系统</strong></td>
+                                                                                                  <td>核心算法研发（AI负荷预测）、电网深度绑定</td>
+                                                                                                    <td>国电南瑞（电网AI调度市占率超40%，参与国家级算电调度平台建设）</td>
+                                                                                                    </tr>
+                                                                                                    <tr>
+                                                                                                      <td><strong>绿电直供/虚拟电厂</strong></td>
+                                                                                                        <td>新能源资产掌控、智算运营能力</td>
+                                                                                                          <td>协鑫能科（“绿电+算力”全链条服务，用电成本较传统PUE低25%）、润泽科技</td>
+                                                                                                          </tr>
+                                                                                                          <tr>
+                                                                                                            <td><strong>液冷节能技术</strong></td>
+                                                                                                              <td>高效散热系统设计（浸没式/冷板式）、大规模应用</td>
+                                                                                                                <td>中科曙光（液冷技术市占率超35%）、浪潮信息（AI服务器散热方案市占率领先）</td>
+                                                                                                                </tr>
+                                                                                                                <tr>
+                                                                                                                  <td><strong>储能配套</strong></td>
+                                                                                                                    <td>系统集成（PCS/电池管理）、同步部署能力</td>
+                                                                                                                      <td>中国能建（源网荷储一体化总包龙头，承接西部算力中心储能配套订单）</td>
+                                                                                                                      </tr>
+                                                                                                                      <tr>
+                                                                                                                        <td><strong>电网与负荷互动</strong></td>
+                                                                                                                          <td>电力交易能力（峰谷套利）、柔性用电方案设计</td>
+                                                                                                                            <td>协鑫能科（虚拟电厂参与电网调峰，绿电消纳率提升至95%）</td>
+                                                                                                                            </tr>
+                                                                                                                            <tr>
+                                                                                                                              <td><strong>基建总包</strong></td>
+                                                                                                                                <td>资源协调能力（跨区域电网+算力中心整合）、国企背景</td>
+                                                                                                                                  <td>中国能建（承接算电协同新基建工程，订单规模超50亿元/年）、中科曙光</td>
+                                                                                                                                  </tr>
+                                                                                                                                </tbody>
+                                                                                                                              </table>
+                                                                                                                            </div>
+                                                                                                                            <a href="https://xueqiu.com/1799942649/380120968" target="_blank" class="source-link">来源：2026年3月19日文章（产业链企业梳理）</a>
+                                                                                                                              <a href="http://m.toutiao.com/group/7614889252152754726/" target="_blank" class="source-link">来源：2026年3月09日文章（八大核心领域拆解）</a>
+                                                                                                                              </section>
+                                                                                                                              <!-- Section 5: Evolution -->
+                                                                                                                              <section id="evolution">
+                                                                                                                                <h2>行业演化与风险提示</h2>
+                                                                                                                                  <h3>1. 短期与中长期受益环节</h3>
+                                                                                                                                    <ul>
+                                                                                                                                      <li><strong>短期</strong>：智能调度系统（算法壁垒高）、液冷节能技术（算力散热刚需）、储能配套（算力中心建设爆发）。</li>
+                                                                                                                                        <li><strong>中长期</strong>：绿电直供（
