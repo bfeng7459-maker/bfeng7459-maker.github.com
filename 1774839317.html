@@ -1,0 +1,359 @@
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NVIDIA RTX 5090显卡价格波动洞察分析报告</title>
+      <style>
+        /* --- CSS Reset & Variables --- */
+        :root {
+        /* Color Palette */
+        --primary-color: #76b900; /* NVIDIA Green inspired */
+        --primary-dark: #5a8f00;
+        --secondary-color: #2c3e50; /* Dark Blue/Grey */
+        --accent-color: #e74c3c; /* Red for price hikes/alerts */
+        --bg-body: #f4f6f9;
+        --bg-card: #ffffff;
+        --text-main: #333333;
+        --text-secondary: #666666;
+        --border-color: #e1e4e8;
+        /* Spacing & Layout */
+        --spacing-sm: 0.5rem;
+        --spacing-md: 1rem;
+        --spacing-lg: 2rem;
+        --container-width: 900px;
+        --border-radius: 8px;
+        --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+        * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        }
+        body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        background-color: var(--bg-body);
+        color: var(--text-main);
+        line-height: 1.6;
+        font-size: 16px;
+        -webkit-font-smoothing: antialiased;
+        }
+        /* --- Typography --- */
+        h1, h2, h3, h4 {
+        color: var(--secondary-color);
+        font-weight: 700;
+        margin-bottom: var(--spacing-md);
+        }
+        h1 { font-size: 1.75rem; line-height: 1.3; }
+        h2 { font-size: 1.5rem; border-left: 5px solid var(--primary-color); padding-left: var(--spacing-md); margin-top: var(--spacing-lg); }
+        h3 { font-size: 1.25rem; color: var(--text-main); }
+        p { margin-bottom: var(--spacing-md); color: var(--text-secondary); }
+        strong { color: var(--secondary-color); font-weight: 600; }
+        .highlight { { color: var(--accent-color); font-weight: bold; } }
+        /* --- Layout Containers --- */
+        .container {
+        max-width: var(--container-width);
+        margin: 0 auto;
+        padding: var(--spacing-md);
+        }
+        /* --- Header --- */
+        header {
+        background: var(--bg-card);
+        padding: var(--spacing-lg) var(--spacing-md);
+        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        margin-bottom: var(--spacing-lg);
+        position: relative;
+        }
+        .header-content {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        }
+        .report-meta {
+        font-size: 0.875rem;
+        color: var(--text-secondary);
+        margin-top: var(--spacing-sm);
+        }
+        /* Quality Badge */
+        .quality-badge {
+        position: absolute;
+        top: var(--spacing-lg);
+        right: var(--spacing-md);
+        background-color: var(--primary-color);
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        font-size: 0.875rem;
+        font-weight: bold;
+        box-shadow: 0 2px 8px rgba(118, 185, 0, 0.4);
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        }
+        .quality-badge::before {
+        content: "✓";
+        font-weight: 900;
+        }
+        /* --- Cards & Sections --- */
+        .card {
+        background: var(--bg-card);
+        border-radius: var(--border-radius);
+        padding: 1.5rem;
+        margin-bottom: var(--spacing-lg);
+        box-shadow: var(--card-shadow);
+        border: 1px solid var(--border-color);
+        }
+        /* --- Summary Section --- */
+        .summary-box {
+        background: linear-gradient(135deg, #f8fff0 0%, #ffffff 100%);
+        border-left: 4px solid var(--primary-color);
+        }
+        /* --- Timeline Styles --- */
+        .timeline-item {
+        position: relative;
+        padding-left: 1.5rem;
+        margin-bottom: 2rem;
+        border-left: 2px solid #ddd;
+        }
+        .timeline-item:last-child {
+        margin-bottom: 0;
+        border-left-color: transparent; /* Stop line for last item */
+        }
+        .timeline-item::before {
+        content: '';
+        position: absolute;
+        left: -6px; /* Adjust based on border width */
+        top: 0;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: var(--primary-color);
+        border: 2px solid white;
+        box-shadow: 0 0 0 2px var(--primary-color);
+        }
+        .timeline-date {
+        font-size: 0.9rem;
+        font-weight: bold;
+        color: var(--primary-dark);
+        margin-bottom: 0.25rem;
+        display: block;
+        }
+        .timeline-title {
+        font-size: 1.1rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        color: var(--secondary-color);
+        }
+        .source-link {
+        display: inline-block;
+        margin-top: 0.5rem;
+        font-size: 0.85rem;
+        color: #3498db;
+        text-decoration: none;
+        border-bottom: 1px dotted #3498db;
+        }
+        .source-link:hover {
+        color: #2980b9;
+        border-bottom-style: solid;
+        }
+        .tag-old {
+        background-color: #f0f0f0;
+        color: #888;
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-size: 0.75rem;
+        vertical-align: middle;
+        margin-left: 8px;
+        }
+        /* --- Grid Layouts for Reasons & Impact --- */
+        .grid-2 {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+        }
+        .reason-card, .impact-card {
+        background: #f9f9f9;
+        padding: 1rem;
+        border-radius: var(--border-radius);
+        border: 1px solid #eee;
+        }
+        .reason-card h3, .impact-card h3 {
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+        color: var(--primary-dark);
+        }
+        /* --- News List Table --- */
+        .news-list {
+        list-style: none;
+        }
+        .news-item {
+        display: flex;
+        flex-direction: column;
+        padding: 1rem 0;
+        border-bottom: 1px solid var(--border-color);
+        }
+        .news-item:last-child {
+        border-bottom: none;
+        }
+        .news-title {
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        flex-grow: 1;
+        }
+        .btn-link {
+        display: inline-block;
+        background-color: var(--secondary-color);
+        color: white;
+        text-decoration: none;
+        padding: 0.5rem 1rem;
+        border-radius: 4px;
+        font-size: 0.85rem;
+        text-align: center;
+        margin-top: 0.5rem;
+        align-self: flex-start;
+        transition: background 0.2s;
+        }
+        .btn-link:hover {
+        background-color: #34495e;
+        }
+        /* --- Footer --- */
+        footer {
+        text-align: center;
+        padding: 2rem 0;
+        color: var(--text-secondary);
+        font-size: 0.875rem;
+        border-top: 1px solid var(--border-color);
+        margin-top: 2rem;
+        }
+        /* --- Responsive Queries --- */
+        @media (min-width: 768px) {
+        h1 { font-size: 2.25rem; }
+        .header-content {
+        padding-right: 120px; /* Space for badge */
+        }
+        .grid-2 {
+        grid-template-columns: repeat(2, 1fr);
+        }
+        .grid-3 {
+        grid-template-columns: repeat(3, 1fr);
+        }
+        .news-item {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        }
+        .btn-link {
+        margin-top: 0;
+        white-space: nowrap;
+        }
+        }
+      </style>
+    </head>
+    <body>
+      <!-- Header Section -->
+      <header>
+        <div class="container">
+          <div class="header-content">
+            <h1>NVIDIA RTX 5090显卡价格波动洞察分析报告</h1>
+              <div class="report-meta">报告生成日期：2026年03月30日</div>
+              </div>
+              <!-- Quality Badge -->
+              <div class="quality-badge">质量标志：通过</div>
+              </div>
+            </header>
+            <main class="container">
+              <!-- Core Insight Summary -->
+              <section class="card summary-box">
+                <h2>核心洞察综述</h2>
+                  <p>NVIDIA RTX 5090显卡在2025-2026年经历剧烈价格波动，呈现“先降价、后暴涨、再稀缺”的趋势。<strong>AI产业重塑供应链</strong>（显存产能挤占、晶圆产能倾斜）是核心驱动力，叠加全球存储产品价格上涨及厂商策略调整，推动显卡价格从2024年的约1.99万元人民币飙升至2026年3月的3.4万元人民币（部分市场超50%涨幅）。当前高端显卡市场“难买又贵”，消费级与收藏级市场分化，预计涨价潮将持续至2027年。</p>
+                  </section>
+                  <!-- Detailed Analysis: Timeline -->
+                  <section class="card">
+                    <h2>一、价格趋势与关键节点</h2>
+                      <div class="timeline-item">
+                        <span class="timeline-date">2026年03月14日</span>
+                          <div class="timeline-title">孤品收藏价值凸显</div>
+                            <p>B站联合创始人[用户内容]持有的ROG纯金特别版RTX 5090显卡（孤品，仅1台）在7个月内升值27.7万美元，估值达81.8万美元。该显卡硬件部分市价已近首发价两倍，稀缺性与黄金原料属性共同推高收藏价值，与普通量产卡价格波动形成差异化轨迹。</p>
+                              <a href="https://toutiao.com/group/7616651511392698922/" target="_blank" class="source-link">查看来源链接 &rarr;</a>
+                              </div>
+                              <div class="timeline-item">
+                                <span class="timeline-date">2026年02月18日</span>
+                                  <div class="timeline-title">全球涨价潮持续</div>
+                                    <p>全球14款当代显卡平均涨价15%，RTX 5090全球平均涨幅32%（部分市场超50%），RTX 5070 Ti平均涨幅25%。主因是AI服务器挤占HBM显存产能，消费级显卡晶圆产能被压缩30%-40%，英伟达正式提价，AMD市场价涨幅达15%-20%。非刚需用户建议观望，AMD显卡性价比更高，预计涨价潮持续至2027年。</p>
+                                      <a href="https://m.toutiao.com/group/7608002613052752403/" target="_blank" class="source-link">查看来源链接 &rarr;</a>
+                                      </div>
+                                      <div class="timeline-item">
+                                        <span class="timeline-date">2026年01月28日</span>
+                                          <div class="timeline-title">多国缺货与限购</div>
+                                            <p>韩国电商平台售价飙升至约3.4万元人民币，较一年前翻倍，日本及韩国实施限购。英伟达停止向厂商提供价格补贴，资源转向AI加速器。索泰警告RTX 5090将断供，中端型号RTX 5060亦面临涨价压力，销售平台取消积分奖励维持低价。</p>
+                                              <a href="http://notebook.cnmo.com/news/803410.html" target="_blank" class="source-link">查看来源链接 &rarr;</a>
+                                              </div>
+                                              <div class="timeline-item">
+                                                <span class="timeline-date">2026年01月02日</span>
+                                                  <div class="timeline-title">AI需求主导涨价</div>
+                                                    <p>英伟达与AMD计划2026年1月起分阶段涨价，核心原因是AI显存需求激增（占GPU成本超80%），RTX 5090价格或从1999美元涨至5000美元。市场预测内存价格2026年或上涨40%-100%。</p>
+                                                      <a href="https://www.ithome.com/0/909/889.htm" target="_blank" class="source-link">查看来源链接 &rarr;</a>
+                                                      </div>
+                                                      <div class="timeline-item">
+                                                        <span class="timeline-date">2025年10月31日</span>
+                                                          <div class="timeline-title">欧美市场价格创纪录</div>
+                                                            <p>欧洲非公版售价达2600-2800欧元，美国华硕TUF型号2850美元，较建议零售价1999美元涨幅超42%。部分型号售罄，建议消费者关注2026年推出的RTX 5080 Super。</p>
+                                                              <a href="https://wap.gamersky.com/news/Content-2038460.html" target="_blank" class="source-link">查看来源链接 &rarr;</a>
+                                                              </div>
+                                                              <div class="timeline-item">
+                                                                <span class="timeline-date">2025年05月27日</span>
+                                                                  <div class="timeline-title">欧洲首次破官方价</div>
+                                                                    <p>芬兰平台RTX 5090降至2299欧元，较历史高价下降约6%，库存充足。AMD与英特尔推出大显存专业卡，高端市场竞争加剧。</p>
+                                                                      <a href="https://cj.sina.cn/article/norm_detail?url=http%3A%2F%2Ffinance.sina.cn%2Ftech%2F2025-05-27%2Fdetail-inexymne0341817.d.html" target="_blank" class="source-link">查看来源链接 &rarr;</a>
+                                                                      </div>
+                                                                      <div class="timeline-item">
+                                                                        <span class="timeline-date">2025年03月26日</span>
+                                                                          <div class="timeline-title">首发后溢价争议</div>
+                                                                            <p>RTX 5090发布后价格从2000美元涨至3000美元，性能提升约30%，被批评“高价低性能”，带动RTX 5070 Ti同步涨价，建议消费者关注替代品。</p>
+                                                                              <a href="https://www.sohu.com/a/876025262_122354585/" target="_blank" class="source-link">查看来源链接 &rarr;</a>
+                                                                              </div>
+                                                                              <div class="timeline-item" style="opacity: 0.8;">
+                                                                                <span class="timeline-date">2024年06月15日 <span class="tag-old">老旧信息</span></span>
+                                                                                  <div class="timeline-title">供应改善驱动降价</div>
+                                                                                    <p>日本市场定制型号跌破40万日元（约1.99万元人民币），北美/欧洲逐步回落但高于1999美元建议价，供应改善后价格或继续下降。</p>
+                                                                                      <a href="https://m.ithome.com/html/860922.htm" target="_blank" class="source-link">查看来源链接 &rarr;</a>
+                                                                                      </div>
+                                                                                    </section>
+                                                                                    <!-- Core Reasons -->
+                                                                                    <section class="card">
+                                                                                      <h2>二、价格波动核心原因</h2>
+                                                                                        <div class="grid-2">
+                                                                                          <div class="reason-card">
+                                                                                            <h3>1. AI产业重塑供应链</h3>
+                                                                                              <p>AI服务器对HBM显存需求激增，挤占消费级显卡产能，显存成本占比超80%；晶圆产能向AI GPU倾斜，消费级显卡产能压缩30%-40%。</p>
+                                                                                              </div>
+                                                                                              <div class="reason-card">
+                                                                                                <h3>2. 存储与产能双重压力</h3>
+                                                                                                  <p>全球存储产品（如DRAM）价格上涨，部分零售商利用价差二次销售推高售价；微星等厂商跟进RTX 50系列调价（涨幅10-15%）。</p>
+                                                                                                  </div>
+                                                                                                  <div class="reason-card">
+                                                                                                    <h3>3. 厂商战略调整</h3>
+                                                                                                      <p>英伟达停止补贴消费级显卡，资源转向AI加速器；AMD与英特尔通过新品（如大显存专业卡）加剧高端市场竞争。</p>
+                                                                                                      </div>
+                                                                                                    </div>
+                                                                                                  </section>
+                                                                                                  <!-- Impact & Chain Reaction -->
+                                                                                                  <section class="card">
+                                                                                                    <h2>三、影响与行业连锁反应</h2>
+                                                                                                      <div class="grid-2">
+                                                                                                        <div class="impact-card">
+                                                                                                          <h3>消费者</h3>
+                                                                                                            <p>游戏玩家、内容创作者购买成本显著上升，RTX 5090均价较建议零售价翻倍，部分用户转向AMD显卡（性价比更高）。</p>
+                                                                                                            </div>
+                                                                                                            <div class="impact-card">
+                                                                                                              <h3>市场连锁</h3>
+                                                                                                                <p>涨价波及内存（DRAM）与SSD，形成“显卡→内存→存储”全链路价格上涨。</p>
+                                                                                                                </div>
+                                                                                                                <div class="impact-card">
+                                                                                                                  <h3>收藏市场</h3>
+                                                                                                                    <p>顶级孤品显卡（如ROG纯金版）成为高增值藏品，稀缺性与黄金属性使其脱离普通市场价格轨迹。</p>
+                                                                                                                    </div>
+                                                                                                                  </div>
+                                                                                                                </section>
+                                                                                                                <!-- Summary & Outlook
