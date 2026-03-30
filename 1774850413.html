@@ -1,0 +1,369 @@
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>2026年算电协同洞察报告</title>
+      <style>
+        /* --- 基础设置与变量 --- */
+        :root {
+        --primary-color: #0056b3; /* 科技蓝 */
+        --secondary-color: #28a745; /* 绿电绿 */
+        --accent-color: #17a2b8; /* 辅助色 */
+        --text-dark: #333333;
+        --text-light: #666666;
+        --bg-body: #f4f7f6;
+        --bg-card: #ffffff;
+        --spacing-unit: 1rem;
+        --border-radius: 8px;
+        --box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        --font-main: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+        /* --- 全局重置 --- */
+        * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        }
+        body {
+        font-family: var(--font-main);
+        background-color: var(--bg-body);
+        color: var(--text-dark);
+        line-height: 1.6;
+        font-size: 16px;
+        -webkit-font-smoothing: antialiased;
+        }
+        /* --- 布局容器 --- */
+        .container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 0 var(--spacing-unit);
+        }
+        /* --- 头部样式 --- */
+        header {
+        background: linear-gradient(135deg, var(--primary-color), #004494);
+        color: white;
+        padding: 3rem 0;
+        position: relative;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .header-content {
+        position: relative;
+        z-index: 1;
+        }
+        h1 {
+        font-size: 1.8rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        line-height: 1.3;
+        }
+        .report-date {
+        font-size: 0.9rem;
+        opacity: 0.9;
+        display: inline-block;
+        background: rgba(255,255,255,0.2);
+        padding: 0.2rem 0.6rem;
+        border-radius: 20px;
+        }
+        /* 质量标志 */
+        .quality-badge {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        background-color: #ffc107;
+        color: #333;
+        font-weight: bold;
+        padding: 0.5rem 1rem;
+        border-radius: 4px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        font-size: 0.85rem;
+        z-index: 2;
+        }
+        /* --- 导航栏 --- */
+        nav {
+        background-color: white;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        overflow-x: auto;
+        white-space: nowrap;
+        padding: 0.8rem 0;
+        }
+        nav ul {
+        list-style: none;
+        display: flex;
+        padding: 0 1rem;
+        }
+        nav li {
+        margin-right: 1.5rem;
+        }
+        nav a {
+        text-decoration: none;
+        color: var(--text-light);
+        font-weight: 500;
+        font-size: 0.95rem;
+        transition: color 0.3s;
+        }
+        nav a:hover, nav a.active {
+        color: var(--primary-color);
+        }
+        /* --- 通用区块样式 --- */
+        section {
+        padding: 2.5rem 0;
+        border-bottom: 1px solid #e1e4e8;
+        }
+        section:last-of-type {
+        border-bottom: none;
+        }
+        h2 {
+        font-size: 1.5rem;
+        color: var(--primary-color);
+        margin-bottom: 1.5rem;
+        border-left: 5px solid var(--secondary-color);
+        padding-left: 1rem;
+        }
+        h3 {
+        font-size: 1.25rem;
+        color: #2c3e50;
+        margin: 1.5rem 0 1rem;
+        }
+        h4 {
+        font-size: 1.1rem;
+        color: #444;
+        margin: 1rem 0 0.5rem;
+        font-weight: 600;
+        }
+        p {
+        margin-bottom: 1rem;
+        text-align: justify;
+        }
+        /* --- 核心洞察卡片 --- */
+        .summary-card {
+        background-color: white;
+        padding: 2rem;
+        border-radius: var(--border-radius);
+        box-shadow: var(--box-shadow);
+        border-top: 4px solid var(--secondary-color);
+        margin-top: -1.5rem; /* Overlap header slightly */
+        position: relative;
+        }
+        .summary-title {
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: var(--secondary-color);
+        margin-bottom: 1rem;
+        display: block;
+        }
+        /* --- 区域实践 Grid --- */
+        .region-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+        }
+        .region-card {
+        background: white;
+        padding: 1.5rem;
+        border-radius: var(--border-radius);
+        box-shadow: var(--box-shadow);
+        }
+        .region-card h3 {
+        margin-top: 0;
+        color: var(--primary-color);
+        border-bottom: 1px solid #eee;
+        padding-bottom: 0.5rem;
+        }
+        /* --- 链条列表 --- */
+        .chain-list {
+        list-style: none;
+        }
+        .chain-item {
+        background: white;
+        margin-bottom: 1rem;
+        padding: 1.25rem;
+        border-radius: var(--border-radius);
+        border-left: 4px solid var(--accent-color);
+        box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        }
+        .chain-item h4 {
+        margin-top: 0;
+        color: var(--accent-color);
+        }
+        /* --- 挑战与应对 --- */
+        .challenge-box {
+        background-color: #fff3cd;
+        padding: 1.5rem;
+        border-radius: var(--border-radius);
+        margin-bottom: 1.5rem;
+        border: 1px solid #ffeeba;
+        }
+        .response-box {
+        background-color: #d4edda;
+        padding: 1.5rem;
+        border-radius: var(--border-radius);
+        border: 1px solid #c3e6cb;
+        }
+        .challenge-box h4 { color: #856404; }
+        .response-box h4 { color: #155724; }
+        /* --- 风险提示 --- */
+        .risk-list {
+        list-style: none;
+        }
+        .risk-list li {
+        position: relative;
+        padding-left: 1.5rem;
+        margin-bottom: 0.8rem;
+        }
+        .risk-list li::before {
+        content: "⚠️";
+        position: absolute;
+        left: 0;
+        top: 2px;
+        }
+        /* --- 来源链接 --- */
+        .source-link {
+        color: var(--primary-color);
+        text-decoration: none;
+        font-size: 0.85rem;
+        border-bottom: 1px dashed var(--primary-color);
+        margin-left: 0.5rem;
+        white-space: nowrap;
+        }
+        .source-link:hover {
+        color: var(--secondary-color);
+        border-bottom-style: solid;
+        }
+        /* --- 参考列表 --- */
+        .ref-list {
+        list-style: none;
+        counter-reset: ref-counter;
+        }
+        .ref-list li {
+        counter-increment: ref-counter;
+        margin-bottom: 1rem;
+        padding-left: 2rem;
+        position: relative;
+        font-size: 0.9rem;
+        }
+        .ref-list li::before {
+        content: counter(ref-counter) ".";
+        position: absolute;
+        left: 0;
+        font-weight: bold;
+        color: var(--text-light);
+        }
+        .ref-list a {
+        color: var(--primary-color);
+        text-decoration: none;
+        word-break: break-all;
+        }
+        .ref-list a:hover {
+        text-decoration: underline;
+        }
+        .ref-meta {
+        display: block;
+        color: #888;
+        font-size: 0.8rem;
+        margin-top: 0.2rem;
+        }
+        /* --- 页脚 --- */
+        footer {
+        background-color: #2c3e50;
+        color: white;
+        padding: 2rem 0;
+        text-align: center;
+        font-size: 0.9rem;
+        margin-top: 2rem;
+        }
+        /* --- 响应式适配 --- */
+        @media (max-width: 768px) {
+        h1 { font-size: 1.5rem; }
+        .region-grid { grid-template-columns: 1fr; }
+        .container { padding: 0 1rem; }
+        .header-content { padding-right: 6rem; /* Space for badge */ }
+        .quality-badge { top: 0.8rem; right: 0.8rem; }
+        }
+        @media (max-width: 480px) {
+        h1 { font-size: 1.3rem; }
+        h2 { font-size: 1.3rem; }
+        .summary-card { padding: 1.5rem; margin-top: -1rem; }
+        nav ul { padding: 0 0.5rem; }
+        nav li { margin-right: 1rem; }
+        }
+      </style>
+    </head>
+    <body>
+      <header>
+        <div class="container header-content">
+          <span class="report-date">2026年03月30日</span>
+            <h1>算电协同：国家新基建背景下的能源与算力融合发展洞察</h1>
+            </div>
+            <div class="quality-badge">质量标志：通过</div>
+            </header>
+            <nav>
+              <div class="container">
+                <ul>
+                  <li><a href="#summary">核心洞察</a></li>
+                    <li><a href="#policy">政策锚定</a></li>
+                      <li><a href="#region">区域实践</a></li>
+                        <li><a href="#chain">产业链</a></li>
+                          <li><a href="#challenges">挑战应对</a></li>
+                            <li><a href="#outlook">总结展望</a></li>
+                              <li><a href="#links">资讯来源</a></li>
+                              </ul>
+                            </div>
+                          </nav>
+                          <main class="container">
+                            <!-- 核心洞察 -->
+                            <section id="summary">
+                              <div class="summary-card">
+                                <span class="summary-title">核心洞察综述</span>
+                                  <p>2026年政府工作报告首次将“算电协同”纳入新基建，标志着能源与数字经济深度融合进入战略落地期。在“东数西算”“双碳”战略叠加下，四川、青海等地依托绿电资源与算力枢纽布局，推动“绿电+算力”双输出成为产业转型核心方向。</p>
+                                    <p>当前面临空间错配（东算西电）、时间错配（绿电间歇性）及成本机制等挑战，叠加储能技术、专项政策及产业链企业协同，“算电协同”正重塑能源与数字经济的价值链条，短期看调度、液冷、储能领域率先爆发，长期将向“算力+能源+AI”三元联动升级。</p>
+                                    </div>
+                                  </section>
+                                  <!-- 政策锚定 -->
+                                  <section id="policy">
+                                    <h2>一、政策锚定：算电协同成为国家战略核心</h2>
+                                      <p>“算电协同”首次写入2026年政府工作报告，旨在解决AI算力需求激增与清洁能源供应的矛盾，通过系统化协同实现算力布局与电力资源优化匹配。</p>
+                                        <p>核心路径包括：将数据中心导向绿电富集的西部地区（如四川、青海），东部地区建设近零碳数据中心，推动“绿电直供+智能调度”融合模式<a href="http://m.toutiao.com/group/7621103269485560355/" target="_blank" class="source-link">[来源链接]</a>。政策明确要求统筹“东数西算”与“西电东送”，从顶层设计推动资源错配解决<a href="http://m.toutiao.com/group/7621103269485560355/" target="_blank" class="source-link">[来源链接]</a>。</p>
+                                        </section>
+                                        <!-- 区域实践 -->
+                                        <section id="region">
+                                          <h2>二、区域实践：四川、青海等地先行先试</h2>
+                                            <div class="region-grid">
+                                              <!-- 四川 -->
+                                              <article class="region-card">
+                                                <h3>1. 四川：水电优势与算力产业的“双向赋能”</h3>
+                                                  <p>四川凭借水电装机全国第一（2025年突破1亿千瓦）及“东数西算”枢纽节点地位，成为算电协同标杆。</p>
+                                                    <ul class="risk-list" style="margin-bottom: 1rem;">
+                                                      <li><strong>核心挑战</strong>：面临“东算西电”空间错配（东部算力需求集中）与绿电间歇性时间错配（水电发电依赖自然径流）<a href="http://m2.people.cn/news/toutiao.html?s=Ml8yXzQxNTMyODMzXzM3OTQ3MF8xNzc0Mzk3MDEz" target="_blank" class="source-link">[来源]</a>。</li>
+                                                      </ul>
+                                                      <p><strong>应对举措：</strong></p>
+                                                        <p><strong>项目落地：</strong>在攀西、甘孜等地建设绿电直供数据中心和万卡集群项目，如甘孜岩洞式零碳算力中心直接消纳本地富余清洁能源<a href="http://m.toutiao.com/group/7620984536976949775/" target="_blank" class="source-link">[来源]</a>。</p>
+                                                          <p><strong>技术保障：</strong>发展储能技术，采用企业“柔性负荷”和园区“产消者”模式平衡绿电波动<a href="http://m.toutiao.com/group/7620418222235435566/" target="_blank" class="source-link">[来源]</a>。</p>
+                                                            <p><strong>政策支持：</strong>出台全国首个省级算电融合专项政策，编制“算电融合专项方案”<a href="https://cbgc.scol.com.cn/news/7412150?from_source=toutiao" target="_blank" class="source-link">[来源]</a>。</p>
+                                                              <p><strong>目标：</strong>从“能源输出省”转向“绿电+算力”双输出省，探索“一度电价值跃迁”<a href="http://m2.people.cn/news/toutiao.html?s=Ml8yXzQxNTMyODMzXzM3OTQ3MF8xNzc0Mzk3MDEz" target="_blank" class="source-link">[来源]</a>。</p>
+                                                              </article>
+                                                              <!-- 青海 -->
+                                                              <article class="region-card">
+                                                                <h3>2. 青海：高原算力集群的绿色实践</h3>
+                                                                  <p>2024年11月，中国移动高原大数据中心（二期）在海东奠基，作为第三个万卡集群项目，总投资20亿元，PUE值低于1.15，网络带宽达20T，定位承接“东数西算”智算业务，打造“绿色智算体系”<a href="http://www.qinghai.gov.cn/zwgk/system/2024/11/27/030059243.shtml" target="_blank" class="source-link">[来源]</a>。</p>
+                                                                    <p style="font-size: 0.9rem; color: #666; margin-top: 1rem;">注：该项目是青海培育绿色算力产业、发展新质生产力的关键举措（老旧信息，距离2026-03-30超60天）。</p>
+                                                                    </article>
+                                                                  </div>
+                                                                </section>
+                                                                <!-- 产业链布局 -->
+                                                                <section id="chain">
+                                                                  <h2>三、产业链布局：全链条企业的差异化竞争</h2>
+                                                                    <p>“算电协同”覆盖算力芯片、硬件、IDC运营、调度系统、储能等全环节，核心企业及布局如下：</p>
+                                                                      <ul class="chain-list">
+                                                                        <li class="chain-item">
+                                                                          <h4>1. 算力芯片：国产替代与性能突破</h4>
+                                                                            <p><strong>海光信息：</strong>深度绑定八大“东数西算”枢纽，新一代DCU芯片2026年量产，适配国产算力集群需求<a href="https://xueqiu.com/1295706100/381089143" target="_blank" class="source-link">[来源]</a>。</p>
+                                                                              <p><strong>寒武纪：</strong>思元系列芯片是万卡智算集群核心，服务全国算力网建设<a href="http://m.toutiao.com/group/7614305213108797986/" target="_blank" class="source-link">[来源]</a>。</p>
+                                                                              </li>
+                                                                              <li class="chain-item">
+                                                                                <h4>2. 算力硬件：服务器与基础设施</h4>
+                                                                                  <p><strong>浪潮信息：</strong>AI服务器全球市占率领先，为算电协同提供核心硬件支撑<a href="https://x
