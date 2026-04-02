@@ -1,0 +1,382 @@
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>中国联通2025年业绩分析报告</title>
+      <style>
+        /* --- CSS 变量与基础设置 --- */
+        :root {
+        /* 品牌色：联通红与稳重的深蓝 */
+        --primary-color: #E60012;
+        --secondary-color: #003366;
+        --accent-color: #00A0E9;
+        --bg-color: #F4F6F9;
+        --card-bg: #FFFFFF;
+        --text-main: #333333;
+        --text-light: #666666;
+        --border-color: #E0E0E0;
+        --success-color: #28C76F;
+        /* 间距与尺寸 */
+        --spacing-sm: 0.5rem;
+        --spacing-md: 1rem;
+        --spacing-lg: 2rem;
+        --border-radius: 8px;
+        --shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+        * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        }
+        body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Microsoft YaHei", sans-serif;
+        background-color: var(--bg-color);
+        color: var(--text-main);
+        line-height: 1.6;
+        font-size: 16px;
+        }
+        a {
+        color: var(--primary-color);
+        text-decoration: none;
+        transition: opacity 0.2s;
+        }
+        a:hover {
+        opacity: 0.8;
+        text-decoration: underline;
+        }
+        /* --- 布局容器 --- */
+        .container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 0 var(--spacing-md);
+        }
+        /* --- 头部设计 --- */
+        header {
+        background-color: var(--secondary-color);
+        color: white;
+        padding: var(--spacing-lg) 0;
+        position: relative;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        }
+        .title-group h1 {
+        font-size: 1.75rem;
+        font-weight: 700;
+        margin-bottom: var(--spacing-sm);
+        line-height: 1.3;
+        }
+        .title-group .date {
+        font-size: 0.9rem;
+        opacity: 0.8;
+        font-weight: 300;
+        }
+        /* 质量标志 */
+        .quality-badge {
+        background-color: var(--success-color);
+        color: white;
+        padding: 0.4rem 1rem;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        font-weight: bold;
+        box-shadow: 0 2px 6px rgba(40, 199, 111, 0.4);
+        white-space: nowrap;
+        margin-top: 0.2rem;
+        }
+        /* --- 核心洞察卡片 --- */
+        .hero-section {
+        margin-top: -1.5rem; /* Overlap header */
+        margin-bottom: var(--spacing-lg);
+        }
+        .card {
+        background: var(--card-bg);
+        border-radius: var(--border-radius);
+        padding: var(--spacing-lg);
+        box-shadow: var(--shadow);
+        margin-bottom: var(--spacing-lg);
+        border-left: 4px solid var(--primary-color);
+        }
+        .hero-card {
+        background: linear-gradient(135deg, #fff 0%, #fffbfb 100%);
+        border-left: none;
+        border-top: 4px solid var(--primary-color);
+        }
+        .section-title {
+        font-size: 1.4rem;
+        color: var(--secondary-color);
+        margin-bottom: var(--spacing-md);
+        padding-bottom: var(--spacing-sm);
+        border-bottom: 1px solid var(--border-color);
+        display: flex;
+        align-items: center;
+        }
+        .section-title::before {
+        content: '';
+        display: inline-block;
+        width: 6px;
+        height: 24px;
+        background-color: var(--primary-color);
+        margin-right: 10px;
+        border-radius: 2px;
+        }
+        .hero-text {
+        font-size: 1.1rem;
+        color: #444;
+        text-align: justify;
+        }
+        .highlight-text {
+        color: var(--primary-color);
+        font-weight: 600;
+        }
+        /* --- 数据网格 --- */
+        .data-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: var(--spacing-md);
+        margin-bottom: var(--spacing-md);
+        }
+        .data-item {
+        background: #FAFAFA;
+        padding: var(--spacing-md);
+        border-radius: var(--border-radius);
+        border: 1px solid #EEE;
+        }
+        .data-label {
+        font-size: 0.9rem;
+        color: var(--text-light);
+        margin-bottom: 4px;
+        }
+        .data-value {
+        font-size: 1.25rem;
+        font-weight: bold;
+        color: var(--secondary-color);
+        }
+        .data-trend {
+        font-size: 0.85rem;
+        margin-top: 4px;
+        }
+        .trend-up { color: var(--success-color); }
+        .trend-neutral { color: var(--text-light); }
+        /* --- 列表与段落 --- */
+        .content-block h3 {
+        font-size: 1.2rem;
+        color: var(--text-main);
+        margin: var(--spacing-md) 0 var(--spacing-sm);
+        font-weight: 600;
+        }
+        .content-block p {
+        margin-bottom: var(--spacing-md);
+        text-align: justify;
+        }
+        .content-block ul {
+        list-style: none;
+        padding-left: 10px;
+        }
+        .content-block li {
+        position: relative;
+        padding-left: 20px;
+        margin-bottom: 10px;
+        }
+        .content-block li::before {
+        content: '•';
+        color: var(--primary-color);
+        font-weight: bold;
+        position: absolute;
+        left: 0;
+        }
+        /* --- 资讯时间轴 --- */
+        .timeline {
+        position: relative;
+        padding-left: 20px;
+        }
+        .timeline::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background-color: var(--border-color);
+        }
+        .timeline-item {
+        position: relative;
+        margin-bottom: var(--spacing-md);
+        padding-left: 20px;
+        }
+        .timeline-item::before {
+        content: '';
+        position: absolute;
+        left: -24px;
+        top: 6px;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: var(--card-bg);
+        border: 2px solid var(--primary-color);
+        }
+        .timeline-date {
+        font-size: 0.85rem;
+        color: var(--text-light);
+        font-weight: 500;
+        margin-bottom: 4px;
+        display: block;
+        }
+        .timeline-content {
+        background: #fff;
+        padding: 10px;
+        border-radius: 4px;
+        border: 1px solid #eee;
+        font-size: 0.95rem;
+        }
+        /* --- 风险提示 --- */
+        .risk-box {
+        background-color: #FFF4F4;
+        border: 1px solid #FFCCCC;
+        padding: var(--spacing-md);
+        border-radius: var(--border-radius);
+        margin-top: var(--spacing-md);
+        }
+        .risk-title {
+        color: #D32F2F;
+        font-weight: bold;
+        margin-bottom: var(--spacing-sm);
+        display: block;
+        }
+        /* --- 底部 --- */
+        footer {
+        text-align: center;
+        padding: var(--spacing-lg) 0;
+        color: var(--text-light);
+        font-size: 0.9rem;
+        border-top: 1px solid var(--border-color);
+        margin-top: var(--spacing-lg);
+        }
+        /* --- 响应式调整 --- */
+        @media (max-width: 600px) {
+        .header-content {
+        flex-direction: column;
+        }
+        .quality-badge {
+        margin-top: 10px;
+        align-self: flex-start;
+        }
+        .hero-section {
+        margin-top: 0;
+        }
+        .card {
+        padding: var(--spacing-md);
+        }
+        .title-group h1 {
+        font-size: 1.4rem;
+        }
+        }
+      </style>
+    </head>
+    <body>
+      <header>
+        <div class="container header-content">
+          <div class="title-group">
+            <h1>中国联通2025年业绩分析报告</h1>
+              <div class="date">报告日期：2026-04-02</div>
+              </div>
+              <div class="quality-badge">质量标志：通过</div>
+              </div>
+            </header>
+            <main class="container">
+              <!-- 核心洞察 -->
+              <section class="hero-section">
+                <div class="card hero-card">
+                  <h2 class="section-title" style="border:none; padding:0; margin-bottom: 10px;">核心洞察综述</h2>
+                    <p class="hero-text">
+                      中国联通2025年业绩呈现<span class="highlight-text">“稳中有进”</span>特征：营收微增0.68%-0.7%至3922.23亿元，净利润（归母口径）208亿元微增0.98%，均为近年增速低位；但战略转型成效显著，<span class="highlight-text">AI与算力业务高速增长</span>（AI收入增140%、算力收入占比超15%），资本开支聚焦核心领域，自由现金流创新高至360亿元，“卖管道”向“卖算力+服务”转型路径跑通。同时，安全业务、低空经济、国际业务等新兴赛道布局加速，研发投入持续加码驱动高质量发展。
+                    </p>
+                  </div>
+                </section>
+                <!-- 详细维度分析 -->
+                <section class="details">
+                  <!-- 一、财务表现 -->
+                  <article class="card">
+                    <h2 class="section-title">一、财务表现：营收净利润双微增，自由现金流创历史新高</h2>
+                      <div class="data-grid">
+                        <div class="data-item">
+                          <div class="data-label">营业收入</div>
+                            <div class="data-value">3922.23 亿元</div>
+                              <div class="data-trend trend-up">↑ 0.68%</div>
+                              </div>
+                              <div class="data-item">
+                                <div class="data-label">归母净利润</div>
+                                  <div class="data-value">208 亿元</div>
+                                    <div class="data-trend trend-up">↑ 0.98%</div>
+                                    </div>
+                                    <div class="data-item">
+                                      <div class="data-label">自由现金流</div>
+                                        <div class="data-value">360 亿元</div>
+                                          <div class="data-trend trend-up">↑ 28.5%</div>
+                                          </div>
+                                        </div>
+                                        <div class="content-block">
+                                          <h3>营收与利润</h3>
+                                            <ul>
+                                              <li>营业收入3922.23亿元，同比增长0.68%（2026年3月20日，来源：<a href="http://m.toutiao.com/group/7619135615094817315/" target="_blank">http://m.toutiao.com/group/7619135615094817315/</a>）；</li>
+                                                <li>归母净利润208亿元，同比增长0.98%（2026年3月19日，来源：<a href="http://m.toutiao.com/group/7620243645798629903/" target="_blank">http://m.toutiao.com/group/7620243645798629903/</a>）；</li>
+                                                  <li><strong>注</strong>：部分来源提及“净利润91.27亿元”，或因统计口径差异（如扣非/非归母），以多数来源“归母净利润208亿元”为核心数据。</li>
+                                                  </ul>
+                                                  <h3>现金流与分红</h3>
+                                                    <ul>
+                                                      <li>自由现金流大增28.5%至360亿元，“造血能力”显著增强（2026年3月19日，来源同上）；</li>
+                                                        <li>全年分红51.12亿元，分红率56.01%（2026年3月23日，来源：<a href="https://www.sohu.com/a/999830785_122014422" target="_blank">https://www.sohu.com/a/999830785_122014422</a>）；</li>
+                                                          <li>每股股息0.417元，派息率提升至61.3%（2026年3月20日，来源：<a href="http://m.toutiao.com/group/7619135615094817315/" target="_blank">http://m.toutiao.com/group/7619135615094817315/</a>）。</li>
+                                                          </ul>
+                                                        </div>
+                                                      </article>
+                                                      <!-- 二、战略转型 -->
+                                                      <article class="card">
+                                                        <h2 class="section-title">二、战略转型：从“管道”到“算力+AI”，新兴业务成增长引擎</h2>
+                                                          <div class="content-block">
+                                                            <h3>资本开支优化</h3>
+                                                              <ul>
+                                                                <li>总开支连年压降，2026年预计约500亿元，其中算力投资占比超35%，战略聚焦算力网络（2026年3月19日，来源同上）；</li>
+                                                                  <li>资本开支占服务收入比下降至16%，资源向高价值领域倾斜（2026年3月20日，来源同上）。</li>
+                                                                  </ul>
+                                                                  <h3>AI与算力业务</h3>
+                                                                    <ul>
+                                                                      <li>AI收入同比增超140%，算力业务收入占比超15%，完成从“卖管道”到“卖算力”转型（2026年3月19日、23日，来源同上）；</li>
+                                                                        <li>算力网络投资持续加码，支撑“东数西算”等政策落地（2026年3月20日，来源同上）。</li>
+                                                                        </ul>
+                                                                      </div>
+                                                                    </article>
+                                                                    <!-- 三、经营质量 -->
+                                                                    <article class="card">
+                                                                      <h2 class="section-title">三、经营质量：员工结构优化，研发投入加码</h2>
+                                                                        <div class="content-block">
+                                                                          <ul>
+                                                                            <li><strong>人员结构</strong>：在职员工总数连续两年下降，2025年减少约1.4%（老旧信息，2026年3月25日，来源：<a href="http://m.toutiao.com/group/7621166200727159342/" target="_blank">http://m.toutiao.com/group/7621166200727159342/</a>）；</li>
+                                                                              <li><strong>研发投入</strong>：研发人员数量连续四年增长至2.55万人，研究生及以上学历占比提升，人工成本同比增长4.6%（2026年3月25日、23日，来源同上）；</li>
+                                                                                <li><strong>战略聚焦</strong>：安全业务列为战略板块，国际业务增速超9%，低空经济新赛道布局（2026年3月19日，来源同上）。</li>
+                                                                                </ul>
+                                                                              </div>
+                                                                            </article>
+                                                                            <!-- 四、核心业务亮点 -->
+                                                                            <article class="card">
+                                                                              <h2 class="section-title">四、核心业务亮点：多维拓展新兴赛道</h2>
+                                                                                <div class="content-block">
+                                                                                  <h3>1. 低空经济</h3>
+                                                                                    <p>2025年4月设立低空经济展区，构建“1+1+3+N”能力体系，自研YH-630无人机应急通信获认可，5G-A无人机血液配送项目效率提升60%（2022026年3月19日，来源：<a href="http://m.toutiao.com/group/7498609391218983478/" target="_blank">http://m.toutiao.com/group/7498609391218983478/</a>）。</p>
+                                                                                      <h3>2. 安全与量子技术</h3>
+                                                                                        <p>发布三款量子安全产品（QKD通密一体设备、云端供钥平台、后量子密码OTN设备），在粤港澳大湾区多地部署（2025年12月10日，来源：<a href="http://m.toutiao.com/group/7582044826170917427/" target="_blank">http://m.toutiao.com/group/7582044826170917427/</a>）。</p>
+                                                                                          <h3>3. 博鳌论坛保障</h3>
+                                                                                            <p>2026年3月24-27日保障期间，应用5G切片、智算单板、5G-A应急车等技术，实现通信“零事故、零投诉、零差错”（2026年3月27日，来源：<a href="https://toutiao.com/group/7621815501107102208/" target="_blank">https://toutiao.com/group/7621815501107102208/</a>）。</p>
+                                                                                            </div>
+                                                                                          </article>
+                                                                                        </section>
+                                                                                        <!-- 总结与展望 -->
+                                                                                        <section class="summary">
+                                                                                          <article class="card">
+                                                                                            <h2 class="section-title">总结与展望</h2>
+                                                                                              <p>中国联通2025年以“稳
