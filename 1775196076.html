@@ -1,0 +1,419 @@
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>2026年算电协同发展洞察分析报告</title>
+      <style>
+        /* --- CSS Reset & Variables --- */
+        :root {
+        --primary-color: #0056b3; /* 科技蓝 */
+        --secondary-color: #28a745; /* 能源绿 */
+        --accent-color: #ffc107; /* 重点高亮黄 */
+        --text-main: #333333;
+        --text-light: #666666;
+        --bg-body: #f4f7f6;
+        --bg-card: #ffffff;
+        --spacing-unit: 1rem;
+        --border-radius: 8px;
+        --shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        --font-main: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+        * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        }
+        body {
+        font-family: var(--font-main);
+        background-color: var(--bg-body);
+        color: var(--text-main);
+        line-height: 1.6;
+        font-size: 16px;
+        -webkit-font-smoothing: antialiased;
+        }
+        /* --- Layout & Typography --- */
+        .container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 0 var(--spacing-unit);
+        }
+        h1, h2, h3, h4 {
+        color: var(--primary-color);
+        margin-bottom: 0.8em;
+        font-weight: 700;
+        }
+        h1 {
+        font-size: 1.75rem;
+        margin-top: 1rem;
+        color: #002a5c;
+        }
+        h2 {
+        font-size: 1.5rem;
+        border-left: 5px solid var(--secondary-color);
+        padding-left: 0.8rem;
+        margin-top: 2rem;
+        background: linear-gradient(to right, rgba(40, 167, 69, 0.1), transparent);
+        padding-top: 0.2rem;
+        padding-bottom: 0.2rem;
+        }
+        h3 {
+        font-size: 1.25rem;
+        margin-top: 1.5rem;
+        color: #004085;
+        }
+        h4 {
+        font-size: 1.1rem;
+        margin-top: 1rem;
+        color: var(--text-main);
+        }
+        p {
+        margin-bottom: 1rem;
+        text-align: justify;
+        }
+        ul, ol {
+        margin-bottom: 1rem;
+        padding-left: 1.5rem;
+        }
+        li {
+        margin-bottom: 0.5rem;
+        }
+        a {
+        color: var(--primary-color);
+        text-decoration: none;
+        transition: color 0.2s;
+        }
+        a:hover {
+        color: var(--secondary-color);
+        text-decoration: underline;
+        }
+        strong, b {
+        color: #000;
+        font-weight: 600;
+        }
+        /* --- Header & Badge --- */
+        header {
+        background-color: var(--bg-card);
+        padding: 1.5rem 0;
+        margin-bottom: 2rem;
+        box-shadow: var(--shadow);
+        position: relative;
+        }
+        .header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        }
+        .title-group {
+        flex: 1;
+        padding-right: 1rem;
+        }
+        .report-date {
+        font-size: 0.9rem;
+        color: var(--text-light);
+        margin-top: 0.5rem;
+        display: block;
+        }
+        .quality-badge {
+        background-color: var(--secondary-color);
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 50px;
+        font-weight: bold;
+        font-size: 0.9rem;
+        box-shadow: 0 2px 4px rgba(40, 167, 69, 0.3);
+        white-space: nowrap;
+        display: inline-flex;
+        align-items: center;
+        }
+        .quality-badge::before {
+        content: '✓';
+        margin-right: 6px;
+        font-size: 1.1em;
+        }
+        /* --- Cards & Sections --- */
+        .card {
+        background-color: var(--bg-card);
+        border-radius: var(--border-radius);
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+        box-shadow: var(--shadow);
+        border-top: 3px solid transparent;
+        }
+        .card.highlight {
+        background: linear-gradient(135deg, #e3f2fd 0%, #ffffff 100%);
+        border-top-color: var(--primary-color);
+        }
+        /* --- Grid Layout for Regions --- */
+        .grid-3 {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1.5rem;
+        }
+        .region-card {
+        background: var(--bg-card);
+        border: 1px solid #e0e0e0;
+        border-radius: var(--border-radius);
+        padding: 1.25rem;
+        transition: transform 0.2s;
+        }
+        .region-card:hover {
+        transform: translateY(-3px);
+        box-shadow: var(--shadow);
+        border-color: var(--secondary-color);
+        }
+        /* --- Table Styling --- */
+        .table-responsive {
+        width: 100%;
+        overflow-x: auto;
+        margin-bottom: 1.5rem;
+        border-radius: var(--border-radius);
+        box-shadow: var(--shadow);
+        }
+        table {
+        width: 100%;
+        border-collapse: collapse;
+        background-color: var(--bg-card);
+        min-width: 600px; /* Ensure table doesn't squash too much */
+        }
+        th, td {
+        padding: 0.8rem 1rem;
+        text-align: left;
+        border-bottom: 1px solid #eee;
+        font-size: 0.95rem;
+        }
+        th {
+        background-color: var(--primary-color);
+        color: white;
+        font-weight: 600;
+        }
+        tr:nth-child(even) {
+        background-color: #f8f9fa;
+        }
+        tr:hover {
+        background-color: #e9ecef;
+        }
+        /* --- Footer & Sources --- */
+        footer {
+        margin-top: 3rem;
+        padding: 2rem 0;
+        border-top: 1px solid #ddd;
+        background-color: #e9ecef;
+        }
+        .source-list {
+        list-style: none;
+        padding: 0;
+        }
+        .source-list li {
+        background: white;
+        margin-bottom: 0.8rem;
+        padding: 1rem;
+        border-radius: 4px;
+        border-left: 4px solid var(--primary-color);
+        font-size: 0.9rem;
+        }
+        .source-link {
+        display: block;
+        margin-top: 0.3rem;
+        word-break: break-all;
+        color: var(--secondary-color);
+        font-size: 0.85rem;
+        }
+        /* --- Utility Tags --- */
+        .tag {
+        display: inline-block;
+        background-color: #e2e6ea;
+        color: var(--text-light);
+        padding: 0.2rem 0.5rem;
+        border-radius: 4px;
+        font-size: 0.8rem;
+        margin-right: 0.5rem;
+        }
+        /* --- Media Queries --- */
+        @media (max-width: 768px) {
+        h1 {
+        font-size: 1.5rem;
+        }
+        h2 {
+        font-size: 1.3rem;
+        }
+        .header-content {
+        flex-direction: column;
+        gap: 1rem;
+        }
+        .quality-badge {
+        align-self: flex-start;
+        margin-top: 0.5rem;
+        }
+        .card {
+        padding: 1rem;
+        }
+        /* Touch targets optimization */
+        a, button {
+        min-height: 44px;
+        min-width: 44px;
+        display: inline-flex;
+        align-items: center;
+        }
+        /* Reset display for text links inside paragraphs to avoid layout breaks */
+        p a, li a, td a {
+        display: inline;
+        min-height: auto;
+        min-width: auto;
+        }
+        }
+      </style>
+    </head>
+    <body>
+      <header>
+        <div class="container header-content">
+          <div class="title-group">
+            <h1>2026年算电协同发展洞察分析报告</h1>
+              <span class="report-date">发布日期：2026年04月03日</span>
+              </div>
+              <div class="quality-badge">质量标志：通过</div>
+              </div>
+            </header>
+            <main class="container">
+              <!-- 核心洞察综述 -->
+              <section class="card highlight">
+                <h2>核心洞察综述</h2>
+                  <p>2026年政府工作报告首次将“算电协同”纳入新基建战略，标志着该领域从行业探索转向国家战略布局。当前，我国算力需求与绿色能源供给的时空错配问题（东算西部空间错配、绿电间歇性时间错配），正通过智能调度、绿电直供、液冷节能等六大核心赛道加速破局。</p>
+                    <p>四川凭借全国水电装机容量第一（超1亿千瓦）及东数西算枢纽地位，率先推进“绿电+算力”双输出转型，成为行业标杆；青海、内蒙古等地同步布局高海拔岩洞式算力中心、万卡集群项目，形成区域竞争格局。短期看，调度系统、液冷技术与储能配套将优先爆发；中长期绿电直供与柔性用电模式成熟后，行业规模将进入指数级增长周期。</p>
+                    </section>
+                    <!-- 一、国家战略与政策定位 -->
+                    <section>
+                      <h2>一、国家战略与政策定位</h2>
+                        <article class="card">
+                          <h3>1.1 战略地位：AI时代的能源数字基座</h3>
+                            <p>“算电协同”作为AI、数字经济与新能源的交汇点，其本质是“算力、传输、能源三元一体”的智能数字基座。国家通过统筹“东数西算”与“西电东送”，将算力需求引导至西部绿电富集区，实现“算随电优”，降低全社会算力成本30%以上（如宝丰能源案例）。</p>
+                            </article>
+                            <article class="card">
+                              <h3>1.2 政策演进：从概念到战略的跨越</h3>
+                                <ul>
+                                  <li><strong>2024年：</strong>青海海东启动万卡集群项目，探索绿电直供模式 <span class="tag">老旧信息</span></li>
+                                    <li><strong>2025年：</strong>四川率先提出“绿色算力+直供体系”框架，推动算电融合方案编制 <span class="tag">老旧信息</span></li>
+                                      <li><strong>2026年：</strong>政府工作报告首次写入“算电协同”，明确目标为“提升国家枢纽节点算力占比及数据中心绿电使用率”。</li>
+                                      </ul>
+                                    </article>
+                                  </section>
+                                  <!-- 二、区域发展布局与重点项目 -->
+                                  <section>
+                                    <h2>二、区域发展布局与重点项目</h2>
+                                      <div class="grid-3">
+                                        <article class="region-card">
+                                          <h3>四川：先行者</h3>
+                                            <p><strong>核心优势：</strong>水电装机超1亿千瓦（全国第一），智算规模占比近60%。</p>
+                                              <p><strong>核心挑战：</strong>解决“东算西电”空间错配与绿电间歇性时间错配。</p>
+                                                <p><strong>推进动作：</strong></p>
+                                                  <ul>
+                                                    <li>政策：全国首个省级算电融合专项政策，在“三州两市”布局万卡集群。</li>
+                                                      <li>技术：搭建算电协同调度平台，建设全国首个高海拔岩洞式算力中心。</li>
+                                                        <li>目标：从单纯能源输出转向“绿电+算力”双输出，2026年新增算力规模超5万P。</li>
+                                                        </ul>
+                                                      </article>
+                                                      <article class="region-card">
+                                                        <h3>青海：高海拔标杆</h3>
+                                                          <p><strong>代表项目：</strong>中国移动高原大数据中心（二期）</p>
+                                                            <ul>
+                                                              <li>总投资：20亿元</li>
+                                                                <li>规模：超万架高密机柜</li>
+                                                                  <li>指标：PUE < 1.15，网络带宽20T</li>
+                                                                    <li>定位：承接东数西算智算业务 <span class="tag">老旧信息</span></li>
+                                                                    </ul>
+                                                                  </article>
+                                                                  <article class="region-card">
+                                                                    <h3>内蒙古：工业融合</h3>
+                                                                      <p><strong>代表案例：</strong>宝丰能源20万卡国产AI智算中心</p>
+                                                                        <ul>
+                                                                          <li>模式：“绿电+算力+储能+AI+化工”</li>
+                                                                            <li>供电：100%绿电直供</li>
+                                                                              <li>效益：降低算力成本30%+</li>
+                                                                                <li>规划：2027年实现全负荷运营</li>
+                                                                                </ul>
+                                                                              </article>
+                                                                            </div>
+                                                                          </section>
+                                                                          <!-- 三、核心赛道与技术突破 -->
+                                                                          <section>
+                                                                            <h2>三、核心赛道与技术突破</h2>
+                                                                              <article class="card">
+                                                                                <h3>3.1 六大核心赛道及技术壁垒</h3>
+                                                                                  <div class="table-responsive">
+                                                                                    <table>
+                                                                                      <thead>
+                                                                                        <tr>
+                                                                                          <th>赛道名称</th>
+                                                                                            <th>技术核心</th>
+                                                                                              <th>龙头特征</th>
+                                                                                                <th>发展阶段</th>
+                                                                                                  <th>来源链接</th>
+                                                                                                  </tr>
+                                                                                                </thead>
+                                                                                                <tbody>
+                                                                                                  <tr>
+                                                                                                    <td>智能调度系统</td>
+                                                                                                      <td>AI预判+电力大模型结合</td>
+                                                                                                        <td>与国家电网深度绑定</td>
+                                                                                                          <td><span style="color:var(--secondary-color)">短期爆发</span></td>
+                                                                                                            <td><a href="http://m.toutiao.com/group/7619284959496290857/" target="_blank">点击查看</a></td>
+                                                                                                            </tr>
+                                                                                                            <tr>
+                                                                                                              <td>绿电直供/虚拟电厂</td>
+                                                                                                                <td>新能源基地直供算力中心</td>
+                                                                                                                  <td>掌控风光资产与运营能力</td>
+                                                                                                                    <td>中长期成熟</td>
+                                                                                                                      <td><a href="http://m.toutiao.com/group/7619284959496290857/" target="_blank">点击查看</a></td>
+                                                                                                                      </tr>
+                                                                                                                      <tr>
+                                                                                                                        <td>液冷节能技术</td>
+                                                                                                                          <td>浸没式液冷方案</td>
+                                                                                                                            <td>匹配万卡集群的研发资源</td>
+                                                                                                                              <td><span style="color:var(--secondary-color)">短期爆发</span></td>
+                                                                                                                                <td><a href="http://www.qinghai.gov.cn/zwgk/system/2024/11/27/030059243.shtml" target="_blank">点击查看</a></td>
+                                                                                                                                </tr>
+                                                                                                                                <tr>
+                                                                                                                                  <td>储能配套</td>
+                                                                                                                                    <td>毫秒级响应系统集成</td>
+                                                                                                                                      <td>高市占率+同步部署能力</td>
+                                                                                                                                        <td><span style="color:var(--secondary-color)">短期爆发</span></td>
+                                                                                                                                          <td><a href="http://m.toutiao.com/group/7619284959496290857/" target="_blank">点击查看</a></td>
+                                                                                                                                          </tr>
+                                                                                                                                          <tr>
+                                                                                                                                            <td>电网与负荷互动</td>
+                                                                                                                                              <td>需求侧响应与电力交易</td>
+                                                                                                                                                <td>灵活用电方案设计能力</td>
+                                                                                                                                                  <td>中长期成熟</td>
+                                                                                                                                                    <td><a href="http://m.toutiao.com/group/7619284959496290857/" target="_blank">点击查看</a></td>
+                                                                                                                                                    </tr>
+                                                                                                                                                    <tr>
+                                                                                                                                                      <td>基建总包</td>
+                                                                                                                                                        <td>全链条建设资源协调能力</td>
+                                                                                                                                                          <td>企业主导，跨区域资源整合</td>
+                                                                                                                                                            <td><span style="color:var(--secondary-color)">短期爆发</span></td>
+                                                                                                                                                              <td><a href="http://m.toutiao.com/group/7619284959496290857/" target="_blank">点击查看</a></td>
+                                                                                                                                                              </tr>
+                                                                                                                                                            </tbody>
+                                                                                                                                                          </table>
+                                                                                                                                                        </div>
+                                                                                                                                                      </article>
+                                                                                                                                                      <article class="card">
+                                                                                                                                                        <h3>3.2 关键技术突破方向</h3>
+                                                                                                                                                          <ul>
+                                                                                                                                                            <li><strong>智能调度系统：</strong>AI算法优化算力与电力调度，如国家电网电力大模型。</li>
+                                                                                                                                                              <li><strong>液冷技术：</strong>适配万卡集群的浸没式液冷方案，PUE<1.15（青海项目标准）。</li>
+                                                                                                                                                                <li><strong>绿电直供：</strong>虚拟电厂整合风光资源，实现“源网荷储一体化”管理。</li>
+                                                                                                                                                                </ul>
+                                                                                                                                                              </article>
+                                                                                                                                                            </section>
+                                                                                                                                                            <!-- 四、产业链受益主体与投资建议 -->
+                                                                                                                                                            <section>
+                                                                                                                                                              <h2>四、产业链受益主体与投资建议</h2>
+                                                                                                                                                                <div class="grid-3">
+                                                                                                                                                                  <article class="region-card" style="border-top-color: var(--primary-color);">
+                                                                                                                                                                    <h3>核心受益企业</h3>
+                                                                                                                                                                      <ul>
+                                                                                                                                                                        <li><strong>调度系统：</strong>国电南瑞（电网调度龙头）</li>
+                                                                                                                                                                          <li><strong>液冷技术：</
