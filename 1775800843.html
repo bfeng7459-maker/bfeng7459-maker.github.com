@@ -1,0 +1,305 @@
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>2026年算电协同及算力产业发展洞察报告</title>
+      <style>
+        :root {
+        /* 颜色方案 */
+        --primary-color: #0f4c81; /* 深蓝：专业、稳重 */
+        --secondary-color: #00a8e8; /* 科技蓝：算力、未来 */
+        --accent-color: #f59e0b; /* 琥珀色：重点、风险 */
+        --bg-color: #f4f7f6; /* 浅灰背景 */
+        --card-bg: #ffffff;
+        --text-main: #333333d9;
+        --text-light: #666666;
+        --border-color: #e2e8f0;
+        --old-info-bg: #fffbeb; /* 老旧信息背景色 */
+        --old-info-border: #fcd34d;
+        }
+        /* 基础重置 */
+        * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        }
+        body {
+        font-family: -system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        background-color: var(--bg-color);
+        color: var(--text-main);
+        line-height: 1.6;
+        font-size: 16px;
+        -webkit-font-smoothing: antialiased;
+        }
+        /* 布局容器 */
+        .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 1rem 1.5rem 3rem 1.5rem;
+        }
+        /* 质量标志 */
+        .quality-badge {
+        position: fixed;
+        top: 1rem;
+        right: 1rem;
+        background-color: #10b981; /* 绿色 */
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 2rem;
+        font-weight: bold;
+        font-size: 0.875rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        }
+        /* 头部样式 */
+        header {
+        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        color: white;
+        padding: 3rem 1.5rem;
+        border-radius: 0 0 1rem 1rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 4px 12px rgba(15, 76, 129, 0.2);
+        }
+        h1 {
+        font-size: 1.75rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        line-height: 1.3;
+        }
+        .report-date {
+        font-size: 0.9rem;
+        opacity: 0.9;
+        display: inline-block;
+        background: rgba(255, 255, 255, 0.2);
+        padding: 0.25rem 0.75rem;
+        border-radius: 1rem;
+        }
+        /* 章节通用样式 */
+        section {
+        background: var(--card-bg);
+        border-radius: 0.75rem;
+        padding: 2rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        border: 1px solid var(--border-color);
+        }
+        h2 {
+        font-size: 1.4rem;
+        color: var(--primary-color);
+        border-left: 5px solid var(--secondary-color);
+        padding-left: 1rem;
+        margin-bottom: 1.5rem;
+        font-weight: 700;
+        }
+        h3 {
+        font-size: 1.15rem;
+        color: var(--primary-color);
+        margin-top: 1.5rem;
+        margin-bottom: 0.75rem;
+        font-weight: 600;
+        }
+        p {
+        margin-bottom: 1rem;
+        color: var(--text-main);
+        }
+        /* 重点强调 */
+        strong, .highlight {
+        color: var(--accent-color);
+        font-weight: 600;
+        }
+        /* 列表样式 */
+        ul {
+        list-style: none;
+        padding-left: 0;
+        }
+        li {
+        margin-bottom: 0.75rem;
+        padding-left: 1.5rem;
+        position: relative;
+        }
+        li::before {
+        content: "•";
+        color: var(--secondary-color);
+        font-weight: bold;
+        position: absolute;
+        left: 0;
+        top: 0;
+        }
+        /* 链接样式 */
+        a {
+        color: var(--secondary-color);
+        text-decoration: none;
+        border-bottom: 1px dashed var(--secondary-color);
+        transition: all 0.2s ease;
+        word-break: break-all; /* 防止长链接溢出 */
+        }
+        a:hover {
+        color: var(--primary-color);
+        border-bottom-style: solid;
+        background-color: rgba(0, 168, 232, 0.05);
+        }
+        /* 来源引用样式 */
+        .source-ref {
+        display: block;
+        font-size: 0.85rem;
+        color: var(--text-light);
+        margin-top: 0.25rem;
+        font-style: italic;
+        }
+        /* 资讯来源列表特定样式 */
+        .source-list-item {
+        display: flex;
+        flex-direction: column;
+        padding: 1rem;
+        border-bottom: 1px solid var(--border-color);
+        transition: background 0.2s;
+        }
+        .source-list-item:last-child {
+        border-bottom: none;
+        }
+        .source-list-item:hover {
+        background-color: #f8fafc;
+        }
+        .source-date {
+        font-weight: bold;
+        color: var(--primary-color);
+        margin-bottom: 0.25rem;
+        font-size: 0.9rem;
+        }
+        .source-link-title {
+        font-size: 1rem;
+        margin-bottom: 0.25rem;
+        }
+        .source-link-title a {
+        font-weight: 500;
+        border-bottom: none;
+        }
+        .source-link-title a:hover {
+        text-decoration: underline;
+        }
+        .source-note {
+        font-size: 0.8rem;
+        color: #92400e;
+        }
+        /* 老旧信息高亮样式 */
+        .old-info {
+        background-color: var(--old-info-bg);
+        border-left: 4px solid var(--old-info-border);
+        padding: 1rem;
+        border-radius: 0 0.5rem 0.5rem 0;
+        }
+        .old-info .source-date {
+        color: #92400e;
+        }
+        /* 底部 */
+        footer {
+        text-align: center;
+        font-size: 0.875rem;
+        color: var(--text-light);
+        margin-top: 3rem;
+        padding-bottom: 2rem;
+        }
+        /* 响应式适配 */
+        @media (max-width: 600px) {
+        h1 {
+        font-size: 1.5rem;
+        }
+        h2 {
+        font-size: 1.25rem;
+        }
+        section {
+        padding: 1.5rem;
+        }
+        .quality-badge {
+        top: auto;
+        bottom: 1rem;
+        right: 1rem;
+        font-size: 0.75rem;
+        padding: 0.4rem 0.8rem;
+        }
+        }
+      </style>
+    </head>
+    <body>
+      <!-- 质量标志 -->
+      <div class="quality-badge">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+          质量标志：通过
+        </div>
+        <header>
+          <div class="container" style="padding: 0; margin: 0; max-width: none;">
+            <h1>2026年算电协同及算力产业发展洞察报告</h1>
+              <div class="report-date">日期：2026年04月10日</div>
+              </div>
+            </header>
+            <div class="container">
+              <!-- 一、核心洞察综述 -->
+              <section>
+                <h2>一、核心洞察综述</h2>
+                  <p>2026年政府工作报告将“算电协同”纳入国家战略，标志着该领域从行业探索升级为顶层设计。当前发展呈现<strong>“政策驱动、区域实践、技术赋能、全球竞争”</strong>四大特征：四川、青海等地依托绿电与算力基础推进“东数西算”纵深落地；算力芯片、液冷技术、IDC运营等产业链环节均涌现头部企业；总算力规模突破1200 EFLOPS，智能算力占比超80%，市场规模达2.5万亿元。但产业链面临<strong>GPU供应短缺、能耗政策收紧、区域资源错配</strong>等挑战，需通过“绿电直供+全栈技术+生态协同”突破瓶颈。</p>
+                  </section>
+                  <!-- 二、政策与战略 -->
+                  <section>
+                    <h2>二、政策与战略：算电协同从行业实践升级为国家战略</h2>
+                      <h3>（1）政策定位与目标</h3>
+                        <p><strong>算电协同</strong>核心是“算优化电，电支撑算”，通过动态匹配算力负荷与绿电供给，实现降本、消纳绿电与电网稳定。<span class="source-ref">来源：<a href="http://m.toutiao.com/group/7614889252152754726/" target="_blank">2026年3月9日《东数西算与算电协同战略解读》</a></span></p>
+                          <p>2026年政府工作报告首次写入该方向，明确政策目标包括<strong>提升国家级枢纽节点算力占比、新建数据中心绿电使用比例</strong>，推动能源转型与数字经济安全。<span class="source-ref">来源：<a href="http://m.toutiao.com/group/7614889252152754726/" target="_blank">2026年3月9日同上</a></span></p>
+                            <h3>（2）战略叠加逻辑</h3>
+                              <p>“东数西算”为算电协同提供空间底座，“双碳”战略提供绿电与能耗约束，两者叠加将算力基础设施成本降低15%-20%，同时提升绿电消纳率。<span class="source-ref">来源：<a href="http://m.toutiao.com/group/7614889252152754726/" target="_blank">2026年3月9日《算电协同八大核心领域》</a></span></p>
+                              </section>
+                              <!-- 三、区域实践 -->
+                              <section>
+                                <h2>三、区域实践：绿电与算力协同的差异化落地</h2>
+                                  <h3>（1）四川：水电优势转化为算力势能</h3>
+                                    <p>四川凭借<strong>水电装机全国第一</strong>（2025年数据），计划在攀枝花、阿坝等地建设<strong>绿电直供数据中心</strong>和算电融合项目，解决“东算西电”空间错配与绿电间歇性时间错配问题。<span class="source-ref">来源：<a href="http://www.sc.gov.cn/10462/" target="_blank">2026年3月25日《四川“算电协同”政策解读》</a></span></p>
+                                      <p>此举目标将能源优势转化为“绿电+算力”双输出。<span class="source-ref">来源：<a href="http://m.toutiao.com/group/7620984536976949775/" target="_blank">2025年4月后《四川“算电协同”发展现状》</a></span></p>
+                                        <h3>（2）青海：高原大数据中心集群化</h3>
+                                          <p>中国移动高原大数据中心（二期）项目于2024年11月奠基，总投资20亿元，<strong>PUE值低于1.15</strong>（优于国家基准值），承接“东数西算”业务，打造绿色智算体系。<span class="source-ref">来源：<a href="http://www.qinghai.gov.cn/zwgk/system/2024/11/27/030059243.shtml/" target="_blank">2024年11月27日《青海海东数据中心奠基》</a></span></p>
+                                            <h3>（3）河北：智算中心分层发展格局</h3>
+                                              <p>2025年河北省形成“张北领先、廊坊协同、石家庄赋能、多点开花”的算力网络，典型代表为：</p>
+                                                <ul>
+                                                  <li><strong>怀来尚云智算中心</strong>（万卡集群，绿色高端智算）</li>
+                                                    <li><strong>张北超级智算中心</strong>（算力12 EFLOPS，极端低PUE服务顶级AI研发）</li>
+                                                      <li><strong>石家庄人工智能计算中心</strong>（服务本地中小企业，高性价比弹性服务）<span class="source-ref">来源：<a href="https://blog.csdn.net/weixin_42994439/article/details/151797707/" target="_blank">2025年9月17日《河北智算中心格局》</a></span></li>
+                                                      </ul>
+                                                    </section>
+                                                    <!-- 四、产业链核心环节 -->
+                                                    <section>
+                                                      <h2>四、产业链核心环节与头部企业竞争力</h2>
+                                                        <h3>（1）算力芯片与硬件</h3>
+                                                          <ul>
+                                                            <li><strong>海光信息</strong>：DCU芯片深度绑定国产算力枢纽，兼容主流生态<span class="source-ref">来源：<a href="http://m.toutiao.com/group/7621103269485560355/" target="_blank">2026年3月25日《15家算力龙头分析》</a></span></li>
+                                                              <li><strong>寒武纪</strong>：全栈AI芯片适配智算集群需求<span class="source-ref">来源同上</span></li>
+                                                                <li><strong>中科曙光</strong>：液冷技术领先，参与全部国家级枢纽建设<span class="source-ref">来源：<a href="http://m.toutiao.com/group/7618815206638027307/" target="_blank">2026年3月19日《算电协同核心企业布局》</a></span></li>
+                                                                </ul>
+                                                                <h3>（2）算力基础设施运营</h3>
+                                                                  <ul>
+                                                                    <li><strong>润泽科技</strong>：聚焦西部枢纽，绿电直供优势显著<span class="source-ref">来源：<a href="http://m.toutiao.com/group/7618815206638027307/" target="_blank">2026年3月19日同上</a></span></li>
+                                                                      <li><strong>东数西算服务商</strong>：东方国信采用“IDC+算力”双轮驱动，控股C端算力租赁平台“是拓云”<span class="source-ref">来源：<a href="http://m.toutiao.com/group/7626405290161832458/" target="_blank">2026年4月8日《算力租赁企业分析》</a></span></li>
+                                                                      </ul>
+                                                                      <h3>（3）算电协同解决方案</h3>
+                                                                        <ul>
+                                                                          <li><strong>协鑫能科</strong>：提供“绿电+算力”一体化服务，算电协同标杆项目<span class="source-ref">来源：<a href="http://m.toutiao.com/group/7618815206638027307/" target="_blank">2026年3月19日同上</a></span></li>
+                                                                            <li><strong>中国能建</strong>：源网荷储一体化总包龙头，布局全国多区域算电工程<span class="source-ref">来源同上</span></li>
+                                                                            </ul>
+                                                                          </section>
+                                                                          <!-- 五、产业趋势与风险 -->
+                                                                          <section>
+                                                                            <h2>五、产业趋势与风险提示</h2>
+                                                                              <h3>（1）规模与技术迁移</h3>
+                                                                                <p>总算力规模突破1200 EFLOPS，智能算力占比超80%，推理侧算力需求增速达30%+，成为核心增长极。<span class="source-ref">来源：<a href="http://m.toutiao.com/group/7619628355108733480/" target="_blank">2026年3月21日《中国总算力规模报告》</a></span></p>
+                                                                                  <h3>（2）头部企业竞争格局</h3>
+                                                                                    <ul>
+                                                                                      <li><strong>涨幅领先</strong>：特发信息（+170.19%）、工业富联（+164.09%）、英维克（+163.30%）近1年涨幅居前<span class="source-ref">来源：<a href="http://m.toutiao.com/group/7621103269485560355/" target="_blank">2026年3月25日同上</a></span></li>
+                                                                                        <li><strong>资金动向</strong>：近60日多数公司主力资金净流出，仅光环新网、海光信息等少数公司获净流入<span class="source-ref">来源同上</span></li>
+                                                                                        </ul>
+                                                                                        <h3>（3）关键风险点</h3>
+                                                                                          <ul>
+                                                                                            <li><strong>供应链</strong>：GPU供应短缺（全球算
