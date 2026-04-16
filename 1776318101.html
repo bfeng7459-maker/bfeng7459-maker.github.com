@@ -1,0 +1,423 @@
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>中国联通2025年度业绩洞察分析报告</title>
+      <style>
+        /* CSS Variables for Color Scheme */
+        :root {
+        --primary-color: #E60012; /* China Unicom Red */
+        --primary-dark: #b3000e;
+        --secondary-color: #003366; /* Corporate Blue */
+        --accent-color: #F59E0B; /* Highlight/Warning */
+        --success-color: #10B981; /* Growth/Positive */
+        --bg-color: #F9FAFB;
+        --card-bg: #FFFFFF;
+        --text-main: #1F2937;
+        --text-sub: #4B5563;
+        --border-radius: 12px;
+        --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        --shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        /* Reset Base Styles */
+        * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        }
+        body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+        background-color: var(--bg-color);
+        color: var(--text-main);
+        line-height: 1.6;
+        font-size: 16px;
+        -webkit-font-smoothing: antialiased;
+        }
+        /* Layout Utilities */
+        .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 1.5rem;
+        }
+        /* Header Styling */
+        header {
+        background-color: var(--card-bg);
+        box-shadow: var(--shadow);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        padding: 1rem 0;
+        }
+        .header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        }
+        .brand {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: var(--primary-color);
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        }
+        /* Quality Badge */
+        .quality-badge {
+        background-color: var(--success-color);
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 9999px;
+        font-size: 0.875rem;
+        font-weight: 600;
+        box-shadow: 0 2px 4px rgba(16, 185, 129, 0.3);
+        }
+        /* Hero Section */
+        .hero {
+        padding: 3rem 0;
+        text-align: center;
+        background: linear-gradient(135deg, #fff5f5 0%, #fff 100%);
+        border-bottom: 1px solid #e5e7eb;
+        }
+        .report-title {
+        font-size: clamp(1.5rem, 4vw, 2.5rem);
+        font-weight: 800;
+        color: var(--secondary-color);
+        margin-bottom: 0.5rem;
+        }
+        .report-date {
+        color: var(--text-sub);
+        font-size: 1rem;
+        margin-bottom: 2rem;
+        display: inline-block;
+        background: #eef2ff;
+        padding: 0.25rem 0.75rem;
+        border-radius: 4px;
+        }
+        .core-insight {
+        background: var(--card-bg);
+        padding: 2rem;
+        border-radius: var(--border-radius);
+        box-shadow: var(--shadow);
+        border-left: 5px solid var(--primary-color);
+        text-align: left;
+        max-width: 900px;
+        margin: 0 auto;
+        }
+        .core-insight h2 {
+        font-size: 1.25rem;
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        }
+        .core-insight p {
+        font-size: 1.1rem;
+        color: var(--text-main);
+        }
+        /* Analysis Grid */
+        .analysis-section {
+        padding: 3rem 0;
+        }
+        .section-title {
+        text-align: center;
+        font-size: 2rem;
+        margin-bottom: 2rem;
+        color: var(--secondary-color);
+        position: relative;
+        }
+        .section-title::after {
+        content: '';
+        display: block;
+        width: 60px;
+        height: 4px;
+        background: var(--primary-color);
+        margin: 0.5rem auto 0;
+        border-radius: 2px;
+        }
+        .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 2rem;
+        }
+        .card {
+        background: var(--card-bg);
+        border-radius: var(--border-radius);
+        padding: 2rem;
+        box-shadow: var(--shadow);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border-top: 4px solid transparent;
+        display: flex;
+        flex-direction: column;
+        }
+        .card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-hover);
+        }
+        .card:nth-child(1) { border-top-color: #3B82F6; } /* Finance */
+        .card:nth-child(2) { border-top-color: #8B5CF6; } /* Strategy */
+        .card:nth-child(3) { border-top-color: #EC4899; } /* Capex */
+        .card:nth-child(4) { border-top-color: #10B981; } /* ESG */
+        .card:nth-child(5) { border-top-color: #F59E0B; } /* Governance */
+        .card h3 {
+        font-size: 1.35rem;
+        margin-bottom: 1.25rem;
+        color: var(--secondary-color);
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        }
+        .card-content {
+        flex-grow: 1;
+        }
+        .card-content ul {
+        list-style: none;
+        }
+        .card-content li {
+        margin-bottom: 1.5rem;
+        position: relative;
+        padding-left: 1.25rem;
+        }
+        .card-content li::before {
+        content: '•';
+        color: var(--primary-color);
+        font-weight: bold;
+        position: absolute;
+        left: 0;
+        font-size: 1.2rem;
+        line-height: 1.6rem;
+        }
+        .card strong {
+        color: var(--text-main);
+        font-weight: 700;
+        }
+        /* Links Styling */
+        a {
+        color: var(--primary-color);
+        text-decoration: none;
+        transition: color 0.2s;
+        border-bottom: 1px dashed var(--primary-color);
+        }
+        a:hover {
+        color: var(--primary-dark);
+        border-bottom-style: solid;
+        }
+        .source-link {
+        font-size: 0.85rem;
+        color: var(--text-sub);
+        margin-left: 0.5rem;
+        display: inline-block;
+        white-space: nowrap;
+        }
+        /* Summary Section */
+        .summary-section {
+        background-color: var(--secondary-color);
+        color: white;
+        padding: 3rem 0;
+        }
+        .summary-card {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        padding: 2rem;
+        border-radius: var(--border-radius);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .summary-card h3 {
+        margin-bottom: 1rem;
+        font-size: 1.5rem;
+        }
+        .summary-card p {
+        font-size: 1.1rem;
+        opacity: 0.95;
+        }
+        /* References List */
+        .references-section {
+        padding: 3rem 0;
+        background-color: #fff;
+        }
+        .ref-list {
+        list-style: none;
+        counter-reset: ref-counter;
+        }
+        .ref-list li {
+        counter-increment: ref-counter;
+        padding: 1rem;
+        border-bottom: 1px solid #eee;
+        display: flex;
+        align-items: flex-start;
+        gap: 1rem;
+        }
+        .ref-list li::before {
+        content: counter(ref-counter);
+        background: var(--primary-color);
+        color: white;
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.85rem;
+        flex-shrink: 0;
+        margin-top: 2px;
+        }
+        .ref-link {
+        color: var(--secondary-color);
+        font-weight: 500;
+        display: block;
+        margin-bottom: 0.25rem;
+        }
+        /* Footer */
+        footer {
+        background-color: var(--text-main);
+        color: #9CA3AF;
+        text-align: center;
+        padding: 2rem 0;
+        font-size: 0.9rem;
+        }
+        /* Mobile Adjustments */
+        @media (max-width: 768px) {
+        .hero {
+        padding: 2rem 0;
+        }
+        .core-insight {
+        padding: 1.5rem;
+        }
+        .card {
+        padding: 1.5rem;
+        }
+        .section-title {
+        font-size: 1.75rem;
+        }
+        /* Ensure touch targets are large enough */
+        a {
+        padding: 2px 0;
+        }
+        }
+      </style>
+    </head>
+    <body>
+      <!-- Header -->
+      <header>
+        <div class="container header-content">
+          <div class="brand">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path>
+                <path d="M22 12A10 10 0 0 0 12 2v10z"></path>
+                </svg>
+                联通业绩洞察
+              </div>
+              <div class="quality-badge">质量标志：通过</div>
+                <!-- Quality Badge positioned top right via flexbox -->
+              </div>
+            </header>
+            <main>
+              <!-- Hero Section -->
+              <section class="hero">
+                <div class="container">
+                  <h1 class="report-title">中国联通2025年度业绩洞察分析报告</h1>
+                    <div class="report-date">2026年4月16日</div>
+                      <div class="core-insight">
+                        <h2>
+                          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                              <line x1="12" y1="16" x2="12" y2="12"></line>
+                                <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                                </svg>
+                                核心洞察综述
+                              </h2>
+                              <p>中国联通2025年营收微增0.68%-0.7%，净利润呈现口径差异（208亿元或91.27亿元），派息率提升至61.3%，战略转型成效显著。算力与AI成为核心增长引擎，AI收入同比增长超140%，算力业务收入占比超15%，战略性新兴产业收入占比超86%。资本开支优化至500亿元，算力投资占比超35%，社会责任与ESG获国际认可。</p>
+                              </div>
+                            </div>
+                          </section>
+                          <!-- Detailed Analysis Grid -->
+                          <section class="analysis-section">
+                            <div class="container">
+                              <h2 class="section-title">详细维度分析</h2>
+                                <div class="grid">
+                                  <!-- Card 1: Finance -->
+                                  <article class="card">
+                                    <h3>💰 财务表现与股东回报</h3>
+                                      <div class="card-content">
+                                        <ul>
+                                          <li>
+                                            <strong>营收与利润</strong>：全年营收3922.23亿元，同比增长0.68%-0.7%；归属于上市公司股东的净利润208亿元（同比增0.98%），另有口径指净利润91.27亿元（同比增1.1%），可能因统计范围差异导致。拟派每股0.417元现金股息（含税），派息率提升至61.3%。
+                                              <br><a href="http://m.toutiao.com/group/7619135615094817315/" target="_blank" class="source-link">查看财报详情</a>
+                                              <a href="http://m.toutiao.com/group/7621166200727159342/" target="_blank" class="source-link">查看净利润详情</a>
+                                              </li>
+                                              <li>
+                                                <strong>现金流优化</strong>：自由现金流同比增长28.5%至360亿元，企业“造血能力”增强。
+                                                  <br><a href="http://m.toutiao.com/group/7620243645798629903/" target="_blank" class="source-link">查看核心看点</a>
+                                                </li>
+                                              </ul>
+                                            </div>
+                                          </article>
+                                          <!-- Card 2: Strategy -->
+                                          <article class="card">
+                                            <h3>🚀 战略转型与新兴业务</h3>
+                                              <div class="card-content">
+                                                <ul>
+                                                  <li>
+                                                    <strong>算力与AI</strong>：5G专网收入增长超50%，算力业务收入占比超15%，人工智能收入同比增长超140%，战略性新兴产业收入占比超86%，实现从“卖管道”向“卖算力”转型。
+                                                      <br><a href="http://m.toutiao.com/group/7620243645798629903/" target="_blank" class="source-link">查看转型成效</a>
+                                                    </li>
+                                                    <li>
+                                                      <strong>前沿布局</strong>：获工信部批准开展北斗三号短报文公众应用商用试验，支持无地面网络场景下应急通信；布局6G、低空智联网、卫星通信等新赛道。
+                                                      </li>
+                                                    </ul>
+                                                  </div>
+                                                </article>
+                                                <!-- Card 3: Capex -->
+                                                <article class="card">
+                                                  <h3>🏗️ 资本开支与资源配置</h3>
+                                                    <div class="card-content">
+                                                      <ul>
+                                                        <li>
+                                                          <strong>结构优化</strong>：2025年资本开支542亿元，2026年预计压降至500亿元，其中算力投资占比超35%，资源向高增长潜力领域倾斜。
+                                                            <br><a href="http://m.toutiao.com/group/7620243645798629903/" target="_blank" class="source-link">查看资本开支详情</a>
+                                                          </li>
+                                                        </ul>
+                                                      </div>
+                                                    </article>
+                                                    <!-- Card 4: ESG -->
+                                                    <article class="card">
+                                                      <h3>🌍 社会责任与ESG表现</h3>
+                                                        <div class="card-content">
+                                                          <ul>
+                                                            <li>
+                                                              <strong>通信保障</strong>：博鳌亚洲论坛2026年年会保障“零事故、零投诉、零差错”，应用5G切片、智能机器狗提升应急运维效率；在甘肃暴雨、四川地震等灾害中快速抢通通信生命线。
+                                                                <br><a href="https://toutiao.com/group/7621815501107102208/" target="_blank" class="source-link">查看博鳌保障</a>
+                                                              </li>
+                                                              <li>
+                                                                <strong>绿色与乡村</strong>：推动绿色节能与数字乡村建设，5G专网覆盖偏远山区，消除“信号孤岛”。
+                                                                </li>
+                                                              </ul>
+                                                            </div>
+                                                          </article>
+                                                          <!-- Card 5: Governance -->
+                                                          <article class="card">
+                                                            <h3>👔 组织与治理动态</h3>
+                                                              <div class="card-content">
+                                                                <ul>
+                                                                  <li>
+                                                                    <strong>高层调整</strong>：2025年11月董昕任董事长，前任陈忠岳转任中国移动董事长，三大运营商半年内完成高层调整。
+                                                                    </li>
+                                                                    <li>
+                                                                      <strong>股权激励</strong>：2026年4月2日解禁2.24亿股股权激励限售股（占总股本0.72%），涉及公司高管及核心团队。
+                                                                        <br><a href="http://m.toutiao.com/group/7623949035589616143/" target="_blank" class="source-link">查看解禁公告</a>
+                                                                        <a href="http://finance.sina.com.cn/stock/aiassist/xfjj/2026-03-28/doc-inhsncxk5050483.shtml" target="_blank" class="source-link">查看详情</a>
+                                                                        </li>
+                                                                      </ul>
+                                                                    </div>
+                                                                  </article>
+                                                                </div>
+                                                              </div>
+                                                            </section>
+                                                            <!-- Summary Section -->
+                                                            <section class="summary-section">
+                                                              <div class="container">
+                                                                <div class="summary-card">
+                                                                  <h3>📝 总结与展望</h3>
+                                                                    <p>中国联通通过“资本开支减法”与“算力投资加法”优化结构，在存量市场实现稳健发展。短期需关注算力投入转化效率及AI商业化落地
