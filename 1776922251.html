@@ -1,0 +1,341 @@
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>国电南瑞（600406）股票分析洞察报告</title>
+      <style>
+        :root {
+        /* 颜色方案 */
+        --primary-color: #1e3a8a; /* 深蓝：稳重、金融 */
+        --secondary-color: #3b82f6; /* 亮蓝：链接、重点 */
+        --accent-color: #10b981; /* 绿色：增长、正面 */
+        --danger-color: #ef4444; /* 红色：风险、负面 */
+        --text-main: #1f2937;
+        --text-secondary: #4b5563;
+        --bg-body: #f3f4f6;
+        --bg-card: #ffffff;
+        --border-color: #e5e7eb;
+        /* 间距与尺寸 */
+        --spacing-sm: 0.5rem;
+        --spacing-md: 1rem;
+        --spacing-lg: 1.5rem;
+        --spacing-xl: 2rem;
+        --radius-md: 8px;
+        --radius-lg: 12px;
+        }
+        /* 全局重置 */
+        * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        }
+        body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        background-color: var(--bg-body);
+        color: var(--text-main);
+        line-height: 1.6;
+        font-size: 16px;
+        -webkit-font-smoothing: antialiased;
+        }
+        /* 布局容器 */
+        .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 0 var(--spacing-md);
+        }
+        /* 头部设计 */
+        header {
+        background: linear-gradient(135deg, var(--primary-color), #2563eb);
+        color: white;
+        padding: var(--spacing-lg) 0;
+        position: relative;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        margin-bottom: var(--spacing-lg);
+        }
+        .header-content {
+        position: relative;
+        padding-right: 100px; /* 为标志留出空间 */
+        }
+        h1 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: var(--spacing-sm);
+        line-height: 1.3;
+        }
+        .report-date {
+        font-size: 0.875rem;
+        opacity: 0.9;
+        font-weight: 300;
+        }
+        /* 质量标志 */
+        .quality-badge {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: var(--accent-color);
+        color: white;
+        padding: 0.35rem 0.85rem;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: bold;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        display: inline-flex;
+        align-items: center;
+        z-index: 10;
+        }
+        .quality-badge::before {
+        content: '✓';
+        margin-right: 4px;
+        font-weight: 900;
+        }
+        /* 通用卡片样式 */
+        .card {
+        background-color: var(--bg-card);
+        border-radius: var(--radius-lg);
+        padding: var(--spacing-lg);
+        margin-bottom: var(--spacing-lg);
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        border: 1px solid var(--border-color);
+        }
+        /* 核心洞察区域 */
+        .core-insight {
+        border-left: 5px solid var(--secondary-color);
+        }
+        .section-title {
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: var(--primary-color);
+        margin-bottom: var(--spacing-md);
+        padding-bottom: var(--spacing-sm);
+        border-bottom: 2px solid var(--bg-body);
+        display: flex;
+        align-items: center;
+        }
+        .section-title::before {
+        content: '';
+        display: inline-block;
+        width: 6px;
+        height: 24px;
+        background-color: var(--secondary-color);
+        margin-right: var(--spacing-sm);
+        border-radius: 3px;
+        }
+        /* 文本排版 */
+        p {
+        margin-bottom: var(--spacing-md);
+        color: var(--text-secondary);
+        }
+        strong {
+        color: var(--text-main);
+        font-weight: 600;
+        }
+        /* 列表样式 */
+        ul {
+        list-style: none;
+        padding-left: 0;
+        }
+        li {
+        margin-bottom: var(--spacing-md);
+        padding-left: 1.2rem;
+        position: relative;
+        }
+        li::before {
+        content: '•';
+        color: var(--secondary-color);
+        font-weight: bold;
+        position: absolute;
+        left: 0;
+        }
+        /* 来源链接样式 */
+        .source-link {
+        display: block;
+        margin-top: var(--spacing-sm);
+        font-size: 0.85rem;
+        color: var(--text-secondary);
+        background: #f9fafb;
+        padding: 0.5rem;
+        border-radius: var(--radius-md);
+        border: 1px dashed var(--border-color);
+        word-break: break-all;
+        }
+        .source-link a {
+        color: var(--secondary-color);
+        text-decoration: none;
+        font-weight: 500;
+        }
+        .source-link a:hover {
+        text-decoration: underline;
+        }
+        /* 风险提示特别样式 */
+        .risk-section .section-title::before {
+        background-color: var(--danger-color);
+        }
+        .risk-section li::before {
+        color: var(--danger-color);
+        }
+        .risk-highlight {
+        color: var(--danger-color);
+        font-weight: 600;
+        }
+        /* 总结区域 */
+        .summary-box {
+        background-color: #eff6ff;
+        border: 1px solid #bfdbfe;
+        }
+        /* 参考资料列表 */
+        .ref-list {
+        counter-reset: ref-counter;
+        }
+        .ref-item {
+        counter-increment: ref-counter;
+        margin-bottom: var(--spacing-lg);
+        padding-bottom: var(--spacing-md);
+        border-bottom: 1px solid var(--border-color);
+        }
+        .ref-item:last-child {
+        border-bottom: none;
+        }
+        .ref-title {
+        font-weight: 600;
+        color: var(--text-main);
+        margin-bottom: var(--spacing-sm);
+        display: block;
+        }
+        .ref-title::before {
+        content: counter(ref-counter) ". ";
+        color: var(--secondary-color);
+        }
+        .ref-meta {
+        font-size: 0.85rem;
+        color: var(--text-secondary);
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--spacing-md);
+        align-items: center;
+        }
+        .btn-link {
+        display: inline-block;
+        background-color: var(--primary-color);
+        color: white;
+        padding: 0.4rem 0.8rem;
+        border-radius: 4px;
+        text-decoration: none;
+        font-size: 0.8rem;
+        transition: background 0.2s;
+        }
+        .btn-link:hover {
+        background-color: var(--secondary-color);
+        }
+        /* 底部 */
+        footer {
+        text-align: center;
+        padding: var(--spacing-xl) 0;
+        color: var(--text-secondary);
+        font-size: 0.875rem;
+        }
+        /* 响应式适配 */
+        @media (min-width: 768px) {
+        h1 { font-size: 2rem; }
+        .container { padding: 0 var(--spacing-lg); }
+        .card { padding: 2rem; }
+        }
+        @media (max-width: 480px) {
+        h1 { font-size: 1.25rem; }
+        .header-content { padding-right: 80px; }
+        .quality-badge { font-size: 0.7rem; padding: 0.25rem 0.6rem; }
+        .card { padding: var(--spacing-md); border-radius: var(--radius-md); }
+        }
+      </style>
+    </head>
+    <body>
+      <header>
+        <div class="container header-content">
+          <h1>国电南瑞（600406）股票分析洞察报告</h1>
+            <div class="report-date">2026年04月23日</div>
+              <!-- 质量标志 -->
+              <div class="quality-badge">质量标志：通过</div>
+              </div>
+            </header>
+            <main class="container">
+              <!-- 核心洞察综述 -->
+              <section class="card core-insight">
+                <h2 class="section-title">核心洞察综述</h2>
+                  <p>截至2026年04月22日收盘，国电南瑞（600406）股价报27.01元，微跌0.07%，近期处于26-27元区间震荡。市场资金呈现“主力净流出、散户与游资净流入”特征，反映短期情绪分歧。基本面稳健（2025年三季报营收、净利润同比增长），机构近90天维持“买入”评级，行业层面受益于“十五五”电网投资规划（预测总投资近5万亿元）及能源安全战略。技术面显示短期26.5-26.8元支撑较强，但需警惕主力资金持续流出风险。</p>
+                  </section>
+                  <!-- 详细维度分析 -->
+                  <section class="card">
+                    <h2 class="section-title">详细维度分析</h2>
+                      <h3>一、股价与市场表现</h3>
+                        <ul>
+                          <li>
+                            <strong>短期走势</strong>：
+                              <p>4月22日收盘27.01元，微跌0.07%；4月19日分析指出股价在26.81元附近低位震荡，均线粘合，量能萎缩，短期呈偏弱趋势。</p>
+                                <span class="source-link">来源：<a href="https://toutiao.com/group/7630406648724554274/" target="_blank">https://toutiao.com/group/7630406648724554274/</a> (2026-04-19)</span>
+                                  <p>3月6日盘中创历史新高30.70元（涨4.03%），总市值约2465.75亿元，随后进入回调阶段。</p>
+                                    <span class="source-link">来源：<a href="https://www.stcn.com/article/detail/3664430.html" target="_blank">https://www.stcn.com/article/detail/3664430.html</a> (2026-03-06)</span>
+                                    </li>
+                                    <li>
+                                      <strong>近期波动</strong>：
+                                        <p>4月3日分析认为，股价在26元附近震荡属前期高预期透支后的正常回调，基本面未恶化。</p>
+                                          <span class="source-link">来源：<a href="https://toutiao.com/group/7624334722520334900/" target="_blank">https://toutiao.com/group/7624334722520334900/</a> (2026-04-03)</span>
+                                          </li>
+                                        </ul>
+                                        <h3>二、资金动向与市场情绪</h3>
+                                          <ul>
+                                            <li>
+                                              <strong>主力与散户博弈</strong>：
+                                                <p>4月22日主力资金净流出3.29亿元，占总成交额12.27%；游资与散户资金呈净流入状态，反映散户接盘意愿较强。</p>
+                                                  <span class="source-link">来源：<a href="https://m.sohu.com/a/1013120678_121319643/" target="_blank">https://m.sohu.com/a/1013120678_121319643/</a> (2026-04-22)</span>
+                                                    <p>4月19日数据显示，主力与北向资金小幅净流出，市场情绪谨慎，需观察26.5元支撑位有效性。</p>
+                                                      <span class="source-link">来源：<a href="https://toutiao.com/group/7630406648724554274/" target="_blank">https://toutiao.com/group/7630406648724554274/</a> (2026-04-19)</span>
+                                                      </li>
+                                                      <li>
+                                                        <strong>机构增持与减持</strong>：
+                                                          <p>2026年2月：国泰恒生A股电网设备ETF（561380）增持国电南瑞，持仓浮盈超300万元。</p>
+                                                            <span class="source-link">来源：<a href="https://m.sohu.com/a/990286846_122066678/" target="_blank">https://m.sohu.com/a/990286846_122066678/</a> (2026-02-26)</span>
+                                                              <p>2025年7月：国泰基金旗下两只基金合计减持28.63万股，累计浮亏50.4万元（老旧信息，距离当前超60天）。</p>
+                                                                <span class="source-link">来源：<a href="https://www.sohu.com/a/919468414_122014422" target="_blank">https://www.sohu.com/a/919468414_122014422</a> (2025-07-31)</span>
+                                                                </li>
+                                                              </ul>
+                                                              <h3>三、财务与业绩数据</h3>
+                                                                <ul>
+                                                                  <li>
+                                                                    <strong>三季报业绩</strong>：
+                                                                      <p>2025年三季报显示，前三季度营收385.77亿元（同比+18.45%），净利润48.55亿元（同比+8.43%），基本面稳健。</p>
+                                                                        <span class="source-link">来源：<a href="https://www.stcn.com/article/detail/3664430.html" target="_blank">https://www.stcn.com/article/detail/3664430.html</a> (2026-03-06); <a href="https://m.sohu.com/a/1013120678_121319643/" target="_blank">https://m.sohu.com/a/1013120678_121319643/</a> (2026-04-22)</span>
+                                                                          <p>2025年新签合同663亿元，在手订单超620亿元，现金流健康。</p>
+                                                                            <span class="source-link">来源：<a href="https://toutiao.com/group/7624334722520334900/" target="_blank">https://toutiao.com/group/7624334722520334900/</a> (2026-04-03)</span>
+                                                                            </li>
+                                                                          </ul>
+                                                                          <h3>四、行业与业务布局</h3>
+                                                                            <ul>
+                                                                              <li>
+                                                                                <strong>行业机遇</strong>：
+                                                                                  <p>“十五五”电网投资规划预测总投资近5万亿元，年均投资额较“十四五”显著增长，行业进入高景气周期；地缘政治推动能源安全，电网作为核心基建受关注。</p>
+                                                                                    <span class="source-link">来源：<a href="https://mguba.eastmoney.com/mguba/list/600406,1668594981/" target="_blank">https://mguba.eastmoney.com/mguba/list/600406,1668594981/</a> (2026-03-01)</span>
+                                                                                    </li>
+                                                                                    <li>
+                                                                                      <strong>新业务拓展</strong>：
+                                                                                        <p>积极布局AI电网、虚拟电厂、储能等，海外市场取得突破。</p>
+                                                                                          <span class="source-link">来源：<a href="https://toutiao.com/group/7624334722520334900/" target="_blank">https://toutiao.com/group/7624334722520334900/</a> (2026-04-03)</span>
+                                                                                            <p>“电算一体化”（电力与算力协同）成为新趋势，电网企业受关注。</p>
+                                                                                              <span class="source-link">来源：<a href="https://mguba.eastmoney.com/mguba/list/600406,1668594981/" target="_blank">https://mguba.eastmoney.com/mguba/list/600406,1668594981/</a> (2026-03-01)</span>
+                                                                                              </li>
+                                                                                            </ul>
+                                                                                            <h3 class="risk-section">五、风险提示</h3>
+                                                                                              <ul>
+                                                                                                <li>
+                                                                                                  <span class="risk-highlight">短期波动风险</span>：
+                                                                                                    <p>技术面未企稳，4月17日收阴且量能萎缩，需警惕主力资金持续流出。</p>
+                                                                                                      <span class="source-link">来源：<a href="https://toutiao.com/group/7630406648724554274/" target="_blank">https://toutiao.com/group/7630406648724554274/</a> (2026-04-19)</span>
+                                                                                                      </li>
+                                                                                                      <li>
+                                                                                                        <span class="risk-highlight">投资预期与业绩不匹配风险</span>：
+                                                                                                          <p>2025年7月以来累计下跌7.45%，短期市场风格切换或影响表现（老旧信息）。</p>
+                                                                                                            <span class="source-link">来源：<a href="https://www.sohu.com/a/919468414_122014422" target="_blank">https://www.sohu.com/a/919468414_122014422</a> (2025-07-31)</span>
+                                                                                                            </li>
+                                                                                                          </ul>
+                                                                                                        </section>
+                                                                                                        <!-- 总结
