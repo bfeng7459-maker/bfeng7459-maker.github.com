@@ -1,0 +1,300 @@
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>国电南瑞及国泰基金ETF动态分析报告（2026年04月29日）</title>
+      <style>
+        /* 全局变量定义 */
+        :root {
+        --primary-color: #004a99; /* 深蓝，适合金融报告 */
+        --accent-color: #e6f0fa;  /* 浅蓝背景 */
+        --text-main: #333333;
+        --text-secondary: #555555;
+        --text-light: #777777;
+        --bg-body: #f4f6f9;
+        --bg-card: #ffffff;
+        --border-color: #e1e4e8;
+        --success-color: #d32f2f; /* A股涨通常为红 */
+        --danger-color: #2e7d32;  /* A股跌通常为绿 */
+        --spacing-unit: 1rem;
+        --radius: 8px;
+        --shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+        /* 基础重置 */
+        * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        }
+        body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+        background-color: var(--bg-body);
+        color: var(--text-main);
+        line-height: 1.6;
+        font-size: 16px;
+        -webkit-font-smoothing: antialiased;
+        }
+        /* 布局容器 */
+        .container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 0 var(--spacing-unit);
+        }
+        /* 头部样式 */
+        header {
+        background-color: var(--bg-card);
+        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        padding: 1.2rem 0;
+        border-bottom: 1px solid var(--border-color);
+        }
+        .header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        gap: 10px;
+        }
+        h1 {
+        font-size: 1.25rem;
+        color: var(--primary-color);
+        font-weight: 700;
+        line-height: 1.3;
+        flex: 1;
+        }
+        /* 质量标志 */
+        .quality-badge {
+        background-color: #28a745;
+        color: white;
+        padding: 0.25rem 0.75rem;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        white-space: nowrap;
+        box-shadow: 0 2px 4px rgba(40, 167, 69, 0.3);
+        }
+        /* 通用卡片样式 */
+        .card {
+        background: var(--bg-card);
+        border-radius: var(--radius);
+        padding: 1.5rem;
+        margin-top: 1.5rem;
+        box-shadow: var(--shadow);
+        border: 1px solid var(--border-color);
+        }
+        /* 核心洞察区域 */
+        .summary-card {
+        background: linear-gradient(to bottom right, #fff, #f0f7ff);
+        border-left: 5px solid var(--primary-color);
+        }
+        .section-title {
+        font-size: 1.15rem;
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid var(--accent-color);
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        }
+        .section-title::before {
+        content: '';
+        display: inline-block;
+        width: 6px;
+        height: 1.15rem;
+        background-color: var(--primary-color);
+        margin-right: 0.5rem;
+        border-radius: 2px;
+        }
+        p {
+        margin-bottom: 1rem;
+        text-align: justify;
+        }
+        /* 列表样式 */
+        ul {
+        list-style: none;
+        margin-bottom: 1rem;
+        }
+        li {
+        margin-bottom: 0.8rem;
+        padding-left: 1.2rem;
+        position: relative;
+        }
+        li::before {
+        content: '•';
+        color: var(--primary-color);
+        font-weight: bold;
+        position: absolute;
+        left: 0;
+        top: 0;
+        }
+        /* 链接样式 */
+        a {
+        color: var(--primary-color);
+        text-decoration: none;
+        transition: color 0.2s;
+        word-break: break-all;
+        }
+        a:hover {
+        text-decoration: underline;
+        color: #003366;
+        }
+        .source-link {
+        font-size: 0.85rem;
+        color: var(--text-light);
+        background-color: #f0f0f0;
+        padding: 2px 6px;
+        border-radius: 4px;
+        margin-left: 5px;
+        display: inline-block;
+        vertical-align: middle;
+        }
+        .source-link:hover {
+        background-color: #e0e0e0;
+        color: var(--primary-color);
+        }
+        /* 重点数据高亮 */
+        .highlight {
+        font-weight: 700;
+        color: var(--text-main);
+        }
+        .trend-up { color: var(--success-color); }
+        .trend-down { color: var(--danger-color); }
+        /* 底部链接列表 */
+        .source-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
+        gap: 0.8rem;
+        }
+        .source-item {
+        background: #fff;
+        border: 1px solid #eee;
+        padding: 0.8rem;
+        border-radius: 4px;
+        font-size: 0.9rem;
+        transition: transform 0.2s, box-shadow 0.2s;
+        display: flex;
+        align-items: flex-start;
+        }
+        .source-item:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+        border-color: var(--primary-color);
+        }
+        .source-index {
+        font-weight: bold;
+        color: var(--text-light);
+        margin-right: 0.5rem;
+        min-width: 20px;
+        }
+        /* 页脚 */
+        footer {
+        text-align: center;
+        padding: 2rem 0;
+        color: var(--text-light);
+        font-size: 0.85rem;
+        margin-top: 2rem;
+        border-top: 1px solid var(--border-color);
+        }
+        /* 响应式适配 */
+        @media (min-width: 768px) {
+        h1 { font-size: 1.5rem; }
+        .card { padding: 2rem; }
+        .source-list {
+        grid-template-columns: repeat(2, 1fr);
+        }
+        }
+        @media (max-width: 480px) {
+        .header-content {
+        flex-direction: column;
+        }
+        .quality-badge {
+        align-self: flex-end;
+        margin-top: -2rem; /* Pull up to align with title */
+        }
+        .source-item {
+        flex-direction: column;
+        }
+        .source-index {
+        margin-bottom: 0.25rem;
+        }
+        }
+      </style>
+    </head>
+    <body>
+      <header>
+        <div class="container header-content">
+          <h1>国电南瑞及国泰基金ETF动态分析报告<br><span style="font-size:0.8em; font-weight:400; color:#666;">（2026年04月29日）</span></h1>
+            <div class="quality-badge">质量标志：通过</div>
+            </div>
+          </header>
+          <main class="container">
+            <!-- 核心洞察 -->
+            <section class="card summary-card">
+              <h2 class="section-title">核心洞察综述</h2>
+                <p>截至2026年4月29日，国电南瑞（600406）股价经历短期回调后温和反弹，当日上涨<span class="highlight trend-up">1.42%</span>，但资金面呈现主力与游资净流出、散户净流入特征。国泰恒生A股电网设备ETF（561380）表现分化，重仓股中特变电工、思源电气等波动较大。基本面显示公司营收与净利润保持增长，电网设备龙头地位稳固。国泰集团（603977）股价连续下跌，机构目标价与当前股价存在分歧。</p>
+                </section>
+                <!-- 详细维度分析 -->
+                <section class="card">
+                  <h2 class="section-title">详细维度分析</h2>
+                    <h3>1. 国电南瑞股价走势与资金动向</h3>
+                      <p><strong>近期股价表现：</strong><br>
+                        2026年4月29日早盘温和反弹，开盘价26.26元，盘中最高26.55元，截至10:53报26.44元，涨幅1.42%，反弹主因包括连续回调释放风险、估值回归合理、基本面扎实及市场风格切换带来的电力板块资金回流。此前4月27日收盘报26.23元，下跌1.17%；4月24日收报26.59元，下跌1.34%；4月17日微跌0.22%，处于26.5元附近震荡整理状态。<a href="https://toutiao.com/group/7634009213177430562/" target="_blank" class="source-link">来源: 国电南瑞结束连续多日低迷温和反弹</a></p>
+                        <p style="font-size: 0.9em; color: #666; margin-top: -0.5rem; margin-bottom: 1rem;"><em>历史波动：2026年3月9日曾创历史新高31.52元，随后震荡下行；2025年7月31日股价连续7天下跌，累计跌幅7.45%，期间国泰基金旗下两只ETF浮亏50.4万元（老旧信息，2025年7月，时间超过60天）。</em><a href="https://www.sohu.com/a/919468414_122014422/" target="_blank" class="source-link">来源: 国泰基金旗下2只基金持有国电南瑞期间浮亏50.4万元</a></p>
+                          <p><strong>资金流向：</strong></p>
+                            <ul>
+                              <li>4月27日：主力资金净流出5126.25万元，游资净流出4800.99万元，散户净流入9927.24万元。<a href="https://m.sohu.com/a/1015335373_121319643/" target="_blank" class="source-link">来源: 国电南瑞4月27日收盘数据及资金流向</a></li>
+                                <li>4月19日：主力资金小幅净流出，北向资金减持，机构关注度下降。<a href="https://toutiao.com/group/7630406648724554274/" target="_blank" class="source-link">来源: 国电南瑞4月19日资金与技术面分析</a></li>
+                                </ul>
+                                <h3>2. 基本面与业务表现</h3>
+                                  <p><strong>财务数据：</strong></p>
+                                    <ul>
+                                      <li>三季报（截至2025年）：前三季度营收385.77亿元，同比增18.45%；归母净利润48.55亿元，同比增8.43%。近90天获2家机构买入评级。<a href="https://m.sohu.com/a/1015335373_121319643/" target="_blank" class="source-link">来源: 国电南瑞2025年三季报及机构评级</a></li>
+                                        <li>2025年预测：营收预计破400亿元，净利润增长超15%，新能源控制业务为增长点。<a href="https://toutiao.com/group/7630406648724554274/" target="_blank" class="source-link">来源: 国电南瑞基本面与2025年预测</a></li>
+                                        </ul>
+                                        <p><strong>业务结构：</strong>电网自动化业务营收占比超60%，为电网设备龙头企业。</p>
+                                          <h3>3. 技术面与估值指标</h3>
+                                            <p><strong>技术面特征：</strong></p>
+                                              <ul>
+                                                <li>4月23日：股价在26.5元附近震荡，均线粘合，量能萎缩，资金承接不足，关键支撑位26.5元，压力位27元。<a href="https://toutiao.com/group/7630406648724554274/" target="_blank" class="source-link">来源: 国电南瑞4月19日技术面分析</a></li>
+                                                  <li>3月30日：MACD、RSI等指标呈空头态势，技术面偏弱。<a href="https://toutiao.com/group/7622960722745524746/" target="_blank" class="source-link">来源: 国电南瑞3月30日技术面分析</a></li>
+                                                    <li>4月24日：市盈率TTM 26.78倍，市净率4.35倍，总市值2138.86亿元。<a href="https://quotes.sina.cn/hs/company/quotes/view/sh600406" target="_blank" class="source-link">来源: 国电南瑞4月24日估值数据</a></li>
+                                                    </ul>
+                                                    <h3>4. 国泰相关ETF表现</h3>
+                                                      <p><strong>国泰恒生A股电网设备ETF（561380）：</strong></p>
+                                                        <ul>
+                                                          <li><strong>业绩与持仓：</strong>跟踪恒生A股电网设备指数，基金经理吴中昊，成立以来回报114.68%-118.81%（时间不同略有差异），重仓股包括国电南瑞、中天科技等。</li>
+                                                            <li><strong>近期波动：</strong>
+                                                              <ul>
+                                                                <li>4月29日无数据，最新4月27日午间上涨0.37%，半日成交额1.03亿元，中天科技涨10%，思源电气跌6.70%。<a href="https://finance.sina.com.cn/money/fund/aiassistant/etfwp/2026-04-27/doc-inhvxath9151698.shtml" target="_blank" class="source-link">来源: 国泰电网设备ETF4月27日表现</a></li>
+                                                                  <li>4月29日反弹带动下，重仓股中特变电工、国电南瑞或有修复。</li>
+                                                                    <li>4月24日：开盘下跌0.69%，报2.174元，重仓股多数下跌（如思源电气跌0.46%）。<a href="https://finance.sina.com.cn/money/fund/aiassistant/etfkp/2026-04-24/doc-inhvqfhk4818030.shtml" target="_blank" class="source-link">来源: 国泰电网设备ETF4月24日波动</a></li>
+                                                                    </ul>
+                                                                  </li>
+                                                                </ul>
+                                                                <p><strong>国泰中证细分机械设备产业主题ETF（516960）：</strong><br>
+                                                                  跟踪中证细分机械设备产业主题指数，基金经理苗梦羽，4月24日下午下跌0.19%，半日成交额19.38万元，宁德时代涨0.82%，特变电工跌2.78%。<a href="https://cj.sina.cn/article/norm_detail?url=http%3A%2F%2Ffinance.sina.cn%2F2026-04-24%2Fdetail-inhvqmqk3211530.d.html" target="_blank" class="source-link">来源: 国泰机械ETF4月24日表现</a></p>
+                                                                  <h3>5. 国泰集团（603977）表现</h3>
+                                                                    <p><strong>股价走势：</strong></p>
+                                                                      <ul>
+                                                                        <li>4月24日：收盘13.96元，下跌5.93%，主力资金净流出4737.68万元。</li>
+                                                                          <li>4月27日：连续2日下跌，前10个交易日主力资金累计净流出7002.92万元，股价累计下跌4.95%。<a href="https://stock.stockstar.com/RB2026042700003967.shtml" target="_blank" class="source-link">来源: 国泰集团4月24日与27日股价数据</a></li>
+                                                                          </ul>
+                                                                          <p><strong>机构评级：</strong>近90天内2家机构给予买入评级，目标均价16.75元。</p>
+                                                                          </section>
+                                                                          <!-- 总结与展望 -->
+                                                                          <section class="card">
+                                                                            <h2 class="section-title">总结与展望</h2>
+                                                                              <p>国电南瑞短期反弹信号明确，但中期仍需震荡磨底。基本面稳健支撑估值修复，技术面关键支撑位26.5元若有效守住，或进一步反弹至27元压力位。国泰恒生A股电网设备ETF（561380）随行业波动分化，重仓股表现差异显著，需关注电网投资落地及新能源订单进展。国泰集团股价承压，机构目标价与当前股价存在分歧，需警惕资金持续流出风险。</p>
+                                                                              </section>
+                                                                              <!-- 来源链接列表 -->
+                                                                              <section class="card">
+                                                                                <h2 class="section-title">资讯来源列表</h2>
+                                                                                  <div class="source-list">
+                                                                                    <div class="source-item">
+                                                                                      <span class="source-index">1.</span>
+                                                                                        <a href="https://toutiao.com/group/7634009213177430562/" target="_blank">国电
