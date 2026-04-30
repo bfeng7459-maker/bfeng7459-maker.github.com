@@ -1,0 +1,355 @@
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>国电南瑞2026年4月市场动态及国泰基金持仓分析洞察报告</title>
+      <style>
+        /* 全局变量定义：配色方案 */
+        :root {
+        --primary-color: #0f172a; /* 深蓝：主标题、页脚 */
+        --accent-color: #3b82f6; /* 亮蓝：链接、重点 */
+        --bg-color: #f8fafc; /* 浅灰：页面背景 */
+        --card-bg: #ffffff; /* 白色：卡片背景 */
+        --text-main: #334155; /* 深灰：主要文字 */
+        --text-light: #64748b; /* 浅灰：次要文字 */
+        --success-color: #10b981; /* 绿色：盈利、正面 */
+        --danger-color: #ef4444; /* 红色：亏损、负面 */
+        --border-radius: 12px;
+        --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        --container-width: 900px;
+        }
+        /* 基础重置 */
+        * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        }
+        body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        background-color: var(--bg-color);
+        color: var(--text-main);
+        line-height: 1.6;
+        font-size: 16px;
+        -webkit-font-smoothing: antialiased;
+        }
+        /* 布局容器 */
+        .container {
+        max-width: var(--container-width);
+        margin: 0 auto;
+        padding: 0 1.5rem;
+        }
+        /* 顶部 Header */
+        header {
+        background-color: var(--primary-color);
+        color: white;
+        padding: 2rem 0;
+        margin-bottom: 2rem;
+        box-shadow: var(--shadow);
+        }
+        .header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        gap: 1rem;
+        }
+        h1 {
+        font-size: 1.75rem;
+        font-weight: 700;
+        line-height: 1.3;
+        flex: 1;
+        min-width: 280px;
+        }
+        .report-meta {
+        font-size: 0.9rem;
+        color: #94a3b8;
+        margin-top: 0.5rem;
+        }
+        /* 质量标志 Badge */
+        .quality-badge {
+        background-color: var(--success-color);
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 50px;
+        font-weight: 600;
+        font-size: 0.9rem;
+        display: inline-flex;
+        align-items: center;
+        box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
+        white-space: nowrap;
+        }
+        /* 通用卡片样式 */
+        .card {
+        background-color: var(--card-bg);
+        border-radius: var(--border-radius);
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+        box-shadow: var(--shadow);
+        border: 1px solid #e2e8f0;
+        }
+        .section-title {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid var(--bg-color);
+        display: flex;
+        align-items: center;
+        }
+        .section-title::before {
+        content: '';
+        display: block;
+        width: 6px;
+        height: 24px;
+        background-color: var(--accent-color);
+        margin-right: 0.75rem;
+        border-radius: 3px;
+        }
+        /* 核心洞察综述 - 特殊样式 */
+        .summary-card {
+        background: linear-gradient(135deg, #eff6ff 0%, #ffffff 100%);
+        border-left: 5px solid var(--accent-color);
+        }
+        .summary-text {
+        font-size: 1.05rem;
+        color: var(--text-main);
+        }
+        /* 列表样式 */
+        ul {
+        list-style: none;
+        }
+        .analysis-item {
+        margin-bottom: 1.25rem;
+        padding-bottom: 1.25rem;
+        border-bottom: 1px dashed #e2e8f0;
+        }
+        .analysis-item:last-child {
+        border-bottom: none;
+        margin-bottom: 0;
+        padding-bottom: 0;
+        }
+        .item-title {
+        font-weight: 700;
+        color: var(--primary-color);
+        margin-bottom: 0.5rem;
+        display: block;
+        }
+        .item-content {
+        color: var(--text-main);
+        margin-bottom: 0.5rem;
+        }
+        /* 数据高亮类 */
+        .trend-up { color: var(--danger-color); font-weight: 600; } /* 股票涨通常红，但在国际惯例中绿涨红跌，这里根据A股习惯：红涨绿跌。但文中提到“浮亏”通常用红色警示，“浮盈”用绿色。此处根据语境调整 */
+        .trend-down { color: var(--success-color); font-weight: 600; }
+        .loss { color: var(--danger-color); font-weight: 600; }
+        .profit { color: var(--success-color); font-weight: 600; }
+        .highlight { color: var(--accent-color); font-weight: 600; }
+        /* 来源链接样式 */
+        .source-link {
+        display: inline-flex;
+        align-items: center;
+        font-size: 0.85rem;
+        color: var(--accent-color);
+        text-decoration: none;
+        margin-top: 0.5rem;
+        padding: 4px 10px;
+        background-color: #eff6ff;
+        border-radius: 4px;
+        transition: all 0.2s;
+        }
+        .source-link:hover {
+        background-color: var(--accent-color);
+        color: white;
+        }
+        .source-link::before {
+        content: '🔗';
+        margin-right: 4px;
+        font-size: 0.9rem;
+        }
+        /* 基金持仓 Grid 布局 */
+        .fund-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        }
+        /* 风险因素 */
+        .risk-list li {
+        position: relative;
+        padding-left: 1.5rem;
+        margin-bottom: 0.75rem;
+        }
+        .risk-list li::before {
+        content: '⚠️';
+        position: absolute;
+        left: 0;
+        top: 2px;
+        }
+        /* 资讯列表表格化 */
+        .news-list {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+        }
+        .news-item {
+        display: flex;
+        flex-direction: column;
+        background: #f1f5f9;
+        padding: 1rem;
+        border-radius: 8px;
+        transition: transform 0.2s;
+        }
+        .news-item:hover {
+        transform: translateY(-2px);
+        background: #e2e8f0;
+        }
+        .news-date {
+        font-size: 0.85rem;
+        color: var(--text-light);
+        margin-bottom: 0.25rem;
+        font-weight: 600;
+        }
+        .news-title {
+        font-weight: 500;
+        color: var(--primary-color);
+        margin-bottom: 0.5rem;
+        flex-grow: 1;
+        }
+        .news-link {
+        font-size: 0.9rem;
+        color: var(--accent-color);
+        text-decoration: none;
+        word-break: break-all;
+        }
+        /* 页脚 */
+        footer {
+        text-align: center;
+        padding: 2rem 0;
+        color: var(--text-light);
+        font-size: 0.9rem;
+        border-top: 1px solid #e2e8f0;
+        margin-top: 3rem;
+        }
+        /* 响应式适配 */
+        @media (min-width: 768px) {
+        h1 { font-size: 2.25rem; }
+        .fund-grid { grid-template-columns: 1fr 1fr; }
+        .news-item {
+        flex-direction: row;
+        align-items: center;
+        }
+        .news-date {
+        width: 140px;
+        margin-bottom: 0;
+        margin-right: 1rem;
+        }
+        .news-title {
+        flex: 1;
+        margin-bottom: 0;
+        margin-right: 1rem;
+        }
+        .news-link {
+        width: 120px;
+        text-align: right;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        }
+        }
+      </style>
+    </head>
+    <body>
+      <header>
+        <div class="container header-content">
+          <div>
+            <h1>国电南瑞2026年4月市场动态及国泰基金持仓分析洞察报告</h1>
+              <p class="report-meta">生成日期：2026年04月30日</p>
+              </div>
+              <div class="quality-badge">质量标志：通过</div>
+              </div>
+            </header>
+            <main class="container">
+              <!-- 核心洞察综述 -->
+              <section class="card summary-card">
+                <h2 class="section-title">核心洞察综述</h2>
+                  <p class="summary-text">
+                    截至2026年4月24日，国电南瑞（电网设备ETF国泰561380重仓股）股价受市场情绪及行业分化影响持续回调，国泰基金旗下2只ETF因持仓经历阶段性涨跌，累计浮亏与浮盈特征显著。公司基本面支撑强劲（2025年营收目标超400亿元），但短期面临技术面弱势及资金流出压力，需关注行业政策及主力资金流向。
+                  </p>
+                </section>
+                <!-- 详细维度分析 -->
+                <section class="card">
+                  <h2 class="section-title">详细维度分析</h2>
+                    <!-- 一、股价走势 -->
+                    <h3 style="font-size:1.1rem; margin:1.5rem 0 1rem; color:var(--primary-color);">一、国电南瑞股价走势与关键时点</h3>
+                      <div class="analysis-item">
+                        <span class="item-title">近期波动（2026年4月）</span>
+                          <ul>
+                            <li style="margin-bottom:1rem;">
+                              <span class="item-content">
+                                <strong>4月24日：</strong>电网设备ETF国泰561380（重仓股含国电南瑞）半日下跌<span class="loss">2.19%</span>，国电南瑞跌<span class="loss">1.37%</span>，报26.XX元（当日ETF收盘价2.141元）。
+                                </span>
+                                <a href="https://finance.sina.cn/money/fund/aiassistant/etfwp/2026-04-24/doc-inhvqmqk3214423.shtml" target="_blank" class="source-link">查看来源</a>
+                                </li>
+                                <li style="margin-bottom:1rem;">
+                                  <span class="item-content">
+                                    <strong>4月19日：</strong>股价从32.06元高点回调至26.81元，微跌0.22%，均线粘合，支撑位26.5元，压力位27元。
+                                    </span>
+                                    <a href="https://toutiao.com/group/7630406648724554274/" target="_blank" class="source-link">查看来源</a>
+                                    </li>
+                                    <li>
+                                      <span class="item-content">
+                                        <strong>4月3日：</strong>股价26.00元，微跌0.34%，技术面MACD负值、KDJ下降显示弱势，主力资金净流出2737.69万元，但<span class="highlight">76%</span>机构给与买入评级。
+                                        </span>
+                                        <a href="https://toutiao.com/group/7624462317119455782/" target="_blank" class="source-link">查看来源</a>
+                                        </li>
+                                      </ul>
+                                    </div>
+                                    <div class="analysis-item">
+                                      <span class="item-title">历史趋势（2025-2026年）</span>
+                                        <ul>
+                                          <li style="margin-bottom:1rem;">
+                                            <span class="item-content">
+                                              <strong>2026年3月9日：</strong>股价大涨<span class="trend-up">5.03%</span>，创历史新高31.52元，A股市值2531.6亿元。
+                                              </span>
+                                              <a href="https://www.stcn.com/article/detail/3667586.html" target="_blank" class="source-link">查看来源</a>
+                                              </li>
+                                              <li>
+                                                <span class="item-content">
+                                                  <strong>2025年8月1日：</strong>连续8日下跌，累计跌幅7.78%，报21.80元，国泰基金旗下ETF浮亏<span class="loss">52.69万元</span>。
+                                                  </span>
+                                                  <a href="https://finance.sina.com.cn/money/fund/aiassistant/zcgyd/2025-08-01/doc-infiniqu8111512.shtml?cref=cj&finpagefr=ttzz" target="_blank" class="source-link">查看来源</a>
+                                                  </li>
+                                                </ul>
+                                              </div>
+                                              <!-- 二、国泰基金持仓 -->
+                                              <h3 style="font-size:1.1rem; margin:1.5rem 0 1rem; color:var(--primary-color);">二、国泰基金旗下ETF持仓与盈亏变化</h3>
+                                                <div class="fund-grid">
+                                                  <div class="card" style="margin-bottom:0; box-shadow:none; border:1px solid #e2e8f0; background:#fcfcfc;">
+                                                    <h4 style="margin-bottom:1rem; color:var(--accent-color);">国泰恒生A股电网设备ETF（561380）</h4>
+                                                      <ul style="font-size:0.95rem;">
+                                                        <li style="margin-bottom:0.8rem;">
+                                                          <strong>2025年7月29日：</strong>持有26.19万股，浮亏<span class="loss">40.33万元</span>（股价22.10元）。
+                                                            <br><a href="https://cj.sina.cn/article/norm_detail?url=http%3A%2F%2Ffinance.sina.cn%2F2025-07-29%2Fdetail-inficncz1083829.d.html" target="_blank" class="source-link" style="margin-top:4px;">来源</a>
+                                                          </li>
+                                                          <li style="margin-bottom:0.8rem;">
+                                                            <strong>2025年10月29日：</strong>增持至47.95万股，日浮盈<span class="profit">57.06万元</span>（股价涨5.06%）。
+                                                              <br><a href="https://cj.sina.cn/article/norm_detail?url=https%3A%2F%2Ffinance.sina.cn%2Fmoney%2Ffund%2Faiassistant%2Fzcgyd%2F2025-10-29%2Fdoc-infvpuqp8031857.shtml%3Ffinpagefr=ttzz" target="_blank" class="source-link" style="margin-top:4px;">来源</a>
+                                                            </li>
+                                                            <li>
+                                                              <strong>2026年4月24日：</strong>ETF下跌<span class="loss">2.19%</span>，国电南瑞跌<span class="loss">1.37%</span>。
+                                                                <br><a href="https://finance.sina.cn/money/fund/aiassistant/etfwp/2026-04-24/doc-inhvqmqk3214423.shtml" target="_blank" class="source-link" style="margin-top:4px;">来源</a>
+                                                              </li>
+                                                            </ul>
+                                                          </div>
+                                                          <div class="card" style="margin-bottom:0; box-shadow:none; border:1px solid #e2e8f0; background:#fcfcfc;">
+                                                            <h4 style="margin-bottom:1rem; color:var(--accent-color);">国泰中证细分机械设备产业主题ETF（516960）</h4>
+                                                              <ul style="font-size:0.95rem;">
+                                                                <li style="margin-bottom:0.8rem;">
+                                                                  <strong>2025年7月29日：</strong>持有2.44万股，浮亏<span class="loss">3.76万元</span>。
+                                                                    <br><a href="https://cj.sina.cn/article/norm_detail?url=http%3A%2F%2Ffinance.sina.cn%2F2025-07-29%2Fdetail-inficncz1083829.d.html" target="_blank" class="source-link" style="margin-top:4px;">来源</a>
+                                                                  </li>
+                                                                  <li>
+                                                                    <strong>2025年10月29日：</strong>增持200股至2.46万股，日浮盈约<span class="profit">2.93万元</span>。
+                                                                      <br><a href="https://cj.sina.cn/article/norm_detail?url=https%3A%2F%2Ffinance.sina.cn%2Fmoney%2Ffund%2Faiassistant%2Fzcgyd%2F2025-10-29%2Fdoc-infvpuqp8031857.shtml%3Ffinpagefr=ttzz" target="_blank" class="source-link" style="margin-top:4px;">来源</
