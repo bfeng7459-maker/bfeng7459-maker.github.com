@@ -1,0 +1,327 @@
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>国电南瑞股价动态及基本面洞察分析</title>
+      <style>
+        /* CSS 变量定义 - 颜色方案 */
+        :root {
+        --primary-color: #0056b3; /* 专业深蓝 */
+        --accent-color: #e6f0fa;  /* 浅蓝背景 */
+        --text-main: #333333;     /* 主要文字 */
+        --text-secondary: #666666;/* 次要文字 */
+        --border-color: #e1e4e8;
+        --white: #ffffff;
+        --success-color: #28a745; /* 绿色 - 用于质量标志或增长 */
+        --danger-color: #dc3545;  /* 红色 - 用于下跌或警示 */
+        --link-color: #007bff;
+        --shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        --radius: 8px;
+        --spacing-unit: 1rem;
+        }
+        /* 全局重置与基础样式 */
+        * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        }
+        body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+        background-color: #f5f7fa;
+        color: var(--text-main);
+        line-height: 1.6;
+        font-size: 16px;
+        }
+        a {
+        color: var(--link-lor);
+        text-decoration: none;
+        transition: color 0.2s;
+        }
+        a:hover {
+        color: var(--primary-color);
+        text-decoration: underline;
+        }
+        /* 布局容器 */
+        .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 0 var(--spacing-unit);
+        }
+        /* 头部样式 */
+        header {
+        background-color: var(--white);
+        box-shadow: var(--shadow);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        padding: 1.2rem 0;
+        margin-bottom: 2rem;
+        }
+        .header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        }
+        h1 {
+        font-size: 1.25rem;
+        color: var(--primary-color);
+        font-weight: 700;
+        }
+        /* 质量标志 */
+        .quality-badge {
+        background-color: var(--success-color);
+        color: white;
+        padding: 0.4rem 0.8rem;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        font-weight: bold;
+        box-shadow: 0 2px 4px rgba(40, 167, 69, 0.3);
+        }
+        /* 卡片通用样式 */
+        .card {
+        background: var(--white);
+        border-radius: var(--radius);
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+        box-shadow: var(--shadow);
+        border: 1px solid var(--border-color);
+        }
+        .card h2 {
+        font-size: 1.1rem;
+        margin-bottom: 1rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid var(--accent-color);
+        color: var(--primary-color);
+        }
+        .card h3 {
+        font-size: 1rem;
+        margin: 1rem 0 0.5rem 0;
+        color: var(--text-main);
+        }
+        p {
+        margin-bottom: 0.8rem;
+        color: var(--text-secondary);
+        }
+        /* 重点数据高亮 */
+        .highlight {
+        font-weight: bold;
+        color: var(--text-main);
+        }
+        .text-up { color: #d9534f; } /* A股红涨 */
+        .text-down { color: #28a745; } /* A股绿跌 */
+        /* 列表样式 */
+        ul {
+        padding-left: 1.2rem;
+        margin-bottom: 1rem;
+        }
+        li {
+        margin-bottom: 0.5rem;
+        }
+        /* 来源链接按钮 */
+        .source-link {
+        display: inline-block;
+        font-size: 0.8rem;
+        color: var(--primary-color);
+        background: var(--accent-color);
+        padding: 2px 8px;
+        border-radius: 4px;
+        margin-top: 0.5rem;
+        text-decoration: none;
+        }
+        .source-link:hover {
+        background: #d0e1f5;
+        text-decoration: none;
+        }
+        /* 资讯列表表格化样式 */
+        .news-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.9rem;
+        }
+        .news-table th, .news-table td {
+        text-align: left;
+        padding: 0.8rem;
+        border-bottom: 1px solid var(--border-color);
+        }
+        .news-table th {
+        background-color: var(--accent-color);
+        color: var(--primary-color);
+        font-weight: 600;
+        }
+        .news-table tr:last-child td {
+        border-bottom: none;
+        }
+        .news-date {
+        color: var(--text-secondary);
+        white-space: nowrap;
+        width: 100px;
+        }
+        .news-link-btn {
+        color: var(--primary-color);
+        font-weight: 500;
+        }
+        /* 响应式适配 */
+        @media (max-width: 600px) {
+        h1 {
+        font-size: 1.1rem;
+        }
+        .card {
+        padding: 1rem;
+        }
+        .news-table th, .news-table td {
+        padding: 0.6rem 0.4rem;
+        font-size: 0.85rem;
+        }
+        .news-date {
+        width: auto;
+        display: block;
+        font-size: 0.75rem;
+        margin-bottom: 0.2rem;
+        }
+        /* 手机端表格转卡片式布局的简化处理 */
+        .news-table tr {
+        display: flex;
+        flex-direction: column;
+        border-bottom: 1px solid #eee;
+        padding: 0.5rem 0;
+        }
+        .news-table thead {
+        display: none;
+        }
+        }
+      </style>
+    </head>
+    <body>
+      <!-- 顶部导航与质量标志 -->
+      <header>
+        <div class="container header-content">
+          <h1>国电南瑞 (600406) 股价动态及基本面洞察</h1>
+            <div class="quality-badge">质量标志：通过</div>
+            </div>
+          </header>
+          <main class="container">
+            <!-- 一、核心财务数据 -->
+            <section class="card">
+              <h2>一、核心财务数据与业绩表现</h2>
+                <p><strong>发布时间：</strong>2026年4月30日</p>
+                  <p>国电南瑞发布2025年年报及2026年一季报：</p>
+                    <ul>
+                      <li><strong>2025年年报：</strong>归属净利润 <span class="highlight">82.79亿元</span>，同比增长 <span class="text-up">8.79%</span>；基本每股收益 1.04元；拟10派4.75元（含税）。</li>
+                        <li><strong>2026年一季报：</strong>归属净利润 <span class="highlight">7.213亿元</span>，同比增长 <span class="text-up">6.04%</span>；基本每股收益 0.09元。</li>
+                        </ul>
+                        <p>公司主营电网智能（占比50.46%）、能源低碳（25.26%）等业务。截至2025年底股东户数160182户，较上期增加10077户。</p>
+                          <a href="http://quote.eastmoney.com/concept/sh600406.html" target="_blank" class="source-link">查看来源：东方财富网</a>
+                          </section>
+                          <!-- 二、近期股价走势 -->
+                          <section class="card">
+                            <h2>二、近期股价走势与技术面分析</h2>
+                              <h3>1. 2026年4月关键动态</h3>
+                                <ul>
+                                  <li><strong>4月19日：</strong>股价收于26.81元，微跌 <span class="text-down">0.22%</span>。技术面显示26.5元为关键支撑位，压力位27-28元，市场情绪低迷。
+                                    <br><a href="https://toutiao.com/group/7630406648724554274/" target="_blank" class="source-link">来源：今日头条</a>
+                                  </li>
+                                  <li><strong>4月29日：</strong>在机械ETF国泰（516960）中微涨 <span class="text-up">0.73%</span>。
+                                    <br><a href="http://cj.sina.cn/article/norm_detail?url=http%3A%2F%2Ffinance.sina.cn%2F2026-04-29%2Fdetail-inhwckrn7942712.d.html" target="_blank" class="source-link">来源：新浪财经</a>
+                                  </li>
+                                </ul>
+                                <h3>2. 技术指标与估值</h3>
+                                  <p><strong>2026年3月30日：</strong>股价收26.63元，跌 <span class="text-down">1.84%</span>。技术指标弱势（均线压制、MACD负值），当前市盈率26.78倍，2027年预测PE为19.17倍。
+                                    <br><a href="http://m.toutiao.com/group/7622960722745524746/" target="_blank" class="source-link">来源：今日头条</a>
+                                  </p>
+                                  <h3>3. 历史新高与市值</h3>
+                                    <p><strong>2026年3月6日：</strong>股价创历史新高 <span class="highlight">30.70元</span>，总市值达2465.75亿元。前三季度营收385.77亿元（同比+18.45%），净利润48.55亿元（同比+8.43%）。
+                                      <br><a href="https://www.stcn.com/article/detail/3664430.html" target="_blank" class="source-link">来源：证券时报</a>
+                                    </p>
+                                  </section>
+                                  <!-- 三、机构持仓 -->
+                                  <section class="card">
+                                    <h2>三、机构持仓与ETF关联互动</h2>
+                                      <h3>1. 国泰基金持仓</h3>
+                                        <p>2025年7月31日国泰基金旗下国泰恒生A股电网设备ETF及国泰中证细分机械设备产业主题ETF合计持有国电南瑞28.63万股，期间合计浮亏50.4万元。
+                                          <br><a href="https://www.sohu.com/a/919468414_122014422" target="_blank" class="source-link">来源：搜狐</a>
+                                        </p>
+                                        <h3>2. 国泰电网设备ETF动态</h3>
+                                          <p>截至2026年4月30日，国泰恒生A股电网设备ETF（561380）规模70.29亿元，今年以来份额增长892.33%。前十大重仓股包含国电南瑞，基金经理吴中昊任职期收益111.18%。
+                                            <br><a href="http://m.163.com/news/article/KRPQ5QA005568W0A.html" target="_blank" class="source-link">来源：网易新闻</a>
+                                          </p>
+                                        </section>
+                                        <!-- 四、市场情绪 -->
+                                        <section class="card">
+                                          <h2>四、市场情绪与未来展望</h2>
+                                            <h3>基本面支撑</h3>
+                                              <p>公司市场份额高（电网二次设备超75%），订单充足（未执行超620亿元），技术壁垒强，分红稳定（股息率超2.23%）。机构平均目标价28.24元，认为当前估值偏低。
+                                                <br><a href="https://toutiao.com/group/7624334722520334900/" target="_blank" class="source-link">来源：今日头条</a>
+                                              </p>
+                                              <h3>行业机遇</h3>
+                                                <p>长期受益于国家电网4万亿投资，新业务（AI电网、储能）及海外市场有增长潜力，建议关注关键支撑位与资金流向。
+                                                  <br><a href="http://m.toutiao.com/group/7622960722745524746/" target="_blank" class="source-link">来源：今日头条</a>
+                                                </p>
+                                              </section>
+                                              <!-- 五、总结 -->
+                                              <section class="card" style="border-left: 5px solid var(--primary-color);">
+                                                <h2>五、总结与展望</h2>
+                                                  <p class="highlight">国电南瑞基本面稳健增长（净利润8%+增速），新业务布局有效支撑估值，短期受电网投资预期透支影响股价回调至26元区间，技术面关键支撑明确。机构持仓与ETF规模增长显示中长期关注度较高，建议投资者逢低布局，重点关注26.5元支撑位及成交量变化。</p>
+                                                  </section>
+                                                  <!-- 资讯列表 -->
+                                                  <section class="card">
+                                                    <h2>资讯列表（按发布日期由近到远）</h2>
+                                                      <table class="news-table">
+                                                        <thead>
+                                                          <tr>
+                                                            <th>日期</th>
+                                                              <th>资讯标题</th>
+                                                                <th>操作</th>
+                                                                </tr>
+                                                              </thead>
+                                                              <tbody>
+                                                                <tr>
+                                                                  <td class="news-date">2026-04-30</td>
+                                                                    <td>国电南瑞2025年年报及2026年一季报发布</td>
+                                                                      <td><a href="http://quote.eastmoney.com/concept/sh600406.html" target="_blank" class="news-link-btn">阅读详情 &rarr;</a></td>
+                                                                      </tr>
+                                                                      <tr>
+                                                                        <td class="news-date">2026-04-30</td>
+                                                                          <td>国泰恒生A股电网设备ETF（561380）4月30日表现</td>
+                                                                            <td><a href="http://m.163.com/news/article/KRPQ5QA005568W0A.html" target="_blank" class="news-link-btn">阅读详情 &rarr;</a></td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                              <td class="news-date">2026-04-29</td>
+                                                                                <td>机械ETF国泰（516960）4月29日开盘及重仓股表现</td>
+                                                                                  <td><a href="http://cj.sina.cn/article/norm_detail?url=http%3A%2F%2Ffinance.sina.cn%2F2026-04-29%2Fdetail-inhwckrn7942712.d.html" target="_blank" class="news-link-btn">阅读详情 &rarr;</a></td>
+                                                                                  </tr>
+                                                                                  <tr>
+                                                                                    <td class="news-date">2026-04-27</td>
+                                                                                      <td>电网设备ETF国泰（561380）4月27日午间表现</td>
+                                                                                        <td><a href="https://finance.sina.com.cn/money/fund/aiassistant/etfwp/2026-04-27/doc-inhvxath9151698.shtml" target="_blank" class="news-link-btn">阅读详情 &rarr;</a></td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                          <td class="news-date">2026-04-22</td>
+                                                                                            <td>国泰恒生A股电网设备ETF 4月22日表现及国电南瑞走势</td>
+                                                                                              <td><a href="https://m.sohu.com/a/1012798450_122014422/" target="_blank" class="news-link-btn">阅读详情 &rarr;</a></td>
+                                                                                              </tr>
+                                                                                              <tr>
+                                                                                                <td class="news-date">2026-04-19</td>
+                                                                                                  <td>国电南瑞4月19日股价及技术分析</td>
+                                                                                                    <td><a href="https://toutiao.com/group/7630406648724554274/" target="_blank" class="news-link-btn">阅读详情 &rarr;</a></td>
+                                                                                                    </tr>
+                                                                                                    <tr>
+                                                                                                      <td class="news-date">2026-04-03</td>
+                                                                                                        <td>国电南瑞4月3日市场分析</td>
+                                                                                                          <td><a href="https://toutiao.com/group/7624334722520334900/" target="_blank" class="news-link-btn">阅读详情 &rarr;</a></td>
+                                                                                                          </tr>
+                                                                                                          <tr>
+                                                                                                            <td class="news-date">2026-03-30</td>
+                                                                                                              <td>国电南瑞3月30日股价及技术分析</td>
+                                                                                                                <td><a href="http://m.toutiao.com/group/7622960722745524746/" target="_blank" class="news-link-btn">阅读详情 &rarr;</a></td>
+                                                                                                                </tr>
+                                                                                                                <tr>
+                                                                                                                  <td class="news-date">2026-03-06</td>
+                                                                                                                    <td>国电南瑞3月6日股价创历史新高</td>
+                                                                                                                      <td><a href="https://www.stcn.com/article/detail/3664430.html" target="_blank" class="news-link-btn">阅读详情 &rarr;</a></td>
+                                                                                                                      </tr>
+                                                                                                                      <tr>
+                                                                                                                        <td class="news-date">2026-01-18</td>
+                                                                                                                          <td>国电南瑞2026年1月18日股市资讯</td>
+                                                                                                                            <td><a href="https://wap.eastmoney.com/quote/stock/1.600406.html"
