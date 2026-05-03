@@ -1,0 +1,340 @@
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>国电南瑞2026年3-4月股价波动与国泰基金持仓分析洞察</title>
+      <style>
+        /* --- CSS Reset & Variables --- */
+        :root {
+        --primary-color: #0f4c81; /* 经典蓝 */
+        --secondary-color: #008080; /* 蓝绿色，代表增长 */
+        --accent-color: #d35400; /* 橙色，用于强调重点数据 */
+        --bg-color: #f4f7f9;
+        --card-bg: #ffffff;
+        --text-main: #333333;
+        --text-light: #666666;
+        --border-radius: 12px;
+        --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        --spacing-unit: 1rem;
+        }
+        * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        }
+        body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        background-color: var(--bg-color);
+        color: var(--text-main);
+        line-height: 1.6;
+        font-size: 16px;
+        padding-bottom: 40px;
+        }
+        a {
+        color: var(--primary-color);
+        text-decoration: none;
+        transition: color 0.2s;
+        }
+        a:hover {
+        color: var(--secondary-color);
+        text-decoration: underline;
+        }
+        /* --- Layout & Container --- */
+        .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 0 var(--spacing-unit);
+        }
+        /* --- Header --- */
+        header {
+        background: linear-gradient(135deg, var(--primary-color), #2c3e50);
+        color: white;
+        padding: 2rem 0;
+        margin-bottom: 2rem;
+        position: relative;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        .header-content {
+        position: relative;
+        z-index: 1;
+        }
+        h1 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        line-height: 1.3;
+        }
+        .report-date {
+        font-size: 0.9rem;
+        opacity: 0.9;
+        display: inline-block;
+        background: rgba(255,255,255,0.2);
+        padding: 2px 8px;
+        border-radius: 4px;
+        }
+        /* Quality Badge */
+        .quality-badge {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        background-color: #27ae60;
+        color: white;
+        font-size: 0.85rem;
+        font-weight: bold;
+        padding: 6px 12px;
+        border-radius: 20px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        }
+        .quality-badge::before {
+        content: '✓';
+        font-weight: 900;
+        }
+        /* --- Components --- */
+        .card {
+        background: var(--card-bg);
+        border-radius: var(--border-radius);
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+        box-shadow: var(--shadow);
+        border: 1px solid rgba(0,0,0,0.05);
+        }
+        .section-title {
+        font-size: 1.25rem;
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid #eee;
+        display: flex;
+        align-items: center;
+        }
+        .section-title svg {
+        margin-right: 8px;
+        width: 24px;
+        height: 24px;
+        fill: var(--primary-color);
+        }
+        .highlight-text {
+        color: var(--accent-color);
+        font-weight: bold;
+        }
+        .source-link {
+        font-size: 0.8rem;
+        color: var(--text-light);
+        margin-left: 6px;
+        display: inline-flex;
+        align-items: center;
+        background: #f0f0f0;
+        padding: 2px 6px;
+        border-radius: 4px;
+        text-decoration: none;
+        }
+        .source-link:hover {
+        background: #e0e0e0;
+        color: var(--primary-color);
+        }
+        /* --- Summary Section --- */
+        .summary-box {
+        background-color: #eaf6ff;
+        border-left: 5px solid var(--primary-color);
+        }
+        /* --- Analysis Lists --- */
+        ul.analysis-list {
+        list-style: none;
+        }
+        ul.analysis-list > li {
+        margin-bottom: 1.5rem;
+        }
+        ul.analysis-list > li:last-child {
+        margin-bottom: 0;
+        }
+        .sub-title {
+        font-weight: bold;
+        font-size: 1.1rem;
+        color: var(--secondary-color);
+        margin-bottom: 0.5rem;
+        display: block;
+        }
+        .data-point {
+        margin-bottom: 0.5rem;
+        padding-left: 1rem;
+        position: relative;
+        }
+        .data-point::before {
+        content: "•";
+        color: var(--primary-color);
+        position: absolute;
+        left: 0;
+        font-weight: bold;
+        }
+        /* --- Timeline Section --- */
+        .timeline {
+        position: relative;
+        padding-left: 20px;
+        }
+        .timeline::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background: #ddd;
+        }
+        .timeline-item {
+        position: relative;
+        margin-bottom: 1.5rem;
+        padding-left: 15px;
+        }
+        .timeline-item::after {
+        content: '';
+        position: absolute;
+        left: -24px;
+        top: 6px;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: var(--primary-color);
+        border: 2px solid white;
+        }
+        .timeline-date {
+        font-weight: bold;
+        color: var(--text-main);
+        font-size: 0.95rem;
+        margin-bottom: 4px;
+        }
+        .timeline-content {
+        font-size: 0.95rem;
+        color: var(--text-light);
+        }
+        .timeline-link {
+        display: inline-block;
+        margin-top: 4px;
+        font-size: 0.85rem;
+        color: var(--primary-color);
+        border: 1px solid var(--primary-color);
+        padding: 2px 8px;
+        border-radius: 12px;
+        }
+        .timeline-link:hover {
+        background: var(--primary-color);
+        color: white;
+        text-decoration: none;
+        }
+        /* --- Footer --- */
+        footer {
+        text-align: center;
+        font-size: 0.85rem;
+        color: var(--text-light);
+        margin-top: 3rem;
+        padding-top: 1rem;
+        border-top: 1px solid #eee;
+        }
+        /* --- Responsive Tweaks --- */
+        @media (max-width: 600px) {
+        h1 { font-size: 1.25rem; }
+        .card { padding: 1.25rem; }
+        .quality-badge {
+        position: static;
+        margin-top: 10px;
+        align-self: flex-start;
+        }
+        header {
+        display: flex;
+        flex-direction: column;
+        }
+        }
+      </style>
+    </head>
+    <body>
+      <header>
+        <div class="container">
+          <div class="header-content">
+            <h1>国电南瑞2026年3-4月股价波动与国泰基金持仓分析洞察</h1>
+              <div class="report-date">2026年05月03日</div>
+              </div>
+              <!-- 质量标志 -->
+              <div class="quality-badge">质量标志：通过</div>
+              </div>
+            </header>
+            <main class="container">
+              <!-- 核心洞察综述 -->
+              <section class="card summary-box">
+                <h2 class="section-title">
+                  <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+                    核心洞察综述
+                  </h2>
+                  <p>国电南瑞在2026年经历历史高位后深度回调，当前处于<span class="highlight-text">26元附近低位企稳</span>阶段。国泰基金旗下两只ETF在一季度增持后浮盈显著，4月以来持仓调整反映对短期波动的应对。基本面稳健增长但估值面临市场分歧，短期受资金面分化影响，中长期受益于能源转型与电网数字化趋势。</p>
+                  </section>
+                  <!-- 详细维度分析 -->
+                  <section class="card">
+                    <h2 class="section-title">
+                      <svg viewBox="0 0 24 24"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg>
+                        详细维度分析
+                      </h2>
+                      <ul class="analysis-list">
+                        <!-- 一、股价走势 -->
+                        <li>
+                          <span class="sub-title">一、股价走势与资金动态（时效性：近60天为主）</span>
+                            <div class="data-point">
+                              <strong>历史高位与回调：</strong>2026年03月06日创历史新高<span class="highlight-text">30.70元</span>，总市值达2465.75亿元 <a href="https://www.stcn.com/article/detail/3664430.html" target="_blank" class="source-link">引用来源</a>。
+                                随后回调：2026年03月26日跌1.93%，2026年03月30日跌1.84%至26.63元，技术指标显示股价低于均线、MACD负值，处于弱势 <a href="http://m.toutiao.com/group/7622960722745524746/" target="_blank" class="source-link">引用来源</a>。
+                                低位企稳信号：2026年04月19日26.81元微跌0.22%，<span class="highlight-text">26.5元为关键支撑位</span>，均线粘合震荡、成交量萎缩 <a href="https://toutiao.com/group/7630406648724554274/" target="_blank" class="source-link">引用来源</a>。
+                                4月波动：2026年04月23日涨0.70%，2026年04月24日跌0.94%-2.49%，2026年04月27日26.23元跌1.17% <a href="https://finance.sina.com.cn/money/fund/aiassistant/etfkp/2026-04-23/doc-inhvmvzq3896031.shtml" target="_blank" class="source-link">引用来源</a>。
+                              </div>
+                              <div class="data-point">
+                                <strong>资金流向分化：</strong>2026年04月27日：主力资金净流出5126.25万元，游资净流出4800.99万元，散户资金净流入9927.24万元 <a href="https://m.sohu.com/a/1015335373_121319643/" target="_blank" class="source-link">引用来源</a>。
+                                </div>
+                              </li>
+                              <!-- 二、国泰基金持仓 -->
+                              <li>
+                                <span class="sub-title">二、国泰基金旗下ETF持仓与表现（时效性：近60天为主）</span>
+                                  <div class="data-point">
+                                    <strong>国泰恒生A股电网设备ETF（561380）：</strong><br>
+                                      2026年02月：四季度增持185.69万股，持股233.64万股，浮盈超308万元（对应股价从22.10元涨至27.44元）<a href="https://m.sohu.com/a/990286846_122066678/" target="_blank" class="source-link">引用来源</a>。<br>
+                                      2026年04月：业绩表现分化，4月22日成立以来回报118.25%，近一月回报9.54%；26.5元高位回调后，4月23日重仓股微涨0.70%，4月24日跌0.94%-2.49% <a href="https://finance.sina.com.cn/money/fund/aiassistant/etfkp/2026-04-23/doc-inhvmvzq3896031.shtml" target="_blank" class="source-link">引用来源</a>。
+                                    </div>
+                                    <div class="data-point">
+                                      <strong>国泰中证细分机械设备产业主题ETF（516960）：</strong><br>
+                                        2026年04月29日：重仓股国电南瑞当日涨0.73%，ETF开盘涨1.91%，报1.069元 <a href="https://cj.sina.cn/article/norm_detail?url=http%3A%2F%2Ffinance.sina.cn%2F2026-04-29%2Fdetail-inhwckrn7942712.d.html" target="_blank" class="source-link">引用来源</a>。
+                                      </div>
+                                    </li>
+                                    <!-- 三、基本面与估值 -->
+                                    <li>
+                                      <span class="sub-title">三、基本面与估值（时效性：近60天为主）</span>
+                                        <div class="data-point">
+                                          <strong>稳健增长业绩：</strong>2025年前三季度营收385.77亿元（同比+18.45%），归母净利润48.55亿元（同比+8.43%），近90天获2家机构买入评级 <a href="https://m.sohu.com/a/1015335373_121319643/" target="_blank" class="source-link">引用来源</a>。
+                                          </div>
+                                          <div class="data-point">
+                                            <strong>估值分歧显著：</strong>截至2026年03月30日，市盈率26.78倍，行业排名靠前 <a href="http://m.toutiao.com/group/7622960722745524746/" target="_blank" class="source-link">引用来源</a>。
+                                              市场分歧：被指“缺乏成长性，合理估值15元”，股价长期在20-25元箱体震荡 <a href="https://xueqiu.com/S/SH600406/time?page=62" target="_blank" class="source-link">引用来源</a>。
+                                            </div>
+                                          </li>
+                                          <!-- 四、行业与机构视角 -->
+                                          <li>
+                                            <span class="sub-title">四、行业与机构视角（时效性：近60天为主）</span>
+                                              <div class="data-point">
+                                                <strong>能源转型驱动：</strong>电网投资加码及新能源消纳需求提升，行业数字化趋势带来长期机遇，但面临IGBT市场竞争（英飞凌最优，三菱次优）与AI算力需求推高电力能耗的挑战 <a href="https://xueqiu.com/S/SH600406/time?page=62" target="_blank" class="source-link">引用来源</a>。
+                                                </div>
+                                                <div class="data-point">
+                                                  <strong>风险提示：</strong>短期资金面波动（主力游资流出、散户流入）、投资不及预期、行业竞争加剧 <a href="http://m.toutiao.com/group/7622960722745524746/" target="_blank" class="source-link">引用来源</a>。
+                                                  </div>
+                                                </li>
+                                              </ul>
+                                            </section>
+                                            <!-- 总结与展望 -->
+                                            <section class="card" style="background-color: #fdfefe; border-top: 4px solid var(--secondary-color);">
+                                              <h2 class="section-title">
+                                                <svg viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
+                                                  总结与展望
+                                                </h2>
+                                                <p>国电南瑞在26元附近低位企稳，短期受资金面分化影响，中长期受益受益能源转型。国泰基金旗下ETF一季度增持后浮盈显著，4月持仓调整反映短期应对。建议关注26.5元支撑位，短期控制仓位，长期逢低布局。</p>
+                                                </section>
+                                                <!-- 信息列表 -->
+                                                <section class="card">
+                                                  <h2 class="section-title">
+                                                    <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.
