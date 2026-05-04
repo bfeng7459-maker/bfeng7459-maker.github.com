@@ -1,0 +1,364 @@
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>国电南瑞股价波动与基本面分析洞察报告</title>
+      <style>
+        /* --- CSS Reset & Variables --- */
+        :root {
+        --primary-color: #0056b3; /* 专业深蓝 */
+        --secondary-color: #f0f4f8; /* 浅灰蓝背景 */
+        --accent-color: #eef2ff;
+        --text-main: #333333;
+        --text-secondary: #666666;
+        --border-color: #e1e4e8;
+        --white: #ffffff;
+        /* 股市配色（A股红涨绿跌） */
+        --stock-up: #d93025;
+        --stock-down: #008542;
+        --spacing-sm: 0.5rem;
+        --spacing-md: 1rem;
+        --spacing-lg: 1.5rem;
+        --card-radius: 8px;
+        --shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+        * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        }
+        body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Microsoft YaHei", sans-serif;
+        background-color: var(--secondary-color);
+        color: var(--text-main);
+        line-height: 1.6;
+        font-size: 16px; /* 基准字体大小 */
+        -webkit-font-smoothing: antialiased;
+        }
+        /* --- Layout --- */
+        .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: var(--spacing-md);
+        }
+        /* --- Header --- */
+        header {
+        background: var(--white);
+        padding: var(--spacing-lg) var(--spacing-md);
+        border-radius: var(--card-radius);
+        box-shadow: var(--shadow);
+        margin-bottom: var(--spacing-md);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        }
+        .header-content h1 {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: var(--primary-color);
+        margin-bottom: 0.25rem;
+        }
+        .header-content .date {
+        font-size: 0.875rem;
+        color: var(--text-secondary);
+        }
+        .quality-badge {
+        background-color: var(--stock-down); /* 绿色代表通过 */
+        color: var(--white);
+        padding: 0.25rem 0.75rem;
+        border-radius: 20px;
+        font-size: 0.875rem;
+        font-weight: 600;
+        display: inline-flex;
+        align-items: center;
+        white-space: nowrap;
+        }
+        /* --- Components --- */
+        .card {
+        background: var(--white);
+        border-radius: var(--card-radius);
+        padding: var(--spacing-lg);
+        margin-bottom: var(--spacing-md);
+        box-shadow: var(--shadow);
+        }
+        .section-title {
+        font-size: 1.1rem;
+        font-weight: 700;
+        margin-bottom: var(--spacing-md);
+        padding-left: 0.75rem;
+        border-left: 4px solid var(--primary-color);
+        color: var(--text-main);
+        }
+        .sub-title {
+        font-size: 1rem;
+        font-weight: 600;
+        margin: var(--spacing-md) 0 var(--spacing-sm) 0;
+        color: var(--primary-color);
+        }
+        p {
+        margin-bottom: var(--spacing-md);
+        text-align: justify;
+        }
+        ul {
+        list-style: none;
+        padding-left: 0;
+        }
+        li {
+        margin-bottom: var(--spacing-md);
+        position: relative;
+        padding-left: 1.2rem;
+        }
+        li::before {
+        content: "•";
+        color: var(--primary-color);
+        font-weight: bold;
+        position: absolute;
+        left: 0;
+        }
+        /* --- Highlight Box (Core Insight) --- */
+        .core-insight {
+        background: linear-gradient(to bottom right, #f8fbff, #ffffff);
+        border: 1px solid #dae6f0;
+        }
+        /* --- Grid Layout for Detailed Analysis --- */
+        .analysis-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+        }
+        @media (min-width: 768px) {
+        .analysis-grid {
+        grid-template-columns: 1fr 1fr;
+        }
+        /* 让基本面分析跨两列，如果需要 */
+        .full-width-desktop {
+        grid-column: span 2;
+        }
+        }
+        /* --- Summary Section --- */
+        .summary-box {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-md);
+        }
+        .summary-item {
+        background: var(--accent-color);
+        padding: var(--spacing-md);
+        border-radius: 6px;
+        }
+        .summary-item strong {
+        display: block;
+        color: var(--primary-color);
+        margin-bottom: 0.25rem;
+        }
+        /* --- News List --- */
+        .news-list {
+        counter-reset: news-counter;
+        }
+        .news-item {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: var(--spacing-md);
+        padding-bottom: var(--spacing-md);
+        border-bottom: 1px solid var(--border-color);
+        }
+        .news-item:last-child {
+        border-bottom: none;
+        }
+        .news-item::before {
+        counter-increment: news-counter;
+        content: counter(news-counter);
+        background: var(--primary-color);
+        color: var(--white);
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.75rem;
+        margin-right: var(--spacing-md);
+        flex-shrink: 0;
+        margin-top: 0.2rem;
+        }
+        .news-content a {
+        color: var(--text-main);
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.2s;
+        }
+        .news-content a:hover {
+        color: var(--primary-color);
+        text-decoration: underline;
+        }
+        /* --- Utility Classes for Text Styling --- */
+        .text-up { color: var(--stock-up); font-weight: 600; }
+        .text-down { color: var(--stock-down); font-weight: 600; }
+        .highlight { background-color: rgba(255, 235, 59, 0.3); padding: 0 2px; }
+        /* --- Source Link Styling --- */
+        .source-link {
+        display: inline-block;
+        margin-top: var(--spacing-sm);
+        font-size: 0.85rem;
+        }
+        .btn-source {
+        color: var(--primary-color);
+        text-decoration: none;
+        border: 1px solid var(--primary-color);
+        padding: 4px 10px;
+        border-radius: 4px;
+        font-size: 0.75rem;
+        transition: all 0.2s;
+        }
+        .btn-source:hover {
+        background-color: var(--primary-color);
+        color: var(--white);
+        }
+        /* --- Footer --- */
+        footer {
+        text-align: center;
+        font-size: 0.8rem;
+        color: var(--text-secondary);
+        margin-top: var(--spacing-lg);
+        padding-bottom: var(--spacing-lg);
+        }
+        /* --- Responsive Tweaks --- */
+        @media (max-width: 480px) {
+        :root {
+        --spacing-lg: 1rem;
+        }
+        header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--spacing-sm);
+        }
+        .quality-badge {
+        align-self: flex-start;
+        margin-top: 0.5rem;
+        }
+        }
+      </style>
+    </head>
+    <body>
+      <div class="container">
+        <!-- Header Section -->
+        <header>
+          <div class="header-content">
+            <h1>国电南瑞股价波动与基本面分析洞察报告</h1>
+              <div class="date">2026年05月04日</div>
+              </div>
+              <div class="quality-badge">质量标志：通过</div>
+              </header>
+              <!-- Core Insight -->
+              <section class="card core-insight">
+                <h2 class="section-title">核心洞察综述</h2>
+                  <p>
+                    2026年4月国电南瑞股价经历显著波动，主力资金持续流出叠加市场分化，国泰恒生A股电网设备ETF（561380）持仓调整引发关注。公司基本面稳健增长，2026年一季报营收、净利润同比均增超<span class="text-up">6%</span>，电网智能业务占比过半；机构评级分化，目标价区间31.64元-42元。行业受益于“十五五”电网投资加码，公司特高压及新能源项目布局提供长期支撑，短期需关注技术面突破及主力资金流向。
+                  </p>
+                </section>
+                <!-- Detailed Analysis Grid -->
+                <div class="analysis-grid">
+                  <!-- 1. Stock Trend -->
+                  <section class="card">
+                    <h2 class="section-title">股价走势与资金动态</h2>
+                      <ul>
+                        <li>
+                          <div class="sub-title">2026年04月30日</div>
+                            <p>国电南瑞收25.97元，<span class="text-down">下跌2.44%</span>，成交额25.48亿元，主力资金净流出4.55亿元（占总成交额17.85%），游资净流入2.25亿元，散户净流入2.29亿元。2026年一季报显示，营收95.64亿元（<span class="text-up">同比+7.52%</span>），归母净利润7.21亿元（<span class="text-up">同比+6.04%</span>），扣非净利润6.42亿元（<span class="text-up">同比+5.39%</span>），业绩符合预期。4家机构给予买入评级，目标均价31.64元。</p>
+                              <div class="source-link"><a href="https://wap.stockstar.com/detail/RB2026043000061972" target="_blank" class="btn-source">查看来源</a></div>
+                              </li>
+                              liqu
+                              <li>
+                                <div class="sub-title">2026年04月19日</div>
+                                  <p>股价从32.06元高点回调至25.45元后低位企稳，当日微跌0.22%，收26.81元，主力资金小幅流出，北向资金减持，市场情绪低迷。技术面上，短期均线粘合，26.5元为关键支撑位，27元为压力位。</p>
+                                    <div class="source-link"><a href="https://toutiao.com/group/7630406648724554274/" target="_blank" class="btn-source">查看来源</a></div>
+                                    </li>
+                                    <li>
+                                      <div class="sub-title">2026年04月03日</div>
+                                        <p>收盘价26.00元，<span class="text-down">下跌0.34%</span>，成交额15.69亿元，主力资金净流出2737.69万元。技术指标显示市场弱势（MACD负值、KDJ持续下降），但基本面支撑明确：“十五五”电网投资加大，公司受益于特高压及新能源项目，21家机构中76%给予买入评级，目标价42元。</p>
+                                          <div class="source-link"><a href="https://toutiao.com/group/7624462317119455782/" target="_blank" class="btn-source">查看来源</a></div>
+                                          </li>
+                                        </ul>
+                                      </section>
+                                      <!-- 2. ETF Holdings -->
+                                      <section class="card">
+                                        <h2 class="section-title">国泰基金旗下ETF持仓动态</h2>
+                                          <div class="sub-title">国泰恒生A股电网设备ETF（561380）</div>
+                                            <ul>
+                                              <li>
+                                                <strong>2026年04月24日</strong><br>
+                                                  <span class="text-down">下跌2.19%</span>，报2.141元，半日成交额1.73亿元，重仓股中国西电、四方股份等下跌，跟踪恒生A股电网设备指数，成立以来回报118.81%，近一个月回报12.85%。
+                                                    <div class="source-link"><a href="https://finance.sina.com.cn/money/fund/aiassistant/etfwp/2026-04-24/doc-inhvqmqk3214423.shtml" target="_blank" class="btn-source">查看来源</a></div>
+                                                    </li>
+                                                    <li>
+                                                      <strong>2026年04月22日</strong><br>
+                                                        当日<span class="text-up">涨3.02%</span>，成交额3.07亿元，截至4月21日份额达32.21亿份，规模68.36亿元，今年以来份额增长860.43%，规模增长1138.27%，重仓股包括亨通光电、思源电气、国电南瑞等。
+                                                        <div class="source-link"><a href="https://cj.sina.cn/article/norm_detail?url=http%3A%2F%2Ffinance.sina.cn%2F2026-04-22%2Fdetail-inhvkcse9426811.d.html" target="_blank" class="btn-source">查看来源</a></div>
+                                                        </li>
+                                                      </ul>
+                                                      <div class="sub-title">基金持仓与业绩影响</div>
+                                                        <p>2026年02月26日，国泰恒生A股电网设备ETF四季度增持185.69万股至233.64万股，期间浮盈超308万元，基金今年收益率25.74%，近一年达113.1%。</p>
+                                                          <div class="source-link"><a href="https://m.sohu.com/a/990286846_122066678/" target="_blank" class="btn-source">查看来源</a></div>
+                                                          </section>
+                                                          <!-- 3. Fundamentals -->
+                                                          <section class="card full-width-desktop">
+                                                            <h2 class="section-title">公司基本面与业务结构</h2>
+                                                              <div class="sub-title">2025年年报及2026年一季报</div>
+                                                                <ul>
+                                                                  <li>
+                                                                    <strong>2025年年报</strong><br>
+                                                                      营收662.29亿元（<span class="text-up">同比+8.79%</span>），净利润82.79亿元（<span class="text-up">同比+8.79%</span>），拟每10股派现4.75元；主营业务含电网智能（占比50.46%）、能源低碳及数能融合。
+                                                                      <div class="source-link"><a href="http://quote.eastmoney.com/concept/sh600406.html" target="_blank" class="btn-source">查看来源</a></div>
+                                                                      </li>
+                                                                      <li>
+                                                                        <strong>2026年一季报</strong><br>
+                                                                          营收95.64亿元（<span class="text-up">同比+7.52%</span>），净利润7.21亿元（<span class="text-up">同比+6.04%</span>），扣非净利润6.42亿元（<span class="text-up">同比+5.39%</span>），连续三年营收、净利润、经营性现金流增长。
+                                                                          <div class="source-link"><a href="http://quote.eastmoney.com/concept/sh600406.html" target="_blank" class="btn-source">查看来源</a></div>
+                                                                          </li>
+                                                                        </ul>
+                                                                      </section>
+                                                                      <!-- 4. Ratings -->
+                                                                      <section class="card full-width-desktop">
+                                                                        <h2 class="section-title">机构评级与目标价</h2>
+                                                                          <ul>
+                                                                            <li>
+                                                                              <strong>2026年04月30日</strong><br>
+                                                                                4家机构给予买入评级，目标均价31.64元。
+                                                                                <div class="source-link"><a href="https://wap.stockstar.com/detail/RB2026043000061972" target="_blank" class="btn-source">查看来源</a></div>
+                                                                                </li>
+                                                                                <li>
+                                                                                  <strong>2026年04月03日</strong><br>
+                                                                                    21家机构中76%给予买入评级，目标价42元（较当前股价有较大空间）。
+                                                                                    <div class="source-link"><a href="https://toutiao.com/group/7624462317119455782/" target="_blank" class="btn-source">查看来源</a></div>
+                                                                                    </li>
+                                                                                  </ul>
+                                                                                </section>
+                                                                              </div>
+                                                                              <!-- Summary & Outlook -->
+                                                                              <section class="card">
+                                                                                <h2 class="section-title">总结与展望</h2>
+                                                                                  <div class="summary-box">
+                                                                                    <div class="summary-item">
+                                                                                      <strong>短期</strong>
+                                                                                        股价受主力资金流出、技术面压制影响波动加剧，需关注26.5元关键支撑位能否突破，以及机构资金动向。
+                                                                                      </div>
+                                                                                      <div class="summary-item">
+                                                                                        <strong>中期</strong>
+                                                                                          公司电网智能业务占比过半，“十五五”电网投资及新能源项目提供长期增长动力，一季报业绩稳健验证基本面韧性。
+                                                                                        </div>
+                                                                                        <div class="summary-item" style="background-color: #fff5f5; border: 1px solid #ffebeb;">
+                                                                                          <strong style="color: #d93025;">风险提示</strong>
+                                                                                            市场情绪低迷、电网投资不及预期、重仓股ETF波动影响基金净值。
+                                                                                          </div>
+                                                                                          <div class="summary-item">
+                                                                                            <strong>未来关注点</strong>
+                                                                                              特高压项目落地进度、新能源配套业务拓展、主力资金流向及机构目标价调整。
+                                                                                            </div>
+                                                                                          </div>
+                                                                                        </section>
+                                                                                        <!-- News List -->
+                                                                                        <section class="card">
+                                                                                          <h2 class="section-title">资讯列表</h2>
