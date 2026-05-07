@@ -1,0 +1,389 @@
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>国电南瑞（600406）2026年05月07日分析洞察报告</title>
+      <style>
+        /* CSS Variables for Color Scheme */
+        :root {
+        --primary-color: #0056b3; /* Professional Blue */
+        --secondary-color: #003d80; /* Darker Blue */
+        --accent-color: #e3f2fd; /* Light Blue Background */
+        --text-main: #1f2937;
+        --text-secondary: #4b5563;
+        --text-light: #6b7280;
+        --bg-body: #f3f4f6;
+        --bg-card: #ffffff;
+        --success-color: #10b981; /* Green for positive/up */
+        --danger-color: #ef4444; /* Red for negative/down (Note: In China Red is Up, Green is Down, but usually 'Success' implies positive sentiment. I will use Red for Price Up to follow Chinese market convention, Green for generic success/badges) */
+        --market-up: #d32f2f; /* Chinese Stock Red */
+        --market-down: #10b981; /* Chinese Stock Green */
+        --border-radius: 12px;
+        --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        /* Reset & Base Styles */
+        * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        }
+        body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+        background-color: var(--bg-body);
+        color: var(--text-main);
+        line-height: 1.6;
+        font-size: 16px;
+        -webkit-font-smoothing: antialiased;
+        }
+        /* Layout */
+        .container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 1.5rem;
+        }
+        /* Header */
+        header {
+        background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+        color: white;
+        padding: 2rem 1.5rem;
+        border-radius: var(--border-radius);
+        margin-bottom: 2rem;
+        box-shadow: var(--shadow);
+        position: relative;
+        overflow: hidden;
+        }
+        .header-content {
+        position: relative;
+        z-index: 2;
+        }
+        h1 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        line-height: 1.3;
+        }
+        .report-meta {
+        font-size: 0.875rem;
+        opacity: 0.9;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        flex-wrap: wrap;
+        }
+        /* Quality Badge */
+        .quality-badge {
+        background-color: var(--success-color);
+        color: white;
+        padding: 0.25rem 0.75rem;
+        border-radius: 999px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        position: absolute;
+        top: 1.5rem;
+        right: 1.5rem;
+        }
+        /* Cards & Sections */
+        section {
+        background-color: var(--bg-card);
+        border-radius: var(--border-radius);
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+        box-shadow: var(--shadow);
+        border: 1px solid rgba(0,0,0,0.05);
+        }
+        h2 {
+        font-size: 1.25rem;
+        color: var(--secondary-color);
+        margin-bottom: 1rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid var(--accent-color);
+        display: flex;
+        align-items: center;
+        }
+        h2::before {
+        content: '';
+        display: inline-block;
+        width: 6px;
+        height: 1.25rem;
+        background-color: var(--primary-color);
+        margin-right: 0.75rem;
+        border-radius: 3px;
+        }
+        h3 {
+        font-size: 1.1rem;
+        color: var(--text-main);
+        margin: 1.25rem 0 0.75rem 0;
+        font-weight: 600;
+        }
+        p {
+        margin-bottom: 1rem;
+        color: var(--text-secondary);
+        text-align: justify;
+        }
+        ul {
+        list-style: none;
+        padding-left: 0;
+        }
+        li {
+        margin-bottom: 0.75rem;
+        padding-left: 1.25rem;
+        position: relative;
+        color: var(--text-secondary);
+        }
+        li::before {
+        content: '•';
+        color: var(--primary-color);
+        font-weight: bold;
+        position: absolute;
+        left: 0;
+        }
+        /* Highlights & Data */
+        .highlight {
+        font-weight: 700;
+        color: var(--primary-color);
+        }
+        .trend-up {
+        color: var(--market-up);
+        font-weight: 700;
+        }
+        .trend-down {
+        color: var(--market-down);
+        font-weight: 700;
+        }
+        /* Core Insight Special Styling */
+        .core-insight {
+        background-color: var(--accent-color);
+        border-left: 5px solid var(--primary-color);
+        }
+        .core-insight h2 {
+        border-bottom: none;
+        margin-bottom: 0.5rem;
+        }
+        .core-insight p {
+        font-size: 1.05rem;
+        color: var(--text-main);
+        }
+        /* Grid Layout for Detailed Analysis */
+        .analysis-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        }
+        /* Source Links */
+        .source-link {
+        display: inline-flex;
+        align-items: center;
+        margin-top: 0.5rem;
+        font-size: 0.8rem;
+        color: var(--primary-color);
+        text-decoration: none;
+        background: rgba(0, 86, 179, 0.08);
+        padding: 0.25rem 0.5rem;
+        border-radius: 4px;
+        transition: background 0.2s;
+        }
+        .source-link:hover {
+        background: rgba(0, 86, 179, 0.15);
+        text-decoration: underline;
+        }
+        .source-link::before {
+        content: '🔗';
+        margin-right: 0.25rem;
+        font-size: 0.9rem;
+        }
+        /* News List */
+        .news-list {
+        counter-reset: news-counter;
+        }
+        .news-item {
+        display: flex;
+        align-items: flex-start;
+        padding: 1rem;
+        border-bottom: 1px solid #eee;
+        transition: background-color 0.2s;
+        }
+        .news-item:last-child {
+        border-bottom: none;
+        }
+        .news-item:hover {
+        background-color: #fafafa;
+        }
+        .news-item::before {
+        counter-increment: news-counter;
+        content: counter(news-counter);
+        background-color: var(--text-light);
+        color: white;
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.75rem;
+        margin-right: 1rem;
+        flex-shrink: 0;
+        margin-top: 2px;
+        }
+        .news-link {
+        text-decoration: none;
+        color: var(--text-main);
+        font-weight: 500;
+        display: block;
+        margin-bottom: 0.25rem;
+        }
+        .news-link:hover {
+        color: var(--primary-color);
+        text-decoration: underline;
+        }
+        .news-date {
+        font-size: 0.75rem;
+        color: var(--text-light);
+        }
+        /* Footer */
+        footer {
+        text-align: center;
+        padding: 2rem 0;
+        color: var(--text-light);
+        font-size: 0.875rem;
+        }
+        /* Responsive Design */
+        @media (min-width: 768px) {
+        h1 { font-size: 2rem; }
+        .analysis-grid {
+        grid-template-columns: repeat(2, 1fr);
+        }
+        /* Make the first item span full width if desired, or keep 2-col */
+        .analysis-grid section:first-child {
+        grid-column: span 2;
+        }
+        .quality-badge {
+        top: 2rem;
+        right: 2rem;
+        font-size: 0.875rem;
+        }
+        }
+        @media (max-width: 480px) {
+        .container { padding: 1rem; }
+        header { padding: 1.5rem 1rem; }
+        .quality-badge {
+        position: static;
+        display: inline-block;
+        margin-left: 0.5rem;
+        vertical-align: middle;
+        }
+        .report-meta {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+        }
+        }
+      </style>
+    </head>
+    <body>
+      <div class="container">
+        <!-- Header -->
+        <header>
+          <div class="header-content">
+            <h1>国电南瑞（600406）2026年05月07日分析洞察报告</h1>
+              <div class="report-meta">
+                <span>发布日期：2026年05月07日</span>
+                  <span class="quality-badge">质量标志：通过</span>
+                  </div>
+                </div>
+              </header>
+              <!-- Core Insight -->
+              <section class="core-insight">
+                <h2>核心洞察综述</h2>
+                  <p>
+                    截至2026年5月6日，国电南瑞股价收涨<span class="trend-up">0.96%</span>至<span class="highlight">26.22元</span>，2026年一季报业绩稳健增长（营收<span class="highlight">95.64亿元</span><span class="trend-up">+7.52%</span>，归母净利润<span class="highlight">7.21亿元</span><span class="trend-up">+6.04%</span>），8家机构给予买入评级（目标价<span class="highlight">31.78元</span>）。尽管当日主力资金净流出<span class="trend-down">2.58亿元</span>，但游资与散户资金流入支撑短期情绪。国泰基金旗下电网设备ETF表现分化，长期受益于电网投资加码与新能源需求驱动，但需警惕短期26.5元支撑位下方波动风险。
+                  </p>
+                </section>
+                <!-- Detailed Analysis Grid -->
+                <div class="analysis-grid">
+                  <!-- Dimension 1 -->
+                  <section>
+                    <h3>1. 股价与交易动态</h3>
+                      <ul>
+                        <li><strong>近期走势</strong>：2026年3月6日股价创历史新高30.70元后回调，4月19日低位企稳于26.81元，5月6日微涨0.96%至26.22元，技术面处于26.5元支撑位震荡阶段。</li>
+                          <li><strong>资金流向</strong>：5月6日主力资金净流出2.58亿元（占总成交额7.33%），但游资净流入1.49亿元、散户净流入1.08亿元，短期买盘活跃。</li>
+                            <li><strong>ETF持仓</strong>：国泰恒生A股电网设备ETF（561380）重仓国电南瑞，2026年4月27日该股跌0.90%，5月6日ETF净值微跌0.85%，但基金成立以来回报111.18%，反映机构长期看好行业。</li>
+                            </ul>
+                            <a href="https://c.m.163.com/news/a/KRPQ5QA005568W0A.html" target="_blank" class="source-link">来源：2026年4月30日 (网易新闻)</a>
+                            </section>
+                            <!-- Dimension 2 -->
+                            <section>
+                              <h3>2. 财务表现与机构评级</h3>
+                                <ul>
+                                  <li><strong>2026年一季报</strong>：营收95.64亿元（同比+7.52%），归母净利润7.21亿元（同比+6.04%），业绩增速稳健。</li>
+                                    <li><strong>机构目标价</strong>：8家机构给予买入评级，目标均价31.78元，较当前股价存在<span class="highlight">21.2%</span>上涨空间。</li>
+                                    </ul>
+                                    <a href="https://m.sohu.com/a/1019025638_121319643/" target="_blank" class="source-link">来源：2026年5月6日 (搜狐)</a>
+                                    </section>
+                                    <!-- Dimension 3 -->
+                                    <section>
+                                      <h3>3. 机构持仓与基金动态</h3>
+                                        <ul>
+                                          <li><strong>国泰基金操作</strong>：国泰恒生A股电网设备ETF在2025年四季度增持185.69万股至233.64万股，2026年1月浮盈超308万元；但2025年7-8月区间因股价下跌，浮亏扩大至52.69万元。</li>
+                                            <li><strong>ETF收益</strong>：国泰恒生A股电网设备ETF近一年收益率113.1%，2026年一季度收益率25.74%，反映机构对电网设备行业高景气度的认可。</li>
+                                            </ul>
+                                            <a href="https://m.sohu.com/a/990286846_122066678/" target="_blank" class="source-link">来源：2026年2月26日 (搜狐)</a>
+                                            </section>
+                                            <!-- Dimension 4 -->
+                                            <section>
+                                              <h3>4. 估值与行业趋势</h3>
+                                                <ul>
+                                                  <li><strong>估值水平</strong>：截至2026年3月30日，市盈率26.78倍，2027年预测每股收益1.42元，估值处于行业合理区间。</li>
+                                                    <li><strong>长期机遇</strong>：电网投资加码与AI算力电力需求驱动，公司电网自动化业务占比50.43%，电力设备出海将打开增长空间。</li>
+                                                    </ul>
+                                                    <a href="https://xueqiu.com/S/SH600406/time?page=96" target="_blank" class="source-link">来源：2024年12月12日 (雪球)</a>
+                                                    </section>
+                                                    <!-- Dimension 5 -->
+                                                    <section>
+                                                      <h3>5. 技术面与市场情绪</h3>
+                                                        <ul>
+                                                          <li><strong>关键位</strong>：26.5元为短期关键支撑位，27-28元为压力位，4月19日技术面显示均线粘合、量能萎缩，短期需突破压力位确认反弹趋势。</li>
+                                                            <li><strong>投资者分歧</strong>：社区讨论分化，部分认为估值偏高（20-25元箱体），部分看好长期价值（对标基建15元合理价争议）。</li>
+                                                            </ul>
+                                                            <a href="https://xueqiu.com/S/SH600406/time?page=96" target="_blank" class="source-link">来源：2024年12月12日 (雪球)</a>
+                                                            </section>
+                                                          </div>
+                                                          <!-- Summary & Outlook -->
+                                                          <section>
+                                                            <h2>总结与展望</h2>
+                                                              <p>
+                                                                <strong>短期</strong>：依赖一季报增长与机构目标价支撑，但需警惕主力资金流出及26.5元支撑位争夺战；
+                                                                </p>
+                                                                <p>
+                                                                  <strong>长期</strong>：电网投资与新能源需求驱动下，国泰基金旗下ETF高收益表现验证行业成长性。需关注订单落地与2027年盈利预测（1.42元/股）是否达标。
+                                                                  </p>
+                                                                </section>
+                                                                <!-- News List -->
+                                                                <section>
+                                                                  <h2>资讯标题与链接列表</h2>
+                                                                    <ul class="news-list">
+                                                                      <li class="news-item">
+                                                                        <div>
+                                                                          <a href="https://m.sohu.com/a/1019025638_121319643/" target="_blank" class="news-link">国电南瑞(600406)2026年5月6日收盘26.22元，涨0.96%，一季报营收95.64亿+7.52%</a>
+                                                                            <span class="news-date">2026年5月6日</span>
+                                                                            </div>
+                                                                          </li>
+                                                                          <li class="news-item">
+                                                                            <div>
+                                                                              <a href="https://c.m.163.com/news/a/KRPQ5QA005568W0A.html" target="_blank" class="news-link">电网设备ETF国泰（561380）2026年4月30日收盘跌0.85%，重仓国电南瑞</a>
+                                                                                <span class="news-date">2026年4月30日</span>
+                                                                                </div>
+                                                                              </li>
+                                                                              <li class="news-item">
+                                                                                <div>
+                                                                                  <a href="https://finance.sina.com.cn/money/fund/aiassistant/etfwp/2026-04-27/doc-inhvxath9151698.shtml" target="_blank" class="news-link">电网设备ETF国泰（561380）2026年4月27日重仓股国电南瑞跌0.90%</a>
+                                                                                    <span class="news-date">2026年4月27日</span>
+                                                                                    </div>
+                                                                                  </li>
+                                                                                  <li class="news-item">
+                                                                                    <div>
+                                                                                      <a href="https
