@@ -1,0 +1,341 @@
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>国电南瑞股价波动及国泰基金相关动态分析</title>
+      <style>
+        /* 全局变量定义 */
+        :root {
+        --primary-color: #0056b3; /* 金融蓝 */
+        --secondary-color: #004494;
+        --accent-color: #e6f0fa; /* 浅蓝背景 */
+        --text-main: #333333;
+        --text-secondary: #666666;
+        --bg-body: #f4f6f9;
+        --bg-card: #ffffff;
+        --border-radius: 8px;
+        --shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        --shadow-hover: 0 8px 12px rgba(0, 0, 0, 0.1);
+        --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        --success-color: #28a745;
+        --danger-color: #dc3545;
+        }
+        /* 基础重置 */
+        * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        }
+        body {
+        font-family: var(--font-family);
+        background-color: var(--bg-body);
+        color: var(--text-main);
+        line-height: 1.6;
+        font-size: 16px;
+        -webkit-font-smoothing: antialiased;
+        }
+        a {
+        text-decoration: none;
+        color: var(--primary-color);
+        transition: color 0.2s;
+        }
+        a:hover {
+        color: var(--secondary-color);
+        text-decoration: underline;
+        }
+        /* 质量标志 */
+        .quality-badge {
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        background-color: var(--success-color);
+        color: white;
+        padding: 6px 12px;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        font-weight: bold;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        z-index: 1000;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        }
+        /* 布局容器 */
+        .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        padding-top: 60px; /* 为质量标志留出空间 */
+        }
+        /* 头部样式 */
+        header {
+        text-align: center;
+        margin-bottom: 30px;
+        padding-bottom: 20px;
+        border-bottom: 2px solid #e0e0e0;
+        }
+        h1 {
+        font-size: 1.5rem;
+        color: var(--text-main);
+        margin-bottom: 10px;
+        font-weight: 700;
+        }
+        .report-date {
+        color: var(--text-secondary);
+        font-size: 0.9rem;
+        background: #e9ecef;
+        display: inline-block;
+        padding: 4px 12px;
+        border-radius: 12px;
+        }
+        /* 卡片通用样式 */
+        .card {
+        background-color: var(--bg-card);
+        border-radius: var(--border-radius);
+        padding: 24px;
+        margin-bottom: 24px;
+        box-shadow: var(--shadow);
+        transition: transform 0.2s, ease-in-out;
+        }
+        .card:hover {
+        box-shadow: var(--shadow-hover);
+        }
+        h2 {
+        font-size: 1.25rem;
+        color: var(--primary-color);
+        margin-bottom: 16px;
+        padding-left: 10px;
+        border-left: 4px solid var(--primary-color);
+        }
+        h3 {
+        font-size: 1.1rem;
+        color: var(--text-main);
+        margin-top: 20px;
+        margin-bottom: 10px;
+        font-weight: 600;
+        }
+        p {
+        margin-bottom: 12px;
+        text-align: justify;
+        }
+        /* 核心洞察特别样式 */
+        .summary-highlight {
+        background-color: var(--accent-color);
+        border: 1px solid #d0e1f5;
+        }
+        .highlight-text {
+        font-weight: 600;
+        color: var(--secondary-color);
+        }
+        /* 列表样式 */
+        ul {
+        list-style: none;
+        padding-left: 5px;
+        }
+        li {
+        margin-bottom: 15px;
+        position: relative;
+        padding-left: 15px;
+        }
+        li::before {
+        content: "•";
+        color: var(--primary-color);
+        font-weight: bold;
+        position: absolute;
+        left: 0;
+        top: 0;
+        }
+        /* 来源链接按钮样式 */
+        .source-link {
+        display: inline-flex;
+        align-items: center;
+        margin-top: 8px;
+        font-size: 0.85rem;
+        color: white;
+        background-color: var(--primary-color);
+        padding: 6px 12px;
+        border-radius: 4px;
+        text-decoration: none !important;
+        }
+        .source-link:hover {
+        background-color: var(--secondary-color);
+        transform: translateY(-1px);
+        }
+        .source-link svg {
+        width: 14px;
+        height: 14px;
+        margin-right: 5px;
+        fill: currentColor;
+        }
+        /* 资讯列表样式 */
+        .news-list-item {
+        display: flex;
+        align-items: baseline;
+        padding: 12px 0;
+        border-bottom: 1px solid #f0f0f0;
+        }
+        .news-list-item:last-child {
+        border-bottom: none;
+        }
+        .news-index {
+        font-weight: bold;
+        color: var(--text-secondary);
+        margin-right: 10px;
+        min-width: 24px;
+        }
+        .news-title {
+        flex: 1;
+        font-size: 0.95rem;
+        color: var(--text-main);
+        }
+        .news-title:hover {
+        color: var(--primary-color);
+        }
+        /* 数据高亮 */
+        .data-up {
+        color: var(--danger-color); /* A股红涨 */
+        font-weight: bold;
+        }
+        .data-down {
+        color: var(--success-color); /* A股绿跌 */
+        font-weight: bold;
+        }
+        /* 响应式适配 */
+        @media (max-width: 600px) {
+        h1 {
+        font-size: 1.25rem;
+        }
+        .container {
+        padding: 15px;
+        padding-top: 50px;
+        }
+        .card {
+        padding: 18px;
+        }
+        .quality-badge {
+        top: 5px;
+        right: 5px;
+        font-size: 0.75rem;
+        padding: 4px 8px;
+        }
+        .news-list-item {
+        flex-direction: column;
+        }
+        .news-index {
+        margin-bottom: 4px;
+        }
+        }
+        /* 底部 */
+        footer {
+        text-align: center;
+        color: var(--text-secondary);
+        font-size: 0.8rem;
+        padding: 20px 0;
+        margin-top: 20px;
+        }
+      </style>
+    </head>
+    <body>
+      <!-- 质量标志 -->
+      <div class="quality-badge">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+          质量标志：通过
+        </div>
+        <div class="container">
+          <header>
+            <h1>近期国电南瑞股价波动及国泰基金相关动态分析</h1>
+              <span class="report-date">2026年05月09日</span>
+              </header>
+              <main>
+                <!-- 核心洞察综述 -->
+                <section class="card summary-highlight">
+                  <h2>核心洞察综述</h2>
+                    <p>
+                      截至2026年05月08日，国电南瑞（600406）股价报收26.08元，较前一日<span class="data-down">微跌1.36%</span>，当日成交额28.54亿元，主力资金净流出3.64亿元。国泰恒生A股电网设备ETF（561380）近期表现强势，5月6日<span class="data-up">上涨4.11%</span>，规模增长显著。基本面方面，2026年一季报显示营收与净利润同比双增长，8家机构给予买入评级，目标均价31.78元。技术面分析显示短期震荡，需关注25.88元支撑位承接力度。
+                    </p>
+                  </section>
+                  <!-- 详细维度分析 -->
+                  <section class="card">
+                    <h2>详细维度分析</h2>
+                      <h3>1. 近期股价走势与资金动向（2026年5月数据）</h3>
+                        <ul>
+                          <li>
+                            <strong>最新股价动态（截至5月8日收盘）</strong>：国电南瑞收盘价26.08元，当日开盘26.50元，最高价26.51元，最低价25.88元，振幅2.38%，换手率1.37%，总市值2094.68亿元，流通市值2088.53亿元，市盈率（TTM）25.18倍，市净率3.92倍。
+                              <br>
+                              <a href="https://quotes.sina.cn/hs/company/quotes/view/sh600406" target="_blank" class="source-link">
+                                <svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+                                  查看来源
+                                </a>
+                              </li>
+                              <li>
+                                <strong>5月9日走势推演</strong>：5月8日冲高回落，技术面显示短期震荡，下跌动能减弱但上方抛压沉重。下周一（5月11日）走势有三种可能：①惯性低开震荡（概率50%，考验25.88元支撑）；②弱势窄幅震荡（概率35%，围绕26.08元整理）；③超跌反抽（概率15%，高度受限至26.50元）。核心观察点：支撑位承接力度与主力资金流向变化。
+                                  <br>
+                                  <a href="https://toutiao.com/group/7637757918003167796/" target="_blank" class="source-link">
+                                    <svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+                                      查看来源
+                                    </a>
+                                  </li>
+                                </ul>
+                                <h3>2. 国泰基金旗下ETF持仓及业绩表现</h3>
+                                  <ul>
+                                    <li>
+                                      <strong>国泰恒生A股电网设备ETF（561380）</strong>：成立于2024年12月11日，截至2026年4月30日规模69.04亿元，今年以来份额增长883.69%，规模增长1150.62%，近20个交易日日均成交额2.24亿元。基金经理吴中昊任职期内收益109.24%，重仓股包括国电南瑞、亨通光电等。该ETF在2026年5月6日收盘<span class="data-up">上涨4.11%</span>，成交额2.83亿元，短期表现强势。
+                                        <br>
+                                        <a href="https://m.sohu.com/a/1018897092_122014422/" target="_blank" class="source-link">
+                                          <svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+                                            查看来源
+                                          </a>
+                                        </li>
+                                        <li>
+                                          <strong>国泰中证细分机械设备ETF</strong>：2025年7月持有2.44万股，期间浮亏4.3万元，该基金未出现最新动态，暂不纳入近期分析。
+                                            <br>
+                                            <a href="https://www.sohu.com/a/919468414_122014422/" target="_blank" class="source-link">
+                                              <svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+                                                查看来源
+                                              </a>
+                                            </li>
+                                          </ul>
+                                          <h3>3. 基本面与机构评级</h3>
+                                            <ul>
+                                              <li>
+                                                <strong>2026年一季报</strong>：主营收入95.64亿元，同比上升7.52%；归母净利润7.21亿元，同比上升6.04%。公司核心业务为电网自动化、新能源控制，电网智能业务占比50.43%。
+                                                  <br>
+                                                  <a href="https://m.sohu.com/a/1019025638_121319643/" target="_blank" class="source-link">
+                                                    <svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+                                                      查看来源
+                                                    </a>
+                                                  </li>
+                                                  <li>
+                                                    <strong>机构评级</strong>：近90天内8家机构均给予买入评级，目标均价31.78元，高于当前股价约21%。
+                                                      <br>
+                                                      <a href="https://m.sohu.com/a/1019025638_121319643/" target="_blank" class="source-link">
+                                                        <svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+                                                          查看来源
+                                                        </a>
+                                                      </li>
+                                                    </ul>
+                                                  </section>
+                                                  <!-- 总结与展望 -->
+                                                  <section class="card">
+                                                    <h2>总结与展望</h2>
+                                                      <p>
+                                                        国电南瑞近期股价受主力资金流出影响波动较大，但基本面稳健增长，一季报业绩符合预期，机构目标价31.78元提供长期支撑。短期技术面处于震荡阶段，下周一能否企稳关键看25.88元支撑位承接力度。国泰基金旗下电网设备ETF规模增长显著，反映机构对行业长期成长性的认可，但需警惕短期市场分化与政策变化风险。
+                                                      </p>
+                                                    </section>
+                                                    <!-- 资讯列表 -->
+                                                    <section class="card">
+                                                      <h2>资讯列表</h2>
+                                                        <div class="news-list">
+                                                          <div class="news-list-item">
+                                                            <span class="news-index">1</span>
+                                                              <a href="https://toutiao.com/group/7637757918003167796/" target="_blank" class="news-title">国电南瑞5月9日走势推演：短期震荡考验25.88元支撑</a>
+                                                              </div>
+                                                              <div class="news-list-item">
+                                                                <span class="news-index">2</span>
+                                                                  <a href="https://quotes.sina.cn/hs/company/quotes/view/sh600406" target="_blank" class="news-title">国电南瑞5月8日收盘数据：26.08元跌1.36%，主力资金净流出3.64亿</a>
+                                                                  </div>
+                                                                  <div class="news-list
