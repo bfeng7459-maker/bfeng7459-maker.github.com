@@ -1,0 +1,341 @@
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>中国“算电协同”发展战略洞察分析报告</title>
+      <style>
+        /* --- CSS 变量与重置 --- */
+        :root {
+        /* 品牌色：科技蓝与能源绿的结合 */
+        --primary-color: #0f172a;      /* 深蓝背景 */
+        --accent-color: #06b6d4;       /* 科技青 */
+        --energy-color: #10b981;       /* 能源绿 */
+        --text-main: #334155;          /* 主要文字 */
+        --text-light: #64748b;         /* 次要文字 */
+        --bg-body: #f1f5f9;            /* 页面背景 */
+        --bg-card: #ffffff;            /* 卡片背景 */
+        --border-radius: 12px;
+        --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        --container-width: 1000px;
+        }
+        * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        }
+        body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Microsoft YaHei", sans-serif;
+        background-color: var(--bg-body);
+        color: var(--text-main);
+        line-height: 1.7;
+        font-size: 16px;
+        -webkit-font-smoothing: antialiased;
+        }
+        a {
+        color: var(--accent-color);
+        text-decoration: none;
+        border-bottom: 1px dotted var(--accent-color);
+        transition: all 0.2s ease;
+        }
+        a:hover {
+        color: var(--energy-color);
+        border-bottom-style: solid;
+        }
+        /* --- 布局容器 --- */
+        .container {
+        max-width: var(--container-width);
+        margin: 0 auto;
+        padding: 0 1.5rem;
+        }
+        /* --- 质量标志 --- */
+        .quality-badge {
+        position: fixed;
+        top: 1rem;
+        right: 1rem;
+        background: linear-gradient(135deg, var(--energy-color), var(--accent-color));
+        color: white;
+        padding: 0.5rem 1.2rem;
+        border-radius: 50px;
+        font-weight: bold;
+        font-size: 0.9rem;
+        box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
+        z-index: 1000;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        }
+        /* --- 头部区域 --- */
+        header {
+        background: linear-gradient(to bottom, var(--primary-color), #1e293b);
+        color: white;
+        padding: 4rem 0 3rem;
+        margin-bottom: 2rem;
+        text-align: center;
+        }
+        h1 {
+        font-size: clamp(1.8rem, 4vw, 2.5rem);
+        margin-bottom: 1rem;
+        font-weight: 800;
+        line-height: 1.3;
+        }
+        .report-date {
+        display: inline-block;
+        background: rgba(255, 255, 255, 0.1);
+        padding: 0.3rem 0.8rem;
+        border-radius: 4px;
+        font-size: 0.9rem;
+        color: #cbd5e1;
+        }
+        /* --- 通用章节样式 --- */
+        section {
+        margin-bottom: 3rem;
+        }
+        h2 {
+        font-size: 1.75rem;
+        color: var(--primary-color);
+        border-left: 5px solid var(--energy-color);
+        padding-left: 1rem;
+        margin-bottom: 1.5rem;
+        font-weight: 700;
+        }
+        h3 {
+        font-size: 1.35rem;
+        color: #1e293b;
+        margin-top: 1.5rem;
+        margin-bottom: 0.8rem;
+        font-weight: 600;
+        }
+        p {
+        margin-bottom: 1rem;
+        text-align: justify;
+        }
+        ul {
+        list-style: none;
+        padding-left: 1rem;
+        }
+        li {
+        margin-bottom: 0.8rem;
+        position: relative;
+        padding-left: 1.2rem;
+        }
+        li::before {
+        content: "•";
+        color: var(--energy-color);
+        font-weight: bold;
+        position: absolute;
+        left: 0;
+        top: 0;
+        }
+        /* --- 核心洞察卡片 --- */
+        .summary-card {
+        background: var(--bg-card);
+        padding: 2rem;
+        border-radius: var(--border-radius);
+        box-shadow: var(--shadow);
+        border-top: 4px solid var(--accent-color);
+        }
+        .highlight-text {
+        color: var(--energy-color);
+        font-weight: bold;
+        }
+        .data-point {
+        font-family: "SF Mono", "Roboto Mono", monospace;
+        background: #e0f2fe;
+        color: #0369a1;
+        padding: 0.1rem 0.4rem;
+        border-radius: 4px;
+        font-size: 0.9em;
+        }
+        /* --- 区域实践 Grid 布局 --- */
+        .grid-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1.5rem;
+        }
+        .region-card {
+        background: var(--bg-card);
+        border-radius: var(--border-radius);
+        padding: 1.5rem;
+        box-shadow: var(--shadow);
+        transition: transform 0.3s ease;
+        border: 1px solid #e2e8f0;
+        }
+        .region-card:hover {
+        transform: translateY(-5px);
+        border-color: var(--accent-color);
+        }
+        .region-card h3 {
+        margin-top: 0;
+        color: var(--primary-color);
+        border-bottom: 1px solid #f1f5f9;
+        padding-bottom: 0.5rem;
+        }
+        /* --- 挑战与破局 --- */
+        .challenge-item {
+        background: #fff;
+        margin-bottom: 1rem;
+        padding: 1rem;
+        border-left: 4px solid #cbd5e1;
+        border-radius: 0 8px 8px 0;
+        }
+        .challenge-item strong {
+        color: var(--primary-color);
+        }
+        /* --- 资讯来源列表 --- */
+        .sources-list {
+        background: #fff;
+        padding: 1.5rem;
+        border-radius: var(--border-radius);
+        box-shadow: var(--shadow);
+        }
+        .source-item {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 0.8rem 0;
+        border-bottom: 1px solid #f1f5f9;
+        align-items: baseline;
+        }
+        .source-item:last-child {
+        border-bottom: none;
+        }
+        .source-index {
+        font-weight: bold;
+        color: var(--text-light);
+        width: 2rem;
+        flex-shrink: 0;
+        }
+        .source-link {
+        flex-grow: 1;
+        margin-right: 1rem;
+        }
+        .source-date {
+        font-size: 0.85rem;
+        color: var(--text-light);
+        background: #f1f5f9;
+        padding: 0.2rem 0.5rem;
+        border-radius: 4px;
+        }
+        /* --- 底部 --- */
+        footer {
+        text-align: center;
+        padding: 2rem 0;
+        color: var(--text-light);
+        font-size: 0.9rem;
+        border-top: 1px solid #e2e8f0;
+        margin-top: 4rem;
+        }
+        /* --- 移动端优化 --- */
+        @media (max-width: 768px) {
+        header {
+        padding: 3rem 0 2rem;
+        }
+        h2 {
+        font-size: 1.5rem;
+        }
+        .quality-badge {
+        padding: 0.4rem 1rem;
+        font-size: 0.8rem;
+        top: 0.5rem;
+        right: 0.5rem;
+        }
+        .source-item {
+        flex-direction: column;
+        }
+        .source-link {
+        margin-right: 0;
+        margin-bottom: 0.3rem;
+        }
+        }
+      </style>
+    </head>
+    <body>
+      <!-- 质量标志 -->
+      <div class="quality-badge">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+          质量标志：通过
+        </div>
+        <!-- 头部 -->
+        <header>
+          <div class="container">
+            <span class="report-date">2026年05月10日</span>
+              <h1>中国“算电协同”发展战略<br>洞察分析报告</h1>
+              </div>
+            </header>
+            <main class="container">
+              <!-- 一、核心洞察综述 -->
+              <section id="summary">
+                <h2>一、核心洞察综述</h2>
+                  <div class="summary-card">
+                    <p>“算电协同”已从国家战略概念进入<span class="highlight-text">规模化复制期</span>，成为数字经济与绿色能源深度融合的关键抓手。2026年政府工作报告首次将“算电协同”列为新基建工程，通过“绿电直供+算力优化”双路径，解决东部算力需求（东需西电）与西部绿电资源（如四川水电、宁夏风光电）的空间错配，以及光伏风电等绿电的时间间歇性问题。</p>
+                      <p>典型案例显示，通过“物理直供+双边交易”“算电融合园区”等模式，企业用电成本可降至<span class="data-point">0.2-0.36元/度</span>，年减碳超<span class="data-point">360万吨</span>，推动算力产业从能源依赖转向“能源+算力”双价值输出。</p>
+                      </div>
+                    </section>
+                    <!-- 二、详细维度分析 -->
+                    <section id="analysis">
+                      <h2>二、详细维度分析</h2>
+                        <!-- 1. 政策背景 -->
+                        <div style="margin-bottom: 2rem;">
+                          <h3>1. 政策背景与战略定位</h3>
+                            <ul>
+                              <li>
+                                <strong>政策驱动：</strong>2026年政府工作报告首提“算电协同”，明确将其作为解决AI算力高耗电与电力供应矛盾的核心路径，目标实现“算随电优”——算力向绿电富集区迁移（如内蒙古、青海、四川），东部探索液冷等节能技术（2026年3月5日，来源：<a href="http://m.toutiao.com/group/7617778716000715264/" target="_blank">http://m.toutiao.com/group/7617778716000715264/</a>）。
+                                </li>
+                                <li>
+                                  <strong>战略目标：</strong>从单纯能源输出转向“绿电+算力”双输出，提升一度电价值（四川目标，2025年01月18日*老旧信息*：<a href="http://m.toutiao.com/group/7620984536976949775/" target="_blank">http://m.toutiao.com/group/7620984536976949775/</a>），服务“双碳”目标与数字经济高质量发展。
+                                  </li>
+                                </ul>
+                              </div>
+                              <!-- 2. 区域实践 -->
+                              <h3>2. 区域实践：项目落地与技术突破</h3>
+                                <div class="grid-container">
+                                  <!-- 宁夏 -->
+                                  <div class="region-card">
+                                    <h3>宁夏中卫：规模化标杆</h3>
+                                      <ul>
+                                        <li><strong>项目规模：</strong>大唐中卫云基地50万千瓦光伏电站（2026年5月2日投运，总投资87亿元），全容量后年发电43亿千瓦时，年减碳365万吨（<a href="http://m.toutiao.com/group/7636552322813903398/" target="_blank">来源</a>）。</li>
+                                          <li><strong>创新模式：</strong>“物理直供+双边交易”，专属线路直送光伏电至数据中心，电价降至<span class="data-point">0.2元/度</span>（年省电费超1亿元），入驻15家头部算力企业（<a href="http://m.toutiao.com/group/7635697373448110632/" target="_blank">来源</a>）。</li>
+                                            <li><strong>减碳成效：</strong>全周期年减碳365万吨，绿电占比超90%（<a href="http://m.toutiao.com/group/7635217445044634131/" target="_blank">来源</a>）。</li>
+                                            </ul>
+                                          </div>
+                                          <!-- 四川 -->
+                                          <div class="region-card">
+                                            <h3>四川：绿电算力双轮驱动</h3>
+                                              <ul>
+                                                <li><strong>核心优势：</strong>水电装机突破1亿千瓦，绿电资源占比89%，智算规模达<span class="data-point">16.8EFlops</span>（<a href="https://cbgc.scol.com.cn/7412150" target="_blank">来源</a>）。</li>
+                                                  <li><strong>储能支撑：</strong>新型储能并网超215万千瓦，甘孜两河口算电融合示范项目利用隧洞恒温环境实现零碳算力（<a href="http://m.toutiao.com/group/7620418222235435566/" target="_blank">来源</a>）。</li>
+                                                    <li><strong>政策落地：</strong>编制全国首个省级算电协同政策，推动储能电站与（如成都科创生态岛绿电利用率70%）（<a href="http://m.toutiao.com/group/7620418222235435566/" target="_blank">来源</a>）。</li>
+                                                    </ul>
+                                                  </div>
+                                                  <!-- 甘肃 -->
+                                                  <div class="region-card">
+                                                    <h3>甘肃庆阳：算力飞地模式</h3>
+                                                      <ul>
+                                                        <li><strong>项目进展：</strong>中国移动四年建成2.7万标准机架、算力超9万P，PUE低至<span class="data-point">1.193</span>，国产芯片利用率从67%提升至90%（<a href="http://m.toutiao.com/group/7631381453644825088/" target="_blank">来源</a>）。</li>
+                                                          <li><strong>创新模式：</strong>通过“绿电聚合供电（0.398元/度）+400G光网”，实现算力向京津冀（时延8毫秒）、长三角（12毫秒）转移，创新“算力飞地”服务东部需求。</li>
+                                                          </ul>
+                                                        </div>
+                                                      </div>
+                                                      <!-- 3. 关键技术 -->
+                                                      <div style="margin-top: 2rem;">
+                                                        <h3>3. 关键技术与模式创新</h3>
+                                                          <ul>
+                                                            <li><strong>绿电直供与电网优化：</strong>通过专属线路实现新能源发电直连数据中心（如中卫项目），减少中间损耗，降低绿电消纳难度（<a href="http://m.toutiao.com/group/7635697373448110632/" target="_blank">来源</a>）。</li>
+                                                              <li><strong>储能与智能调度：</strong>结合储能技术解决绿电间歇性，宁夏项目采用“光伏+风电+储能”体系，四川布局215万千瓦储能并网（<a href="http://m.toutiao.com/group/7620418222235435566/" target="_blank">来源</a>）。</li>
+                                                                <li><strong>低PUE与能效提升：</strong>庆阳项目PUE 1.193，成都科创生态岛70%绿电利用率，甘孜项目利用自然环境实现零能耗制冷（<a href="http://m.toutiao.com/group/7620418222235435566/" target="_blank">来源</a>）。</li>
+                                                                </ul>
+                                                              </div>
+                                                              <!-- 4. 核心挑战 -->
+                                                              <div style="margin-top: 2rem;">
+                                                                <h3>4. 核心挑战与破局路径</h3>
+                                                                  <div class="challenge-item">
+                                                                    <strong>空间错配：</strong>东部算力需求高，西部绿电资源集中，通过“东数西算”枢纽优化布局（<a href="http://www.sc.gov.cn/10462/10464/10797/2026/3/25/350dc8a3c8eb4e74b63232ca65d0116f.shtml" target="_blank">来源</a>）。
+                                                                    </div>
+                                                                    <div class="challenge-item">
+                                                                      <strong>时间错配：</strong>绿电出力受光照/风况影响，通过储能（宁夏项目储能容量覆盖15天）与智能调度系统解决（<a href="http://m.toutiao.com/group/7635217445044634131/" target="_blank">来源</a>）。
+                                                                      </div>
+                                                                      <div class="challenge-item">
+                                                                        <strong>
