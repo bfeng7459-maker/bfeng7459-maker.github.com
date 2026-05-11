@@ -1,0 +1,309 @@
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>国电南瑞（600406）投资分析洞察报告</title>
+      <style>
+        /* --- CSS Variables & Reset --- */
+        :root {
+        --primary-color: #1a365d; /* 深蓝：专业、稳重 */
+        --accent-color: #2b6cb0; /* 亮蓝：链接、重点 */
+        --success-color: #2f855a; /* 绿色：上涨、利好 */
+        --warning-color: #c05621; /* 橙色：风险提示 */
+        --danger-color: #c53030; /* 红色：下跌、利空 */
+        --bg-color: #f7fafc;
+        --card-bg: #ffffff;
+        --text-main: #2d3748;
+        --text-secondary: #4a5568;
+        --border-color: #e2e8f0;
+        --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+        --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+        --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+        * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        }
+        body {
+        font-family: var(--font-family);
+        background-color: var(--bg-color);
+        color: var(--text-main);
+        line-height: 1.6;
+        font-size: 16px;
+        -webkit-font-smoothing: antialiased;
+        }
+        a {
+        color: var(--accent-color);
+        text-decoration: none;
+        transition: color 0.2s;
+        }
+        a:hover {
+        color: var(--primary-color);
+        text-decoration: underline;
+        }
+        /* --- Layout --- */
+        .container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 0 1rem;
+        }
+        /* --- Header --- */
+        header {
+        background-color: var(--primary-color);
+        color: white;
+        padding: 2rem 0;
+        position: relative;
+        box-shadow: var(--shadow-md);
+        }
+        .header-content {
+        position: relative;
+        }
+        h1 {
+        font-size: 1.75rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        line-height: 1.3;
+        }
+        .report-date {
+        font-size: 0.9rem;
+        opacity: 0.9;
+        display: inline-block;
+        background: rgba(255,255,255,0.1);
+        padding: 0.2rem 0.6rem;
+        border-radius: 4px;
+        }
+        /* 质量标志 */
+        .quality-badge {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: #ecc94b; /* 金色/黄色 */
+        color: #744210;
+        font-size: 0.8rem;
+        font-weight: bold;
+        padding: 0.4rem 0.8rem;
+        border-radius: 4px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        transform: translateY(-50%);
+        z-index: 10;
+        }
+        /* --- Hero Stats (Key Metrics) --- */
+        .hero-stats {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 1rem;
+        margin-top: -1.5rem; /* Overlap header */
+        margin-bottom: 2rem;
+        }
+        .stat-card {
+        background: var(--card-bg);
+        padding: 1.25rem;
+        border-radius: 8px;
+        box-shadow: var(--shadow-mdsm);
+        text-align: center;
+        border: 1px solid var(--border-color);
+        }
+        .stat-label {
+        font-size: 0.85rem;
+        color: var(--text-secondary);
+        margin-bottom: 0.5rem;
+        }
+        .stat-value {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--primary-color);
+        }
+        .stat-value.up { color: var(--success-color); }
+        .stat-value.down { color: var(--danger-color); }
+        /* --- Main Content Sections --- */
+        section {
+        margin-bottom: 2.5rem;
+        }
+        .card {
+        background: var(--card-bg);
+        border-radius: 8px;
+        padding: 2rem;
+        box-shadow: var(--shadow-sm);
+        border: 1px solid var(--border-color);
+        }
+        h2 {
+        font-size: 1.4rem;
+        color: var(--primary-color);
+        border-bottom: 2px solid var(--bg-color);
+        padding-bottom: 0.75rem;
+        margin-bottom: 1.5rem;
+        }
+        h3 {
+        font-size: 1.15rem;
+        color: var(--text-main);
+        margin: 1.5rem 0 0.75rem 0;
+        font-weight: 600;
+        }
+        p {
+        margin-bottom: 1rem;
+        color: var(--text-secondary);
+        }
+        ul, ol {
+        margin-left: 1.5rem;
+        margin-bottom: 1rem;
+        color: var(--text-secondary);
+        }
+        li {
+        margin-bottom: 0.5rem;
+        }
+        /* --- Highlight Box (Core Insights) --- */
+        .highlight-box {
+        background-color: #ebf8ff;
+        border-left: 4px solid var(--accent-color);
+        padding: 1.5rem;
+        border-radius: 4px;
+        margin-bottom: 1.5rem;
+        }
+        .highlight-box p {
+        color: var(--text-main);
+        margin-bottom: 0;
+        }
+        /* --- Source Link Styling in Text --- */
+        .source-ref {
+        font-size: 0.75rem;
+        color: var(--accent-color);
+        margin-left: 0.5rem;
+        white-space: nowrap;
+        background: rgba(43, 108, 176, 0.1);
+        padding: 2px 6px;
+        border-radius: 3px;
+        }
+        /* --- Footer Links --- */
+        .link-list {
+        list-style: none;
+        padding: 0;
+        }
+        .link-list li {
+        margin-bottom: 0.75rem;
+        border-bottom: 1px dashed var(--border-color);
+        padding-bottom: 0.75rem;
+        }
+        .link-list li:last-child {
+        border-bottom: none;
+        }
+        .link-list a {
+        font-weight: 500;
+        display: block;
+        min-height: 44px; /* Touch target */
+        line-height: 1.4;
+        padding: 0.5rem 0;
+        }
+        footer {
+        margin-top: 4rem;
+        padding: 2rem 0;
+        background-color: #edf2f7;
+        text-align: center;
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+        }
+        /* --- Responsive Tweaks --- */
+        @media (max-width: 600px) {
+        h1 { font-size: 1.4rem; }
+        .card { padding: 1.25rem; }
+        .stat-value { font-size: 1.25rem; }
+        .quality-badge {
+        position: relative;
+        transform: none;
+        display: inline-block;
+        margin-top: 0.5rem;
+        }
+        .header-content {
+        display: flex;
+        flex-direction: column;
+        }
+        }
+      </style>
+    </head>
+    <body>
+      <header>
+        <div class="container header-content">
+          <h1>国电南瑞（600406）投资分析洞察报告</h1>
+            <span class="report-date">2026年05月11日</span>
+              <!-- 质量标志 -->
+              <div class="quality-badge">质量标志：专业级分析报告</div>
+              </div>
+            </header>
+            <main class="container">
+              <!-- 关键数据概览 -->
+              <div class="hero-stats">
+                <div class="stat-card">
+                  <div class="stat-label">最新股价</div>
+                    <div class="stat-value up">27.06元</div>
+                    </div>
+                    <div class="stat-card">
+                      <div class="stat-label">日涨幅</div>
+                        <div class="stat-value up">+3.76%</div>
+                        </div>
+                        <div class="stat-card">
+                          <div class="stat-label">市盈率(TTM)</div>
+                            <div class="stat-value">26.12倍</div>
+                            </div>
+                            <div class="stat-card">
+                              <div class="stat-label">总市值</div>
+                                <div class="stat-value">2173亿</div>
+                                </div>
+                                <div class="stat-card">
+                                  <div class="stat-label">Q1营收增长</div>
+                                    <div class="stat-value up">+7.52%</div>
+                                    </div>
+                                  </div>
+                                  <!-- 核心洞察 -->
+                                  <section class="card">
+                                    <h2>核心洞察综述</h2>
+                                      <div class="highlight-box">
+                                        <p>近期国电南瑞股价呈现显著波动后反弹态势：2026年5月11日股价报收27.06元，上涨3.76%，系长期回调后首次大幅反弹，核心驱动因素包括估值修复需求、“十五五”电网投资规划（4万亿元）及2026年一季度订单放量。国泰基金旗下ETF在2025年四季度增持后实现浮盈超308万元，公司基本面稳健（电网智能业务占比超50%，2026Q1营收同比增长7.52%），估值处于历史低位（市盈率TTM26.12倍），长期受益于能源转型与电网数字化趋势，但短期需警惕资金面波动及技术面修复后的震荡风险。</p>
+                                        </div>
+                                      </section>
+                                      <!-- 详细维度分析 -->
+                                      <section class="card">
+                                        <h2>详细维度分析</h2>
+                                          <h3>一、股价走势与关键波动节点</h3>
+                                            <p><strong>1. 近期反弹行情</strong><br>
+                                              2026年5月11日，国电南瑞股价开盘后快速拉升，涨幅超5%，当日收于27.06元，上涨3.76%，总市值2173.39亿元，流通市值2167.01亿元。市场分析认为，此次反弹系长期回调后首次修复，技术面指标（如均线低位）与资金面主力回流共同推动 <a href="https://toutiao.com/group/7638444101771280931/" target="_blank" class="source-ref">查看来源</a>。</p>
+                                              <p><strong>2. 前期回调压力</strong><br>
+                                                自2026年3月高点（32元）回调后，股价累计下跌超20%，期间多次出现单日调整：</p>
+                                                <ul>
+                                                  <li>3月30日：下跌1.84%，收26.63元，技术指标（MACD负值、RSI偏低）显示空头行情 <a href="https://toutiao.com/group/7622960722745524746/" target="_blank" class="source-ref">查看来源</a>；</li>
+                                                    <li>5月8日：下跌1.36%，收26.08元，主力资金净流出3.68亿元，技术面均线空头排列 <a href="https://toutiao.com/group/7638091346942722587/" target="_blank" class="source-ref">查看来源</a>；</li>
+                                                      <li>4月17日：微跌0.22%，收26.81元，低位企稳但量能萎缩，26.5元为关键支撑 <a href="https://toutiao.com/group/7630406648724554274/" target="_blank" class="source-ref">查看来源</a>。</li>
+                                                      </ul>
+                                                      <h3>二、国泰基金持仓变化与业绩表现</h3>
+                                                        <p><strong>1. 四季度增持获利</strong><br>
+                                                          国泰基金旗下ETF在2025年四季度增持185.69万股，持股增至233.64万股，截至2026年二季度浮盈超308万元，对应基金规模5.52亿元，今年以来收益率25.74%，近一年收益率113.1% <a href="https://m.sohu.com/a/990286846_122066678/" target="_blank" class="source-ref">查看来源</a>。</p>
+                                                          <p><strong>2. 早期减持与浮亏历史</strong><br>
+                                                            2025年二季度国泰恒生A股电网设备ETF（561380）减持8.1万股，持有26.19万股，期间浮亏46.1万元；国泰中证细分机械设备ETF（516960）减持9200股，浮亏4.3万元。2025年8月股价连续8天下跌7.78%时，该基金合计浮亏进一步扩大至52.69万元 <a href="https://finance.sina.com.cn/money/fund/aiassistant/zcgyd/2025-08-01/doc-infiniqu8111512.shtml?cref=cj&finpagefr=ttzz" target="_blank" class="source-ref">查看来源</a> <a href="https://www.sohu.com/a/919468414_122014422" target="_blank" class="source-ref">来源2</a>。</p>
+                                                            <h3>三、基本面与行业前景</h3>
+                                                              <p><strong>1. 核心业务与业绩</strong><br>
+                                                                国电南瑞以电网自动化、新能源业务为核心，电网智能业务占比超50% <a href="https://m.sohu.com/a/990286846_122066678/" target="_blank" class="source-ref">查看来源</a>。2026年一季度实现营收95.64亿元，同比增长7.52%，在手订单超800亿元，2025年分红率约60%，吸引长期资金 <a href="https://toutiao.com/group/7638444101771280931/" target="_blank" class="source-ref">查看来源</a>。</p>
+                                                                <p><strong>2. 行业政策红利</strong><br>
+                                                                  “十五五”电网投资规划明确达4万亿元，2026年一季度招标显著放量，公司作为电力二次设备龙头，深度受益于绿电并网、算电协同及AI算力驱动的能源需求增长 <a href="https://toutiao.com/group/7638444101771280931/" target="_blank" class="source-ref">查看来源</a>。</p>
+                                                                  <h3>四、估值与资金面分析</h3>
+                                                                    <p><strong>1. 估值水平</strong><br>
+                                                                      当前市盈率TTM26.12倍，市净率4.06倍，若2027年每股收益达1.42元，基于盈利预测的估值具备吸引力 <a href="https://quotes.sina.cn/hs/company/quotes/view/sh600406" target="_blank" class="source-ref">查看来源</a> <a href="https://toutiao.com/group/7622960722745524746/" target="_blank" class="source-ref">来源2</a>。</p>
+                                                                      <p><strong>2. 资金面动态</strong></p>
+                                                                        <ul>
+                                                                          <li><strong>主力资金</strong>：5月10日净流出3.68亿元，5月11日反弹或伴随部分资金回流；3月30日主力净流出1.13亿元，4月17日北向资金小幅流出 <a href="https://toutiao.com/group/7630406648724554274/" target="_blank" class="source-ref">查看来源</a> <a href="https://toutiao.com/group/7638091346942722587/" target="_blank" class="source-ref">来源2</a>；</li>
+                                                                            <li><strong>融资余额</strong>：截至2025年7月29日为18.48亿元，近5日减少2.92亿元，显示杠杆资金阶段性撤离 <a href="https://www.stcn.com/article/detail/2811610.html" target="_blank" class="source-ref">查看来源</a>。</li>
+                                                                            </ul>
+                                                                            <h3>五、机构观点与风险提示</h3>
+                                                                              <ul>
+                                                                                <li><strong>乐观因素</strong>：能源转型背景下电网数字化趋势明确，IGBT核心器件国产替代加速，公司作为行业龙头有望持续受益 <a href="https://xueqiu.com/S/SH600406/time?page=62" target="_blank" class="source-ref">查看来源</a>；</li>
+                                                                                  <li><strong>谨慎建议</strong>：短期需关注26.5元关键支撑位，若资金面持续承压或考验前低，投资者需控制仓位，等待企稳信号 <a href="https://toutiao.com/group/7630406648724554274/" target="_blank" class="source-ref">查看来源</a>。</li>
+                                                                                  </ul>
+                                                                                </section>
+                                                                                <!-- 总结与展望 -->
+                                                                                <section class="card">
+                                                                                  <h2>总结与展望</h2>
+                                                                                    <p>国电南瑞短期反弹系估值修复与政策预期驱动，长期具备能源转型与电网投资红利支撑。当前需重点关注：</p>
+                                                                                      <ol>
+                                                                                        <li><strong>政策落地</strong>：“十五五”电网投资规划细则及2026年招标进展；</li>
+                                                                                          <li><strong>资金面</strong>：主力资金流向与融资融券变化；</li>
+                                                                                            <li><strong>技术面</strong>：均线系统修复程度及成交额持续性。</li
