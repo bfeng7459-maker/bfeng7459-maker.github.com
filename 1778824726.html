@@ -1,0 +1,328 @@
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>2026年“算电协同”新基建发展洞察分析报告</title>
+      <style>
+        /*
+        * 全局变量与重置
+        * 设计风格：科技蓝 + 能源绿，现代简约，卡片式布局
+        */
+        :root {
+        --primary-color: #0f172a; /* 深蓝：主标题、页眉 */
+        --accent-color: #2563eb;  /* 亮蓝：链接、重点强调 */
+        --energy-color: #10b981;  /* 绿色：清洁能源、正面数据 */
+        --bg-color: #f8fafc;      /* 浅灰背景 */
+        --card-bg: #ffffff;       /* 卡片背景 */
+        --text-main: #334155;     /* 主要文字 */
+        --text-light: #64748b;    /* 次要文字 */
+        --border-color: #e2e8f0;
+        --highlight-old: #fef9c3; /* 老旧信息标黄背景 */
+        --highlight-old-text: #854d0e; /* 老旧信息文字颜色 */
+        --spacing-unit: 1rem;
+        --radius: 12px;
+        --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        }
+        body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+        background-color: var(--bg-color);
+        color: var(--text-main);
+        line-height: 1.6;
+        font-size: 16px;
+        -webkit-font-smoothing: antialiased;
+        }
+        /*
+        * 布局容器
+        */
+        .container {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 0 var(--spacing-unit);
+        }
+        /*
+        * 头部导航
+        */
+        header {
+        background-color: var(--card-bg);
+        border-bottom: 1px solid var(--border-color);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .header-inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 64px;
+        }
+        .report-title-short {
+        font-weight: 700;
+        font-size: 1.1rem;
+        color: var(--primary-color);
+        display: none; /* 移动端默认隐藏，小屏显示 */
+        }
+        @media (min-width: 600px) {
+        .report-title-short {
+        display: block;
+        }
+        }
+        .quality-badge {
+        background-color: var(--energy-color);
+        color: white;
+        padding: 0.25rem 0.75rem;
+        border-radius: 999px;
+        font-size: 0.875rem;
+        font-weight: 600;
+        box-shadow: 0 2px 4px rgba(16, 185, 129, 0.3);
+        }
+        /*
+        * 通用组件
+        */
+        h1, h2, h3, h4 {
+        color: var(--primary-color);
+        margin-bottom: 0.75em;
+        font-weight: 700;
+        }
+        h1 { font-size: 1.75rem; line-height: 1.3; }
+        h2 { font-size: 1.4rem; border-left: 5px solid var(--accent-color); padding-left: 1rem; margin-top: 2rem; }
+        h3 { font-size: 1.2rem; margin-top: 1.5rem; color: var(--text-main); }
+        h4 { font-size: 1.1rem; margin-top: 1rem; color: var(--text-main); }
+        p { margin-bottom: 1rem; text-align: justify; }
+        ul { margin-bottom: 1rem; padding-left: 1.5rem; }
+        li { margin-bottom: 0.5rem; }
+        strong { color: var(--primary-color); font-weight: 600; }
+        a { color: var(--accent-color); text-decoration: none; transition: color 0.2s; }
+        a:hover { text-decoration: underline; }
+        .card {
+        background: var(--card-bg);
+        border-radius: var(--radius);
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+        box-shadow: var(--shadow);
+        border: 1px solid var(--border-color);
+        }
+        /*
+        * 核心洞察区域
+        */
+        .hero-section {
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+        }
+        .report-meta {
+        font-size: 0.875rem;
+        color: var(--text-light);
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        }
+        .insight-box {
+        background: linear-gradient(135deg, #eff6ff 0%, #f0fdf4 100%);
+        border: 1px solid #bfdbfe;
+        padding: 1.5rem;
+        border-radius: var(--radius);
+        }
+        .insight-box h2 {
+        border-left: none;
+        padding-left: 0;
+        margin-top: 0;
+        color: var(--accent-color);
+        }
+        /*
+        * 详细内容区域
+        */
+        .section-content {
+        margin-bottom: 3rem;
+        }
+        .sub-card {
+        background: #f8fafc;
+        border: 1px solid var(--border-color);
+        border-radius: 8px;
+        padding: 1.25rem;
+        margin-top: 1rem;
+        }
+        .highlight-text {
+        color: var(--energy-color);
+        font-weight: 600;
+        }
+        /*
+        * 资讯链接列表
+        */
+        .sources-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        margin-top: 1.5rem;
+        }
+        @media (min-width: 768px) {
+        .sources-grid {
+        grid-template-columns: repeat(2, 1fr);
+        }
+        }
+        .source-item {
+        background: var(--card-bg);
+        border: 1px solid var(--border-color);
+        border-radius: 8px;
+        padding: 1rem;
+        transition: transform 0.2s, box-shadow 0.2s;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        }
+        .source-item:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow);
+        }
+        .source-date {
+        font-size: 0.8rem;
+        color: var(--text-light);
+        margin-bottom: 0.5rem;
+        display: inline-block;
+        background: #f1f5f9;
+        padding: 2px 6px;
+        border-radius: 4px;
+        width: fit-content;
+        }
+        .source-title {
+        font-size: 0.95rem;
+        font-weight: 500;
+        margin-bottom: 0.75rem;
+        line-height: 1.4;
+        flex-grow: 1;
+        }
+        .source-link-btn {
+        display: inline-block;
+        font-size: 0.875rem;
+        color: var(--accent-color);
+        font-weight: 600;
+        margin-top: auto;
+        border-bottom: 1px dashed transparent;
+        }
+        .source-link-btn:hover {
+        border-bottom: 1px dashed var(--accent-color);
+        }
+        /* 老旧信息样式 */
+        .source-item.old-info {
+        background-color: var(--highlight-old);
+        border-color: #fde047;
+        }
+        .source-item.old-info .source-title {
+        color: var(--highlight-old-text);
+        }
+        .old-tag {
+        font-size: 0.7rem;
+        background-color: var(--highlight-old-text);
+        color: white;
+        padding: 1px 4px;
+        border-radius: 4px;
+        margin-left: 0.5rem;
+        vertical-align: middle;
+        }
+        /*
+        * 页脚
+        */
+        footer {
+        margin-top: 4rem;
+        padding: 2rem 0;
+        text-align: center;
+        color: var(--text-light);
+        font-size: 0.875rem;
+        border-top: 1px solid var(--border-color);
+        }
+        /*
+        * 响应式调整
+        */
+        @media (max-width: 600px) {
+        h1 { font-size: 1.5rem; }
+        h2 { font-size: 1.25rem; }
+        .card { padding: 1rem; }
+        .insight-box { padding: 1rem; }
+        }
+      </style>
+    </head>
+    <body>
+      <!-- 顶部导航 -->
+      <header>
+        <div class="container header-inner">
+          <div class="report-title-short">2026年“算电协同”发展洞察</div>
+            <div class="quality-badge" id="qualityFlag">质量标志：通过</div>
+            </div>
+          </header>
+          <main class="container">
+            <!-- 核心洞察综述 -->
+            <section class="hero-section">
+              <div class="report-meta">
+                <span>📅 报告生成日期：2026年05月15日</span>
+                </div>
+                <h1>2026年“算电协同”新基建发展洞察分析报告</h1>
+                  <div class="insight-box">
+                    <h2>🚀 核心洞察综述</h2>
+                      <p>2026年“算电协同”成为国家新基建核心战略方向，以大唐中卫云基地等项目为标志实现规模化落地，通过“绿电直供+算力集群”模式解决“东数西算”中能源与算力的空间错配、时间错配问题，推动算力产业从“电支撑算”向“算优化电”转型。政策层面，“十五十五”规划及四部门行动方案明确2030年算力清洁能源供给目标，区域布局聚焦四川（水电优势）、宁夏（沙漠风光）、甘肃（枢纽区位）等地，产业链（算力调度、储能、绿电直供）与技术（液冷、AI调度）加速协同，预计2030年相关投资将超3万亿元，成为AI时代绿色数字经济增长极。</p>
+                      </div>
+                    </section>
+                    <!-- 详细维度分析 -->
+                    <section class="section-content">
+                      <h2>📊 详细维度分析</h2>
+                        <!-- 一、政策与战略驱动 -->
+                        <article class="card">
+                          <h3>一、政策与战略驱动：国家新基建核心工程</h3>
+                            <ul>
+                              <li><strong>顶层设计加码</strong>：2026年政府工作报告首次将“算电协同”纳入新基建重点，明确“打通电力网与算力网，实现‘算随电优’”，要求数据中心向绿电富集区域转移，东部推广液冷、AI调度等节能技术（来源：条目14，2026年03月16日）。</li>
+                                <li><strong>专项政策落地</strong>：四部门联合印发《关于促进人工智能与能源双向赋能的行动方案》，提出到2030年算力设施清洁能源供给达世界领先水平，明确绿电直供、算电融合等技术路径（来源：条目5，2026年05月02日）。</li>
+                                  <li><strong>产业规模目标</strong>：2026年“算电协同”行业规模预计突破1800亿元（年增速超85%），2030年整体投资将超3万亿元，覆盖算力集群、储能、调度平台等全产业链（来源：条目2，2026年05月08日）。</li>
+                                  </ul>
+                                </article>
+                                <!-- 二、标杆项目实践 -->
+                                <article class="card">
+                                  <h3>二、标杆项目实践：从“电支撑算”到“算优化电”的跨越</h3>
+                                    <div class="sub-card">
+                                      <h4>1. 宁夏中卫云基地：首个“算电协同”绿电直供标杆</h4>
+                                        <ul>
+                                          <li><strong>项目规模</strong>：一期总投资87亿元，总规模2000万千瓦（含50万千瓦光伏+150万千瓦风电及配套储能），年发电量43亿千瓦时，满足基地用电并外送，年减碳365万吨（来源：条目3，2026年05月02日）。</li>
+                                            <li><strong>创新模式</strong>：采用“物理直供+双边交易”双轨模式，通过专属线路直送算力园区，绿电电价0.36元/千瓦时（较东部降幅超50%），入驻企业年均节省电费超1亿元（来源：条目2，2026年05月08日）。</li>
+                                              <li><strong>算力进展</strong>：已入驻15家头部算力企业，6月将形成我国首个10万卡算力集群，标志“算电协同”从“电力直供”向“算力集群”升级（来源：条目3，2026年05月02日）。</li>
+                                              </ul>
+                                            </div>
+                                            <div class="sub-card">
+                                              <h4>2. 四川算力枢纽：水电优势破解“空间+时间错配”</h4>
+                                                <ul>
+                                                  <li><strong>资源禀赋</strong>：水电装机超1亿千瓦（全国首位）、新能源装机超3200万千瓦，叠加国家超算成都中心等算力基座，具备“绿电+算力”双输出先发优势（来源：条目12，2026年03月23日）。</li>
+                                                    <li><strong>破局路径</strong>：针对“东算西电”空间错配（东部需求大、西部绿电多）和“绿电间歇性/枯水期”时间错配，在攀枝花、阿坝等地试点算电融合园区，计划编制专项方案推动“一度电从能源输出向算力输出转型”（来源：条目11，2026年03月25日）。</li>
+                                                    </ul>
+                                                  </div>
+                                                  <div class="sub-card">
+                                                    <h4>3. 甘肃庆阳集群：绿色算力枢纽标杆</h4>
+                                                      <ul>
+                                                        <li><strong>区位优势</strong>：依托八大算力枢纽定位，中国移动落地全国首个国产算力万卡集群，4个月完成常规24个月建设任务，建成4栋数据中心、2.7万标准机架，承载超9万P算力（占节点总规模65%）（来源：条目9，2026年01月18日，<span style="color: #d97706;">老旧信息</span>）。</li>
+                                                          <li><strong>成本优势</strong>：绿电占比超80%，PUE低至1.193，到户电价0.398元/千瓦时，万P算力年省电费上千万元（来源：条目9，2026年01月18日，<span style="color: #d97706;">老旧信息</span>）。</li>
+                                                          </ul>
+                                                        </div>
+                                                      </article>
+                                                      <!-- 三、产业链与技术支撑 -->
+                                                      <article class="card">
+                                                        <h3>三、产业链与技术支撑：AI算力需求驱动产业升级</h3>
+                                                          <ul>
+                                                            <li><strong>关键技术突破</strong>：智算集群从“千卡级”迈向“十万卡级”，涵盖AI芯片、高速互联协议、液冷散热等五环节，当前面临GPU利用率不足30%、跨域调度机制不健全等挑战（来源：条目8，2026年01月18日，<span style="color: #d97706;">老旧信息</span>；条目3，2026年05月02日）。</li>
+                                                              <li><strong>算力调度平台</strong>：中国电信“息壤”平台可调度算力达87EFLOPS，成功完成上海至福建跨省算力转移实测，实现全国算力资源优化配置（来源：条目6，2026年01月18日，<span style="color: #d97706;">老旧信息</span>）。</li>
+                                                                <li><strong>A股核心赛道</strong>：算电协同订单龙头包括国电南瑞（620亿+）、中国能建（400亿+）等，核心逻辑为AI功耗暴涨（GPU算力需求年增超100%）、国家战略绑定（来源：条目7，2026年01月18日，<span style="color: #d97706;">老旧信息</span>）。</li>
+                                                                </ul>
+                                                              </article>
+                                                              <!-- 四、经济效益与减碳成效 -->
+                                                              <article class="card">
+                                                                <h3>四、经济效益与减碳成效：绿色转型显效</h3>
+                                                                  <ul>
+                                                                    <li><strong>降本增效</strong>：中卫云基地园区绿电占比超90%，通过物理直供降低企业用电成本15%-30%，入驻企业年均节省电费超1亿元（来源：条目4，2026年05月02日）。</li>
+                                                                      <li><strong>减碳减排</strong>：大唐中卫云基地年减碳365万吨，截至2026年4月，全国算力前十企业中6家入驻绿电直供园区，推动算力产业单位能耗下降超40%（来源：条目3，2026年05月02日）。</li>
+                                                                      </ul>
+                                                                    </article>
+                                                                  </section>
+                                                                  <!-- 总结与展望 -->
+                                                                  <section class="card" style="border-left: 5px solid var(--energy-color
