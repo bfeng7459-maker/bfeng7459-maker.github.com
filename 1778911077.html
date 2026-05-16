@@ -1,0 +1,344 @@
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>2026年“算电协同”发展分析洞察报告</title>
+      <style>
+        /* CSS 变量定义颜色方案 */
+        :root {
+        --primary-color: #0f4c81; /* 深科技蓝 */
+        --accent-color: #00a8e8; /* 亮电光蓝 */
+        --success-color: #10b981; /* 绿色能源 */
+        --text-main: #1e293b;
+        --text-secondary: #475569;
+        --bg-body: #f1f5f9;
+        --bg-card: #ffffff;
+        --border-radius: 12px;
+        --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+        /* 全局重置与基础样式 */
+        * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        }
+        body {
+        font-family: var(--font-family);
+        background-color: var(--bg-body);
+        color: var(--text-main);
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+        }
+        a {
+        color: var(--primary-color);
+        text-decoration: none;
+        transition: color 0.2s;
+        }
+        a:hover {
+        color: var(--accent-color);
+        text-decoration: underline;
+        }
+        /* 布局容器 */
+        .container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 0 1rem;
+        }
+        /* 头部样式 */
+        header {
+        background: linear-gradient(135deg, var(--primary-color), #1e3a8a);
+        color: white;
+        padding: 2rem 0;
+        margin-bottom: 2rem;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        }
+        .header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+        }
+        h1 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        line-height: 1.3;
+        }
+        .date-badge {
+        font-size: 0.875rem;
+        opacity: 0.9;
+        background: rgba(255,255,255,0.2);
+        padding: 0.25rem 0.75rem;
+        border-radius: 20px;
+        margin-top: 0.5rem;
+        display: inline-block;
+        }
+        /* 质量标志 - 右上角显眼位置 */
+        .quality-badge {
+        background-color: #fff;
+        color: var(--success-color);
+        padding: 0.5rem 1rem;
+        border-radius: 8px;
+        font-weight: bold;
+        font-size: 0.9rem;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        border: 1px solid var(--success-color);
+        white-space: nowrap;
+        }
+        /* 卡片通用样式 */
+        .card {
+        background-color: var(--bg-card);
+        border-radius: var(--border-radius);
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+        box-shadow: var(--shadow);
+        border-left: 4px solid transparent;
+        }
+        .card:hover {
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        /* 核心洞察卡片 */
+        .card.core-insight {
+        border-left-color: var(--accent-color);
+        background: linear-gradient(to bottom right, #ffffff, #f0f9ff);
+        }
+        /* 标题样式 */
+        h2 {
+        font-size: 1.25rem;
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 1px solid #e2e8f0;
+        display: flex;
+        align-items: center;
+        }
+        h2::before {
+        content: '';
+        display: inline-block;
+        width: 6px;
+        height: 1.25rem;
+        background-color: var(--accent-color);
+        margin-right: 0.75rem;
+        border-radius: 2px;
+        }
+        h3 {
+        font-size: 1.1rem;
+        color: var(--text-main);
+        margin: 1rem 0 0.5rem 0;
+        font-weight: 600;
+        }
+        p {
+        margin-bottom: 1rem;
+        color: var(--text-secondary);
+        text-align: justify;
+        }
+        /* 重点内容标色 */
+        strong {
+        color: var(--primary-color);
+        font-weight: 700;
+        background-color: rgba(15, 76, 129, 0.05);
+        padding: 0 2px;
+        border-radius: 2px;
+        }
+        .highlight-green {
+        color: var(--success-color);
+        background-color: rgba(16, 185, 129, 0.1);
+        }
+        /* 列表样式 */
+        ul {
+        list-style: none;
+        padding-left: 0.5rem;
+        }
+        li {
+        margin-bottom: 0.75rem;
+        position: relative;
+        padding-left: 1.5rem;
+        }
+        li::before {
+        content: '•';
+        color: var(--accent-color);
+        font-weight: bold;
+        position: absolute;
+        left: 0;
+        top: 0;
+        }
+        /* 来源链接样式 */
+        .source-link {
+        display: block;
+        margin-top: 0.5rem;
+        font-size: 0.85rem;
+        color: #64748b;
+        background: #f8fafc;
+        padding: 0.5rem;
+        border-radius: 6px;
+        word-break: break-all;
+        }
+        .source-link:hover {
+        background: #e2e8f0;
+        color: var(--primary-color);
+        }
+        /* 资讯列表样式 */
+        .news-list {
+        counter-reset: news-counter;
+        }
+        .news-item {
+        display: flex;
+        flex-direction: column;
+        padding: 1rem;
+        border-bottom: 1px solid #e2e8f0;
+        transition: background 0.2s;
+        }
+        .news-item:last-child {
+        border-bottom: none;
+        }
+        .news-item:hover {
+        background-color: #f8fafc;
+        }
+        .news-date {
+        font-size: 0.85rem;
+        color: var(--accent-color);
+        font-weight: 600;
+        margin-bottom: 0.25rem;
+        }
+        .news-title {
+        font-size: 1rem;
+        font-weight: 500;
+        color: var(--text-main);
+        margin-bottom: 0.5rem;
+        }
+        /* 响应式网格布局 */
+        .grid-2 {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        }
+        @media (min-width: 768px) {
+        h1 { font-size: 2rem; }
+        .grid-2 { grid-template-columns: 1fr 1fr; }
+        .container { padding: 0 2rem; }
+        }
+        /* 页脚 */
+        footer {
+        text-align: center;
+        padding: 2rem 0;
+        color: #94a3b8;
+        font-size: 0.875rem;
+        margin-top: 2rem;
+        border-top: 1px solid #e2e8f0;
+        }
+      </style>
+    </head>
+    <body>
+      <header>
+        <div class="container header-content">
+          <div>
+            <h1>2026年“算电协同”发展分析洞察报告</h1>
+              <div class="date-badge">2026年05月16日</div>
+              </div>
+              <div class="quality-badge">
+                质量标志：通过
+              </div>
+            </div>
+          </header>
+          <main class="container">
+            <!-- 核心洞察综述 -->
+            <section class="card core-insight">
+              <h2>核心洞察综述</h2>
+                <p>
+                  2026年“算电协同”作为国家级新基建重点方向加速落地，<strong>我国首个大规模“算电协同”绿电直供项目——大唐中卫云基地50万千瓦光伏电站于2026年5月2日正式投运</strong>，标志“东数西算”工程从“电支撑算”迈向“算优化电”新阶段。该模式通过绿电直供数据中心解决能源与算力时空错配问题，已在宁夏中卫、四川等地形成差异化实践，四川“绿电+算力”双输出、庆阳算电协同集群等项目验证了模式可行性，政策支持下产业链投资规模预计2030年超<strong class="highlight-green">3万亿元</strong>，成为绿色能源与数字经济融合的核心抓手。
+                </p>
+              </section>
+              <!-- 详细维度分析 -->
+              <section id="analysis">
+                <!-- 一、政策驱动 -->
+                <article class="card">
+                  <h2>一、政策驱动与国家战略</h2>
+                    <p>
+                      算电协同被纳入2026年政府工作报告，明确为“东数西算”工程关键方向。四部门联合印发行动方案，目标到2030年算力设施清洁能源供给达世界领先水平，<strong>2026年行业规模有望突破1800亿元</strong>，2030年整体投资超3万亿元，产业链形成“算力+绿电”新生态。
+                    </p>
+                    <a href="http://m.toutiao.com/group/7639538733754188329/" target="_blank" class="source-link">🔗 来源链接：http://m.toutiao.com/group/7639538733754188329/</a>
+                    </article>
+                    <!-- 二、地方实践 -->
+                    <article class="card">
+                      <h2>二、地方实践与重大项目落地</h2>
+                        <div class="grid-2">
+                          <!-- 宁夏中卫 -->
+                          <div style="background: #f8fafc; padding: 1rem; border-radius: 8px;">
+                            <h3>1. 宁夏中卫：首个大规模算电协同绿电直供项目</h3>
+                              <ul>
+                                <li><strong>项目规模</strong>：总投资87亿元，总规模200万千瓦（含50万千瓦光伏、150万千瓦风电及储能），通过“物理直供+双边交易”双轨供电体系，绿电电价低至0.36元/千瓦时（较东部降幅超50%）。</li>
+                                  <li><strong>成效</strong>：年发电量43亿千瓦时，入驻15家头部算力企业，6月将形成我国首个10万卡算力集群，年减碳365万吨，降低企业用电成本15%-30%。</li>
+                                  </ul>
+                                  <a href="http://3g.cnfol.com/hy_stock/hangyejingcui/20260508/32209269.shtml" target="_blank" class="source-link">🔗 来源链接 1</a>
+                                    <a href="http://m.toutiao.com/group/7636552322813903398/" target="_blank" class="source-link">🔗 来源链接 2</a>
+                                    </div>
+                                    <!-- 四川 -->
+                                    <div style="background: #f8fafc; padding: 1rem; border-radius: 8px;">
+                                      <h3>2. 四川：水电大省的“绿电+算力”转型</h3>
+                                        <p>
+                                          四川作为水电装机第一大省（突破1亿千瓦，开发潜力30%-40%），智算规模达16.8EFlops，通过<strong>攀枝花、阿坝等地建设绿电直供数据中心</strong>，编制算电融合方案，解决“东部算力需求与西部绿电资源空间错配”“风光电间歇性与算力稳定需求时间错配”问题，目标从“单纯能源输出”转向“绿电+算力”双输出，提升AI业务毛利率。
+                                        </p>
+                                        <a href="http://www.sc.gov.cn/10462/10464/10797/2026/3/25/350dc8a3c8eb4e74b63232ca65d0116f.shtml" target="_blank" class="source-link">🔗 来源链接 1</a>
+                                          <a href="https://cbgc.scol.com.cn/news/7412150?from_source=toutiao" target="_blank" class="source-link">🔗 来源链接 2</a>
+                                          </div>
+                                        </div>
+                                      </article>
+                                      <!-- 三、产业链与技术创新 -->
+                                      <article class="card">
+                                        <h2>三、产业链与技术创新</h2>
+                                          <h3>1. 技术模式突破</h3>
+                                            <ul>
+                                              <li><strong>直供模式</strong>：大唐中卫云基地采用“物理直供+双边交易”，通过专属线路直连数据中心，实现风光互补稳定供电，PUE低至1.193。</li>
+                                                <li><strong>绿电占比</strong>：庆阳算电协同项目绿电占比超80%，国产算力芯片利用率从67%提升至90%以上，引入70余家行业伙伴覆盖数字政府、低空经济等领域。</li>
+                                                </ul>
+                                                <h3>2. 产业链投资爆发</h3>
+                                                  <p>2026年算电协同成为A股核心赛道，龙头企业订单规模显著：</p>
+                                                    <ul>
+                                                      <li>国电南瑞（620亿订单）、中国能建（400亿+）、特变电工（300亿+）等10家企业获大额订单，核心逻辑在于AI算力需求激增（智能算力超1590EFLOPS）与国家战略推动。</li>
+                                                      </ul>
+                                                      <a href="http://m.toutiao.com/group/7639793351138542115/" target="_blank" class="source-link">🔗 来源链接：http://m.toutiao.com/group/7639793351138542115/</a>
+                                                      </article>
+                                                      <!-- 四、挑战与应对 -->
+                                                      <article class="card">
+                                                        <h2>四、挑战与应对</h2>
+                                                          <h3>1. 核心矛盾</h3>
+                                                            <ul>
+                                                              <li><strong>时空错配</strong>：东部算力需求与西部绿电资源空间错配，风光电间歇性、水电枯水期导致供需失衡。</li>
+                                                                <li><strong>技术瓶颈</strong>：芯片制程、生态短板、算力利用率低（如庆阳项目初期利用率67%）。</li>
+                                                                </ul>
+                                                                <a href="http://m.toutiao.com/group/7633369992704180746/" target="_blank" class="source-link">🔗 来源链接：http://m.toutiao.com/group/7633369992704180746/</a>
+                                                                </article>
+                                                              </section>
+                                                              <!-- 总结与展望 -->
+                                                              <section class="card" style="border-left-color: var(--success-color);">
+                                                                <h2>总结与展望</h2>
+                                                                  <p>
+                                                                    算电协同通过“算力与电力系统深度融合”，已在中卫、四川等地实现从“能源输出”到“价值输出”的跨越，其模式验证为全国10万卡级算力集群、绿电直供数据中心等提供可复制经验。未来需重点突破“风光互补+储能”技术、完善跨省算力调度机制，并依托政策引导与市场资本加速产业链整合，预计2030年形成万亿级产业生态，成为“双碳”目标与数字经济协同发展的关键引擎。
+                                                                  </p>
+                                                                </section>
+                                                                <!-- 资讯标题与链接列表 -->
+                                                                <section class="card">
+                                                                  <h2>资讯标题与链接列表</h2>
+                                                                    <div class="news-list">
+                                                                      <div class="news-item">
+                                                                        <div class="news-date">2026年05月08日</div>
+                                                                          <div class="news-title">我国首个大规模“算电协同”绿电直供项目——中国大唐中卫云基地50万千瓦光伏电站投运，标志“东数西算”打通绿电直连通道</div>
+                                                                            <a href="http://3g.cnfol.com/hy_stock/hangyejingcui/20260508/32209269.shtml" target="_blank" class="source-link">点击跳转</a>
+                                                                            </div>
+                                                                            <div class="news-item">
+                                                                              <div class="news-date">2026年05月06日</div>
+                                                                                <div class="news-title">我国首个大规模“算电协同”绿电供应项目——中卫云基地数据中心绿电直供50万千瓦光伏电站正式投运</div>
+                                                                                  <a href="https://toutiao.com/group/7636552322813903398/" target="_blank" class="source-link">点击跳转</a>
+                                                                                  </div>
+                                                                                  <div class="news-item">
+                                                                                    <div class="news-date">2026年05月02日</div>
+                                                                                      <div class="news-title">我国首个大规模“算电协同”绿电直供项目——大唐中卫云基地50万千瓦光伏电站正式投运</div>
+                                                                                        <a href="http://m.toutiao.com/group/7639538733754188329/" target="_blank" class="source-link">点击跳转</a>
+                                                                                        </div>
+                                                                                        <div class
