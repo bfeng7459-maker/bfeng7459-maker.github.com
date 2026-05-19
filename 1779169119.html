@@ -1,0 +1,381 @@
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>中国联通数智化战略与业务动态报告</title>
+      <style>
+        /* --- CSS Reset & Variables --- */
+        :root {
+        --primary-color: #E60012; /* 联通红 */
+        --primary-dark: #b3000e;
+        --accent-color: #0056b3; /* 科技蓝 */
+        --text-main: #333333;
+        --text-secondary: #666666;
+        --bg-body: #f4f6f9;
+        --bg-card: #ffffff;
+        --border-color: #e1e4e8;
+        --success-color: #28a745;
+        --warning-bg: #fff8e1;
+        --warning-border: #ffe0b2;
+        --spacing-unit: 1rem;
+        --card-radius: 12px;
+        --shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+        * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        }
+        body {
+        font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", Arial, sans-serif;
+        background-color: var(--bg-body);
+        color: var(--text-main);
+        line-height: 1.6;
+        font-size: 16px;
+        -webkit-font-smoothing: antialiased;
+        }
+        /* --- Layout & Container --- */
+        .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        }
+        /* --- Header --- */
+        header {
+        margin-bottom: 24px;
+        position: relative;
+        padding-bottom: 16px;
+        border-bottom: 1px solid var(--border-color);
+        }
+        h1 {
+        font-size: 1.5rem;
+        color: var(--primary-color);
+        font-weight: 700;
+        margin-bottom: 8px;
+        line-height: 1.3;
+        }
+        .report-meta {
+        font-size: 0.875rem;
+        color: var(--text-secondary);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        }
+        /* --- Quality Flag --- */
+        .quality-flag {
+        background-color: var(--success-color);
+        color: white;
+        padding: 6px 16px;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        font-weight: bold;
+        box-shadow: 0 2px 6px rgba(40, 167, 69, 0.3);
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        }
+        .quality-flag::before {
+        content: "✓";
+        font-weight: 900;
+        }
+        /* --- Cards & Sections --- */
+        .card {
+        background: var(--bg-card);
+        border-radius: var(--card-radius);
+        padding: 24px;
+        margin-bottom: 20px;
+        box-shadow: var(--shadow);
+        border: 1px solid transparent;
+        transition: transform 0.2s ease;
+        }
+        .card:hover {
+        transform: translateY(-2px);
+        }
+        .section-title {
+        font-size: 1.25rem;
+        color: var(--text-main);
+        border-left: 4px solid var(--primary-color);
+        padding-left: 12px;
+        margin-bottom: 16px;
+        font-weight: 600;
+        }
+        .sub-title {
+        font-size: 1.1rem;
+        color: var(--accent-color);
+        margin-top: 20px;
+        margin-bottom: 12px;
+        font-weight: 600;
+        }
+        p {
+        margin-bottom: 12px;
+        text-align: justify;
+        }
+        /* --- Lists & Links --- */
+        ul {
+        padding-left: 20px;
+        margin-bottom: 16px;
+        }
+        li {
+        margin-bottom: 8px;
+        color: var(--text-main);
+        }
+        a {
+        color: var(--primary-color);
+        text-decoration: none;
+        word-break: break-all; /* 防止长链接撑破布局 */
+        }
+        a:hover {
+        text-decoration: underline;
+        color: var(--primary-dark);
+        }
+        .source-link {
+        font-size: 0.85rem;
+        color: var(--text-secondary);
+        background: #f0f2f5;
+        padding: 2px 6px;
+        border-radius: 4px;
+        margin-left: 6px;
+        display: inline-block;
+        }
+        .source-link:hover {
+        background: #e1e4e8;
+        color: var(--primary-color);
+        }
+        /* --- Specific Components --- */
+        .highlight-box {
+        background-color: #fff5f5;
+        border: 1px solid #ffe0e0;
+        border-radius: 8px;
+        padding: 16px;
+        margin-bottom: 20px;
+        }
+        .highlight-box strong {
+        color: var(--primary-color);
+        }
+        .old-info-card {
+        background-color: var(--warning-bg);
+        border: 1px solid var(--warning-border);
+        }
+        .old-info-badge {
+        display: inline-block;
+        background: #ff9800;
+        color: white;
+        font-size: 0.75rem;
+        padding: 2px 8px;
+        border-radius: 4px;
+        margin-bottom: 8px;
+        vertical-align: middle;
+        }
+        /* --- Capital Market Grid --- */
+        .market-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 16px;
+        }
+        .market-item {
+        background: #fafbfc;
+        padding: 16px;
+        border-radius: 8px;
+        border-left: 3px solid var(--accent-color);
+        }
+        .market-stat {
+        font-weight: bold;
+        color: var(--text-main);
+        margin: 4px 0;
+        }
+        .market-stat span {
+        font-weight: normal;
+        color: var(--text-secondary);
+        font-size: 0.9rem;
+        }
+        /* --- News List --- */
+        .news-list {
+        list-style: none;
+        padding: 0;
+        }
+        .news-list li {
+        background: #fff;
+        border-bottom: 1px solid var(--border-color);
+        padding: 16px 0;
+        display: flex;
+        align-items: flex-start;
+        }
+        .news-list li:last-child {
+        border-bottom: none;
+        }
+        .news-index {
+        background: var(--text-secondary);
+        color: white;
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.75rem;
+        margin-right: 12px;
+        flex-shrink: 0;
+        margin-top: 2px;
+        }
+        .news-content {
+        flex: 1;
+        }
+        .news-content a {
+        font-size: 1rem;
+        font-weight: 500;
+        }
+        /* --- Footer --- */
+        footer {
+        text-align: center;
+        font-size: 0.85rem;
+        color: var(--text-secondary);
+        padding: 30px 0;
+        margin-top: 20px;
+        border-top: 1px solid var(--border-color);
+        }
+        /* --- Responsive Design --- */
+        @media (min-width: 768px) {
+        body {
+        font-size: 18px;
+        }
+        h1 {
+        font-size: 2rem;
+        }
+        .container {
+        padding: 40px;
+        }
+        .market-grid {
+        grid-template-columns: 1fr 1fr;
+        }
+        .header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        }
+        .header-title {
+        flex: 1;
+        padding-right: 20px;
+        }
+        }
+      </style>
+    </head>
+    <body>
+      <div class="container">
+        <header>
+          <div class="header-content">
+            <div class="header-title">
+              <h1>中国联通多维度布局数智化战略与业务动态</</h1>
+                <div class="report-meta">
+                  <time>2026年05月19日</time>
+                  </div>
+                </div>
+                <div class="quality-flag">质量标志：通过</div>
+                </div>
+              </header>
+              <main>
+                <!-- 核心要点 -->
+                <section class="card highlight-box">
+                  <h2 class="section-title">核心要点</h2>
+                    <p>中国联通近期通过“安全+AI”技术布局、区域协同发展及资本市场积极信号推动数智化转型：武汉大会与上海人工智能生态大会集中展示创新成果；6G技术攻关、区域资源整合及“国芯国模国云”安全基座等落地加速；机构评级乐观，港股获南向资金持续增持。</p>
+                    </section>
+                    <!-- 一、技术战略布局 -->
+                    <section class="card">
+                      <h2 class="section-title">一、技术战略布局：6G、AI、安全深度融合</h2>
+                        <h3 class="sub-title">1. 6G技术攻坚与数字孪生突破</h3>
+                          <p>中国联通在2026年4月24日全球6G技术与产业生态大会上，中讯院牵头撰写《6G网络数字孪生关键技术》，系统阐述6G数字孪生技术体系与网络架构；青年科研骨干孙语瞳博士获评“6G星辰・博士”，成为联通唯一入选者<a href="https://toutiao.com/group/7632305888988004915/" target="_blank" class="source-link">来源链接</a>。区域协调发展研讨会上进一步强调“加强6G技术攻关，打造新一代通信网和算力网”<a href="http://m.toutiao.com/group/7641101698651439652/" target="_blank" class="source-link">来源链接</a>。</p>
+                            <h3 class="sub-title">2. AI与安全融合创新</h3>
+                              <ul>
+                                <li>
+                                  <strong>武汉大会（2026世界电信和信息社会日大会，5月17日）</strong>：以“安全+AI”双主线参展，重点推出：
+                                    <ul>
+                                      <li><strong>联通智家通通</strong>：搭载元景大模型，支持200多种方言<a href="http://m.toutiao.com/group/7641227641068061193/" target="_blank" class="source-link">来源链接</a>；</li>
+                                        <li><strong>联通虾壳</strong>：轻量化安全防护产品；</li>
+                                          <li><strong>安全管家</strong>：提供诈骗预警、亲情守护功能；</li>
+                                            <li><strong>墨攻3.0智慧安全运营平台</strong><a href="http://jms.ctdsb.net/jmythshare/#/index_share?cId=0&contentType=5&contentId=2745679" target="_blank" class="source-link">来源链接</a>。</li>
+                                            </ul>
+                                          </li>
+                                          <li>
+                                            <strong>上海AI生态大会（5月17日）</strong>：发布全栈国产化“国芯国模国云”安全基座，完成近百款行业大模型适配，推出多元化算力服务、Token产品及融合套餐，升级模型服务至数据治理全流程，助力企业低成本数智化转型<a href="https://finance.sina.com.cn/stock/hkstock/marketalerts/2026-05-18/doc-inhyhyqn0729932.shtml" target="_blank" class="source-link">来源链接</a>。
+                                            </li>
+                                          </ul>
+                                        </section>
+                                        <!-- 二、业务与生态进展 -->
+                                        <section class="card">
+                                          <h2 class="section-title">二、业务与生态进展：区域协同与数智化落地</h2>
+                                            <h3 class="sub-title">1. 区域协调发展战略深化</h3>
+                                              <ul>
+                                                <li>
+                                                  <strong>雄安区域研讨会</strong>（5月14日）：聚焦“连接、算力、服务、安全”四大赛道，部署“筑牢连接根基、深耕核心赛道、优化体制机制”，重点区域覆盖京津冀、长三角、粤港澳大湾区、成渝、东北<a href="http://m.toutiao.com/group/7641139150876181043/" target="_blank" class="source-link">来源链接</a>；
+                                                  </li>
+                                                  <li>
+                                                    <strong>武汉大会联动</strong>：启动国家应急通信融合接入平台全国应用，上线湖北（智算巡推一体节点），强化区域算力协同<a href="http://jms.ctdsb.net/jmythshare/#/index_share?cId=0&contentType=5&contentId=2745679" target="_blank" class="source-link">来源链接</a>。
+                                                    </li>
+                                                  </ul>
+                                                </section>
+                                                <!-- 三、资本市场表现 -->
+                                                <section class="card">
+                                                  <h2 class="section-title">三、资本市场表现：股价与资金面积极信号</h2>
+                                                    <div class="market-grid">
+                                                      <div class="market-item">
+                                                        <h3 class="sub-title" style="margin-top:0;">A股市场</h3>
+                                                          <div class="market-stat">5月18日收盘：4.92元 <span>(涨幅5.58%)</span></div>
+                                                            <div class="market-stat">成交额：32.75亿元</div>
+                                                              <div class="market-stat">主力净流入：6.74亿元 <span>(占20.57%)</span></div>
+                                                                <div class="market-stat" style="margin-top:10px; font-size: 0.9rem;">
+                                                                  机构评级：近90天10家评级（买入6家、增持4家），目标均价6.74元。<br>
+                                                                  <a href="http://m.toutiao.com/group/7641390837980496420/" target="_blank" class="source-link">评级来源1</a>
+                                                                    <a href="http://m.toutiao.com/group/7641144198372098600/" target="_blank" class="source-link">评级来源2</a>
+                                                                    </div>
+                                                                  </div>
+                                                                  <div class="market-item">
+                                                                    <h3 class="sub-title" style="margin-top:0;">港股市场</h3>
+                                                                      <div class="market-stat">5月18日：7.92港元 <span>(午后涨超3%)</span></div>
+                                                                        <div class="market-stat">成交额：3.11亿港元</div>
+                                                                          <div class="market-stat">南向资金：5月18日净增持635.4万股</div>
+                                                                            <div class="market-stat">近5日累计增持：3618.6万股</div>
+                                                                              <div class="market-stat">当前持股：40.14亿股 <span>(占13.11%)</span></div>
+                                                                                <div style="margin-top:8px;">
+                                                                                  <a href="https://m.sohu.com/a/1024406706_122123195/" target="_blank" class="source-link">查看详情</a>
+                                                                                  </div>
+                                                                                </div>
+                                                                              </div>
+                                                                            </section>
+                                                                            <!-- 四、市场动态（老旧信息） -->
+                                                                            <section class="card old-info-card">
+                                                                              <h2 class="section-title">四、市场动态与老旧信息</h2>
+                                                                                <span class="old-info-badge">距报告发布超60天</span>
+                                                                                  <h3 class="sub-title">1. “免月租”套餐传闻（2026年1月18日）</h3>
+                                                                                    <p>仅中国联通上线“魔方”套餐（无月租但最低消费55元/月，北京地区试点），其他运营商暂无计划；专家指出完全零月租不现实，因需分摊网络维护成本，建议精简套餐、降低外资费<a href="http://m.toutiao.com/group/7640417830810223113/" target="_blank" class="source-link">来源链接</a>。</p>
+                                                                                    </ </section>
+                                                                                    <!-- 总结与展望 -->
+                                                                                    <section class="card">
+                                                                                      <h2 class="section-title">总结与展望</h2>
+                                                                                        <p>中国联通以“安全+AI”为核心，6G技术与区域协同为支撑，通过武汉大会、上海AI生态大会等活动加速成果落地，资本市场获机构与南向资金双重认可。未来需关注6G商业化进展、AI场景落地及用户增长对业绩的驱动，验证战略布局可持续性。</p>
+                                                                                        </section>
+                                                                                        <!-- 资讯列表 -->
+                                                                                        <section class="card">
+                                                                                          <h2 class="section-title">资讯列表</h2>
+                                                                                            <ul class="news-list">
+                                                                                              <li>
+                                                                                                <div class="news-index">1</div>
+                                                                                                  <div class="news-content">
+                                                                                                    <a href="https://m.sohu.com/a/1024406706_122123195/" target="_blank">5月18日南向资金增持中国联通（00762.HK）635.4万股</a>
+                                                                                                    </div>
+                                                                                                  </li>
+                                                                                                  <li>
+                                                                                                    <div class="news-index">2</div>
+                                                                                                      <div class="news-content">
+                                                                                                        <a href="http://m.toutiao.com/group/7641227641068061193/" target="_blank">中国联通展示“安全+AI”技术：智家通通、虾壳等产品亮相武汉大会</a>
+                                                                                                        </div>
+                                                                                                      </li>
+                                                                                                      <li>
+                                                                                                        <div class="news-index">3</div>
+                                                                                                          <div class="news-content">
+                                                                                                            <a href="http://m.toutiao.com/group/7641390837980496420/" target="_blank">600050 中国联通 5月18日A股收盘数据</a>
+                                                                                                            </div>
+                                                                                                          </li>
+                                                                                                          <li>
+                                                                                                            <div class="news-index">4</div>
+                                                                                                              <div class="
