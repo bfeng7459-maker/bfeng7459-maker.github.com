@@ -1,0 +1,387 @@
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>2026年“算电协同”发展洞察报告</title>
+      <style>
+        /* --- CSS Reset & Variables --- */
+        :root {
+        --primary-color: #0056b3; /* 科技蓝 */
+        --primary-dark: #003d80;
+        --accent-color: #28a745; /* 绿电绿 */
+        --accent-light: #e6f4ea;
+        --highlight-color: #d69e2e; /* 重点黄 */
+        --text-main: #333333;
+        --text-secondary: #666666;
+        --bg-body: #f4f6f9;
+        --bg-card: #ffffff;
+        --border-radius: 8px;
+        --shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        --shadow-hover: 0 8px 15px rgba(0, 0, 0, 0.1);
+        --spacing-unit: 1rem;
+        }
+        * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        }
+        body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+        line-height: 1.6;
+        color: var(--text-main);
+        background-color: var(--bg-body);
+        font-size: 16px;
+        }
+        a {
+        color: var(--primary-color);
+        text-decoration: none;
+        transition: color 0.2s;
+        }
+        a:hover {
+        color: var(--primary-dark);
+        text-decoration: underline;
+        }
+        /* --- Layout --- */
+        .container {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 0 var(--spacing-unit);
+        }
+        /* --- Header --- */
+        header {
+        background: linear-gradient(135deg, var(--primary-dark), var(--primary-color));
+        color: white;
+        padding: 2rem 0;
+        position: relative;
+        box-shadow: var(--shadow);
+        }
+        .header-content {
+        position: relative;
+        padding-right: 120px; /* Space for badge */
+        }
+        h1 {
+        font-size: 1.75rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        line-height: 1.3;
+        }
+        .report-date {
+        font-size: 0.9rem;
+        opacity: 0.9;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        }
+        /* --- Quality Badge --- */
+        .quality-badge {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: var(--accent-color);
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 50px;
+        font-weight: bold;
+        font-size: 0.9rem;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        z-index: 10;
+        }
+        .quality-badge::before {
+        content: "✓";
+        font-weight: 900;
+        }
+        /* --- Main Content --- */
+        main {
+        padding: 2rem 0;
+        }
+        section {
+        margin-bottom: 3rem;
+        }
+        h2 {
+        font-size: 1.5rem;
+        color: var(--primary-dark);
+        border-left: 5px solid var(--accent-color);
+        padding-left: 1rem;
+        margin-bottom: 1.5rem;
+        background: linear-gradient(to right, var(--accent-light), transparent);
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+        }
+        h3 {
+        font-size: 1.25rem;
+        color: var(--primary-color);
+        margin: 1.5rem 0 1rem;
+        display: flex;
+        align-items: center;
+        }
+        h3::before {
+        content: "";
+        display: inline-block;
+        width: 8px;
+        height: 8px;
+        background-color: var(--highlight-color);
+        border-radius: 50%;
+        margin-right: 10px;
+        }
+        p {
+        margin-bottom: 1rem;
+        text-align: justify;
+        }
+        /* --- Cards & Grid --- */
+        .card {
+        background: var(--bg-card);
+        border-radius: var(--border-radius);
+        padding: 1.5rem;
+        box-shadow: var(--shadow);
+        margin-bottom: 1.5rem;
+        border: 1px solid rgba(0,0,0,0.05);
+        }
+        .grid-2 {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        }
+        .highlight-box {
+        background-color: #e8f4fd;
+        border: 1px solid #b8daff;
+        padding: 1.5rem;
+        border-radius: var(--border-radius);
+        margin-bottom: 2rem;
+        }
+        .highlight-title {
+        color: var(--primary-dark);
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+        display: block;
+        }
+        .data-list {
+        list-style: none;
+        }
+        .data-list li {
+        margin-bottom: 0.8rem;
+        padding-left: 1.2rem;
+        position: relative;
+        }
+        .data-list li::before {
+        content: "•";
+        color: var(--accent-color);
+        position: absolute;
+        left: 0;
+        font-weight: bold;
+        }
+        .link-group {
+        margin-top: 1rem;
+        padding-top: 1rem;
+        border-top: 1px dashed #eee;
+        }
+        .link-group a {
+        display: inline-block;
+        margin-right: 10px;
+        margin-bottom: 5px;
+        font-size: 0.9rem;
+        background: #f0f0f0;
+        padding: 4px 8px;
+        border-radius: 4px;
+        color: var(--primary-dark);
+        }
+        /* --- News Table --- */
+        .news-list {
+        list-style: none;
+        }
+        .news-item {
+        background: var(--bg-card);
+        padding: 1rem;
+        margin-bottom: 1rem;
+        border-radius: var(--border-radius);
+        box-shadow: var(--shadow);
+        display: flex;
+        flex-direction: column;
+        border-left: 4px solid transparent;
+        transition: transform 0.2s;
+        }
+        .news-item:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-hover);
+        }
+        .news-date {
+        font-size: 0.85rem;
+        color: var(--text-secondary);
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+        }
+        .news-title {
+        font-size: 1rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        color: var(--text-main);
+        }
+        .news-link {
+        font-size: 0.9rem;
+        color: var(--primary-color);
+        display: inline-flex;
+        align-items: center;
+        }
+        .news-link::after {
+        content: "→";
+        margin-left: 5px;
+        font-size: 0.8rem;
+        transition: margin-left 0.2s;
+        }
+        .news-link:hover::after {
+        margin-left: 8px;
+        }
+        .old-info {
+        opacity: 0.7;
+        background-color: #fafafa;
+        border-left: 4px solid #ccc;
+        }
+        .old-info .news-title {
+        text-decoration: line-through;
+        color: #888;
+        }
+        .old-tag {
+        display: inline-block;
+        background: #999;
+        color: white;
+        font-size: 0.7rem;
+        padding: 2px 6px;
+        border-radius: 4px;
+        margin-left: 8px;
+        vertical-align: middle;
+        }
+        /* --- Footer --- */
+        footer {
+        background-color: var(--primary-dark);
+        color: white;
+        text-align: center;
+        padding: 2rem 0;
+        margin-top: 3rem;
+        font-size: 0.9rem;
+        }
+        /* --- Responsive Queries --- */
+        @media (min-width: 768px) {
+        h1 { font-size: 2.25rem; }
+        .grid-2 { grid-template-columns: 1fr 1fr; }
+        .header-content { padding-right: 0; }
+        .quality-badge { top: 2rem; right: 2rem; }
+        .news-item {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        }
+        .news-date {
+        width: 140px;
+        margin-bottom: 0;
+        flex-shrink: 0;
+        }
+        .news-content {
+        flex-grow: 1;
+        padding: 0 1rem;
+        }
+        .news-link {
+        width: 80px;
+        text-align: right;
+        flex-shrink: 0;
+        }
+        }
+      </style>
+    </head>
+    <body>
+      <header>
+        <div class="container">
+          <div class="header-content">
+            <h1>2026年“算电协同”发展洞察：从政策落地到规模突破，西部绿电与算力融合进入实质阶段</h1>
+              <div class="report-date">
+                <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                  <path d="M11 6.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1z"/>
+                  <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
+                </svg>
+                报告日期：2026年05月20日
+              </div>
+            </div>
+            <!-- 质量标志：显眼位置 -->
+            <div class="quality-badge">质量标志：通过</div>
+            </div>
+          </header>
+          <main class="container">
+            <!-- 一、核心洞察综述 -->
+            <section id="summary">
+              <div class="highlight-box">
+                <span class="highlight-title">一、核心洞察综述</span>
+                  <p>2026年“算电协同”作为新基建核心方向全面落地，呈现“西部绿电优势区+算力需求区联动”的鲜明特征。宁夏中卫、四川等地区通过“绿电直供+算电园区”模式，已实现算力与风光电的直接绑定，其中宁夏中卫“物理直供+双边交易”模式、四川“万卡集群算电融合”项目成为标杆。</p>
+                    <p>当前行业面临空间错配（东需西电）、时间错配（绿电间歇性）及技术瓶颈（GPU利用率低、芯片差距），但政策与市场双轮驱动下，算电协同行业规模预计2026年突破<strong>1800亿元</strong>，推动算力产业绿色转型与能源价值升级。</p>
+                    </div>
+                  </section>
+                  <!-- 二、详细维度分析 -->
+                  <section id="analysis">
+                    <h2>二、详细维度分析</h2>
+                      <div class="grid-2">
+                        <!-- （一）政策与行业基础 -->
+                        <div class="card">
+                          <h3>（一）政策与行业基础</h3>
+                            <p>2026年政府工作报告首次将“算电协同”写入新基建工程，明确目标“到2030年算力设施清洁能源供给达世界领先水平”。</p>
+                              <p>行业层面，智算集群规模快速扩张，国内<strong>42个</strong>万卡级集群已建成，智能算力超<strong>1590EFLOPS</strong>，算力需求与绿电供给的矛盾成为关键突破口。</p>
+                              </div>
+                              <!-- （三）关键挑战 -->
+                              <div class="card">
+                                <h3>（三）关键挑战</h3>
+                                  <ul class="data-list">
+                                    <li><strong>空间错配</strong>：东部算力需求集中（如AI大模型训练），但绿电资源匮乏；西部绿电盈余但算力承载能力不足。</li>
+                                      <li><strong>时间错配</strong>：绿电（尤其是风电、光伏）出力不稳定，水电枯水期需依赖火电补能，影响算力稳定性。</li>
+                                        <li><strong>技术瓶颈</strong>：芯片制程差距（高端GPU依赖进口）、GPU利用率不足30%、跨域算力调度成本高及能耗激增（AI算力中心耗电占比超全国15%）。</li>
+                                        </ul>
+                                      </div>
+                                    </div>
+                                    <!-- （二）区域实践 -->
+                                    <div class="card" style="border-left: 5px solid var(--accent-color);">
+                                      <h3>（二）区域实践：西部绿电富集区成算电协同增长极</h3>
+                                        <div class="grid-2">
+                                          <!-- 宁夏中卫 -->
+                                          <div>
+                                            <h4 style="color:var(--primary-dark); margin-bottom:0.5rem;">1. 宁夏中卫：首个大规模算电协同项目落地</h4>
+                                              <ul class="data-list">
+                                                <li><strong>项目进展</strong>：大唐中卫云基地50万千瓦光伏电站于2026年5月2日投运，一期总规模200万千瓦（光伏+风电+储能），年发电量43亿千瓦时，年减碳365万吨。</li>
+                                                  <li><strong>创新模式</strong>：首创“物理直供+双边交易”双轨体系，绿电电价低至0.2元/度（较东部降超50%），入驻企业年均节省电费超1亿元。</li>
+                                                  </ul>
+                                                  <div class="link-group">
+                                                    <a href="http://3g.cnfol.com/hy_stock/hangyejingcui/20260508/32209269.shtml" target="_blank">我国首个大规模“算电协同”绿电直供项目投运</a>
+                                                      <a href="http://m.toutiao.com/group/7639538733754188329/" target="_blank">中卫“算电协同”项目年减碳365万吨</a>
+                                                      </div>
+                                                    </div>
+                                                    <!-- 四川 -->
+                                                    <div>
+                                                      <h4 style="color:var(--primary-dark); margin-bottom:0.5rem;">2. 四川：水电与算力基座的“算电融合”试点</h4>
+                                                        <ul class="data-list">
+                                                          <li><strong>核心优势</strong>：水电装机突破1亿千瓦（全国首位），已建成国家超算成都中心、成都智算中心等算力基座。</li>
+                                                            <li><strong>部署行动</strong>：优先在攀枝花、阿坝等地建设绿电直供数据中心及万卡集群项目，目标实现从“能源单一输出”到“绿电+算力双输出”转型。</li>
+                                                            </ul>
+                                                            <div class="link-group">
+                                                              <a href="http://m.toutiao.com/group/7620984536976949775/" target="_blank">四川：算电协同将能源输出升级为双输出</a>
+                                                                <a href="http://m2.people.cn/news/toutiao.html?s=Ml8yXzQxNTMyODMzXzM3OTQ3MF8xNzc0Mzk3MDEz" target="_blank">四川：算电协同元年目标最大化一度电价值</a>
+                                                                </div>
+                                                              </div>
+                                                            </div>
+                                                          </div>
+                                                          <!-- （四）典型技术与模式突破 -->
+                                                          <div class="card">
+                                                            <h3>（四）典型技术与模式突破</h3>
+                                                              <div class="grid-2">
+                                                                <div>
+                                                                  <p><strong>直供模式</strong>：中卫“物理直供+双边交易”双轨体系，通过专属线路直连数据中心，绿电成本较东部降超50%。</p>
+                                                                    <p><strong>绿电+储能</strong>：中卫项目规划150万千瓦风电+储能，形成“光伏+风电+储能”稳定供电体系，保障园区22.9亿千瓦时用电需求。</p>
+                                                                    </div>
+                                                                    <div>
+                                                                      <p><strong>算电融合集群</strong>：四川拟布局万卡级智算集群，中国电信在宁夏中卫建成3万多卡智算集群，依托“息壤”平台实现87EFLOPS跨域调度。</p>
+                                                                      </div>
+                                                                    </div>
+                                                                  </div>
+                                                                  <!-- （五）行业影响与市场前景 -->
+                                                                  <div class="card" style="background-color: #fff9e6; border-color: #f0e68c;">
+                                                                    <h3>（五）行业影响与市场前景</h3>
+                                                                      <ul class="data-list">
+                                                                        <li><strong>经济价值</strong>：算电协同年减碳超365万吨，中卫项目入驻企业年省电费超1亿元，2026年行业规模预计
