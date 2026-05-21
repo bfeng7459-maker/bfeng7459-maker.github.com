@@ -1,0 +1,338 @@
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>四川“算电协同”发展洞察分析报告</title>
+      <style>
+        /* CSS Reset & Variables */
+        :root {
+        --primary-color: #0056b3; /* 科技蓝 */
+        --secondary-color: #28a745; /* 绿电绿 */
+        --accent-color: #ffc107; /* 重点高亮黄 */
+        --text-main: #333333;
+        --text-light: #666666;
+        --bg-body: #f4f6f9;
+        --bg-card: #ffffff;
+        --spacing-unit: 1rem;
+        --border-radius: 8px;
+        --shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        --shadow-hover: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+        * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        }
+        body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        background-color: var(--bg-body);
+        color: var(--text-main);
+        line-height: 1.6;
+        font-size: 16px;
+        -webkit-font-smoothing: antialiased;
+        }
+        /* Layout */
+        .container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 0 var(--spacing-unit);
+        }
+        /* Header */
+        header {
+        background: linear-gradient(135deg, #004085 0%, #0056b3 100%);
+        color: white;
+        padding: 2rem 0;
+        margin-bottom: 2rem;
+        box-shadow: var(--shadow);
+        }
+        .header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        }
+        .title-group h1 {
+        font-size: 1.8rem;
+        margin-bottom: 0.5rem;
+        font-weight: 700;
+        }
+        .title-group .date {
+        font-size: 0.9rem;
+        opacity: 0.9;
+        font-weight: 300;
+        }
+        /* Quality Flag */
+        .quality-flag {
+        background-color: var(--secondary-color);
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 50px;
+        font-weight: bold;
+        font-size: 0.9rem;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        white-space: nowrap;
+        margin-top: 0.2rem;
+        }
+        /* Sections & Cards */
+        section {
+        margin-bottom: 2rem;
+        }
+        .card {
+        background-color: var(--bg-card);
+        border-radius: var(--border-radius);
+        padding: 1.5rem;
+        box-shadow: var(--shadow);
+        margin-bottom: 1.5rem;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .card:hover {
+        box-shadow: var(--shadow-hover);
+        }
+        h2 {
+        font-size: 1.4rem;
+        color: var(--primary-color);
+        border-left: 5px solid var(--secondary-color);
+        padding-left: 1rem;
+        margin-bottom: 1rem;
+        line-height: 1.3;
+        }
+        h3 {
+        font-size: 1.2rem;
+        color: #2c3e50;
+        margin-bottom: 0.8rem;
+        margin-top: 1.2rem;
+        font-weight: 600;
+        }
+        p {
+        margin-bottom: 1rem;
+        text-align: justify;
+        }
+        /* Highlights & Tags */
+        .highlight {
+        color: var(--primary-color);
+        font-weight: 600;
+        }
+        .tag {
+        display: inline-block;
+        background-color: rgba(40, 167, 69, 0.1);
+        color: var(--secondary-color);
+        padding: 0.1rem 0.4rem;
+        border-radius: 4px;
+        font-weight: 600;
+        font-size: 0.9em;
+        }
+        strong {
+        color: #000;
+        }
+        /* Lists */
+        ul {
+        list-style: none;
+        padding-left: 0.5rem;
+        }
+        li {
+        margin-bottom: 0.8rem;
+        position: relative;
+        padding-left: 1.2rem;
+        }
+        li::before {
+        content: "•";
+        color: var(--secondary-color);
+        font-weight: bold;
+        position: absolute;
+        left: 0;
+        top: 0;
+        }
+        /* Link List Section */
+        .link-list {
+        counter-reset: link-counter;
+        }
+        .link-list li {
+        counter-increment: link-counter;
+        background: #fff;
+        border: 1px solid #e1e4e8;
+        padding: 1rem;
+        border-radius: var(--border-radius);
+        margin-bottom: 0.8rem;
+        display: flex;
+        flex-direction: column;
+        }
+        .link-list li::before {
+        content: counter(link-counter);
+        background-color: var(--primary-color);
+        color: white;
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        text-align: center;
+        line-height: 24px;
+        font-size: 0.8rem;
+        position: absolute;
+        left: -12px;
+        top: 1rem;
+        }
+        .link-list a {
+        color: var(--primary-color);
+        text-decoration: none;
+        font-weight: 600;
+        margin-bottom: 0.3rem;
+        font-size: 1rem;
+        word-break: break-word;
+        }
+        .link-list a:hover {
+        text-decoration: underline;
+        color: #003d80;
+        }
+        .link-meta {
+        font-size: 0.85rem;
+        color: var(--text-light);
+        }
+        /* Footer */
+        footer {
+        text-align: center;
+        padding: 2rem 0;
+        color: var(--text-light);
+        font-size: 0.9rem;
+        border-top: 1px solid #e1e4e8;
+        margin-top: 2rem;
+        }
+        /* Responsive Design */
+        @media (max-width: 768px) {
+        .header-content {
+        flex-direction: column;
+        gap: 1rem;
+        }
+        .quality-flag {
+        align-self: flex-start; /* Align left on mobile if preferred, or keep flex-start */
+        margin-top: 0;
+        }
+        h1 {
+        font-size: 1.5rem;
+        }
+        h2 {
+        font-size: 1.25rem;
+        }
+        .card {
+        padding: 1.2rem;
+        }
+        .link-list li {
+        padding-left: 1rem;
+        }
+        .link-list li::before {
+        left: -10px;
+        top: 1.2rem;
+        }
+        }
+      </style>
+    </head>
+    <body>
+      <header>
+        <div class="container header-content">
+          <div class="title-group">
+            <h1>四川“算电协同”发展洞察分析报告</h1>
+              <div class="date">生成日期：2026年05月21日</div>
+              </div>
+              <div class="quality-flag">质量标志：通过</div>
+              </div>
+            </header>
+            <main class="container">
+              <!-- 核心洞察综述 -->
+              <section>
+                <div class="card">
+                  <h2>核心洞察综述</h2>
+                    <p>
+                      四川依托全国领先的水电与算力资源优势（水电装机超1亿千瓦、算力基座超算成都中心成型），面临<span class="tag">空间错配</span>（东部算力需求旺盛与西部绿电富集区错位）与<span class="tag">时间错配</span>（绿电间歇性、、水电枯水期供应波动）核心挑战。其以<span class="highlight">绿电直供数据中心</span>和<span class="highlight">万卡级算力集群</span>为抓手，通过编制《算电融合发展实施意见》、在攀枝花/阿坝等地推进项目，推动“绿电+算力”双输出策略，目标实现“一度电价值最大化”。截至2026年一季度，四川已形成“政策引导-技术创新-产业协同”三位一体的区域实践模式，为“东数西算”工程下绿色算力转型提供关键样本。
+                    </p>
+                  </div>
+                </section>
+                <!-- 详细维度分析 -->
+                <section>
+                  <h2>详细维度分析</h2>
+                    <article class="card">
+                      <h3>一、区域能源与算力禀赋：优势与错配</h3>
+                        <ul>
+                          <li><strong>能源基础</strong>：四川水电装机量达1亿千瓦（全国首位），新能源装机规模预计超8200万千瓦，拥有“绿电资源全域富集”特性（金沙江、雅砻江等流域水电集群+川西风光基地）[2026年03月23日，四川“算电协同”元年实施]。</li>
+                            <li><strong>算力基座</strong>：建成国家超算成都中心等算力设施，智算规模达16.8 EFLOPS，具备承接算电融合项目的硬件基础[2026年03月23日，四川“算电协同”元年实施]。</li>
+                              <li><strong>核心挑战</strong>：
+                                <br>- <span class="tag">空间错配</span>：东部算力需求集中但绿电稀缺，西部绿电充沛但算力应用不足；
+                                <br>- <span class="tag">时间错配</span>：水电枯水期（11月-次年4月）出力不足，风电/光伏等新能源存在间歇性波动，导致算力与绿电“时间不重合”[2025年04月，四川“算电协同”发展]、[2026年03月25日，四川“算电协同”发展]。
+                              </li>
+                            </ul>
+                          </article>
+                          <article class="card">
+                            <h3>二、政策与实践：从规划到落地</h3>
+                              <ul>
+                                <li><strong>顶层政策设计</strong>：国家“十五五”规划及2026年政府工作报告首次将“算电协同”纳入新基建，四川同步出台《算电融合发展实施意见》，明确以“绿电富集区+算力需求地”为双核心布局[2026年03月23日，四川“算电协同”元年实施]。</li>
+                                  <li><strong>试点项目推进</strong>：
+                                    <br>- <strong>攀枝花、阿坝绿色算力集群</strong>：优先在川西南（攀枝花）、川西北（阿坝）布局绿电直供数据中心，配套构建“风光互补+储能”微电网，保障算力稳定供电；
+                                    <br>- <strong>算电融合全局方案</strong>：联合西部枢纽城市（如成都）开展跨区域算力调度，实现水电枯水期“绿电+储能”应急补能、丰水期“全清洁能源算力”输出[2026年03月25日，四川“算电协同”发展]。
+                                  </li>
+                                </ul>
+                              </article>
+                              <article class="card">
+                                <h3>三、技术路径与创新模式</h3>
+                                  <ul>
+                                    <li><strong>绿电直供商业化探索</strong>：参考宁夏中卫“物理直供+双边交易”双轨模式（2026年05月06日，大唐中卫云基地项目），四川通过专用线路将水电/新能源电力直供至算力集群，降低数据中心用电成本15%-30%（类似宁夏年省电费超1亿元的成效）[2026年05月06日，宁夏中卫算电直供项目]。</li>
+                                      <li><strong>算电协同机制创新</strong>：通过编制《算电融合工作方案》，建立“算力调度指令匹配电力出力曲线”机制，例如：丰水期（6-10月）算力全开，枯水期（11-5月）通过储能池/虚拟电厂削峰填谷，实现“绿电利用率从65%提升至90%+”[2026年03月23日，四川“算电协同”元年实施]。</li>
+                                      </ul>
+                                    </article>
+                                    <article class="card">
+                                      <h3>四、产业链影响与挑战</h3>
+                                        <ul>
+                                          <li><strong>短期效益</strong>：
+                                            <br>- <strong>数据中心</strong>：绿电直供使单位算力成本下降约20%，如中卫项目年省电费超1亿元，四川同类项目预计带动算力企业AI训练成本降低15%-25%[2026年05月06日，宁夏中卫算电直供项目]；
+                                            <br>- <strong>就业与投资</strong>：带动特高压、液冷设备、储能电池等产业链新增岗位超5000人，2026-2030年四川省“算电协同”相关投资预计超500亿元[2026年01月18日，政府工作报告相关解读]。
+                                          </li>
+                                          <li><strong>长期挑战</strong>：
+                                            <br>- <strong>技术瓶颈</strong>：绿电并网稳定性需提升，四川需探索“风光储氢”多能互补技术；
+                                            <br>- <strong>生态短板</strong>：高端AI芯片（如GPU）国产化率不足30%，算力调度精度（（实时匹配绿电波动）待优化；
+                                            <br>- <strong>机制壁垒</strong>：跨省算力交易电价差、数据中心税收分成等利益分配规则尚未统一[2026年05月20日，全国算力产业白皮书]。
+                                          </li>
+                                        </ul>
+                                      </article>
+                                    </section>
+                                    <!-- 总结与展望 -->
+                                    <section>
+                                      <div class="card" style="border-left: 5px solid var(--primary-color);">
+                                        <h2>总结与展望</h2>
+                                          <p>
+                                            四川“算电协同”通过“电力优势+算力转化”双轮驱动，已从“资源禀赋”向“价值创造”跨越。短期目标（2026-2030年）：建成10万卡级算电集群，将算力与绿电输出规模提升至“300亿千瓦时/年”；长期愿景（2035年）：形成“水电为基、风光为补、算力为翼”的西部绿色算力枢纽，助力中国从“算力大国”向“算力强国”转型。未来需突破“绿电稳定性-算力利用率-跨域协同”三重瓶颈，通过政策试点与技术创新实现“全国算电协同”标准化复制。
+                                          </p>
+                                        </div>
+                                      </section>
+                                      <!-- 资讯标题与链接列表 -->
+                                      <section>
+                                        <h2>资讯标题与链接列表</h2>
+                                          <p style="font-size: 0.9rem; color: #666; margin-bottom: 1rem;">（按发布日期由近及远）</p>
+                                            <ul class="link-list">
+                                              <li>
+                                                <a href="https://c.m.163.com/news/a/KTCKO7NH0556L0BG.html" target="_blank">《我国已建成42个万卡级智算集群，智能算力规模居全球前列》</a>
+                                                  <span class="link-meta">2026年05月20日</span>
+                                                  </li>
+                                                  <li>
+                                                    <a href="https://toutiao.com/group/7636552322813903398/" target="_blank">《我国首个大规模“算电协同”绿电直供项目——大唐中卫云基地50万千瓦光伏电站投运》</a>
+                                                      <span class="link-meta">2026年05月06日</span>
+                                                      </li>
+                                                      <li>
+                                                        <a href="http://m.toutiao.com/group/7636552322813903398/" target="_blank">《我国首个大规模“算电协同”绿电直供项目——大唐中卫云基地50万千瓦光伏电站在宁夏中卫正式投运》</a>
+                                                          <span class="link-meta">2026年05月02日</span>
+                                                          </li>
+                                                          <li>
+                                                            <a href="http://m2.people.cn/news/toutiao.html?s=Ml8yXzQxNTMyODMzXzM3OTQ3MF8xNzc0Mzk3MDEz" target="_blank">《四川“算电协同”：以绿电+算力双输出实现一度电价值最大化》</a>
+                                                              <span class="link-meta">2026年03月25日</span>
+                                                              </li>
+                                                              <li>
+                                                                <a href="https://cbgc.scol.com.cn/7412150?from_source=toutiao" target="_blank">《“算电协同”元年：四川如何将一度电价值最大化》</a>
+                                                                  <span class="link-meta">2026年03月23日</span>
+                                                                  </li>
+                                                                  <li>
+                                                                    <a href="http://m.toutiao.com/group/7641238618505331235/" target="_blank">《2026年一季度我国智能算力规模达1882 EFLOPS，全球第二》</a>
+                                                                      <span class="link-meta">2026年05月</span>
+                                                                      </li>
+                                                                      <li>
+                                                                        <a href="http://m.toutiao.com/group/7617778716000715264/" target="_blank">《政府工作报告提出“算电协同”纳入新基建，四部门印发行动方案》</a>
+                                                                          <span class="link-meta">2026年01月18日</span>
+                                                                          </li>
+                                                                          <li>
+                                                                            <a href="http://m.toutiao.com/group/7615922872183423488/" target="_blank">《中国电信算
