@@ -1,0 +1,379 @@
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="description" content="2026年05月23日中国联通深度分析洞察报告">
+    <title>中国联通深度分析洞察报告 (2026.05.23)</title>
+      <style>
+        /* --- CSS Reset & Variables --- */
+        :root {
+        /* Brand Colors */
+        --primary-red: #E60012; /* China Unicom Red */
+        --primary-dark: #8B0000;
+        --tech-blue: #005BAC;
+        --tech-light: #E6F0FA;
+        /* Stock Market Colors (China: Red=Up, Green=Down) */
+        --stock-up: #E60012;
+        --stock-down: #009944;
+        /* UI Colors */
+        --bg-body: #F4F6F9;
+        --bg-card: #FFFFFF;
+        --text-main: #1F2937;
+        --text-secondary: #6B7280;
+        --border-color: #E5E7EB;
+        /* Status Colors */
+        --status-old-bg: #FEE2E2;
+        --status-old-text: #991B1B;
+        --status-key-bg: #FEF3C7;
+        --status-key-text: #92400E;
+        /* Spacing */
+        --spacing-xs: 0.5rem;
+        --spacing-sm: 1rem;
+        --spacing-md: 1.5rem;
+        --spacing-lg: 2rem;
+        /* Radius */
+        --radius-sm: 4px;
+        --radius-md: 8px;
+        --radius-lg: 12px;
+        }
+        * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        -webkit-tap-highlight-color: transparent;
+        }
+        body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Microsoft YaHei", sans-serif;
+        background-color: var(--bg-body);
+        color: var(--text-main);
+        line-height: 1.6;
+        font-size: 16px;
+        }
+        a {
+        color: var(--tech-blue);
+        text-decoration: none;
+        transition: color 0.2s;
+        }
+        a:hover {
+        color: var(--primary-red);
+        text-decoration: underline;
+        }
+        /* --- Layout --- */
+        .container {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: var(--spacing-sm);
+        }
+        /* --- Header --- */
+        header {
+        background: linear-gradient(135deg, var(--primary-red), var(--primary-dark));
+        color: white;
+        padding: var(--spacing-lg) var(--spacing-sm);
+        margin-bottom: var(--spacing-md);
+        position: relative;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        .header-content {
+        max-width: 1000px;
+        margin: 0 auto;
+        }
+        h1 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: var(--spacing-xs);
+        }
+        .report-date {
+        font-size: 0.9rem;
+        opacity: 0.9;
+        }
+        /* Quality Badge */
+        .quality-badge {
+        position: absolute;
+        top: var(--spacing-sm);
+        right: var(--spacing-sm);
+        background-color: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(4px);
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        color: white;
+        padding: 0.4rem 0.8rem;
+        border-radius: 20px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .quality-badge svg {
+        width: 14px;
+        height: 14px;
+        fill: currentColor;
+        }
+        /* --- Cards --- */
+        .card {
+        background: var(--bg-card);
+        border-radius: var(--radius-md);
+        padding: var(--spacing-md);
+        margin-bottom: var(--spacing-md);
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        border: 1px solid var(--border-color);
+        }
+        .card-title {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: var(--text-main);
+        margin-bottom: var(--spacing-md);
+        padding-bottom: var(--spacing-sm);
+        border-bottom: 2px solid var(--tech-light);
+        display: flex;
+        align-items: center;
+        }
+        .card-title::before {
+        content: '';
+        display: block;
+        width: 4px;
+        height: 1.25rem;
+        background-color: var(--primary-red);
+        margin-right: var(--spacing-xs);
+        border-radius: 2px;
+        }
+        h3 {
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin: var(--spacing-sm) 0;
+        color: var(--tech-blue);
+        }
+        p {
+        margin-bottom: var(--spacing-sm);
+        text-align: justify;
+        }
+        ul {
+        padding-left: 1.5rem;
+        margin-bottom: var(--spacing-sm);
+        }
+        li {
+        margin-bottom: var(--spacing-xs);
+        }
+        /* --- Stock Data Grid --- */
+        .stock-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: var(--spacing-md);
+        margin-bottom: var(--spacing-md);
+        }
+        .stock-box {
+        background-color: var(--bg-body);
+        padding: var(--spacing-sm);
+        border-radius: var(--radius-sm);
+        border-left: 4px solid transparent;
+        }
+        .stock-box.up { border-left-color: var(--stock-up); }
+        .stock-box.down { border-left-color: var(--stock-down); }
+        .stock-date {
+        font-size: 0.85rem;
+        color: var(--text-secondary);
+        margin-bottom: 4px;
+        }
+        .stock-value {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 4px;
+        }
+        .stock-change {
+        font-weight: 600;
+        font-size: 0.95rem;
+        }
+        .text-up { color: var(--stock-up); }
+        .text-down { color: var(--stock-down); }
+        .data-row {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.9rem;
+        margin-top: 8px;
+        padding-top: 8px;
+        border-top: 1px dashed var(--border-color);
+        }
+        /* --- Tags & Highlights --- */
+        .tag {
+        display: inline-block;
+        padding: 2px 8px;
+        border-radius: 4px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        margin-right: 6px;
+        vertical-align: middle;
+        }
+        .tag-old {
+        background-color: var(--status-old-bg);
+        color: var(--status-old-text);
+        }
+        .tag-key {
+        background-color: var(--status-key-bg);
+        color: var(--status-key-text);
+        }
+        /* --- News List --- */
+        .news-list {
+        list-style: none;
+        padding: 0;
+        }
+        .news-item {
+        display: flex;
+        flex-direction: column;
+        padding: var(--spacing-sm) 0;
+        border-bottom: 1px solid var(--border-color);
+        }
+        .news-item:last-child {
+        border-bottom: none;
+        }
+        .news-meta {
+        font-size: 0.85rem;
+        color: var(--text-secondary);
+        margin-bottom: 4px;
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        }
+        .news-title {
+        font-size: 1rem;
+        font-weight: 500;
+        }
+        .news-link {
+        font-size: 0.8rem;
+        margin-top: 4px;
+        display: inline-block;
+        word-break: break-all;
+        }
+        /* --- Footer --- */
+        footer {
+        text-align: center;
+        padding: var(--spacing-lg) var(--spacing-sm);
+        color: var(--text-secondary);
+        font-size: 0.85rem;
+        background-color: var(--bg-body);
+        }
+        /* --- Responsive Tweaks --- */
+        @media (max-width: 768px) {
+        h1 { font-size: 1.25rem; }
+        .card-title { font-size: 1.1rem; }
+        .stock-grid { grid-template-columns: 1fr; }
+        .quality-badge { top: 10px; right: 10px; padding: 6px 12px; }
+        }
+      </style>
+    </head>
+    <body>
+      <header>
+        <div class="quality-badge">
+          <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+            HTML5/CSS 专业构建
+          </div>
+          <div class="header-content">
+            <h1>中国联通深度分析洞察报告</h1>
+              <div class="report-date">2026年05月23日</div>
+              </div>
+            </header>
+            <main class="container">
+              <!-- 核心洞察综述 -->
+              <section class="card">
+                <h2 class="card-title">核心洞察综述</h2>
+                  <p>中国联通近期在技术战略（Token Net）、算力布局、安全生态等领域持续发力，2026年5月股价呈现波动，机构目标价6.74元显示估值修复预期。一季度业绩短期承压，但长期通过“Token运营”转型、算力普惠、6G技术攻关构建护城河。南向资金近一年持续增持，截至5月22日持有40.38亿股，占总股本13.19%。</p>
+                  </section>
+                  <!-- 股价与资金面动态 -->
+                  <section class="card">
+                    <h2 class="card-title">股价与资金面动态</h2>
+                      <div class="stock-grid">
+                        <!-- 5月22日数据 -->
+                        <div class="stock-box down">
+                          <div class="stock-date">5月22日市场数据</div>
+                            <div class="stock-value">4.46 <span style="font-size:0.8rem">元</span></div>
+                              <div class="stock-change text-down">▼ 1.98%</div>
+                                <div class="data-row">
+                                  <span>成交额: 17.54亿</span>
+                                    <span>主力净流出: 2.43亿</span>
+                                    </div>
+                                    <div class="data-row" style="border:none">
+                                      <span>融资净偿还: 1.8亿</span>
+                                      </div>
+                                    </div>
+                                    <!-- 5月20日数据 -->
+                                    <div class="stock-box up">
+                                      <div class="stock-date">5月20日市场数据</div>
+                                        <div class="stock-value">4.92 <span style="font-size:0.8rem">元</span></div>
+                                          <div class="stock-change text-up">▲ 5.58%</div>
+                                            <div class="data-row">
+                                              <span>成交额: 32.75亿</span>
+                                                <span>主力净流入: 6.74亿</span>
+                                                </div>
+                                                <div class="data-row" style="border:none">
+                                                  <span>涉及: 边缘计算/6G/AI</span>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                              <h3>资金流向</h3>
+                                                <ul>
+                                                  <li><strong>南向资金</strong>：近5个交易日净增持2965.4万股，20个交易日累计净增持5671.95万股。截至5月22日持有40.38亿股，占已发行普通股13.19%。
+                                                    <br><a href="https://m.sohu.com/a/1026391691_122123195/" target="_blank" class="news-link">来源链接：搜狐财经</a>
+                                                  </li>
+                                                </ul>
+                                              </section>
+                                              <!-- 技术战略布局 -->
+                                              <section class="card">
+                                                <h2 class="card-title">技术战略布局</h2>
+                                                  <h3>Token Net技术理念</h3>
+                                                    <ul>
+                                                      <li><strong>提出背景</strong>：中国联通研究院副院长唐雄燕在2026年世界电信和信息社会日大会首次提出，旨在推动算力智联网AINet升级为面向Token运营的智能互联网基础设施。</li>
+                                                        <li><strong>战略转型</strong>：实现从“流量运营”到“Token运营”的跃迁，构建算网资源层、大模型服务层、智能服务层、Token运营层四层架构。</li>
+                                                          <li><strong>核心举措</strong>：Token运营层通过Token分发网络(TDN)，采用服务调度、缓存分发、度量计费和安全保障四项技术降本提质。
+                                                            <br><a href="http://m.toutiao.com/group/7641802648697504266/" target="_blank" class="news-link">来源链接：今日头条</a>
+                                                          </li>
+                                                        </ul>
+                                                      </section>
+                                                      <!-- 业务布局与近期举措 -->
+                                                      <section class="card">
+                                                        <h2 class="card-title">业务布局与近期举措</h2>
+                                                          <h3>1. 算力普惠与AI应用</h3>
+                                                            <ul>
+                                                              <li><strong>5月16日</strong>：发布全栈国产化安全基座，联合完成近百款行业大模型适配，推出政企全栈AI产品体系。</li>
+                                                                <li><strong>5月23日</strong>：算力普惠行动覆盖数据治理、模型调用全流程，助力企业低成本数智化转型。
+                                                                  <br><a href="http://finance.sina.com.cn/stock/hkstock/marketalerts/2026-05-18/doc-inhyhyqn0729932.shtml" target="_blank" class="news-link">来源链接：新浪财经</a>
+                                                                  <a href="http://m.toutiao.com/group/7642158876053275188/" target="_blank" class="="news-link">今日头条</a>
+                                                                  </li>
+                                                                </ul>
+                                                                <h3>2. 云电竞与场景化服务</h3>
+                                                                  <ul>
+                                                                    <li><strong>5月20日</strong>：郑州分公司发布“云电竞2.0”方案，实现主机上云，支持2K 360Hz高刷、毫秒级延迟，单店硬件投入减少百万元，与爱电竞、华为、中兴等达成合作。
+                                                                      <br><a href="http://m.toutiao.com/group/7642245876827685412/" target="_blank" class="news-link">来源链接：今日头条</a>
+                                                                    </li>
+                                                                  </ul>
+                                                                  <h3>3. 国际通信与区域战略</h3>
+                                                                    <ul>
+                                                                      <li><strong>5月21日</strong>：开通哈尔滨国际通信业务出入口局，发布中俄跨境通专线，形成“1+2”网络架构，新增万兆带宽支持跨境电商、制造等业务，规避合规风险。
+                                                                        <br><a href="https://toutiao.com/group/7642158876053275188/" target="_blank" class="news-link">来源链接：今日头条</a>
+                                                                      </li>
+                                                                    </ul>
+                                                                    <h3>4. 安全与AI生态建设</h3>
+                                                                      <ul>
+                                                                        <li><strong>5月19日</strong>：发布“智家通通”AI应用（支持方言识别）、“联通虾壳”安全防护、“联通安全管家”反诈服务及“墨攻3.0”智慧安全运营平台。
+                                                                          <br><a href="https://toutiao.com/group/7641541687369646592/" target="_blank" class="news-link">来源链接：今日头条</a>
+                                                                        </li>
+                                                                      </ul>
+                                                                    </section>
+                                                                    <!-- 财务表现与机构评级 -->
+                                                                    <section class="card">
+                                                                      <h2 class="card-title">财务表现与机构评级</h2>
+                                                                        <h3>1. 一季度业绩</h3>
+                                                                          <p>营收1028.24亿元，同比降0.51%；归母净利润21.37亿元，同比降17.99%。
+                                                                            <br><a href="http://m.toutiao.com/group/7642877430125953577/" target="_blank" class="news-link">来源链接：今日头条</a>
+                                                                          </p>
+                                                                          <h3>2. 机构评级</h3>
+                                                                            <p>近90天获10家机构评级：买入6家、增持4家，目标均价6.74元。
+                                                                              <br><a href="http://m.toutiao.com/group/7641144198372098600/" target="_blank" class="news-link">来源链接：今日头条</a>
+                                                                            </p>
+                                                                          </section>
+                                                                          <!-- 行业地位与长期护城河 -->
+                                                                          <section class="card">
+                                                                            <h2 class="card-title">行业地位与长期护城河</h2>
+                                                                              <h3>核心竞争力</h3>
+                                                                                <ul>
+                                                                                  <li><strong>技术护城河</strong>：拥有特许牌照、千亿网络资产、算网一体布局及政策加持
