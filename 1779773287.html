@@ -1,0 +1,368 @@
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>国电南瑞（600406）2026年5月26日股价分析报告</title>
+      <style>
+        /* 全局变量定义 */
+        :root {
+        --primary-color: #1e3a8a; /* 深蓝：专业、稳重 */
+        --secondary-color: #3b82f6; /* 亮蓝：链接、强调 */
+        --accent-color: #f59e0b; /* 琥珀色：质量标志 */
+        --bg-color: #f1f5f9; /* 浅灰背景 */
+        --card-bg: #ffffff; /* 卡片背景 */
+        --text-main: #334155; /* 主要文字 */
+        --text-light: #64748b; /* 次要文字 */
+        --danger-color: #ef4444; /* 红色：下跌/负面 */
+        --success-color: #10b981; /* 绿色：上涨/正面 */
+        --border-radius: 12px;
+        --spacing-unit: 1rem;
+        }
+        /* 基础重置 */
+        * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        }
+        body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        background-color: var(--bg-color);
+        color: var(--text-main);
+        line-height: 1.6;
+        font-size: 16px;
+        -webkit-font-smoothing: antialiased;
+        }
+        /* 布局容器 */
+        .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: var(--spacing-unit);
+        }
+        /* 顶部 Header */
+        header {
+        position: relative;
+        margin-bottom: 1.5rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid #e2e8f0;
+        }
+        h1 {
+        font-size: 1.5rem;
+        color: var(--primary-color);
+        font-weight: 700;
+        line-height: 1.3;
+        padding-right: 80px; /* 为质量标志留空 */
+        }
+        .meta-tag {
+        display: inline-block;
+        margin-top: 0.5rem;
+        font-size: 0.875rem;
+        color: var(--text-light);
+        background: #e2e8f0;
+        padding: 2px 8px;
+        border-radius: 4px;
+        }
+        /* 质量标志 */
+        .quality-badge {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: var(--accent-color);
+        color: white;
+        padding: 0.25rem 0.75rem;
+        border-radius: 999px;
+        font-size: 0.75rem;
+        font-weight: bold;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        z-index: 10;
+        }
+        /* 通用卡片样式 */
+        .card {
+        background-color: var(--card-bg);
+        border-radius: var(--border-radius);
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.02);
+        }
+        /* 核心数据展示区 */
+        .hero-stats {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+        text-align: center;
+        background: linear-gradient(135deg, var(--primary-color), #2563eb);
+        color: white;
+        }
+        .stat-item h3 {
+        font-size: 0.875rem;
+        opacity: 0.9;
+        font-weight: 400;
+        margin-bottom: 0.25rem;
+        }
+        .stat-item .value {
+        font-size: 1.5rem;
+        font-weight: 700;
+        }
+        .stat-item .value.down {
+        color: #fca5a5; /* 浅红，配合深蓝背景 */
+        }
+        /* 章节标题 */
+        h2 {
+        font-size: 1.25rem;
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+        padding-left: 0.75rem;
+        border-left: 4px solid var(--secondary-color);
+        display: flex;
+        align-items: center;
+        }
+        h3 {
+        font-size: 1.1rem;
+        color: var(--text-main);
+        margin-top: 1.25rem;
+        margin-bottom: 0.75rem;
+        font-weight: 600;
+        }
+        p {
+        margin-bottom: 1rem;
+        text-align: justify;
+        }
+        /* 列表样式 */
+        ul {
+        list-style: none;
+        padding-left: 0.5rem;
+        }
+        li {
+        margin-bottom: 0.75rem;
+        padding-left: 1.25rem;
+        position: relative;
+        }
+        li::before {
+        content: "•";
+        color: var(--secondary-color);
+        font-weight: bold;
+        position: absolute;
+        left: 0;
+        top: 0;
+        }
+        /* 链接样式 */
+        a {
+        color: var(--secondary-color);
+        text-decoration: none;
+        transition: color 0.2s;
+        }
+        a:hover {
+        color: #1d4ed8;
+        text-decoration: underline;
+        }
+        .source-link {
+        font-size: 0.875rem;
+        color: var(--text-light);
+        display: block;
+        margin-top: 0.25rem;
+        word-break: break-all;
+        }
+        /* 资讯列表 */
+        .reference-list {
+        counter-reset: ref-counter;
+        }
+        .reference-item {
+        display: flex;
+        flex-direction: column;
+        padding: 1rem;
+        border-bottom: 1px solid #e2e8f0;
+        transition: background 0.2s;
+        }
+        .reference-item:last-child {
+        border-bottom: none;
+        }
+        .reference-item:hover {
+        background-color: #f8fafc;
+        }
+        .reference-title {
+        font-weight: 600;
+        color: var(--text-main);
+        margin-bottom: 0.5rem;
+        display: flex;
+        align-items: flex-start;
+        }
+        .reference-num {
+        margin-right: 0.75rem;
+        color: var(--text-light);
+        font-weight: 400;
+        }
+        .old-tag {
+        font-size: 0.75rem;
+        background-color: #94a3b8;
+        color: white;
+        padding: 2px 6px;
+        border-radius: 4px;
+        margin-left: 0.5rem;
+        white-space: nowrap;
+        }
+        .reference-url {
+        font-size: 0.875rem;
+        color: var(--secondary-color);
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        }
+        /* 重点高亮 */
+        .highlight {
+        background-color: #fef3c7;
+        color: #92400e;
+        padding: 0 4px;
+        border-radius: 2px;
+        }
+        .trend-down {
+        color: var(--danger-color);
+        font-weight: 600;
+        }
+        .trend-up {
+        color: var(--success-color);
+        font-weight: 600;
+        }
+        /* 页脚 */
+        footer {
+        text-align: center;
+        font-size: 0.875rem;
+        color: var(--text-light);
+        padding: 2rem 0;
+        border-top: 1px solid #e2e8f0;
+        margin-top: 2rem;
+        }
+        /* 响应式适配 */
+        @media (max-width: 600px) {
+        h1 {
+        font-size: 1.25rem;
+        padding-right: 60px;
+        }
+        .hero-stats {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 1.5rem 1rem;
+        }
+        .stat-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        border-bottom: 1px solid rgba(255,255,255,0.2);
+        padding-bottom: 0.5rem;
+        }
+        .stat-item:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+        }
+        .stat-item h3 {
+        margin-bottom: 0;
+        }
+        .card {
+        padding: 1.25rem;
+        border-radius: 8px;
+        }
+        /* 增大移动端点击区域 */
+        .reference-item {
+        padding: 1.25rem; /* > 44px height */
+        }
+        }
+      </style>
+    </head>
+    <body>
+      <div class="container">
+        <!-- 头部区域 -->
+        <header>
+          <div class="quality-badge">专业分析报告</div>
+            <h1>国电南瑞（600406）2026年5月26日股价分析：弱势震荡下的多空博弈与机构动向</h1>
+              <span class="meta-tag">分析日期：2026年5月26日</span>
+              </header>
+              <!-- 核心数据卡片 -->
+              <section class="card hero-stats">
+                <div class="stat-item">
+                  <h3>收盘价</h3>
+                    <div class="value">25.73元</div>
+                    </div>
+                    <div class="stat-item">
+                      <h3>日涨跌幅</h3>
+                        <div class="value down">-2.02%</div>
+                        </div>
+                        <div class="stat-item">
+                          <h3>总市值</h3>
+                            <div class="value">2109.14亿</div>
+                            </div>
+                          </section>
+                          <!-- 核心洞察综述 -->
+                          <section class="card">
+                            <h2>核心洞察综述</h2>
+                              <p>2026年5月26日，国电南瑞（600406）股价延续近期弱势，当日收盘价25.73元，跌幅<span class="trend-down">2.02%</span>，跌破<span class="highlight">26元关键支撑位</span>，重回25-26.5元区间弱势震荡。核心驱动因素包括：板块资金轮动、高位获利盘兑现、订单增速放缓及估值偏高，叠加技术面破位与机构分歧加剧。</p>
+                                <p>基本面稳健（2025年新签订单758.68亿元、在手订单520.31亿元）与“十五五”电网投资预期（国家电网规划4.1万亿元）为长期价值支撑。机构目标价仍维持30-33元区间，但短期需等待强催化信号（如特高压订单落地、二季度业绩验证）。</p>
+                                </section>
+                                <!-- 详细维度分析 -->
+                                <section class="card">
+                                  <h2>详细维度分析</h2>
+                                    <h3>一、最新股价走势与市场表现</h3>
+                                      <ul>
+                                        <li><strong>当日交易数据</strong>：该股当日高开低走，收盘价25.73元，较前一日（26.26元）下跌2.02%，换手率1.05%。技术面呈现“空头排列”形态，26元关口由支撑转为压力位，套牢盘密集。
+                                          <a href="http://m.toutiao.com/group/7644022942707253760/" class="source-link" target="_blank">来源：国电南瑞（600406）5月26日股价表现及核心原因</a>
+                                          </li>
+                                          <li><strong>相关ETF联动</strong>：国泰基金旗下两只ETF同步走弱，其中国泰恒生A股电网设备ETF（561380）跌幅3.51%；国泰中证细分机械设备产业主题ETF（516960）半日跌0.28%，国电南瑞作为重仓股跌幅超2%。
+                                            <a href="https://xueqiu.com/S/SH561380/" class="source-link" target="_blank">来源：电网设备ETF国泰</a>
+                                              <a href="https://finance.sina.com.cn/money/fund/aiassistant/etfwp/2026-05-26/doc-inhzevaq2965829.shtml" class="source-link" target="_blank">来源：机械ETF国泰</a>
+                                              </li>
+                                            </ul>
+                                            <h3>二、股价下跌核心原因</h3>
+                                              <ul>
+                                                <li><strong>短期资金流动与板块轮动</strong>：电力板块资金转向低价火电及科技赛道，导致电网设备板块吸引力下降。同时，年内股价涨幅超50%，前期大量获利盘集中抛售，“十五五”电网投资政策利好已充分消化。</li>
+                                                  <li><strong>基本面预期分化</strong>：2026年一季度净利润增速仅6.04%（较2025年全年8.79%下滑），市场误将“增速放缓”解读为“增长终结”。当前市盈率约25倍，对比机构预测2026年净利润目标，仍有部分投资者认为估值偏高。</li>
+                                                    <li><strong>技术面与机构分歧</strong>：26元支撑位失效后形成新压力，均线系统呈现空头排列（MA5、MA10、MA20依次向下）。长线资金看好“十五五”电网投资，短线资金因分歧加剧大幅减持，当日主力净流出超5亿元。</li>
+                                                    </ul>
+                                                    <h3>三、公司基本面稳健支撑长期价值</h3>
+                                                      <ul>
+                                                        <li><strong>财务数据</strong>：2026年一季度营收95.64亿元（+7.52%），净利7.21亿元（+6.04%）；2025年新签订单758.68亿元，在手订单520.31亿元，资产负债率40.2%，现金流健康。</li>
+                                                          <li><strong>政策红利</strong>：国家电网“十五五”重点推进特高压、抽水蓄能等项目，公司作为电网自动化龙头核心受益，长期增长逻辑未变。</li>
+                                                          </ul>
+                                                          <h3>四、投资者情绪与市场分歧</h3>
+                                                            <ul>
+                                                              <li><strong>股吧讨论</strong>：5月22日股吧关注度达102.97万，用户情绪分化：部分看空者认为“岛形反转向下”“杀猪盘”，乐观者则称“正常调整”，呼吁“拿好筹码”。</li>
+                                                                <li><strong>机构策略</strong>：机构目标价维持30-33元（基于2026年净利润预测92.35亿元），建议投资者理性看待波动，避免追涨杀跌。</li>
+                                                                </ul>
+                                                              </section>
+                                                              <!-- 总结与展望 -->
+                                                              <section class="card" style="border-left: 4px solid var(--primary-color);">
+                                                                <h2>总结与展望</h2>
+                                                                  <p><strong>短期（2026年5月26日）：</strong> 国电南瑞股价将在25-26.5元区间弱势震荡，技术面与资金面均无明显改善，缺乏强催化前难有趋势性反弹。需重点关注：①二季度特高压订单落地情况；②净利润增速是否回升至8%以上。</p>
+                                                                    <p><strong>中长期：</strong> 基本面稳健（现金流、订单、负债率）与政策红利（电网投资）构成核心支撑，机构目标价30-33元具备参考性，投资者可逢低分批布局，避免恐慌割肉。</p>
+                                                                    </section>
+                                                                    <!-- 资讯链接列表 -->
+                                                                    <section class="card">
+                                                                      <h2>资讯来源与参考</h2>
+                                                                        <div class="reference-list">
+                                                                          <a href="http://m.toutiao.com/group/7644022942707253760/" target="_blank" class="reference-item">
+                                                                            <div class="reference-title">
+                                                                              <span class="reference-num">1.</span>
+                                                                                国电南瑞（600406）2026年5月26日股价分析：弱势震荡下的多空博弈与机构动向
+                                                                              </div>
+                                                                              <div class="reference-url">http://m.toutiao.com/group/7644022942707253760/</div>
+                                                                              </a>
+                                                                              <a href="https://finance.sina.com.cn/money/fund/aiassistant/etfwp/2026-05-26/doc-inhzevaq2965829.shtml" target="_blank" class="reference-item">
+                                                                                <div class="reference-title">
+                                                                                  <span class="reference-num">2.</span>
+                                                                                    机械ETF国泰（516960）2026年5月26日持仓表现
+                                                                                  </div>
+                                                                                  <div class="reference-url">https://finance.sina.com.cn/money/fund/aiassistant/etfwp/2026-05-26/doc-inhzevaq2965829.shtml</div>
+                                                                                  </a>
+                                                                                  <a href="https://xueqiu.com/S/SH561380" target="_blank" class="reference-item">
+                                                                                    <div class="reference-title">
+                                                                                      <span class="reference-num">3.</span>
+                                                                                        电网设备ETF国泰（SH561380）2026年5月26日交易数据
+                                                                                      </div>
+                                                                                      <div class="reference-url">https://xueqiu.com/S/SH561380</div>
+                                                                                      </a>
+                                                                                      <a href="http://m.toutiao.com/group/7640062867353403923/" target="_blank" class="reference-item">
+                                                                                        <div class="reference-title">
+                                                                                          <span class="reference-num">4.</span>
+                                                                                            国电南瑞(SH600406)5月25日股价与基本面分析
+                                                                                          </div>
+                                                                                          <div class="reference-url">http://m.toutiao.com/group/7640062867353403923/</div>
+                                                                                          </a>
+                                                                                          <a href="http://m
