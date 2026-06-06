@@ -1,0 +1,342 @@
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026年Q2中国智算集群与算电协同发展洞察报告</title>
+      <style>
+        /* --- CSS Reset & Variables --- */
+        :root {
+        --primary-color: #0056b3; /* 专业深蓝 */
+        --secondary-color: #00a8cc; /* 科技青 */
+        --accent-color: #ff9800; /* 重点高亮橙 */
+        --bg-color: #f4f7f9;
+        --card-bg: #ffffff;
+        --text-main: #333333;
+        --text-secondary: #666666;
+        --border-radius: 8px;
+        --spacing-unit: 1rem;
+        --shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        --shadow-hover: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+        * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        }
+        body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Microsoft YaHei", sans-serif;
+        background-color: var(--bg-color);
+        color: var(--text-main);
+        line-height: 1.6;
+        font-size: 16px;
+        }
+        a {
+        color: var(--primary-color);
+        text-decoration: none;
+        transition: color 0.2s;
+        }
+        a:hover {
+        color: var(--secondary-color);
+        text-decoration: underline;
+        }
+        /* --- Header --- */
+        header {
+        background: linear-gradient(135deg, var(--primary-color), #003d80);
+        color: white;
+        padding: 2rem 1rem;
+        position: relative;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        .header-content {
+        max-width: 1000px;
+        margin: 0 auto;
+        position: relative;
+        }
+        h1 {
+        font-size: 1.75rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        line-height: 1.3;
+        }
+        .report-date {
+        font-size: 0.9rem;
+        opacity: 0.9;
+        }
+        /* Quality Badge */
+        .quality-badge {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: var(--accent-color);
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 50px;
+        font-size: 0.85rem;
+        font-weight: bold;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        }
+        .quality-badge::before {
+        content: '✓';
+        font-weight: 900;
+        }
+        /* --- Main Layout --- */
+        main {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 2rem 1rem;
+        }
+        section {
+        margin-bottom: 2.5rem;
+        }
+        h2 {
+        font-size: 1.4rem;
+        color: var(--primary-color);
+        border-left: 5px solid var(--secondary-color);
+        padding-left: 1rem;
+        margin-bottom: 1.5rem;
+        }
+        h3 {
+        font-size: 1.15rem;
+        color: #2c3e50;
+        margin-bottom: 0.8rem;
+        margin-top: 1.2rem;
+        }
+        /* --- Core Insights Box --- */
+        .core-insights {
+        background-color: #e3f2fd;
+        border: 1px solid #bbdefb;
+        border-radius: var(--border-radius);
+        padding: 1.5rem;
+        font-size: 1.05rem;
+        color: #0d47a1;
+        }
+        .core-insights strong {
+        color: #b71c1c; /* Dark red for emphasis */
+        font-weight: 600;
+        }
+        /* --- Card Grid --- */
+        .analysis-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        }
+        .card {
+        background: var(--card-bg);
+        border-radius: var(--border-radius);
+        padding: 1.5rem;
+        box-shadow: var(--shadow);
+        transition: transform 0.2s, box-shadow 0.2s;
+        border-top: 4px solid transparent;
+        }
+        .card:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-hover);
+        }
+        /* Card Colors */
+        .card:nth-child(1) { border-top-color: #4caf50; } /* Green for Scale */
+        .card:nth-child(2) { border-top-color: #2196f3; } /* Blue for Tech */
+        .card:nth-child(3) { border-top-color: #009688; } /* Teal for Power */
+        .card:nth-child(4) { border-top-color: #ff9800; } /* Orange for Investment */
+        .card:nth-child(5) { border-top-color: #f44336; } /* Red for Challenges */
+        .card h3 {
+        margin-top: 0;
+        padding-bottom: 0.5rem;
+        border-bottom: 1px solid #eee;
+        }
+        /* --- Content Styling --- */
+        ul {
+        padding-left: 1.2rem;
+        margin-bottom: 1rem;
+        }
+        li {
+        margin-bottom: 0.8rem;
+        }
+        .highlight-stat {
+        font-weight: bold;
+        color: var(--primary-color);
+        font-size: 1.1em;
+        }
+        .source-ref {
+        font-size: 0.75rem;
+        color: #999;
+        margin-left: 0.5rem;
+        white-space: nowrap;
+        }
+        .source-ref a {
+        color: #888;
+        }
+        /* --- Summary Section --- */
+        .summary-box {
+        background: linear-gradient(to right, #ffffff, #f9f9f9);
+        border-left: 5px solid var(--primary-color);
+        padding: 1.5rem;
+        font-style: italic;
+        color: #555;
+        }
+        /* --- Sources List --- */
+        .sources-container {
+        background: white;
+        padding: 1.5rem;
+        border-radius: var(--border-radius);
+        box-shadow: var(--shadow);
+        }
+        .source-list {
+        list-style: none;
+        padding-left: 0;
+        }
+        .source-list li {
+        display: flex;
+        flex-direction: column; /* Mobile first */
+        padding: 1rem 0;
+        border-bottom: 1px solid #eee;
+        }
+        .source-list li:last-child {
+        border-bottom: none;
+        }
+        .source-date {
+        font-weight: bold;
+        color: var(--secondary-color);
+        font-size: 0.9rem;
+        margin-bottom: 0.3rem;
+        min-width: 140px;
+        }
+        .source-title {
+        color: var(--text-main);
+        }
+        /* --- Footer --- */
+        footer {
+        text-align: center;
+        padding: 2rem;
+        color: var(--text-secondary);
+        font-size: 0.9rem;
+        background-color: #e9ecef;
+        margin-top: 3rem;
+        }
+        /* --- Responsive Queries --- */
+        @media (min-width: 768px) {
+        h1 { font-size: 2.25rem; }
+        .analysis-grid {
+        grid-template-columns: repeat(2, 1fr);
+        }
+        /* Make the last card span full width if odd number, or just layout nicely */
+        .card:last-child:nth-child(odd) {
+        grid-column: span 2;
+        }
+        .source-list li {
+        flex-direction: row;
+        align-items: baseline;
+        }
+        .source-date {
+        margin-bottom: 0;
+        margin-right: 1rem;
+        }
+        }
+        @media (min-width: 1024px) {
+        .analysis-grid {
+        grid-template-columns: repeat(3, 1fr);
+        }
+        /* Adjust spans for 3 columns */
+        .card:nth-child(4), .card:nth-child(5) {
+        grid-column: span 1.5;
+        }
+        }
+      </style>
+    </head>
+    <body>
+      <header>
+        <div class="header-content">
+          <h1>2026年Q2中国智算集群与算电协同发展洞察报告</h1>
+            <div class="report-date">报告生成日期：2026年06月06日</div>
+              <!-- Quality Badge -->
+              <div class="quality-badge">质量标志：通过</div>
+              </div>
+            </header>
+            <main>
+              <!-- 核心洞察综述 -->
+              <section class="core-insights">
+                <h2>核心洞察综述</h2>
+                  <p>
+                    截至2025年底，我国已建成<span class="highlight-stat">42个</span>万卡级智算集群，智能算力规模达<span class="highlight-stat">1590-1882 EFLOPS</span>，覆盖“东数西算”八大枢纽，西部绿电使用率超<span class="highlight-stat">80%</span>，能源领域落地数十个专用大模型并实现显著效益。华为昇腾芯片占出货量<span class="highlight-stat">49.2%</span>成主流，液冷技术使PUE降低超<span class="highlight-stat">40%</span>，但部分场景利用率不足<span class="highlight-stat">50%</span>、高端自研存瓶颈。“算电协同”已升格为国家战略，2026年重点推进<span class="highlight-stat">51个</span>高价值场景，规划到2030年智能算力年均增长<span class="highlight-stat">20%</span>以上，算力用电占比达<span class="highlight-stat">6%</span>。
+                  </p>
+                </section>
+                <!-- 详细维度分析 -->
+                <section>
+                  <h2>详细维度分析</h2>
+                    <div class="analysis-grid">
+                      <!-- 1. 智算集群规模与空间布局 -->
+                      <article class="card">
+                        <h3>1. 智算集群规模与空间布局</h3>
+                          <ul>
+                            <li>
+                              <strong>集群总量与算力规模</strong>：截至2025年底，我国建成42个万卡级智算集群，智能算力规模存在多口径统计：
+                                <br>• 1590 EFLOPS <span class="source-ref">(<a href="http://m.toutiao.com/group/7644738027176264226/" target="_blank">来源</a>)</span>
+                                <br>• 1882 EFLOPS <span class="source-ref">(<a href="http://m.toutiao.com/group/7644707323205665334/" target="_blank">来源</a>)</span>
+                                <br>• “超30 EFLOPS”（可能为单位差异）<span class="source-ref">(<a href="http://m.toutiao.com/group/7644721141982003727/" target="_blank">来源</a>)</span>
+                              </li>
+                              <li>
+                                <strong>区域分布</strong>：依托“东数西算”战略，八大枢纽实现差异化布局：
+                                  <br>• 西部枢纽（甘肃、内蒙古、宁夏等）承载70%以上新增算力，绿电使用率超80%<span class="source-ref">(<a href="http://m.toutiao.com/group/7645198606760182291/" target="_blank">来源</a>)</span>
+                                  <br>• 东部（北京、深圳等）聚焦低时延高端需求<span class="source-ref">(<a href="http://m.toutiao.com/group/7644707323205665334/" target="_blank">来源</a>)</span>
+                                  <br>• 中部（郑州）利用区位优势实现枢纽突破<span class="source-ref">(<a href="http://m.toutiao.com/group/7644707323205665334/" target="_blank">来源</a>)</span>
+                                </li>
+                              </ul>
+                            </article>
+                            <!-- 2. 算力技术效能与应用场景 -->
+                            <article class="card">
+                              <h3>2. 算力技术效能与应用场景</h3>
+                                <ul>
+                                  <li>
+                                    <strong>技术降耗与利用率</strong>：集群平均算力利用率超90%，液冷技术使PUE值降低超40%，PUE降至1.1-1.2<span class="source-ref">(<a href="http://m.toutiao.com/group/7644738027176264226/" target="_blank">来源</a>)</span>。
+                                    </li>
+                                    <li>
+                                      <strong>国产芯片主导</strong>：华为昇腾占AI芯片出货量49.2%，摩尔线程、寒武纪等企业加速技术迭代<span class="source-ref">(<a href="http://m.toutiao.com/group/7644738027176264226/" target="_blank">来源</a>)</span>。十万卡级国产智算集群落地，推动系统级TCO优化<span class="source-ref">(<a href="http://toutiao.com/item/7641956822257009206/" target="_blank">来源</a>)</span>。
+                                      </li>
+                                      <li>
+                                        <strong>行业应用落地</strong>：能源领域落地数十个专用大模型，覆盖电网、煤炭、油气勘探等8大领域：
+                                          <br>• 昆仑大模型降低油气勘探成本30%<span class="source-ref">(<a href="http://m.toutiao.com/group/7645198606760182291/" target="_blank">来源</a>)</span>
+                                          <br>• 南方电网“大瓦特”提前14天预判负荷，释放储能660万千瓦<span class="source-ref">(<a href="http://m.toutiao.com/group/7645198606760182291/" target="_blank">来源</a>)</span>
+                                          <br>• 山东钢铁通过AI算力提效25%<span class="source-ref">(<a href="http://toutiao.com/item/7641956822257009206/" target="_blank">来源</a>)</span>
+                                        </li>
+                                      </ul>
+                                    </article>
+                                    <!-- 3. 算电协同与绿电融合 -->
+                                    <article class="card">
+                                      <h3>3. 算电协同与绿电融合</h3>
+                                        <ul>
+                                          <li>
+                                            <strong>绿电使用率</strong>：西部枢纽绿电使用率超80%，甘肃庆阳等地电价低至0.398元/千瓦时<span class="source-ref">(<a href="http://toutiao.com/item/7641956822257009206/" target="_blank">来源</a>)</span>。
+                                            </li>
+                                            <li>
+                                              <strong>政策与效益</strong>：“算电协同”写入2026年政府工作报告，规划2030年新建数据中心绿电占比超80%<span class="source-ref">(<a href="http://m.toutiao.com/group/7644740540080079400/" target="_blank">来源</a>)</span>。能源大模型训练成本仅为欧美1/3-1/2<span class="source-ref">(<a href="http://m.toutiao.com/group/7645198606760182291/" target="_blank">来源</a>)</span>。
+                                              </li>
+                                              <li>
+                                                <strong>挑战</strong>：存在时空错配（80%绿电在西部、70%需求在东部）、监测不同频（毫秒级负荷与秒级电网）、跨省交易成本高等问题<span class="source-ref">(<a href="http://m.toutiao.com/group/7647170987808604707/" target="_blank">来源</a>)</span>。
+                                                </li>
+                                              </ul>
+                                            </article>
+                                            <!-- 4. 产业投资与未来规划 -->
+                                            <article class="card">
+                                              <h3>4. 产业投资与未来规划</h3>
+                                                <ul>
+                                                  <li>
+                                                    <strong>资金来源</strong>：企业投资占70%-90%，多地推出算力券补贴<span class="source-ref">(<a href="http://m.toutiao.com/group/7644738027176264226/" target="_blank">来源</a>)</span>。
+                                                    </li>
+                                                    <li>
+                                                      <strong>场景与目标</strong>：2026年推进51个“人工智能+”能源高价值场景，规划到2030年智能算力年均增长20%以上，算力用电占全社会用电量6%<span class="source-ref">(<a href="http://m.toutiao.com/group/7644721141982003727/" target="_blank">来源</a>;<a href="http://toutiao.com/item/7641956822257009206/" target="_blank">来源</a>)</span>。
+                                                      </li>
+                                                    </ul>
+                                                  </article>
+                                                  <!-- 5. 核心挑战与瓶颈 -->
+                                                  <article class="card">
+                                                    <h3>5. 核心挑战与瓶颈</h3>
+                                                      <ul>
+                                                        <li>
+                                                          <strong>效率不均衡</strong>：部分应用场景算力利用率不足50%<span class="source-ref">(<a href="http://m.toutiao.com/group/7644738027176264226/" target="_blank">来源</a>)</span>。
+                                                          </li>
+                                                          <li>
+                                                            <
