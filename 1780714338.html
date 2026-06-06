@@ -1,0 +1,255 @@
+你好！作为专业的HTML5和CSS开发人员，我已根据你提供的“2026年06月06日 洞察分析报告”内容，为你设计并生成了一个完整的、响应式的单文件HTML页面。
+### 设计思路说明：
+1.  **整体风格**：采用了现代、简洁的“文档卡片式”设计。背景使用柔和的浅灰色，内容区域使用白色卡片配合轻微的阴影，突出层次感。
+2.  **色彩方案**：
+*   **主色调**：使用深蓝色（#1e3a8a）作为标题和重点强调色，体现专业性和权威感。
+*   **警示色**：由于报告状态为“不完整”，质量标志使用了醒目的橙红色（#ea580c）背景，白色文字，确保用户第一眼就能注意到该状态。
+*   **文本色**：深灰色（#374151）用于正文，保证阅读舒适度。
+3.  **响应式布局**：
+*   使用了 `max-width: 800px` 限制主体内容宽度，保证在PC端阅读体验最佳。
+*   使用 Flexbox 布局处理头部标题和质量标志的对齐。
+*   移动端自动适配宽度，增加内边距，确保触摸区域和阅读体验。
+4.  **语义化标签**：使用了 `<header>`, `<main>`, `<section>`, `<article>`, `<footer>` 等HTML5语义化标签，结构清晰。
+5.  **质量标志**：按照要求，将“质量标志”放置在页面顶部右上角的显眼位置。
+以下是完整的HTML5代码：
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>2026年06月06日 洞察分析报告</title>
+      <style>
+        /* --- CSS 变量与重置 --- */
+        :root {
+        --primary-color: #1e3a8a;       /* 深蓝：专业感 */
+        --accent-color: #3b82f6;        /* 亮蓝：链接与高亮 */
+        --warning-bg: #f97316;          /* 橙色：警告/不完整状态 */
+        --warning-text: #ffffff;
+        --bg-color: #f3f4f6;            /* 浅灰背景 */
+        --card-bg: #ffffff;             /* 卡片背景 */
+        --text-main: #1f2937;           /* 主要文字 */
+        --text-secondary: #4b5563;      /* 次要文字 */
+        --border-radius: 8px;
+        --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+        * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        }
+        body {
+        font-family: var(--font-family);
+        background-color: var(--bg-color);
+        color: var(--text-main);
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+        }
+        /* --- 布局容器 --- */
+        .container {
+        width: 100%;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 0 1.5rem;
+        }
+        /* --- 头部设计 --- */
+        header {
+        background-color: var(--card-bg);
+        border-bottom: 1px solid #e5e7eb;
+        padding: 1.5rem 0;
+        margin-bottom: 2rem;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap; /* 移动端允许换行 */
+        gap: 1rem;
+        }
+        .report-title {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--primary-color);
+        line-height: 1.2;
+        }
+        .report-date {
+        font-size: 0.875rem;
+        color: var(--text-secondary);
+        margin-top: 0.25rem;
+        }
+        /* 质量标志样式 */
+        .quality-badge {
+        background-color: var(--warning-bg);
+        color: var(--warning-text);
+        padding: 0.5rem 1rem;
+        border-radius: 50px; /* 圆角胶囊样式 */
+        font-size: 0.875rem;
+        font-weight: 600;
+        white-space: nowrap;
+        box-shadow: 0 2px 4px rgba(249, 115, 22, 0.3);
+        /* 确保触摸目标大小 */
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        }
+        /* --- 主要内容区域 --- */
+        main {
+        padding-bottom: 3rem;
+        }
+        /* --- 卡片通用样式 --- */
+        .card {
+        background-color: var(--card-bg);
+        border-radius: var(--border-radius);
+        padding: 2rem;
+        margin-bottom: 1.5rem;
+        box-shadow: var(--shadow);
+        border: 1px solid #e5e7eb;
+        }
+        h2 {
+        font-size: 1.25rem;
+        color: var(--primary-color);
+        border-left: 4px solid var(--accent-color);
+        padding-left: 0.75rem;
+        margin-bottom: 1rem;
+        }
+        h3 {
+        font-size: 1.1rem;
+        color: var(--text-main);
+        margin-top: 1.5rem;
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+        }
+        p {
+        margin-bottom: 1rem;
+        color: var(--text-secondary);
+        text-align: justify;
+        }
+        /* --- 列表样式 --- */
+        ul {
+        list-style: none;
+        padding-left: 0;
+        }
+        li {
+        position: relative;
+        padding-left: 1.5rem;
+        margin-bottom: 0.75rem;
+        color: var(--text-secondary);
+        }
+        li::before {
+        content: "•";
+        color: var(--accent-color);
+        font-weight: bold;
+        position: absolute;
+        left: 0;
+        font-size: 1.2em;
+        line-height: 1.5;
+        }
+        /* --- 链接样式 --- */
+        a {
+        color: var(--accent-color);
+        text-decoration: none;
+        transition: color 0.2s ease;
+        border-bottom: 1px dotted var(--accent-color);
+        }
+        a:hover {
+        color: var(--primary-color);
+        border-bottom-style: solid;
+        }
+        /* --- 底部 --- */
+        footer {
+        text-align: center;
+        padding: 2rem 0;
+        color: var(--text-secondary);
+        font-size: 0.875rem;
+        border-top: 1px solid #e5e7eb;
+        margin-top: 2rem;
+        }
+        /* --- 特殊状态样式 --- */
+        .empty-state {
+        background-color: #f9fafb;
+        border: 1px dashed #d1d5db;
+        padding: 1rem;
+        border-radius: var(--border-radius);
+        text-align: center;
+        color: #6b7280;
+        font-style: italic;
+        }
+        /* --- 响应式媒体查询 --- */
+        @media (max-width: 600px) {
+        .header-content {
+        flex-direction: column;
+        align-items: flex-start;
+        }
+        .quality-badge {
+        align-self: flex-start; /* 移动端靠左对齐，避免被截断 */
+        margin-top: 0.5rem;
+        }
+        .card {
+        padding: 1.5rem;
+        }
+        h2 {
+        font-size: 1.15rem;
+        }
+        }
+      </style>
+    </head>
+    <body>
+      <header>
+        <div class="container header-content">
+          <div>
+            <h1 class="report-title">洞察分析报告</h1>
+              <div class="report-date">2026年06月06日</div>
+              </div>
+              <!-- 质量标志：放置在右上角（PC端）或顶部（移动端） -->
+              <div class="quality-badge" title="质量标志：不完整">
+                质量标志：不完整（模型因素材缺失无法生成有效分析内容）
+              </div>
+            </div>
+          </header>
+          <main class="container">
+            <!-- 核心洞察综述 -->
+            <section class="card">
+              <h2>核心洞察综述</h2>
+                <p>由于用户提供的素材内容为空（素材列表显示为<code>[]</code>），无法基于任何具体信息开展分析。本报告无法满足“完全依赖提供的素材”的要求，需补充具体素材内容后重新生成。</p>
+                </section>
+                <!-- 详细维度分析 -->
+                <section class="card">
+                  <h2>详细维度分析</h2>
+                    <article>
+                      <h3>1. 素材缺失说明</h3>
+                        <p>当前提供的素材为空列表，缺乏可分析的基础信息（如资讯内容、数据、事件描述等），无法执行信息交叉验证、溯源引用及结构化分析等必要步骤。</p>
+                        </article>
+                        <article>
+                          <h3>2. 时效性与准确性评估</h3>
+                            <p>无有效素材内容，无法评估任何信息的时效性和准确性。</p>
+                            </article>
+                          </section>
+                          <!-- 总结与展望 -->
+                          <section class="card">
+                            <h2>总结与展望</h2>
+                              <p>因素材内容缺失，无法生成具体的洞察分析。建议补充完整的素材信息（如相关文章、数据报告、事件描述等），以便后续开展符合要求的分析工作。</p>
+                              </section>
+                              <!-- 资讯标题与链接列表 -->
+                              <section class="card">
+                                <h2>资讯标题与链接列表</h2>
+                                  <div class="empty-state">
+                                    因素材缺失，无可用链接
+                                  </div>
+                                  <!-- 如果有链接，将显示在下方 -->
+                                  <ul>
+                                    <li>无可用资讯</li>
+                                    </ul>
+                                  </section>
+                                </main>
+                                <footer>
+                                  <p>报告生成日期：2026年06月06日</p>
+                                    <p style="margin-top: 0.5rem; font-size: 0.75rem; color: #9ca3af;">本报告因用户提供的素材为空无法生成，需补充具体素材后重新生成。</p>
+                                    </footer>
+                                  </body>
+                                </html>
+                                ```
