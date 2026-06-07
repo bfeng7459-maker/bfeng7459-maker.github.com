@@ -1,0 +1,381 @@
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>国电南瑞股价波动与基本面分析报告</title>
+      <style>
+        /* CSS Variables & Reset */
+        :root {
+        /* Chinese Stock Market Colors: Red = Up, Green = Down */
+        --color-up: #d93025;
+        --color-down: #188038;
+        --color-primary: #1a3c6e; /* Professional Navy */
+        --color-secondary: #f0f4f8;
+        --color-text-main: #333333;
+        --color-text-light: #666666;
+        --color-bg: #f7f9fc;
+        --color-white: #ffffff;
+        --color-accent: #e8f0fe;
+        --shadow-card: 0 4px 6px rgba(0, 0, 0, 0.05);
+        --shadow-hover: 0 8px 15px rgba(0, 0, 0, 0.1);
+        --radius-md: 8px;
+        --radius-lg: 12px;
+        --spacing-unit: 1rem;
+        }
+        * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        }
+        body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Microsoft YaHei", sans-serif;
+        background-color: var(--color-bg);
+        color: var(--color-text-main);
+        line: 1.6;
+        font-size: 16px;
+        }
+        a {
+        text-decoration: none;
+        color: var(--color-primary);
+        transition: color 0.2s;
+        }
+        a:hover {
+        color: #2c5282;
+        text-decoration: underline;
+        }
+        /* Layout Utilities */
+        .container {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 0 var(--spacing-unit);
+        }
+        .section {
+        margin-bottom: 2.5rem;
+        }
+        /* Header */
+        header {
+        background-color: var(--color-white);
+        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        padding: 1rem 0;
+        }
+        .header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 10px;
+        }
+        h1 {
+        font-size: 1.25rem;
+        color: var(--color-primary);
+        font-weight: 700;
+        line-height: 1.3;
+        }
+        .quality-badge {
+        background-color: var(--color-up);
+        color: white;
+        padding: 0.25rem 0.75rem;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        font-weight: bold;
+        box-shadow: 0 2px 4px rgba(217, 48, 37, 0.3);
+        flex-shrink: 0;
+        }
+        /* Typography Helpers */
+        h2 {
+        font-size: 1.5rem;
+        color: var(--color-primary);
+        margin-bottom: 1.5rem;
+        border-left: 5px solid var(--color-primary);
+        padding-left: 1rem;
+        }
+        h3 {
+        font-size: 1.2rem;
+        color: var(--color-text-main);
+        margin-bottom: 1rem;
+        margin-top: 1.5rem;
+        font-weight: 600;
+        }
+        .text-up { color: var(--color-up); font-weight: bold; }
+        .text-down { color: var(--color-down); font-weight: bold; }
+        .highlight { background-color: #fff3cd; padding: 0 2px; border-radius: 2px; }
+        /* Source Link Styling */
+        .source-link {
+        display: inline-block;
+        font-size: 0.85rem;
+        color: var(--color-text-light);
+        margin-top: 0.5rem;
+        background: #eee;
+        padding: 2px 8px;
+        border-radius: 4px;
+        }
+        .source-link:hover {
+        background: #ddd;
+        color: var(--color-primary);
+        }
+        /* Cards */
+        .card {
+        background: var(--color-white);
+        border-radius: var(--radius-lg);
+        padding: 1.5rem;
+        box-shadow: var(--shadow-card);
+        margin-bottom: 1rem;
+        transition: transform 0.2s, box-shadow 0.2s;
+        border: 1px solid rgba(0,0,0,0.02);
+        }
+        .card:hover {
+        box-shadow: var(--shadow-hover);
+        }
+        /* Grid Layout for Insights */
+        .insights-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        }
+        @media (min-width: 768px) {
+        h1 { font-size: 1.5rem; }
+        .insights-grid {
+        grid-template-columns: repeat(3, 1fr);
+        }
+        }
+        /* Insight Card Specifics */
+        .insight-card h3 {
+        margin-top: 0;
+        color: var(--color-primary);
+        border-bottom: 1px solid var(--color-secondary);
+        padding-bottom: 0.5rem;
+        }
+        /* Analysis Section */
+        .analysis-item {
+        background: var(--color-white);
+        border-radius: var(--radius-md);
+        padding: 1.5rem;
+        margin-bottom: 1rem;
+        border-left: 4px solid transparent;
+        }
+        .analysis-item:hover {
+        border-left-color: var(--color-primary);
+        background: #fff;
+        }
+        .data-point {
+        display: flex;
+        justify-content: space-between;
+        padding: 0.5rem 0;
+        border-bottom: 1px dashed #eee;
+        }
+        .data-point:last-child { border-bottom: none; }
+        .data-label { color: var(--color-text-light); }
+        .data-value { font-weight: 600; }
+        /* Summary Box */
+        .summary-box {
+        background: linear-gradient(135deg, #e8f0fe 0%, #ffffff 100%);
+        border: 1px solid #d2e3fc;
+        border-radius: var(--radius-lg);
+        padding: 2rem;
+        }
+        .suggestion-list {
+        list-style: none;
+        margin-top: 1rem;
+        }
+        .suggestion-list li {
+        margin-bottom: 0.8rem;
+        padding-left: 1.5rem;
+        position: relative;
+        }
+        .suggestion-list li::before {
+        content: "💡";
+        position: absolute;
+        left: 0;
+        top: 0;
+        }
+        /* Timeline / News List */
+        .news-list {
+        list-style: none;
+        }
+        .news-item {
+        display: flex;
+        flex-direction: column;
+        background: var(--color-white);
+        padding: 1rem;
+        border-bottom: 1px solid var(--color-secondary);
+        transition: background 0.2s;
+        }
+        .news-item:hover {
+        background: #fafafa;
+        }
+        .news-date {
+        font-size: 0.85rem;
+        color: var(--color-text-light);
+        margin-bottom: 0.25rem;
+        font-weight: 600;
+        }
+        .news-title {
+        font-size: 1rem;
+        margin-bottom: 0.5rem;
+        flex-grow: 1;
+        }
+        .news-link {
+        font-size: 0.9rem;
+        color: var(--color-primary);
+        display: inline-flex;
+        align-items: center;
+        }
+        .news-link::after {
+        content: "→";
+        margin-left: 5px;
+        font-size: 1.2em;
+        transition: transform 0.2s;
+        }
+        .news-link:hover::after {
+        transform: translateX(3px);
+        }
+        @media (min-width: 600px) {
+        .news-item {
+        flex-direction: row;
+        align-items: center;
+        }
+        .news-date {
+        width: 140px;
+        margin-bottom: 0;
+        margin-right: 1rem;
+        }
+        .news-title {
+        flex-grow: 1;
+        margin-bottom: 0;
+        }
+        }
+        /* Footer */
+        footer {
+        text-align: center;
+        padding: 2rem 0;
+        color: var(--color-text-light);
+        font-size: 0.9rem;
+        border-top: 1px solid var(--color-secondary);
+        margin-top: 3rem;
+        }
+        /* Responsive Utilities */
+        @media (max-width: 480px) {
+        .header-content {
+        flex-direction: column;
+        align-items: flex-start;
+        }
+        .quality-badge {
+        align-self: flex-end;
+        margin-top: -2.5rem; /* Pull up to align with title roughly */
+        }
+        }
+      </style>
+    </head>
+    <body>
+      <header>
+        <div class="container header-content">
+          <h1>2026年06月07日国电南瑞股价波动与基本面分析：业绩亮眼但短期承压，机构目标价34.5元</h1>
+            <div class="quality-badge">质量标志：通过</div>
+            </div>
+          </header>
+          <main class="container">
+            <!-- 核心洞察 -->
+            <section class="section">
+              <h2>核心洞察</h2>
+                <div class="insights-grid">
+                  <article class="card insight-card">
+                    <h3>股价承压与业绩背离</h3>
+                      <p>2026年6月7日，2025年业绩亮眼（营收<span class="text-up">662.29亿元</span>，净利润<span class="text-up">82.79亿元</span>），但股价一周下跌<span class="text-down">5.82%</span>，主力资金净流出<span class="text-down">14.42亿元</span>。主因是主力高位套现及应收账款占净利润321.93%的压力。</p>
+                        <p style="margin-top:0.5rem; font-size:0.9rem;">机构最高目标价34.5元，未完成订单超500亿元支撑长期趋势。</p>
+                          <a href="https://toutiao.com/group/7648481536790151715/" target="_blank" class="source-link">🔗 查看来源</a>
+                          </article>
+                          <article class="card insight-card">
+                            <h3>市场情绪误判</h3>
+                              <p>2026年5月期间股价多次跌破27元，市场误将一季度平稳业绩解读为增长乏力。忽视了公司技术壁垒（IGBT国产化）、虚拟电厂份额超70%及国家电网“十五五”规划4.1万亿元投资等长期支撑。</p>
+                                <a href="https://toutiao.com/group/7640246542338638378/" target="_blank" class="source-link">🔗 查看来源1</a>
+                                  <a href="https://toutiao.com/group/7640321467590165044/" target="blank" class="source-link">🔗 查看来源2</a>
+                                  </article>
+                                  <article class="card insight-card">
+                                    <h3>基金与资金动态</h3>
+                                      <p>国泰恒生A股电网设备ETF（561380）连续6日净赎回，累计1.24亿份。国泰中证细分机械设备ETF（持有国电南瑞2.44万股）2025年7月浮亏3.76万元。规模增长显著但短期波动加剧。</p>
+                                        <a href="https://cj.sina.cn/article/norm_detail?url=http%3A%2F%2Ffinance.sina.cn%2F2026-05-27%2Fdetail-inhzikrp1719006.d.html" target="_blank" class="source-link">🔗 查看来源</a>
+                                        </article>
+                                      </div>
+                                    </section>
+                                    <!-- 详细维度分析 -->
+                                    <section class="section">
+                                      <h2>详细维度分析</h2>
+                                        <div class="analysis-item">
+                                          <h3>一、股价走势与市场表现</h3>
+                                            <div class="data-point">
+                                              <span class="data-label">近期波动 (6月7日)</span>
+                                                <span class="data-value">一周下跌 <span class="text-down">5.82%</span></span>
+                                                </div>
+                                                <div class="data-point">
+                                                  <span class="data-label">主力资金</span>
+                                                    <span class="data-value">净流出 <span class="text-down">14.42亿元</span> (占成交额10.44%)</span>
+                                                    </div>
+                                                    <div class="data-point">
+                                                      <span class="data-label">近期收盘价 (6月3日)</span>
+                                                        <span class="data-value">24.25元 (较3月30日跌约9%)</span>
+                                                        </div>
+                                                        <p style="margin-top:1rem; font-size:0.95rem; color:#555;">
+                                                          阶段下跌主因：5月15日跌破27元后，市场短期情绪与板块调整叠加。6月2日电网设备ETF权重股中亨通光电涨10.01%，而国电南瑞跌2.30%，反映资金分歧。
+                                                        </p>
+                                                        <a href="https://wap.stockstar.com/detail/RB2026060300041230/" target="_blank" class="source-link">🔗 证券之星</a>
+                                                          <a href="http://finance.sina.com.cn/stock/zqgd/2026-06-02/doc-inhzzivn3117299.shtml" target="_blank" class="source-link">🔗 新浪财经</a>
+                                                          </div>
+                                                          <div class="analysis-item">
+                                                            <h3>二、公司基本面与财务表现</h3>
+                                                              <div class="data-point">
+                                                                <span class="data-label">2025年营收</span>
+                                                                  <span class="data-value"><span class="text-up">662.29亿元</span> (+8.79%)</span>
+                                                                  </div>
+                                                                  <div class="data-point">
+                                                                    <span class="data-label">2025年净利润</span>
+                                                                      <span class="data-value"><span class="text-up">82.79亿元</span> (+8.79%)</span>
+                                                                      </div>
+                                                                      <div class="data-point">
+                                                                        <span class="data-label">2026年Q1净利润</span>
+                                                                          <span class="data-value"><span class="text-up">7.21亿元</span> (+6.04%)</span>
+                                                                          </div>
+                                                                          <div class="data-point">
+                                                                            <span class="data-label">未完成订单</span>
+                                                                              <span class="data-value">超500亿元</span>
+                                                                              </div>
+                                                                              <p style="margin-top:1rem; font-size:0.95rem; color:#555;">
+                                                                                财务稳健，负债率40.29%，2025年分红率60%。需警惕应收账款占净利润321.93%带来的资金回笼压力。
+                                                                              </p>
+                                                                              <a href="https://toutiao.com/group/7648481536790151715/" target="_blank" class="source-link">🔗 查看来源</a>
+                                                                              </div>
+                                                                              <div class="analysis-item">
+                                                                                <h3>三、相关基金动态</h3>
+                                                                                  <p><strong>国泰电网设备ETF（561380）：</strong> 2026年5月27日规模74.86亿元，份额33.80亿份，今年份额增长907.83%。连续6日净赎回（累计1.24亿份）。</p>
+                                                                                    <p style="margin-top:0.5rem;"><strong>国泰中证细分机械设备ETF：</strong> 2025年7月持有国电南瑞2.44万股，浮亏3.76万元。</p>
+                                                                                      <a href="https://cj.sina.cn/article/norm_detail?url=http%3A%2F%2Ffinance.sina.cn%2F2026-05-27%2Fdetail-inhzikrp1719006.d.html" target="_blank" class="source-link">🔗 查看详情</a>
+                                                                                      </div>
+                                                                                      <div class="analysis-item">
+                                                                                        <h3>四、机构评级与目标价</h3>
+                                                                                          <div class="data-point">
+                                                                                            <span class="data-label">最新评级 (6月7日)</span>
+                                                                                              <span class="data-value">10家机构：9家买入，1家增持</span>
+                                                                                              </div>
+                                                                                              <div class="data-point">
+                                                                                                <span class="data-label">目标均价</span>
+                                                                                                  <span class="data-value"><span class="text-up">34.5元</span> (较现价24.25元有42%空间)</span>
+                                                                                                  </div>
+                                                                                                  <div class="data-point">
+                                                                                                    <span class="data-label">历史预测 (5月15日)</span>
+                                                                                                      <span class="data-value">2026年净利润92.35亿元，目标价30-33元</span>
+                                                                                                      </div>
+                                                                                                      <a href="https://wap.stockstar.com/detail/RB2026060300041230/" target="_blank" class="source-link">🔗 查看来源</a>
+                                                                                                      </div>
+                                                                                                    </section>
+                                                                                                    <!-- 总结与展望 -->
+                                                                                                    <section class="section">
+                                                                                                      <h2>总结与展望</h2>
+                                                                                                        <div class="summary-box">
+                                                                                                          <h3>短期风险与长期价值</h3>
+                                                                                                            <p>短期需警惕主力资金砸盘（6月7日净流出14.42亿元）及应收账款压力。长期受益于国家电网“十五五”规划（4.1万亿元投资）、特高压与智能电网建设加速，公司技术壁垒与订单储备支撑估值修复。</p>
+                                                                                                              <h3 style="margin-top: 1.5rem;">投资建议</h3>
+                                                                                                                <ul class="suggestion-list
