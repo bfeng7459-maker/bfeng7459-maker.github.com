@@ -1,0 +1,238 @@
+你好！根据你提供的“无法生成洞察分析报告”的内容，我为你设计了一个专业、美观且完全响应式的HTML5页面。
+这个页面采用了现代报告风格，使用了柔和的蓝灰色调作为主色，并使用醒目的橙黄色来标记“质量标志”，以提示用户当前状态。页面结构清晰，适配手机和PC端阅读。
+以下是完整的HTML代码（单文件）：
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>无法生成洞察分析报告（2026年06月09日）</title>
+      <style>
+        /* CSS 变量定义：统一颜色方案 */
+        :root {
+        --primary-color: #2563eb;       /* 主色调：专业蓝 */
+        --secondary-color: #64748b;     /* 次要文字颜色 */
+        --bg-color: #f1f5f9;            /* 页面背景色 */
+        --card-bg: #ffffff;             /* 卡片背景色 */
+        --text-main: #1e293b;           /* 主要文字颜色 */
+        --border-color: #e2e8f0;        /* 边框颜色 */
+        --warning-bg: #fff7ed;          /* 警告/标志背景色 */
+        --warning-text: #c2410c;        /* 警告/标志文字颜色 */
+        --spacing-unit: 1rem;           /* 基础间距 */
+        }
+        /* 全局重置与基础样式 */
+        * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        }
+        body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        background-color: var(--bg-color);
+        color: var(--text-main);
+        line-height: 1.6;
+        font-size: 16px;
+        padding: 2rem 1rem;
+        }
+        /* 布局容器 */
+        .container {
+        max-width: 800px;
+        margin: 0 auto;
+        }
+        /* 头部区域设计 */
+        header {
+        background-color: var(--card-bg);
+        padding: 2rem;
+        border-radius: 12px;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        margin-bottom: 2rem;
+        position: relative; /* 为绝对定位的质量标志提供参考 */
+        border-left: 6px solid var(--warning-text); /* 左侧强调色条 */
+        }
+        h1 {
+        font-size: 1.75rem;
+        color: var(--text-main);
+        margin-bottom: 0.5rem;
+        line-height: 1.3;
+        padding-right: 180px; /* 防止标题在PC端太长时覆盖右上角标志 */
+        }
+        .report-date {
+        font-size: 0.9rem;
+        color: var(--secondary-color);
+        font-weight: 500;
+        }
+        /* 质量标志样式 - 右上角显眼位置 */
+        .quality-flag {
+        position: absolute;
+        top: 2rem;
+        right: 2rem;
+        background-color: var(--warning-bg);
+        color: var(--warning-text);
+        padding: 0.5rem 1rem;
+        border-radius: 6px;
+        font-weight: bold;
+        font-size: 0.9rem;
+        border: 1px solid #fed7aa;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        /* 内容卡片通用样式 */
+        .card {
+        background-color: var(--card-bg);
+        border-radius: 12px;
+        padding: 2rem;
+        margin-bottom: 1.5rem;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        border: 1px solid var(--border-color);
+        }
+        .card h2 {
+        font-size: 1.25rem;
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid var(--bg-color);
+        display: flex;
+        align-items: center;
+        }
+        .card p, .card li {
+        color: var(--secondary-color);
+        margin-bottom: 1rem;
+        }
+        /* 空状态/列表样式 */
+        .empty-list {
+        text-align: center;
+        padding: 1.5rem;
+        background-color: #f8fafc;
+        border-radius: 8px;
+        color: var(--secondary-color);
+        border: 1px dashed var(--border-color);
+        }
+        /* 链接样式 */
+        a {
+        color: var(--primary-color);
+        text-decoration: none;
+        transition: color 0.2s;
+        }
+        a:hover {
+        color: #1d4ed8;
+        text-decoration: underline;
+        }
+        /* 页脚 */
+        footer {
+        text-align: center;
+        margin-top: 3rem;
+        color: #94a3b8;
+        font-size: 0.85rem;
+        }
+        /* 图标辅助类 */
+        .icon {
+        width: 20px;
+        height: 20px;
+        fill: currentColor;
+        margin-right: 8px;
+        }
+        /* 响应式设计 - 移动端适配 */
+        @media (max-width: 600px) {
+        body {
+        padding: 1rem 0.5rem;
+        }
+        header {
+        padding: 1.5rem;
+        }
+        h1 {
+        font-size: 1.5rem;
+        padding-right: 0; /* 移动端移除右侧padding，允许换行 */
+        }
+        /* 移动端质量标志调整：改为块级显示，避免遮挡 */
+        .quality-flag {
+        position: static; /* 取消绝对定位 */
+        margin-top: 1rem;
+        width: 100%;
+        justify-content: center;
+        }
+        .card {
+        padding: 1.5rem;
+        }
+        }
+      </style>
+    </head>
+    <body>
+      <div class="container">
+        <!-- 头部区域 -->
+        <header>
+          <h1>无法生成洞察分析报告（2026年06月09日）</h1>
+            <div class="report-date">发布日期：2026年06月09日</div>
+              <!-- 质量标志：右上角显眼位置 -->
+              <div class="quality-flag">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="12" y1="8" x2="12" y2="12"></line>
+                      <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                      </svg>
+                      质量标志：不完整（无有效素材支持分析内容）
+                    </div>
+                  </header>
+                  <!-- 主要内容区域 -->
+                  <main>
+                    <!-- 核心洞察综述 -->
+                    <section class="card">
+                      <h2>
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                          </svg>
+                          核心洞察综述
+                        </h2>
+                        <p>由于用户提供的素材为空列表，未包含任何可分析的资讯内容、来源链接及发布日期信息，因此无法形成具体的洞察分析报告。</p>
+                        </section>
+                        <!-- 详细维度分析 -->
+                        <section class="card">
+                          <h2>
+                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                              <line x1="18" y1="20" x2="18" y2="10"></line>
+                                <line x1="12" y1="20" x2="12" y2="4"></line>
+                                  <line x1="6" y1="20" x2="6" y2="14"></line>
+                                  </svg>
+                                  详细维度分析
+                                </h2>
+                                <p>无可用素材，无法进行内容分析与引用。</p>
+                                </section>
+                                <!-- 总结与展望 -->
+                                <section class="card">
+                                  <h2>
+                                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                      <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                                        <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                                        </svg>
+                                        总结与展望
+                                      </h2>
+                                      <p>当前缺乏有效分析素材，无法生成符合要求的洞察报告。建议补充完整的资讯素材（包含标题、链接、日期等关键信息）后再次提交分析请求。</p>
+                                      </section>
+                                      <!-- 资讯列表 -->
+                                      <section class="card">
+                                        <h2>
+                                          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <line x1="8" y1="6" x2="21" y2="6"></line>
+                                              <line x1="8" y1="12" x2="21" y2="12"></line>
+                                                <line x1="8" y1="18" x2="21" y2="18"></line>
+                                                  <line x1="3" y1="6" x2="3.01" y2="6"></line>
+                                                    <line x1="3" y1="12" x2="3.01" y2="12"></line>
+                                                      <line x1="3" y1="18" x2="3.01" y2="18"></line>
+                                                      </svg>
+                                                      资讯列表
+                                                    </h2>
+                                                    <div class="empty-list">
+                                                      无符合条件的资讯标题及链接列表。
+                                                    </div>
+                                                  </section>
+                                                </main>
+                                                <!-- 页脚 -->
+                                                <footer>
+                                                  <p>Generated by AI Assistant &bull; 2026</p>
+                                                  </footer>
+                                                </div>
+                                              </body>
+                                            </html>
+                                            ```
