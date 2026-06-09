@@ -1,0 +1,345 @@
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026年6月中国智算集群与算电协同发展洞察报告</title>
+      <style>
+        /* --- CSS 变量与重置 --- */
+        :root {
+        --primary-color: #1e3a8a; /* 深蓝：科技感 */
+        --secondary-color: #059669; /* 绿色：能源与环保 */
+        --accent-color: #d97706; /* 橙色：重点强调 */
+        --bg-color: #f3f4f6;
+        --card-bg: #ffffff;
+        --text-main: #1f2937;
+        --text-secondary: #4b5563;
+        --text-light: #9ca3af;
+        --border-radius: 12px;
+        --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+        }
+        * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        }
+        body {
+        font-family: var(--font-family);
+        background-color: var(--bg-color);
+        color: var(--text-main);
+        line-height: 1.6;
+        font-size: 16px;
+        -webkit-font-smoothing: antialiased;
+        }
+        a {
+        text-decoration: none;
+        color: inherit;
+        }
+        /* --- 布局容器 --- */
+        .container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 1rem;
+        }
+        /* --- 头部设计 --- */
+        header {
+        background: linear-gradient(135deg, var(--primary-color), #2563eb);
+        color: white;
+        padding: 3rem 1.5rem;
+        border-radius: 0 0 var(--border-radius) var(--border-radius);
+        margin-bottom: 2rem;
+        position: relative;
+        box-shadow: var(--shadow);
+        }
+        .header-content {
+        position: relative;
+        z-index: 2;
+        }
+        h1 {
+        font-size: 1.75rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        line-height: 1.3;
+        }
+        .report-date {
+        font-size: 0.9rem;
+        opacity: 0.9;
+        display: inline-block;
+        background: rgba(255, 255, 255, 0.2);
+        padding: 0.2rem 0.6rem;
+        border-radius: 4px;
+        }
+        /* 质量标志 */
+        .quality-badge {
+        position: absolute;
+        top: 1.5rem;
+        right: 1.5rem;
+        background-color: var(--accent-color);
+        color: white;
+        font-weight: bold;
+        font-size: 0.85rem;
+        padding: 0.4rem 1rem;
+        border-radius: 20px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+        }
+        /* --- 通用卡片样式 --- */
+        .card {
+        background-color: var(--card-bg);
+        border-radius: var(--border-radius);
+        padding: 2rem;
+        margin-bottom: 1.5rem;
+        box-shadow: var(--shadow);
+        border-left: 5px solid transparent;
+        }
+        .card-title {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        }
+        /* --- 核心洞察 --- */
+        .core-insights {
+        border-left-color: var(--accent-color);
+        background: linear-gradient(to right, #fffbeb, #ffffff);
+        }
+        .core-insights h2 {
+        color: var(--accent-color);
+        }
+        .highlight-text {
+        font-size: 1.05rem;
+        color: var(--text-main);
+        text-align: justify;
+        }
+        /* --- 详细分析 --- */
+        .section-card {
+        border-left-color: var(--primary-color);
+        }
+        .subsection {
+        margin-bottom: 1.5rem;
+        }
+        .subsection:last-child {
+        margin-bottom: 0;
+        }
+        .subsection h3 {
+        font-size: 1.1rem;
+        color: var(--primary-color);
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+        }
+        .subsection p {
+        color: var(--text-secondary);
+        margin-bottom: 0.5rem;
+        text-align: justify;
+        }
+        /* 来源链接样式 */
+        .source-link {
+        font-size: 0.75rem;
+        color: var(--secondary-color);
+        background-color: #ecfdf5;
+        padding: 2px 6px;
+        border-radius: 4px;
+        margin-left: 4px;
+        white-space: nowrap;
+        border: 1px solid #d1fae5;
+        transition: all 0.2s;
+        }
+        .source-link:hover {
+        background-color: var(--secondary-color);
+        color: white;
+        }
+        /* --- 总结与展望 --- */
+        .summary-card {
+        background-color: var(--primary-color);
+        color: white;
+        }
+        .summary-card .card-title,
+        .summary-card h3 {
+        color: white;
+        }
+        .summary-card p {
+        color: rgba(255, 255, 255, 0.9);
+        }
+        .summary-card .source-link {
+        background-color: rgba(255,255,255,0.2);
+        color: white;
+        border-color: rgba(255,255,255,0.3);
+        }
+        .summary-card .source-link:hover {
+        background-color: white;
+        color: var(--primary-color);
+        }
+        /* --- 资讯列表 --- */
+        .news-list {
+        list-style: none;
+        }
+        .news-item {
+        display: flex;
+        flex-direction: column;
+        padding: 1rem 0;
+        border-bottom: 1px solid #e5e7eb;
+        transition: background-color 0.2s;
+        }
+        .news-item:last-child {
+        border-bottom: none;
+        }
+        .news-title {
+        font-weight: 600;
+        color: var(--text-main);
+        margin-bottom: 0.4rem;
+        font-size: 1rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        }
+        .news-meta {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        font-size: 0.85rem;
+        color: var(--text-light);
+        }
+        .news-date {
+        background-color: #f3f4f6;
+        padding: 2px 8px;
+        border-radius: 4px;
+        }
+        .tag-old {
+        background-color: #fee2e2;
+        color: #991b1b;
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-size: 0.75rem;
+        border: 1px solid #fecaca;
+        }
+        /* --- 底部 --- */
+        footer {
+        text-align: center;
+        padding: 2rem 0;
+        color: var(--text-light);
+        font-size: 0.9rem;
+        }
+        /* --- 响应式适配 --- */
+        @media (min-width: 768px) {
+        h1 {
+        font-size: 2.25rem;
+        }
+        .card {
+        padding: 2.5rem;
+        }
+        .news-item {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        }
+        .news-title {
+        margin-bottom: 0;
+        flex: 1;
+        padding-right: 1rem;
+        }
+        }
+        /* 移动端触摸优化 */
+        @media (max-width: 767px) {
+        .container {
+        padding: 0.5rem;
+        }
+        header {
+        padding: 2rem 1rem;
+        border-radius: 0 0 16px 16px;
+        }
+        .quality-badge {
+        position: static;
+        display: inline-flex;
+        margin-top: 1rem;
+        }
+        .card {
+        padding: 1.5rem;
+        border-radius: 16px;
+        }
+        /* 确保链接点击区域足够大 */
+        .source-link {
+        display: inline-block; /* 允许padding生效 */
+        min-height: 24px;
+        line-height: 20px;
+        }
+        a.news-title-link {
+        display: block;
+        padding: 5px 0; /* 增加点击区域 */
+        min-height: 44px;
+        }
+        }
+      </style>
+    </head>
+    <body>
+      <header>
+        <div class="header-content">
+          <h1>2026年6月中国智算集群与算电协同发展洞察报告</h1>
+            <span class="report-date">发布日期：2026-06-09</span>
+              <div class="quality-badge">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+                  专业深度报告
+                </div>
+              </div>
+            </header>
+            <main class="container">
+              <!-- 核心洞察综述 -->
+              <section class="card core-insights">
+                <h2 class="card-title">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                    核心洞察综述
+                  </h2>
+                  <p class="highlight-text">
+                    截至2025年底，我国建成42个万卡级智算集群，智能算力规模达1590-1882 EFLOPS，覆盖“东数西算”八大枢纽，西部承载70%以上新增算力并依托绿电实现高效利用。能源领域落地数十个专用大模型，覆盖电网、油气等全产业链并取得显著效益。2026年“算电协同”首次写入政府工作报告，成为政策与产业融合焦点，但面临时空错配、成本与标准缺失等挑战。国产芯片（华为昇腾）主导市场，液冷技术与系统集成能力推动产业向“算力服务”转型，未来将通过技术创新与政策协同实现“零碳算力”目标。
+                  </p>
+                </section>
+                <!-- 详细维度分析 -->
+                <section class="card section-card">
+                  <h2 class="card-title">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21"’ y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
+                      详细维度分析
+                    </h2>
+                    <div class="subsection">
+                      <h3>一、智算集群建设现状与算力分布</h3>
+                        <p>
+                          <strong>1. 规模与算力：</strong>截至2025年底，我国已建成42个万卡级智算集群，智能算力总规模存在数据差异：1590 EFLOPS<a href="http://m.toutiao.com/group/7644721141982003727/" target="_blank" class="source-link">来源</a>、1882 EFLOPS<a href="http://m.toutiao.com/group/7644707323205665334/" target="_blank" class="source-link">来源(老旧信息)</a>。2025年算力中心总用电量1700亿千瓦时，占全社会用电量1.6%，近三年增速39.5%，预计2030年将达8000亿千瓦时（占6%）<a href="http://m.toutiao.com/group/7644740540080079400/" target="_blank" class="source-link">来源</a><a href="http://m.toutiao.com/group/7644721522988384810/" target="_blank" class="source-link">来源</a>。
+                          </p>
+                          <p>
+                            <strong>2. 区域布局：</strong>西部（内蒙古、甘肃等）绿电富集区新增算力占比超70%，如内蒙古绿电使用率超80%，宁夏、广西试点绿电直供<a href="http://m.toutiao.com/group/7644721141982003727/" target="_blank" class="source-link">来源</a><a href="http://m.toutiao.com/group/7647046029417644594/" target="_blank" class="source-link">来源</a>；东部聚焦低时延需求，深圳建成全栈自主万卡集群<a href="http://m.toutiao.com/group/7644721141982003727/" target="_blank" class="source-link">来源</a>。
+                            </p>
+                          </div>
+                          <div class="subsection">
+                            <h3>二、能源领域AI应用与经济效益</h3>
+                              <p>
+                                <strong>1. 大模型落地：</strong>覆盖电网、煤炭、油气等8大领域，典型案例包括：昆仑大模型将油气勘探周期从20天缩至3天，“大瓦特”系统提前14天预判负荷波动<a href="http://m.toutiao.com/group/7645198606760182291/" target="_blank" class="source-link">来源</a>；2025年能源领域AI大模型“数十个”<a href="http://m.toutiao.com/group/7644721141982003727/" target="_blank" class="source-link">来源</a>。
+                                </p>
+                                <p>
+                                  <strong>2. 实际效益：</strong>火电供电煤耗下降2.3克/千瓦时，电网巡检效率提升3倍<a href="http://m.toutiao.com/group/7644721141982003727/" target="_blank" class="source-link">来源</a>；AI优化风电预测准确率10%、油气勘探成功率8%，降低电网运营成本10%以上，消费端节能系统实现28%-30%节能率<a href="http://m.toutiao.com/group/7645118390406890024/" target="_blank" class="source-link">来源</a>。
+                                  </p>
+                                </div>
+                                <div class="subsection">
+                                  <h3>三、算电协同政策推进与落地挑战</h3>
+                                    <p>
+                                      <strong>1. 政策突破：</strong>2026年“算电协同”首次写入政府工作报告，目标“算力向西走，绿电向东送”<a href="http://m.toutiao.com/group/7647046029417644594/" target="_blank" class="source-link">来源</a>。
+                                      </p>
+                                      <p>
+                                        <strong>2. 核心障碍：</strong><br>
+                                          - 时空错配（东部缺电西部绿电闲置）；<br>
+                                          - 经济矛盾（过网费抵消电价优势，成本0.4-1.0元/度）；<br>
+                                          - 技术冲突（AI训练需刚性供电，电网柔性调节难适配）；<br>
+                                          - 标准缺失（绿电认证与碳足迹变现机制未建立）<a href="http://m.toutiao.com/group/7647046029417644594/" target="_blank" class="source-link">来源</a><a href="http://toutiao.com/item/7642594136708743686/" target="_blank" class="source-link">来源</a>。
+                                        </p>
+                                        <p>
+                                          <strong>3. 破局路径：</strong>液冷技术（PUE降至1.1-1.2）、AI调度优化、氢储能试点，预计2028年实现“零碳算力”<a href="http://m.toutiao.com/group/7647046029417644594/" target="_blank" class="source-link">来源</a>。
+                                          </p>
+                                        </div>
+                                        <div class="subsection">
+                                          <h3>四、技术突破与产业格局转型</h3>
+                                            <p>
+                                              <strong>1. 国产芯片主导：</strong>华为昇腾占出货量49.2%，摩尔线程训练效率95%，寒武纪推理成本为欧美1/3<a href="http://m.toutiao.com/group/7644738027176264226/" target="_blank" class="source-link">来源</a><a href="http://toutiao.com/item
