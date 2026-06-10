@@ -1,0 +1,303 @@
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>国电南瑞及国泰基金旗下ETF动态洞察分析报告</title>
+      <style>
+        :root {
+        --primary-color: #0f172a; /* 深蓝 */
+        --secondary-color: #3b82f6; /* 亮蓝 */
+        --accent-color: #f59e0b; /* 橙色强调 */
+        --success-color: #10b981; /* 绿色 */
+        --danger-color: #ef4444; /* 红色 */
+        --bg-color: #f1f5f9;
+        --card-bg: #ffffff;
+        --text-main: #334155;
+        --text-light: #64748b;
+        --border-radius: 12px;
+        --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        }
+        body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+        background-color: var(--bg-color);
+        color: var(--text-main);
+        line-height: 1.6;
+        font-size: 16px;
+        -webkit-font-smoothing: antialiased;
+        }
+        /* 布局容器 */
+        .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 1rem;
+        }
+        /* 头部样式 */
+        header {
+        background: linear-gradient(135deg, var(--primary-color), #1e293b);
+        color: white;
+        padding: 2rem 1.5rem;
+        border-radius: var(--border-radius);
+        margin-bottom: 2rem;
+        position: relative;
+        box-shadow: var(--shadow);
+        overflow: hidden;
+        }
+        header h1 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        line-height: 1.3;
+        }
+        .report-date {
+        font-size: 0.875rem;
+        opacity: 0.8;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        }
+        /* 质量标志 */
+        .quality-badge {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        background-color: rgba(16, 185, 129, 0.2);
+        color: var(--success-color);
+        border: 1px solid var(--success-color);
+        padding: 0.25rem 0.75rem;
+        border-radius: 20px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        }
+        /* 卡片通用样式 */
+        .card {
+        background-color: var(--card-bg);
+        border-radius: var(--border-radius);
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+        box-shadow: var(--shadow);
+        border: 1px solid rgba(255,255,255,0.5);
+        }
+        .card-title {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid #e2e8f0;
+        display: flex;
+        align-items: center;
+        }
+        .card-title::before {
+        content: '';
+        display: block;
+        width: 6px;
+        height: 24px;
+        background-color: var(--secondary-color);
+        margin-right: 10px;
+        border-radius: 3px;
+        }
+        /* 核心洞察特别样式 */
+        .insight-card {
+        background: linear-gradient(to bottom right, #ffffff, #f8fafc);
+        border-left: 5px solid var(--accent-color);
+        }
+        .highlight-stat {
+        font-weight: bold;
+        color: var(--danger-color);
+        }
+        .highlight-pos {
+        color: var(--success-color);
+        }
+        /* 列表与段落 */
+        ul, ol {
+        padding-left: 1.5rem;
+        margin-bottom: 1rem;
+        }
+        li {
+        margin-bottom: 0.5rem;
+        }
+        p {
+        margin-bottom: 1rem;
+        }
+        /* 来源链接样式 */
+        .source-link {
+        display: inline-flex;
+        align-items: center;
+        font-size: 0.75rem;
+        color: var(--secondary-color);
+        text-decoration: none;
+        background-color: #eff6ff;
+        padding: 2px 8px;
+        border-radius: 4px;
+        margin-left: 6px;
+        vertical-align: middle;
+        transition: all 0.2s;
+        border: 1px solid #bfdbfe;
+        }
+        .source-link:hover {
+        background-color: var(--secondary-color);
+        color: white;
+        border-color: var(--secondary-color);
+        }
+        /* 资讯列表样式 */
+        .news-item {
+        display: flex;
+        flex-direction: column;
+        padding: 1rem 0;
+        border-bottom: 1px solid #e2e8f0;
+        }
+        .news-item:last-child {
+        border-bottom: none;
+        }
+        .news-title {
+        font-weight: 600;
+        color: var(--primary-color);
+        margin-bottom: 0.5rem;
+        font-size: 1rem;
+        }
+        .news-meta {
+        font-size: 0.8rem;
+        color: var(--text-light);
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        align-items: center;
+        }
+        .news-link {
+        color: var(--secondary-color);
+        text-decoration: none;
+        font-weight: 500;
+        }
+        .news-link:hover {
+        text-decoration: underline;
+        }
+        .tag-old {
+        background-color: #f1f5f9;
+        color: var(--text-light);
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-size: 0.7rem;
+        border: 1px solid #cbd5e1;
+        }
+        .tag-new {
+        background-color: #ecfdf5;
+        color: var(--success-color);
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-size: 0.7rem;
+        border: 1px solid #a7f3d0;
+        }
+        /* 响应式调整 */
+        @media (min-width: 768px) {
+        header h1 {
+        font-size: 1.8rem;
+        }
+        .grid-2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+        }
+        }
+        @media (max-width: 767px) {
+        .grid-2 {
+        display: flex;
+        flex-direction: column;
+        }
+        }
+        /* 辅助类 */
+        .text-red { color: var(--danger-color); }
+        .text-green { color: var(--success-color); }
+        .mt-2 { margin-top: 1rem; }
+        .mb-0 { margin-bottom: 0; }
+      </style>
+    </head>
+    <body>
+      <div class="container">
+        <!-- 头部 -->
+        <header>
+          <h1>国电南瑞及国泰基金旗下ETF动态洞察分析报告</h1>
+            <div class="report-date">
+              <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                生成日期：2026年06月10日
+              </div>
+              <!-- 质量标志 -->
+              <div class="quality-badge">
+                <svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                  质量标志：通过
+                </div>
+              </header>
+              <main>
+                <!-- 核心洞察综述 -->
+                <section class="card insight-card">
+                  <h2 class="card-title">核心洞察综述</h2>
+                    <p>截至2026年6月10日，国电南瑞股价近期呈现震荡下行态势，6月8日-10日期间累计下跌<span class="highlight-stat">8.02%</span>（6月8日跌3.07%，6月9日微涨0.79%，6月10日再跌1.04%），机构资金分歧明显。国泰基金旗下两只ETF（电网设备ETF国泰561380、机械ETF国泰516960）受市场情绪影响，净值波动加剧，其中重仓国电南瑞的电网设备ETF因资金净赎回和个股下跌导致浮亏扩大。公司基本面短期承压（一季度业绩增速放缓），但长期受益于“十五五”电网投资超5.2万亿元及海外业务扩张，机构目标价31.78元与当前股价存在显著价差。</p>
+                    </section>
+                    <!-- 详细维度分析 -->
+                    <h2 class="card-title" style="background:transparent; border:none; padding-left:0; margin-top:2rem;">详细维度分析</h2>
+                      <div class="grid-2">
+                        <!-- 股价走势 -->
+                        <section class="card">
+                          <h3 class="card-title">一、股价走势与资金动态</h3>
+                            <p><strong>1. 短期股价波动</strong></p>
+                              <ul>
+                                <li><strong>6月8日</strong>：股价跌3.07%，报22.73元/股，连续4日下跌，区间累计跌幅7.02%。当日国泰基金旗下两只ETF合计持有2122.58万股，浮亏1528.26万元，期间累计浮亏3756.97万元<a href="https://cj.sina.cn/article/norm_detail?url=http%3A%2F%2Ffinance.sina.cn%2F2026-06-08%2Fdetail-iniasmvq8806764.d.html" target="_blank" class="source-link">来源</a>。</li>
+                                  <li><strong>6月9日</strong>：股价反弹0.79%，报23.04元/股，成交额12.29亿元，主力资金净流出4136.78万元（占总成交额3.37%），但机构近90天内10家评级中9家买入、1家增持，目标均价31.78元（较当前23.04元溢价38%）<a href="https://m.sohu.com/a/1034379078_121319643/" target="_blank" class="source-link">来源</a>。</li>
+                                    <li><strong>6月10日</strong>：股价继续下跌1.04%，报22.79元/股，在国泰基金旗下电网设备ETF（561380）和机械ETF（516960）中均为重仓下跌个股<a href="https://m.sohu.com/a/1034559944_122014422/" target="_blank" class="source-link">来源</a>。</li>
+                                    </ul>
+                                    <p><strong>2. 资金面特征</strong></p>
+                                      <ul>
+                                        <li>6月9日呈现“机构离场、散户接盘”格局：主力资金净流出4136.78万元，散户净流入6192.2万元<a href="https://m.sohu.com/a/1034379078_121319643/" target="_blank" class="source-link">来源</a>。</li>
+                                          <li>6月10日机械ETF国泰（516960）近一月回报-8.90%，重仓股普跌（国电南瑞跌1.04%、宁德时代跌1.06%等），资金避险情绪浓厚<a href="http://m.163.com/dy/article/KV26UD7I05568W0A.html" target="_blank" class="source-link">来源</a>。</li>
+                                          </ul>
+                                        </section>
+                                        <!-- ETF表现 -->
+                                        <section class="card">
+                                          <h3 class="card-title">二、国泰基金旗下ETF表现</h3>
+                                            <p><strong>1. 电网设备ETF国泰（561380）</strong></p>
+                                              <ul>
+                                                <li><strong>持仓与浮亏</strong>：跟踪恒生A股电网设备指数，6月8日持有国电南瑞2120.61万股（占基金净值9.48%），当日浮亏1528.26万元，期间累计浮亏3756.97万元<a href="https://cj.sina.cn/article/norm_detail?url=http%3A%2F%2Ffinance.sina.cn%2F2026-06-08%2Fdetail-iniasmvq8806764.d.html" target="_blank" class="source-link">来源</a>。</li>
+                                                  <li><strong>近期赎回压力</strong>：连续6个交易日净赎回，近5日累计净赎回1.24亿份，6月10日开盘下跌1.50%，报2.232元，近一个月回报1.09%<a href="https://m.sohu.com/a/1034559944_122014422/" target="_blank" class="source-link">来源</a>。</li>
+                                                  </ul>
+                                                  <p><strong>2. 机械ETF国泰（516960）</strong></p>
+                                                    <ul>
+                                                      <li><strong>业绩基准与表现</strong>：跟踪中证细分机械设备产业主题指数，6月10日开盘跌0.20%，报0.993元，成立以来回报-0.63%，近一月回报-8.90%<a href="http://m.163.com/dy/article/KV26UD7I05568W0A.html" target="_blank" class="source-link">来源</a>。</li>
+                                                        <li><strong>重仓股波动</strong>：国电南瑞跌1.04%，叠加思源电气、特变电工等多股下跌，拖累ETF净值<a href="http://m.163.com/dy/article/KV26UD7I05568W0A.html" target="_blank" class="source-link">来源</a>。</li>
+                                                        </ul>
+                                                      </section>
+                                                    </div>
+                                                    <div class="grid-2">
+                                                      <!-- 基本面 -->
+                                                      <section class="card">
+                                                        <h3 class="card-title">三、公司基本面与业务布局</h3>
+                                                          <p><strong>1. 短期业绩承压</strong></p>
+                                                            <p>2026年一季报：营收95.64亿元（同比增7.52%），归母净利润7.21亿元（同比增6.04%），增速低于去年全年，现金流为负，叠加行业季节性淡季及竞争加剧，估值从高成长回归稳健蓝筹<a href="https://toutiao.com/group/7644135604331692585/" target="_blank" class="source-link">来源</a>。</p>
+                                                              <p><strong>2. 长期业务布局</strong></p>
+                                                                <ul>
+                                                                  <li><strong>技术转型</strong>：布局带电作业机器人蓝海市场，推进IGBT产业化，受益于特高压中标超预期及泛在电力物联网建设加速<a href="https://m.cngold.org/stock/m_600406.html" target="_blank" class="source-link">来源</a>。</li>
+                                                                    <li><strong>行业利好</strong>：“十五五”电网投资超5.2万亿元，海外业务增长84%，财务安全边际稳固<a href="https://toutiao.com/group/7644135604331692585/" target="_blank" class="source-link">来源</a>。</li>
+                                                                    </ul>
+                                                                  </section>
+                                                                  <!-- 评级与估值 -->
+                                                                  <section class="card">
+                                                                    <h3 class="card-title">四、机构评级与估值预期</h3>
+                                                                      <ul>
+                                                                        <li><strong>机构分歧与目标价</strong>：近90天内10家机构评级中9家买入、1家增持，目标均价31.78元（较当前23.04元溢价38%），看好长期电网设备投资驱动<a href="https://m.sohu.com/a/1034379078_121319643/" target="_blank" class="source-link">来源</a>。</li>
+                                                                          <li><strong>技术面风险</strong>：5月26日跌破26元支撑位，技术面破位下行，短期趋势转弱，需关注23.00-23.20元支撑区间<a href="https://toutiao.com/group/7644022942707253760/" target="_blank" class="source-link">来源</a>。</li>
+                                                                          </ul>
+                                                                        </section>
+                                                                      </div>
+                                                                      <!-- 总结与展望 -->
+                                                                      <section class="card" style="border-left: 5px solid var(--primary-color);">
+                                                                        <h2 class="card-title">总结与展望</h2>
+                                                                          <ol>
+                                                                            <li><strong>短期趋势承压</strong>：国电南瑞股价受机构减持、获利盘兑现及市场热点切换（
