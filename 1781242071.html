@@ -1,0 +1,330 @@
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>国电南瑞股价波动及国泰基金ETF持仓动态分析报告</title>
+      <style>
+        :root {
+        /* 颜色方案 */
+        --primary-color: #0056b3; /* 深蓝：专业、稳重 */
+        --accent-color: #00a86b; /* 绿色：金融、增长 */
+        --alert-color: #d9534f; /* 红色：下跌、警示 */
+        --text-main: #333333;
+        --text-secondary: #666666;
+        --bg-body: #f4f6f8;
+        --bg-card: #ffffff;
+        --border-color: #e1e4e8;
+        --link-color: #007bff;
+        --shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        --shadow-hover: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+        /* 基础重置 */
+        * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        }
+        body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        background-color: var(--bg-body);
+        color: var(--text-main);
+        line-height: 1.6;
+        font-size: 16px;
+        -webkit-font-smoothing: antialiased;
+        }
+        /* 布局容器 */
+        .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 0 1rem;
+        }
+        /* 头部样式 */
+        header {
+        background: linear-gradient(135deg, var(--primary-color), #003d80);
+        color: white;
+        padding: 2rem 0;
+        margin-bottom: 2rem;
+        position: relative;
+        box-shadow: var(--shadow);
+        }
+        .header-content {
+        position: relative;
+        z-index: 1;
+        }
+        h1 {
+        font-size: 1.75rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        line-height: 1.3;
+        }
+        .report-date {
+        font-size: 0.9rem;
+        opacity: 0.9;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        }
+        /* 质量标志 */
+        .quality-badge {
+        position: absolute;
+        top: 1.5rem;
+        right: 1rem;
+        background-color: var(--accent-color);
+        color: white;
+        padding: 0.4rem 1rem;
+        border-radius: 50px;
+        font-size: 0.85rem;
+        font-weight: bold;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        }
+        .quality-badge::before {
+        content: "✓";
+        font-weight: 900;
+        }
+        /* 主体内容卡片 */
+        main {
+        padding-bottom: 3rem;
+        }
+        section {
+        background-color: var(--bg-card);
+        border-radius: 12px;
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+        box-shadow: var(--shadow);
+        border: 1px solid var(--border-color);
+        }
+        h2 {
+        font-size: 1.35rem;
+        color: var(--primary-color);
+        border-bottom: 2px solid #f0f0f0;
+        padding-bottom: 0.8rem;
+        margin-bottom: 1rem;
+        font-weight: 600;
+        }
+        h3 {
+        font-size: 1.15rem;
+        color: var(--text-main);
+        margin-top: 1.5rem;
+        margin-bottom: 0.8rem;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        }
+        h3::before {
+        content: "";
+        display: inline-block;
+        width: 4px;
+        height: 1.15rem;
+        background-color: var(--accent-color);
+        margin-right: 0.5rem;
+        border-radius: 2px;
+        }
+        p, li {
+        margin-bottom: 0.8rem;
+        color: var(--text-secondary);
+        text-align: justify;
+        }
+        strong {
+        color: var(--text-main);
+        font-weight: 600;
+        }
+        /* 列表样式 */
+        ul {
+        padding-left: 1.5rem;
+        margin-bottom: 1rem;
+        }
+        li {
+        margin-bottom: 0.5rem;
+        }
+        /* 链接样式 */
+        a {
+        color: var(--link-color);
+        text-decoration: none;
+        transition: color 0.2s;
+        border-bottom: 1px dotted transparent;
+        }
+        a:hover {
+        color: #0056b3;
+        border-bottom-color: #0056b3;
+        }
+        /* 来源链接按钮化 */
+        .source-link {
+        display: inline-flex;
+        align-items: center;
+        font-size: 0.85rem;
+        color: var(--primary-color);
+        background-color: rgba(0, 86, 179, 0.08);
+        padding: 0.2rem 0.6rem;
+        border-radius: 4px;
+        margin-left: 0.5rem;
+        vertical-align: middle;
+        }
+        .source-link:hover {
+        background-color: rgba(0, 86, 179, 0.15);
+        color: var(--primary-color);
+        border-bottom: none;
+        }
+        /* 底部链接列表 */
+        .link-list-section h2 {
+        border-bottom: none;
+        margin-bottom: 0.5rem;
+        }
+        .reference-list {
+        list-style: none;
+        padding: 0;
+        }
+        .reference-list li {
+        background-color: #f8f9fa;
+        border: 1px solid #eee;
+        padding: 1rem;
+        border-radius: 8px;
+        margin-bottom: 0.8rem;
+        transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .reference-list li:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-hover);
+        border-color: #ddd;
+        }
+        .reference-list a {
+        font-weight: 500;
+        color: var(--text-main);
+        display: block;
+        margin-bottom: 0.3rem;
+        border-bottom: none;
+        }
+        .reference-list a:hover {
+        color: var(--primary-color);
+        }
+        .reference-url {
+        font-size: 0.8rem;
+        color: #888;
+        word-break: break-all;
+        display: block;
+        }
+        /* 响应式调整 */
+        @media (max-width: 600px) {
+        h1 {
+        font-size: 1.4rem;
+        }
+        .quality-badge {
+        position: relative;
+        top: 0;
+        right: 0;
+        margin-top: 1rem;
+        align-self: flex-start;
+        }
+        header {
+        padding-bottom: 1.5rem;
+        }
+        section {
+        padding: 1.25rem;
+        border-radius: 8px;
+        }
+        h2 {
+        font-size: 1.2rem;
+        }
+        h3 {
+        font-size: 1.1rem;
+        }
+        /* 确保触摸目标足够大 */
+        .source-link, .reference-list li {
+        min-height: 44px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        }
+        }
+      </style>
+    </head>
+    <body>
+      <header>
+        <div class="container">
+          <div class="header-content">
+            <h1>国电南瑞股价波动及国泰基金ETF持仓动态分析报告</h1>
+              <div class="report-date">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                  <time>2026年06月12日</time>
+                  </div>
+                </div>
+                <div class="quality-badge">质量标志：通过</div>
+                </div>
+              </header>
+              <main class="container">
+                <!-- 核心洞察综述 -->
+                <section>
+                  <h2>核心洞察综述</h2>
+                    <p>截至2026年06月12日，国电南瑞（600406）股价近期持续波动，从6月8日起连续4日下跌后，在6月12日的电网设备ETF半日交易中止跌反弹。国泰基金旗下两只ETF因重仓国电南瑞产生短期浮亏，但电网设备ETF（561380）在板块利好推动下日内表现回暖。关键信息显示，电网设备板块受“十五五”电网投资规划及集中招标预期支撑，但短期资金分歧和获利盘调整仍存。</p>
+                    </section>
+                    <!-- 详细维度分析 -->
+                    <section>
+                      <h2>详细维度分析</h2>
+                        <h3>一、国电南瑞股价走势与市场影响</h3>
+                          <ul>
+                            <li>
+                              <strong>短期股价波动</strong><br>
+                                <strong>6月8日至12日</strong>：国电南瑞股价连续4日下跌，6月8日报22.73元/股，区间累计跌幅7.02%，当日跌3.07%。国泰基金旗下两只ETF因重仓该股，合计持有2122.58万股，当日浮亏1528.26万元，其中国泰恒生A股电网设备ETF（561380）持有2120.61万股（占净值9.48%，第三大重仓股），国泰中证细分机械设备产业主题ETF（516960）持有1.97万股（占净值3.17%）<a href="https://cj.sina.cn/article/norm_detail?url=http%3A%2F%2Ffinance.sina.cn%2F2026-06-08%2Fdetail-iniasmvq8806764.d.html" class="source-link" target="_blank">来源链接</a>。
+                                </li>
+                                <li>
+                                  <strong>6月12日反弹</strong>：当日电网设备ETF半日涨1.58%，报2.186元，国电南瑞在该ETF重仓股中上涨2.10%，带动板块情绪修复<a href="https://finance.sina.com.cn/money/fund/aiassistant/etfwp/2026-06-12/doc-iniccfxv3595463.shtml" class="source-link" target="_blank">来源链接</a>。
+                                  </li>
+                                </ul>
+                                <ul>
+                                  <li>
+                                    <strong>中长期基本面支撑</strong><br>
+                                      5月16日、26日分析指出，国电南瑞一季度营收95.64亿元、净利润7.21亿元（同比增长），国家电网“十五五”规划投资4.1万亿元利好核心业务，技术壁垒与多元化业务为长期支撑<a href="http://m.toutiao.com/group/7648169364373455395/" class="source-link" target="_blank">来源链接</a>。但5月26日股价跌破26元关键支撑，技术形态走坏，短期受获利盘兑现、板块轮动影响<a href="https://toutiao.com/group/7622960722745524746/" class="source-link" target="_blank">来源链接</a>。
+                                    </li>
+                                  </ul>
+                                  <h3>二、国泰基金旗下ETF持仓及动态</h3>
+                                    <ul>
+                                      <li>
+                                        <strong>电网设备ETF（561380）</strong><br>
+                                          <strong>规模扩张</strong>：成立于2024年12月11日，截至6月10日份额达31.95亿份，规模69.56亿元，今年以来份额增长852.68%，规模增长1160.11%，前十大权重股占比超46%<a href="https://wap.eastmoney.com/quote/stock/1.600406.html" class="source-link" target="_blank">来源链接</a>。
+                                          </li>
+                                          <li>
+                                            <strong>重仓股表现</strong>：6月12日半日涨1.58%，重仓股涨跌互现，东方电缆涨4.92%、国电南瑞涨2.10%，亨通光跌3.31%、思源电气涨1.90%<a href="https://finance.sina.com.cn/money/fund/aiassistant/etfwp/2026-06-12/doc-iniccfxv3595463.shtml" class="source-link" target="_blank">来源链接</a>；6月11日午间收盘跌1.61%，但当日成交额3.37亿元，显示资金分歧<a href="https://cj.sina.cn/article/norm_detail?url=http%3A%2F%2Ffinance.sina.cn%2F2026-06-11%2Fdetail-iniazayv4076555.d.html" class="source-link" target="_blank">来源链接</a>。
+                                            </li>
+                                          </ul>
+                                          <ul>
+                                            <li>
+                                              <strong>机械ETF（516960）</strong><br>
+                                                跟踪中证细分机械设备产业主题指数，6月9日开盘涨1.13%，十大重仓股全线上涨（宁德时代涨1.77%、阳光电源涨1.80%）；6月10日午间跌3.62%，重仓股中宁德时代跌2.72%、阳光电源跌6.29%，近一个月回报-8.90%<a href="https://cj.sina.cn/article/norm_detail?url=http%3A%2F%2Ffinance.sina.cn%2F2026-06-10%2Fdetail-iniawttx4634745.d.html" class="source-link" target="_blank">来源链接</a>。
+                                              </li>
+                                            </ul>
+                                            <h3>三、板块与行业动态</h3>
+                                              <ul>
+                                                <li>
+                                                  <strong>电网设备板块利好</strong><br>
+                                                    5月11日，中信证券研报指出2026年Q2起第三批大型风光基地配套工程集中招标，全年电网设备投资同比增长12%以上，智能化设备占比或突破45%，国泰电网设备ETF（561380）因纯度高、费率低（0.60%/年）被视为布局工具<a href="http://www.nbd.com.cn/rss/jinri_toutiao/articles/4386586.html" class="source-link" target="_blank">来源链接</a>。
+                                                  </li>
+                                                  <li>
+                                                    <strong>份额与资金流向</strong><br>
+                                                      6月2日，国泰电网设备ETF连续6日净赎回1.24亿份，上一交易日净赎回1200万份，但规模仍达72.55亿元（截至5月11日），同赛道ETF（易方达、广发）获净申购，显示资金分歧<a href="http://finance.sina.com.cn/stock/zqgd/2026-06-02/doc-inhzzivn3117299.shtml" class="source-link" target="_blank">来源链接</a>。
+                                                    </li>
+                                                  </ul>
+                                                </section>
+                                                <!-- 总结与展望 -->
+                                                <section>
+                                                  <h2>总结与展望</h2>
+                                                    <p>国电南瑞短期受市场情绪和板块调整影响股价承压，但6月12日电网设备ETF反弹带动其止跌回升，基本面稳健性未改。国泰基金旗下ETF因快速扩张的规模和高集中度持仓面临短期波动风险，但中长期受益于能源基建升级。投资者需关注6月12日反弹持续性及电网设备板块招标落地情况，技术面关键支撑位（23.00元）与机构资金流向将影响后续走势。</p>
+                                                    </section>
+                                                    <!-- 资讯标题与链接列表 -->
+                                                    <section class="link-list-section">
+                                                      <h2>资讯标题与链接列表</h2>
+                                                        <p style="font-size: 0.9rem; margin-bottom: 1rem; color: #666;">（按发布日期由近到远排序）</p>
+                                                          <ul class="reference-list">
+                                                            <li>
+                                                              <a href="https://finance.sina.com.cn/money/fund/aiassistant/etfwp/2026-06-12/doc-iniccfxv3595463.shtml" target="_blank">1. 电网设备ETF国泰（561380）半日涨1.58%，国电南瑞涨2.10%</a>
+                                                                <span class="reference-url">https://finance.sina.com.cn/money/fund/aiassistant/etfwp/2026-06-12/doc-iniccfxv3595463.shtml</span>
+                                                                </li>
+                                                                <li>
+                                                                  <a href="https://finance.sina.com.cn/money/fund/aiassistant/etfsp/2026-06-11/doc-iniazihq5584189.shtml" target="_blank">2. 电网设备ETF国泰（561380）当日收盘跌1.24%</a>
+                                                                    <span class="reference-url">https://finance.sina.com.cn/money/fund/aiassistant/etfsp/2026-06-11/doc-iniazihq5584189.shtml</span>
+                                                                    </li>
+                                                                    <li>
+                                                                      <a href="https://cj.sina.cn/article/norm_detail?url=http
