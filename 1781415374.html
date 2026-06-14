@@ -1,0 +1,221 @@
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>洞察分析报告：无素材时无法生成分析内容</title>
+      <style>
+        /* 全局变量定义：颜色方案 */
+        :root {
+        --primary-color: #2c3e50;    /* 深蓝灰色，用于主标题 */
+        --accent-color: #e67e22;     /* 橙色，用于强调和警告状态 */
+        --bg-color: #f4f7f6;         /* 浅灰背景，用于页面背景 */
+        --card-bg: #ffffff;          /* 白色，用于内容卡片 */
+        --text-main: #333333;        /* 主要文字颜色 */
+        --text-secondary: #666666;   /* 次要文字颜色 */
+        --border-color: #e0e0e0;     /* 边框颜色 */
+        --spacing-unit: 1rem;
+        }
+        /* 基础重置与排版 */
+        * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        }
+        body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        background-color: var(--bg-color);
+        color: var(--text-main);
+        line-height: 1.6;
+        font-size: 16px;
+        padding: calc(var(--spacing-unit) * 2);
+        }
+        /* 布局容器 */
+        .container {
+        max-width: 800px;
+        margin: 0 auto;
+        background-color: var(--card-bg);
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        overflow: hidden;
+        position: relative;
+        }
+        /* 头部区域 */
+        header {
+        background-color: var(--primary-color);
+        color: white;
+        padding: calc(var(--spacing-unit) * 2);
+        padding-top: calc(var(--spacing-unit) * 3); /* 为右上角徽章留出空间 */
+        position: relative;
+        }
+        h1 {
+        font-size: 1.5rem;
+        font-weight: 600;
+        line-height: 1.4;
+        margin-bottom: 0.5rem;
+        }
+        /* 质量标志 - 右上角悬浮 */
+        .quality-badge {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        background-color: var(--accent-color);
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 50px;
+        font-size: 0.85rem;
+        font-weight: bold;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        max-width: 50%;
+        text-align: right;
+        z-index: 10;
+        }
+        /* 主要内容区域 */
+        main {
+        padding: calc(var(--spacing-unit) * 2);
+        }
+        /* 状态摘要框 */
+        .status-summary {
+        background-color: #fff8e1; /* 浅橙色背景提示注意 */
+        border-left: 4px solid var(--accent-color);
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+        border-radius: 0 4px 4px 0;
+        }
+        .status-summary p {
+        margin-bottom: 1rem;
+        }
+        .meta-date {
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+        margin-top: 1rem !important;
+        padding-top: 1rem;
+        border-top: 1px dashed var(--border-color);
+        }
+        /* 章节通用样式 */
+        section {
+        margin-bottom: 2.5rem;
+        }
+        h2 {
+        font-size: 1.25rem;
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid var(--border-color);
+        }
+        /* 列表样式 */
+        ul {
+        list-style: none;
+        padding-left: 0;
+        }
+        ul li {
+        margin-bottom: 1rem;
+        padding-left: 1.5rem;
+        position: relative;
+        }
+        ul li::before {
+        content: "•";
+        color: var(--accent-color);
+        font-weight: bold;
+        position: absolute;
+        left: 0;
+        font-size: 1.2em;
+        line-height: 1.4;
+        }
+        strong {
+        color: var(--primary-color);
+        font-weight: 600;
+        }
+        /* 链接列表占位符 */
+        .placeholder-list {
+        background-color: #f9f9f9;
+        padding: 1.5rem;
+        border-radius: 4px;
+        border: 1px solid var(--border-color);
+        text-align: center;
+        }
+        .placeholder-list p {
+        color: var(--text-secondary);
+        font-style: italic;
+        margin-bottom: 1rem;
+        }
+        .note {
+        font-size: 0.85rem;
+        color: #888;
+        text-align: left;
+        margin-top: 1rem;
+        background: #eee;
+        padding: 0.5rem;
+        border-radius: 4px;
+        }
+        /* 响应式设计：移动端适配 */
+        @media (max-width: 600px) {
+        body {
+        padding: 0;
+        }
+        .container {
+        border-radius: 0;
+        box-shadow: none;
+        }
+        header {
+        padding: 1.5rem;
+        padding-top: 3.5rem; /* 增加顶部内边距以容纳徽章 */
+        }
+        h1 {
+        font-size: 1.25rem;
+        }
+        /* 移动端质量标志调整：确保文字不溢出且可读 */
+        .quality-badge {
+        top: 0.8rem;
+        right: 0.8rem;
+        left: 0.8rem; /* 移动端横跨顶部 */
+        max-width: none;
+        text-align: center;
+        font-size: 0.75rem;
+        white-space: normal; /* 允许换行 */
+        }
+        .status-summary {
+        padding: 1rem;
+        }
+        }
+      </style>
+    </head>
+    <body>
+      <div class="container">
+        <!-- 头部区域：包含标题和质量标志 -->
+        <header>
+          <h1>洞察分析报告：无素材时无法生成分析内容</h1>
+            <!-- 质量标志：根据要求放置在显眼位置（右上角） -->
+            <div class="quality-badge">
+              质量标志：不完整（模型因缺乏素材无法生成有效分析内容）
+            </div>
+          </header>
+          <main>
+            <!-- 状态摘要 -->
+            <div class="status-summary">
+              <p>由于用户提供的素材为空列表（[]），无法进行分析洞察所需的信息提取与验证。请提供包含具体资讯内容的素材后重新发起请求，以便生成符合要求的分析报告。</p>
+                <p class="meta-date"><strong>报告生成日期</strong>：2026年06月14日</p>
+                </div>
+                <!-- 重要说明部分 -->
+                <section>
+                  <h2>重要说明</h2>
+                    <ul>
+                      <li><strong>素材缺失</strong>：当前用户提供的素材为空，无法进行任何基于文本的分析。</li>
+                        <li><strong>信息引用</strong>：所有分析需基于提供的具体资讯内容，无素材时无法生成结构化分析。</li>
+                          <li><strong>后续操作</strong>：请补充相关素材（如新闻资讯、行业报告等文本内容），我将按照要求生成包含标题、日期、链接及分析内容的洞察报告。</li>
+                          </ul>
+                        </section>
+                        <!-- 资讯列表占位符 -->
+                        <section class="placeholder-list">
+                          <h2>所有资讯标题及链接列表（因素材缺失暂无法生成）</h2>
+                            <p>（待用户提供素材后，此部分将补充为按发布日期排序的标题与链接列表）</p>
+                              <div class="note">
+                                <strong>注</strong>：若用户后续补充素材，需确保内容包含具体资讯文本、来源链接及发布日期，以便进行交叉验证和时效标注。
+                                </div>
+                              </section>
+                            </main>
+                          </div>
+                        </body>
+                      </html>
+                      ```
