@@ -1,0 +1,364 @@
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>国电南瑞股价震荡与国泰电网设备ETF资金流动分析（2026-06-16）</title>
+      <style>
+        /* --- CSS Reset & Variables --- */
+        :root {
+        --primary-color: #0f172a; /* 深蓝 - 标题/主视觉 */
+        --secondary-color: #2563eb; /* 亮蓝 - 链接/重点 */
+        --accent-color: #0ea5e9; /* 天蓝 - 装饰 */
+        --success-color: #10b981; /* 绿色 - 正向/通过 */
+        --warning-color: #f59e0b; /* 橙色 - 警示 */
+        --danger-color: #ef4444; /* 红色 - 负向/流出 */
+        --bg-color: #f8fafc; /* 浅灰背景 */
+        --card-bg: #ffffff; /* 卡片背景 */
+        --text-main: #334155; /* 主要文字 */
+        --text-light: #64748b; /* 次要文字 */
+        --border-radius: 12px;
+        --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        --max-width: 900px;
+        }
+        * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        }
+        body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+        background-color: var(--bg-color);
+        color: var(--text-main);
+        line-height: 1.6;
+        font-size: 16px;
+        -webkit-font-smoothing: antialiased;
+        }
+        /* --- Layout --- */
+        .container {
+        max-width: var(--max-width);
+        margin: 0 auto;
+        padding: 0 1rem;
+        }
+        /* --- Header --- */
+        header {
+        background-color: var(--card-bg);
+        padding: 2rem 0;
+        border-bottom: 1px solid #e2e8f0;
+        position: relative;
+        }
+        .header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        gap: 1rem;
+        }
+        .title-group h1 {
+        font-size: 1.5rem;
+        color: var(--primary-color);
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        line-height: 1.3;
+        }
+        .meta-info {
+        font-size: 0.875rem;
+        color: var(--text-light);
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        }
+        /* Quality Badge */
+        .quality-badge {
+        background-color: #ecfdf5;
+        color: var(--success-color);
+        border: 1px solid #a7f3d0;
+        padding: 0.5rem 1rem;
+        border-radius: 999px;
+        font-weight: 600;
+        font-size: 0.875rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        box-shadow: 0 2px 4px rgba(16, 185, 129, 0.1);
+        }
+        .quality-badge::before {
+        content: "✓";
+        font-weight: bold;
+        }
+        /* --- Sections --- */
+        main {
+        padding: 2rem 0;
+        }
+        section {
+        margin-bottom: 2.5rem;
+        }
+        h2 {
+        font-size: 1.25rem;
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+        padding-left: 0.75rem;
+        border-left: 4px solid var(--secondary-color);
+        display: flex;
+        align-items: center;
+        }
+        h3 {
+        font-size: 1.1rem;
+        color: var(--text-main);
+        margin: 1.5rem 0 0.75rem 0;
+        ;
+        font-weight: 600;
+        }
+        p {
+        margin-bottom: 1rem;
+        text-align: justify;
+        }
+        /* --- Components --- */
+        .card {
+        background: var(--card-bg);
+        border-radius: var(--border-radius);
+        padding: 1.5rem;
+        box-shadow: var(--shadow);
+        margin-bottom: 1rem;
+        border: 1px solid #f1f5f9;
+        }
+        .highlight-box {
+        background: linear-gradient(135deg, #eff6ff 0%, #ffffff 100%);
+        border: 1px solid #bfdbfe;
+        border-left: 5px solid var(--secondary-color);
+        }
+        /* --- Lists & Timeline --- */
+        ul {
+        list-style: none;
+        padding-left: 0;
+        }
+        .feature-list li {
+        position: relative;
+        padding-left: 1.5rem;
+        margin-bottom: 0.75rem;
+        }
+        .feature-list li::before {
+        content: "•";
+        color: var(--secondary-color);
+        font-weight: bold;
+        font-size: 1.5rem;
+        position: absolute;
+        left: 0;
+        top: -0.2rem;
+        }
+        /* Timeline Style for History */
+        .timeline-list {
+        border-left: 2px solid #e2e8f0;
+        margin-left: 0.5rem;
+        padding-left: 1.5rem;
+        }
+        .timeline-item {
+        position: relative;
+        margin-bottom: 1.5rem;
+        }
+        .timeline-item::before {
+        content: "";
+        position: absolute;
+        left: -1.95rem; /* Adjust based on padding/border */
+        top: 0.25rem;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background-color: var(--card-bg);
+        border: 2px solid var(--secondary-color);
+        }
+        .timeline-date {
+        font-weight: 700;
+        color: var(--secondary-color);
+        font-size: 0.9rem;
+        margin-bottom: 0.25rem;
+        display: block;
+        }
+        /* --- Links --- */
+        a {
+        color: var(--secondary-color);
+        text-decoration: none;
+        transition: color 0.2s ease, text-decoration 0.2s ease;
+        word-break: break-all; /* Prevent long URLs from breaking layout */
+        }
+        a:hover {
+        color: var(--primary-color);
+        text-decoration: underline;
+        }
+        .source-link {
+        display: inline-block;
+        font-size: 0.8rem;
+        color: var(--text-light);
+        background: #f1f5f9;
+        padding: 0.2rem 0.6rem;
+        border-radius: 4px;
+        margin-top: 0.5rem;
+        }
+        .source-link:hover {
+        background: #e2e8f0;
+        color: var(--secondary-color);
+        text-decoration: none;
+        }
+        /* --- Grid for Outlook --- */
+        .outlook-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        }
+        .outlook-card {
+        background: var(--card-bg);
+        padding: 1.25rem;
+        border-radius: var(--border-radius);
+        box-shadow: var(--shadow);
+        border-top: 4px solid var(--accent-color);
+        }
+        .outlook-card h4 {
+        color: var(--primary-color);
+        margin-bottom: 0.5rem;
+        font-size: 1rem;
+        }
+        /* --- References Table/List --- */
+        .ref-list {
+        font-size: 0.85rem;
+        }
+        .ref-item {
+        display: flex;
+        flex-direction: column;
+        padding: 0.75rem 0;
+        border-bottom: 1px solid #e2e8f0;
+        }
+        .ref-item:last-child {
+        border-bottom: none;
+        }
+        .ref-title {
+        font-weight: 600;
+        color: var(--text-main);
+        margin-bottom: 0.25rem;
+        }
+        .ref-meta {
+        color: var(--text-light);
+        font-size: 0.8rem;
+        }
+        /* --- Footer --- */
+        footer {
+        text-align: center;
+        padding: 2rem 0;
+        color: var(--text-light);
+        font-size: 0.875rem;
+        border-top: 1px solid #e2e8f0;
+        margin-top: 2rem;
+        }
+        /* --- Responsive Tweaks --- */
+        @media (min-width: 768px) {
+        .title-group h1 {
+        font-size: 2rem;
+        }
+        .outlook-grid {
+        grid-template-columns: 1fr 1fr;
+        }
+        .ref-item {
+        flex-direction: row;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 1rem;
+        }
+        .ref-meta {
+        white-space: nowrap;
+        }
+        }
+      </style>
+    </head>
+    <body>
+      <header>
+        <div class="container header-content">
+          <div class="title-group">
+            <h1>国电南瑞股价震荡与国泰电网设备ETF资金流动分析</h1>
+              <div class="meta-info">
+                <span>📅 报告日期：2026年06月16日</span>
+                </div>
+              </div>
+              <div class="quality-badge">
+                质量标志：通过
+              </div>
+            </div>
+          </header>
+          <main class="container">
+            <!-- 核心洞察综述 -->
+            <section>
+              <div class="card highlight-box">
+                <h2>核心洞察综述</h2>
+                  <p>截至2026年6月16日，国电南瑞股价在22.5-24元区间经历震荡，呈现<strong>内资主力持续净流出</strong>而<strong>北向资金逆势加仓</strong>的资金分化格局。国泰恒生A股电网设备ETF（561380）虽规模短期快速扩张，但面临连续净赎回压力，其重仓股国电南瑞当日微涨0.17%，与板块内部分化走势相符。电网设备板块中长期受益于国内外双轮驱动（国内特高压招标放量、国际订单增长及AI数据中心电力需求），短期则受获利盘兑现、资金轮动影响承压。</p>
+                  </div>
+                </section>
+                <!-- 详细维度分析 -->
+                <section>
+                  <h2>详细维度分析</h2>
+                    <!-- 1. 国电南瑞 -->
+                    <div class="card">
+                      <h3>1. 国电南瑞股价走势与资金动态</h3>
+                        <h4>（1）短期股价表现与资金分歧</h4>
+                          <p>2026年6月16日，国电南瑞股价开盘微涨0.17%，但整体维持22.5-24元区间震荡。</p>
+                            <p>资金面呈现鲜明反差：**内资主力持续净流出**，散户接盘，短期因“业绩增速平缓、储能毛利率下滑、大盘股缺短线资金及前期浮盈兑现”导致流出；**北向资金逆势加仓**，外资在25元附近持续布局，中长期看好其“电网设备垄断地位、充足订单、稳健财务及储能、海外、数能融合三大增长曲线”。</p>
+                              <a href="https://toutiao.com/group/7651782378204987938/" target="_blank" class="source-link">来源：头条资讯 (2026-06-16)</a>
+                                <a href="https://cj.sina.cn/article/norm_detail?url=http%3A%2F%2Ffinance.sina.cn%2F2026-06-16%2Fdetail-inicqhiu9482864.d.html" target="_blank" class="source-link">来源：新浪财经 (2026-06-16)</a>
+                                  <h4>（2）近期股价波动历史</h4>
+                                    <div class="timeline-list">
+                                      <div class="timeline-item">
+                                        <span class="timeline-date">2026年6月1日</span>
+                                          <p>收盘价25.22元，涨1.29%，北向资金净流入6.78亿元居首，但内资主力近两周净流出超12亿元，融资余额净偿还1.28亿元，多空分歧显著。</p>
+                                            <a href="http://m.toutiao.com/group/7646339531406311942/" target="_blank" class="source-link">查看详情</a>
+                                            </div>
+                                            <div class="timeline-item">
+                                              <span class="timeline-date">2026年5月26日</span>
+                                                <p>高开低走收25.73元，跌幅2.02%，核心原因包括“电力板块轮动至火电、AI赛道吸金、电网投资利好消化、订单增速放缓、估值偏高及技术面破位”，机构长线锁仓但短线减持。</p>
+                                                  <a href="https://toutiao.com/group/7644022942707253760/" target="_blank" class="source-link">查看详情</a>
+                                                  </div>
+                                                  <div class="timeline-item">
+                                                    <span class="timeline-date">2026年3月30日</span>
+                                                      <p>收26.63元，跌幅1.84%，技术指标显示空头行情，2027年预测每股收益1.42元，市盈率26.78倍，行业数字化趋势存机遇但市场不确定性大。</p>
+                                                        <a href="https://toutiao.com/group/7622960722745524746/" target="_blank" class="source-link">查看详情</a>
+                                                        </div>
+                                                      </div>
+                                                    </div>
+                                                    <!-- 2. 国泰电网设备ETF -->
+                                                    <div class="card">
+                                                      <h3>2. 国泰电网设备ETF（561380）表现与资金流动</h3>
+                                                        <h4>（1）短期规模与业绩</h4>
+                                                          <ul class="feature-list">
+                                                            <li><strong>规模扩张与净赎回矛盾</strong>：2026年6月15日数据显示，截至6月12日基金份额30.43亿份，规模65.55亿元，**今年以来份额增加807.36%，规模增加1087.38%**，但**连续多日净赎回**（2026-01-18起连续6日净赎回，累计1.24亿份；2026-06-02再次连续6日净赎回）。</li>
+                                                              <li><strong>业绩表现</strong>：成立以来回报122.90%（截至2026-06-16），近一月回报0.62%，业绩基准为恒生A股电网设备指数收益率，管理费率0.50%+托管费率0.10%（综合0.60%/年），规模在同指数3只产品中排名第一。</li>
+                                                              </ul>
+                                                              <h4>（2）持仓与涨跌分化</h4>
+                                                                <ul class="feature-list">
+                                                                  <li><strong>重仓股表现</strong>：2026年6月16日当日，国泰电网设备ETF前十大权重股涨跌互现，国电南瑞涨0.17%，但其他重仓股分化明显：亨通光电跌1.08%、思源电气跌0.84%，中国西电涨4.66%、特变电工涨0.38%。</li>
+                                                                    <li><strong>风险提示</strong>：前十大权重股占比60.59%，集中度较高，需关注单一标的波动对ETF净值影响。</li>
+                                                                    </ul>
+                                                                    <a href="https://finance.sina.com.cn/money/fund/aiassistant/etfsp/2026-06-15/doc-inicnpyv4989274.shtml" target="_blank" class="source-link">来源：新浪基金 (2026-06-15)</a>
+                                                                    </div>
+                                                                    <!-- 3. 板块驱动 -->
+                                                                    <div class="card">
+                                                                      <h3>3. 电网设备板块驱动因素</h3>
+                                                                        <p>2026年6月15日，电网板块受多重利好驱动：</p>
+                                                                          <ul class="feature-list">
+                                                                            <li><strong>国内投资</strong>：国网第二批输电设备招标金额同比增长32%，特高压全年招标放量概率显著提升。</li>
+                                                                              <li><strong>国际市场</strong>：电力设备龙头订单与盈利持续向上，出口数据验证出海逻辑。</li>
+                                                                                <li><strong>新兴需求</strong>：AI数据中心电力需求激增，北美面临缺电困境，强化电网投资预期。</li>
+                                                                                </ul>
+                                                                                <p>板块正从“国内投资驱动”切换至“国内外双轮驱动”。</p>
+                                                                                  <a href="https://xueqiu.com/S/SH561380" target="_blank" class="source-link">来源：雪球 (2026-06-15)</a>
+                                                                                  </div>
+                                                                                  <!-- 4. 同赛道 -->
+                                                                                  <div class="card">
+                                                                                    <h3>4. 同赛道ETF资金分化</h3>
+                                                                                      <p>2026年1月18日，国泰电网设备ETF出现连续净赎回，而同赛道的<strong>电网设备ETF易方达（560390）和广发（159320）均获净申购</strong>，显示投资者对ETF产品选择分化。</p>
+                                                                                        <a href="http://m.toutiao.com/group/7646736831091376683/" target="_blank" class="source-link">来源：头条资讯 (2026-01-18)</a>
+                                                                                        </div>
+                                                                                      </section>
+                                                                                      <!-- 总结与展望 -->
+                                                                                      <section>
+                                                                                        <h2>总结与展望</h2>
+                                                                                          <div class="outlook-grid">
+                                                                                            <div class="outlook-card">
+                                                                                              <h4>短期（1-3个月）</h4>
+                                                                                                <ul class="feature-list
