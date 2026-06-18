@@ -1,0 +1,336 @@
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>2026年06月18日中国AI算力与“算电协同”发展洞察报告</title>
+      <style>
+        /* --- CSS Reset & Variables --- */
+        :root {
+        --primary-color: #0f172a; /* 深蓝 - 科技感 */
+        --secondary-color: #0ea5e9; /* 天蓝 - 能源/算力 */
+        --accent-color: #f59e0b; /* 琥珀色 - 重点/警示 */
+        --success-color: #22c55e; /* 绿色 - 通过/积极 */
+        --text-main: #334155;
+        --text-light: #64748b;
+        --bg-body: #f1f5f9;
+        --bg-card: #ffffff;
+        --spacing-unit: 1rem;
+        --border-radius: 12px;
+        --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+        --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+        }
+        * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        }
+        body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+        background-color: var(--bg-body);
+        color: var(--text-main);
+        line-height: 1.6;
+        font-size: 16px;
+        -webkit-font-smoothing: antialiased;
+        }
+        /* --- Layout & Typography --- */
+        .container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 2rem 1rem;
+        }
+        h1, h2, h3, h4 {
+        color: var(--primary-color);
+        line-height: 1.3;
+        margin-bottom: 1rem;
+        }
+        h1 {
+        font-size: clamp(1.5rem, 5vw, 2.25rem);
+        font-weight: 800;
+        margin-bottom: 0.5rem;
+        padding-right: 100px; /* Space for quality flag */
+        }
+        h2 {
+        font-size: 1.5rem;
+        border-left: 5px solid var(--secondary-color);
+        padding-left: 1rem;
+        margin-top: 2.5rem;
+        margin-bottom: 1.5rem;
+        }
+        h3 {
+        font-size: 1.25rem;
+        margin-top: 1.5rem;
+        color: #1e293b;
+        }
+        p {
+        margin-bottom: 1rem;
+        }
+        strong, b {
+        color: var(--primary-color);
+        font-weight: 700;
+        }
+        .highlight {
+        color: var(--secondary-color);
+        font-weight: bold;
+        }
+        .highlight-accent {
+        color: var(--accent-color);
+        font-weight: bold;
+        }
+        /* --- Components --- */
+        .card {
+        background: var(--bg-card);
+        border-radius: var(--border-radius);
+        padding: 1.5rem;
+        box-shadow: var(--shadow-sm);
+        margin-bottom: 1.5rem;
+        border: 1px solid rgba(226, 232, 240, 0.8);
+        }
+        .hero-card {
+        background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        color: white;
+        border: none;
+        position: relative;
+        overflow: hidden;
+        }
+        .hero-card h2 {
+        color: white;
+        border-left-color: var(--accent-color);
+        margin-top: 0;
+        }
+        .hero-card p {
+        color: #cbd5e1;
+        margin-bottom: 1.2rem;
+        }
+        .hero-card strong {
+        color: var(--secondary-color);
+        }
+        /* --- Lists --- */
+        ul {
+        list-style: none;
+        padding-left: 0;
+        }
+        ul.feature-list {
+        margin-top: 1rem;
+        }
+        ul.feature-list li {
+        position: relative;
+        padding-left: 1.5rem;
+        margin-bottom: 0.8rem;
+        }
+        ul.feature-list li::before {
+        content: "•";
+        color: var(--secondary-color);
+        font-size: 1.5rem;
+        position: absolute;
+        left: 0;
+        top: -0.2rem;
+        }
+        /* --- Quality Flag --- */
+        .quality-flag {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: var(--success-color);
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 0 0 0 12px;
+        font-weight: bold;
+        font-size: 0.9rem;
+        box-shadow: var(--shadow-md);
+        z-index: 10;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        }
+        /* --- Sources Section --- */
+        .sources-section {
+        margin-top: 3rem;
+        border-top: 2px dashed #cbd5e1;
+        padding-top: 2rem;
+        }
+        .source-item {
+        display: flex;
+        flex-direction: column;
+        background: #fff;
+        padding: 1rem;
+        margin-bottom: 1rem;
+        border-radius: 8px;
+        border-left: 4px solid var(--text-light);
+        transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .source-item:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-md);
+        border-left-color: var(--secondary-color);
+        }
+        .source-meta {
+        font-size: 0.85rem;
+        color: var(--text-light);
+        margin-bottom: 0.5rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        }
+        .source-link {
+        color: var(--secondary-color);
+        text-decoration: none;
+        font-weight: 600;
+        display: inline-flex;
+        align-items: center;
+        margin-top: 0.5rem;
+        font-size: 0.9rem;
+        }
+        .source-link:after {
+        content: " ↗";
+        font-size: 1.1em;
+        }
+        .source-link:hover {
+        text-decoration: underline;
+        }
+        .old-info-badge {
+        background-color: #fee2e2;
+        color: #991b1b;
+        padding: 0.2rem 0.5rem;
+        border-radius: 4px;
+        font-size: 0.75rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        }
+        /* --- Responsive Tweaks --- */
+        @media (max-width: 768px) {
+        .container {
+        padding: 1.5rem 1rem;
+        }
+        h1 {
+        padding-right: 0; /* Reset padding on mobile */
+        margin-bottom: 1rem;
+        }
+        /* Make quality flag a top bar on mobile for better visibility */
+        .quality-flag {
+        position: fixed;
+        top: 0;
+        right: 0;
+        left: 0;
+        border-radius: 0;
+        justify-content: center;
+        padding: 0.5rem;
+        font-size: 0.8rem;
+        }
+        body {
+        padding-top: 40px; /* Space for fixed flag */
+        }
+        .card {
+        padding: 1.25rem;
+        }
+        }
+      </style>
+    </head>
+    <body>
+      <div class="container">
+        <!-- Header -->
+        <header style="position: relative;">
+          <div class="quality-flag">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+              质量标志：通过
+            </div>
+            <h1>2026年06月18日中国AI算力与“算电协同”发展洞察报告</h1>
+              <p style="color: var(--text-light); font-size: 0.9rem; margin-top: 0.5rem;">发布日期：2026年06月18日</p>
+              </header>
+              <main>
+                <!-- 核心洞察综述 -->
+                <section class="card hero-card">
+                  <h2>核心洞察综述</h2>
+                    <p>截至2026年中，我国AI算力与“能源+AI”融合发展已进入规模化落地阶段。<strong class="highlight">算力基建</strong>方面，2025年建成42个万卡级智算集群，智能算力总规模达1590 EFLOPS，超70%布局于西部绿电富集区，“东数西算”枢纽覆盖成效显著。<strong class="highlight">能源AI大模型</strong>实现电网、油气等全产业链渗透，标杆场景数据亮眼。<strong class="highlight-accent">“算电协同”</strong>首次写入2026年政府工作报告，成为国家战略方向，绿电直供项目落地与技术标准突破加速推进，但时空错配、经济与技术冲突仍是核心挑战。未来6-12个月将聚焦政策落地与技术破局，预计2028年“零碳算力”将成行业标配。</p>
+                    </section>
+                    <!-- 详细维度分析 -->
+                    <section>
+                      <h2>详细维度分析</h2>
+                        <!-- 一、AI算力基建 -->
+                        <article class="card">
+                          <h3>一、AI算力基建规模与“东数西算”布局</h3>
+                            <p><strong>智算集群与算力规模</strong>：截至2025年底，我国建成<strong class="highlight">42个万卡级智算集群</strong>，智能算力总规模达1590 EFLOPS，覆盖“东数西算”八大枢纽，西部能源富集区域新增算力占比超70%，算力规模跻身全球第一梯队（2025年数据，来源1）。</p>
+                              <p><strong>绿电与算力协同</strong>：2025年西部绿电富集区算力集群绿电占比超80%，宁夏中卫、大唐中卫云基地等项目实现“风光电直供算力园区”，如宁夏项目年发电量43亿千瓦时，满足22.9亿千瓦时算力用电需求，绿电占比超90%（来源2，8，12）。</p>
+                              </article>
+                              <!-- 二、能源领域AI大模型 -->
+                              <article class="card">
+                                <h3>二、能源领域AI大模型应用成效</h3>
+                                  <p><strong>行业覆盖与标杆案例</strong>：能源领域落地数十个专用大模型，覆盖电网、煤炭、油气全产业链。典型应用包括：</p>
+                                    <ul class="feature-list">
+                                      <li>南方电网“大瓦特”模型<strong class="highlight">提前14天预判负荷波动</strong>（来源2）；</li>
+                                        <li>国家电网光明大模型将高压供电方案生成时间缩短至28秒（来源2）；</li>
+                                          <li>火电、电网、油气领域标杆应用数据：<strong class="highlight">火电供电煤耗下降2.3克/千瓦时</strong>、<strong class="highlight">电网巡检效率提升3倍</strong>、<strong class="highlight">油气钻井成本降低10%</strong>（来源1，2）。</li>
+                                          </ul>
+                                          <p><strong>成本优势</strong>：能源大模型训练成本仅为欧美同类模型的1/3-1/2，且覆盖152个场景，形成“以电强算、以算促电”的双向赋能循环（来源2，4）。</p>
+                                          </article>
+                                          <!-- 三、“算电协同” -->
+                                          <article class="card">
+                                            <h3>三、“算电协同”：政策驱动下的破局与挑战</h3>
+                                              <p><strong>政策定位</strong>：2026年“算电协同”首次写入政府工作报告，纳入国家“六张网”顶层部署，明确“算力向西走，绿电向东送”战略路径，目标2030年实现能源系统智能体全覆盖（来源5，13，14）。</p>
+                                                <p><strong>落地项目进展</strong>：</p>
+                                                  <ul class="feature-list">
+                                                    <li>2025年全国算力中心用电量达1700亿千瓦时，占全社会用电量1.6%，预计2030年增至8000亿千瓦时；</li>
+                                                      <li>宁夏中卫、大唐中卫云基地等项目通过“点对点”直供绿电，破解算力高能耗与绿电消纳矛盾（来源3，8，12）。</li>
+                                                      </ul>
+                                                      <p><strong class="highlight-accent">核心挑战</strong>：四“拦路虎”制约落地：</p>
+                                                        <ol style="margin-left: 1.5rem; margin-bottom: 1rem; color: var(--text-main);">
+                                                          <li><strong>时空错配</strong>：东部缺电、西部绿电难用（如内蒙古等枢纽节点）；</li>
+                                                            <li><strong>经济账难算</strong>：过网费高、价格战压缩利润；</li>
+                                                              <li><strong>技术刚性冲突</strong>：AI训练需连续供电，电网需柔性调节矛盾；</li>
+                                                                <li><strong>标准缺失</strong>：绿证认证与审批滞后（来源6，10，12）。</li>
+                                                                </ol>
+                                                              </article>
+                                                              <!-- 四、产业投资 -->
+                                                              <article class="card">
+                                                                <h3>四、产业投资与企业布局</h3>
+                                                                  <p><strong>投资规模</strong>：</p>
+                                                                    <ul class="feature-list">
+                                                                      <li>“十五五”期间三大运营商算力网投资超1700亿元；</li>
+                                                                        <li>2026年算力网被列为国家战略基建，总投资超7万亿元，直接投资达万亿量级（来源1，13，14）。</li>
+                                                                        </ul>
+                                                                        <p><strong>技术与企业动态</strong>：</p>
+                                                                          <ul class="feature-list">
+                                                                            <li>特锐德“算电岛”方案降低Token用电成本约30%，中天科技提供光纤/铜缆赋能算力部署（来源3）；</li>
+                                                                              <li>美丽生态联合星网锐捷切入阿里百亿级万卡智算集群供应链，承接143亿元长三角智能计算基地项目（来源9）。</li>
+                                                                              </ul>
+                                                                              <p><strong>A股受益链条</strong>：聚焦算力基建（海光信息）、算电协同、IDC运营、光通信与液冷（中际旭创、工业富联）等领域（来源14，15）。</p>
+                                                                              </article>
+                                                                              <!-- 五、核心不确定因素 -->
+                                                                              <article class="card">
+                                                                                <h3>五、核心不确定因素与未来趋势</h3>
+                                                                                  <p><strong>关键瓶颈</strong>：国产算力芯片产能不足、能源大模型标准化适配滞后（来源1）。</p>
+                                                                                    <p><strong>破局方向</strong>：</p>
+                                                                                      <ul class="feature-list">
+                                                                                        <li><strong>技术层面</strong>：AI调度、液冷技术、绿电直连试点（来源10，12）；</li>
+                                                                                          <li><strong>机制层面</strong>：毫秒级调度、跨省绿电交易、氢储能试点（来源10）；</li>
+                                                                                            <li><strong>标准层面</strong>：预计2028年标准确立后，“零碳算力”成行业标配（来源6，10）。</li>
+                                                                                            </ul>
+                                                                                          </article>
+                                                                                        </section>
+                                                                                        <!-- 总结与展望 -->
+                                                                                        <section class="card" style="border-left: 5px solid var(--accent-color);">
+                                                                                          <h2>总结与展望</h2>
+                                                                                            <p>当前我国AI算力与能源大模型融合已形成“规模领先+应用落地”双优势，但“算电协同”需突破时空错配、标准缺失等瓶颈。随着6月政策密集落地（如算力网监测平台试运行）与西部绿电直供项目规模化，2026-2027年将进入阵痛期，2028年标准确立后，“零碳算力”将成为全球AI竞争的核心壁垒。建议关注政策审批进度、绿电直供项目落地及国产算力芯片产能释放。</p>
+                                                                                            </section>
+                                                                                            <!-- 资讯来源列表 -->
+                                                                                            <section class="sources-section">
+                                                                                              <h2>资讯来源列表</h2>
+                                                                                                <p style="margin-bottom: 1.5rem; color: var(--text-light);">按发布日期由近及远排序</p>
+                                                                                                  <div class="source-item">
+                                                                                                    <div class="source-meta">2026年06月16日</div>
+                                                                                                      <div>算力网被列入国家“六张网”，2026年投资超7万亿</div>
+                                                                                                        <a href="http://m.toutiao.com/group/7651913092900602377/" target="_blank" class="source-link">查看来源</a>
+                                                                                                        </div>
+                                                                                                        <div class="source-item">
+                                                                                                          <div class="source-meta">2026年06月16日</div>
+                                                                                                            <div>算力投资需聚焦核心技术与大厂订单龙头</div>
+                                                                                                              <a href="http://m.toutiao.com/group/7651935723616092712/" target="_blank" class="source-link">查看来源</a>
+                                                                                                              </div>
+                                                                                                              <div class="source-item">
+                                                                                                                <div class="source-meta">2026年06月06日</div>
+                                                                                                                  <div>软硬件协同优化释放算力价值</div>
+                                                                                                                    <a href="https://toutiao.com/group/7648123925473509923/" target="_blank" class="source-link">查看来源</a>
+                                                                                                                    </div>
