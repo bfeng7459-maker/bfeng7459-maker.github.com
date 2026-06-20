@@ -1,0 +1,338 @@
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>2026年中国“算电协同”深度报告</title>
+      <style>
+        /* --- CSS Variables & Reset --- */
+        :root {
+        --primary-color: #0f172a; /* 深蓝背景 */
+        --accent-color: #0ea5e9; /* 亮蓝强调 */
+        --secondary-color: #10b981; /* 绿色能源 */
+        --text-main: #334155;
+        --text-light: #64748b;
+        --bg-body: #f1f5f9;
+        --bg-card: #ffffff;
+        --spacing-sm: 0.5rem;
+        --spacing-md: 1rem;
+        --spacing-lg: 2rem;
+        --border-radius: 12px;
+        --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+        * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        }
+        body {
+        font-family: var(--font-family);
+        background-color: var(--bg-body);
+        color: var(--text-main);
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+        }
+        a {
+        color: var(--accent-color);
+        text-decoration: none;
+        transition: color 0.2s;
+        border-bottom: 1px dotted var(--accent-color);
+        }
+        a:hover {
+        color: var(--primary-color);
+        border-bottom-style: solid;
+        }
+        /* --- Layout & Typography --- */
+        .container {
+        max-width: 1024px;
+        margin: 0 auto;
+        padding: 0 var(--spacing-md);
+        }
+        h1, h2, h3 {
+        color: var(--primary-color);
+        font-weight: 700;
+        line-height: 1.3;
+        }
+        h1 { font-size: 1.75rem; margin-bottom: var(--spacing-sm); }
+        h2 { font-size: 1.5rem; margin-bottom: var(--spacing-md); border-left: 4px solid var(--accent-color); padding-left: var(--spacing-sm); }
+        h3 { font-size: 1.25rem; margin-bottom: var(--spacing-sm); color: var(--text-main); }
+        p { margin-bottom: var(--spacing-md); color: var(--text-main); }
+        ul { list-style: none; padding-left: var(--spacing-md); margin-bottom: var(--spacing-md); }
+        li { margin-bottom: var(--spacing-sm); position: relative; }
+        /* --- Header --- */
+        header {
+        background: var(--primary-color);
+        color: white;
+        padding: var(--spacing-lg) 0;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        .header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: var(--spacing-md);
+        }
+        .header-title h1 {
+        color: white;
+        font-size: 1.5rem;
+        margin: 0;
+        }
+        .header-subtitle {
+        font-size: 0.875rem;
+        color: #94a3b8;
+        margin-top: 4px;
+        }
+        /* Quality Badge */
+        .quality-badge {
+        background-color: var(--secondary-color);
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 50px;
+        font-weight: bold;
+        font-size: 0.9rem;
+        box-shadow: 0 2px 8px rgba(16, 185, 129, 0.4);
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        }
+        .quality-badge::before {
+        content: "✓";
+        font-weight: 900;
+        }
+        /* --- Sections --- */
+        section {
+        padding: var(--spacing-lg) 0;
+        border-bottom: 1px solid #e2e8f0;
+        }
+        /* Hero / Insight */
+        .insight-card {
+        background: linear-gradient(135deg, #e0f2fe 0%, #f0fdf4 100%);
+        padding: var(--spacing-lg);
+        border-radius: var(--border-radius);
+        border: 1px solid #bae6fd;
+        margin-top: var(--spacing-md);
+        }
+        .insight-card h2 {
+        border-left-color: var(--secondary-color);
+        }
+        /* Grid Layout for Analysis */
+        .analysis-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+        }
+        .card {
+        background: var(--bg-card);
+        padding: var(--spacing-lg);
+        border-radius: var(--border-radius);
+        box-shadow: var(--shadow);
+        border-top: 4px solid var(--accent-color);
+        transition: transform 0.2s;
+        }
+        .card:hover {
+        transform: translateY(-2px);
+        }
+        /* News List / Timeline */
+        .news-list {
+        position: relative;
+        padding-left: 1.5rem;
+        }
+        .news-list::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background: #cbd5e1;
+        }
+        .news-item {
+        position: relative;
+        margin-bottom: 1.5rem;
+        background: white;
+        padding: 1rem;
+        border-radius: 8px;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .news-item::before {
+        content: '';
+        position: absolute;
+        left: -1.5rem;
+        top: 1.25rem;
+        width: 10px;
+        height: 10px;
+        background: var(--accent-color);
+        border-radius: 50%;
+        border: 2px solid white;
+        box-shadow: 0 0 0 2px var(--accent-color);
+        }
+        .news-date {
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--text-light);
+        display: inline-block;
+        background: #f1f5f9;
+        padding: 2px 8px;
+        border-radius: 4px;
+        margin-bottom: 0.5rem;
+        }
+        .news-content {
+        font-size: 0.95rem;
+        margin-bottom: 0.25rem;
+        }
+        .news-link {
+        font-size: 0.85rem;
+        display: inline-flex;
+        align-items: center;
+        margin-top: 0.5rem;
+        }
+        /* Footer */
+        footer {
+        text-align: center;
+        padding: var(--spacing-lg);
+        color: var(--text-light);
+        font-size: 0.875rem;
+        background: var(--primary-color);
+        color: #94a3b8;
+        }
+        /* --- Responsive Queries --- */
+        @media (min-width: 768px) {
+        h1 { font-size: 2.25rem; }
+        .header-title h1 { font-size: 2rem; }
+        .analysis-grid {
+        grid-template-columns: repeat(2, 1fr);
+        }
+        /* Make the first item span full width if desired, or keep 2x2 */
+        .analysis-grid article:first-child {
+        grid-column: span 2;
+        }
+        }
+        @media (max-width: 480px) {
+        .header-content {
+        flex-direction: column;
+        align-items: flex-start;
+        }
+        .quality-badge {
+        align-self: flex-end;
+        margin-top: -2.5rem; /* Pull up to align with title roughly */
+        }
+        .news-list {
+        padding-left: 1rem;
+        }
+        .news-item::before {
+        left: -1rem;
+        }
+        }
+      </style>
+    </head>
+    <body>
+      <header>
+        <div class="container header-content">
+          <div class="header-title">
+            <h1>2026年06月20日中国“算电协同”</h1>
+              <div class="header-subtitle">AI算力与能源融合的破局实践及全球竞争格局重塑</div>
+              </div>
+              <div class="quality-badge" role="status" aria-label="质量标志：通过">
+                质量标志：通过
+              </div>
+            </div>
+          </header>
+          <main class="container">
+            <!-- 核心洞察 -->
+            <section id="insight">
+              <div class="insight-card">
+                <h2>核心洞察综述</h2>
+                  <p>2026年，中国“算电协同”战略进入工程落地关键期，通过“东数西算”引导算力向西部绿电富集区迁移、智能化调度实现“电供得上、算跑得稳、钱花得省、碳降得下”。政策（算力网入国家战略、算电协同工程立法）、技术（万卡级智算集群、AI能源大模型）与成本（西部算力成本比东部低40%）三重优势叠加，推动中国成为全球AI算力核心枢纽。</p>
+                    <p>短期看，算电协同将带动电力板块量价齐升，绿电、储能、算力基建企业率先受益；中长期看，“人工智能+能源”融合有望实现能源系统智能体全覆盖。</p>
+                    </div>
+                  </section>
+                  <!-- 详细维度分析 -->
+                  <section id="analysis">
+                    <h2>详细维度分析</h2>
+                      <div class="analysis-grid">
+                        <!-- 维度一 -->
+                        <article class="card">
+                          <h3>一、政策驱动：国家战略级基建与顶层设计</h3>
+                            <ul>
+                              <li>
+                                <strong>算力网纳入国家“六张网”</strong>：2026年6月发改委将算力网列为与水网、电网并列的战略基建，2026年相关领域投资超7万亿元，算力网直接投资达万亿量级，全国一体化算力网监测调度平台已试运行（<a href="http://m.toutiao.com/group/7651913092900602377/" target="_blank" rel="noopener noreferrer">来源链接</a>）。
+                                </li>
+                                <li>
+                                  <strong>算电协同工程立法</strong>：2026年政府工作报告明确提出实施算电协同工程，从规划布局、运行调度、交易机制、技术模式四协同方向展开，解决“算力与电力时空错配”核心矛盾（<a href="https://cj.sina.cn/article/norm_detail?url=http%3A%2F%2Ffinance.sina.cn%2Ftech%2F2026-06-07%2Fdetail-iniaqxuq4540289.d.html" target="_blank" rel="noopener noreferrer">来源链接</a>）。
+                                  </li>
+                                </ul>
+                              </article>
+                              <!-- 维度二 -->
+                              <article class="card">
+                                <h3>二、技术突破：AI+能源融合的深度落地</h3>
+                                  <ul>
+                                    <li>
+                                      与其他模型相比，DeepSeek在西部部署的边际成本显著降低。
+                                      <strong>智算集群规模化布局</strong>：2025年已建成42个万卡级智算集群，70%布局西部绿电富集区，绿电占比超80%，算力成本较东部低40%（<a href="http://m.toutiao.com/group/7645198606760182291/" target="_blank" rel="noopener noreferrer">来源链接</a>）。典型案例如无锡（惠山）国产智算中心一期部署超11,000张GPU卡，总算力超10,000 PFlops，PUE低于1.25（<a href="http://m.toutiao.com/group/7650120233990832675/" target="_blank" rel="noopener noreferrer">来源链接</a>）。
+                                      </li>
+                                      <li>
+                                        <strong>AI能源大模型实战应用</strong>：南方电网“大瓦特”大模型提前14天预判负荷，释放660万千瓦电力；国家电网光明大模型将高压供电方案生成时间从传统 hours级压缩至28秒，训练成本仅为欧美1/3-1/2（<a href="http://m.toutiao.com/group/7645198606760182291/" target="_blank" rel="noopener noreferrer">来源链接</a>）。
+                                        </li>
+                                      </ul>
+                                    </article>
+                                    <!-- 维度三 -->
+                                    <article class="card">
+                                      <h3>三、算电协同模式与成本优势</h3>
+                                        <ul>
+                                          <li>
+                                            <strong>空间迁移+绿电直供</strong>：通过“东数西算”引导算力向西部（如内蒙古、青海）迁移，利用低价绿电（0.3-0.4元/度）降低电力成本，硬件利用率超90%（独立部署仅30%-50%）。DeepSeek在西部部署的边际成本较独立部署降低66%-83%，成为规模化最优解（<a href="http://m.toutiao.com/group/7648658169035604523/" target="_blank" rel="noopener noreferrer">来源链接</a>）。
+                                            </li>
+                                            <li>
+                                              <strong>场景落地与产业链协同</strong>：特锐德“算电岛”压缩建站周期至150天，中天科技提供光电缆产品，美丽生态与星网锐捷合作切入阿里百亿级万卡智算集群供应链，覆盖土建到网络全周期（<a href="http://m.toutiao.com/group/7645198606760182291/" target="_blank" rel="noopener noreferrer">来源链接</a>）。
+                                              </li>
+                                            </ul>
+                                          </article>
+                                          <!-- 维度四 -->
+                                          <article class="card">
+                                            <h3>四、全球竞争格局：中国算力中心地位确立</h3>
+                                              <ul>
+                                                <li>
+                                                  <strong>成本壁垒不可复制</strong>：中国算力规模全球第二（2025年算力用电1700亿千瓦时，预计2030年增至8000亿千瓦时），通过“开源+绿电+规模化”组合，DeepSeek登顶OpenRouter调用榜，而美国超60%计划2027年竣工的数据中心因电力短缺未开工（<a href="http://m.toutiao.com/group/7645198606760182291/" target="_blank" rel="noopener noreferrer">来源链接</a>）。
+                                                  </li>
+                                                  <li>
+                                                    <strong>挑战与破局路径</strong>：面临时空错配（东部需求集中、西部绿电过剩）、监测不同频等瓶颈，需通过技术（毫秒级控制、负荷柔性调节）与机制创新（跨省绿电交易）破解（<a href="http://m.toutiao.com/group/7647170987808604707/" target="_blank" rel="noopener noreferrer">来源链接</a>）。
+                                                    </li>
+                                                  </ul>
+                                                </article>
+                                              </div>
+                                            </section>
+                                            <!-- 总结与展望 -->
+                                            <section id="conclusion">
+                                              <div class="card" style="border-top-color: var(--secondary-color);">
+                                                <h2>总结与展望</h2>
+                                                  <p>中国凭借政策支持、技术突破与成本优势，正从“算力大国”向“算力强国”跨越。短期看，2026年算电协同工程落地将带动电力板块量价齐升，绿电（协鑫能科）、算力基建（中科曙光）、液冷温控（英维克）等领域龙头率先受益；中长期看，“人工智能+能源”融合将实现能源系统智能体全覆盖，中国有望主导下一代能源革命与数字经济竞争。</p>
+                                                  </div>
+                                                </section>
+                                                <!-- 资讯列表 -->
+                                                <section id="news">
+                                                  <h2>资讯列表</h2>
+                                                    <p style="font-size: 0.9rem; color: var(--text-light);">按发布日期由近到远排序</p>
+                                                      <div class="news-list">
+                                                        <div class="news-item">
+                                                          <div class="news-date">2026年06月16日</div>
+                                                            <div class="news-content">算力网被列入国家“六张网”，2026年相关领域投资超7万亿元</div>
+                                                              <a href="http://m.toutiao.com/group/7651913092900602377/" target="_blank" rel="noopener noreferrer" class="news-link">查看详情 &rarr;</a>
+                                                              </div>
+                                                              <div class="news-item">
+                                                                <div class="news-date">2026年06月16日</div>
+                                                                  <div class="news-content">算力投资需警惕“三无企业”，国产替代与算电协同成核心逻辑</div>
+                                                                    <a href="http://m.toutiao.com/group/7651935723616092712/" target="_blank" rel="noopener noreferrer" class="news-link">查看详情 &rarr;</a>
+                                                                    </div>
+                                                                    <div class="news-item">
+                                                                      <div class="news-date">2026年06月11日</div>
+                                                                        <div class="news-content">无锡（惠山）国产智算中心一期点亮，总总算力超10,000 PFlops</div>
+                                                                          <a href="http://m.toutiao.com/group/7650120233990832675/" target="_blank" rel="noopener noreferrer" class="news-link">查看详情 &rarr;</a>
+                                                                          </div>
+                                                                          <div class="news-item">
+                                                                            <div class="
