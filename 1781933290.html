@@ -1,0 +1,350 @@
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>国电南瑞（600406）市场动态与投资洞察分析</title>
+      <style>
+        /* CSS Reset & Variables */
+        :root {
+        --primary-color: #0f4c81; /* Professional Deep Blue */
+        --accent-color: #d4a017; /* Gold for highlights */
+        --success-color: #10b981; /* Green for badge */
+        --text-main: #1f2937;
+        --text-secondary: #4b5563;
+        --bg-body: #f3f4f6;
+        --bg-card: #ffffff;
+        --border-radius: 12px;
+        --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+        * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        }
+        body {
+        font-family: var(--font-family);
+        background-color: var(--bg-body);
+        color: var(--text-main);
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+        padding-bottom: 40px;
+        }
+        /* Links */
+        a {
+        color: var(--primary-color);
+        text-decoration: none;
+        transition: color 0.2s;
+        }
+        a:hover {
+        color: #0a355c;
+        text-decoration: underline;
+        }
+        /* Source Link Styling */
+        .source-link {
+        display: inline-flex;
+        align-items: center;
+        font-size: 0.85rem;
+        color: var(--text-secondary);
+        background-color: #eef2ff;
+        padding: 2px 8px;
+        border-radius: 4px;
+        margin-left: 6px;
+        border: 1px solid #e0e7ff;
+        white-space: nowrap;
+        }
+        .source-link:hover {
+        background-color: #e0e7ff;
+        color: var(--primary-color);
+        text-decoration: none;
+        }
+        .source-link::before {
+        content: "🔗";
+        margin-right: 4px;
+        font-size: 0.8rem;
+        }
+        /* Layout Container */
+        .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 1rem;
+        }
+        /* Header */
+        header {
+        background-color: var(--bg-card);
+        box-shadow: var(--shadow);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        padding: 1rem 0;
+        }
+        .header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+        }
+        h1 {
+        font-size: 1.25rem;
+        color: var(--primary-color);
+        font-weight: 700;
+        }
+        .quality-badge {
+        background-color: var(--success-color);
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 50px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        box-shadow: 0 2px 4px rgba(16, 185, 129, 0.3);
+        }
+        /* Sections */
+        section {
+        margin-top: 2rem;
+        }
+        .section-title {
+        font-size: 1.5rem;
+        color: var(--text-main);
+        margin-bottom: 1rem;
+        border-left: 5px solid var(--accent-color);
+        padding-left: 1rem;
+        display: flex;
+        align-items: center;
+        }
+        /* Cards */
+        .card {
+        background: var(--bg-card);
+        border-radius: var(--border-radius);
+        padding: 1.5rem;
+        box-shadow: var(--shadow);
+        margin-bottom: 1.5rem;
+        border: 1px solid rgba(0,0,0,0.05);
+        }
+        /* Hero Summary */
+        .hero-summary {
+        background: linear-gradient(135deg, #ffffff 0%, #f0f7ff 100%);
+        border-top: 4px solid var(--primary-color);
+        }
+        .hero-summary p {
+        font-size: 1.05rem;
+        color: var(--text-secondary);
+        }
+        /* Grid Layout for Analysis */
+        .analysis-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 1.5rem;
+        }
+        .analysis-card h3 {
+        font-size: 1.15rem;
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 1px solid #eee;
+        }
+        .analysis-card ul {
+        list-style: none;
+        }
+        .analysis-card li {
+        margin-bottom: 1rem;
+        padding-left: 1rem;
+        position: relative;
+        }
+        .analysis-card li::before {
+        content: "•";
+        color: var(--accent-color);
+        font-weight: bold;
+        position: absolute;
+        left: 0;
+        }
+        .analysis-card strong {
+        color: var(--text-main);
+        font-weight: 600;
+        }
+        /* Outlook Section */
+        .outlook-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1rem;
+        }
+        .outlook-item {
+        background: #fff;
+        padding: 1rem;
+        border-radius: 8px;
+        border-left: 4px solid #ccc;
+        }
+        .outlook-item.short { border-color: #ef4444; }
+        .outlook-item.mid { border-color: #f59e0b; }
+        .outlook-item.long { border-color: #10b981; }
+        .outlook-item h4 {
+        margin-bottom: 0.5rem;
+        color: var(--text-main);
+        }
+        /* News List */
+        .news-list {
+        list-style: none;
+        }
+        .news-item {
+        background: var(--bg-card);
+        padding: 1rem;
+        border-bottom: 1px solid #eee;
+        display: flex;
+        align-items: flex-start;
+        gap: 1rem;
+        }
+        .news-item:last-child {
+        border-bottom: none;
+        }
+        .news-index {
+        background: #e5e7eb;
+        color: var(--text-secondary);
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.8rem;
+        flex-shrink: 0;
+        }
+        .news-content {
+        flex-grow: 1;
+        }
+        .news-content p {
+        margin-bottom: 0.25rem;
+        font-size: 0.95rem;
+        }
+        /* Footer */
+        footer {
+        margin-top: 3rem;
+        text-align: center;
+        color: var(--text-secondary);
+        font-size: 0.9rem;
+        padding: 1rem;
+        border-top: 1px solid #e5e7eb;
+        }
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+        h1 { font-size: 1.1rem; }
+        .section-title { font-size: 1.3rem; }
+        .analysis-grid { grid-template-columns: 1fr; }
+        .card { padding: 1.25rem; }
+        .header-content { flex-direction: column; align-items: flex-start; }
+        .quality-badge { align-self: flex-end; margin-top: -2.5rem; }
+        }
+      </style>
+    </head>
+    <body>
+      <header>
+        <div class="container header-content">
+          <h1>国电南瑞（600406）2026年06月20日市场动态与投资洞察分析</h1>
+            <div class="quality-badge">质量标志：通过</div>
+            </div>
+          </header>
+          <main class="container">
+            <!-- 核心洞察综述 -->
+            <section id="summary">
+              <div class="card hero-summary">
+                <h2 class="section-title" style="margin-top:0; border:none; padding:0;">核心洞察综述</h2>
+                  <p>国电南瑞（600406）近期股价呈现低位震荡磨底态势，2026年6月17-18日两日收盘价分别为23.32元（-0.93%）和23.06元（-1.11%），处于22.8-24元区间窄幅波动，成交缩量反映市场观望情绪浓厚。短期受年中资金调仓、储能价格竞争及电网板块缺乏催化影响，反弹力度受限；中长期则依托十五五电网投资规划（5万亿）、特高压控保市占率76%及在手订单超520亿元的业绩锁定性，叠加AI算力需求与特高压招标放量，有望实现估值修复。国泰电网ETF（SH561380）虽面临连续净赎回压力（累计1.24亿份），但公司作为电网设备龙头，仍被纳入能源转型核心资产配置范畴。</p>
+                  </div>
+                </section>
+                <!-- 详细维度分析 -->
+                <section id="analysis">
+                  <h2 class="section-title">详细维度分析</h2>
+                    <div class="analysis-grid">
+                      <!-- 一、股价走势 -->
+                      <article class="card analysis-card">
+                        <h3>一、股价走势与市场表现</h3>
+                          <ul>
+                            <li>
+                              <strong>近期波动（2026年6月）</strong><br>
+                                6月18日：收盘价23.06元，下跌1.11%，振幅1.72%，成交额14.08亿元，换手率0.76%，总市值1852.12亿元，流通市值1846.69亿元，委比80.26%显示买盘强于卖盘，但未出现放量反弹，成交缩量表明市场观望情绪浓厚<a href="https://quotes.sina.cn/hs/company/quotes/view/sh600406" target="_blank" class="source-link">来源</a>。
+                              </li>
+                              <li>
+                                <strong>中期趋势（2026年3-6月）</strong><br>
+                                  3月高点27.81元回撤至近期低点22.55元，回撤超15%，核心原因是“千亿市值缺乏短线资金推动、业绩稳健但无爆发性预期、行业利好分散”，技术指标显示均线压制、MACD负值、RSI偏低，空头行情明显<a href="https://toutiao.com/group/7622960722745524746/" target="_blank" class="source-link">来源</a>。
+                                </li>
+                                <li>
+                                  <strong>历史波动（2025年7月）</strong><br>
+                                    连续7天下跌，累计跌幅7.45%，收盘价21.88元，总市值1757.42亿元，此为老旧信息（距2026-06-20已超11个月），但反映公司曾面临阶段性调整压力<a href="https://www.sohu.com/a/919468414_122014422" target="_blank" class="source-link">来源</a>。
+                                  </li>
+                                </ul>
+                              </article>
+                              <!-- 二、机构持仓 -->
+                              <article class="card analysis-card">
+                                <h3>二、机构持仓与ETF资金动向</h3>
+                                  <ul>
+                                    <li>
+                                      <strong>国泰基金减持</strong><br>
+                                        2025年7月，国泰恒生A股电网设备ETF二季度减持至26.19万股，浮亏46.1万元；国泰中证细分机械设备ETF减持至2.44万股，浮亏4.3万元，合计减持导致基金浮亏50.4万元<a href="https://www.sohu.com/a/919468414_122014422" target="_blank" class="source-link">来源</a>。
+                                      </li>
+                                      <li>
+                                        <strong>行业ETF资金分歧</strong><br>
+                                          国泰电网ETF（SH561380）连续6日净赎回，累计净赎回1.24亿份（截至6月2日），前十大权重股占比60.59%，持仓中国电南瑞跌2.30%；同赛道ETF中，易方达电网设备ETF（560390）近5日净申购6900万份，广发电网设备ETF（159320）净申购600万份，显示资金对电网设备板块看法分化<a href="http://finance.sina.com.cn/stock/zqgd/2026-06-02/doc-inhzzivn3117299.shtml" target="_blank" class="source-link">来源</a> <a href="http://m.toutiao.com/group/7646736831091376683/" target="_blank" class="source-link">来源</a>。
+                                        </li>
+                                      </ul>
+                                    </article>
+                                    <!-- 三、市场情绪 -->
+                                    <article class="card analysis-card">
+                                      <h3>三、市场情绪与投资者观点</h3>
+                                        <ul>
+                                          <li>
+                                            <strong>散户情绪</strong><br>
+                                              股吧讨论热度低，东方财富人气排名第520名，多数散户情绪偏悲观，认为“股价走势疲弱，跑输大盘及板块，部分投资者担忧持续下跌”；少数观点认为“主力尚未完成出货，后市或有轮动机会”<a href="https://mguba.eastmoney.com/mguba/list/600406,1668594981/" target="_blank" class="source-link">来源</a>。
+                                            </li>
+                                            <li>
+                                              <strong>机构观点</strong><br>
+                                                短期分歧较大，“机构调仓、市场情绪及板块联动导致下跌较快”；中长期看好“十五五电网投资5万亿、公司特高压控保市占率76%、在手订单超520亿元”<a href="https://toutiao.com/group/7652147786862887430/" target="_blank" class="source-link">来源</a>。
+                                              </li>
+                                            </ul>
+                                          </article>
+                                          <!-- 四、基本面 -->
+                                          <article class="card analysis-card">
+                                            <h3>四、基本面与业务优势</h3>
+                                              <ul>
+                                                <li>
+                                                  <strong>估值水平与业绩</strong><br>
+                                                    2026年6月18日市盈率（TTM）22.26倍，市净率3.46倍，处于行业中等水平；3月30日预测2027年市盈率26.78倍，净利润113.61亿元，每股收益1.42元，业绩锁定性强<a href="https://quotes.sina.cn/hs/company/quotes/view/sh600406" target="_blank" class="source-link">来源</a> <a href="https://toutiao.com/group/7622960722745524746/" target="_blank" class="source-link">来源</a>。
+                                                  </li>
+                                                  <li>
+                                                    <strong>核心业务与政策红利</strong><br>
+                                                      主营智能电网、数能融合，特高压控保市占率76%，储能与海外业务高增长打开新空间；十五五电网投资规划下智能化设备占比目标突破45%<a href="https://www.sohu.com/a/919468414_122014422" target="_blank" class="source-link">来源</a> <a href="https://toutiao.com/group/7652147786862887430/" target="_blank" class="source-link">来源</a>。
+                                                    </li>
+                                                  </ul>
+                                                </article>
+                                                <!-- 五、行业环境 -->
+                                                <article class="card analysis-card">
+                                                  <h3>五、行业环境与政策驱动</h3>
+                                                    <ul>
+                                                      <li>
+                                                        <strong>政策规划</strong>：十五五电网投资5万亿，2026年Q2起第三批大型风光基地配套工程进入集中招标期，配电网改造进入高峰，全年电网设备投资同比增长超12%<a href="http://www.nbd.com.cn/rss/jinri_toutiao/articles/4386586.html" target="_blank" class="source-link">来源</a>。
+                                                        </li>
+                                                        <li>
+                                                          <strong>行业逻辑</strong>：电力板块兼具“高股息与AI算力需求双重逻辑”，北美缺电困境强化电网投资逻辑，特高压全年招标放量概率提升，为国电南瑞提供长期增长动力<a href="http://xueqiu.com/S/SH561380" target="_blank" class="source-link">来源</a>。
+                                                          </li>
+                                                        </ul>
+                                                      </article>
+                                                      <!-- 六、风险提示 -->
+                                                      <article class="card analysis-card" style="border-top: 4px solid #ef4444;">
+                                                        <h3>六、风险提示</h3>
+                                                          <ul>
+                                                            <li>
+                                                              <strong>短期风险</strong>：年中资金调仓、一季度现金流季节性承压、储能价格竞争及电网板块缺乏催化<a href="https://toutiao.com/group/7652290445464060462/" target="_blank" class="source-link">来源</a>。
+                                                              </li>
+                                                              <li>
+                                                                <strong>长期风险</strong>：投资落地不及预期、价格战加剧、海外政策变动等<a href="https://toutiao.com/group/7652290445464060462/" target="_blank" class="source-link">来源</a>。
+                                                                </li>
+                                                              </ul>
+                                                            </article>
+                                                          </div>
+                                                        </section>
+                                                        <!-- 总结与展望 -->
+                                                        <section id="outlook">
+                                                          <h2 class="section-title">总结与展望</h2>
+                                                            <div class="card">
+                                                              <div class="outlook-grid">
+                                                                <div
