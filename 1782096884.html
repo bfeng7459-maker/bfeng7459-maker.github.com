@@ -1,0 +1,381 @@
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>NVIDIA RTX 50系列显卡价格波动分析报告</title>
+      <style>
+        /* --- CSS Reset & Variables --- */
+        :root {
+        --bg-color: #0f172a;       /* 深蓝灰背景 */
+        --card-bg: #1e293b;        /* 卡片背景 */
+        --text-main: #f1f5f9;      /* 主要文字 */
+        --text-muted: #94a3b8;     /* 次要文字 */
+        --accent-color: #38bdf8;   /* 科技蓝 */
+        --highlight-color: #fbbf24; /* 重点黄 */
+        --danger-color: #f87171;   /* 涨价红 */
+        --success-color: #34d399;  /* 通过绿 */
+        --border-radius: 12px;
+        --spacing-sm: 0.5rem;
+        --spacing-md: 1rem;
+        --spacing-lg: 2rem;
+        --font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+        * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        }
+        body {
+        font-family: var(--font-family);
+        background-color: var(--bg-color);
+        color: var(--text-main);
+        line-height: 1.6;
+        font-size: 16px;
+        -webkit-font-smoothing: antialiased;
+        }
+        /* --- Layout Utilities --- */
+        .container {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 0 var(--spacing-md);
+        }
+        section {
+        margin-bottom: var(--spacing-lg);
+        padding-top: var(--spacing-lg);
+        }
+        /* --- Typography --- */
+        h1, h2, h3 {
+        color: #fff;
+        font-weight: 700;
+        line-height: 1.3;
+        }
+        h1 {
+        font-size: 1.75rem;
+        margin-bottom: var(--spacing-sm);
+        }
+        h2 {
+        font-size: 1.5rem;
+        margin-bottom: var(--spacing-md);
+        border-left: 4px solid var(--accent-color);
+        padding-left: var(--spacing-md);
+        display: flex;
+        align-items: center;
+        }
+        h3 {
+        font-size: 1.25rem;
+        margin-bottom: var(--spacing-sm);
+        color: var(--accent-color);
+        }
+        p {
+        margin-bottom: var(--spacing-md);
+        color: var(--text-muted);
+        }
+        strong, b {
+        color: var(--text-main);
+        font-weight: 600;
+        }
+        /* --- Components --- */
+        /* Quality Badge */
+        .quality-badge {
+        position: fixed;
+        top: 1rem;
+        right: 1rem;
+        background-color: rgba(16, 185, 129, 0.2);
+        color: var(--success-color);
+        border: 1px solid var(--success-color);
+        padding: 0.5rem 1rem;
+        border-radius: 50px;
+        font-weight: 600;
+        font-size: 0.875rem;
+        z-index: 1000;
+        backdrop-filter: blur(4px);
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        }
+        .quality-badge::before {
+        content: '';
+        display: block;
+        width: 8px;
+        height: 8px;
+        background-color: var(--success-color);
+        border-radius: 50%;
+        }
+        /* Header */
+        header {
+        padding: var(--spacing-lg) 0;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+        margin-bottom: var(--spacing-lg);
+        }
+        .report-meta {
+        font-size: 0.875rem;
+        color: var(--accent-color);
+        margin-bottom: var(--spacing-sm);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        }
+        /* Highlight Box (Summary) */
+        .summary-box {
+        background: linear-gradient(145deg, rgba(56, 189, 248, 0.1), rgba(30, 41, 59, 0.5));
+        border: 1px solid rgba(56, 189, 248, 0.3);
+        padding: var(--spacing-lg);
+        border-radius: var(--border-radius);
+        margin-bottom: var(--spacing-lg);
+        }
+        .summary-box p {
+        color: var(--text-main);
+        margin-bottom: 0;
+        }
+        .highlight-text {
+        color: var(--highlight-color);
+        }
+        .price-up {
+        color: var(--danger-color);
+        }
+        /* Timeline (Price Trends) */
+        .timeline {
+        position: relative;
+        padding-left: 1.5rem;
+        }
+        .timeline::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background: rgba(255,255,255,0.1);
+        }
+        .timeline-item {
+        position: relative;
+        margin-bottom: 2rem;
+        background-color: var(--card-bg);
+        padding: var(--spacing-md);
+        border-radius: var(--border-radius);
+        border: 1px solid rgba(255,255,255,0.05);
+        transition: transform 0.2s;
+        }
+        .timeline-item:hover {
+        transform: translateX(4px);
+        border-color: rgba(56, 189, 248, 0.3);
+        }
+        .timeline-item::before {
+        content: '';
+        position: absolute;
+        left: -1.5rem;
+        top: 1.25rem;
+        width: 10px;
+        height: 10px;
+        background-color: var(--accent-color);
+        border-radius: 50%;
+        box-shadow: 0 0 0 4px var(--bg-color);
+        }
+        .timeline-date {
+        display: inline-block;
+        background-color: rgba(56, 189, 248, 0.15);
+        color: var(--accent-color);
+        padding: 0.25rem 0.75rem;
+        border-radius: 4px;
+        font-size: 0.875rem;
+        font-weight: 600;
+        margin-bottom: var(--spacing-sm);
+        }
+        /* Grid Layouts */
+        .grid-2 {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+        }
+        .grid-3 {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: var (spacing-md);
+        }
+        /* Info Cards */
+        .info-card {
+        background-color: var(--card-bg);
+        padding: var(--spacing-lg);
+        border-radius: var(--border-radius);
+        border-top: 3px solid var(--accent-color);
+        }
+        .info-card h3 {
+        margin-top: 0;
+        }
+        /* Source Links */
+        .source-link {
+        display: inline-flex;
+        align-items: center;
+        margin-top: var(--spacing-sm);
+        font-size: 0.85rem;
+        color: var(--accent-color);
+        text-decoration: none;
+        padding: 6px 12px;
+        background-color: rgba(56, 189, 248, 0.1);
+        border-radius: 4px;
+        transition: background 0.2s;
+        min-height: 36px; /* Touch target */
+        }
+        .source-link:hover {
+        background-color: rgba(56, 189, 248, 0.2);
+        text-decoration: underline;
+        }
+        .source-link::before {
+        content: '🔗';
+        margin-right: 6px;
+        font-size: 0.8rem;
+        }
+        /* Outlook List */
+        .outlook-list {
+        list-style: none;
+        }
+        .outlook-list li {
+        background-color: var(--card-bg);
+        margin-bottom: var(--spacing-sm);
+        padding: var(--spacing-md);
+        border-radius: 8px;
+        border-left: 3px solid var(--highlight-color);
+        display: flex;
+        align-items: flex-start;
+        }
+        .outlook-list li strong {
+        color: var(--highlight-color);
+        margin-right: 0.5rem;
+        white-space: nowrap;
+        }
+        /* Footer Sources */
+        .source-list {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+        }
+        .source-list a {
+        color: var(--text-muted);
+        text-decoration: none;
+        font-size: 0.875rem;
+        padding: 0.5rem;
+        border-radius: 4px;
+        display: block;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        }
+        .source-list a:hover {
+        background-color: rgba(255,255,255,0.05);
+        color: var(--accent-color);
+        }
+        footer {
+        margin-top: 4rem;
+        padding: 2rem 0;
+        border-top: 1px solid rgba(255,255,255,0.1);
+        font-size: 0.875rem;
+        color: var(--text-muted);
+        text-align: center;
+        }
+        /* --- Responsive Queries --- */
+        @media (min-width: 768px) {
+        h1 { font-size: 2.5rem; }
+        h2 { font-size: 1.75rem; }
+        .grid-2 { grid-template-columns: 1fr 1fr; }
+        .grid-3 { grid-template-columns: repeat(3, 1fr); }
+        .source-list {
+        grid-template-columns: 1fr 1fr;
+        }
+        }
+      </style>
+    </head>
+    <body>
+      <!-- 质量标志 -->
+      <div class="quality-badge">质量标志：通过</div>
+        <div class="container">
+          <header>
+            <div class="report-meta">2026年06月22日 · 市场分析报告</div>
+              <h1>NVIDIA RTX 50系列显卡价格波动分析报告</h1>
+              </header>
+              <main>
+                <!-- 核心洞察综述 -->
+                <section id="summary">
+                  <div class="summary-box">
+                    <h2>核心洞察综述</h2>
+                      <p>
+                        2026年06月22日最新信息显示，618平台补贴结束后显卡价格普遍反弹，<span class="price-up"><strong>A卡（AMD）涨幅更显著</strong></span>，高端N卡（如RTX 5070Ti）刷新历史高价。此轮涨价主因是<strong>GDDR7显存成本飙升</strong>（占GPU制造成本超80%）及AI算力需求推高高端产能，英伟达RTX 50系列旗舰显卡（如RTX 5090）实际售价已远超官方建议零售价（如RTX 5090官方价1999美元，实际超4000美元）。市场供需失衡导致消费级显卡进入“垃圾时间”，RTX 60系暂无进展，下半年技术看点聚焦DLSS 5，建议刚需用户6月底前出手，二手市场无需恐慌追高。
+                      </p>
+                    </div>
+                  </section>
+                  <!-- 1. 价格趋势与最新动态 -->
+                  <section id="trends">
+                    <h2>1. 价格趋势与最新动态</h2>
+                      <div class="timeline">
+                        <!-- 06.22 -->
+                        <div class="timeline-item">
+                          <div class="timeline-date">2026年06月22日（最新）</div>
+                            <p>618补贴到期后，显卡价格普遍反弹，<span class="price-up"><strong>A卡涨幅更明显</strong></span>，高端N卡（如RTX 5070Ti）创历史新高；<strong>AMD计划Q3上调RX 9000系列价格10-15%</strong>，最快7月落地。</p>
+                              <a href="https://www.toutiao.com/group/7654022315188945417" target="_blank" class="source-link">查看来源</a>
+                              </div>
+                              <!-- 06.18 -->
+                              <div class="timeline-item">
+                                <div class="timeline-date">2026年06月18日</div>
+                                  <p>RTX 5090官方建议零售价1999美元，<span class="price-up"><strong>实际售价超4000美元</strong></span>（约28800元人民币），是官方价的2倍；国行特供版RTX 5090D V2售价16499元，用户满意度93.8%但功耗高、溢价严重。</p>
+                                    <a href="https://toutiao.com/group/7652414676952744499" target="_blank" class="source-link">查看来源</a>
+                                    </div>
+                                    <!-- 06.12 -->
+                                    <div class="timeline-item">
+                                      <div class="timeline-date">2026年06月12日</div>
+                                        <p>索泰渠道价上调，RTX 5090D V2涨幅最大（+2000元），RTX 5080入门版、RTX 5070全系列各涨100元，仅中国大陆市场调整，官方建议零售价暂未变动。</p>
+                                          <a href="https://3g.ali213.net/in/news/30026.html" target="_blank" class="source-link">查看来源</a>
+                                          </div>
+                                          <!-- 06.08 -->
+                                          <div class="timeline-item">
+                                            <div class="timeline-date">2026年06月08日</div>
+                                              <p>RTX 50系列SUPER显卡延期至2027年1月CES，导致当前RTX 5090售价24399元，市场进入“无卡可选”困境。</p>
+                                                <a href="https://toutiao.com/group/7648891419666432546" target="_blank" class="source-link">查看来源</a>
+                                                </div>
+                                              </div>
+                                            </section>
+                                            <!-- 2. 涨价核心原因分析 -->
+                                            <section id="reasons">
+                                              <h2>2. 涨价核心原因分析</h2>
+                                                <div class="grid-3">
+                                                  <div class="info-card">
+                                                    <h3>显存成本主导</h3>
+                                                      <p>多份素材证实“GDDR7显存成本上升”是主因，“显存占比在GPU制造成本中已超80%”，且“长鑫科技科创板IPO获批后国产DRAM价格持续上涨，DDR5内存较基准涨288%”。</p>
+                                                        <a href="https://m.ithome.com/html/860922.htm" target="_blank" class="source-link">来源1</a>
+                                                          <a href="https://www.toutiao.com/group/7654022315188945417" target="_blank" class="source-link">来源2</a>
+                                                          </div>
+                                                          <div class="info-card">
+                                                            <h3>供需失衡</h3>
+                                                              <p>高端显卡“供应有限、需求敏感”，叠加AI数据中心需求优先占用产能，导致游戏卡“利润低、产能不足”。</p>
+                                                                <a href="https://toutiao.com/group/7648891419666432546" target="_blank" class="source-link">查看来源</a>
+                                                                </div>
+                                                                <div class="info-card">
+                                                                  <h3>厂商策略</h3>
+                                                                    <p>英伟达2026年01月计划“分阶段调整消费级及AI数据中心产品价格”，AMD同步跟进涨价，形成“无制约定价”。</p>
+                                                                      <a href="https://m.toutiao.com/group/7590565920171377203" target="_blank" class="source-link">查看来源</a>
+                                                                      </div>
+                                                                    </div>
+                                                                  </section>
+                                                                  <!-- 3. 市场影响与消费者动态 -->
+                                                                  <section id="impact">
+                                                                    <h2>3. 市场影响与消费者动态</h2>
+                                                                      <div class="grid-2">
+                                                                        <div class="info-card" style="border-top-color: var(--danger-color);">
+                                                                          <h3>购买压力加剧</h3>
+                                                                            <p>“消费者与专业用户面临购买压力，市场焦虑加剧”，“高昂价格和波动风险使消费者购买谨慎”。</p>
+                                                                              <a href="https://www.sohu.com/a/981309408_122004016" target="_blank" class="source-link">来源1</a>
+                                                                                <a href="https://www.sohu.com/a/876085283_121924584" target="_blank" class="source-link">来源2</a>
+                                                                                </div>
+                                                                                <div class="info-card" style="border-top-color: var(--danger-color);">
+                                                                                  <h3>性价比争议</h3>
+                                                                                    <p>“与AMD RX 7000系列相比，性价比成关键考量”，“AMD竞争力不足导致英伟达定价缺乏制约”。</p>
+                                                                                      <a href="https://www.sohu.com/a/876085283_121924584" target="_blank" class="source-link">来源1</a>
+                                                                                        <a href="https://m.toutiao.com/group/7424368307563725347" target="_blank" class="source-link">来源2</a>
+                                                                                        </div>
+                                                                                      </div>
+                                                                                      <div class="info-card" style="margin-top: var(--spacing-md); border-top-color: var(--danger-color);">
+                                                                                        <h3>行业连锁反应</h3>
+                                                                                          <p>“高端显卡价格虚高为行业树立不良先例，可能影响整个产品线定价策略”。</p>
+                                                                                            <a href="http://m.toutiao.com/group/7485984867424141850" target="_blank" class="source-link">查看来源</a>
+                                                                                            </div>
+                                                                                          </section
