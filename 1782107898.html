@@ -1,0 +1,336 @@
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>2026年6月中国“算电协同”战略深化与算力产业发展洞察报告</title>
+      <style>
+        /* =========================================
+        CSS Variables & Reset
+        ========================================= */
+        :root {
+        --primary-color: #0f4c81; /* 经典蓝 */
+        --accent-color: #10b981;  /* 能源绿 */
+        --highlight-color: #f59e0b; /* 重点黄 */
+        --text-main: #1e293b;
+        --text-secondary: #475569;
+        --bg-body: #f8fafc;
+        --bg-card: #ffffff;
+        --border-color: #e2e8f0;
+        --spacing-unit: 1rem;
+        --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+        --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        }
+        html {
+        scroll-behavior: smooth;
+        }
+        body {
+        font-family: var(--font-family);
+        background-color: var(--bg-body);
+        color: var(--text-main);
+        line-height: 1.6;
+        font-size: 16px;
+        }
+        a {
+        color: var(--primary-color);
+        text-decoration: none;
+        transition: color 0.2s;
+        }
+        a:hover {
+        color: #0c3a66;
+        text-decoration: underline;
+        }
+        /* =========================================
+        Layout & Typography
+        ========================================= */
+        .container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 0 var(--spacing-unit);
+        }
+        h1, h2, h3, h4 {
+        color: var(--text-main);
+        font-weight: 700;
+        margin-bottom: 0.75em;
+        }
+        h1 { font-size: 1.75rem; line-height: 1.3; }
+        h2 { font-size: 1.5rem; border-left: 5px solid var(--primary-color); padding-left: 0.75rem; margin-top: 2rem; }
+        h3 { font-size: 1.25rem; margin-top: 1.5rem; color: var(--primary-color); }
+        h4 { font-size: 1.1rem; margin-top: 1rem; font-weight: 600; }
+        p { margin-bottom: 1rem; }
+        ul, ol { margin-bottom: 1rem; padding-left: 1.5rem; }
+        li { margin-bottom: 0.5rem; }
+        /* =========================================
+        Header & Quality Flag
+        ========================================= */
+        header {
+        background: linear-gradient(135deg, var(--primary-color), #1e3a8a);
+        color: white;
+        padding: 2rem 0;
+        position: relative;
+        box-shadow: var(--shadow-md);
+        }
+        .header-content {
+        position: relative;
+        z-index: 1;
+        }
+        .report-meta {
+        font-size: 0.9rem;
+        opacity: 0.9;
+        margin-top: 0.5rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        }
+        /* 质量标志：右上角显眼位置 */
+        .quality-flag {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        background-color: var(--accent-color);
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 50px;
+        font-weight: bold;
+        font-size: 0.9rem;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        z-index: 10;
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+        }
+        .quality-flag::before {
+        content: "✓";
+        font-weight: 900;
+        }
+        /* =========================================
+        Components
+        ========================================= */
+        .card {
+        background: var(--bg-card);
+        border-radius: 8px;
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+        box-shadow: var(--shadow-sm);
+        border: 1px solid var(--border-color);
+        }
+        .highlight-box {
+        background-color: #eff6ff;
+        border-left: 4px solid var(--primary-color);
+        padding: 1rem;
+        margin: 1rem 0;
+        border-radius: 0 4px 4px 0;
+        }
+        .tag {
+        display: inline-block;
+        padding: 0.2rem 0.6rem;
+        border-radius: 4px;
+        font-size: 0.75rem;
+        margin-right: 0.5rem;
+        vertical-align: middle;
+        }
+        .tag-green { background-color: #d1fae5; color: #065f46; }
+        .tag-yellow { background-color: #fef3c7; color: #92400e; }
+        .tag-red { background-color: #fee2e2; color: #991b1b; }
+        .source-link {
+        display: block;
+        font-size: 0.85rem;
+        color: var(--text-secondary);
+        margin-top: 0.5rem;
+        word-break: break-all;
+        }
+        /* =========================================
+        Specific Sections
+        ========================================= */
+        /* 案例研究 Grid */
+        .case-studies {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1rem;
+        margin-top: 1rem;
+        }
+        .case-card {
+        background: #f8fafc;
+        border: 1px solid var(--border-color);
+        padding: 1rem;
+        border-radius: 6px;
+        }
+        .case-card h4 { margin-top: 0; color: var(--text-main); }
+        /* 挑战与优化 对比 */
+        .comparison-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+        margin-top: 1rem;
+        }
+        @media (max-width: 768px) {
+        .comparison-grid { grid-template-columns: 1fr; }
+        }
+        /* 资讯列表 */
+        .news-list {
+        list-style: none;
+        padding: 0;
+        }
+        .news-item {
+        display: flex;
+        flex-direction: column;
+        padding: 1rem 0;
+        border-bottom: 1px solid var(--border-color);
+        }
+        .news-item:last-child { border-bottom: none; }
+        .news-title {
+        font-weight: 600;
+        font-size: 1rem;
+        margin-bottom: 0.4rem;
+        display: block;
+        }
+        .news-meta {
+        font-size: 0.8rem;
+        color: var(--text-secondary);
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.5rem;
+        }
+        /* =========================================
+        Footer
+        ========================================= */
+        footer {
+        text-align: center;
+        padding: 2rem 0;
+        color: var(--text-secondary);
+        font-size: 0.9rem;
+        border-top: 1px solid var(--border-color);
+        margin-top: 3rem;
+        }
+        /* =========================================
+        Responsive Tweaks
+        ========================================= */
+        @media (min-width: 768px) {
+        h1 { font-size: 2.25rem; }
+        .container { padding: 0 2rem; }
+        .card { padding: 2rem; }
+        }
+        /* 移动端优化：触摸目标 */
+        .btn-touch {
+        display: inline-block;
+        min-height: 44px;
+        min-width: 44px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        }
+      </style>
+    </head>
+    <body>
+      <header>
+        <div class="container header-content">
+          <!-- 质量标志 -->
+          <div class="quality-flag">质量标志：通过</div>
+            <h1>2026年6月中国“算电协同”战略深化与算力产业发展洞察报告</h1>
+              <div class="report-meta">
+                <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                  <time datetime="2026-06-22">报告生成日期：2026年06月22日</time>
+                  </div>
+                </div>
+              </header>
+              <main class="container">
+                <!-- 核心洞察综述 -->
+                <section id="summary" class="card">
+                  <h2>一、核心洞察综述</h2>
+                    <div class="highlight-box">
+                      <p>2026年，中国“算电协同”战略从政策概念全面进入工程落地阶段。算力基础设施规模化扩张与能源绿色转型深度绑定。</p>
+                      </div>
+                      <p>国家能源局数据显示，2025年我国已建成<strong>42个万卡级智算集群</strong>，算力中心总用电量达<strong>1700亿千瓦时</strong>。区域布局呈现“西部扩容、东部聚焦高端”特征，超七成新增算力集中于西部省份。</p>
+                        <p>政策层面，“算电协同”首次写入政府工作报告，四部门联合推进绿电直连与跨区域调度。西部数据中心依托低价绿电（0.3-0.4元/度）与自然冷却优势，形成全球低成本算力供给体系。</p>
+                          <p><strong>当前挑战：</strong>高端加速卡进口依赖和算力利用率不足50%。产业正向十万卡级集群升级。</p>
+                            <p><strong>未来趋势：</strong>算力网被纳入国家“六张网”顶层基建，叠加国产芯片突破（如摩尔线程MTT S5000），能源领域大模型应用与“算电协同”技术融合将成核心增长点。</p>
+                            </section>
+                            <!-- 详细维度分析 -->
+                            <section id="analysis">
+                              <h2>二、详细维度分析</h2>
+                                <!-- （一）算力基础设施 -->
+                                <article class="card">
+                                  <h3>（一）算力基础设施规模与区域布局</h3>
+                                    <h4>1. 智算集群与用电量</h4>
+                                      <p>国家能源局《中国“人工智能+”能源发展报告2026》显示，2025年我国已建成42个万卡级智算集群，全国算力中心用电量达1700亿千瓦时，推理任务占AI算力比重超2/3，数据中心成为基荷性负载。</p>
+                                        <h4>2. 区域分化特征</h4>
+                                          <ul>
+                                            <li><strong>西部：增量主力</strong>：超七成新增算力来自西部省份（宁夏、贵州、内蒙古等），依托风光资源和低价电力（如宁夏中卫到户电价0.36元/千瓦时，甘肃绿电占比超80%）形成规模化优势。</li>
+                                              <li><strong>东部：高端聚焦</strong>：东部地区因土地资源稀缺，聚焦高端（如无锡惠山国产智算中心、贵州贵安新区500千伏云谷变支撑的绿色算力高地）。</li>
+                                              </ul>
+                                              <a href="http://m.toutiao.com/group/7644163716828709430/" target="_blank" class="source-link btn-touch">来源：国家能源局2026年5月26日报告 &rarr;</a>
+                                              </article>
+                                              <!-- （二）“算电协同”战略 -->
+                                              <article class="card">
+                                                <h3>（二）“算电协同”战略推进与实践案例</h3>
+                                                  <h4>1. 政策与顶层设计</h4>
+                                                    <ul>
+                                                      <li>“算电协同”首次写入2026年政府工作报告，四部门联合印发行动方案，推动绿电直连与跨区域调度。</li>
+                                                        <li>算力网被列入国家“六张网”（水网、电网、算力网并列），2026年相关投资超7万亿元，直接投资达万亿量级，全国一体化算力网监测调度平台已试运行。</li>
+                                                        </ul>
+                                                        <h4>2. 地方标杆案例</h4>
+                                                          <div class="case-studies">
+                                                            <div class="case-card">
+                                                              <h4>贵州贵安新区</h4>
+                                                                <p>投运500千伏云谷变，探索“电力-算力映射模型”，研发SST柔性供电系统及共享备用电，成立算电协同产业联盟，未来5年用电负荷预计增1.15倍。</p>
+                                                                </div>
+                                                                <div class="case-card">
+                                                                  <h4>宁夏中卫</h4>
+                                                                    <p>依托“东数西算”建设零碳园区，通过“光伏直连+风电交易+电网备容”模式提升绿电占比，中国移动园区绿电占比达78.24%，双环网结构保障供电。</p>
+                                                                    </div>
+                                                                    <div class="case-card">
+                                                                      <h4>庆阳节点</h4>
+                                                                        <p>东数西算枢纽依托陇东风光资源，“源网荷储”一体化模式下，PUE低至1.191，算电智能调度系统实现算力与电力动态匹配，废热回收供暖，年消纳绿电近20亿千瓦时，一期机架上架率近98%。</p>
+                                                                        </div>
+                                                                      </div>
+                                                                      <div style="margin-top: 1rem;">
+                                                                        <a href="http://m.toutiao.com/group/7631841113795543603/" target="_blank" class="source-link btn-touch">来源：贵州贵安新区/宁夏中卫案例 &rarr;</a>
+                                                                          <a href="http://toutiao.com/group/7652630401453802020/" target="_blank" class="source-link btn-touch">来源：庆阳节点 &rarr;</a>
+                                                                          </div>
+                                                                        </article>
+                                                                        <!-- （三）挑战与优化 -->
+                                                                        <article class="card">
+                                                                          <h3>（三）挑战与优化路径</h3>
+                                                                            <div class="comparison-grid">
+                                                                              <div>
+                                                                                <h4 style="color: #ef4444;">1. 核心挑战</h4>
+                                                                                  <ul>
+                                                                                    <li><strong>算力利用率低</strong>：全国算力利用率不足50%，推理任务成全天候负荷，数据中心从“按需供电”转向“基荷性负载”。</li>
+                                                                                      <li><strong>高端卡依赖进口</strong>：高端加速卡（如GPU）依赖进口，限制自主可控发展。</li>
+                                                                                        <li><strong>时空错配</strong>：西部绿电资源（80%）与东部算力需求（70%）存在调度错配；监测系统不同频、跨区域交易机制待完善。</li>
+                                                                                        </ul>
+                                                                                      </div>
+                                                                                      <div>
+                                                                                        <h4 style="color: var(--accent-color);">2. 技术与管理优化</h4>
+                                                                                          <ul>
+                                                                                            <li><strong>冷源技术革新</strong>：无锡惠山智算中心采用“风冷+冷板液冷”混合架构，PUE低于1.25。</li>
+                                                                                              <li><strong>柔性调度系统</strong>：贵州贵安新区推广“电算碳协同运营系统”，通过AI动态调配算力与绿电供给。</li>
+                                                                                                <li><strong>跨区域资源整合</strong>：宁夏中卫与东部联动，通过“源网荷储”模式保障算力稳定供电。</li>
+                                                                                                </ul>
+                                                                                              </div>
+                                                                                            </div>
+                                                                                            <div style="margin-top: 1rem;">
+                                                                                              <a href="http://m.toutiao.com/group/7644163716828709430/" target="_blank" class="source-link btn-touch">来源：算力效率问题 &rarr;</a>
+                                                                                                <a href="http://toutiao.com/group/7648123925473509923/" target="_blank" class="source-link btn-touch">来源：技术优化 &rarr;</a>
+                                                                                                </div>
+                                                                                              </article>
+                                                                                              <!-- （四）产业赋能 -->
+                                                                                              <article class="card">
+                                                                                                <h3>（四）产业赋能与技术突破</h3>
+                                                                                                  <h4>1. 能源大模型落地</h4>
+                                                                                                    <p>能源领域已落地数十个专用大模型，设备故障预测效率提升35%，为智能巡检、能源调度提供决策支持。</p>
+                                                                                                      <h4>2. 国产算力芯片突破</h4>
+                                                                                                        <ul>
+                                                                                                          <li>摩尔线程MTT S5000智算卡支撑无锡惠山智算中心（总算力超10,000 PFlops），北京大学5D世界模型训练。</li>
+                                                                                                            <li>国产芯片加速替代，海光信息、寒武纪等企业订单激增，国产算力芯片成投资主线。</li>
+                                                                                                            </ul>
+                                                                                                            <h4>3. 算力成本优势</h4>
+                                                                                                              <p>“东数西算”政策下，西部百万Token推理成本仅为独立部署的1
