@@ -1,0 +1,263 @@
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>分析报告 - 素材缺失提示</title>
+      <style>
+        /* 全局变量定义：配色方案 */
+        :root {
+        --primary-color: #2563eb;       /* 主色调：专业蓝 */
+        --bg-color: #f8fafc;           /* 背景色：淡灰 */
+        --card-bg: #ffffff;            /* 卡片背景：纯白 */
+        --text-main: #1e293b;          /* 主要文字：深蓝灰 */
+        --text-secondary: #64748b;     /* 次要文字：中灰 */
+        --warning-color: #f59e0b;      /* 警告/不完整色：琥珀色 */
+        --warning-bg: #fffbeb;         /* 警告背景色 */
+        --border-color: #e2e8f0;       /* 边框颜色 */
+        --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        --spacing-unit: 1rem;
+        }
+        /* 基础重置 */
+        * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        }
+        body {
+        font-family: var(--font-family);
+        background-color: var(--bg-color);
+        color: var(--text-main);
+        line-height: 1.6;
+        font-size: 16px;
+        -webkit-font-smoothing: antialiased;
+        }
+        /* 布局容器 */
+        .container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 2rem 1.5rem;
+        }
+        /* 头部区域 */
+        header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 2rem;
+        padding-bottom: 1.5rem;
+        border-bottom: 1px solid var(--border-color);
+        position: relative;
+        }
+        .header-content h1 {
+        font-size: 1.75rem;
+        font-weight: 700;
+        color: var(--text-main);
+        margin-bottom: 0.5rem;
+        }
+        .report-meta {
+        font-size: 0.875rem;
+        color: var(--text-secondary);
+        }
+        /* 质量标志样式 */
+        .quality-badge {
+        background-color: var(--warning-color);
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 999px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        box-shadow: 0 2px 4px rgba(245, 158, 11, 0.3);
+        white-space: nowrap;
+        /* 确保在移动端也能完整显示 */
+        max-width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        }
+        /* 卡片通用样式 */
+        .card {
+        background-color: var(--card-bg);
+        border-radius: 0.75rem;
+        padding: 2rem;
+        margin-bottom: 1.5rem;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        border: 1px solid var(--border-color);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .card:hover {
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+        /* 标题样式 */
+        h2 {
+        font-size: 1.25rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        color: var(--text-main);
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        }
+        h3 {
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin-bottom: 0.75rem;
+        color: var(--text-main);
+        }
+        p {
+        margin-bottom: 1rem;
+        color: var(--text-secondary);
+        }
+        /* 特殊提示区域样式 */
+        .notice-section {
+        background-color: var(--warning-bg);
+        border-left: 4px solid var(--warning-color);
+        }
+        .notice-section h2 {
+        color: #b45309; /* 深琥珀色 */
+        }
+        /* 空状态/占位符样式 */
+        .empty-content {
+        font-style: italic;
+        color: var(--text-secondary);
+        background-color: #f1f5f9;
+        padding: 1rem;
+        border-radius: 0.5rem;
+        text-align: center;
+        border: 1px dashed var(--border-color);
+        }
+        /* 列表样式 */
+        ul {
+        list-style: none;
+        padding-left: 0;
+        }
+        li {
+        margin-bottom: 0.75rem;
+        padding-left: 1.25rem;
+        position: relative;
+        }
+        li::before {
+        content: "•";
+        color: var(--primary-color);
+        font-weight: bold;
+        position: absolute;
+        left: 0;
+        }
+        /* 链接样式 */
+        a {
+        color: var(--primary-color);
+        text-decoration: none;
+        transition: color 0.2s;
+        }
+        a:hover {
+        text-decoration: underline;
+        color: #1d4ed8;
+        }
+        /* 页脚 */
+        footer {
+        text-align: center;
+        margin-top: 3rem;
+        padding-top: 2rem;
+        border-top: 1px solid var(--border-color);
+        color: var(--text-secondary);
+        font-size: 0.875rem;
+        }
+        /* 响应式设计 - 移动端适配 */
+        @media (max-width: 768px) {
+        body {
+        font-size: 14px;
+        }
+        .container {
+        padding: 1rem;
+        }
+        header {
+        flex-direction: column;
+        gap: 1rem;
+        }
+        .header-content h1 {
+        font-size: 1.5rem;
+        }
+        /* 在移动端将标志放在右上角，使用绝对定位或Flex调整 */
+        /* 这里为了确保不遮挡，我们将其放在标题下方或右侧，视具体布局而定 */
+        /* 根据要求：右上角显眼位置。在移动端，我们将其放在Header的右侧 */
+        header {
+        flex-direction: row;
+        align-items: center;
+        flex-wrap: wrap;
+        }
+        .header-content {
+        flex: 1;
+        }
+        .quality-badge {
+        font-size: 0.75rem;
+        padding: 0.4rem 0.8rem;
+        }
+        .card {
+        padding: 1.25rem;
+        }
+        h2 {
+        font-size: 1.1rem;
+        }
+        }
+      </style>
+    </head>
+    <body>
+      <div class="container">
+        <!-- 头部区域 -->
+        <header>
+          <div class="header-content">
+            <h1>深度洞察分析报告</h1>
+              <div class="report-meta">报告生成日期：2026年06月27日</div>
+              </div>
+              <!-- 质量标志：右上角显眼位置 -->
+              <div class="quality-badge" title="当前报告状态">
+                质量标志：不完整（模型长度超过阈值）
+              </div>
+            </header>
+            <main>
+              <!-- 报告生成说明 -->
+              <section class="card notice-section">
+                <h2>
+                  <!-- 使用简单的SVG图标增强视觉效果 -->
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                      <line x1="12" y1="8" x2="12" y2="12"></line>
+                        <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                        </svg>
+                        分析报告生成说明
+                      </h2>
+                      <p>您提供的素材为空（<code>[]</code>），无法基于空素材生成分析洞察报告。本报告需严格依赖用户提供的上下文信息进行交叉验证、溯源引用与结构化分析，若无素材，将导致内容无法填充且不符合“完全依赖提供的素材”的核心要求。</p>
+                      </section>
+                      <!-- 核心洞察综述 -->
+                      <section class="card">
+                        <h2>核心洞察综述</h2>
+                          <div class="empty-content">
+                            无可用素材，无法生成核心洞察。
+                          </div>
+                        </section>
+                        <!-- 详细维度分析 -->
+                        <section class="card">
+                          <h2>详细维度分析</h2>
+                            <div class="empty-content">
+                              无可用素材，无法进行任何维度的信息验证与解读。
+                            </div>
+                          </section>
+                          <!-- 总结与展望 -->
+                          <section class="card">
+                            <h2>总结与展望</h2>
+                              <p>因素材缺失，无法完成分析报告的撰写。请补充有效的分析素材（包含发布日期、网络链接及相关资讯内容），以便后续生成符合要求的深度洞察报告。</p>
+                              </section>
+                              <!-- 资讯标题与链接列表 -->
+                              <section class="card">
+                                <h2>资讯标题与链接列表</h2>
+                                  <div class="empty-content">
+                                    由于素材为空，无有效条目
+                                  </div>
+                                </section>
+                              </main>
+                              <footer>
+                                <p>&copy; 2026 智能分析报告系统. 保留所有权利。</p>
+                                </footer>
+                              </div>
+                            </body>
+                          </html>
+                          ```
