@@ -1,0 +1,347 @@
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>2026年06月29日中国算力产业洞察报告</title>
+      <style>
+        /* CSS 变量定义 - 颜色方案 */
+        :root {
+        --primary-color: #0056b3; /* 深蓝 - 科技感 */
+        --secondary-color: #00b894; /* 青绿 - 绿电/环保 */
+        --accent-color: #ff9f43; /* 橙色 - 重点强调 */
+        --text-main: #2d3436;
+        --text-secondary: #636e72;
+        --bg-body: #f5f7fa;
+        --bg-card: #ffffff;
+        --shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        --shadow-hover: 0 10px 15px rgba(0, 0, 0, 0.1);
+        --radius: 12px;
+        --spacing-unit: 1rem;
+        }
+        /* 基础重置与排版 */
+        * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        }
+        body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        line-height: 1.6;
+        color: var(--text-main);
+        background-color: var(--bg-body);
+        font-size: 16px;
+        padding-bottom: 3rem;
+        }
+        /* 布局容器 */
+        .container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 0 1.5rem;
+        }
+        /* 质量标志 - 右上角悬浮 */
+        .quality-badge {
+        position: fixed;
+        top: 1rem;
+        right: 1rem;
+        background: linear-gradient(135deg, var(--secondary-color), #00cec9);
+        color: white;
+        padding: 0.6rem 1.2rem;
+        border-radius: 50px;
+        font-weight: bold;
+        font-size: 0.9rem;
+        box-shadow: 0 4px 12px rgba(0, 184, 148, 0.4);
+        z-index: 1000;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        animation: slideIn 0.5s ease-out;
+        }
+        @keyframes slideIn {
+        from { transform: translateX(100%); opacity: 0; }
+        to { transform: translateX(0); opacity: 1; }
+        }
+        /* 头部样式 */
+        header {
+        background: var(--bg-card);
+        padding: 3rem 0 2rem;
+        margin-bottom: 2rem;
+        box-shadow: var(--shadow);
+        border-top: 5px solid var(--primary-color);
+        }
+        .report-meta {
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+        margin-bottom: 0.5rem;
+        display: inline-block;
+        background: #dfe6e9;
+        padding: 0.2rem 0.6rem;
+        border-radius: 4px;
+        }
+        h1 {
+        font-size: 2rem;
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+        line-height: 1.3;
+        }
+        /* 通用卡片样式 */
+        .card {
+        background: var(--bg-card);
+        border-radius: var(--radius);
+        padding: 2rem;
+        margin-bottom: 2rem;
+        box-shadow: var(--shadow);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .card:hover {
+        box-shadow: var(--shadow-hover);
+        }
+        h2 {
+        font-size: 1.5rem;
+        color: var(--primary-color);
+        margin-bottom: 1.5rem;
+        border-left: 4px solid var(--secondary-color);
+        padding-left: 1rem;
+        }
+        h3 {
+        font-size: 1.2rem;
+        color: var(--text-main);
+        margin: 1.5rem 0 1rem;
+        font-weight: 600;
+        }
+        p {
+        margin-bottom: 1rem;
+        color: var(--text-secondary);
+        }
+        /* 核心洞察综述 - 特殊样式 */
+        .summary-box {
+        background: linear-gradient(to bottom right, #e3f2fd, #ffffff);
+        border: 1px solid #bbdefb;
+        }
+        .summary-box h2 {
+        border-left-color: var(--primary-color);
+        }
+        /* 列表样式 */
+        ul {
+        list-style: none;
+        padding-left: 0;
+        }
+        ul li {
+        position: relative;
+        padding-left: 1.5rem;
+        margin-bottom: 0.8rem;
+        color: var(--text-secondary);
+        }
+        ul li::before {
+        content: "•";
+        color: var(--secondary-color);
+        font-weight: bold;
+        font-size: 1.2rem;
+        position: absolute;
+        left: 0;
+        top: -2px;
+        }
+        /* 重点数据高亮 */
+        .highlight {
+        color: var(--primary-color);
+        font-weight: 700;
+        background-color: rgba(0, 86, 179, 0.05);
+        padding: 0 4px;
+        border-radius: 4px;
+        }
+        .highlight-green {
+        color: var(--secondary-color);
+        font-weight: 700;
+        }
+        /* 对比布局 (中美对比) */
+        .comparison-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+        }
+        .compare-item {
+        background: #f8f9fa;
+        padding: 1.5rem;
+        border-radius: 8px;
+        border-top: 4px solid #ccc;
+        }
+        .compare-item.us { border-top-color: #d63031; }
+        .compare-item.cn { border-top-color: var(--secondary-color); }
+        .compare-title {
+        font-weight: bold;
+        margin-bottom: 1rem;
+        display: block;
+        font-size: 1.1rem;
+        }
+        /* 来源链接样式 */
+        .source-link {
+        font-size: 0.85rem;
+        color: #0984e3;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        margin-left: 0.5rem;
+        border-bottom: 1px dashed #0984e3;
+        }
+        .source-link:hover {
+        color: var(--primary-color);
+        border-bottom-style: solid;
+        }
+        /* 资讯列表区域 */
+        .info-list {
+        counter-reset: info-counter;
+        }
+        .info-item {
+        display: flex;
+        align-items: flex-start;
+        padding: 1rem;
+        border-bottom: 1px solid #eee;
+        transition: background 0.2s;
+        }
+        .info-item:last-child {
+        border-bottom: none;
+        }
+        .info-item:hover {
+        background-color: #f8f9fa;
+        }
+        .info-item::before {
+        counter-increment: info-counter;
+        content: counter(info-counter);
+        background: var(--primary-color);
+        color: white;
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.8rem;
+        margin-right: 1rem;
+        flex-shrink: 0;
+        }
+        .info-content {
+        flex: 1;
+        }
+        .info-title {
+        font-weight: 600;
+        color: var(--text-main);
+        margin-bottom: 0.3rem;
+        display: block;
+        }
+        .info-url {
+        font-size: 0.8rem;
+        color: var(--text-secondary);
+        word-break: break-all;
+        }
+        .info-url a {
+        color: var(--secondary-color);
+        }
+        .old-info-tag {
+        font-size: 0.7rem;
+        background: #ffeaa7;
+        color: #d35400;
+        padding: 2px 6px;
+        border-radius: 4px;
+        margin-left: 0.5rem;
+        vertical-align: middle;
+        }
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+        h1 { font-size: 1.6rem; }
+        h2 { font-size: 1.3rem; }
+        .card { padding: 1.5rem; }
+        .comparison-grid {
+        grid-template-columns: 1fr;
+        }
+        .quality-badge {
+        top: auto;
+        bottom: 1rem;
+        right: 1rem;
+        font-size: 0.8rem;
+        padding: 0.5rem 1rem;
+        }
+        }
+      </style>
+    </head>
+    <body>
+      <!-- 质量标志 -->
+      <div class="quality-badge">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+          质量标志：通过
+        </div>
+        <header>
+          <div class="container">
+            <span class="report-meta">报告日期：2026年06月29日</span>
+              <h1>2026年06月29日中国算力产业洞察报告：算电协同成核心模式，庆阳样板向全国推广</h1>
+              </div>
+            </header>
+            <main class="container">
+              <!-- 核心洞察综述 -->
+              <section class="card summary-box">
+                <h2>核心洞察综述</h2>
+                  <p>中国算力产业正以<span class="highlight">“算电协同”</span>为核心战略加速发展，甘肃庆阳凭借全国首个绿电聚合直供数据中心等创新实践，成为全国算力产业样板。</p>
+                    <p><strong>2026年上半年核心数据：</strong>庆阳集群算力达<span class="highlight">15万PFLOPS</span>、机架超<span class="highlight">10万架</span>，600余家企业入驻，电价稳定在<span class="highlight-green">0.4元/度</span>以内，网络时延降至<span class="highlight">8毫秒</span>，实现“全国同城体验”。</p>
+                      <p>算电协同模式已从试点向全国推广，成为破解算力高能耗困局、推动数字经济高质量发展的关键路径。中美在算力基建路线上呈现显著分野：中国侧重绿电驱动与系统性工程，美国则依赖化石能源救急与太空算力探索。</p>
+                      </section>
+                      <!-- 一、算电协同模式实践 -->
+                      <section class="card">
+                        <h2>一、算电协同模式实践：庆阳样板的标杆效应</h2>
+                          <h3>庆阳核心成果</h3>
+                            <ul>
+                              <li>
+                                <strong>绿电直供与电价优势：</strong>全国首个绿电聚合直供数据中心项目落地，实现绿电就近消纳，到户电价稳定在0.4元/千瓦时以内，1-5月为企业节省用电成本1300余万元。
+                                  <br><a href="http://m.toutiao.com/group/7654732850856231451/" target="_blank" class="source-link">来源：2026年06月18日</a>
+                                  <a href="http://m.toutiao.com/group/7654156672365019698/" target="_blank" class="source-link">来源：2026年06月18日</a>
+                                    <a href="http://finance.sina.com.cn/roll/2026-06-24/doc-inienawh6382173.shtml/" target="_blank" class="source-link">来源：2026年06月24日</a>
+                                    </li>
+                                    <li>
+                                      <strong>算力规模与产业集聚：</strong>截至2026年4月，集群算力达15万PFLOPS，机架超10万架，600余家企业入驻，跻身全国第一梯队。
+                                        <br><a href="http://m.toutiao.com/group/7654732850856231451/" target="_blank" class="source-link">来源：2026年06月18日</a>
+                                        <a href="http://finance.sina.com.cn/roll/2026-06-24/doc-inienawh6382173.shtml/" target="_blank" class="source-link">来源：2026年06月24日</a>
+                                        </li>
+                                        <li>
+                                          <strong>技术突破与应用落地：</strong>建成国内首个支持单柜100千瓦级液冷机柜及国产化万卡推理集群，PUE低至1.19；自然资源行业大模型上线，支撑土地矿产交易成交额超187亿元。
+                                            <br><a href="http://m.toutiao.com/group/7654732850856231451/" target="_blank" class="source-link">来源：2026年06月18日</a>
+                                            <a href="http://m.toutiao.com/group/7654156672365019698/" target="_blank" class="source-link">来源：2026年06月18日</a>
+                                            </li>
+                                            <li>
+                                              <strong>网络与区域协同：</strong>庆阳至北京网络时延降至8毫秒，实现“全国同城体验”，厦门湖里区依托3000P+2000P跨域智算中心，降低企业成本30%-50%，推动AI在教育、金融等场景落地。
+                                                <br><a href="http://m.toutiao.com/group/7654732850856231451/" target="_blank" class="source-link">来源：2026年06月18日</a>
+                                                <a href="http://m.toutiao.com/group/7655602534706315791/" target="_blank" class="source-link">来源：2026年06月18日</a>
+                                                </li>
+                                              </ul>
+                                            </section>
+                                            <!-- 二、中国算力产业核心驱动逻辑 -->
+                                            <section class="card">
+                                              <h2>二、中国算力产业核心驱动逻辑</h2>
+                                                <ul>
+                                                  <li>
+                                                    <strong>硬需求支撑：</strong>全球AI资本开支翻倍，算力需求激增。2025年全国算力中心用电达1700亿千瓦时（超北京全年用电量），近3年平均增长39.5%，远超全社会用电增速6%。
+                                                      <br><a href="http://m.toutiao.com/group/7654762034076140073/" target="_blank" class="source-link">来源：2026年07月17日</a>
+                                                    </li>
+                                                    <li>
+                                                      <strong>国产替代加速：</strong>华为昇腾、海光、寒武纪等芯片厂商崛起，国产算力底座逐步筑牢。2026年MWC上海展会上，摩尔线程夸娥万卡集群总算力超10 Exa-FLOPS，算力利用率突破60%，线性扩展效率达95%。
+                                                        <br><a href="http://m.toutiao.com/group/7651935723616092712/" target="_blank" class="source-link">来源：2026年07月16日</a>
+                                                        <a href="http://m.toutiao.com/group/7654975840848970275/" target="_blank" class="source-link">来源：2026年06月24日</a>
+                                                        </li>
+                                                        <li>
+                                                          <strong>算电协同战略：</strong>四部门部署29项任务推进99个绿电直连项目，算电协同成扩张前提。绿电聚合直供使电价降至0.4元/千瓦时，节省成本50%，算力中心成为虚拟电厂核心资源，2027年调节能力预计超2000万千瓦。
+                                                            <br><a href="http://m.toutiao.com/group/7654244333498958388/" target="_blank" class="source-link">来源：2026年06月22日</a>
+                                                            <a href="http://m.toutiao.com/group/7654762034076140073/" target="_blank" class="source-link">来源：2026年07月17日</a>
+                                                            </li>
+                                                          </ul>
+                                                        </section>
+                                                        <!-- 三、产业链核心环节与龙头布局 -->
+                                                        <section class="card">
+                                                          <h2>三、产业链核心环节与龙头布局</h2>
+                                                            <ul>
+                                                              <li>
+                                                                <strong>产业链七层细分：</strong>核心芯片（英伟达/昇腾/海光/寒武纪）、存力（澜起科技/江波龙）、光模块（中际旭创/新易盛/华工科技）、服务器（工业富联/中科曙光）、液冷温控（英维克/高澜股份）、算力运营、算电协同（绿电+储能）。
+                                                                  <br><a href="http://m.toutiao.com/group/7651935723616092712/" target="_blank" class="source-link">来源：2026年07月16日</a>
+                                                                </li>
+                                                                <li>
+                                                                  <strong>四标准筛选真龙头：</strong>大厂长期订单、自研技术、算力营收占比过半、正向现金流。重点关注12家产业链核心龙头：浪潮信息（AI服务器）、润泽科技（AIDC机房）、中科曙光（国产算力）、紫光股份（算力网络）、晶科科技（算电协同）等。
+                                                                    <br><a href="http://m.toutiao.com/group/76540758582759578852/" target
