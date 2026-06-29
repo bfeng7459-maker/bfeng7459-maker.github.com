@@ -1,0 +1,322 @@
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>NVIDIA RTX 50系列显卡价格走势分析报告</title>
+      <style>
+        :root {
+        --primary-color: #76b900; /* NVIDIA Green Tone */
+        --primary-dark: #5ca900;
+        --accent-color: #00bfa5;
+        --alert-color: #e53935; /* Red for price hikes */
+        --text-main: #2c3e50;
+        --text-secondary: #546e7a;
+        --bg-body: #f0f2f5;
+        --bg-card: #ffffff;
+        --border-radius: 12px;
+        --shadow: 0 4px 6px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.1);
+        --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+        * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        }
+        body {
+        font-family: var(--font-family);
+        background-color: var(--bg-body);
+        color: var(--text-main);
+        line-height: 1.6;
+        font-size: 16px;
+        -webkit-font-smoothing: antialiased;
+        }
+        /* Layout Container */
+        .container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 0 1rem;
+        }
+        /* Header */
+        header {
+        background-color: var(--bg-card);
+        box-shadow: var(--shadow);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        padding: 1rem 0;
+        margin-bottom: 2rem;
+        }
+        .header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+        }
+        h1 {
+        font-size: 1.5rem;
+        color: var(--text-main);
+        font-weight: 700;
+        flex: 1;
+        }
+        /* Quality Badge */
+        .quality-badge {
+        background-color: var(--primary-color);
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 50px;
+        font-weight: 600;
+        font-size: 0.9rem;
+        box-shadow: 0 2px 4px rgba(118, 185, 0, 0.3);
+        white-space: nowrap;
+        }
+        /* Cards */
+        .card {
+        background-color: var(--bg-card);
+        border-radius: var(--border-radius);
+        padding: 2rem;
+        margin-bottom: 2rem;
+        box-shadow: var(--shadow);
+        border-left: 5px solid transparent;
+        transition: transform 0.2s ease;
+        }
+        .card:hover {
+        transform: translateY(-2px);
+        }
+        .card.summary {
+        border-left-color: var(--primary-color);
+        background: linear-gradient(to bottom right, #ffffff, #f9fff5);
+        }
+        /* Typography */
+        h2 {
+        font-size: 1.4rem;
+        color: var(--text-main);
+        margin-bottom: 1.2rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid #f0f0f0;
+        display: flex;
+        align-items: center;
+        }
+        h2::before {
+        content: '';
+        display: inline-block;
+        width: 8px;
+        height: 1.4rem;
+        background-color: var(--primary-color);
+        margin-right: 0.8rem;
+        border-radius: 2px;
+        }
+        h3 {
+        font-size: 1.2rem;
+        color: var(--text-main);
+        margin-top: 1.5rem;
+        margin-bottom: 0.8rem;
+        font-weight: 600;
+        }
+        p {
+        margin-bottom: 1rem;
+        color: var(--text-secondary);
+        text-align: justify;
+        }
+        ul, ol {
+        margin-bottom: 1rem;
+        padding-left: 1.5rem;
+        color: var(--text-secondary);
+        }
+        li {
+        margin-bottom: 0.8rem;
+        }
+        /* Highlights */
+        strong {
+        color: var(--text-main);
+        font-weight: 600;
+        }
+        .price-highlight {
+        color: var(--alert-color);
+        font-weight: 700;
+        background-color: rgba(229, 57, 53, 0.1);
+        padding: 0 4px;
+        border-radius: 4px;
+        }
+        .trend-up {
+        color: var(--alert-color);
+        }
+        /* Links */
+        a.source-link {
+        display: inline-flex;
+        align-items: center;
+        color: var(--primary-dark);
+        text-decoration: none;
+        font-size: 0.85rem;
+        margin-left: 0.5rem;
+        border: 1px solid var(--primary-color);
+        padding: 2px 8px;
+        border-radius: 4px;
+        transition: all 0.2s;
+        background-color: rgba(118, 185, 0, 0.05);
+        }
+        a.source-link:hover {
+        background-color: var(--primary-color);
+        color: white;
+        }
+        a.source-link::before {
+        content: '🔗';
+        margin-right: 4px;
+        font-size: 0.8rem;
+        }
+        /* News List Section */
+        .news-list-container {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        }
+        .news-item {
+        display: flex;
+        flex-direction: column;
+        padding: 1rem;
+        border-bottom: 1px solid #eee;
+        }
+        .news-item:last-child {
+        border-bottom: none;
+        }
+        .news-date {
+        font-size: 0.9rem;
+        color: var(--primary-dark);
+        font-weight: 700;
+        margin-bottom: 0.3rem;
+        }
+        .news-title {
+        font-size: 1rem;
+        color: var(--text-main);
+        font-weight: 500;
+        }
+        .news-note {
+        font-size: 0.8rem;
+        color: #888;
+        font-style: italic;
+        margin-top: 0.5rem;
+        text-align: right;
+        }
+        /* Footer */
+        footer {
+        text-align: center;
+        padding: 2rem 0;
+        color: var(--text-secondary);
+        font-size: 0.9rem;
+        }
+        /* Responsive Design */
+        @media (min-width: 768px) {
+        h1 { font-size: 1.8rem; }
+        h2 { font-size: 1.6rem; }
+        .card { padding: 2.5rem; }
+        .news-item {
+        flex-direction: row;
+        align-items: baseline;
+        gap: 1rem;
+        }
+        .news-date {
+        min-width: 140px;
+        margin-bottom: 0;
+        }
+        }
+        @media (max-width: 767px) {
+        .header-content {
+        flex-direction: column;
+        align-items: flex-start;
+        }
+        .quality-badge {
+        align-self: flex-end;
+        margin-top: -2.5rem; /* Pull up to sit next to title if wrapped */
+        }
+        h2::before {
+        height: 1.2rem;
+        }
+        }
+      </style>
+    </head>
+    <body>
+      <header>
+        <div class="container header-content">
+          <h1>NVIDIA RTX 50系列显卡价格走势分析报告（2026年06月29日）</h1>
+            <div class="quality-badge">质量标志：通过</div>
+            </div>
+          </header>
+          <main class="container">
+            <!-- 核心洞察综述 -->
+            <section class="card summary">
+              <h2>核心洞察综述</h2>
+                <p>2026年上半年，NVIDIA RTX 5090显卡价格呈现持续上涨趋势，截至6月已突破<span class="price-highlight">3.4万元人民币</span>（约4000欧元），较官方建议价翻倍。核心驱动因素包括AI产业对显存产能的挤占、GDDR7显存成本暴涨<span class="trend-up">300%</span>、零售商二次抬价及全球存储产品价格联动。AMD因缺乏AI收入陷入涨价死循环，市场份额仅<span class="price-highlight">8%</span>，而NVIDIA通过中端显卡降价补贴游戏卡、优先供应AI业务，进一步拉大与AMD的差距。消费者面临高端卡高价、中端卡选择减少的困境，建议理性评估需求，关注性价比。</p>
+                </section>
+                <!-- 详细维度分析 -->
+                <section class="card">
+                  <h2>详细维度分析</h2>
+                    <h3>一、RTX 5090价格走势与现状</h3>
+                      <p><strong>1. 最新价格动态</strong>（2026年6月）：</p>
+                        <ul>
+                          <li><strong>2026年06月28日</strong>：RTX 5090售价达<span class="price-highlight">33000-35200元人民币</span>，较官方建议价（1999美元）翻倍，为史上最贵消费级显卡<a href="https://toutiao.com/group/7656397174422372864/" target="_blank" class="source-link">来源链接</a>。</li>
+                            <li><strong>2026年06月24日</strong>：RTX 5090在欧洲市场突破<span class="price-highlight">4000欧元</span>，国内售价6999-9000元，一年涨幅达<span class="trend-up">71%</span><a href="http://toutiao.com/item/7654734878340088356/" target="_blank" class="source-link">来源链接</a>。</li>
+                              <li><strong>2026年06月08日</strong>：RTX 5090售价24399元，较2025年12月涨超25%，且SUPER系列跳票至2027年发布，消费者面临“无卡可选”<a href="https://toutiao.com/group/7648891419666432546/" target="_blank" class="source-link">来源链接</a>。</li>
+                              </ul>
+                              <p><strong>2. 历史价格波动</strong>（老旧信息，距2026-06-29超60天）：</p>
+                                <ul>
+                                  <li><strong>2025年03月</strong>：RTX 5090公版卡二手价从10000美元暴跌至4000美元，因供需变化趋稳<a href="https://www.sohu.com/a/874760665_121798711/" target="_blank" class="source-link">来源链接</a>。</li>
+                                    <li><strong>2025年06月</strong>：日本定制版RTX 5090降至1.99万元人民币，北美/欧洲价格逐步回落至2700-2500美元/欧元，但仍高于建议价<a href="https://m.ithome.com/html/860922.htm/" target="_blank" class="source-link">来源链接</a>。</li>
+                                    </ul>
+                                    <h3>二、涨价核心原因</h3>
+                                      <p><strong>1. 显存成本与AI需求挤占</strong></p>
+                                        <ul>
+                                          <li><strong>显存价格暴涨</strong>：2026年06月23日、2026年01月18日等素材显示，GDDR7显存采购成本翻3倍以上，AI产业抢占产能致显存供需缺口持续扩大<a href="http://toutiao.com/item/7654402843209728531/" target="_blank" class="source-link">来源链接</a>。</li>
+                                            <li><strong>产能优先级倾斜</strong>：NVIDIA优先供给AI数据中心产品，消费级显卡排产靠后，导致RTX 5090供应紧张<a href="https://toutiao.com/group/7648891419666432546/" target="_blank" class="source-link">来源链接</a>。</li>
+                                            </ul>
+                                            <p><strong>2. 存储产品价格联动与渠道抬价</strong></p>
+                                              <ul>
+                                                <li>2026年01月：全球存储产品价格上涨，零售商二次销售推高RTX 5090至3.4万元（较一年前翻一倍）<a href="https://m.3dmgame.com/news/202601/3936771.html" target="_blank" class="source-link">来源链接</a>。</li>
+                                                </ul>
+                                                <p><strong>3. 厂商策略性涨价</strong></p>
+                                                  <ul>
+                                                    <li><strong>NVIDIA</strong>：中端RTX 5060降价至2100元补贴游戏卡，高端RTX 5090小幅涨价以维持利润<a href="http://toutiao.com/item/7654402843209728531/" target="_blank" class="source-link">来源链接</a>。</li>
+                                                      <li><strong>AMD</strong>：2026年06月23日计划7月将GPU与显存捆绑套装涨价10%-15%，但此前涨价已致销量下滑和价格倒挂<a href="http://toutiao.com/item/7654402843209728531/" target="_blank" class="source-link">来源链接</a>。</li>
+                                                      </ul>
+                                                      <h3>三、市场格局与消费者影响</h3>
+                                                        <p><strong>1. 厂商竞争态势</strong></p>
+                                                          <ul>
+                                                            <li><strong>NVIDIA</strong>：以21.5%交换机市场份额登顶，AI业务利润反哺游戏卡降价，中端RTX 5060系列成为性价比选择<a href="http://toutiao.com/group/7656397174422372864/" target="_blank" class="source-link">来源链接</a>。</li>
+                                                              <li><strong>AMD</strong>：因缺乏AI收入陷入涨价死循环，市场份额仅8%，远低于NVIDIA的90%<a href="http://toutiao.com/item/7654402843209728531/" target="_blank" class="source-link">来源链接</a>。</li>
+                                                              </ul>
+                                                              <p><strong>2. 消费者决策困境</strong></p>
+                                                                <ul>
+                                                                  <li><strong>高端卡</strong>：RTX 5090成交价超3万元，性价比不足，二手市场跟涨（如RTX 4080/4090价格反升）<a href="http://toutiao.com/item/7654734878340088356/" target="_blank" class="source-link">来源链接</a>。</li>
+                                                                    <li><strong>中端卡</strong>：RTX 5070 Ti涨幅71%，RTX 5060系列降价至2000-2400元，成为过渡选择<a href="https://toutiao.com/group/7648891419666432546/" target="_blank" class="source-link">来源链接</a>。</li>
+                                                                    </ul>
+                                                                    <h3>四、总结与展望</h3>
+                                                                      <ul>
+                                                                        <li><strong>短期趋势</strong>：显存短缺持续至2028年，高端卡价格难回落，NVIDIA中端卡降价策略或维持至2026年底<a href="http://toutiao.com/group/7654401602970780166/" target="_blank" class="source-link">来源链接</a>。</li>
+                                                                          <li><strong>长期风险</strong>：AMD涨价导致市场份额进一步下滑，消费者需权衡需求与价格，建议优先选择2000元档RTX 5060或推迟升级计划<a href="http://toutiao.com/group/7656397174422372864/" target="_blank" class="source-link">来源链接</a>。</li>
+                                                                          </ul>
+                                                                        </section>
+                                                                        <!-- 资讯列表 -->
+                                                                        <section class="card">
+                                                                          <h2>资讯列表（按发布日期由近及远排序）</h2>
+                                                                            <div class="news-list-container">
+                                                                              <div class="news-item">
+                                                                                <div class="news-date">2026年06月28日</div>
+                                                                                  <div class="news-content">
+                                                                                    <div class="news-title">《技嘉推出RTX 5080纪念款，高端卡价涨至3.5万元》<a href="https://toutiao.com/group/7656397174422372864/" target="_blank" class="source-link">来源链接</a></div>
+                                                                                    </div>
+                                                                                  </div>
+                                                                                  <div class="news-item">
+                                                                                    <div class="news-date">2026年06月24日</div>
+                                                                                      <div class="news-content">
+                                                                                        <div class="news-title">《显卡价格失控，RTX 5070 Ti一年涨71%》<a href="http://toutiao.com/item/7654734878340088356/" target="_blank" class="source-link">来源链接</a></div>
+                                                                                        </div>
+                                                                                      </div>
+                                                                                      <div class="news-item">
+                                                                                        <div class="news-date">2026年06月23日</div>
+                                                                                          <div class="news-content">
+                                                                                            <div class="news-title">《AMD计划7月涨价10%-15%，NVIDIA中端卡补贴游戏市场》<a href="http://toutiao.com/item/7654402843209728531/" target="_blank" class="source-link">来源链接</a></div>
+                                                                                            </div>
+                                                                                          </div>
+                                                                                          <div class="news-item">
+                                                                                            <div class="news-date">2026年06月08日</div
