@@ -1,0 +1,352 @@
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>2026年中国算电协同与AI算力集群发展洞察报告</title>
+      <style>
+        :root {
+        /* 颜色方案：科技蓝与生态绿 */
+        --primary-color: #0f172a; /* 深蓝背景 */
+        --secondary-color: #3b82f6; /* 科技蓝高亮 */
+        --accent-color: #10b981; /* 绿电绿 */
+        --text-main: #334155;
+        --text-light: #64748b;
+        --bg-body: #f8fafc;
+        --bg-card: #ffffff;
+        --border-color: #e2e8f0;
+        --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        /* 全局重置与基础样式 */
+        * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        }
+        body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+        background-color: var(--bg-body);
+        color: var(--text-main);
+        line-height: 1.6;
+        font-size: 16px;
+        -webkit-font-smoothing: antialiased;
+        }
+        /* 布局容器 */
+        .container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 0 1.5rem;
+        }
+        /* 顶部导航与标题 */
+        header {
+        background: linear-gradient(135deg, var(--primary-color) 0%, #1e293b 100%);
+        color: white;
+        padding: 3rem 0;
+        position: relative;
+        overflow: hidden;
+        box-shadow: var(--shadow);
+        }
+        /* 质量标志 - 右上角显眼位置 */
+        .quality-badge {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        background-color: var(--accent-color);
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 9999px;
+        font-size: 0.875rem;
+        font-weight: 700;
+        box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
+        z-index: 10;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        }
+        .quality-badge::before {
+        content: "✓";
+        font-weight: bold;
+        font-size: 1.1em;
+        }
+        .report-meta {
+        font-size: 0.9rem;
+        color: #94a3b8;
+        margin-bottom: 1rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        }
+        h1 {
+        font-size: 2rem;
+        font-weight: 800;
+        line-height: 1.3;
+        margin-bottom: 1rem;
+        }
+        /* 核心洞察卡片 */
+        .summary-card {
+        background: var(--bg-card);
+        border-radius: 1rem;
+        padding: 2rem;
+        margin-top: -2rem;
+        position: relative;
+        z-index: 5;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        border-left: 6px solid var(--secondary-color);
+        }
+        .section-title {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--primary-color);
+        margin: 3rem 0 1.5rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid var(--border-color);
+        display: flex;
+        align-items: center;
+        }
+        .section-title::before {
+        content: "";
+        display: inline-block;
+        width: 8px;
+        height: 1.5rem;
+        background-color: var(--secondary-color);
+        margin-right: 0.75rem;
+        border-radius: 4px;
+        }
+        /* 内容通用样式 */
+        p {
+        margin-bottom: 1.25rem;
+        text-align: justify;
+        }
+        ul {
+        list-style: none;
+        margin-bottom: 1.5rem;
+        }
+        li {
+        margin-bottom: 1rem;
+        padding-left: 1.5rem;
+        position: relative;
+        }
+        li::before {
+        content: "•";
+        color: var(--secondary-color);
+        font-weight: bold;
+        position: absolute;
+        left: 0;
+        }
+        strong {
+        color: var(--primary-color);
+        font-weight: 600;
+        }
+        /* 链接样式 */
+        a {
+        color: var(--secondary-color);
+        text-decoration: none;
+        transition: color 0.2s;
+        border-bottom: 1px dotted var(--secondary-color);
+        }
+        a:hover {
+        color: var(--primary-color);
+        border-bottom-style: solid;
+        }
+        /* 来源引用样式 */
+        .source-ref {
+        font-size: 0.8rem;
+        color: var(--text-light);
+        background-color: #f1f5f9;
+        padding: 0.2rem 0.5rem;
+        border-radius: 4px;
+        margin-left: 0.5rem;
+        white-space: nowrap;
+        vertical-align: middle;
+        }
+        /* 对比布局 */
+        .comparison-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+        margin-bottom: 2rem;
+        }
+        .comparison-card {
+        background: var(--bg-card);
+        padding: 1.5rem;
+        border-radius: 0.75rem;
+        border: 1px solid var(--border-color);
+        box-shadow: var(--shadow);
+        }
+        .comparison-card h3 {
+        font-size: 1.25rem;
+        margin-bottom: 1rem;
+        color: var(--primary-color);
+        }
+        .tag {
+        display: inline-block;
+        padding: 0.25rem 0.75rem;
+        border-radius: 999px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        margin-right: 0.5rem;
+        margin-bottom: 0.5rem;
+        }
+        .tag-blue { background-color: #dbeafe; color: #1e40af; }
+        .tag-green { background-color: #d1fae5; color: #065f46; }
+        .tag-orange { background-color: #ffedd5; color: #9a3412; }
+        /* 资讯来源列表 */
+        .source-list {
+        background-color: #f8fafc;
+        border: 1px solid var(--border-color);
+        border-radius: 0.75rem;
+        padding: 1.5rem;
+        }
+        .source-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        padding: 0.75rem 0;
+        border-bottom: 1px dashed var(--border-color);
+        font-size: 0.9rem;
+        }
+        .source-item:last-child {
+        border-bottom: none;
+        }
+        .source-date {
+        color: var(--text-light);
+        font-size: 0.85rem;
+        min-width: 120px;
+        }
+        .source-link-btn {
+        display: inline-block;
+        margin-top: 0.5rem;
+        font-size: 0.85rem;
+        }
+        /* 底部 */
+        footer {
+        text-align: center;
+        padding: 3rem 0;
+        color: var(--text-light);
+        font-size: 0.875rem;
+        border-top: 1px solid var(--border-color);
+        margin-top: 3rem;
+        }
+        /* 响应式适配 */
+        @media (max-width: 768px) {
+        h1 { font-size: 1.5rem; }
+        .container { padding: 0 1rem; }
+        .summary-card {
+        padding: 1.5rem;
+        margin-top: -1.5rem;
+        }
+        .comparison-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        }
+        .source-item {
+        flex-direction: column;
+        }
+        .source-date {
+        margin-bottom: 0.25rem;
+        }
+        }
+      </style>
+    </head>
+    <body>
+      <header>
+        <div class="container">
+          <div class="quality-badge">质量标志：通过</div>
+            <div class="report-meta">2026-07-01 · 行业洞察报告</div>
+              <h1>2026年中国算电协同与AI算力集群发展洞察报告</h1>
+              </div>
+            </header>
+            <main class="container">
+              <!-- 核心洞察综述 -->
+              <section class="summary-card">
+                <h2 class="section-title" style="margin-top: 0; border: none; padding: 0;">核心洞察综述</h2>
+                  <p>2026年全球AI算力竞争进入算力基础设施差异化布局阶段，中国以“算电协同”为核心路径，依托绿电资源与政策驱动，在甘肃庆阳、内蒙古呼和浩特等地构建“训练+推理”跨省协同算力集群，形成可复制的绿色算力生态。美国则侧重化石能源专属供电与太空算力网络探索，短期突破与长期风险并存。中国“算电协同”模式已实现技术（液冷、算力集群）、产业（670家数字经济企业）、生态（产学研联动）的多维突破，并通过99个绿电直连项目（国家四部门行动方案部署）与政策规划（2030年全国一体化调度体系）夯实长期优势。</p>
+                  </section>
+                  <!-- 详细维度分析 -->
+                  <h2 class="section-title">详细维度分析</h2>
+                    <!-- 一、算电协同实践 -->
+                    <section>
+                      <h3>一、算电协同实践：庆阳“绿电+算力”标杆效应</h3>
+                        <p>甘肃庆阳作为算电协同发展核心试点，已形成“绿电聚合直供+智算集群+产业赋能”的立体模式：</p>
+                          <ul>
+                            <li>
+                              <strong>算力规模与技术突破</strong>：庆阳聚焦推理场景，初期算力达9.2万PFLOPS（2026.05.24），后升级至15万PFLOPS，机架超10万架，智算占比超99%，单柜100千瓦级液冷机柜与国产化万卡算力集群实现PUE低至1.192
+                                <a href="http://finance.sina.com.cn/roll/2026-06-24/doc-inienawh6382173.shtml" class="source-ref">【6月24日新浪财经】</a>。
+                                </li>
+                                <li>
+                                  <strong>绿电与成本优势</strong>：绿电占比超80%（初期）至86%，到户电价控制在0.4元/千瓦时以内，2026年1-5月累计节约电费超1300万元，全年预计节省3000余万元
+                                    <a href="http://m.toutiao.com/group/7654732850856231451/" class="source-ref">【6月18日头条】</a>
+                                      <a href="http://finance.sina.com.cn/roll/2026-06-24/doc-inienawh6382173.shtml" class="source-ref">【6月24日新浪财经】</a>。
+                                      </li>
+                                      <li>
+                                        <strong>算网调度与时延优化</strong>：通过算网大脑协同调度，庆阳至北京网络时延降至8毫秒内，实现“全国同城体验”
+                                          <a href="http://m.toutiao.com/group/7654732850856231451/" class="source-ref">【6月18日头条】</a>。
+                                          </li>
+                                          <li>
+                                            <strong>产业赋能与生态构建</strong>：算力赋能自然资源、能源监控等领域，自然资源行业大模型支撑土地和矿产资源交易超187亿元，累计注册数字经济企业670家，形成“算力+产业”闭环。
+                                            </li>
+                                            <li>
+                                              <strong>可复制的“庆阳样板”</strong>：作为全国首个绿电聚合直供数据中心试点，其模式已从试点走向可推广阶段，为全国算力绿色转型提供参考。
+                                              </li>
+                                            </ul>
+                                          </section>
+                                          <!-- 二、中美AI算力路线对比 -->
+                                          <section>
+                                            <h3>二、中美AI算力路线对比</h3>
+                                              <p>2026年6月，中美在AI基础设施布局上呈现显著分叉：</p>
+                                                <div class="comparison-grid">
+                                                  <div class="comparison-card" style="border-top: 4px solid #f97316;">
+                                                    <h3>美国路径：短期突破与长期风险</h3>
+                                                      <p>美国依赖化石能源与颠覆性技术布局：雪佛龙为微软数据中心提供20年天然气“专属供电”协议，规避电网老化问题；SpaceX与Reflection达成63亿美元合作，探索“太空算力网络” <a href="https://toutiao.com/group/7654244333498958388/" class="source-ref">【6月22日头条】</a>。</p>
+                                                        <p><span class="tag tag-orange">风险预警</span> 其特点是短期解决算力能源饥渴，但锁定高能耗路径，与碳中和目标冲突。</p>
+                                                        </div>
+                                                        <div class="comparison-card" style="border-top: 4px solid var(--accent-color);">
+                                                          <h3>中国路径：绿电筑基与生态协同</h3>
+                                                            <p>中国以“双碳”目标为核心，通过算电协同构建长期竞争力：四部门部署《关于促进人工智能与能源双向赋能的行动方案》，已落地99个绿电直连项目，甘肃庆阳等集群实现绿电占比超80%，电价成本降低50% <a href="https://toutiao.com/group/7654244333498958388/" class="source-ref">【6月22日头条】</a>。</p>
+                                                              <p><span class="tag tag-green">战略优势</span> 中国模式依托地面系统稳扎稳打，与绿电消纳、能源转型深度绑定，长期优势持续扩大。</p>
+                                                              </div>
+                                                            </div>
+                                                          </section>
+                                                          <!-- 三、国家战略与政策支持 -->
+                                                          <section>
+                                                            <h3>三、国家战略与政策支持</h3>
+                                                              <p>算力网被纳入国家“六张网”战略基建，与水网、电网并列，成为顶层设计重点：</p>
+                                                                <ul>
+                                                                  <li>
+                                                                    <strong>投资规模</strong>：：2026年“六张网”总投资超7万亿元，其中算力网直接投资达万亿量级，监测调度平台已试运行
+                                                                      <a href="https://toutiao.com/group/7651913092900602377/" class="source-ref">【6月16日头条】</a>。
+                                                                      </li>
+                                                                      <li>
+                                                                        <strong>政策规划</strong>：“十五五”明确推动算电协同，2030年建成全国一体化算力调度体系；2026年“算电协同”首入政府工作报告，目标2030年实现“全国同城体验”级算力网络。
+                                                                        </li>
+                                                                        <li>
+                                                                          <strong>区域协同</strong>：甘肃庆阳与内蒙古呼和浩特构建“训练+推理”跨省协同集群，庆阳侧重推理（9.2万PFLOPS），呼和浩特聚焦训练（6.7EFLOPS），通过算网大脑实现资源高效调度
+                                                                            <a href="http://m.toutiao.com/group/7657231407466496575/" class="source-ref">【5月24日头条】</a>。
+                                                                            </li>
+                                                                          </ul>
+                                                                        </section>
+                                                                        <!-- 四、技术与产业布局 -->
+                                                                        <section>
+                                                                          <h3>四、技术与产业布局</h3>
+                                                                            <ul>
+                                                                              <li>
+                                                                                <strong>国产智算突破</strong>：摩尔线程、长飞光纤等企业实现全链条商用化：摩尔线程夸娥万卡集群总算力超10 Exa-FLOPS，线性扩展效率95%；中兴推出单机柜128个GPU的OEX架构，PUE降至1.15
+                                                                                  <a href="http://m.toutiao.com/group/7654975840848970275/" class="source-ref">【6月24日头条】</a>。
+                                                                                  </li>
+                                                                                  <li>
+                                                                                    <strong>A股受益链条</strong>：
+                                                                                      <br><span class="tag tag-blue">算力基建</span> 中科曙光、浪潮信息、海光信息
+                                                                                      <br><span class="tag tag-blue">算电协同</span> 国电南瑞、协鑫能科、中国能建
+                                                                                      <br><span class="tag tag-blue">IDC运营</span> 润泽科技、宝信软件
+                                                                                      <br><span class="tag tag-blue">光通信与液冷</span> 中际旭创、英维克
+                                                                                      <a href="https://toutiao.com/group/7651913092900602377/" class="source-ref">【6月16日头条】</a>
+                                                                                      </li>
+                                                                                    </ul>
+                                                                                  </section>
+                                                                                  <!-- 五、其他区域发展 -->
+                                                                                  <section>
+                                                                                    <h3>五、其他区域发展</h3>
+                                                                                      <ul>
+                                                                                        <li>
+                                                                                          <strong>厦门湖里区案例</strong>：依托算力筑基与场景牵引，闽宁智算中心投用，落地文夔大模型、白鸽保险模型等应用，通过“科学家+企业家+投资人+场景”四维协同机制，推动AI深度赋能实体经济
+                                                                                            <a
