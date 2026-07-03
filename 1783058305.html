@@ -1,0 +1,337 @@
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>中国算电协同发展洞察报告</title>
+      <style>
+        /* --- CSS Reset & Variables --- */
+        :root {
+        --primary-color: #2563eb;       /* 皇家蓝 */
+        --primary-dark: #1e40af;        /* 深蓝 */
+        --accent-color: #0ea5e9;        /* 天蓝 */
+        --success-color: #10b981;       /* 绿色 (用于质量标志) */
+        --text-main: #1e293b;           /* 主要文字 */
+        --text-secondary: #475569;       /* 次要文字 */
+        --bg-body: #f1f5f9;             /* 页面背景 */
+        --bg-card: #ffffff;             /* 卡片背景 */
+        --border-color: #e2e8f0;        /* 边框颜色 */
+        --spacing-unit: 1rem;
+        --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+        * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        }
+        body {
+        font-family: var(--font-family);
+        background-color: var(--bg-body);
+        color: var(--text-main);
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+        }
+        a {
+        color: var(--primary-color);
+        text-decoration: none;
+        transition: color 0.2s;
+        }
+        a:hover {
+        color: var(--primary-dark);
+        text-decoration: underline;
+        }
+        /* --- Layout --- */
+        .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 0 1rem;
+        }
+        /* --- Header --- */
+        header {
+        background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+        color: white;
+        padding: 2rem 0;
+        margin-bottom: 2rem;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        position: relative;
+        }
+        .header-content {
+        position: relative;
+        z-index: 1;
+        }
+        h1 {
+        font-size: 1.75rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        line-height: 1.3;
+        }
+        .report-meta {
+        font-size: 0.9rem;
+        opacity: 0.9;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        }
+        /* --- Quality Badge --- */
+        .quality-badge {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        background-color: var(--success-color);
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 9999px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+        }
+        .quality-badge::before {
+        content: "✓";
+        font-weight: bold;
+        }
+        /* --- Sections & Cards --- */
+        section {
+        background: var(--bg-card);
+        border-radius: 12px;
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        border: 1px solid var(--border-color);
+        }
+        h2 {
+        font-size: 1.4rem;
+        color: var(--primary-dark);
+        border-left: 4px solid var(--accent-color);
+        padding-left: 0.75rem;
+        margin-bottom: 1rem;
+        }
+        h3 {
+        font-size: 1.15rem;
+        color: var(--text-main);
+        margin-top: 1.5rem;
+        margin-bottom: 0.75rem;
+        font-weight: 600;
+        }
+        p {
+        margin-bottom: 1rem;
+        color: var(--text-secondary);
+        }
+        strong, b {
+        color: var(--text-main);
+        font-weight: 600;
+        }
+        /* --- Lists --- */
+        ul, ol {
+        padding-left: 1.5rem;
+        margin-bottom: 1rem;
+        color: var(--text-secondary);
+        }
+        li {
+        margin-bottom: 0.5rem;
+        }
+        /* --- Citation Tags --- */
+        .citation-tag {
+        display: inline-block;
+        font-size: 0.75rem;
+        background-color: #e0f2fe;
+        color: #0369a1;
+        padding: 0.1rem 0.4rem;
+        border-radius: 4px;
+        margin-left: 0.25rem;
+        vertical-align: middle;
+        font-family: monospace;
+        }
+        /* --- Table --- */
+        .table-wrapper {
+        overflow-x: auto;
+        margin: 1rem 0;
+        border-radius: 8px;
+        border: 1px solid var(--border-color);
+        }
+        table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.9rem;
+        min-width: 600px; /* Force scroll on small screens */
+        }
+        th, td {
+        padding: 0.75rem 1rem;
+        text-align: left;
+        border-bottom: 1px solid var(--border-color);
+        }
+        th {
+        background-color: #f8fafc;
+        color: var(--primary-dark);
+        font-weight: 600;
+        }
+        tr:last-child td {
+        border-bottom: none;
+        }
+        /* --- News List (Section IV) --- */
+        .news-item {
+        display: flex;
+        flex-direction: column;
+        padding: 1rem 0;
+        border-bottom: 1px solid var(--border-color);
+        transition: background-color 0.2s;
+        }
+        .news-item:last-child {
+        border-bottom: none;
+        }
+        .news-title {
+        font-weight: 600;
+        font-size: 1.05rem;
+        color: var(--text-main);
+        margin-bottom: 0.25rem;
+        display: block;
+        }
+        .news-meta {
+        font-size: 0.85rem;
+        color: #64748b;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        }
+        .news-link-btn {
+        display: inline-block;
+        margin-top: 0.5rem;
+        font-size: 0.85rem;
+        color: var(--primary-color);
+        font-weight: 500;
+        }
+        /* --- Footer --- */
+        footer {
+        text-align: center;
+        padding: 2rem 0;
+        color: #94a3b8;
+        font-size: 0.85rem;
+        }
+        /* --- Responsive Tweaks --- */
+        @media (min-width: 768px) {
+        h1 { font-size: 2.25rem; }
+        section { padding: 2rem; }
+        .quality-badge { top: 2rem; right: 2rem; }
+        }
+        @media (max-width: 480px) {
+        .quality-badge {
+        position: static;
+        display: inline-flex;
+        margin-bottom: 1rem;
+        }
+        .header-content {
+        display: flex;
+        flex-direction: column;
+        }
+        }
+      </style>
+    </head>
+    <body>
+      <header>
+        <div class="container header-content">
+          <div class="quality-badge">质量标志：通过</div>
+            <h1>2026年07月03日 中国算电协同发展洞察：甘肃庆阳样板间实践与中美路线对比</h1>
+              <div class="report-meta">
+                <span>📅 报告生成日期：2026年07月03日</span>
+                </div>
+              </div>
+            </header>
+            <main class="container">
+              <!-- 一、核心洞察综述 -->
+              <section>
+                <h2>一、核心洞察综述</h2>
+                  <p>2026年上半年，“算电协同”（电力与算力深度融合）成为中国AI产业基础设施建设的核心方向。甘肃庆阳凭借风光资源禀赋，通过“绿电聚合直供+液冷高密算力+国产化推理集群”模式，成为全国首个算电协同“样板间”，核心成效包括：全国首个绿电聚合直供数据中心落地，园区电价稳定在0.4元/千瓦时以内；建成国内首个单柜100千瓦级液冷机柜及国产化万卡推理集群，算力规模达15万PFLOPS（截至2026年4月），机架超10万架，吸引600余家企业入驻<span class="citation-tag">来源链接1</span>。中国算电协同正以“绿电+地面集群”为长期布局主线，与美国“化石能源+太空算力”的短期突进路线形成鲜明对比，推动全球AI基础设施格局重构。算电协同产业链已进入规模化落地阶段，绿电算力一体化运营、电网数字化调度、机房供给温控硬件等细分领域成为资本聚焦方向<span class="citation-tag">来源链接2,3</span>。</p>
+                  </section>
+                  <!-- 二、详细维度分析 -->
+                  <section>
+                    <h2>二、详细维度分析</h2>
+                      <h3>（一）庆阳算电协同实践：从试点到可复制的“全国样板”</h3>
+                        <p>庆阳作为“东数西算”枢纽节点，通过“源网荷储算”一体化生态构建，实现算力与绿电的深度协同：</p>
+                          <ol>
+                            <li><strong>绿电聚合直供降本</strong>：全国首个绿电聚合直供数据中心试点落地，甘肃电投通过绿电聚合模式将园区电价控制在0.4元/千瓦时以内，2026年前5月已为算力企业节约电费1300余万元<span class="citation-tag">来源链接4,5</span>。</li>
+                              <li><strong>高密算力与国产化突破</strong>：建成国内首个单柜100千瓦级液冷机柜和国产化万卡推理集群，PUE低至1.192，截至2026年4月算力达15万PFLOPS，机架超10万架，600余家企业入驻<span class="citation-tag">来源链接1,6</span>。</li>
+                                <li><strong>场景化AI赋能</strong>：自然资源行业大模型在庆阳试点，已支撑土地和矿产资源交易超187亿元，推动城市治理智慧化升级<span class="citation-tag">来源链接5,7</span>。</li>
+                                  <li><strong>产业生态协同</strong>：形成“政府引导、企业主导、高校支撑”模式，中国移动、电信、能建等企业加速布局，兰州大学设人工智能学院培养交叉人才<span class="citation-tag">来源链接5,8</span>。</li>
+                                  </ol>
+                                  <h3>（二）算电协同的核心矛盾与政策支撑</h3>
+                                    <ol>
+                                      <li><strong>算力需求与能源约束的矛盾</strong>：全国算力中心年用电量达1700亿千瓦时（超北京全年用电），近3年平均增长快于39.5%，而全社会用电增速仅6%，电费占数据中心运营成本60%以上<span class="citation-tag">来源链接9,10</span>。</li>
+                                        <li><strong>政策驱动与双碳目标</strong>：2026年算电协同首入政府工作报告，“十五五”规划明确要求2030年构建全国一体化算力调度体系；四部门印发《人工智能与能源双向赋能行动方案》，部署99个绿电直连项目、42个万卡智算集群<span class="citation-tag">来源链接11,12</span>。</li>
+                                          <li><strong>时空资源错配解决</strong>：中国通过“西电东送”“绿电直供”将西部风光资源转化为算力优势，庆阳依托95%行政村通5G、28条直连链路等基建，实现算力与电力的跨区域协同<span class="citation-tag">来源链接5,8</span>。</li>
+                                          </ol>
+                                          <h3>（三）中美AI基础设施路线对比</h3>
+                                            <div class="table-wrapper">
+                                              <table>
+                                                <thead>
+                                                  <tr>
+                                                    <th>维度</th>
+                                                      <th>中国（算电协同）</th>
+                                                        <th>美国（化石能源+太空算力）</th>
+                                                        </tr>
+                                                      </thead>
+                                                      <tbody>
+                                                        <tr>
+                                                          <td><strong>能源路径</strong></td>
+                                                            <td>绿电直供（庆阳绿电占比超80%，全年供电40亿千瓦时）</td>
+                                                              <td>化石能源（雪佛龙为微软数据中心“专属供电”）</td>
+                                                              </tr>
+                                                              <tr>
+                                                                <td><strong>技术方向</strong></td>
+                                                                  <td>地面集群规模化（万卡集群、液冷高密机房）</td>
+                                                                    <td>颠覆性创新（SpaceX太空算力网络）</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                      <td><strong>政策支撑</strong></td>
+                                                                        <td>系统性工程布局（算电协同写入“十五五”规划）</td>
+                                                                          <td>企业短期突进（63亿美元太空算力合作）</td>
+                                                                          </tr>
+                                                                          <tr>
+                                                                            <td><strong>落地成效</strong></td>
+                                                                              <td>庆阳模式可复制，注册600余家数字经济企业</td>
+                                                                                <td>依赖化石能源，电网负荷风险高（绕开老化电网）</td>
+                                                                                </tr>
+                                                                              </tbody>
+                                                                            </table>
+                                                                          </div>
+                                                                          <p><strong>核心结论</strong>：中国以“绿电+地面集群”实现长期可持续布局，美国以“化石能源+太空算力”追求短期技术突破，全球AI基础设施格局正被重新定义<span class="citation-tag">来源链接11,12</span>。</p>
+                                                                            <h3>（四）产业链布局与投资方向</h3>
+                                                                              <p>算电协同产业链已形成四大核心环节，2026年上半年受政策、需求及资源错配矛盾驱动，成为A股独立上行主线：</p>
+                                                                                <ol>
+                                                                                  <li><strong>绿电算力一体化运营</strong>：通过自建风光储能+液冷机房降低成本，如甘肃庆阳模式，企业可赚取算力租赁与绿电交易双重收益<span class="citation-tag">来源链接2,13</span>。</li>
+                                                                                    <li><strong>电网数字化调度</strong>：为东西部算力集群提供负荷调配系统（如算网网脑），是“源网荷储算”一体化的核心“调度中枢”<span class="citation-tag">来源链接1,2</span>。</li>
+                                                                                      <li><strong>机房供电与温控硬件</strong>：液冷设备（PUE低至1.15）、高压直流供电等需求爆发，订单排至2027年，中际旭创、英维克等企业受益<span class="citation-tag">来源链接1,14</span>。</li>
+                                                                                        <li><strong>综合工程总包</strong>：央企承接国家级算力枢纽全链条建设，订单超600亿元，中国能建、中国电建等企业承接庆阳等枢纽项目<span class="citation-tag">来源链接2,13</span>。</li>
+                                                                                        </ol>
+                                                                                      </section>
+                                                                                      <!-- 三、总结与展望 -->
+                                                                                      <section>
+                                                                                        <h2>三、总结与展望</h2>
+                                                                                          <p>2026年，算电协同从“试点”进入“规模化落地”阶段，庆阳“绿电+算力”模式验证了“强瓦特→强Token”的可行性。未来需关注三大趋势：（1）绿电交易机制完善，庆阳经验向全国八大算力枢纽复制；（2）算力调度从“单点机房”转向“全网运营”，算网大脑技术商业化加速；（3）中美路线分化下，中国在绿电消纳与算力成本控制上的优势将进一步扩大。</p>
+                                                                                          </section>
+                                                                                          <!-- 四、资讯列表 -->
+                                                                                          <section>
+                                                                                            <h2>四、资讯列表</h2>
+                                                                                              <p style="font-size: 0.9rem; margin-bottom: 1.5rem; color: #64748b;">（按发布日期由近及远排序）</p>
+                                                                                                <div class="news-list">
+                                                                                                  <!-- Item 1 -->
+                                                                                                  <div class="news-item">
+                                                                                                    <a href="https://toutiao.com/group/7657795528646574634/" target="_blank" class="news-title">算电协同进入规模化落地阶段，四大板块成投资主线</a>
+                                                                                                      <div class="news-meta">
+                                                                                                        <span>2026年07月02日</span>
+                                                                                                        </div>
+                                                                                                        <a href="https://toutiao.com/group/7657795528646574634/" target="_blank" class="news-link-btn">阅读全文 &rarr;</a>
+                                                                                                        </div>
+                                                                                                        <!-- Item 2 -->
+                                                                                                        <div class="news-item">
+                                                                                                          <a href="http://toutiao.com/item/7654975840848970275/" target="_blank" class="news-title">MWC上海展：国产智算实现商用闭环，万卡集群技术突破</a>
+                                                                                                            <div class="news-meta">
+                                                                                                              <span>2026年06月24日</span>
+                                                                                                              </div>
+                                                                                                              <a href="http://toutiao.com/item/7654975840848970275/" target="_blank" class="news-link-btn">阅读全文 &rarr;</a>
+                                                                                                              </div>
+                                                                                                              <!-- Item 3 -->
+                                                                                                              <div class="news-item">
+                                                                                                                <a href="http://finance.sina.com.cn/roll/2026-06-24/doc-inienawh6382173.shtml" target="_blank" class="news-title">庆阳算电协同样
