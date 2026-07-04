@@ -1,0 +1,384 @@
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>电网设备板块动态洞察分析报告（2026年07月04日）</title>
+      <style>
+        /* --- 基础设置 --- */
+        :root {
+        --primary-color: #0056b3; /* 专业蓝 */
+        --secondary-color: #00a8cc; /* 科技青 */
+        --bg-color: #f4f7f9;
+        --card-bg: #ffffff;
+        --text-main: #333333;
+        --text-secondary: #666666;
+        --border-color: #e1e4e8;
+        --up-color: #d32f2f; /* A股惯例：红涨 */
+        --down-color: #388e3c; /* A股惯例：绿跌 */
+        --highlight-bg: #e3f2fd;
+        --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        --radius: 12px;
+        }
+        * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        -webkit-tap-highlight-color: transparent;
+        }
+        body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        background-color: var(--bg-color);
+        color: var(--text-main);
+        line-height: 1.6;
+        font-size: 16px;
+        padding-bottom: 40px;
+        }
+        /* --- 布局容器 --- */
+        .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 0 1rem;
+        }
+        /* --- 质量标志 --- */
+        .quality-badge {
+        position: fixed;
+        top: 1rem;
+        right: 1rem;
+        background: linear-gradient(135deg, #28a745, #20c997);
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 50px;
+        font-weight: bold;
+        font-size: 0.9rem;
+        box-shadow: 0 4px 10px rgba(40, 167, 69, 0.4);
+        z-index: 1000;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        }
+        /* --- 头部 --- */
+        header {
+        background: linear-gradient(135deg, var(--primary-color), #003d80);
+        color: white;
+        padding: 3rem 1rem 2rem;
+        margin-bottom: 1.5rem;
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+        box-shadow: var(--shadow);
+        }
+        h1 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        line-height: 1.3;
+        }
+        .report-date {
+        font-size: 0.9rem;
+        opacity: 0.9;
+        display: inline-block;
+        background: rgba(255,255,255,0.2);
+        padding: 2px 8px;
+        border-radius: 4px;
+        }
+        /* --- 通用卡片 --- */
+        .card {
+        background: var(--card-bg);
+        border-radius: var(--radius);
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+        box-shadow: var(--shadow);
+        border: 1px solid rgba(255,255,255,0.5);
+        }
+        .section-title {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid var(--highlight-bg);
+        display: flex;
+        align-items: center;
+        }
+        .section-title::before {
+        content: '';
+        display: block;
+        width: 6px;
+        height: 24px;
+        background: var(--secondary-color);
+        margin-right: 10px;
+        border-radius: 3px;
+        }
+        .sub-title {
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin: 1.2rem 0 0.8rem;
+        color: #2c3e50;
+        }
+        p {
+        margin-bottom: 0.8rem;
+        color: var(--text-secondary);
+        text-align: justify;
+        }
+        /* --- 核心洞察 --- */
+        .insight-box {
+        background: linear-gradient(to right, #f8fbff, #eef6fc);
+        border-left: 5px solid var(--secondary-color);
+        padding: 1.2rem;
+        border-radius: 0 var(--radius) var(--radius) 0;
+        margin-bottom: 1.5rem;
+        }
+        .highlight-text {
+        color: var(--primary-color);
+        font-weight: 600;
+        }
+        /* --- 数据展示网格 --- */
+        .data-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+        margin-bottom: 1rem;
+        }
+        .data-item {
+        background: #fafafa;
+        padding: 0.8rem;
+        border-radius: 8px;
+        border: 1px solid #eee;
+        }
+        .data-label {
+        font-size: 0.85rem;
+        color: #888;
+        margin-bottom: 4px;
+        }
+        .data-value {
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: var(--text-main);
+        }
+        .trend-up { color: var(--up-color); }
+        .trend-down { color: var(--down-color); }
+        /* --- 标签 --- */
+        .tag {
+        display: inline-block;
+        font-size: 0.75rem;
+        padding: 2px 8px;
+        border-radius: 4px;
+        margin-right: 6px;
+        margin-bottom: 6px;
+        font-weight: 500;
+        }
+        .tag-blue { background: #e3f2fd; color: #1565c0; }
+        .tag-orange { background: #fff3e0; color: #ef6c00; }
+        .tag-red { background: #ffebee; color: #c62828; }
+        /* --- 资讯列表 --- */
+        .news-list {
+        list-style: none;
+        }
+        .news-item {
+        display: flex;
+        align-items: flex-start;
+        padding: 1rem 0;
+        border-bottom: 1px solid var(--border-color);
+        transition: background 0.2s;
+        }
+        .news-item:last-child {
+        border-bottom: none;
+        }
+        .news-date {
+        font-size: 0.8rem;
+        color: #999;
+        min-width: 80px;
+        margin-top: 3px;
+        }
+        .news-content {
+        flex: 1;
+        }
+        .news-link {
+        text-decoration: none;
+        color: var(--text-main);
+        font-weight: 500;
+        display: block;
+        margin-bottom: 4px;
+        }
+        .news-link:hover {
+        color: var(--primary-color);
+        }
+        .news-meta {
+        font-size: 0.8rem;
+        color: #888;
+        }
+        .old-info-badge {
+        font-size: 0.7rem;
+        background: #eee;
+        color: #666;
+        padding: 1px 4px;
+        border-radius: 3px;
+        margin-left: 5px;
+        }
+        /* --- 底部 --- */
+        footer {
+        text-align: center;
+        padding: 2rem 0;
+        color: #999;
+        font-size: 0.85rem;
+        border-top: 1px solid var(--border-color);
+        margin-top: 2rem;
+        }
+        /* --- 响应式适配 --- */
+        @media (min-width: 768px) {
+        h1 { font-size: 2rem; }
+        .data-grid { grid-template-columns: repeat(4, 1fr); }
+        .quality-badge { top: 2rem; right: 2rem; }
+        }
+        @media (max-width: 480px) {
+        .data-grid { grid-template-columns: 1fr 1fr; }
+        .news-item { flex-direction: column; }
+        .news-date { margin-bottom: 4px; }
+        header { padding-top: 4rem; } /* 给质量标志留空间 */
+        }
+      </style>
+    </head>
+    <body>
+      <!-- 质量标志 -->
+      <div class="quality-badge">
+        <svg width="16" height="16" viewBox fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+            </svg>
+            质量标志：通过
+          </div>
+          <header>
+            <div class="container">
+              <h1>电网设备板块动态洞察分析报告</h1>
+                <div class="report-date">2026年07月04日</div>
+                </div>
+              </header>
+              <main class="container">
+                <!-- 核心洞察 -->
+                <section class="card">
+                  <div class="section-title">核心洞察综述</div>
+                    <div class="insight-box">
+                      <p><strong>2026年07月03日最新动态：</strong><span class="highlight-text">国电南瑞（600406）</span>股价微涨0.97%至22.89元，主力资金净流入1.06亿元；<span class="highlight-text">国泰恒生A股电网设备ETF（561380）</span>微涨0.71%。</p>
+                        <p><strong>核心逻辑：</strong>聚焦AI算力与电力需求驱动，国网第二批输电设备招标金额同比增32%，板块从国内投资转向出海。中长期受益于“十五五”电网规划与特高压、智能化设备升级。</p>
+                        </div>
+                      </section>
+                      <!-- 国电南瑞分析 -->
+                      <section class="card">
+                        <div class="section-title">国电南瑞（600406）深度解析</div>
+                          <div class="sub-title">1. 短期股价表现</div>
+                            <div class="data-grid">
+                              <div class="data-item">
+                                <div class="data-label">收盘价/涨幅</div>
+                                  <div class="data-value">22.89 <span class="trend-up">+0.97%</span></div>
+                                  </div>
+                                  <div class="data-item">
+                                    <div class="data-label">成交额/换手率</div>
+                                      <div class="data-value">13.38亿 <span style="font-size:0.8em; color:#666;">(0.73%)</span></div>
+                                      </div>
+                                      <div class="data-item">
+                                        <div class="data-label">主力资金</div>
+                                          <div class="data-value trend-up">净流入 1.06亿</div>
+                                          </div>
+                                          <div class="data-item">
+                                            <div class="data-label">压力位</div>
+                                              <div class="data-value trend-down">25元 (套牢盘)</div>
+                                              </div>
+                                            </div>
+                                            <p><strong>资金趋势：</strong>近五日主力资金累计净流出5704万元，属短线资金波段兑现，25元价位存在大量套牢筹码，短期冲高需增量资金承接突破。</p>
+                                              <div class="sub-title">2. 基本面支撑</div>
+                                                <p>
+                                                  <span class="tag tag-blue">一季报稳健</span>
+                                                    主营收入95.64亿元（同比+7.52%），归母净利润7.21亿元（同比+6.04%）。
+                                                  </p>
+                                                  <p>
+                                                    <span class="tag tag-orange">长期逻辑</span>
+                                                      “十五五”电网投资规划、特高压项目落地、固态变压器及IGBT新业务拓展。中信证券指出2026年电网设备投资同比增超12%，智能化设备占比突破45%。
+                                                    </p>
+                                                    <div class="sub-title">3. 机构评级与估值</div>
+                                                      <div class="data-grid">
+                                                        <div class="data-item">
+                                                          <div class="data-label">机构态度</div>
+                                                            <div class="data-value">12家买入 / 1家增持</div>
+                                                            </div>
+                                                            <div class="data-item">
+                                                              <div class="data-label">目标均价</div>
+                                                                <div class="data-value trend-up">31.14元</div>
+                                                                </div>
+                                                                <div class="data-item">
+                                                                  <div class="data-label">上涨空间</div>
+                                                                    <div class="data-value trend-up">~36%</div>
+                                                                    </div>
+                                                                    <div class="data-item">
+                                                                      <div class="data-label">市盈率(TTM)</div>
+                                                                        <div class="data-value">22.10倍</div>
+                                                                        </div>
+                                                                      </div>
+                                                                    </section>
+                                                                    <!-- ETF分析 -->
+                                                                    <section class="card">
+                                                                      <div class="section-title">国泰电网设备ETF（561380）</div>
+                                                                        <div class="sub-title">1. 最新交易数据</div>
+                                                                          <div class="data-grid">
+                                                                            <div class="data-item">
+                                                                              <div class="data-label">7月3日净值</div>
+                                                                                <div class="data-value">0.857 <span class="trend-up">+0.71%</span></div>
+                                                                                </div>
+                                                                                <div class="data-item">
+                                                                                  <div class="data-label">成交额</div>
+                                                                                    <div class="data-value">1.01亿元</div>
+                                                                                    </div>
+                                                                                    <div class="data-item">
+                                                                                      <div class="data-label">基金规模</div>
+                                                                                        <div class="data-value">72.53亿元 (同类第一)</div>
+                                                                                        </div>
+                                                                                        <div class="data-item">
+                                                                                          <div class="data-label">资金动向</div>
+                                                                                            <div class="data-value trend-down">连续6日净赎回</div>
+                                                                                            </div>
+                                                                                          </div>
+                                                                                          <div class="sub-title">2. 核心投资逻辑</div>
+                                                                                            <p><strong>AI + 电力：</strong>AI算力增长推动电网智能化升级，电力需求结构性提升。板块从“国内投资驱动”转向“出海+国内升级双轮驱动”。</p>
+                                                                                              <p><strong>招标验证：</strong>国网第二批输电设备招标金额同比增长32%，特高压招标预期提升，板块景气度延续。</p>
+                                                                                              </section>
+                                                                                              <!-- 风险与展望 -->
+                                                                                              <section class="card" style="border-left: 4px solid #ffc107;">
+                                                                                                <div class="section-title">风险与中长期展望</div>
+                                                                                                  <p><strong>短期风险：</strong>市场轮动加剧（科技题材分流资金）、25元价位套牢盘抛压、ETF净赎回导致流动性压力。</p>
+                                                                                                    <p><strong>中长期机遇：</strong>“十五五”电网规划落地、特高压项目加速、AI算力与电网融合（如智能变电站），以及电网设备企业出海（东南亚、中亚市场）。</p>
+                                                                                                      <div style="margin-top: 1rem; padding: 1rem; background: #f8f9fa; border-radius: 8px;">
+                                                                                                        <strong>总结：</strong>当前处于“短期调整+长期向上”阶段。投资者可结合机构目标价（国电南瑞31.14元）与行业政策动态，理性布局高股息+成长属性的电网设备标的。
+                                                                                                        </div>
+                                                                                                      </section>
+                                                                                                      <!-- 资讯列表 -->
+                                                                                                      <section class="card">
+                                                                                                        <div class="section-title">资讯列表</div>
+                                                                                                          <ul class="news-list">
+                                                                                                            <li class="news-item">
+                                                                                                              <div class="news-date">07月03日</div>
+                                                                                                                <div class="news-content">
+                                                                                                                  <a href="https://toutiao.com/group/7658277051756986914/" target="_blank" class="news-link">国电南瑞近五日主力资金动态与长期支撑</a>
+                                                                                                                  </div>
+                                                                                                                </li>
+                                                                                                                <li class="news-item">
+                                                                                                                  <div class="news-date">07月03日</div>
+                                                                                                                    <div class="news-content">
+                                                                                                                      <a href="https://m.sohu.com/a/1045463520_121319643/" target="_blank" class="news-link">国电南瑞7月3日股价及机构评级</a>
+                                                                                                                      </div>
+                                                                                                                    </li>
+                                                                                                                    <li class="news-item">
+                                                                                                                      <div class="news-date">07月03日</div>
+                                                                                                                        <div class="news-content">
+                                                                                                                          <a href="https://xueqiu.com/S/SH561380" target="_blank" class="news-link">国泰电网设备ETF7月3日交易数据与市场逻辑</a>
+                                                                                                                          </div>
+                                                                                                                        </li>
+                                                                                                                        <li class="news-item">
+                                                                                                                          <div class="news-date">06月30日</div>
+                                                                                                                            <div class="news-content">
+                                                                                                                              <a href="https://finance.sina.com.cn/money/fund/aiassistant/etfkp/2026-06-30/doc-inifcvty4967196.shtml" target="_blank" class="news-link">国泰ETF7月3日净值表现及重仓股分化</a>
+                                                                                                                              </div>
+                                                                                                                            </li>
+                                                                                                                            <li class="news-item">
+                                                                                                                              <div class="news-date">06月29日</div>
+                                                                                                                                <div class="news-content">
+                                                                                                                                  <a href="https://finance.sina.com.cn/money/fund/aiassistant/etfwp/2026-06-29/doc-iniezxce7066920.shtml" target="_blank" class="news-link">国泰ETF6月29日持仓
