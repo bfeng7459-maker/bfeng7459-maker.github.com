@@ -1,0 +1,259 @@
+你好！根据你提供的《2026年07月05日洞察分析报告》内容，我为你设计了一个美观、专业且完全响应式的HTML5单页应用。
+### 设计思路与实现细节：
+1.  **响应式布局**：
+*   使用了 `viewport` 标签和 CSS 媒体查询 (`@media`)，确保页面在手机、平板和 PC 上都能良好显示。
+*   使用了 `rem` 和 `%` 等相对单位，适应不同屏幕尺寸。
+*   在移动端，布局自动调整为单列，字体大小和间距经过优化，便于阅读。
+2.  **视觉美化**：
+*   **配色方案**：采用了专业的“商务蓝”作为主色调，搭配柔和的浅灰背景，营造报告的严谨感。
+*   **质量标志**：根据你的要求，将“质量标志”放置在页面顶部显眼位置（右上角）。由于内容显示“不完整”，我将其设计为醒目的**警告/提示样式**（黄色背景），以便用户第一时间注意到报告状态。
+*   **空状态处理**：由于报告内容为空，我设计了专门的“空状态”样式，使用居中、浅灰色的文字和图标，避免视觉上的突兀。
+3.  **交互与移动端优化**：
+*   所有卡片式布局增加了圆角和阴影，提升层次感。
+*   确保了足够的点击区域和垂直滚动体验。
+以下是完整的 HTML5 代码：
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026年07月05日洞察分析报告</title>
+      <style>
+        /* ====================
+        基础重置与变量定义
+        ==================== */
+        :root {
+        --primary-color: #0056b3;       /* 主色调：深蓝 */
+        --secondary-color: #f0f4f8;     /* 背景色：浅灰蓝 */
+        --text-main: #333333;           /* 主文字颜色 */
+        --text-secondary: #666666;      /* 次要文字颜色 */
+        --card-bg: #ffffff;             /* 卡片背景 */
+        --border-color: #e1e4e8;        /* 边框颜色 */
+        --warning-bg: #fff3cd;          /* 警告背景（质量标志） */
+        --warning-text: #856404;        /* 警告文字 */
+        --warning-border: #ffeeba;      /* 警告边框 */
+        --spacing-unit: 1rem;           /* 间距单位 */
+        --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+        * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        }
+        body {
+        font-family: var(--font-family);
+        background-color: var(--secondary-color);
+        color: var(--text-main);
+        line-height: 1.6;
+        font-size: 16px; /* 基准字体大小 */
+        -webkit-font-smoothing: antialiased;
+        }
+        /* ====================
+        布局容器
+        ==================== */
+        .container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 2rem 1.5rem;
+        }
+        /* ====================
+        头部区域
+        ==================== */
+        header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start; /* 改为flex-start以适应长文本换行 */
+        flex-wrap: wrap;
+        margin-bottom: 2rem;
+        gap: 1rem;
+        border-bottom: 2px solid var(--primary-color);
+        padding-bottom: 1.5rem;
+        }
+        h1 {
+        font-size: 1.75rem;
+        color: var(--primary-color);
+        font-weight: 700;
+        flex: 1; /* 占据剩余空间 */
+        min-width: 200px;
+        }
+        /* 质量标志样式 */
+        .quality-badge {
+        background-color: var(--warning-bg);
+        color: var(--warning-text);
+        border: 1px solid var(--warning-border);
+        padding: 0.6rem 1rem;
+        border-radius: 6px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        display: inline-flex;
+        align-items: center;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        max-width: 100%;
+        }
+        .quality-badge::before {
+        content: "⚠️";
+        margin-right: 0.5rem;
+        font-size: 1.1rem;
+        }
+        /* ====================
+        主要内容区域
+        ==================== */
+        main {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        }
+        section {
+        background-color: var(--card-bg);
+        border-radius: 8px;
+        padding: 1.5rem;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        border: 1px solid var(--border-color);
+        }
+        h2 {
+        font-size: 1.25rem;
+        color: var(--text-main);
+        margin-bottom: 1rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 1px solid #eee;
+        position: relative;
+        }
+        h2::after {
+        content: '';
+        position: absolute;
+        bottom: -1px;
+        left: 0;
+        width: 60px;
+        height: 2px;
+        background-color: var(--primary-color);
+        }
+        p {
+        margin-bottom: 1rem;
+        color: var(--text-secondary);
+        }
+        /* 空状态样式 */
+        .empty-state {
+        text-align: center;
+        padding: 2rem 1rem;
+        color: #999;
+        font-style: italic;
+        background-color: #fafafa;
+        border-radius: 4px;
+        border: 1px dashed #ddd;
+        }
+        /* 列表样式 */
+        ul {
+        list-style: none;
+        }
+        ul li {
+        margin-bottom: 0.8rem;
+        padding-left: 1.2rem;
+        position: relative;
+        }
+        ul li::before {
+        content: "•";
+        color: var(--primary-color);
+        font-weight: bold;
+        position: absolute;
+        left: 0;
+        }
+        a {
+        color: var(--primary-color);
+        );
+        text-decoration: none;
+        transition: color 0.2s;
+        }
+        a:hover {
+        color: #003d80;
+        text-decoration: underline;
+        }
+        /* ====================
+        底部区域
+        ==================== */
+        footer {
+        margin-top: 3rem;
+        text-align: center;
+        font-size: 0.875rem;
+        color: #888;
+        border-top: 1px solid var(--border-color);
+        padding-top: 1.5rem;
+        }
+        /* ====================
+        响应式适配
+        ==================== */
+        @media (max-width: 768px) {
+        .container {
+        padding: 1rem;
+        }
+        h1 {
+        font-size: 1.5rem;
+        }
+        /* 在移动端，质量标志换行显示在标题下方，保证可读性 */
+        header {
+        flex-direction: column;
+        align-items: stretch;
+        }
+        .quality-badge {
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+        }
+        section {
+        padding: 1.25rem;
+        }
+        h2 {
+        font-size: 1.15rem;
+        }
+        }
+      </style>
+    </head>
+    <body>
+      <div class="container">
+        <!-- 页面头部 -->
+        <header>
+          <h1>2026年07月05日洞察分析报告</h1>
+            <!-- 质量标志：按要求放置在显眼位置 -->
+            <div class="quality-badge">
+              质量标志：不完整（模型长度未达到有效分析阈值，因缺乏素材无法完成分析）
+            </div>
+          </header>
+          <!-- 主要内容 -->
+          <main>
+            <!-- 核心洞察综述 -->
+            <section>
+              <h2>核心洞察综述</h2>
+                <div class="empty-state">
+                  因本次提供的资讯素材为空列表，无法提取任何可分析的信息内容，因此无法形成核心洞察。
+                </div>
+              </section>
+              <!-- 详细维度分析 -->
+              <section>
+                <h2>详细维度分析</h2>
+                  <div class="empty-state">
+                    无相关资讯素材可供分析，无法进行具体内容的引用、总结或维度拆解。
+                  </div>
+                </section>
+                <!-- 总结与展望 -->
+                <section>
+                  <h2>总结与展望</h2>
+                    <div class="empty-state">
+                      由于缺乏有效资讯素材，无法对相关主题进行总结与展望。
+                    </div>
+                  </section>
+                  <!-- 资讯标题和链接列表 -->
+                  <section>
+                    <h2>资讯标题和链接列表</h2>
+                      <div class="empty-state">
+                        （无相关资讯）
+                      </div>
+                    </section>
+                  </main>
+                  <!-- 页脚 -->
+                  <footer>
+                    <p>报告生成日期：2026年07月05日</p>
+                    </footer>
+                  </div>
+                </body>
+              </html>
+              ```
