@@ -1,0 +1,328 @@
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RTX 5090显卡价格波动分析报告</title>
+      <style>
+        /* CSS Reset & Variables */
+        :root {
+        --bg-color: #0f172a;
+        --card-bg: #1e293b;
+        --text-main: #f1f5f9;
+        --text-muted: #94a3b8;
+        --accent-color: #10b981; /* Emerald Green */
+        --accent-hover: #059669;
+        --highlight-color: #38bdf8; /* Sky Blue */
+        --warning-color: #ef4444; /* Red */
+        --border-color: #334155;
+        --font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        --spacing-unit: 1rem;
+        --max-width: 900px;
+        }
+        * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        }
+        body {
+        font-family: var(--font-family);
+        background-color: var(--bg-color);
+        color: var(--text-main);
+        line-height: 1.6;
+        font-size: 16px;
+        -webkit-font-smoothing: antialiased;
+        }
+        /* Layout */
+        .container {
+        max-width: var(--max-width);
+        margin: 0 auto;
+        padding: 0 var(--spacing-unit);
+        }
+        /* Header */
+        header {
+        background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+        padding: 2rem 0;
+        border-bottom: 1px solid var(--border-color);
+        position: relative;
+        margin-bottom: 2rem;
+        }
+        .header-content {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        }
+        h1 {
+        font-size: 1.75rem;
+        font-weight: 700;
+        color: var(--text-main);
+        line-height: 1.3;
+        }
+        .report-date {
+        color: var(--text-muted);
+        font-size: 0.9rem;
+        display: inline-block;
+        background: rgba(255, 255, 255, 0.05);
+        padding: 0.2rem 0.6rem;
+        border-radius: 4px;
+        width: fit-content;
+        }
+        /* Quality Badge */
+        .quality-badge {
+        position: absolute;
+        top: 1.5rem;
+        right: 1.5rem;
+        background-color: var(--accent-color);
+        color: #fff;
+        padding: 0.4rem 1rem;
+        border-radius: 999px;
+        font-weight: 600;
+        font-size: 0.85rem;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        }
+        .quality-badge::before {
+        content: "✓";
+        font-weight: 800;
+        }
+        /* Sections */
+        section {
+        margin-bottom: 3rem;
+        }
+        h2 {
+        font-size: 1.4rem;
+        margin-bottom: 1rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid var(--accent-color);
+        color: var(--highlight-color);
+        }
+        h3 {
+        font-size: 1.15rem;
+        margin: 1.5rem 0 0.75rem 0;
+        color: var(--text-main);
+        }
+        p {
+        margin-bottom: 1rem;
+        }
+        /* Cards */
+        .card {
+        background-color: var(--card-bg);
+        border-radius: 12px;
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+        border: 1px solid var(--border-color);
+        }
+        .highlight-text {
+        color: var(--warning-color);
+        font-weight: 600;
+        }
+        .highlight-blue {
+        color: var(--highlight-color);
+        font-weight: 600;
+        }
+        /* Timeline Styles */
+        .timeline-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        }
+        .timeline-item {
+        border-left: 3px solid var(--text-muted);
+        padding-left: 1rem;
+        }
+        .timeline-item.active {
+        border-left-color: var(--warning-color);
+        }
+        .timeline-date {
+        font-weight: 700;
+        color: var(--accent-color);
+        margin-bottom: 0.25rem;
+        display: block;
+        }
+        /* List Styles */
+        ul {
+        list-style: none;
+        padding-left: 1rem;
+        }
+        ul li {
+        position: relative;
+        margin-bottom: 0.8rem;
+        padding-left: 1.2rem;
+        }
+        ul li::before {
+        content: "•";
+        color: var(--accent-color);
+        font-weight: bold;
+        position: absolute;
+        left: 0;
+        top: 0;
+        }
+        /* Links */
+        a {
+        color: var(--highlight-color);
+        text-decoration: none;
+        border-bottom: 1px dotted var(--highlight-color);
+        transition: all 0.2s ease;
+        word-break: break-all; /* Prevent long URLs from breaking layout */
+        }
+        a:hover {
+        color: var(--accent-color);
+        border-bottom-style: solid;
+        }
+        /* Source List */
+        .source-list {
+        counter-reset: source-counter;
+        }
+        .source-list li {
+        margin-bottom: 1rem;
+        padding-left: 2.5rem;
+        position: relative;
+        }
+        .source-list li::before {
+        content: counter(source-counter);
+        counter-increment: source-counter;
+        position: absolute;
+        left: 0;
+        top: 0;
+        background: var(--border-color);
+        color: var(--text-main);
+        width: 1.8rem;
+        height: 1.8rem;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.8rem;
+        font-weight: bold;
+        }
+        .source-meta {
+        display: block;
+        font-size: 0.85rem;
+        color: var(--text-muted);
+        margin-bottom: 0.25rem;
+        }
+        /* Footer */
+        footer {
+        text-align: center;
+        padding: 2rem 0;
+        color: var(--text-muted);
+        font-size: 0.9rem;
+        border-top: 1px solid var(--border-color);
+        margin-top: 4rem;
+        }
+        /* Back to Top */
+        .back-to-top {
+        position: fixed;
+        bottom: 2rem;
+        right: 2rem;
+        background-color: var(--accent-color);
+        color: white;
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        opacity: 0;
+        transition: opacity 0.3s;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        border: none;
+        font-size: 1.2rem;
+        z-index: 100;
+        }
+        .back-to-top.visible {
+        opacity: 1;
+        }
+        /* Responsive Design */
+        @media (min-width: 768px) {
+        h1 { font-size: 2.25rem; }
+        .header-content { flex-direction: row; align-items: baseline; justify-content: space-between; }
+        .report-date { margin-bottom: 0; }
+        .timeline-grid {
+        grid-template-columns: 1fr 1fr;
+        }
+        .timeline-full {
+        grid-column: span 2;
+        }
+        }
+        @media (max-width: 767px) {
+        .quality-badge {
+        position: relative;
+        top: auto;
+        right: auto;
+        margin-top: 1rem;
+        align-self: flex-start;
+        }
+        header { padding-bottom: 1.5rem; }
+        }
+      </style>
+    </head>
+    <body>
+      <header>
+        <div class="container header-content">
+          <div>
+            <h1>RTX 5090显卡价格波动分析报告</h1>
+              <span class="report-date">2026年07月06日</span>
+              </div>
+              <div class="quality-badge">质量标志：通过</div>
+              </div>
+            </header>
+            <main class="container">
+              <!-- 核心洞察综述 -->
+              <section id="summary">
+                <div class="card" style="border-left: 4px solid var(--accent-color);">
+                  <h2>核心洞察综述</h2>
+                    <p>RTX 5090显卡价格呈现剧烈波动特征，2025年至2026年受GDDR7显存成本飙升、AI算力需求挤占存储产能及市场供需失衡影响，价格多次暴涨暴跌。截至2026年上半年，其官方建议零售价（<span class="highlight-text">1999美元</span>）与实际售价（<span class="highlight-text">超4000美元</span>）价差超100%，且高端显卡溢价现象显著。市场竞争中，NVIDIA凭借AI利润补贴中端型号降价策略巩固<span class="highlight-blue">90%</</span>市场份额，AMD因性价比优势丧失加速用户流失。未来受GDDR7显存成本持续高企（预测2026年Q3再涨40%-50%），RTX 5090价格或维持高位，消费者应理性选择，刚需用户建议锁价或考虑上一代产品。</p>
+                    </div>
+                  </section>
+                  <!-- 详细维度分析 -->
+                  <section id="analysis">
+                    <h2>详细维度分析</h2>
+                      <!-- 一、价格波动轨迹与现状 -->
+                      <h3>一、价格波动轨迹与现状</h3>
+                        <p>RTX 5090价格自2025年起经历多次波动，具体阶段如下：</p>
+                          <div class="timeline-grid">
+                            <!-- 2025年 -->
+                            <div class="card timeline-item">
+                              <span class="timeline-date">2025年阶段性回落（老旧信息）</span>
+                                <ul>
+                                  <li><strong>2025年1月</strong>：日本市场部分定制版RTX 5090跌破40万日元（约19957元人民币），北美、欧洲价格虽高于官方价但有所改善（来源：<a href="https://wap.zol.com.cn/ask/3427341.html" target="_blank" rel="noopener noreferrer">2025年01月18日，https://wap.zol.com.cn/ask/3427341.html</a>）。</li>
+                                    <li><strong>2025年2月</strong>：因供应紧张及经销商抬价，RTX 5090溢价达70%，华硕ROG Astral LC版售价约2.5万元人民币（来源：<a href="http://m.toutiao.com/group/7468502582395159066/" target="_blank" rel="noopener noreferrer">2025年02月19日，http://m.toutiao.com/group/7468502582395159066/</a>）。</li>
+                                      <li><strong>2025年3月</strong>：二手市场价格回落至3500-4000美元，高于官方建议价1999美元，用户反馈运行高效但谨慎购买（来源：<a href="https://www.sohu.com/a/876085283_121924584" target="_blank" rel="noopener noreferrer">2025年03月23日，https://www.sohu.com/a/876085283_121924584</a>）。</li>
+                                        <li><strong>2025年5-6月</strong>：欧洲市场首次跌破官方定价（2299欧元），芬兰零售商降至2299欧元，多国现货充足但价格仍高于合理区间（来源：<a href="http://m.toutiao.com/group/7508925112386486838/" target="_blank" rel="noopener noreferrer">2025年05月28日</a>；<a href="https://m.ithome.com/html/860922.htm" target="_blank" rel="noopener noreferrer">2025年06月15日</a>）。</li>
+                                        </ul>
+                                      </div>
+                                      <!-- 2026年 -->
+                                      <div class="card timeline-item active">
+                                        <span class="timeline-date" style="color: var(--warning-color);">2026年剧烈涨价（近期信息）</span>
+                                          <ul>
+                                            <li><strong>2026年1月</strong>：因GDDR7显存成本暴涨超3倍，RTX 5090价格从1999美元飙升至近3000美元（涨幅50%），最高达3.1万元人民币；AMD计划同步涨价10%-15%（来源：<a href="http://m.toutiao.com/group/7590565920171377203/" target="_blank" rel="noopener noreferrer">2026年01月02日</a>；<a href="http://m.toutiao.com/group/7654401602970780166/" target="_blank" rel="noopener noreferrer">2026年01月18日</a>）。</li>
+                                              <li><strong>2026年6月</strong>：RTX 5090实际售价超4000美元（官方价1999美元的2倍多），公版售价11999元，性能较RTX 4090提升超60%，但普通玩家性价比不足（来源：<a href="http://toutiao.com/group/7650875040996639270/" target="_blank" rel="noopener noreferrer">2026年06月13日</a>；<a href="http://toutiao.com/group/7655752695734632995/" target="_blank" rel="noopener noreferrer">2026年06月27日</a>）。</li>
+                                              </ul>
+                                            </div>
+                                          </div>
+                                          <!-- 二、涨价核心驱动因素 -->
+                                          <h3>二、涨价核心驱动因素</h3>
+                                            <div class="card">
+                                              <ul>
+                                                <li><strong>显存成本主导</strong>：GDDR7显存颗粒成本暴涨300%-400%，占GPU成本超80%；AI算力需求挤占存储产能，内存短缺或持续至2028年（来源：<a href="http://m.toutiao.com/group/7654401602970780166/" target="_blank" rel="noopener noreferrer">2026年01月18日</a>；<a href="http://toutiao.com/item/7654402843209728531/" target="_blank" rel="noopener noreferrer">2026年06月23日</a>）。</li>
+                                                  <li><strong>市场供需失衡</strong>：RTX 5090因支持本地部署72B参数大模型（87token/秒），专业卡（如RTX PRO 6000 Blackwell）价格涨超60%，进一步推高消费级显卡溢价（来源：<a href="http://toutiao.com/group/7650875040996639270/" target="_blank" rel="noopener noreferrer">2026年06月13日</a>）。</li>
+                                                    <li><strong>行业连锁反应</strong>：继AMD涨价后，微星、华硕等厂商跟进RTX 50系列涨价10%-15%，形成“AMD涨价→NVIDIA涨价→消费者焦虑”的恶性循环（来源：<a href="https://www.sohu.com/a/981309408_122004016/" target="_blank" rel="noopener noreferrer">2026年01月29日</a>）。</li>
+                                                    </ul>
+                                                  </div>
+                                                  <!-- 三、市场影响与消费者建议 -->
+                                                  <h3>三、市场影响与消费者建议</h3>
+                                                    <div class="card">
+                                                      <ul>
+                                                        <li><strong>消费者层面</strong>：高价导致游戏玩家、创作者持谨慎态度，RTX 5080、5070 Ti等中端型号溢价超100%，市场形成“高价优质但性价比不足”的共识（来源：<a href="http://m.toutiao.com/group/7485984867424141850/" target="_blank" rel="noopener noreferrer">2026年01月18日</a>）。建议选购RTX 3090等老款大显存卡（涨幅超40%），或等待2027年成本回落（来源：<a href="http://m.toutiao.com/group/7654401602970780166/" target="_blank" rel="noopener noreferrer">2026年01月18日</a>）。</li>
+                                                          <li><strong>行业竞争格局</strong>：NVIDIA策略分化：旗舰RTX 5090涨价2350元，中端RTX 5060降价至2100元，利用AI利润补贴游戏卡抢占市场，当前市场份额达90%（来源：<a href="http://toutiao.com/item/7654402843209728531/" target="_blank" rel="noopener noreferrer">2026年06月23日</a>）。AMD性价比丧失：7月计划再涨价10%-15%，销量暴跌后市场份额仅8%，玩家加速流向NVIDIA（来源：<a href="http://toutiao.com/item/7654402843209728531/" target="_blank" rel="noopener noreferrer">2026年06月23日</a>）。</li>
+                                                          </ul>
+                                                        </div>
+                                                      </section>
+                                                      <!-- 总结与展望 -->
+                                                      <section id="out
