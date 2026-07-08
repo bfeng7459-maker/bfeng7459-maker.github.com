@@ -1,0 +1,370 @@
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>算电协同产业发展洞察分析报告（2026年07月08日）</title>
+      <style>
+        /* --- CSS 变量与重置 --- */
+        :root {
+        --primary-color: #0f172a; /* 深蓝：用于主标题 */
+        --secondary-color: #2563eb; /* 亮蓝：用于副标题和链接 */
+        --accent-color: #10b981; /* 绿色：用于成功/通过标志 */
+        --bg-color: #f1f5f9; /* 浅灰背景 */
+        --card-bg: #ffffff; /* 卡片背景 */
+        --text-main: #334155; /* 主要文字 */
+        --text-light: #64748b; /* 次要文字 */
+        --border-color: #e2e8f0;
+        --spacing-sm: 0.5rem;
+        --spacing-md: 1rem;
+        --spacing-lg: 2rem;
+        --radius: 12px;
+        --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        }
+        body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Microsoft YaHei", sans-serif;
+        background-color: var(--bg-color);
+        color: var(--text-main);
+        line-height: 1.6;
+        font-size: 16px;
+        -webkit-font-smoothing: antialiased;
+        }
+        /* --- 布局容器 --- */
+        .container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: var(--spacing-md);
+        }
+        /* --- 头部区域 --- */
+        header {
+        background: var(--card-bg);
+        padding: var(--spacing-lg) var(--spacing-md);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        margin-bottom: var(--spacing-lg);
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        position: relative;
+        }
+        .header-content {
+        flex: 1;
+        padding-right: var(--spacing-md);
+        }
+        h1 {
+        color: var(--primary-color);
+        font-size: 1.75rem;
+        margin-bottom: var(--spacing-sm);
+        line-height: 1.3;
+        }
+        .report-date {
+        color: var(--text-light);
+        font-size: 0.9rem;
+        display: inline-block;
+        margin-top: 4px;
+        }
+        /* --- 质量标志 --- */
+        .quality-badge {
+        background-color: var(--accent-color);
+        color: white;
+        padding: 6px 16px;
+        border-radius: 50px;
+        font-weight: bold;
+        font-size: 0.9rem;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        box-shadow: 0 2px 4px rgba(16, 185, 129, 0.3);
+        white-space: nowrap;
+        }
+        /* --- 通用组件 --- */
+        .card {
+        background: var(--card-bg);
+        border-radius: var(--radius);
+        padding: var(--spacing-lg);
+        margin-bottom: var(--spacing-lg);
+        box-shadow: var(--shadow);
+        border: 1px solid var(--border-color);
+        }
+        h2 {
+        color: var(--primary-color);
+        font-size: 1.4rem;
+        margin-bottom: var(--spacing-md);
+        padding-bottom: var(--spacing-sm);
+        border-bottom: 2px solid var(--bg-color);
+        display: flex;
+        align-items: center;
+        }
+        h2::before {
+        content: '';
+        display: inline-block;
+        width: 6px;
+        height: 24px;
+        background-color: var(--secondary-color);
+        margin-right: 10px;
+        border-radius: 3px;
+        }
+        h3 {
+        color: var(--secondary-color);
+        font-size: 1.15rem;
+        margin: var(--spacing-md) 0 var(--spacing-sm);
+        }
+        p {
+        margin-bottom: var(--spacing-md);
+        text-align: justify;
+        }
+        /* --- 来源链接样式 --- */
+        .source-link {
+        display: inline-flex;
+        align-items: center;
+        color: var(--secondary-color);
+        text-decoration: none;
+        font-size: 0.85rem;
+        font-weight: 600;
+        background-color: #eff6ff;
+        padding: 2px 8px;
+        border-radius: 4px;
+        margin-left: 6px;
+        transition: all 0.2s;
+        vertical-align: middle;
+        }
+        .source-link:hover {
+        background-color: var(--secondary-color);
+        color: white;
+        }
+        /* --- 核心洞察 --- */
+        .summary-box {
+        background: linear-gradient(135deg, #eff6ff 0%, #ffffff 100%);
+        border-left: 5px solid var(--secondary-color);
+        }
+        /* --- 城市实践 (Grid布局) --- */
+        .city-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+        }
+        .city-card {
+        background: #f8fafc;
+        padding: var(--spacing-md);
+        border-radius: 8px;
+        border: 1px solid var(--border-color);
+        }
+        ul.feature-list {
+        list-style: none;
+        padding-left: 0;
+        }
+        ul.feature-list li {
+        position: relative;
+        padding-left: 20px;
+        margin-bottom: 8px;
+        }
+        ul.feature-list li::before {
+        content: '•';
+        color: var(--secondary-color);
+        font-weight: bold;
+        position: absolute;
+        left: 0;
+        }
+        /* --- 产业链 (Grid布局) --- */
+        .industry-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-md);
+        }
+        .industry-item {
+        background: white;
+        padding: var(--spacing-md);
+        border: 1px solid var(--border-color);
+        border-radius: 8px;
+        transition: transform 0.2s;
+        }
+        .industry-item:hover {
+        transform: translateY(-2px);
+        border-color: var(--secondary-color);
+        }
+        .industry-item strong {
+        display: block;
+        color: var(--primary-color);
+        margin-bottom: 4px;
+        }
+        /* --- 趋势与风险 (对比布局) --- */
+        .trend-risk-container {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-md);
+        }
+        .tr-block {
+        padding: var(--spacing-md);
+        border-radius: 8px;
+        }
+        .trend-block {
+        background-color: #f0fdf4; /* 浅绿 */
+        border: 1px solid #bbf7d0;
+        }
+        .risk-block {
+        background-color: #fef2f2; /* 浅红 */
+        border: 1px solid #fecaca;
+        }
+        .tr-title {
+        font-weight: bold;
+        margin-bottom: var(--spacing-sm);
+        display: block;
+        font-size: 1.1rem;
+        }
+        .trend-block .tr-title { color: #166534; }
+        .risk-block .tr-title { color: #991b1b; }
+        /* --- 资讯列表 --- */
+        .news-list {
+        list-style: none;
+        }
+        .news-item {
+        display: flex;
+        align-items: baseline;
+        padding: var(--spacing-md) 0;
+        border-bottom: 1px solid var(--border-color);
+        }
+        .news-item:last-child {
+        border-bottom: none;
+        }
+        .news-date {
+        font-family: monospace;
+        color: var(--text-light);
+        font-size: 0.9rem;
+        min-width: 110px;
+        margin-right: var(--spacing-md);
+        }
+        .news-content {
+        flex: 1;
+        font-size: 0.95rem;
+        }
+        /* --- Footer --- */
+        footer {
+        text-align: center;
+        color: var(--text-light);
+        font-size: 0.85rem;
+        margin-top: var(--spacing-lg);
+        padding-bottom: var(--spacing-lg);
+        }
+        /* --- 响应式适配 --- */
+        @media (min-width: 768px) {
+        h1 { font-size: 2.25rem; }
+        .city-grid { grid-template-columns: 1fr 1fr; }
+        .trend-risk-container { flex-direction: row; }
+        .tr-block { flex: 1; }
+        }
+        @media (max-width: 480px) {
+        .industry-grid { grid-template-columns: 1fr; }
+        header { flex-direction: column; }
+        .quality-badge { margin-top: var(--spacing-sm); }
+        .news-item { flex-direction: column; }
+        .news-date { margin-bottom: 4px; }
+        }
+      </style>
+    </head>
+    <body>
+      <div class="container">
+        <!-- 头部 -->
+        <header>
+          <div class="header-content">
+            <h1>算电协同产业发展洞察分析报告</h1>
+              <div class="report-date">报告生成日期：2026年07月08日</div>
+              </div>
+              <div class="quality-badge">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                  质量标志：通过
+                </div>
+              </header>
+              <main>
+                <!-- 核心洞察 -->
+                <section class="card summary-box">
+                  <h2>核心洞察综述</h2>
+                    <p>算电协同模式已成为AI算力产业突破“高能耗、高成本”瓶颈的关键路径，甘肃庆阳凭借“绿电算协同+全国首个绿电聚合直供”模式成为全国样板，湖南永州聚焦差异化路线承接大湾区溢出，厦门湖里区探索跨域算力生态。政策层面，“十五五”规划明确2030年建成全国一体化算电协同调度体系，产业链四大板块（绿电运营、电网调度、硬件厂商、工程总包）加速成熟，未来将向全国复制推广。但需警惕项目周期长、供电波动等风险，实体项目落地与核心指标（如绿电价格、算力利用率）成为关键。</p>
+                    </section>
+                    <!-- 典型城市实践 -->
+                    <section class="card">
+                      <h2>一、典型城市实践：从试点到全国样板</h2>
+                        <div class="city-grid">
+                          <!-- 甘肃庆阳 -->
+                          <div class="city-card">
+                            <h3>1. 甘肃庆阳：绿电算协同标杆</h3>
+                              <ul class="feature-list">
+                                <li><strong>绿电直供</strong>：全国首个绿电聚合直供数据中心试点，到户电价稳定在0.4元/千瓦时以内，年省电费超3000万元 <a href="#" class="source-link" title="点击查看来源">来源链接</a>。</li>
+                                  <li><strong>算力规模</strong>：截至2026年4月，算力总量达15万PFLOPS，机架超10万架，600余家企业入驻，跻身全国第一梯队 <a href="#" class="source-link" title="点击查看来源">来源链接</a>。</li>
+                                    <li><strong>技术突破</strong>：单柜100千瓦级液冷机柜、国产化万卡算力集群，PUE低至1.192 <a href="#" class="source-link" title="点击查看来源">来源链接</a>。</li>
+                                      <li><strong>低时延体验</strong>：庆阳至北京网络时延控制在8毫秒内，实现“全国同城体验” <a href="#" class="source-link" title="点击查看来源">来源链接</a>。</li>
+                                      </ul>
+                                      <p><strong>推广价值</strong>：经验从试点走向全国可复制，已赋能自然资源大模型等行业，推动生态繁荣 <a href="#" class="source-link" title="点击查看来源">来源链接</a>。</p>
+                                      </div>
+                                      <!-- 湖南永州 -->
+                                      <div class="city-card">
+                                        <h3>2. 湖南永州：差异化承接大湾区溢出</h3>
+                                          <p><strong>核心策略</strong>：聚焦“绿电算协同+大湾区溢出+具身智能零部件+轻量化OPC创业”，形成差异化路线 <a href="#" class="source-link" title="点击查看来源">来源链接</a>。</p>
+                                            <ul class="feature-list">
+                                              <li><strong>算力绑定绿电</strong>：万卡级算力集群，潇湘智算中心归集公共数据69亿条 <a href="#" class="source-link" title="点击查看来源">来源链接</a>。</li>
+                                                <li><strong>区位优势</strong>：承接粤港澳溢出，率先出台OPC创业政策 <a href="#" class="source-link" title="点击查看来源">来源链接</a>。</li>
+                                                </ul>
+                                                <p><strong>短板与潜力</strong>：高端人才不足、产业规模小，长株潭虹吸效应明显，但有望成为“大湾区北侧特色节点” <a href="#" class="source-link" title="点击查看来源">来源链接</a>。</p>
+                                                </div>
+                                              </div>
+                                            </section>
+                                            <!-- 产业链与技术突破 -->
+                                            <section class="card">
+                                              <h2>二、产业链与技术突破</h2>
+                                                <h3>1. 产业链四大板块</h3>
+                                                  <div class="industry-grid">
+                                                    <div class="industry-item">
+                                                      <strong>绿电算力一体化运营</strong>
+                                                        如风光储能+液冷机房，直接降低用电成本 <a href="#" class="source-link">来源链接</a>。
+                                                      </div>
+                                                      <div class="industry-item">
+                                                        <strong>电网数字化调度服务商</strong>
+                                                          智能调度系统核心，优化资源配置 <a href="#" class="source-link">来源链接</a>。
+                                                        </div>
+                                                        <div class="industry-item">
+                                                          <strong>机房供电与温控硬件厂商</strong>
+                                                            液冷、高压直流设备等刚需设备，国产化加速落地 <a href="#" class="source-link">来源链接</a>。
+                                                          </div>
+                                                          <div class="industry-item">
+                                                            <strong>综合工程总包央企</strong>
+                                                              承接枢纽项目，推动规模化部署 <a href="#" class="source-link">来源链接</a>。
+                                                            </div>
+                                                          </div>
+                                                          <h3 style="margin-top: 2rem;">2. 技术创新方向</h3>
+                                                            <ul class="feature-list">
+                                                              <li><strong>液冷技术</strong>：庆阳单柜100千瓦级液冷机柜，PUE 1.192 <a href="#" class="source-link">来源链接</a>；中兴通讯OEX正交架构，PUE降至1.15 <a href="#" class="source-link">来源链接</a>。</li>
+                                                                <li><strong>国产化算力</strong>：甘肃亿算智能万卡推理集群（2025年8月老旧信息），搭载国产芯片 <a href="#" class="source-link">来源链接</a>。</li>
+                                                                  <li><strong>低时延网络</strong>：长飞空芯光纤交付超1万芯公里，东莞至香港时延降32%至0.93ms <a href="#" class="source-link">来源链接</a>。</li>
+                                                                  </ul>
+                                                                </section>
+                                                                <!-- 政策与行业背景 -->
+                                                                <section class="card">
+                                                                  <h2>三、政策与行业背景</h2>
+                                                                    <h3>1. 政策推动与目标</h3>
+                                                                      <ul class="feature-list">
+                                                                        <li><strong>国家战略</strong>：2026年“算电协同”写入政府工作报告，“十五五”规划明确2030年建成全国一体化调度体系 <a href="#" class="source-link">来源链接</a>。</li>
+                                                                          <li><strong>地方响应</strong>：庆阳、永州等地率先试点，形成可复制经验 <a href="#" class="source-link">来源链接</a>。</li>
+                                                                          </ul>
+                                                                          <h3>2. 行业矛盾与机遇</h3 saddle>
+                                                                            <ul class="feature-list">
+                                                                              <li><strong>核心矛盾</strong>：AI算力需求激增（2025年全国算力中心用电量1700亿千瓦时，年均增长39.5%）、双碳约束、电力成本高企（电费占运营成本60%以上） <a href="#" class="source-link">来源链接</a>。</li>
+                                                                                <li><strong>电网角色转型</strong>：算力中心成为虚拟电厂核心资源，2027年调节能力预计达2000万千瓦以上 <a href="#" class="source-link">来源链接</a>。</li>
+                                                                                </ul>
+                                                                              </section>
+                                                                              <!-- 未来趋势与风险 -->
+                                                                              <section class="card">
+                                                                                <h2>四、未来趋势与风险提示</h2>
+                                                                                  <div class="trend-risk-container">
+                                                                                    <div class="tr-block trend-block">
+                                                                                      <span class="tr-title">🚀 未来趋势</span>
+                                                                                        <ul class="feature-list">
+                                                                                          <li><strong>全国推广</strong>：庆阳经验向全国复制，区域枢纽（如厦门湖里区）探索跨域协同 <a href="#" class="source-link">来源链接</a>。</li>
+                                                                                            <li><strong>产业链成熟</strong>：从AI题材转向实体项目，
