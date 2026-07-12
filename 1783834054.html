@@ -1,0 +1,328 @@
+你好！我是你的HTML5与CSS开发专家。
+根据你提供的《国电南瑞及电网设备ETF市场动态分析报告》内容，我为你设计并构建了一个完整的单页HTML5应用。
+### 设计亮点说明：
+1.  **专业金融风格**：采用了深蓝（代表稳重、科技）与青色（代表增长、活力）作为主色调，搭配干净的白色卡片背景，营造专业的研报阅读体验。
+2.  **完全响应式**：
+*   **PC端**：限制最大宽度居中显示，利用阴影和圆角区分层级，适合长时间阅读。
+*   **移动端**：自动调整为全宽流式布局，字体大小和间距经过优化，确保在手机屏幕上无需缩放即可清晰阅读。
+3.  **用户体验优化**：
+*   **质量标志**：已按要求固定在页面顶部右上角，采用醒目的绿色胶囊样式。
+*   **链接处理**：底部的资讯列表已转换为可点击的超链接，并进行了样式美化，点击即可跳转。
+*   **阅读节奏**：通过卡片式设计将长文本分割为“核心洞察”、“详细维度”、“总结展望”和“资讯来源”四个部分，降低阅读疲劳。
+以下是完整的HTML5代码，你可以直接保存为 `.html` 文件并在浏览器中打开。
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>国电南瑞及电网设备ETF市场动态分析报告（2026年07月12日）</title>
+      <style>
+        /* 全局变量定义：颜色方案 */
+        :root {
+        --primary-color: #1a5f7a;    /* 深蓝：稳重、专业 */
+        --secondary-color: #2a9d8f;  /* 青色：增长、积极 */
+        --accent-color: #e9c46a;     /* 金色：强调、重点 */
+        --text-main: #333333;        /* 正文深灰 */
+        --text-light: #666666;       /* 辅助灰 */
+        --bg-body: #f4f6f8;          /* 页面背景 */
+        --bg-card: #ffffff;          /* 卡片背景 */
+        --border-radius: 8px;        /* 圆角 */
+        --shadow: 0 4px 6px rgba(0, 0, 0, 0.05); /* 阴影 */
+        }
+        /* 基础重置 */
+        * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        }
+        body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+        background-color: var(--bg-body);
+        color: var(--text-main);
+        line-height: 1.6;
+        font-size: 16px;
+        padding-bottom: 40px;
+        }
+        /* 布局容器 */
+        .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 0 1rem;
+        }
+        /* 头部样式 */
+        header {
+        background-color: var(--bg-card);
+        padding: 1.5rem 0;
+        box-shadow: var(--shadow);
+        margin-bottom: 2rem;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        }
+        .header-content {
+        position: relative;
+        padding-top: 0.5rem;
+        }
+        h1 {
+        color: var(--primary-color);
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        line-height: 1.3;
+        }
+        .report-date {
+        color: var(--text-light);
+        font-size: 0.9rem;
+        }
+        /* 质量标志：右上角显眼位置 */
+        .quality-badge {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: #2ecc71; /* 绿色代表通过 */
+        color: white;
+        padding: 0.25rem 0.75rem;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: bold;
+        box-shadow: 0 2px 4px rgba(46, 204, 113, 0.3);
+        }
+        /* 通用卡片样式 */
+        .card {
+        background-color: var(--bg-card);
+        border-radius: var(--border-radius);
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+        box-shadow: var(--shadow);
+        border-left: 4px solid var(--primary-color);
+        }
+        .card-title {
+        color: var(--primary-color);
+        font-size: 1.25rem;
+        margin-bottom: 1rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 1px solid #eee;
+        }
+        /* 核心洞察特殊样式 */
+        .card.summary {
+        border-left-color: var(--secondary-color);
+        background: linear-gradient(to bottom right, #ffffff, #f0fdfa);
+        }
+        .summary-text {
+        font-size: 1.05rem;
+        text-align: justify;
+        }
+        /* 列表样式 */
+        ul {
+        padding-left: 1.5rem;
+        margin-bottom: 1rem;
+        }
+        li {
+        margin-bottom: 0.5rem;
+        }
+        /* 三级标题 */
+        h3 {
+        color: var(--text-main);
+        font-size: 1.1rem;
+        margin-top: 1.2rem;
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+        }
+        h4 {
+        color: var(--primary-color);
+        font-size: 1rem;
+        margin-top: 1rem;
+        margin-bottom: 0.4rem;
+        font-weight: 600;
+        }
+        /* 重点文本高亮 */
+        strong {
+        color: var(--primary-color);
+        font-weight: 600;
+        }
+        /* 资讯链接列表样式 */
+        .links-section {
+        border-left-color: var(--accent-color);
+        }
+        .link-list {
+        list-style: none;
+        padding-left: 0;
+        }
+        .link-list li {
+        background-color: #f9f9f9;
+        border-radius: 6px;
+        padding: 0.75rem;
+        margin-bottom: 0.75rem;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .link-list li:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+        }
+        .link-list a {
+        text-decoration: none;
+        color: var(--text-main);
+        display: block;
+        }
+        .link-title {
+        display: block;
+        font-weight: 500;
+        margin-bottom: 0.25rem;
+        color: var(--primary-color);
+        }
+        .link-date {
+        font-size: 0.85rem;
+        color: var(--text-light);
+        }
+        /* 页脚 */
+        footer {
+        text-align: center;
+        color: var(--text-light);
+        font-size: 0.85rem;
+        margin-top: 2rem;
+        border-top: 1px solid #ddd;
+        padding-top: 1rem;
+        }
+        /* 响应式适配 */
+        @media (min-width: 768px) {
+        h1 {
+        font-size: 1.8rem;
+        }
+        .card {
+        padding: 2rem;
+        }
+        }
+        @media (max-width: 480px) {
+        h1 {
+        font-size: 1.3rem;
+        }
+        .card {
+        padding: 1.25rem;
+        }
+        /* 移动端质量标志调整，避免遮挡 */
+        .quality-badge {
+        position: relative;
+        display: inline-block;
+        margin-top: 0.5rem;
+        float: right;
+        }
+        }
+      </style>
+    </head>
+    <body>
+      <header>
+        <div class="container header-content">
+          <!-- 质量标志 -->
+          <div class="quality-badge">质量标志：通过</div>
+            <h1>国电南瑞及电网设备ETF市场动态分析报告</h1>
+              <div class="report-date">报告时间：2026年07月12日</div>
+              </div>
+            </header>
+            <main class="container">
+              <!-- 核心洞察综述 -->
+              <section class="card summary">
+                <h2 class="card-title">核心洞察综述</h2>
+                  <p class="summary-text">
+                    截至2026年7月12日，国电南瑞（600406）处于低位震荡磨底阶段，虽短期因机构调仓、资金分歧出现波动，但基本面受益于“十五五”电网投资加码及电力数字化政策，中长期赛道逻辑未变。国泰恒生A股电网设备ETF（561380）作为跟踪该板块的重要工具，近期规模与份额增长显著，重仓持有国电南瑞等标的，短期受板块调整影响净值承压，但长期受益于电网设备行业高景气度。市场对电力板块的分歧主要集中于短期资金博弈与中长期政策红利的权衡，需关注毛利率修复、新业务订单及资金面信号。
+                  </p>
+                </section>
+                <!-- 详细维度分析 -->
+                <section class="card">
+                  <h2 class="card-title">详细维度分析</h2>
+                    <article>
+                      <h3>一、国电南瑞（600406）股价动态与市场分歧</h3>
+                        <h4>1. 短期市场表现（2026年7月12日最新观察）</h4>
+                          <ul>
+                            <li><strong>股价动态</strong>：上周五（7月10日或11日）逆势收红，但软件显示主力资金流出，形成背离。原因在于：机构建仓多拆小单，导致统计的“大单资金”未反映真实买入；且7月正值机构年中调仓窗口，短线资金止盈与中长期资金低吸形成筹码换手。</li>
+                            </ul>
+                            <h4>2. 基本面与中长期逻辑</h4>
+                              <ul>
+                                <li><strong>政策红利</strong>：受益于“十五五”电网四万亿投资规划，特高压、智能配网需求稳定，公司作为行业龙头订单充足。</li>
+                                  <li><strong>新兴业务</strong>：固态变压器、高压IGBT等技术试点推进，中长期具备成长空间。</li>
+                                    <li><strong>短期压力</strong>：一季度毛利率小幅回落至25.10%，中低端订单竞争加剧；近1800亿流通盘限制反弹持续性，单日成交15.46亿元（换手率0.88%），多空观望情绪浓厚。</li>
+                                    </ul>
+                                    <h4>3. 历史股价与市场评价（老旧信息，2025-2026年）</h4>
+                                      <ul>
+                                        <li><strong>2025年7月波动</strong>：连续7日下跌，累计跌幅7.45%，国泰基金旗下ETF持仓浮亏50.4万元（国泰恒生A股电网设备ETF二季度减持后持仓26.19万股，浮亏46.1万元）。</li>
+                                          <li><strong>2026年3月调整</strong>：收盘价26.63元，跌幅1.84%，主因主力净流出1.13亿元，技术指标弱势（MACD为负），市盈率26.78倍，2027年净利预测113.61亿元支撑估值。</li>
+                                          </ul>
+                                        </article>
+                                        <hr style="border: 0; border-top: 1px dashed #eee; margin: 1.5rem 0;">
+                                        <article>
+                                          <h3>二、国泰基金旗下ETF表现与持仓动态</h3>
+                                            <h4>1. 国泰恒生A股电网设备ETF（561380）</h4>
+                                              <ul>
+                                                <li><strong>规模与份额</strong>：截至2026年7月9日，基金规模51.61亿元，今年以来份额增长1830.76%，规模增长835.00%，近20日日均成交2.12亿元。</li>
+                                                  <li><strong>持仓与业绩</strong>：重仓股包括亨通光电、思源电气、国电南瑞等，7月9日午间净值0.765元，当日跌2.42%；7月10日收盘价0.791元，跌1.00%，单位净值0.790元，业绩基准为恒生A股电网设备指数，管理费率0.50%/年，托管费率0.10%/年。</li>
+                                                    <li><strong>份额变动</strong>：2026年1月18日及6月2日均出现净赎回（累计1.24亿份），但7月以来规模显著扩张，反映板块资金分歧。</li>
+                                                    </ul>
+                                                    <h4>2. 国泰中证细分机械设备产业主题ETF（516960）</h4>
+                                                      <ul>
+                                                        <li><strong>持仓联动</strong>：7月9日午间跌2.51%，报0.892元，半日成交额78.60万元，重仓股中国船舶、特变电工、国电南瑞等跌幅1.36%-4.53%，业绩表现弱于大盘。</li>
+                                                        </ul>
+                                                      </article>
+                                                      <hr style="border: 0; border-top: 1px dashed #eee; margin: 1.5rem 0;">
+                                                      <article>
+                                                        <h3>三、电网设备板块市场热点与行业趋势</h3>
+                                                          <h4>1. 行业驱动逻辑（2026年7月最新）</h4>
+                                                            <ul>
+                                                              <li><strong>电力板块双逻辑</strong>：兼具高股息与AI算力需求（数据中心缺电推升电力需求），走势独立于大盘。</li>
+                                                                <li><strong>政策与招标</strong>：国网输电设备招标金额同比增长32%，特高压招标翻倍，出海逻辑验证。</li>
+                                                                </ul>
+                                                                <h4>2. 市场分歧与资金行为</h4>
+                                                                  <ul>
+                                                                    <li><strong>短期资金博弈</strong>：高低位切换（AI等高弹性赛道分流资金），蓝筹股缺乏增量资金承接。</li>
+                                                                      <li><strong>中长期配置机会</strong>：电力设备作为“新基建”补短板领域，十四五后投资周期明确，“低吸承接”特征显著。</li>
+                                                                      </ul>
+                                                                    </article>
+                                                                  </section>
+                                                                  <!-- 总结与展望 -->
+                                                                  <section class="card">
+                                                                    <h2 class="card-title">总结与展望</h2>
+                                                                      <p>
+                                                                        国电南瑞短期处于“震荡磨底”阶段，需关注毛利率修复、新业务订单落地及成交量放大信号；中长期受益于电网投资与数字化转型，基本面扎实。国泰电网设备ETF规模快速扩张反映市场对板块长期信心，但短期需警惕调仓与资金分流压力。建议投资者结合自身风险偏好，关注行业政策催化（如特高压招标、AI算力需求）及龙头企业业绩验证。
+                                                                      </p>
+                                                                    </section>
+                                                                    <!-- 资讯标题与链接列表 -->
+                                                                    <section class="card links-section">
+                                                                      <h2 class="card-title">资讯来源与参考</h2>
+                                                                        <ul class="link-list">
+                                                                          <li>
+                                                                            <a href="https://toutiao.com/group/7661426301844079145/" target="_blank">
+                                                                              <span class="link-title">国电南瑞上周五逆势收红，但软件显示主力资金流出，形成背离</span>
+                                                                                <span class="link-date">2026年07月12日</span>
+                                                                                </a>
+                                                                              </li>
+                                                                              <li>
+                                                                                <a href="https://toutiao.com/group/7661459423423988258/" target="_blank">
+                                                                                  <span class="link-title">国电南瑞近期低位震荡磨底，多空博弈核心逻辑</span>
+                                                                                    <span class="link-date">2026年07月12日</span>
+                                                                                    </a>
+                                                                                  </li>
+                                                                                  <li>
+                                                                                    <a href="https://cj.sina.cn/article/norm_detail?url=http%3A%2F%2Ffinance.sina.cn%2F2026-07-10%2Fdetail-inihhzsc8449083.d.html" target="_blank">
+                                                                                      <span class="link-title">国泰恒生A股电网设备ETF（561380）7月10日收盘数据</span>
+                                                                                        <span class="link-date">2026年07月10日</span>
+                                                                                        </a>
+                                                                                      </li>
+                                                                                      <li>
+                                                                                        <a href="https://finance.sina.com.cn/money/fund/aiassistant/etfwp/2026-07-09/doc-inihence7774587.shtml" target="_blank">
+                                                                                          <span class="link-title">电网设备ETF国泰（561380）7月9日午间交易数据</span>
+                                                                                            <span class="link-date">2026年07月09日</span>
+                                                                                            </a>
+                                                                                          </li>
+                                                                                          <li>
+                                                                                            <a href="https://cj.sina.cn/article/norm_detail?url=http%3A%2F%2Ffinance.sina.cn%2F2026-07-09%2Fdetail-inihenca8313386.d.d.html" target="_blank">
+                                                                                              <span class="link-title">机械ETF国泰（516960）7月9日午间表现</span>
+                                                                                                <span class="link-date">2026年07月09日</span>
+                                                                                                </a>
+                                                                                              </li>
+                                                                                              <li>
+                                                                                                <a href="https://toutiao.com/group/7655863129620791859/" target="_blank">
+                                                                                                  <span class="link-title">6月分红密集期：近200家公司实施分红，总额约804亿元</span>
+                                                                                                    <span class="link-date">2026年06月27日</span>
+                                                                                                    </a>
+                                                                                                  </li>
+                                                                                                  <li>
+                                                                                                    <a href="http://finance
