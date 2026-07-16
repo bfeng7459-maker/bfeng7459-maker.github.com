@@ -1,0 +1,358 @@
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>国电南瑞及国泰电网设备ETF、机械ETF近期市场表现分析</title>
+      <style>
+        /* --- CSS 变量定义 --- */
+        :root {
+        --primary-color: #0056b3; /* 专业深蓝 */
+        --secondary-color: #f0f4f8; /* 浅蓝灰背景 */
+        --text-main: #333333;
+        --text-light: #666666;
+        --border-color: #e1e4e8;
+        --card-bg: #ffffff;
+        --highlight-bg: #fff8e1; /* 重点内容背景 */
+        /* 中国股市配色：红涨绿跌 */
+        --stock-up: #d93025;
+        --stock-down: #188038;
+        --spacing-unit: 1rem;
+        --container-width: 900px;
+        }
+        /* --- 基础重置 --- */
+        * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        }
+        body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+        line-height: 1.6;
+        color: var(--text-main);
+        background-color: var(--secondary-color);
+        font-size: 16px;
+        }
+        a {
+        color: var(--primary-color);
+        text-decoration: none;
+        transition: color 0.2s;
+        }
+        a:hover {
+        text-decoration: underline;
+        color: #003d80;
+        }
+        /* --- 布局容器 --- */
+        .container {
+        max-width: var(--container-width);
+        margin: 0 auto;
+        padding: 0 var(--spacing-unit);
+        }
+        /* --- 头部设计 --- */
+        header {
+        background-color: var(--card-bg);
+        padding: 2rem 0;
+        border-bottom: 1px solid var(--border-color);
+        margin-bottom: 2rem;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        }
+        .header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        gap: 1rem;
+        }
+        .title-group h1 {
+        font-size: 1.5rem;
+        color: var(--text-main);
+        margin-bottom: 0.5rem;
+        font-weight: 700;
+        }
+        .report-date {
+        font-size: 0.9rem;
+        color: var(--text-light);
+        display: inline-block;
+        background: #eee;
+        padding: 2px 8px;
+        border-radius: 4px;
+        }
+        /* 质量标志 */
+        .quality-badge {
+        background-color: var(--stock-down); /* 绿色代表通过 */
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        font-weight: bold;
+        font-size: 0.9rem;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        white-space: nowrap;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        }
+        .quality-badge::before {
+        content: "✓";
+        font-weight: 900;
+        }
+        /* --- 通用组件 --- */
+        .card {
+        background: var(--card-bg);
+        border-radius: 8px;
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        border: 1px solid var(--border-color);
+        }
+        h2 {
+        font-size: 1.25rem;
+        margin-bottom: 1rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid var(--secondary-color);
+        color: var(--primary-color);
+        }
+        h3 {
+        font-size: 1.1rem;
+        margin: 1rem 0 0.5rem 0;
+        color: #444;
+        }
+        p {
+        margin-bottom: 1rem;
+        }
+        strong {
+        font-weight: 600;
+        }
+        /* 数据高亮类 */
+        .data-up {
+        color: var(--stock-up);
+        font-weight: bold;
+        }
+        .data-down {
+        color: var(--stock-down);
+        font-weight: bold;
+        }
+        .highlight-text {
+        background-color: var(--highlight-bg);
+        padding: 0 4px;
+        border-radius: 2px;
+        }
+        /* --- 核心洞察 --- */
+        .summary-box {
+        background: linear-gradient(135deg, #e3f2fd 0%, #ffffff 100%);
+        border-left: 5px solid var(--primary-color);
+        }
+        /* --- 详细分析布局 --- */
+        .analysis-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        }
+        .data-list {
+        list-style: none;
+        }
+        .data-list li {
+        margin-bottom: 0.8rem;
+        padding-left: 1.2rem;
+        position: relative;
+        }
+        .data-list li::before {
+        content: "•";
+        color: var(--primary-color);
+        position: absolute;
+        left: 0;
+        font-weight: bold;
+        }
+        /* --- ETF 卡片 --- */
+        .etf-container {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        }
+        .etf-card {
+        background: #fff;
+        border: 1px solid var(--border-color);
+        border-radius: 8px;
+        padding: 1rem;
+        transition: transform 0.2s;
+        }
+        .etf-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .etf-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 0.5rem;
+        }
+        .etf-code {
+        font-size: 0.85rem;
+        color: var(--text-light);
+        background: #f0f0f0;
+        padding: 2px 6px;
+        border-radius: 4px;
+        }
+        /* --- 总结与展望 --- */
+        .outlook-section {
+        background-color: #333;
+        color: #fff;
+        }
+        .outlook-section h2 {
+        color: #fff;
+        border-bottom-color: #555;
+        }
+        .outlook-section p {
+        color: #ddd;
+        }
+        /* --- 来源链接列表 --- */
+        .references-section {
+        margin-top: 3rem;
+        padding-top: 2rem;
+        border-top: 1px solid #ccc;
+        }
+        .ref-list {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 0.8rem;
+        }
+        .ref-item {
+        background: #fff;
+        padding: 0.8rem;
+        border-radius: 6px;
+        border: 1px solid #eee;
+        font-size: 0.9rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.3rem;
+        }
+        .ref-link {
+        font-weight: 500;
+        word-break: break-all;
+        }
+        .ref-date {
+        font-size: 0.8rem;
+        color: #888;
+        }
+        /* --- 底部 --- */
+        footer {
+        text-align: center;
+        padding: 2rem;
+        color: var(--text-light);
+        font-size: 0.85rem;
+        margin-top: 2rem;
+        }
+        /* --- 响应式适配 --- */
+        @media (min-width: 768px) {
+        body {
+        font-size: 18px;
+        }
+        .title-group h1 {
+        font-size: 2rem;
+        }
+        .analysis-grid {
+        grid-template-columns: 1fr; /* 保持单列以便阅读长文本 */
+        }
+        .etf-container {
+        grid-template-columns: 1fr 1fr; /* ETF卡片并排 */
+        }
+        .ref-list {
+        grid-template-columns: 1fr 1fr; /* 链接列表两列 */
+        }
+        }
+        /* 移动端优化：确保链接点击区域 */
+        .ref-link {
+        padding: 4px 0;
+        min-height: 44px; /* 满足最小触摸目标 */
+        display: flex;
+        align-items: center;
+        }
+        /* 回到顶部按钮 */
+        #backToTop {
+        display: none;
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 99;
+        border: none;
+        outline: none;
+        background-color: var(--primary-color);
+        color: white;
+        cursor: pointer;
+        padding: 15px;
+        border-radius: 50%;
+        font-size: 18px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        width: 50px;
+        height: 50px;
+        align-items: center;
+        justify-content: center;
+        }
+        #backToTop:hover {
+        background-color: #003d80;
+        }
+      </style>
+    </head>
+    <body>
+      <!-- 顶部导航与标题 -->
+      <header>
+        <div class="container header-content">
+          <div class="title-group">
+            <h1>国电南瑞及国泰电网设备ETF、机械ETF近期市场表现分析</h1>
+              <span class="report-date">报告生成日期：2026年07月16日</span>
+              </div>
+              <div class="quality-badge">质量标志：通过</div>
+              </div>
+            </header>
+            <main class="container">
+              <!-- 核心洞察 -->
+              <section class="card summary-box">
+                <h2>核心洞察综述</h2>
+                  <p>截至2026年7月16日，国电南瑞（600406）股价处于震荡调整阶段，当日收盘价<span class="data-up">22.16元</span>（7月15日数据），前期冲高后回撤超一成，技术面处于震荡筑底，核心支撑位21.53元。国泰基金旗下电网设备ETF（561380）与机械ETF（516960）表现疲软，前者当日收盘价0.735元，跌幅<span class="data-down">1.61%</span>，重仓股普跌；后者午间报0.880元，下跌<span class="data-down">1.23%</span>。行业层面，电力板块受益于电网投资增长预期，但资金分流至科技AI题材导致短期承压。公司基本面稳健，一季度净利润同比增长<span class="data-up">6.04%</span>，获12家机构评级（买入11家），中长期趋势未破。</p>
+                  </section>
+                  <!-- 详细维度分析 -->
+                  <div class="analysis-grid">
+                    <!-- 一、国电南瑞 -->
+                    <section class="card">
+                      <h2>一、国电南瑞股价与资金动态</h2>
+                        <h3>1. 近期股价走势</h3>
+                          <p>国电南瑞自前期冲高至25.70元后回撤超一成，7月15日收盘价22.16元，上涨<span class="data-up">0.77%</span>，但主力资金净流出352.35万元，游资净流入1103.8万元，散户净流出751.45万元，短期资金情绪边际修复但仍显分歧 <a href="https://m.sohu.com/a/1050749238_121319643/" target="_blank" rel="noopener noreferrer" class="highlight-text">【来源链接】</a>。</p>
+                            <p>7月10日数据显示，技术面处于震荡筑底，核心支撑位21.53元，压力位22.5-23.0元，均线空头排列但中长期趋势未破，预计下周在21.53-23.0元区间震荡 <a href="https://toutiao.com/group/7660807431731036722/" target="_blank" rel="noopener noreferrer" class="highlight-text">【来源链接】</a>。</p>
+                              <p>6月23日曾下探至23.06元低位，创近期新低，调整主因前期估值透支、资金分流至AI题材及技术形态走弱，中长期调整未结束 <a href="https://toutiao.com/group/7654507224785568290/" target="_blank" rel="noopener noreferrer" class="highlight-text">【来源链接】</a>。</p>
+                                <h3>2. 基本面与机构评级</h3>
+                                  <p>一季报显示，公司主营收入95.64亿元（同比<span class="data-up">+7.52%</span>），归母净利润7.21亿元（同比<span class="data-up">+6.04%</span>），基本面稳健 <a href="https://m.sohu.com/a/1050749238_121319643/" target="_blank" rel="noopener noreferrer" class="highlight-text">【来源链接】</a>。近90天获12家机构评级，其中买入11家，增持1家，估值市盈率26.78倍，盈利预测2027年每股收益1.42元，若实现则具吸引力 <a href="https://toutiao.com/group/7622960722745524746/" target="_blank" rel="noopener noreferrer" class="highlight-text">【来源链接】</a>。</p>
+                                  </section>
+                                  <!-- 二、国泰旗下ETF -->
+                                  <section class="card">
+                                    <h2>二、国泰旗下ETF表现</h2>
+                                      <div class="etf-container">
+                                        <!-- 电网设备ETF -->
+                                        <div class="etf-card">
+                                          <div class="etf-header">
+                                            <strong>电网设备ETF</strong>
+                                              <span class="etf-code">561380</span>
+                                              </div>
+                                              <p><strong>当日表现：</strong>7月16日收盘价0.735元，跌幅<span class="data-down">1.61%</span>，成交量59.49万手，成交额4370万元。重仓股普跌（国电南瑞跌<span class="data-down">0.50%</span>，亨通光电跌<span class="data-down">3.59%</span>，中天科技跌<span class="data-down">2.92%</span>等）<a href="https://m.sohu.com/a/1050907035_122014422/" target="_blank" rel="noopener noreferrer">【来源】</a> <a href="https://xueqiu.com/S/sh561380" target="_blank" rel="noopener noreferrer">【雪球】</a>。</p>
+                                                <p><strong>历史业绩：</strong>基金经理吴中昊，自2024年12月11日成立以来回报<span class="data-up">86.65%</span>，近一个月回报<span class="data-down">-16.26%</span>。6月2日数据显示连续6日净赎回1.24亿份，规模72.53亿元 <a href="http://finance.sina.com.cn/stock/zqgd/2026-06-02/doc-inhzzivn3117299.shtml" target="_blank" rel="noopener noreferrer">【来源】</a>。</p>
+                                                </div>
+                                                <!-- 机械ETF -->
+                                                <div class="etf-card">
+                                                  <div class="etf-header">
+                                                    <strong>机械ETF</strong>
+                                                      <span class="etf-code">516960</span>
+                                                      </div>
+                                                      <p><strong>当日表现：</strong>7月16日午间报0.880元，下跌<span class="data-down">1.23%</span>，半日成交额17.84万元。重仓股分化（宁德时代持平，阳光电源涨<span class="data-up">0.61%</span>，中国船舶跌<span class="data-down">2.68%</span>，思源电气跌<span class="data-down">3.46%</span>）<a href="https://m.sohu.com/a/1050972228_122014422/" target="_blank" rel="noopener noreferrer">【来源】</a>。</p>
+                                                        <p><strong>历史业绩：</strong>基金经理苗梦羽，自2021年4月成立以来回报<span class="data-down">-11.56%</span>，近一个月回报<span class="data-down">-10.44%</span>。</p>
+                                                        </div>
+                                                      </div>
+                                                    </section>
+                                                    <!-- 三、行业动态 -->
+                                                    <section class="card">
+                                                      <h2>三、行业动态与市场环境</h2>
+                                                        <h3>1. 行业政策与投资预期</h3>
+                                                          <p>中信证券研报指出，2026年Q2起第三批大型风光基地配套工程进入集中招标，配电网改造高峰来临，预计全年电网设备投资同比增长<span class="data-up">12%</span>以上，智能化设备占比突破<span class="data-up">45%</span> <a href="http://www.nbd.com.cn/rss/jinri_toutiao/articles/4386586.html" target="_blank" rel="noopener noreferrer" class="highlight-text">【来源链接】</a>。</p>
+                                                            <p>国网第二批输电设备招标金额同比增长<span class="data-up">32%</span>，特高压招标放量概率提升，电力板块兼具高股息与AI算力逻辑，被视为攻守兼备 <a href="https://xueqiu.com/S/sh561380" target="_blank" rel="noopener noreferrer" class="highlight-text">【来源链接】</a>。</p>
+                                                              <h3>2. 资金
