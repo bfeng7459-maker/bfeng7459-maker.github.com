@@ -1,0 +1,362 @@
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>2026年算电协同与西部算力集群发展洞察报告</title>
+      <style>
+        /* --- CSS Reset & Variables --- */
+        :root {
+        --primary-color: #0f172a;       /* 深蓝：主标题、重点文字 */
+        --secondary-color: #334155;     /* 灰蓝：正文 */
+        --accent-color: #0ea5e9;        /* 亮蓝：链接、按钮 */
+        --highlight-bg: #f0f9ff;        /* 浅蓝背景：强调区块 */
+        --success-color: #10b981;       /* 绿色：数据增长、正向指标 */
+        --warning-color: #f59e0b;       /* 橙色：挑战、警告 */
+        --bg-color: #f8fafc;            /* 页面背景 */
+        --card-bg: #ffffff;             /* 卡片背景 */
+        --border-radius: 12px;
+        --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        --font-main: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+        * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        }
+        html {
+        scroll-behavior: smooth;
+        }
+        body {
+        font-family: var(--font-main);
+        background-color: var(--bg-color);
+        color: var(--secondary-color);
+        line-height: 1.6;
+        font-size: 16px;
+        }
+        /* --- Layout --- */
+        .container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 0 1rem;
+        }
+        /* --- Header --- */
+        header {
+        background-color: var(--card-bg);
+        box-shadow: var(--shadow);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        padding: 1rem 0;
+        }
+        .header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        }
+        h1 {
+        font-size: 1.25rem;
+        color: var(--primary-color);
+        font-weight: 700;
+        line-height: 1.3;
+        }
+        .quality-badge {
+        background-color: var(--success-color);
+        color: white;
+        padding: 0.25rem 0.75rem;
+        border-radius: 999px;
+        font-size: 0.875rem;
+        font-weight: 600;
+        white-space: nowrap;
+        box-shadow: 0 2px 4px rgba(16, 185, 129, 0.3);
+        }
+        /* --- Main Content --- */
+        main {
+        padding: 2rem 0;
+        }
+        section {
+        margin-bottom: 3rem;
+        }
+        h2 {
+        font-size: 1.5rem;
+        color: var(--primary-color);
+        border-left: 5px solid var(--accent-color);
+        padding-left: 1rem;
+        margin-bottom: 1.5rem;
+        }
+        h3 {
+        font-size: 1.25rem;
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+        margin-top: 1.5rem;
+        }
+        p {
+        margin-bottom: 1rem;
+        text-align: justify;
+        }
+        /* --- Components --- */
+        /* Summary Box */
+        .summary-box {
+        background: linear-gradient(135deg, #e0f2fe 0%, #f0f9ff 100%);
+        border: 1px solid #bae6fd;
+        border-radius: var(--border-radius);
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+        }
+        .summary-box h3 {
+        margin-top: 0;
+        color: var(--accent-color);
+        }
+        /* Cards Grid */
+        .grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        }
+        .card {
+        background: var(--card-bg);
+        border-radius: var(--border-radius);
+        padding: 1.5rem;
+        box-shadow: var(--shadow);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        border-top: 4px solid transparent;
+        }
+        .card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        .card.blue-top { border-top-color: var(--accent-color); }
+        .card.green-top { border-top-color: var(--success-color); }
+        .card.orange-top { border-top-color: var(--warning-color); }
+        .card-title {
+        font-size: 1.15rem;
+        font-weight: 700;
+        color: var(--primary-color);
+        margin-bottom: 0.75rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        }
+        .tag {
+        font-size: 0.75rem;
+        padding: 0.2rem 0.5rem;
+        border-radius: 4px;
+        background-color: #f1f5f9;
+        color: #64748b;
+        font-weight: normal;
+        }
+        /* Data Highlight */
+        .data-point {
+        font-weight: 700;
+        color: var(--accent-color);
+        }
+        .data-point.green { color: var(--success-color); }
+        .data-point.orange { color: var(--warning-color); }
+        /* List Styling */
+        ul.styled-list {
+        list-style: none;
+        }
+        ul.styled-list li {
+        position: relative;
+        padding-left: 1.5rem;
+        margin-bottom: 0.75rem;
+        }
+        ul.styled-list li::before {
+        content: "•";
+        color: var(--accent-color);
+        font-weight: bold;
+        position: absolute;
+        left: 0;
+        font-size: 1.2rem;
+        line-height: 1.4rem;
+        }
+        /* Source Link Styling */
+        .source-link {
+        display: block;
+        margin-top: 1rem;
+        font-size: 0.85rem;
+        color: #64748b;
+        text-decoration: none;
+        border-top: 1px dashed #e2e8f0;
+        padding-top: 0.5rem;
+        word-break: break-all;
+        }
+        .source-link:hover {
+        color: var(--accent-color);
+        }
+        /* Challenge Section */
+        .challenge-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        }
+        .challenge-item {
+        background-color: #fffbeb; /* Light yellow */
+        border-left: 4px solid var(--warning-color);
+        padding: 1rem;
+        border-radius: 0 8px 8px 0;
+        }
+        .challenge-item h4 {
+        color: #92400e;
+        margin-bottom: 0.5rem;
+        }
+        /* News List */
+        .news-table {
+        width: 100%;
+        border-collapse: collapse;
+        background: var(--card-bg);
+        border-radius: var(--border-radius);
+        overflow: hidden;
+        box-shadow: var(--shadow);
+        }
+        .news-table th, .news-table td {
+        padding: 1rem;
+        text-align: left;
+        border-bottom: 1px solid #e2e8f0;
+        }
+        .news-table th {
+        background-color: #f1f5f9;
+        color: var(--primary-color);
+        font-weight: 600;
+        }
+        .news-table a {
+        color: var(--accent-color);
+        text-decoration: none;
+        font-weight: 500;
+        }
+        .news-table a:hover {
+        text-decoration: underline;
+        }
+        /* Footer */
+        footer {
+        background-color: var(--primary-color);
+        color: #94a3b8;
+        text-align: center;
+        padding: 2rem 0;
+        margin-top: 3rem;
+        font-size: 0.9rem;
+        }
+        /* --- Responsive Queries --- */
+        @media (min-width: 768px) {
+        h1 { font-size: 1.75rem; }
+        h2 { font-size: 1.75rem; }
+        .grid {
+        grid-template-columns: repeat(2, 1fr);
+        }
+        .grid.full-width-desktop {
+        grid-template-columns: 1fr;
+        }
+        .challenge-grid {
+        grid-template-columns: 1fr 1fr;
+        }
+        .news-table th:nth-child(1), .news-table td:nth-child(1) { width: 25%; } /* Date */
+        .news-table th:nth-child(2), .news-table td:nth-child(2) { width: 50%; } /* Title */
+        .news-table th:nth-child(3), .news-table td:nth-child(3) { width: 25%; } /* Link */
+        }
+      </style>
+    </head>
+    <body>
+      <!-- Header -->
+      <header>
+        <div class="container header-content">
+          <h1>2026年07月16日算电协同与西部算力集群发展洞察报告</h1>
+            <div class="quality-badge">质量标志：通过</div>
+            </div>
+          </header>
+          <!-- Main Content -->
+          <main class="container">
+            <!-- 核心洞察综述 -->
+            <section class="summary-box">
+              <h3>核心洞察综述</h3>
+                <p>算电协同已成为“东数西算”工程的核心实践方向，西部省份凭借绿电资源优势加速布局差异化算力集群，区域分工明确（推理/训练/绿电+算力）。技术层面，液冷散热、AI调度与算力-绿电一体化成为关键趋势，国产化率与能效算力评价标准逐步提升。政策驱动下，算电协同面临时空错配、经济账难算、技术刚性与标准缺失四大挑战，需通过政策试点、液冷技术与氢储能等方向破局。2026年多地算力集群规模突破万卡级，预计2028年标准确立后零碳算力将成行业标配。</p>
+                </section>
+                <!-- 详细维度分析 -->
+                <!-- 一、区域实践 -->
+                <section>
+                  <h2>一、区域实践：西部算力集群多点开花</h2>
+                    <div class="grid">
+                      <!-- 甘肃庆阳&内蒙古呼和浩特 -->
+                      <article class="card blue-top">
+                        <div class="card-title">
+                          甘肃庆阳 & 内蒙古呼和浩特
+                          <span class="tag">跨省协同</span>
+                          </div>
+                          <ul class="styled-list">
+                            <li><strong>庆阳（推理中心）</strong>：算力达 <span class="data-point">9.2万PFLOPS</span>，绿电占比超80%，电费低于0.4元/千瓦时，已吸引超670家企业注册。</li>
+                              <li><strong>呼和浩特（训练中心）</strong>：算力 <span class="data-point">6.7EFLOPS</span>，国产化率超89%，营收超512亿元。</li>
+                                <li><strong>协同机制</strong>：通过“算网大脑”实现风光资源调度，两地形成“训练+推理”跨省协同模式，是“东数西算”工程速度最快样本之一。</li>
+                                </ul>
+                                <a href="http://m.toutiao.com/group/7657231407466496575/" target="_blank" class="source-link">来源：中国移动构建西部AI算力集群 (2026年05月24日)</a>
+                                </article>
+                                <!-- 四川 -->
+                                <article class="card green-top">
+                                  <div class="card-title">
+                                    四川
+                                    <span class="tag">水电标杆</span>
+                                    </div>
+                                    <ul class="styled-list">
+                                      <li><strong>政策目标</strong>：出台“绿电+算力”布局，2027年数据中心PUE降至 <span class="data-point green">1.25以下</span>。</li>
+                                        <li><strong>基础设施</strong>：成都已投运14个算力中心（总规模2.9万P），雅砻江公司建成全国首个高海拔岩洞式智算中心（100%绿电驱动）。</li>
+                                          <li><strong>应用落地</strong>：华西医院AI辅助诊断率提升至65%，华为等企业共建绿色算力底座与医疗AI应用。</li>
+                                          </ul>
+                                          <a href="https://m.thepaper.cn/newsDetail_forward_33566943/" target="_blank" class="source-link">来源：四川算电协同与人工智能发展合作倡议发布 (2026年07月11日)</a>
+                                            <a href="http://m.toutiao.com/group/7660718738622235146/" target="_blank" class="source-link">来源：华为中国行四川峰会 (2026年07月10日)</a>
+                                            </article>
+                                            <!-- 永州 -->
+                                            <article class="card blue-top">
+                                              <div class="card-title">
+                                                湖南永州
+                                                <span class="tag">差异化节点</span>
+                                                </div>
+                                                <ul class="styled-list">
+                                                  <li><strong>战略定位</strong>：主打“绿电算协同、大湾区溢出、具身智能零部件、轻量化OPC创业”，潇湘智算集群归集公共数据69亿条。</li>
+                                                    <li><strong>进展</strong>：电源总装机1224万千瓦，在建项目新增装机279.98万千瓦，年内形成 <span class="data-point">3.6万卡、1万PF</span> 智算集群，摩尔线程、京东科技等企业落地。</li>
+                                                      <li><strong>短板</strong>：高端人才稀缺、产业规模小，面临长株潭虹吸效应与飞地模式未闭环风险。</li>
+                                                      </ul>
+                                                      <a href="http://m.toutiao.com/group/7660810535247675914/" target="_blank" class="source-link">来源：永州市委副书记推介“算电协同”模式 (2026年07月09日)</a>
+                                                        <a href="https://toutiao.com/group/7659444677652922899/" target="_blank" class="source-link">来源：永州差异化AI发展路径 (2026年07月07日)</a>
+                                                        </article>
+                                                        <!-- 西宁 -->
+                                                        <article class="card green-top">
+                                                          <div class="card-title">
+                                                            西宁
+                                                            <span class="tag">高原绿电</span>
+                                                            </div>
+                                                            <ul class="styled-list">
+                                                              <li><strong>核心举措</strong>：建成12个数据中心（3.29万标准机架），算力规模 <span class="data-point">1.3万Pflops</span>，构建“通算+智算+超算”多元体系。</li>
+                                                                <li><strong>目标</strong>：绿算企业绿电率达80%，推动算电协同产业专利导航项目与靶向招商。</li>
+                                                                  <li><strong>应用场景</strong>：赋能城市治理、医疗、教育等领域，打造“西宁绿算”品牌。</li>
+                                                                  </ul>
+                                                                  <a href="https://m.sohu.com/a/1049404799_121106869/" target="_blank" class="source-link">来源：西宁绿色算电协同发展 (2026年07月13日)</a>
+                                                                  </article>
+                                                                  <!-- 韶关 -->
+                                                                  <article class="card blue-top">
+                                                                    <div class="card-title">
+                                                                      韶关
+                                                                      <span class="tag">大湾区枢纽</span>
+                                                                      </div>
+                                                                      <ul class="styled-list">
+                                                                        <li><strong>算力集群</strong>：总投资55亿元，部署 <span class="data-point">超万张昇腾国产AI加速卡</span>，建成9000P智算资源池，通过100T空芯光纤实现2毫秒时延。</li>
+                                                                          <li><strong>定位</strong>：作为“东数西算”大湾区唯一数据中心集群，承接广深算力需求，构建“芯片—集群—大模型—应用”自主生态。</li>
+                                                                            <li><strong>进展</strong>：中国电信与华为合作，90天建成，推动韶关从工矿城市转型为华南算力高地。</li>
+                                                                            </ul>
+                                                                            <a href="http://m.toutiao.com/group/7660706110277468713/" target="_blank" class="source-link">来源：韶关昇腾万卡智算集群上线 (2026年07月09日)</a>
+                                                                            </article>
+                                                                          </div>
+                                                                        </section>
+                                                                        <!-- 二、政策与挑战 -->
+                                                                        <section>
+                                                                          <h2>二、政策与挑战：算电协同的现实瓶颈</h2>
+                                                                            <div class="card" style="margin-bottom: 1.5rem;">
+                                                                              <h3>1. 政策支持与核心方向</h3>
+                                                                                <ul class="styled-list">
+                                                                                  <li><strong>政策推动</strong>：2026年算电协同首次写入政府工作报告，多地出台专项政策（如四川“数智天府 算电兴川”倡议）。</li>
+                                                                                    <li><strong>合作生态</strong>：四川联合华为、雅砻江等15家单位发布算电协同倡议，推动算力基建、医疗AI等领域合作。</li>
+                                                                                    </ul>
+                                                                                    <a href="https://m.thepaper.cn/newsDetail_forward_33566943/" target="_blank" class="source-link">来源：四川算电协同合作倡议 (2026年07月11日)</a>
+                                                                                    </div>
+                                                                                    <h3>2. 四大核心挑战</h3>
+                                                                                      <div class="challenge-grid">
+                                                                                        <div class="challenge-item">
+                                                                                          <h4>时空错配</h4>
