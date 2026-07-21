@@ -1,0 +1,356 @@
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026年算电协同产业洞察报告</title>
+      <style>
+        /* --- CSS Reset & Variables --- */
+        :root {
+        --primary-color: #0f4c81; /* 经典蓝，代表科技与稳重 */
+        --accent-color: #00b894; /* 绿色，代表绿电与能源 */
+        --highlight-color: #fdcb6e; /* 橙色，用于强调重点 */
+        --text-main: #2d3436;
+        --text-secondary: #636e72;
+        --bg-body: #f5f7fa;
+        --bg-card: #ffffff;
+        --spacing-unit: 1rem;
+        --border-radius: 8px;
+        --shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        --shadow-hover: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+        * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        }
+        body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        line-height: 1.6;
+        color: var(--text-main);
+        background-color: var(--bg-body);
+        font-size: 16px;
+        }
+        /* --- Layout & Typography --- */
+        .container {
+        max-width: 1024px;
+        margin: 0 auto;
+        padding: 0 var(--spacing-unit);
+        }
+        h1, h2, h3, h4 {
+        color: var(--primary-color);
+        font-weight: 700;
+        margin-bottom: 0.5em;
+        }
+        h1 { font-size: 1.75rem; line-height: 1.3; }
+        h2 { font-size: 1.5rem; margin-top: 2em; border-bottom: 2px solid var(--accent-color); padding-bottom: 0.5em; display: inline-block; }
+        h3 { font-size: 1.25rem; margin-top: 1.5em; color: #2c3e50; }
+        h4 { font-size: 1.1rem; margin-top: 1em; color: #34495e; }
+        p { margin-bottom: 1em; text-align: justify; }
+        strong { color: var(--primary-color); font-weight: 600; }
+        a { color: var(--primary-color); text-decoration: none; border-bottom: 1px dotted var(--primary-color); transition: all 0.2s; }
+        a:hover { color: var(--accent-color); border-bottom-style: solid; }
+        /* --- Header Section --- */
+        header {
+        background: linear-gradient(135deg, var(--primary-color), #2c3e50);
+        color: white;
+        padding: 3rem 0;
+        margin-bottom: 2rem;
+        position: relative;
+        box-shadow: var(--shadow);
+        }
+        .header-content {
+        position: relative;
+        z-index: 2;
+        }
+        .report-meta {
+        font-size: 0.9rem;
+        opacity: 0.9;
+        margin-bottom: 0.5rem;
+        display: inline-block;
+        background: rgba(255,255,255,0.1);
+        padding: 4px 12px;
+        border-radius: 20px;
+        }
+        /* 质量标志 */
+        .quality-badge {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        background-color: var(--highlight-color);
+        color: #d35400;
+        font-size: 0.8rem;
+        font-weight: bold;
+        padding: 6px 12px;
+        border-radius: 4px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        z-index: 10;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        }
+        .quality-badge::before {
+        content: "★";
+        }
+        /* --- Summary Section --- */
+        .summary-card {
+        background: var(--bg-card);
+        padding: 2rem;
+        border-radius: var(--border-radius);
+        box-shadow: var(--shadow);
+        border-left: 5px solid var(--accent-color);
+        margin-bottom: 2rem;
+        }
+        .highlight-box {
+        background-color: #e8f8f5;
+        padding: 1rem;
+        border-radius: var(--border-radius);
+        margin-top: 1rem;
+        font-size: 0.95rem;
+        }
+        /* --- Analysis Section (Grid Layout) --- */
+        .analysis-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+        }
+        .card {
+        background: var(--bg-card);
+        padding: 1.5rem;
+        border-radius: var(--border-radius);
+        box-shadow: var(--shadow);
+        transition: transform 0.2s, box-shadow 0.2s;
+        height: 100%;
+        }
+        .card:hover {
+        transform: translateY(-3px);
+        box-shadow: var(--shadow-hover);
+        }
+        .card-icon {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+        display: block;
+        }
+        ul {
+        padding-left: 1.5rem;
+        margin-bottom: 1rem;
+        }
+        li {
+        margin-bottom: 0.5rem;
+        }
+        .source-ref {
+        display: block;
+        font-size: 0.8rem;
+        color: var(--text-secondary);
+        margin-top: 0.5rem;
+        font-style: italic;
+        border-top: 1px dashed #eee;
+        padding-top: 0.5rem;
+        }
+        /* --- Regional Specifics --- */
+        .region-card {
+        border-top: 4px solid var(--primary-color);
+        }
+        .region-card:nth-child(1) { border-color: #0984e3; } /* 四川 */
+        .region-card:nth-child(2) { border-color: #d63031; } /* 粤港澳 */
+        .region-card:nth-child(3) { border-color: #00b894; } /* 乌兰察布 */
+        .stat-highlight {
+        font-weight: bold;
+        color: var(--accent-color);
+        font-size: 1.1em;
+        }
+        /* --- Sources Section --- */
+        .sources-section {
+        background: #fff;
+        padding: 2rem;
+        border-radius: var(--border-radius);
+        margin-top: 3rem;
+        box-shadow: var(--shadow);
+        }
+        .source-list {
+        list-style-type: none;
+        padding: 0;
+        }
+        .source-list li {
+        padding: 0.8rem 0;
+        border-bottom: 1px solid #eee;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: baseline;
+        }
+        .source-list li:last-child {
+        border-bottom: none;
+        }
+        .source-date {
+        font-weight: bold;
+        color: var(--text-main);
+        min-width: 140px;
+        display: inline-block;
+        }
+        .source-link {
+        color: var(--primary-color);
+        text-decoration: underline;
+        margin-left: 0.5rem;
+        }
+        .old-info-tag {
+        background-color: #ffeaa7;
+        color: #d35400;
+        font-size: 0.75rem;
+        padding: 2px 6px;
+        border-radius: 4px;
+        margin-left: 8px;
+        vertical-align: middle;
+        }
+        /* --- Footer --- */
+        footer {
+        text-align: center;
+        padding: 2rem 0;
+        color: var(--text-secondary);
+        font-size: 0.9rem;
+        margin-top: 2rem;
+        border-top: 1px solid #ddd;
+        }
+        /* --- Responsive Design --- */
+        @media (min-width: 768px) {
+        h1 { font-size: 2.5rem; }
+        .analysis-grid {
+        grid-template-columns: repeat(2, 1fr);
+        }
+        /* Make the first item (Policy) span full width if desired, or keep grid. Let's make regions 3 columns */
+        .regions-container {
+        grid-column: 1 / -1;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+        }
+        .regions-container .card {
+        display: flex;
+        flex-direction: column;
+        }
+        }
+        @media (max-width: 767px) {
+        .quality-badge {
+        position: static;
+        display: inline-block;
+        margin-bottom: 1rem;
+        }
+        header {
+        text-align: center;
+        padding: 2rem 0;
+        }
+        .header-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        }
+        .source-list li {
+        flex-direction: column;
+        }
+        .source-date {
+        margin-bottom: 0.25rem;
+        color: var(--text-secondary);
+        }
+        }
+      </style>
+    </head>
+    <body>
+      <header>
+        <div class="container header-content">
+          <div class="quality-badge">高质量产业洞察</div>
+            <div class="report-meta">2026年07月21日</div>
+              <h1>算电协同产业洞察：政策驱动下的区域实践与技术突破</h1>
+              </div>
+            </header>
+            <main class="container">
+              <!-- 核心洞察综述 -->
+              <section class="summary-card">
+                <h2>核心洞察综述</h2>
+                  <p>2026年7月以来，算电协同作为国家级新基建工程<strong>加速落地</strong>，四川、粤港澳大湾区（韶关）、乌兰察布等区域密集推进算力与电力深度融合项目，形成“政策引领—区域实践—技术突破—产业协同”的立体发展格局。</p>
+                    <div class="highlight-box">
+                      <strong>核心趋势：</strong>
+                        <ul>
+                          <li><strong>绿电直连与算力集群规模化</strong>（如韶关万卡集群、四川岩洞智算中心）</li>
+                            <li><strong>国产全链路自主可控</strong>（昇腾芯片、“国芯训国模”模式）</li>
+                              <li><strong>Token价值运营成为新方向</strong>（算力交易市场成型）</li>
+                              </ul>
+                            </div>
+                            <p style="margin-top: 1rem;">政策层面，政府工作报告明确算电协同战略地位，企业端绿电成本优势显著（如乌兰察布电价低至0.35元/度），推动算力产业从“硬件竞赛”转向“低碳能效与价值运营”双轮驱动。</p>
+                            </section>
+                            <!-- 详细维度分析 -->
+                            <section id="analysis">
+                              <h2>详细维度分析</h2>
+                                <div class="analysis-grid">
+                                  <!-- 政策锚定 -->
+                                  <article class="card">
+                                    <span class="card-icon">🏛️</span>
+                                      <h3>一、政策锚定：算电协同上升为国家战略</h3>
+                                        <ul>
+                                          <li><strong>政策演进</strong>：2026年政府工作报告首次将“算电协同”纳入国家级新基建工程，标志算力与电力深度融合成为国家战略。
+                                            <span class="source-ref">来源：<a href="http://m.toutiao.com/group/7664742158087373363/" target="_blank">2026年01月18日素材</a></span>
+                                            </li>
+                                            <li><strong>实践要求</strong>：基础设施需“强制液冷+绿电占比不低于80%”，运营逻辑从“硬件租赁”转向“Token按量计费”，算力交易市场规模化。
+                                              <span class="source-ref">来源：<a href="http://m.toutiao.com/group/7662549300081115663/" target="_blank">2026年01月18日素材</a></span>
+                                              </li>
+                                            </ul>
+                                          </article>
+                                          <!-- 技术趋势 -->
+                                          <article class="card">
+                                            <span class="card-icon">🚀</span>
+                                              <h3>三、技术趋势：国产算力体系与能效革命</h3>
+                                                <ul>
+                                                  <li><strong>底层芯片</strong>：国产芯片性能逼近主流，如寒武纪MLU590对标A100，华为昇腾950PR出货75万片，国产芯片份额突破52%。
+                                                    <span class="source-ref">来源：<a href="https://news.sina.cn/bignews/insight/2026-07-18/detail-iniifhuc8308652.d.html" target="_blank">2025年07月18日素材</a>（注意：老旧信息）</span>
+                                                    </li>
+                                                    <li><strong>基础设施</strong>：万卡集群液冷强制标配，绿电占比不低于80%，NPU成主流架构。
+                                                      <span class="source-ref">来源：<a href="http://m.toutiao.com/group/7662549300081115663/" target="_blank">2026年01月18日素材</a></span>
+                                                      </li>
+                                                      <li><strong>运营创新</strong>：算力调度软件实现跨架构统一平台，模型优化降低无效算力，Token价值运营占比提升。
+                                                        <span class="source-ref">来源：<a href="http://toutiao.com/group/7662549300081115663/" target="_blank">2026年01月18日素材</a></span>
+                                                        </li>
+                                                      </ul>
+                                                    </article>
+                                                    <!-- 产业链布局 -->
+                                                    <article class="card">
+                                                      <span class="card-icon">🔗</span>
+                                                        <h3>四、产业链布局：政策与资本共振下的企业机遇</h3>
+                                                          <ul>
+                                                            <li><strong>政策受益标的</strong>：社保基金持仓12家算电协同企业，覆盖液冷（银轮股份、英维克）、供电（烽火通信）、算力芯片（昇腾生态）等环节。
+                                                              <span class="source-ref">来源：<a href="http://toutiao.com/item/7664742158087373363/" target="_blank">2026年07月21日素材</a></span>
+                                                              </li>
+                                                              <li><strong>产业协同</strong>：华为与多家企业签约共建绿色算力底座，推动AI赋能能源、医疗、制造等行业。
+                                                                <span class="source-ref">来源：<a href="https://m.thepaper.cn/newsDetail_forward_33566943" target="_blank">2026年07月11日素材</a></span>
+                                                                </li>
+                                                              </ul>
+                                                            </article>
+                                                            <!-- 区域实践：占据整行 -->
+                                                            <div class="regions-container">
+                                                              <!-- 四川 -->
+                                                              <article class="card region-card">
+                                                                <h3>二.1 四川：西部算力高地</h3>
+                                                                  <p><strong>峰会与倡议</strong>：7月9日发布合作倡议，围绕“以电强算、以算赋电、以算兴业”三大方向。
+                                                                    <span class="source-ref">来源：<a href="https://m.thepaper.cn/newsDetail_forward_33566943" target="_blank">2026年07月11日素材</a></span>
+                                                                    </p>
+                                                                    <p><strong>资源禀赋</strong>：水电装机超1亿千瓦，成都算力规模达<span class="stat-highlight">2.9万P</span>，建成全国首个高海拔岩洞式智算中心，PUE低于1.2。
+                                                                      <span class="source-ref">来源：<a href="http://m.toutiao.com/group/7662592808347255334/" target="_blank">2026年07月09日素材</a></span>
+                                                                      </p>
+                                                                      <p><strong>应用场景</strong>：华西医院AI辅助诊断率提升至<span class="stat-highlight">65%</span>。
+                                                                        <span class="source-ref">来源：<a href="http://toutiao.com/item/7662592808347255334/" target="_blank">2026年07月15日素材</a></span>
+                                                                        </p>
+                                                                      </article>
+                                                                      <!-- 粤港澳 -->
+                                                                      <article class="card region-card">
+                                                                        <h3>二.2 粤港澳（韶关）：国产智算集群</h3>
+                                                                          <p><strong>项目落地</strong>：7月9日首个“国芯训国模”昇腾万卡智算集群上线，总投资55亿元，总算力<span class="stat-highlight">9000P</span>。
+                                                                            <span class="source-ref">来源：<a href="https://m.sohu.com/a/1048664367_121106875/" target="_blank">2026年07月10日素材</a></span>
+                                                                            </p>
+                                                                            <p><strong>区位优势</strong>：韶关作为国家算力枢纽，具备绿电低成本（广深至韶关时延<2毫秒）、地质稳定等优势。
+                                                                              <span class="source-ref">来源：<a href="http://m.toutiao.com/group/7664742158087373363/" target="_blank">2026年07月21日素材</a></span>
+                                                                              </p>
+                                                                            </article>
+                                                                            <!-- 乌兰察布 -->
+                                                                            <article class="card region-card">
+                                                                              <h3>二.3 乌兰察布：绿电直连模式</h3>
+                                                                                <p><strong>模式创新</strong>：采用“物理直连+市场交易+弹性调度”三种模式，实现“卖电→卖算力→卖Token”三级跳。
+                                                                                  <span class="source-ref">来源：<a href="http://toutiao.com/item/766304427867906100
