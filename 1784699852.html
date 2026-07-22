@@ -1,0 +1,359 @@
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>2026年7月中美算力产业洞察报告</title>
+      <style>
+        /* CSS Reset & Variables */
+        :root {
+        --primary-color: #0f172a; /* 深蓝文字 */
+        --accent-color: #3b82f6; /* 科技蓝 */
+        --bg-color: #f8fafc; /* 浅灰背景 */
+        --card-bg: #ffffff;
+        --text-secondary: #475569;
+        --text-light: #94a3b8;
+        /* 状态色 */
+        --danger-bg: #fef2f2;
+        --danger-text: #b91c1c;
+        --success-bg: #f0fdf4;
+        --success-text: #15803d;
+        --info-bg: #eff6ff;
+        --info-text: #1d4ed8;
+        /* 间距与圆角 */
+        --spacing-sm: 0.5rem;
+        --spacing-md: 1rem;
+        --spacing-lg: 1.5rem;
+        --spacing-xl: 2rem;
+        --radius-md: 8px;
+        --radius-lg: 12px;
+        /* 字体 */
+        --font-main: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+        }
+        * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        }
+        body {
+        font-family: var(--font-main);
+        background-color: var(--bg-color);
+        color: var(--primary-color);
+        line-height: 1.6;
+        font-size: 16px; /* 基准大小 */
+        -webkit-font-smoothing: antialiased;
+        }
+        /* 布局容器 */
+        .container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 0 var(--spacing-md);
+        }
+        /* 头部样式 */
+        header {
+        background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+        color: white;
+        padding: var(--spacing-xl) 0;
+        margin-bottom: var(--spacing-lg);
+        position: relative;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        .header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        gap: var(--spacing-md);
+        }
+        h1 {
+        font-size: 1.75rem;
+        font-weight: 700;
+        line-height: 1.3;
+        margin-bottom: var(--spacing-sm);
+        flex: 1;
+        }
+        .subtitle {
+        font-size: 1rem;
+        opacity: 0.8;
+        font-weight: 400;
+        }
+        /* 质量标志 */
+        .quality-badge {
+        background-color: #10b981;
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 9999px;
+        font-weight: 600;
+        font-size: 0.875rem;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        white-space: nowrap;
+        display: inline-flex;
+        align-items: center;
+        }
+        .quality-badge::before {
+        content: "✓";
+        margin-right: 4px;
+        font-weight: bold;
+        }
+        /* 通用卡片样式 */
+        .card {
+        background-color: var(--card-bg);
+        border-radius: var(--radius-lg);
+        padding: var(--spacing-lg);
+        margin-bottom: var(--spacing-lg);
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+        border: 1px solid rgba(226, 232, 240, 0.8);
+        }
+        .section-title {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: var(--spacing-md);
+        padding-bottom: var(--spacing-sm);
+        border-bottom: 2px solid #e2e8f0;
+        display: flex;
+        align-items: center;
+        }
+        .section-title::before {
+        content: '';
+        display: block;
+        width: 6px;
+        height: 24px;
+        background-color: var(--accent-color);
+        margin-right: var(--spacing-sm);
+        border-radius: 4px;
+        }
+        h3 {
+        font-size: 1.25rem;
+        font-weight: 600;
+        margin: var(--spacing-lg) 0 var(--spacing-md) 0;
+        color: var(--primary-color);
+        }
+        h4 {
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin: var(--spacing-md) 0 var(--spacing-sm) 0;
+        color: var(--text-secondary);
+        }
+        p {
+        margin-bottom: var(--spacing-md);
+        color: var(--text-secondary);
+        }
+        ul, ol {
+        margin-bottom: var(--spacing-md);
+        padding-left: 1.5rem;
+        color: var(--text-secondary);
+        }
+        li {
+        margin-bottom: var(--spacing-sm);
+        }
+        /* 链接样式 */
+        a {
+        color: var(--accent-color);
+        text-decoration: none;
+        transition: color 0.2s;
+        border-bottom: 1px dotted var(--accent-color);
+        }
+        a:hover {
+        color: #1d4ed8;
+        border-bottom-style: solid;
+        }
+        .source-link {
+        font-size: 0.85rem;
+        color: var(--text-light);
+        margin-left: var(--spacing-sm);
+        border-bottom: none;
+        background: #f1f5f9;
+        padding: 2px 6px;
+        border-radius: 4px;
+        }
+        .source-link:hover {
+        background: #e2e8f0;
+        color: var(--accent-color);
+        }
+        /* 核心洞察高亮块 */
+        .insight-box {
+        background: linear-gradient(to right, #eff6ff, #ffffff);
+        border-left: 5px solid var(--accent-color);
+        padding: var(--spacing-lg);
+        border-radius: 0 var(--radius-md) var(--radius-md) 0;
+        margin-bottom: var(--spacing-lg);
+        }
+        .insight-box p {
+        margin-bottom: 0;
+        font-size: 1.05rem;
+        color: var(--primary-color);
+        font-weight: 500;
+        }
+        /* 美国部分样式 (警告色) */
+        .us-section .section-title::before {
+        background-color: var(--danger-text);
+        }
+        .us-alert {
+        background-color: var(--danger-bg);
+        color: var(--danger-text);
+        padding: var(--spacing-md);
+        border-radius: var(--radius-md);
+        border: 1px solid #fecaca;
+        }
+        /* 中国部分样式 (成功色) */
+        .cn-section .section-title::before {
+        background-color: var(--success-text);
+        }
+        .cn-highlight {
+        background-color: var(--success-bg);
+        color: var(--success-text);
+        padding: var(--spacing-md);
+        border-radius: var(--radius-md);
+        border: 1px solid #bbf7d0;
+        }
+        /* 表格样式 */
+        .table-wrapper {
+        overflow-x: auto;
+        margin-bottom: var(--spacing-lg);
+        border-radius: var(--radius-md);
+        border: 1px solid #e2e8f0;
+        }
+        table {
+        width: 100%;
+        border-collapse: collapse;
+        background-color: white;
+        min-width: 600px; /* 强制移动端横向滚动 */
+        }
+        th, td {
+        padding: var(--spacing-md);
+        text-align: left;
+        border-bottom: 1px solid #e2e8f0;
+        }
+        th {
+        background-color: #f1f5f9;
+        color: var(--primary-color);
+        font-weight: 600;
+        }
+        tr:last-child td {
+        border-bottom: none;
+        }
+        /* 资讯列表 */
+        .news-list {
+        list-style: none;
+        padding: 0;
+        }
+        .news-item {
+        display: flex;
+        flex-direction: column;
+        padding: var(--spacing-md) 0;
+        border-bottom: 1px solid #e2e8f0;
+        }
+        .news-item:last-child {
+        border-bottom: none;
+        }
+        .news-meta {
+        font-size: 0.85rem;
+        color: var(--text-light);
+        margin-bottom: 4px;
+        display: flex;
+        align-items: center;
+        }
+        .news-title {
+        font-size: 1rem;
+        font-weight: 500;
+        color: var(--primary-color);
+        }
+        .news-title a {
+        color: var(--primary-color);
+        border-bottom: none;
+        }
+        .news-title a:hover {
+        color: var(--accent-color);
+        text-decoration: underline;
+        }
+        /* 页脚 */
+        footer {
+        text-align: center;
+        padding: var(--spacing-xl) 0;
+        color: var(--text-light);
+        font-size: 0.9rem;
+        border-top: 1px solid #e2e8f0;
+        margin-top: var(--spacing-xl);
+        }
+        /* 响应式调整 */
+        @media (max-width: 768px) {
+        h1 {
+        font-size: 1.5rem;
+        }
+        .header-content {
+        align-items: center;
+        }
+        .quality-badge {
+        position: absolute;
+        top: var(--spacing-md);
+        right: var(--spacing-md);
+        font-size: 0.75rem;
+        padding: 0.25rem 0.75rem;
+        }
+        .card {
+        padding: var(--spacing-md);
+        }
+        .section-title {
+        font-size: 1.25rem;
+        }
+        h3 {
+        font-size: 1.1rem;
+        }
+        }
+      </style>
+    </head>
+    <body>
+      <header>
+        <div class="container header-content">
+          <div>
+            <h1>2026年7月中美算力产业洞察</h1>
+              <div class="subtitle">美国遇阻与中国算电协同战略深化</div>
+              </div>
+              <div class="quality-badge">质量标志：通过</div>
+              </div>
+            </header>
+            <main class="container">
+              <!-- 核心洞察 -->
+              <section class="insight-box">
+                <p><strong>核心洞察综述：</strong>2026年上半年，美国数据中心建设遭遇系统性阻力，黑石旗下QTS项目终止、超千亿美元项目取消，电网瓶颈与社区反对成主因；同期中国依托“算电协同”战略加速算力布局，西部新能源区与东部产业协同双线推进，韶关、郑州、青海等地万卡智算集群集中上线，华为等企业主导的算电协同网络初步成型。中美算力路径分化显著，中国通过能源与算力协同应对AI时代需求爆发，美国则受基建与社会矛盾制约。</p>
+                </section>
+                <!-- 详细维度分析 -->
+                <section class="card">
+                  <h2 class="section-title">详细维度分析</h2>
+                    <!-- 美国部分 -->
+                    <div class="us-section">
+                      <h3>一、美国数据中心建设系统性阻力显现</h3>
+                        <p>美国数据中心建设陷入停滞，2026年上半年至少75个项目延期或取消，涉及金额超1300亿美元<a href="http://m.toutiao.com/group/7664981705694036506/" target="_blank" class="source-link">来源链接1</a>。主因包括：</p>
+                          <div class="us-alert">
+                            <ul>
+                              <li><strong>电网瓶颈</strong>：并网审批等待周期长达4-8年，弗吉尼亚州等项目因电力基础设施不足被迫终止<a href="http://m.toutiao.com/group/7664981705694036506/" target="_blank" class="source-link">来源链接1</a>。</li>
+                                <li><strong>社区反对</strong>：71%民众反对新建数据中心，纽约州暂停大型项目审批，弗吉尼亚州开征电力消耗税<a href="http://m.toutiao.com/group/7664981705694036506/" target="_blank" class="source-link">来源链接1</a>。</li>
+                                </ul>
+                              </div>
+                              <p><em>最新动态</em>：弗吉尼亚州作为东部沿海数据中心密集区，叠加社区抵制与能源成本上升，2026年上半年至少12个项目取消，占全美项目总量16%<a href="http://m.toutiao.com/group/7664981705694036506/" target="_blank" class="source-link">来源链接1</a>。</p>
+                              </div>
+                              <hr style="border: 0; border-top: 1px solid #e2e8f0; margin: 2rem 0;">
+                              <!-- 中国部分 -->
+                              <div class="cn-section">
+                                <h3>二、中国“算电协同”战略全面落地</h3>
+                                  <p>中国以“东数西算”工程为核心，将算力与新能源深度耦合，形成差异化发展路径：</p>
+                                    <h4>1. 政策驱动：国家级新基建明确布局</h4>
+                                      <p>2026年政府工作报告首次将“算电协同”纳入国家级新基建，标志政策从“东数西算”向“算电一体化”升级<a href="http://m.toutiao.com/group/7664742158087373363/" target="_blank" class="source-link">来源链接6</a><a href="http://toutiao.com/item/7664742158087373363/" target="_blank" class="source-link">来源链接14</a>。</p>
+                                        <h4>2. 西部算力枢纽：绿色能源赋能</h4>
+                                          <ul>
+                                            <li><strong>青海</strong>：建成绿色算力调度中心，依托水电资源实现算力与电力直连<a href="http://m.toutiao.com/group/7664981705694036506/" target="_blank" class="source-link">来源链接1</a>。</li>
+                                              <li><strong>内蒙古</strong>：绿电占比超80%，作为“东数西算”北方枢纽，2026年新增算力集群规模达3.2万P<a href="http://m.toutiao.com/group/7664981705694036506/" target="_blank" class="source-link">来源链接1</a>。</li>
+                                                <li><strong>乌兰察布</strong>：通过“绿电直连”模式实现电价0.35元/度、PUE<1.2，算力占全国近9%，形成“绿电-算力-Token”价值闭环<a href="http://m.toutiao.com/group/7663044278679061001/" target="_blank" class="source-link">来源链接14</a><a href="http://toutiao.com/group/7663044278679061001/" target="_blank" class="source-link">来源链接17</a>。</li>
+                                                </ul>
+                                                <h4>3. 东部产业协同：大湾区溢出效应</h4>
+                                                  <div class="cn-highlight">
+                                                    <ul>
+                                                      <li><strong>韶关</strong>：粤港澳大湾区首个“国芯训国模”昇腾万卡智算集群上线，总投资55亿元，拥有超万张国产AI加速卡，承接广深高能耗算力需求，时延低至2毫秒<a href="http://m.toutiao.com/group/7659444677652922899/" target="_blank" class="source-link">来源链接4</a><a href="http://toutiao.com/item/7661598045296951818/" target="_blank" class="source-link">来源链接12</a>。</li>
+                                                        <li><strong>永州</strong>：定位“绿电算协同+大湾区溢出”，规划万卡级算力集群，归集公共数据69亿条，依托粤港技术合作推进具身智能零部件产业<a href="http://m.toutiao.com/group/7659444677652922899/" target="_blank" class="source-link">来源链接2</a><a href="http://m.toutiao.com/group/7659444677652922899/" target="_blank" class="source-link">来源链接11</a>。</li>
+                                                        </ul>
+                                                      </div>
+                                                      <h4>4. 技术突破与生态构建</h4>
+                                                        <ul>
+                                                          <li><strong>四川</strong>：成都举办“算电协同与AI创新峰会”，华为发布算电协同倡议，目标2027年PUE<1.25，雅砻江岩洞式智算中心（PUE<1.2）、华西医院AI平台落地<a href="https://m.thepaper.cn/newsDetail_forward_33566943" target="_blank" class="source-link">来源链接3</a><a href="http://m.toutiao.com/group/7662592808347255334/" target="_blank" class="source-link">来源链接9</a><a href="http://m.toutiao.com/group/7662592808347255334/" target="_blank" class="source-link">来源链接15</a>。</li>
+                                                            <li><strong>芯片与集群</strong>：寒武纪MLU590对标A100，华为昇腾950PR出货75万片，自给率达41%；国内日均Token调用量140万亿，模型训练成本仅为国际1/20<a
