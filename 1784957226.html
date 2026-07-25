@@ -1,0 +1,287 @@
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>分析洞察报告：资讯素材缺失说明</title>
+      <style>
+        /* 全局变量定义：配色方案 */
+        :root {
+        --primary-color: #3b82f6; /* 科技蓝 */
+        --primary-dark: #1d4ed8;
+        --accent-color: #f59e0b; /* 警示黄 */
+        --danger-color: #ef4444; /* 错误红 */
+        --text-main: #1f2937;    /* 深灰 */
+        --text-secondary: #4b5563; /* 中灰 */
+        --text-light: #9ca3af;   /* 浅灰 */
+        --bg-body: #f3f4f6;      /* 背景灰 */
+        --bg-card: #ffffff;      /* 卡片白 */
+        --border-radius: 12px;
+        --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+        --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+        }
+        /* 基础重置 */
+        * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        }
+        body {
+        font-family: var(--font-family);
+        background-color: var(--bg-body);
+        color: var(--text-main);
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+        padding: 1rem;
+        }
+        /* 布局容器 */
+        .container {
+        max-width: 800px;
+        margin: 0 auto;
+        background-color: var(--bg-card);
+        border-radius: var(--border-radius);
+        box-shadow: var(--shadow-md);
+        overflow: hidden; /* 防止子元素溢出圆角 */
+        position: relative;
+        }
+        /* 头部区域 */
+        header {
+        background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+        color: white;
+        padding: 2rem;
+        position: relative;
+        }
+        /* 顶部质量标志 - 右上角悬浮 */
+        .quality-flag {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        background-color: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(4px);
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        color: #fff;
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        font-size: 0.875rem;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        z-index: 10;
+        }
+        .quality-flag .status-text {
+        color: #ffcccc;
+        font-weight: bold;
+        }
+        .report-meta {
+        margin-top: 0.5rem;
+        font-size: 0.875rem;
+        opacity: 0.9;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        }
+        h1 {
+        font-size: 1.75rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        line-height: 1.3;
+        }
+        /* 主要内容区域 */
+        main {
+        padding: 2rem;
+        }
+        section {
+        margin-bottom: 2.5rem;
+        }
+        section:last-child {
+        margin-bottom: 0;
+        }
+        h2 {
+        font-size: 1.25rem;
+        color: var(--text-main);
+        border-left: 4px solid var(--primary-color);
+        padding-left: 1rem;
+        margin-bottom: 1rem;
+        font-weight: 600;
+        }
+        p {
+        margin-bottom: 1rem;
+        color: var(--text-secondary);
+        text-align: justify;
+        }
+        /* 警告/核心洞察卡片 */
+        .alert-box {
+        background-color: #fffbeb; /* 浅黄色背景 */
+        border: 1px solid #fcd34d;
+        border-radius: 8px;
+        padding: 1.5rem;
+        color: #92400e;
+        }
+        .alert-title {
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-bottom: 0.5rem;
+        color: #b45309;
+        }
+        /* 列表样式 */
+        ul {
+        list-style-type: none;
+        padding-left: 0;
+        }
+        li {
+        position: relative;
+        padding-left: 1.5rem;
+        margin-bottom: 0.75rem;
+        color: var(--text-secondary);
+        }
+        li::before {
+        content: "•";
+        color: var(--primary-color);
+        font-weight: bold;
+        position: absolute;
+        left: 0;
+        font-size: 1.2em;
+        line-height: 1.5;
+        }
+        /* 空状态样式 */
+        .empty-state {
+        border: 2px dashed #d1d5db;
+        border-radius: 8px;
+        padding: 3rem 1.5rem;
+        text-align: center;
+        background-color: #f9fafb;
+        }
+        .empty-icon {
+        width: 48px;
+        height: 48px;
+        margin-bottom: 1rem;
+        color: var(--text-light);
+        }
+        .empty-text {
+        color: var(--text-light);
+        font-size: 1rem;
+        }
+        /* 底部注脚 */
+        footer {
+        background-color: #f9fafb;
+        padding: 1.5rem 2rem;
+        border-top: 1px solid #e5e7eb;
+        font-size: 0.875rem;
+        color: var(--text-light);
+        text-align: center;
+        }
+        /* 链接样式 */
+        a {
+        color: var(--primary-color);
+        text-decoration: none;
+        transition: color 0.2s;
+        }
+        a:hover {
+        color: var(--primary-dark);
+        text-decoration: underline;
+        }
+        /* 响应式设计：移动端适配 */
+        @media (max-width: 600px) {
+        body {
+        padding: 0;
+        }
+        .container {
+        border-radius: 0;
+        box-shadow: none;
+        min-height: 100vh;
+        }
+        header {
+        padding: 1.5rem;
+        }
+        h1 {
+        font-size: 1.5rem;
+        }
+        .quality-flag {
+        position: static;
+        display: inline-flex;
+        margin-bottom: 1rem;
+        align-self: flex-start;
+        font-size: 0.75rem;
+        padding: 0.25rem 0.75rem;
+        }
+        /* 调整头部布局以适应移动端 */
+        .header-content {
+        display: flex;
+        flex-direction: column;
+        }
+        main {
+        padding: 1.5rem;
+        }
+        .alert-box {
+        padding: 1rem;
+        }
+        }
+      </style>
+    </head>
+    <body>
+      <div class="container">
+        <header>
+          <div class="header-content">
+            <!-- 质量标志 -->
+            <div class="quality-flag">
+              <span class="status-text">质量标志：</span>不完整
+              </div>
+              <h1>分析洞察报告：资讯素材缺失说明</h1>
+                <div class="report-meta">
+                  <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                    生成日期：2026年07月25日
+                  </div>
+                </div>
+              </header>
+              <main>
+                <!-- 核心洞察综述 -->
+                <section>
+                  <h2>核心洞察综述</h2>
+                    <div class="alert-box">
+                      <div class="alert-title">
+                        <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                          当前分析存在严重信息缺失
+                        </div>
+                        <p>用户提供的素材列表为空（<code>[]</code>），未包含任何可用于分析的原始资讯内容。根据“分析洞察要求完全依赖提供的素材，不允许无中生有”的原则，无法生成基于具体内容的分析报告。</p>
+                        </div>
+                      </section>
+                      <!-- 详细维度分析 -->
+                      <section>
+                        <h2>详细维度分析</h2>
+                          <p>由于用户未提供任何可分析的资讯素材（如文章、数据、事件等），无法进行以下维度的分析：</p>
+                            <ul>
+                              <li><strong>时效性与准确性验证</strong>：缺乏具体资讯内容，无法判断信息与2026-07-25的相关性及时效性。</li>
+                                <li><strong>内容引用与溯源</strong>：无原始内容可引用，无法生成“来源链接”及标注引用原文。</li>
+                                  <li><strong>结构化分析</strong>：因无素材支撑，无法提炼核心观点、总结布局或按要求输出规范报告格式。</li>
+                                  </ul>
+                                </section>
+                                <!-- 总结与展望 -->
+                                <section>
+                                  <h2>总结与展望</h2>
+                                    <p>本次分析因<strong>用户提供的素材为空</strong>，无法满足“基于素材生成分析报告”的核心要求。需请用户补充具体资讯素材（含标题、日期、URL链接等）后，方可进行合规、详实的分析输出。</p>
+                                    </section>
+                                    <!-- 资讯标题与链接列表 -->
+                                    <section>
+                                      <h2>资讯标题与链接列表</h2>
+                                        <div class="empty-state">
+                                          <svg class="empty-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+                                            <div class="empty-text">
+                                              因素材缺失，无可用资讯链接列表
+                                            </div>
+                                          </div>
+                                        </section>
+                                      </main>
+                                      <footer>
+                                        <p><strong>注</strong>：所有资讯需以用户提供的素材为准，当前无符合要求的原始内容。</p>
+                                          <p style="margin-top: 0.5rem; font-size: 0.75rem;">（说明：因用户未提供任何可分析的资讯素材，报告无法满足内容详实性要求，需补充素材后重新生成。）</p>
+                                          </footer>
+                                        </div>
+                                      </body>
+                                    </html>
+                                    ```
