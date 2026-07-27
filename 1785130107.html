@@ -1,0 +1,321 @@
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>国电南瑞及电网设备ETF（561380）市场动态分析报告</title>
+      <style>
+        /* CSS Reset & Variables */
+        :root {
+        --primary-color: #0056b3; /* 专业蓝 */
+        --secondary-color: #004494;
+        --accent-color: #e3f2fd;
+        --text-main: #333333;
+        --text-secondary: #555555;
+        --bg-body: #f5f7fa;
+        --bg-card: #ffffff;
+        --border-color: #e0e0e0;
+        --up-color: #d32f2f; /* A股红涨 */
+        --down-color: #2e7d32; /* A股绿跌 */
+        --shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        --radius: 8px;
+        }
+        * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        }
+        body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        background-color: var(--bg-body);
+        color: var(--text-main);
+        line-height: 1.6;
+        font-size: 16px;
+        -webkit-font-smoothing: antialiased;
+        }
+        /* Layout */
+        .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        }
+        /* Header */
+        header {
+        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        color: white;
+        padding: 30px 20px;
+        border-radius: var(--radius);
+        margin-bottom: 20px;
+        position: relative;
+        box-shadow: var(--shadow);
+        }
+        h1 {
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+        font-weight: 700;
+        }
+        .report-date {
+        font-size: 0.9rem;
+        opacity: 0.9;
+        }
+        /* Quality Badge */
+        .quality-badge {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background-color: #ffeb3b;
+        color: #333;
+        padding: 6px 12px;
+        border-radius: 20px;
+        font-weight: bold;
+        font-size: 0.85rem;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        display: inline-flex;
+        align-items: center;
+        }
+        .quality-badge::before {
+        content: '✓';
+        margin-right: 5px;
+        color: green;
+        font-weight: 900;
+        }
+        /* Sections */
+        section {
+        background-color: var(--bg-card);
+        border-radius: var(--radius);
+        padding: 25px;
+        margin-bottom: 20px;
+        box-shadow: var(--shadow);
+        border: 1px solid var(--border-color);
+        }
+        h2 {
+        font-size: 1.25rem;
+        color: var(--primary-color);
+        border-bottom: 2px solid var(--accent-color);
+        padding-bottom: 10px;
+        margin-bottom: 20px;
+        }
+        h3 {
+        font-size: 1.1rem;
+        color: var(--text-main);
+        margin-top: 20px;
+        margin-bottom: 10px;
+        font-weight: 600;
+        }
+        p {
+        margin-bottom: 15px;
+        color: var(--text-secondary);
+        text-align: justify;
+        }
+        ul {
+        list-style-position: inside;
+        margin-bottom: 15px;
+        padding-left: 10px;
+        }
+        li {
+        margin-bottom: 8px;
+        color: var(--text-secondary);
+        }
+        /* Data Highlights */
+        .highlight {
+        font-weight: bold;
+        }
+        .trend-up {
+        color: var(--up-color);
+        font-weight: bold;
+        }
+        .trend-down {
+        color: var(--down-color);
+        font-weight: bold;
+        }
+        .data-card {
+        background-color: var(--accent-color);
+        padding: 15px;
+        border-radius: var(--radius);
+        margin: 10px 0;
+        border-left: 4px solid var(--primary-color);
+        }
+        /* News List */
+        .news-list {
+        list-style: none;
+        padding: 0;
+        }
+        .news-item {
+        border-bottom: 1px solid #eee;
+        padding: 15px 0;
+        }
+        .news-item:last-child {
+        border-bottom: none;
+        }
+        .news-title {
+        font-weight: 600;
+        color: var(--text-main);
+        display: block;
+        margin-bottom: 5px;
+        text-decoration: none;
+        font-size: 1rem;
+        }
+        .news-title:hover {
+        color: var(--primary-color);
+        text-decoration: underline;
+        }
+        .news-link {
+        font-size: 0.85rem;
+        color: var(--primary-color);
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        margin-top: 5px;
+        background: #f0f7ff;
+        padding: 4px 8px;
+        border-radius: 4px;
+        }
+        .news-link:hover {
+        background: #e0efff;
+        }
+        .news-link::after {
+        content: '↗';
+        margin-left: 4px;
+        }
+        /* Responsive Design */
+        @media (max-width: 600px) {
+        .container {
+        padding: 10px;
+        }
+        header {
+        padding: 20px 15px;
+        /* Adjust for badge */
+        padding-top: 25px;
+        }
+        h1 {
+        font-size: 1.25rem;
+        }
+        .quality-badge {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-size: 0.75rem;
+        padding: 4px 10px;
+        }
+        section {
+        padding: 20px 15px;
+        }
+        h2 {
+        font-size: 1.15rem;
+        }
+        /* Ensure touch targets are large enough */
+        .news-link {
+        padding: 8px 12px;
+        font-size: 0.9rem;
+        }
+        }
+      </style>
+    </head>
+    <body>
+      <div class="container">
+        <header>
+          <h1>国电南瑞及电网设备ETF（561380）市场动态分析报告</h1>
+            <div class="report-date">生成日期：2026年07月27日</div>
+              <div class="quality-badge">质量标志：通过</div>
+              </header>
+              <main>
+                <!-- 核心洞察综述 -->
+                <section>
+                  <h2>核心洞察综述</h2>
+                    <div class="data-card">
+                      <p><strong>国电南瑞 (600406)：</strong>午间收盘价 <span class="highlight">23.80元</span> (<span class="trend-up">涨幅0.93%</span>)。短期受获利盘兑现、板块轮动影响面临调整压力。</p>
+                        <p><strong>电网设备ETF (561380)：</strong>当日上涨 <span class="trend-up">1.70%</span>，但重仓股表现分化，近一个月回报 <span class="trend-down">-25.58%</span>，反映市场短期情绪低迷。</p>
+                        </div>
+                        <p>国泰基金旗下ETF曾连续净赎回（1.24亿份，老旧信息），但长期业绩仍显优势（成立以来回报76.53%）。国电南瑞基本面稳健（如参与雅砻江智慧运营大模型、算电协同验证进展），估值合理（市盈率TTM 22.98），中长线配置价值仍存。</p>
+                        </section>
+                        <!-- 详细维度分析 -->
+                        <section>
+                          <h2>详细维度分析</h2>
+                            <h3>一、国电南瑞股价走势与市场表现</h3>
+                              <ul>
+                                <li><strong>短期股价波动：</strong>2026年07月27日午间，国电南瑞收盘价23.80元，<span class="trend-up">涨幅0.93%</span>，振幅3.27%，成交额8.45亿，换手率0.44%，总市值1911.56亿。技术面显示短期弱势（如2026年07月26日分析“缩量阴跌，需关注23.3-23.5元支撑”）。</li>
+                                  <li><strong>ETF表现：</strong>同日，国泰恒生A股电网设备ETF（561380）<span class="trend-up">上涨1.70%</span>，报0.719元，成交额7509.39万元。前十大重仓股中仅国电南瑞（<span class="trend-up">+0.93%</span>）、亨通光电（<span class="trend-up">+3.67%</span>）等上涨，特锐德（<span class="trend-down">-1.87%</span>）、旭光电子（<span class="trend-down">-0.72%</span>）下跌，板块内部分化显著。</li>
+                                    <li><strong>基本面关键进展：</strong>
+                                      <ul>
+                                        <li>2026年07月16日，深度参与雅砻江千万千瓦级水风光一体化智慧运营大模型发布，强化能源数字化布局。</li>
+                                          <li>2026年07月16日，支撑国网山东首次完成算电协同“跨时空双向柔性调度”全流程验证，技术壁垒持续提升。</li>
+                                          </ul>
+                                        </li>
+                                      </ul>
+                                      <h3>二、国泰基金旗下ETF（561380）资金与业绩表现</h3>
+                                        <ul>
+                                          <li><strong>份额与资金流动：</strong>历史净赎回压力（2026年01月18日及06月02日数据显示连续6日净赎回，累计1.24亿份）反映短期投资者信心不足。但2026年07月27日午间成交额7509.39万元，显示资金交投情绪有所回暖。</li>
+                                            <li><strong>业绩表现分化：</strong>基金成立以来回报 <span class="trend-up">76.53%</span>（截至2026年07月27日），但近一个月回报 <span class="trend-down">-25.58%</span>，短期回撤显著，与沪深300同期行情及行业调整相关。</li>
+                                            </ul>
+                                            <h3>三、估值与技术面分析</h3>
+                                              <ul>
+                                                <li><strong>估值指标：</strong>国电南瑞当前市盈率TTM 22.98，动态市盈率66.25，市净率3.57，估值水平处于行业中等区间，较2026年03月30日（市盈率26.78）有所回落，反映市场对其盈利增长的短期认可。</li>
+                                                  <li><strong>技术面信号：</strong>2026年03月30日分析指出“MACD负值、RSI偏低”，短期技术面承压；2026年07月26日认为“下跌主因短期获利兑现、板块轮动”，技术面需在23-24元区间企稳后确认反弹信号。</li>
+                                                  </ul>
+                                                </section>
+                                                <!-- 总结与展望 -->
+                                                <section>
+                                                  <h2>总结与展望</h2>
+                                                    <p>国电南瑞短期受资金面、市场情绪影响波动较大，但长期受益于电网数字化、能源转型等政策红利，叠加算电协同等技术突破，基本面支撑明确。国泰恒生A股电网设备ETF虽面临短期净赎回压力，但长期持有仍可分享电网设备行业成长红利。</p>
+                                                      <p><strong>建议投资者关注：</strong></p>
+                                                        <ol>
+                                                          <li><strong>短期（1-2周）：</strong>国电南瑞是否企稳于23.3-23.5元支撑位，ETF资金流入情况。</li>
+                                                            <li><strong>中长期：</strong>电网建设、储能业务订单落地情况及新能源项目进展。</li>
+                                                            </ol>
+                                                          </section>
+                                                          <!-- 近期资讯列表 -->
+                                                          <section>
+                                                            <h2>近期资讯列表</h2>
+                                                              <ul class="news-list">
+                                                                <li class="news-item">
+                                                                  <a href="https://quotes.sina.cn/hs/company/quotes/view/sh600406" class="news-title" target="_blank">《某股票当日收盘价23.80元，涨幅0.93%》</a>
+                                                                    <a href="https://quotes.sina.cn/hs/company/quotes/view/sh600406" class="news-link" target="_blank">来源链接</a>
+                                                                    </li>
+                                                                    <li class="news-item">
+                                                                      <a href="https://cj.sina.cn/article/norm_detail?url=http%3A%2F%2Ffinance.sina.cn%2F2026-07-27%2Fdetail-inikfhfp0734927.d.html" class="news-title" target="_blank">《电网设备ETF国泰（561380）上涨1.70%，报0.719元》</a>
+                                                                        <a href="https://cj.sina.cn/article/norm_detail?url=http%3A%2F%2Ffinance.sina.cn%2F2026-07-27%2Fdetail-inikfhfp0734927.d.html" class="news-link" target="_blank">来源链接</a>
+                                                                        </li>
+                                                                        <li class="news-item">
+                                                                          <a href="https://toutiao.com/group/7664190265837486636/" class="news-title" target="_blank">《国电南瑞逆势收红，多空博弈明显》</a>
+                                                                            <a href="https://toutiao.com/group/7664190265837486636/" class="news-link" target="_blank">来源链接</a>
+                                                                            </li>
+                                                                            <li class="news-item">
+                                                                              <a href="https://mguba.eastmoney.com/mguba/list/600406,1668594981" class="news-title" target="_blank">《国电南瑞（600406）今日收涨0.41%，报22.19元》</a>
+                                                                                <a href="https://mguba.eastmoney.com/mguba/list/600406,1668594981" class="news-link" target="_blank">来源链接</a>
+                                                                                </li>
+                                                                                <li class="news-item">
+                                                                                  <a href="https://www.163.com/dy/article/L2C0757V05568W0A.html" class="news-title" target="_blank">《电网设备ETF国泰（561380）上涨1.59%，报0.702元》</a>
+                                                                                    <a href="https://www.163.com/dy/article/L2C0757V05568W0A.html" class="news-link" target="_blank">来源链接</a>
+                                                                                    </li>
+                                                                                    <li class="news-item">
+                                                                                      <a href="https://toutiao.com/group/7666735972725309978/" class="news-title" target="_blank">《国电南瑞周五缩量阴跌，股价高开低走》</a>
+                                                                                        <a href="https://toutiao.com/group/7666735972725309978/" class="news-link" target="_blank">来源链接</a>
+                                                                                        </li>
+                                                                                        <li class="news-item">
+                                                                                          <a href="https://stockpage.10jqka.com.cn/600406/" class="news-title" target="_blank">《该资讯聚焦于某只股票的实时交易数据》</a>
+                                                                                            <a href="https://stockpage.10jqka.com.cn/600406/" class="news-link" target="_blank">来源链接</a>
+                                                                                            </li>
+                                                                                            <li class="news-item">
+                                                                                              <a href="https://www.stcn.com/article/detail/2811610.html" class="news-title" target="_blank">《国电南瑞当日发生一笔大宗交易》</a>
+                                                                                                <a href="https://www.stcn.com/article/detail/2811610.html" class="news-link" target="_blank">来源链接</a>
+                                                                                                </li>
+                                                                                                <li class="news-item">
+                                                                                                  <a href="https://wap.eastmoney.com/quote/stock/1.600406.html" class="news-title" target="_blank">《国电南瑞（600406）当前行情数据缺失》</a>
+                                                                                                    <a href="https://wap.eastmoney.com/quote/stock/1.600406.html" class="news-link" target="_blank">来源链接</a>
+                                                                                                    </li>
+                                                                                                    <li class="news-item">
+                                                                                                      <a href="http://finance.sina.com.cn/stock/zqgd/2026-06-02/doc-inhzzivn3117299.shtml" class="news-title" target="_blank">《电网设备ETF国泰(561380)连续6个交易日净赎回》</a>
+                                                                                                        <a href="http://finance.sina.com.cn/stock/zqgd/2026-06-02/doc-inhzzivn3117299.shtml" class="news-link" target="_blank">来源链接</a>
+                                                                                                        </li>
+                                                                                                        <li class="news-item">
+                                                                                                          <a href="https://www.sohu.com/a/919468414_122014422" class="news-title" target="_blank">《国电南瑞股价连续7日下跌，累计跌幅7.45%》（老旧信息）</a>
+                                                                                                            <a href="https://www.sohu.com/a/919468414_122014422" class="news-link" target="_blank">来源链接</a>
+                                                                                                            </li>
+                                                                                                          </ul>
+                                                                                                        </section>
+                                                                                                      </main>
+                                                                                                    </div>
+                                                                                                  </body>
+                                                                                                </html>
+                                                                                                ```
