@@ -1,0 +1,396 @@
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>中国联通2026年发展洞察分析报告</title>
+      <style>
+        /* --- CSS Reset & Variables --- */
+        :root {
+        --primary-color: #E60012; /* China Unicom Red */
+        --secondary-color: #003366; /* Tech Blue */
+        --accent-color: #FF9900;
+        --success-color: #28a745;
+        --text-main: #333333;
+        --text-light: #666666;
+        --bg-body: #f4f6f9;
+        --bg-card: #ffffff;
+        --spacing-sm: 0.5rem;
+        --spacing-md: 1rem;
+        --spacing-lg: 2rem;
+        --border-radius: 8px;
+        --shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        --shadow-hover: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+        * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        }
+        body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Microsoft YaHei", sans-serif;
+        background-color: var(--bg-body);
+        color: var(--text-main);
+        line-height: 1.6;
+        font-size: 16px;
+        }
+        a {
+        color: var(--primary-color);
+        text-decoration: none;
+        transition: color 0.2s;
+        }
+        a:hover {
+        color: var(--secondary-color);
+        text-decoration: underline;
+        }
+        /* --- Layout & Container --- */
+        .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 var(--spacing-md);
+        }
+        /* --- Header --- */
+        header {
+        background: linear-gradient(135deg, var(--secondary-color), #001a33);
+        color: white;
+        padding: var(--spacing-lg) 0;
+        position: relative;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        margin-bottom: var(--spacing-lg);
+        }
+        .header-content {
+        position: relative;
+        padding-right: 140px; /* Space for badge */
+        }
+        h1 {
+        font-size: 1.8rem;
+        margin-bottom: var(--spacing-sm);
+        font-weight: 700;
+        }
+        .report-meta {
+        font-size: 0.9rem;
+        opacity: 0.9;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        }
+        /* Quality Badge */
+        .quality-badge {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: var(--success-color);
+        color: white;
+        padding: 6px 12px;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        font-weight: bold;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        z-index: 10;
+        }
+        .quality-badge::before {
+        content: '✓';
+        font-weight: 900;
+        }
+        /* --- Sections & Cards --- */
+        section {
+        margin-bottom: var(--spacing-lg);
+        }
+        .card {
+        background: var(--bg-card);
+        border-radius: var(--border-radius);
+        padding: var(--spacing-lg);
+        box-shadow: var(--shadow);
+        border-top: 4px solid transparent;
+        transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .card:hover {
+        box-shadow: var(--shadow-hover);
+        }
+        .card.summary {
+        border-top-color: var(--primary-color);
+        background: linear-gradient(to bottom right, #fff, #fff5f5);
+        }
+        .card h2 {
+        font-size: 1.4rem;
+        color: var(--secondary-color);
+        margin-bottom: var(--spacing-md);
+        padding-bottom: var(--spacing-sm);
+        border-bottom: 1px solid #eee;
+        display: flex;
+        align-items: center;
+        }
+        .card h2::before {
+        content: '';
+        display: inline-block;
+        width: 6px;
+        height: 1.4rem;
+        background-color: var(--primary-color);
+        margin-right: 10px;
+        border-radius: 2px;
+        }
+        h3 {
+        font-size: 1.1rem;
+        color: var(--text-main);
+        margin: 1.2rem 0 0.5rem 0;
+        font-weight: 600;
+        }
+        p {
+        margin-bottom: 1rem;
+        color: var(--text-light);
+        }
+        ul {
+        list-style: none;
+        margin-bottom: 1rem;
+        padding-left: 1rem;
+        }
+        ul li {
+        position: relative;
+        margin-bottom: 0.5rem;
+        padding-left: 1.2rem;
+        }
+        ul li::before {
+        content: '•';
+        color: var(--primary-color);
+        font-weight: bold;
+        position: absolute;
+        left: 0;
+        top: 0;
+        }
+        strong {
+        color: var(--text-main);
+        font-weight: 600;
+        }
+        /* --- Highlights & Tags --- */
+        .highlight-box {
+        background-color: #eef2f7;
+        padding: 1rem;
+        border-radius: var(--border-radius);
+        margin: 1rem 0;
+        border-left: 4px solid var(--secondary-color);
+        }
+        .source-link {
+        display: inline-block;
+        font-size: 0.85rem;
+        color: white;
+        background-color: var(--secondary-color);
+        padding: 4px 10px;
+        border-radius: 4px;
+        margin-top: 5px;
+        text-decoration: none;
+        }
+        .source-link:hover {
+        background-color: var(--primary-color);
+        color: white;
+        }
+        /* --- Grid Layouts --- */
+        .grid-2 {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+        }
+        /* --- Details Specific --- */
+        .data-point {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: baseline;
+        gap: 5px;
+        }
+        .data-val {
+        font-size: 1.2em;
+        font-weight: bold;
+        color: var(--primary-color);
+        }
+        /* --- News List --- */
+        .news-list {
+        display: grid;
+        gap: 1rem;
+        }
+        .news-item {
+        display: flex;
+        flex-direction: column;
+        background: #fff;
+        padding: 1rem;
+        border: 1px solid #e0e0e0;
+        border-radius: var(--border-radius);
+        transition: all 0.2s;
+        }
+        .news-item:hover {
+        border-color: var(--primary-color);
+        transform: translateY(-2px);
+        }
+        .news-date {
+        font-size: 0.85rem;
+        color: #888;
+        margin-bottom: 0.3rem;
+        display: flex;
+        align-items: center;
+        }
+        .news-date::before {
+        content: '📅';
+        margin-right: 5px;
+        }
+        .news-title {
+        font-size: 1rem;
+        font-weight: 600;
+        color: var(--text-main);
+        margin-bottom: 0.5rem;
+        }
+        .news-link {
+        font-size: 0.9rem;
+        color: var(--primary-color);
+        align-self: flex-start;
+        margin-top: auto;
+        padding: 5px 0;
+        }
+        /* --- Footer --- */
+        footer {
+        text-align: center;
+        padding: var(--spacing-lg) 0;
+        color: #999;
+        font-size: 0.9rem;
+        border-top: 1px solid #e0e0e0;
+        margin-top: var(--spacing-lg);
+        }
+        /* --- Responsive Queries --- */
+        @media (min-width: 768px) {
+        h1 { font-size: 2.5rem; }
+        .grid-2 { grid-template-columns: 1fr 1fr; }
+        .grid-3 { grid-template-columns: repeat(3, 1fr); }
+        .news-list {
+        grid-template-columns: repeat(2, 1fr);
+        }
+        }
+        @media (min-width: 1024px) {
+        .news-list {
+        grid-template-columns: repeat(3, 1fr);
+        }
+        }
+      </style>
+    </head>
+    <body>
+      <header>
+        <div class="container header-content">
+          <div class="quality-badge">质量标志：通过</div>
+            <h1>中国联通2026年发展洞察分析报告</h1>
+              <div class="report-meta">
+                <span>报告日期：2026年07月27日</span>
+                  <span>|</span>
+                    <span>洞察未来 · 数字引领</span>
+                    </div>
+                  </div>
+                </header>
+                <main class="container">
+                  <!-- 核心洞察综述 -->
+                  <section class="card summary">
+                    <h2>核心洞察综述</h2>
+                      <p>中国联通近期在业绩增长、AI与算力布局、校园服务创新、数字乡村成果及民生安全保障等领域表现突出，2025年国资委考核跃升至A级第17名，从通信服务商向数字科技引领者转型成效显著。短期虽面临市场资金波动与业绩小幅下滑，但其“连接、算力、服务、安全”四大核心赛道布局持续深化，长期增长动力强劲。</p>
+                      </section>
+                      <!-- 详细维度分析 -->
+                      <div class="grid-2">
+                        <!-- 一、业绩增长与战略转型 -->
+                        <section class="card">
+                          <h2>业绩增长与战略转型</h2>
+                            <div class="highlight-box">
+                              <p><strong>核心数据：</strong>2025年营收 <span class="data-val">3922.23亿元</span>，归母净利润 <span class="data-val">91.27亿元</span>，连续6年增长；国资委考核A级第17名。</p>
+                              </div>
+                              <h3>关键投入</h3>
+                                <ul>
+                                  <li>
+                                    <strong>算力领域：</strong>2025年数据中心收入281亿元，人工智能收入增长超140%，智算规模达45 EFLOPS；2026年一季度算力收入154亿元，资本开支预计500亿元，算力投资占比超35%。
+                                      <br><a href="http://m.toutiao.com/group/7666702548610335234/" target="_blank" class="source-link">查看来源链接</a>
+                                    </li>
+                                    <li>
+                                      <strong>股东回报：</strong>派息率提升至61.3%，自由现金流372.6亿元，财务健康度持续优化。
+                                        <br><a href="http://m.toutiao.com/group/7666702548610335234/" target="_blank" class="source-link">查看来源链接</a>
+                                      </li>
+                                    </ul>
+                                  </section>
+                                  <!-- 二、校园服务与教育数字化创新 -->
+                                  <section class="card">
+                                    <h2>校园服务与教育数字化创新</h2>
+                                      <p><strong>AI智慧产品矩阵</strong>（2026年7月26日，武汉高职高专高招咨询会）：</p>
+                                        <ul>
+                                          <li><strong>校园通通云智包：</strong>与知网研学合作，提供文献检索、AI写稿、论文指导等学习辅助，及定向流量套餐。</li>
+                                            <li><strong>39元沃派校园卡：</strong>含AI权益、暑期免费体验、一年视频会员。</li>
+                                              <li>
+                                                <strong>“青春在沃・学见计划”：</strong>提供实习机会，助力学生从实践转为企业员工（已有学员转化案例）。
+                                                  <br><a href="http://m.toutiao.com/group/7667019735489315371/" target="_blank" class="source-link">查看来源链接</a>
+                                                </li>
+                                              </ul>
+                                            </section>
+                                            <!-- 三、数字乡村与民生服务 -->
+                                            <section class="card">
+                                              <h2>数字乡村与民生服务</h2>
+                                                <h3>乡村振兴成果</h3>
+                                                  <ul>
+                                                    <li>行政村网络覆盖率超99%，千兆宽带覆盖城乡，投入帮扶资金16亿元，落地智慧种植等项目超2500个。
+                                                      <br><a href="http://m.toutiao.com/group/7485917860955472435/" target="_blank" class="source-link">查看来源链接</a>
+                                                    </li>
+                                                    <li>“联通数村”平台覆盖近26万行政村，服务2亿村民，连续6年获中央帮扶考评“好”评；2025年目标完善农村5G覆盖，打造1000个农业数智项目。
+                                                      <br><a href="http://m.toutiao.com/group/7419983116707562022/" target="_blank" class="source-link">查看来源链接</a>
+                                                    </li>
+                                                  </ul>
+                                                  <h3>民生安全保障</h3>
+                                                    <ul>
+                                                      <li>通过反诈中心、大数据和AI技术拦截诈骗信息超千万条，守护群众财产安全。</li>
+                                                        <li>多地通信保障：北京天安门广场网络扩容，西安大唐不夜城、广州永庆坊等文旅区域网络性能优化，保障游客体验。
+                                                          <br><a href="http://m.toutiao.com/group/7486688254394139188/" target="_blank" class="source-link">查看来源链接</a>
+                                                        </li>
+                                                      </ul>
+                                                    </section>
+                                                    <!-- 四、数字经济与AI赋能布局 -->
+                                                    <section class="card">
+                                                      <h2>数字经济与AI赋能布局</h2>
+                                                        <h3>工业互联网与智算中心</h3>
+                                                          <ul>
+                                                            <li>格物Unilink平台服务18万家企业，接入1000万+设备；镝虎5G工业智能机助力中小企业转型，元景大模型提升服装设计效率。
+                                                              <br><a href="http://m.toutiao.com/group/7439287506799034920/" target="_blank" class="source-link">查看来源链接</a>
+                                                            </li>
+                                                            <li>乌镇智算中心（一期算力2000P），元景2.0大模型落地超100个标杆案例（覆盖政务、工业、服装等行业）。
+                                                              <br><a href="http://m.toutiao.com/group/7439614479371108899/" target="_blank" class="source-link">查看来源链接</a>
+                                                            </li>
+                                                          </ul>
+                                                          <h3>低空经济体系</h3>
+                                                            <p>构建“端网云安智”体系，在10个城市开展物流、农业、安防等场景试验。</p>
+                                                            </section>
+                                                            <!-- 五、短期市场表现与挑战 -->
+                                                            <section class="card">
+                                                              <h2>短期市场表现与挑战</h2>
+                                                                <h3>股价与资金流向</h3>
+                                                                  <p>（2026年7月25日）</p>
+                                                                    <ul>
+                                                                      <li>收盘价 <strong>4.42元</strong>，主力资金净流出7091.8万元（占总成交额11.32%），游资净流入3949.11万元，散户净流入3142.68万元。</li>
+                                                                        <li>2026年一季度业绩：营收1028.24亿元（同比降0.51%），净利润21.37亿元（同比降17.99%），短期受市场环境或业务调整影响。
+                                                                          <br><a href="https://stock.stockstar.com/RB2026072500005806.shtml" target="_blank" class="source-link">查看来源链接</a>
+                                                                        </li>
+                                                                      </ul>
+                                                                    </section>
+                                                                  </div>
+                                                                  <!-- 总结与展望 -->
+                                                                  <section class="card">
+                                                                    <h2>总结与展望</h2>
+                                                                      <p>中国联通凭借数字技术驱动，在“连接、算力、服务、安全”四大赛道形成差异化优势，数字乡村覆盖与民生服务扎实，AI与智算布局领先行业。短期需关注业绩波动，但长期在数字经济转型中有望持续领跑，重点关注卫星通信拓展、低空经济规模化落地及“人工智能+”战略深化。</p>
+                                                                      </section>
+                                                                      <!-- 资讯列表 -->
+                                                                      <section>
+                                                                        <h2 style="margin-bottom: 1rem; color: var(--secondary-color);">资讯列表（按发布日期由近到远排序）</h2>
+                                                                          <div class="news-list">
+                                                                            <article class="news-item">
+                                                                              <div class="news-date">2026年07月26日</div>
+                                                                                <div class="news-title">中国联通（600050）7月24日股价及资金流向</div>
+                                                                                  <a href="https://stock.stockstar.com/RB2026072500005806.shtml" target="_blank" class="news-link">阅读全文 &rarr;</a>
+                                                                                  </article>
+                                                                                  <article class="news-item">
+                                                                                    <div class="news-date">2026年07月26日</div>
+                                                                                      <div class="news-title">中国联通以“连接、算力、服务、安全”为核心赛道，2025年业绩数据</div>
+                                                                                        <a href="http://m.toutiao.com/group/7666702548610335234/" target="_blank" class="news-link">阅读全文 &rarr;</a>
+                                                                                        </article>
+                                                                                        <article class="news-item">
+                                                                                          <div class="news-date">2026年07月26日</div>
+                                                                                            <div class="news-title">武汉高职高专高招咨询会，中国联通展示AI智慧产品与育人计划</div>
+                                                                                              <a
