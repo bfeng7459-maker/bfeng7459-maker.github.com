@@ -1,0 +1,354 @@
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>中美数据中心建设对比及中国算力“算电协同”战略洞察报告</title>
+      <style>
+        /* --- CSS Variables & Reset --- */
+        :root {
+        --primary-color: #0f3460; /* 深蓝 - 科技/专业 */
+        --secondary-color: #16213e; /* 更深的蓝 */
+        --accent-color: #e94560; /* 强调色 - 用于困境/警告 */
+        --success-color: #2ecc71; /* 成功色 - 用于优势/绿电 */
+        --highlight-color: #f39c12; /* 高亮色 - 用于重点数据 */
+        --text-main: #333333;
+        --text-light: #666666;
+        --bg-body: #f4f7f6;
+        --bg-card: #ffffff;
+        --spacing-unit: 1rem;
+        --border-radius: 8px;
+        --shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        --shadow-hover: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+        * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        }
+        body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+        background-color: var(--bg-body);
+        color: var(--text-main);
+        line-height: 1.6;
+        font-size: 16px;
+        -webkit-font-smoothing: antialiased;
+        }
+        a {
+        color: var(--primary-color);
+        text-decoration: none;
+        transition: color 0.2s ease;
+        }
+        a:hover {
+        color: var(--accent-color);
+        text-decoration: underline;
+        }
+        /* --- Layout & Typography --- */
+        .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 var(--spacing-unit);
+        }
+        h1, h2, h3, h4 {
+        color: var(--secondary-color);
+        margin-bottom: 0.8em;
+        font-weight: 700;
+        }
+        h1 { font-size: 1.75rem; line-height: 1.3; }
+        h2 { font-size: 1.5rem; border-left: 5px solid var(--primary-color); padding-left: 10px; margin-top: 2rem; }
+        h3 { font-size: 1.25rem; margin-top: 1.5rem; color: var(--primary-color); }
+        h4 { font-size: 1.1rem; margin-top: 1rem; }
+        p { margin-bottom: 1rem; text-align: justify; }
+        ul, ol { margin-bottom: 1rem; padding-left: 1.5rem; }
+        li { margin-bottom: 0.5rem; }
+        /* --- Header --- */
+        header {
+        background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+        color: white;
+        padding: 2rem 0;
+        position: relative;
+        box-shadow: var(--shadow);
+        margin-bottom: 2rem;
+        }
+        .header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        gap: 1rem;
+        }
+        .header-title {
+        flex: 1;
+        min-width: 300px;
+        }
+        .report-date {
+        display: inline-block;
+        background: rgba(255,255,255,0.2);
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        margin-top: 0.5rem;
+        font-weight: 500;
+        }
+        /* Quality Flag */
+        .quality-flag {
+        background-color: var(--highlight-color);
+        color: #fff;
+        padding: 0.5rem 1rem;
+        border-radius: 4px;
+        font-weight: bold;
+        font-size: 0.9rem;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+        0% { box-shadow: 0 0 0 0 rgba(243, 156, 18, 0.7); }
+        70% { box-shadow: 0 0 0 10px rgba(243, 156, 18, 0); }
+        100% { box-shadow: 0 0 0 0 rgba(243, 156, 18, 0); }
+        }
+        /* --- Cards --- */
+        .card {
+        background: var(--bg-card);
+        border-radius: var(--border-radius);
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+        box-shadow: var(--shadow);
+        border: 1px solid rgba(0,0,0,0.05);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .card:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-hover);
+        }
+        /* --- Core Insight Section --- */
+        .summary-box {
+        background: linear-gradient(to right, #ffffff, #f0f8ff);
+        border-left: 6px solid var(--primary-color);
+        }
+        .highlight-text {
+        color: var(--accent-color);
+        font-weight: bold;
+        }
+        .success-text {
+        color: var(--success-color);
+        font-weight: bold;
+        }
+        /* --- Comparison Grid --- */
+        .comparison-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        }
+        /* --- Specific Section Styling --- */
+        .us-section h2 { border-left-color: var(--accent-color); }
+        .china-section h2 { border-left-color: var(--success-color); }
+        .source-link {
+        display: inline-block;
+        font-size: 0.75rem;
+        color: var(--text-light);
+        background: #eee;
+        padding: 2px 6px;
+        border-radius: 4px;
+        margin-left: 8px;
+        vertical-align: middle;
+        white-space: nowrap;
+        }
+        .source-link:hover {
+        background: #ddd;
+        color: var(--primary-color);
+        text-decoration: none;
+        }
+        /* --- Reference List --- */
+        .ref-list {
+        list-style: none;
+        padding: 0;
+        }
+        .ref-list li {
+        background: white;
+        padding: 1rem;
+        margin-bottom: 0.8rem;
+        border-radius: var(--border-radius);
+        border-left: 4px solid var(--primary-color);
+        display: flex;
+        flex-direction: column;
+        }
+        .ref-title {
+        font-weight: bold;
+        margin-bottom: 0.3rem;
+        color: var(--secondary-color);
+        }
+        .ref-meta {
+        font-size: 0.85rem;
+        color: var(--text-light);
+        }
+        .ref-link {
+        margin-top: 0.5rem;
+        font-size: 0.9rem;
+        color: var(--primary-color);
+        word-break: break-all;
+        }
+        /* --- Footer --- */
+        footer {
+        text-align: center;
+        padding: 2rem 0;
+        color: var(--text-light);
+        font-size: 0.9rem;
+        border-top: 1px solid #ddd;
+        margin-top: 3rem;
+        }
+        /* --- Responsive Design --- */
+        @media (min-width: 768px) {
+        h1 { font-size: 2.5rem; }
+        .comparison-grid {
+        grid-template-columns: 1fr 1fr;
+        }
+        /* Make the US section span full width on tablet if needed, or keep side-by-side.
+        Let's keep them side-by-side for comparison. */
+        .header-content {
+        flex-wrap: nowrap;
+        }
+        }
+        @media (max-width: 767px) {
+        .header-content {
+        flex-direction: column;
+        }
+        .quality-flag {
+        align-self: flex-end;
+        margin-top: -3rem; /* Pull it up slightly */
+        }
+        h2 {
+        font-size: 1.3rem;
+        }
+        }
+      </style>
+    </head>
+    <body>
+      <header>
+        <div class="container header-content">
+          <div class="header-title">
+            <h1>中美数据中心建设对比及中国算力“算电协同”战略洞察报告</h1>
+              <div class="report-date">2026年7月27日</div>
+              </div>
+              <div class="quality-flag">质量标志：通过</div>
+              </div>
+            </header>
+            <main class="container">
+              <!-- 核心洞察综述 -->
+              <section class="card summary-box">
+                <h2>核心洞察综述</h2>
+                  <p>
+                    2026年上半年，美国数据中心建设因电网瓶颈与社区阻力陷入大规模停滞，黑石QTS终止弗吉尼亚州千亿美元项目，超75个项目延期或取消，涉及1300亿美元；中国“东数西算”战略加速落地，“算电协同”纳入国家级新基建，通过西部绿电优势构建算力成本壁垒，形成“8大枢纽+10个集群+3个协同区”空间布局，算力规模达<span class="highlight-text">2185EFLOPS</span>，绿电成本低至<span class="success-text">0.2-0.3元/度</span>，目标2030年建成全球领先算力网络。
+                  </p>
+                </section>
+                <!-- 详细维度分析 -->
+                <section class="comparison-grid">
+                  <!-- 美国部分 -->
+                  <article class="card us-section">
+                    <h2>一、美国数据中心困境</h2>
+                      <h3>1. 项目大规模停滞</h3>
+                        <p>
+                          2026年上半年，美国超75个数据中心项目延期或取消，总规模超1300亿美元，其中黑石旗下QTS终止弗吉尼亚州千亿美元级项目。
+                          <a href="http://m.toutiao.com/group/7664981705694036506/" target="_blank" class="source-link">来源链接</a>
+                          </p>
+                          <h3>2. 核心阻力</h3>
+                            <ul>
+                              <li>
+                                <strong>电网瓶颈</strong>：PJM区域并网等待周期长达4-8年，供电成本上涨60%。
+                                  <a href="http://m.toutiao.com/group/7664981705694036506/" target="_blank" class="source-link">来源链接</a>
+                                  </li>
+                                  <li>
+                                    <strong>社区反对</strong>：71%民众反对新建数据中心，纽约州暂停大型项目审批，弗吉尼亚州开征电力消耗税。
+                                      <a href="http://m.toutiao.com/group/7664981705694036506/" target="_blank" class="source-link">来源链接</a>
+                                      </li>
+                                    </ul>
+                                  </article>
+                                  <!-- 中国部分 -->
+                                  <article class="card china-section">
+                                    <h2>二、中国“算电协同”战略</h2>
+                                      <h3>（一）顶层设计</h3>
+                                        <ul>
+                                          <li>
+                                            <strong>国家级定位</strong>：新建大型数据中心PUE降至1.15以下，2027年主要算力枢纽绿电使用比例超60%。
+                                              <a href="http://m.toutiao.com/group/7664511329234911753/" target="_blank" class="source-link">来源链接</a>
+                                              </li>
+                                              <li>
+                                                <strong>市场信号</strong>：四部委明确新型电力系统投资规模突破20万亿元，其中算电协同专项投资超2万亿元。
+                                                  <a href="http://m.toutiao.com/group/7665197310049059354/" target="_blank" class="source-link">来源链接</a>
+                                                  </li>
+                                                </ul>
+                                                <h3>（二）项目与规模</h3>
+                                                  <ul>
+                                                    <li>
+                                                      <strong>绿电集群</strong>：广东韶关、河南郑州（十万卡“曙光8000”）、青海等地项目上线。
+                                                        <a href="http://m.toutiao.com/group/7664981705694036506/" target="_blank" class="source-link">来源链接</a>
+                                                        </li>
+                                                        <li>
+                                                          <strong>算力规模</strong>：截至2026年6月，全国智能算力总规模达2185EFLOPS，80%智算资源集中于八大国家算力枢纽。
+                                                            <a href="http://toutiao.com/item/7666727361001292298/" target="_blank" class="source-link">来源链接</a>
+                                                            </li>
+                                                          </ul>
+                                                          <h3>（三）技术与成本</h3>
+                                                            <ul>
+                                                              <li>
+                                                                <strong>芯片自主化</strong>：国产芯片自给率升至41%，华为昇腾950性能逼近国际主流。
+                                                                  <a href="https://news.sina.cn/bignews/insight/2026-07-18/detail-iniifhuc8308652.d.html" target="_blank" class="source-link">来源链接</a>
+                                                                  </li>
+                                                                  <li>
+                                                                    <strong>成本壁垒</strong>：西部绿电成本低至0.2-0.3元/度，Token价格仅为国际市场1/20。
+                                                                      <a href="https://news.sina.cn/bignews/insight/2026-07-18/detail-iniifhuc8308652.d.html" target="_blank" class="source-link">来源链接</a>
+                                                                      </li>
+                                                                    </ul>
+                                                                    <h3>（四）空间布局</h3>
+                                                                      <p>
+                                                                        <strong>“8+10+3”架构</strong>：8大枢纽覆盖14省，10个集群分工明确，3个算电协同区解决高耗电问题。
+                                                                          <a href="http://toutiao.com/item/7666727361001292298/" target="_blank" class="source-link">来源链接</a>
+                                                                          </p>
+                                                                          <p style="font-size: 0.9em; color: #555; margin-top: -0.5rem;">
+                                                                            <em>实践案例：沨呵智慧与西门子合作落地宁夏、甘肃算电协同项目。</em>
+                                                                              <a href="https://m.sohu.com/a/1053489174_122781277/" target="_blank" class="source-link">来源链接</a>
+                                                                              </p>
+                                                                              <h3>（五）机遇与风险</h3>
+                                                                                <ul>
+                                                                                  <li>
+                                                                                    <strong>核心赛道</strong>：绿电运营商估值重塑、储能爆发、算力调度平台崛起。
+                                                                                      <a href="http://m.toutiao.com/group/7664742158087373363/" target="_blank" class="source-link">来源链接</a>
+                                                                                      </li>
+                                                                                      <li>
+                                                                                        <strong>风险提示</strong>：跨省输电瓶颈、绿电间歇性矛盾、存量机房改造成本冲击。
+                                                                                          <a href="http://toutiao.com/item/7664511 3234911753/" target="_blank" class="source-link">来源链接</a>
+                                                                                          </li>
+                                                                                        </ul>
+                                                                                      </article>
+                                                                                    </section>
+                                                                                    <!-- 总结与展望 -->
+                                                                                    <section class="card">
+                                                                                      <h2>总结与展望</h2>
+                                                                                        <p>
+                                                                                          美国数据中心因电力基础设施不足陷入停滞，中国通过“算力+绿电”深度协同，依托政策、技术、成本三重优势构建全球竞争壁垒。未来需重点突破跨区域算力调度、绿电消纳稳定性及老旧机房改造，目标2030年建成全球领先算力网络，2028年实现全国算力规模化统一调度。
+                                                                                        </p>
+                                                                                      </section>
+                                                                                      与其他 <!-- 资讯标题与链接列表 -->
+                                                                                      <section class="card">
+                                                                                        <h2>相关资讯与来源</h2>
+                                                                                          <ul class="ref-list">
+                                                                                            <li>
+                                                                                              <span class="ref-title">我国算力“8+10+3”空间布局是“东数西算”升级版</span>
+                                                                                                <span class="ref-meta">2026年07月26日</span>
+                                                                                                  <a href="http://toutiao.com/item/7666727361001292298/" target="_blank" class="ref-link">http://toutiao.com/item/7666727361001292298/</a>
+                                                                                                  </li>
+                                                                                                  <li>
+                                                                                                    <span class="ref-title">中国算力平台与应用大会在喀什举办</span>
+                                                                                                      <span class="ref-meta">2026年07月23日</span>
+                                                                                                        <a href="http://finance.sina.com.cn/wm/2026-07-23/doc-iniiufvk4632325.shtml" target="_blank" class="ref-link">http://finance.sina.com.cn/wm/2026-07-23/doc-iniiufvk4632325.shtml</a>
+                                                                                                        </li>
+                                                                                                        <li>
+                                                                                                          <span class="ref-title">沨呵智慧与西门子Xcelerator签约共建算电协同一体化绿色算力基础设施</span>
+                                                                                                            <span class="ref-meta">2026年07月22日</span>
+                                                                                                              <a href="https://m.sohu.com/a/1053489174_122781277/" target="_blank" class="ref-link">https://m.sohu.com/a/1053489174_122781277/</a>
+                                                                                                              </li>
+                                                                                                              <li>
+                                                                                                                <span class="ref-title">算电协同（源网荷储算一体化）成为国家级战略</span>
+                                                                                                                  <span class="
