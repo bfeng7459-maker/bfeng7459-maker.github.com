@@ -1,0 +1,378 @@
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NVIDIA RTX 5090显卡市场价格趋势分析报告（2026年07月30日）</title>
+      <style>
+        /* --- CSS 变量与重置 --- */
+        :root {
+        --primary-color: #76b900; /* NVIDIA Green 风格 */
+        --primary-hover: #5ca900;
+        --accent-color: #00d2be; /* 科技蓝 */
+        --alert-color: #ff4757; /* 涨价警示红 */
+        --bg-body: #121212;
+        --bg-card: #1e1e1e;
+        --bg-header: #1a1a1a;
+        --text-main: #e0e0e0;
+        --text-muted: #a0a0a0;
+        --border-color: #333;
+        --spacing-unit: 1rem;
+        --radius: 8px;
+        --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+        * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        }
+        body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        background-color: var(--bg-body);
+        color: var(--text-main);
+        line-height: 1.6;
+        font-size: 16px;
+        -webkit-font-smoothing: antialiased;
+        }
+        a {
+        color: var(--accent-color);
+        text-decoration: none;
+        transition: color 0.2s ease, border-bottom 0.2s ease;
+        border-bottom: 1px dotted var(--accent-color);
+        }
+        a:hover {
+        color: #fff;
+        border-bottom: 1px solid #fff;
+        }
+        /* --- 布局容器 --- */
+        .container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 0 var(--spacing-unit);
+        }
+        /* --- 头部设计 --- */
+        header {
+        background-color: var(--bg-header);
+        border-bottom: 1px solid var(--border-color);
+        padding: 2rem 0;
+        position: relative;
+        margin-bottom: 2rem;
+        }
+        .header-content {
+        position: relative;
+        padding-right: 120px; /* 为质量标志留出空间 */
+        }
+        h1 {
+        font-size: 1.75rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        color: #fff;
+        line-height: 1.3;
+        }
+        .report-meta {
+        font-size: 0.9rem;
+        color: var(--text-muted);
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        }
+        /* --- 质量标志 --- */
+        .quality-badge {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background: linear-gradient(135deg, var(--primary-color), #5ca900);
+        color: #fff;
+        padding: 0.5rem 1rem;
+        border-radius: 50px;
+        font-size: 0.85rem;
+        font-weight: bold;
+        box-shadow: 0 2px 8px rgba(118, 185, 0, 0.4);
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        white-space: nowrap;
+        }
+        .quality-badge::before {
+        content: '✓';
+        font-weight: 900;
+        }
+        /* --- 通用章节样式 --- */
+        section {
+        margin-bottom: 3rem;
+        }
+        h2 {
+        font-size: 1.5rem;
+        color: #fff;
+        border-left: 4px solid var(--primary-color);
+        padding-left: 1rem;
+        margin-bottom: 1.5rem;
+        background: linear-gradient(90deg, rgba(118, 185, 0, 0.1), transparent);
+        padding-top: 0.25rem;
+        padding-bottom: 0.25rem;
+        }
+        h3 {
+        font-size: 1.25rem;
+        color: #fff;
+        margin-bottom: 1rem;
+        margin-top: 1.5rem;
+        }
+        p {
+        margin-bottom: 1rem;
+        text-align: justify;
+        }
+        /* --- 核心洞察卡片 --- */
+        .summary-card {
+        background-color: var(--bg-card);
+        border-radius: var(--radius);
+        padding: 1.5rem;
+        border: 1px solid var(--border-color);
+        box-shadow: var(--shadow);
+        }
+        .highlight {
+        color: var(--primary-color);
+        font-weight: bold;
+        }
+        .highlight-red {
+        color: var(--alert-color);
+        font-weight: bold;
+        }
+        /* --- 价格走势时间轴 --- */
+        .timeline {
+        position: relative;
+        padding-left: 1.5rem;
+        border-left: 2px solid var(--border-color);
+        }
+        .timeline-item {
+        position: relative;
+        margin-bottom: 2rem;
+        padding-left: 1.5rem;
+        }
+        .timeline-item::before {
+        content: '';
+        position: absolute;
+        left: -1.95rem; /* 调整圆点位置 */
+        top: 0.25rem;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background-color: var(--primary-color);
+        border: 2px solid var(--bg-body);
+        box-shadow: 0 0 0 2px var(--primary-color);
+        }
+        .timeline-date {
+        font-size: 0.9rem;
+        color: var(--accent-color);
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+        display: block;
+        }
+        .timeline-content {
+        background-color: var(--bg-card);
+        padding: 1rem;
+        border-radius: var(--radius);
+        border: 1px solid var(--border-color);
+        }
+        /* --- 驱动因素与市场反应 --- */
+        .grid-2 {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        }
+        .info-card {
+        background-color: var(--bg-card);
+        padding: 1.25rem;
+        border-radius: var(--radius);
+        border-top: 3px solid var(--primary-color);
+        }
+        .info-card h3 {
+        margin-top: 0;
+        font-size: 1.1rem;
+        color: var(--primary-color);
+        }
+        /* --- 来源列表 --- */
+        .source-list {
+        list-style: none;
+        counter-reset: source-counter;
+        }
+        .source-list li {
+        position: relative;
+        padding-left: 2.5rem;
+        margin-bottom: 0.75rem;
+        font-size: 0.9rem;
+        color: var(--text-muted);
+        }
+        .source-list li::before {
+        counter-increment: source-counter;
+        content: counter(source-counter) ".";
+        position: absolute;
+        left: 0;
+        color: var(--accent-color);
+        font-weight: bold;
+        }
+        .source-link {
+        display: inline-block;
+        margin-top: 0.25rem;
+        font-size: 0.85rem;
+        word-break: break-all; /* 防止长链接溢出 */
+        }
+        /* --- 底部 --- */
+        footer {
+        margin-top: 4rem;
+        padding: 2rem 0;
+        border-top: 1px solid var(--border-color);
+        text-align: center;
+        color: var(--text-muted);
+        font-size: 0.85rem;
+        }
+        /* --- 响应式适配 --- */
+        @media (min-width: 768px) {
+        h1 {
+        font-size: 2.25rem;
+        }
+        .grid-2 {
+        grid-template-columns: 1fr 1fr;
+        }
+        .header-content {
+        padding-right: 160px;
+        }
+        }
+        /* --- 移动端优化 --- */
+        @media (max-width: 480px) {
+        .header-content {
+        padding-right: 0;
+        padding-top: 3rem; /* 为绝对定位的标志留空间 */
+        }
+        .quality-badge {
+        top: 1rem;
+        right: 1rem;
+        }
+        h1 {
+        font-size: 1.5rem;
+        }
+        .timeline-item::before {
+        left: -1.45rem;
+        }
+        }
+      </style>
+    </head>
+    <body>
+      <header>
+        <div class="container header-content">
+          <!-- 质量标志：右上角显眼位置 -->
+          <div class="quality-badge">质量标志：通过</div>
+            <h1>NVIDIA RTX 5090显卡市场价格趋势分析报告</h1>
+              <div class="report-meta">
+                <span>日期：2026年07月30日</span>
+                  <span>|</span>
+                    <span>行业：硬件/半导体</span>
+                    </div>
+                  </div>
+                </header>
+                <main class="container">
+                  <!-- 核心洞察综述 -->
+                  <section>
+                    <h2>核心洞察综述</h2>
+                      <div class="summary-card">
+                        <p>
+                          NVIDIA RTX 5090显卡自2025年发布以来，价格经历了“暴涨-阶段性回落-再度飙升”的波动周期。2026年7月，受AI算力需求挤占显存产能、存储芯片（如GDDR7、HBM）成本上涨叠加供应链紧张影响，RTX 5090价格在全球范围内<span class="highlight-red">第三次上调20%-30%</span>，高端型号溢价超70%，终端售价已达<span class="highlight-red">3.4万元人民币</span>（约4700美元），远高于官方建议零售价1999美元。
+                        </p>
+                        <p>
+                          消费者因价格高企转向性价比产品或二手市场，而竞争对手（如AMD）和国产GPU厂商（如景嘉微）在特定领域加速布局，市场格局面临重构。
+                        </p>
+                      </div>
+                    </section>
+                    <!-- 详细维度分析 -->
+                    <section>
+                      <h2>详细维度分析</h2>
+                        <!-- 1. 价格走势 -->
+                        <h3>1. 价格走势：从回落预期到持续暴涨</h3>
+                          <p>RTX 5090价格波动呈现明显阶段性特征：</p>
+                            <div class="timeline">
+                              <!-- 阶段一 -->
+                              <div class="timeline-item">
+                                <span class="timeline-date">2025年2月至3月</span>
+                                  <div class="timeline-content">
+                                    <p>发布初期因供需失衡价格飙升，建议零售价1999美元涨至接近3000美元，二手市场价格从1-2月最高10000美元降至3500-4000美元，仍高于官方价
+                                      <a href="https://www.sohu.com/a/876085283_121924584" target="_blank" class="source-link">[来源1: 2025年03月23日]</a>。
+                                      </p>
+                                    </div>
+                                  </div>
+                                  <!-- 阶段二 -->
+                                  <div class="timeline-item">
+                                    <span class="timeline-date">2025年6月至2026年1月</span>
+                                      <div class="timeline-content">
+                                        <p>全球市场逐步降温，日本定制版RTX 5090跌破40万日元（约19957元人民币），北美市场降至3000美元，欧洲2400-2500欧元，整体供货改善，消费者期待进一步降价
+                                          <a href="https://m.ithome.com/html/860922.htm" target="_blank" class="source-link">[来源2: 2025年06月15日]</a>；
+                                            <a href="https://wap.zol.com.cn/ask/3427341.html" target="_blank" class="source-link">[来源3: 2026年01月18日]</a>。
+                                            </p>
+                                          </div>
+                                        </div>
+                                        <!-- 阶段三 -->
+                                        <div class="timeline-item">
+                                          <span class="timeline-date">2026年1月至7月</span>
+                                            <div class="timeline-content">
+                                              <p>NVIDIA与AMD因存储成本（GDDR7每2GB涨价20美元）和HBM需求挤占产能，再次全线上调价格。RTX 5090从1.7万元人民币暴涨至3.4万元，溢价超70%，华硕、微星等厂商同步提价10%-15%，7月第三次涨价后，高端型号单日涨幅超1400元
+                                                <a href="https://www.sohu.com/a/981309408_122004016" target="_blank" class="source-link">[来源4: 2026年01月29日]</a>；
+                                                  <a href="http://m.toutiao.com/group/7666044118132458010/" target="_blank" class="source-link">[来源5: 2026年07月24日]</a>；
+                                                    <a href="http://toutiao.com/item/7667807043264496179/" target="_blank" class="source-link">[来源6: 2026年07月29日]</a>；
+                                                      <a href="http://toutiao.com/item/7668130221488407049/" target="_blank" class="source-link">[来源8: 2026年07月30日]</a>。
+                                                      </p>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                                <!-- 2. 核心驱动因素 -->
+                                                <h3>2. 核心驱动因素：供应与成本“双挤压”</h3>
+                                                  <div class="grid-2">
+                                                    <div class="info-card">
+                                                      <h3>存储成本飙升</h3>
+                                                        <p>显存占GPU制造成本超80%，三星GDDR7显存合约价上调20%，HBM订单排至2026年下半年，挤占消费级产能
+                                                          <a href="http://m.toutiao.com/group/7666044118132458010/" target="_blank" class="source-link">[来源5]</a>。
+                                                          </p>
+                                                        </div>
+                                                        <div class="info-card">
+                                                          <h3>AI需求虹吸产能</h3>
+                                                            <p>AI算力需求推动HBM采购量激增，导致消费级显卡（如RTX 5090）供应持续紧张，渠道商封仓惜售、二次提价
+                                                              <a href="http://toutiao.com/item/7668130221488407049/" target="_blank" class="source-link">[来源8]</a>。
+                                                              </p>
+                                                            </div>
+                                                            <div class="info-card">
+                                                              <h3>全球供应链波动</h3>
+                                                                <p>台积电先进制程涨价10%，国产GPU厂商（如景嘉微）因信创政策受益，但性能和生态仍落后于NVIDIA
+                                                                  <a href="http://toutiao.com/item/7668130221488407049/" target="_blank" class="source-link">[来源8]</a>。
+                                                                  </p>
+                                                                </div>
+                                                              </div>
+                                                              <!-- 3. 市场反应 -->
+                                                              <h3>3. 市场反应：消费者与厂商策略调整</h3>
+                                                                <div class="grid-2">
+                                                                  <div class="info-card" style="border-top-color: var(--accent-color);">
+                                                                    <h3 style="color: var(--accent-color);">消费者端</h3>
+                                                                      <p>高价和波动风险导致用户转向性价比产品（如RTX 5080/5070）或二手市场，2026年7月RTX 5070 Ti零售价格从9299元涨至1.07万元，装机预算被迫增加约2000元
+                                                                        <a href="http://toutiao.com/item/7668130221488407049/" target="_blank" class="source-link">[来源8]</a>。
+                                                                        </p>
+                                                                      </div>
+                                                                      <div class="info-card" style="border-top-color: var(--accent-color);">
+                                                                        <h3 style="color: var(--accent-color);">厂商端</h3>
+                                                                          <p>华硕、微星等合作伙伴跟进提价（RTX 5080溢价超65%，RTX 5090 TUF版溢价37.5%），国产厂商布局政务、信创等领域应对
+                                                                            <a href="https://www.sohu.com/a/981309408_122004016" target="_blank" class="source-link">[来源4]</a>。
+                                                                            </p>
+                                                                          </div>
+                                                                        </div>
+                                                                        <div class="info-card" style="margin-top: 1rem;">
+                                                                          <h3 style="color: #fff;">NVIDIA策略</h3>
+                                                                            <p>通过三次集体涨价维护品牌高端定位，但需平衡“品牌信心”与“消费者接受度”
+                                                                              <a href="https://www.sohu.com/a/876085283_121924584" target="_blank" class="source-link">[来源1]</a>。
+                                                                              </p>
+                                                                            </div>
+                                                                          </section>
+                                                                          <!-- 总结与展望 -->
+                                                                          <section>
+                                                                            <h2>总结与展望</h2>
+                                                                              <div class="summary-card" style="border-left: 4px solid var(--accent-color);">
+                                                                                <p>
+                                                                                  RTX 5090价格在2026年7月进入“持续暴涨”通道，核心矛盾在于AI算力需求与消费级产能的结构性失衡。短期来看，价格拐点需待国内存储企业新增产能释放（预计2027年），消费者或被迫接受“高价刚需”或转向国产替代。
+                                                                                </p>
+                                                                                <p>
+                                                                                  长期而言，AMD RX 9000系列（如4.769GHz超频记录）和国产GPU（如景嘉微JM系列）在特定场景的突破
