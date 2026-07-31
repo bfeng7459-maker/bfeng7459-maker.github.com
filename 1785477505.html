@@ -1,0 +1,361 @@
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>2026年中美算力建设对比分析报告</title>
+      <style>
+        :root {
+        --primary-color: #0056b3; /* 深蓝：科技、专业 */
+        --secondary-color: #009688; /* 青色：增长、能源 */
+        --accent-color: #d9534f; /* 红色：阻力、警告 */
+        --bg-color: #f4f7f6;
+        --card-bg: #ffffff;
+        --text-main: #333333;
+        --text-light: #666666;
+        --border-radius: 8px;
+        --spacing-unit: 1rem;
+        --shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+        * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        }
+        body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        background-color: var(--bg-color);
+        color: var(--text-main);
+        line-height: 1.6;
+        font-size: 16px;
+        padding-bottom: 40px;
+        }
+        /* 布局容器 */
+        .container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 0 var(--spacing-unit);
+        }
+        /* 头部样式 */
+        header {
+        background: linear-gradient(135deg, var(--primary-color), #003d80);
+        color: white;
+        padding: 2rem 0;
+        margin-bottom: 2rem;
+        position: relative;
+        box-shadow: var(--shadow);
+        }
+        .header-content {
+        position: relative;
+        padding-right: 140px; /* 为质量标志留出空间 */
+        }
+        h1 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        line-height: 1.3;
+        }
+        .report-date {
+        font-size: 0.9rem;
+        opacity: 0.9;
+        display: inline-block;
+        background: rgba(255,255,255,0.2);
+        padding: 2px 8px;
+        border-radius: 4px;
+        }
+        /* 质量标志 */
+        .quality-badge {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: #28a745;
+        color: white;
+        padding: 0.5rem 1rem;
+        font-weight: bold;
+        font-size: 0.9rem;
+        border-radius: 0 0 var(--border-radius) var(--border-radius);
+        box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        z-index: 10;
+        }
+        /* 卡片通用样式 */
+        .card {
+        background: var(--card-bg);
+        border-radius: var(--border-radius);
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+        box-shadow: var(--shadow);
+        border-left: 4px solid transparent;
+        }
+        .card h2 {
+        font-size: 1.25rem;
+        margin-bottom: 1rem;
+        color: var(--primary-color);
+        border-bottom: 1px solid #eee;
+        padding-bottom: 0.5rem;
+        }
+        .card h3 {
+        font-size: 1.1rem;
+        margin: 1.2rem 0 0.6rem;
+        color: #444;
+        font-weight: 600;
+        }
+        .card p {
+        margin-bottom: 0.8rem;
+        color: var(--text-main);
+        text-align: justify;
+        }
+        .card ul {
+        padding-left: 1.5rem;
+        margin-bottom: 1rem;
+        }
+        .card li {
+        margin-bottom: 0.5rem;
+        }
+        /* 特定卡片样式 */
+        .insight-card {
+        border-left-color: var(--secondary-color);
+        background-color: #f0fdfc; /* 极淡的青色背景 */
+        }
+        .insight-card h2 {
+        color: var(--secondary-color);
+        }
+        .us-card {
+        border-left-color: var(--accent-color);
+        }
+        .us-card h2 {
+        color: var(--accent-color);
+        }
+        /* 链接样式 */
+        a {
+        color: var(--primary-color);
+        text-decoration: none;
+        transition: color 0.2s;
+        border-bottom: 1px dotted var(--primary-color);
+        }
+        a:hover {
+        color: #003d80;
+        border-bottom-style: solid;
+        }
+        .source-link {
+        font-size: 0.85rem;
+        color: var(--text-light);
+        margin-left: 4px;
+        white-space: nowrap;
+        }
+        /* 表格样式 */
+        .table-responsive {
+        overflow-x: auto;
+        margin: 1rem 0;
+        border-radius: 4px;
+        border: 1px solid #eee;
+        }
+        table {
+        width: 100%;
+        border-collapse: collapse;
+        min-width: 600px; /* 确保在移动端表格不会挤压太小，触发横向滚动 */
+        font-size: 0.95rem;
+        }
+        th, td {
+        padding: 12px 15px;
+        text-align: left;
+        border-bottom: 1px solid #eee;
+        }
+        th {
+        background-color: #f8f9fa;
+        color: var(--primary-color);
+        font-weight: 600;
+        }
+        tr:last-child td {
+        border-bottom: none;
+        }
+        tr:hover {
+        background-color: #f9f9f9;
+        }
+        /* 资讯列表样式 */
+        .news-list {
+        list-style: none;
+        padding: 0;
+        }
+        .news-item {
+        display: flex;
+        align-items: flex-start;
+        padding: 12px 0;
+        border-bottom: 1px solid #eee;
+        }
+        .news-item:last-child {
+        border-bottom: none;
+        }
+        .news-index {
+        background: #e9ecef;
+        color: var(--text-light);
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.8rem;
+        margin-right: 12px;
+        flex-shrink: 0;
+        }
+        .news-content {
+        flex: 1;
+        }
+        .news-title {
+        display: block;
+        font-weight: 500;
+        margin-bottom: 4px;
+        color: var(--text-main);
+        }
+        .news-meta {
+        font-size: 0.8rem;
+        color: var(--text-light);
+        display: block;
+        margin-bottom: 4px;
+        }
+        .news-url {
+        font-size: 0.85rem;
+        color: var(--primary-color);
+        word-break: break-all;
+        }
+        /* 底部 */
+        footer {
+        text-align: center;
+        margin-top: 3rem;
+        color: var(--text-light);
+        font-size: 0.9rem;
+        }
+        /* 响应式调整 */
+        @media (min-width: 768px) {
+        h1 {
+        font-size: 2rem;
+        }
+        .card {
+        padding: 2rem;
+        }
+        .container {
+        padding: 0 2rem;
+        }
+        }
+      </style>
+    </head>
+    <body>
+      <header>
+        <div class="container header-content">
+          <h1>2026年07月31日 中国算力建设加速与美国数据中心阻力对比分析报告</h1>
+            <span class="report-date">发布日期：2026年07月31日</span>
+            </div>
+            <div class="quality-badge">质量标志：通过</div>
+            </header>
+            <main class="container">
+              <!-- 核心洞察综述 -->
+              <section class="card insight-card">
+                <h2>核心洞察综述</h2>
+                  <p>中国算力建设在“东数西算”工程驱动下，智能算力规模快速扩张，算电协同纳入国家级新基建，区域布局形成差异化分工，绿电直供等技术突破能源瓶颈，成为全球AI算力竞争核心；美国数据中心因电网并网延迟、民众反对及政策限制陷入系统性阻力，项目大规模延期或取消反映基础设施与资源分配矛盾，中美对比凸显“能源与物理资源博弈”的核心竞争逻辑。</p>
+                  </section>
+                  <!-- 一、美国数据中心建设系统性阻力 -->
+                  <section class="card us-card">
+                    <h2>一、美国数据中心建设系统性阻力</h2>
+                      <p>美国数据中心扩张遭遇多重政策与社会阻力，2026年上半年项目停滞风险加剧：</p>
+                        <ul>
+                          <li><strong>项目大规模受阻</strong>：黑石旗下QTS终止弗吉尼亚州千亿美元级超级园区项目，全美至少75个数据中心项目延期或取消，涉及投资约1300亿美元<a href="http://m.toutiao.com/group/7664981705694036506/" target="_blank" class="source-link">[来源]</a>。</li>
+                            <li><strong>核心障碍</strong>：电网并网等待周期长达4至8年，71%民众反对大型项目落地，纽约州暂停审批大型项目，弗吉尼亚州开征电力消耗税<a href="http://m.toutiao.com/group/7664981705694036506/" target="_blank" class="source-link">[来源]</a>。</li>
+                              <li><strong>区域分化</strong>：局部过度集中的布局模式（如弗吉尼亚州）与能源供给矛盾激化，导致项目可行性大幅降低。</li>
+                              </ul>
+                            </section>
+                            <!-- 二、中国算力建设核心进展 -->
+                            <section class="card">
+                              <h2>二、中国算力建设核心进展</h2>
+                                <h3>1. “东数西算”纵深推进，算力规模全球领先</h3>
+                                  <ul>
+                                    <li><strong>智能算力爆发</strong>：截至2026年6月，全国智能算力规模达2185EFLOPS，同比增长177%，设施上架率稳定在71.4%<a href="https://m.toutiao.com/group/7668252975965471232/" target="_blank" class="source-link">[来源]</a>。</li>
+                                      <li><strong>区域分工明确</strong>：东部（55.9%）承接低时延实时业务，西部（32.6%）承接非实时训练任务，形成“东部用算、西部算力”的互补格局<a href="http://toutiao.com/item/7666727361001292298/" target="_blank" class="source-link">[来源]</a>。</li>
+                                        <li><strong>国家级枢纽布局</strong>：形成“8大枢纽+10个集群+3个算电协同区”架构，京津冀、长三角、粤港澳聚焦实时业务，成渝承担“远端训练、本地推理”，内蒙古乌兰察布绿电直连京津冀（时延＜5毫秒）<a href="http://toutiao.com/item/7666727361001292298/" target="_blank" class="source-link">[来源]</a>。</li>
+                                        </ul>
+                                        <h3>2. “算电协同”纳入国家级新基建，破解能源瓶颈</h3>
+                                          <ul>
+                                            <li><strong>政策驱动</strong>：“算电协同”首次写入政府工作报告，纳入“六张网”建设，被列为十五五国家级刚需主线，投资规模近2万亿元<a href="http://toutiao.com/item/7664742158087373363/" target="_blank" class="source-link">[来源]</a>。</li>
+                                              <li><strong>技术落地</strong>：甘肃庆阳试点绿电直供，中卫云基地50万千瓦光伏电站投运，将建全国首个10万卡算力集群；液冷技术规模化应用，降低PUE至1.15（如上海临港海底数据中心）<a href="http://toutiao.com/item/7664742158087373363/" target="_blank" class="source-link">[来源]</a>。</li>
+                                                <li><strong>地方实践</strong>：四川省发布《推进算力设施优化布局提质建设和算电融合发展实施方案（2026—2028年）》，目标分三阶段实现智算规模60→120→240EFLOPS，构建“一区一带两节点”（成都平原核心区、攀西—川西北算电融合带、川南/川东北节点）布局<a href="https://m.sohu.com/a/1056981782_121106884/" target="_blank" class="source-link">[来源]</a>。</li>
+                                                </ul>
+                                              </section>
+                                              <!-- 三、产业链与技术创新动态 -->
+                                              <section class="card">
+                                                <h2>三、产业链与技术创新动态</h2>
+                                                  <ul>
+                                                    <li><strong>核心企业参与</strong>：社保基金持仓12家全产业链企业，覆盖冷却（银轮股份）、高速传输（中航光电）、光模块（华工科技）等领域，典型如英维克参与中卫项目制冷系统，烽火通信发布电力400G传输方案<a href="http://m.toutiao.com/group/7664742158087373363/" target="_blank" class="source-link">[来源]</a>。</li>
+                                                      <li><strong>技术突破</strong>：华为推出昇腾950超节点方案突破单芯片瓶颈，远东股份建成全合成VAD+OVD光棒工艺，构建适配800G/1.6T光模块的全场景产品矩阵<a href="http://m.toutiao.com/group/7667628442266911267/" target="_blank" class="source-link">[来源]</a>。</li>
+                                                      </ul>
+                                                    </section>
+                                                    <!-- 四、中美对比 -->
+                                                    <section class="card">
+                                                      <h2>四、中美对比：能源与物理资源的博弈</h2>
+                                                        <div class="table-responsive">
+                                                          <table>
+                                                            <thead>
+                                                              <tr>
+                                                                <th>维度</th>
+                                                                  <th>美国</th>
+                                                                    <th>中国</th>
+                                                                    </tr>
+                                                                  </thead>
+                                                                  <tbody>
+                                                                    <tr>
+                                                                      <td><strong>布局逻辑</strong></td>
+                                                                        <td>局部集中，依赖单一区域资源</td>
+                                                                          <td>跨区域分散布局，“东数西算”优化资源配置</td>
+                                                                          </tr>
+                                                                          <tr>
+                                                                            <td><strong>能源约束</strong></td>
+                                                                              <td>电网并网延迟4-8年，绿电应用滞后</td>
+                                                                                <td>算电协同+绿电直供，绿电占比提升至95%+</td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                  <td><strong>社会阻力</strong></td>
+                                                                                    <td>民众反对率71%导致项目停滞</td>
+                                                                                      <td>政策引导+跨区域调度，社会接受度高</td>
+                                                                                      </tr>
+                                                                                      <tr>
+                                                                                        <td><strong>核心竞争</strong></td>
+                                                                                          <td>资本垄断算力资源，缺乏能源协同</td>
+                                                                                            <td>算力调度平台化，全民普惠算力落地</td>
+                                                                                            </tr>
+                                                                                          </tbody>
+                                                                                        </table>
+                                                                                      </div>
+                                                                                    </section>
+                                                                                    <!-- 总结与展望 -->
+                                                                                    <section class="card insight-card">
+                                                                                      <h2>总结与展望</h2>
+                                                                                        <p>中国算力建设通过“东数西算”与“算电协同”双轮驱动，在规模、技术、区域布局上形成系统性优势；美国因基础设施与社会矛盾陷入增长停滞，全球AI算力竞争核心转向“资源分配效率”。未来重点关注：</p>
+                                                                                          <ol>
+                                                                                            <li>中国算力调度技术突破（如“息壤”平台调度87EFLOPS算力）与绿电直供规模化<a href="https://m.tech.china.com/mtz/touzi/2026/0720/250542.html" target="_blank" class="source-link">[来源]</a>；</li>
+                                                                                              <li>美国数据中心项目终止是否引发资本撤离，导致全球算力格局重构；</li>
+                                                                                                <li>十四五“算电协同”投资（2万亿元）能否支撑2028年全国算力统一调度目标<a href="http://toutiao.com/item/7664742158087373363/" target="_blank" class="source-link">[来源]</a>。</li>
+                                                                                                </ol>
+                                                                                              </section>
+                                                                                              <!-- 资讯列表 -->
+                                                                                              <section class="card">
+                                                                                                <h2>资讯列表</h2>
+                                                                                                  <ul class="news-list">
+                                                                                                    <li class="news-item">
+                                                                                                      <div class="news-index">1</div>
+                                                                                                        <div class="news-content">
+                                                                                                          <span class="news-title">四川省发布算力优化布局方案</span>
+                                                                                                            <span class="news-meta">2026-07-31</span>
+                                                                                                              <a href="https://m.sohu.com/a/1056981782_121106884/" target="_blank" class="news-url">点击访问</a>
+                                                                                                              </div>
+                                                                                                            </li>
+                                                                                                            <li class="news-item">
+                                                                                                              <div class="news-index">2</div>
+                                                                                                                <div class="news-content">
+                                                                                                                  <span class="news-title">中国国家级算力空间形成“8+10+3”布局</span>
+                                                                                                                    <span class="news-meta">2026-07-26</span>
+                                                                                                                      <a href="http://toutiao.com/item/7666727361001292298/" target="_blank" class="news-url">点击访问</a>
+                                                                                                                      </div>
+                                                                                                                    </li>
+                                                                                                                    <li class="news-item">
+                                                                                                                      <div class="news-index">3</div>
+                                                                                                                        <div class="news-content">
+                                                                                                                          <span class="news-title
