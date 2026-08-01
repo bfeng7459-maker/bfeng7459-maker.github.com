@@ -1,0 +1,374 @@
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026年08月01日中国算力发展洞察报告</title>
+      <style>
+        /* =========================================
+        CSS Reset & Variables
+        ========================================= */
+        :root {
+        /* 核心配色方案 */
+        --primary-color: #0f172a;      /* 深蓝：专业、稳重 */
+        --accent-color: #2563eb;       /* 亮蓝：科技、链接 */
+        --highlight-color: #0ea5e9;    /* 天蓝：重点数据 */
+        --success-color: #10b981;      /* 绿色：通过、增长 */
+        --warning-color: #f59e0b;      /* 橙色：警示、强调 */
+        --bg-color: #f8fafc;           /* 浅灰背景：护眼 */
+        --card-bg: #ffffff;            /* 卡片背景 */
+        --text-main: #334155;          /* 主要文字 */
+        --text-secondary: #64748b;     /* 次要文字 */
+        --border-color: #e2e8f0;       /* 边框颜色 */
+        /* 间距与尺寸 */
+        --spacing-sm: 0.5rem;
+        --spacing-md: 1rem;
+        --spacing-lg: 2rem;
+        --border-radius: 8px;
+        --max-width: 1200px;
+        }
+        * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        }
+        body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+        background-color: var(--bg-color);
+        color: var(--text-main);
+        line-height: 1.7;
+        font-size: 16px;
+        -webkit-font-smoothing: antialiased;
+        }
+        a {
+        color: var(--accent-color);
+        text-decoration: none;
+        transition: color 0.2s;
+        }
+        a:hover {
+        color: var(--primary-color);
+        text-decoration: underline;
+        }
+        /* =========================================
+        Layout & Typography
+        ========================================= */
+        .container {
+        max-width: var(--max-width);
+        margin: 0 auto;
+        padding: 0 var(--spacing-md);
+        }
+        /* 顶部 Header */
+        header {
+        background: linear-gradient(135deg, var(--primary-color) 0%, #1e293b 100%);
+        color: white;
+        padding: var(--spacing-lg) 0;
+        position: relative;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        .header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        gap: var(--spacing-md);
+        }
+        h1 {
+        font-size: 1.75rem;
+        font-weight: 700;
+        line-height: 1.3;
+        margin-bottom: var(--spacing-sm);
+        color: #fff;
+        }
+        .report-meta {
+        font-size: 0.9rem;
+        opacity: 0.8;
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-md);
+        }
+        /* 质量标志 */
+        .quality-badge {
+        background-color: var(--success-color);
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 50px;
+        font-weight: 600;
+        font-size: 0.9rem;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        white-space: nowrap;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        }
+        .quality-badge::before {
+        content: "✓";
+        font-weight: bold;
+        display: inline-block;
+        }
+        /* =========================================
+        Components
+        ========================================= */
+        section {
+        margin: var(--spacing-lg) 0;
+        }
+        .section-title {
+        font-size: 1.5rem;
+        color: var(--primary-color);
+        border-left: 5px solid var(--accent-color);
+        padding-left: var(--spacing-md);
+        margin-bottom: var(--spacing-lg);
+        font-weight: 700;
+        }
+        /* 卡片样式 */
+        .card {
+        background: var(--card-bg);
+        border-radius: var(--border-radius);
+        padding: var(--spacing-lg);
+        box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        border: 1px solid var(--border-color);
+        margin-bottom: var(--spacing-lg);
+        transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        .card h3 {
+        font-size: 1.25rem;
+        color: var(--primary-color);
+        margin-bottom: var(--spacing-md);
+        border-bottom: 1px solid var(--border-color);
+        padding-bottom: var(--spacing-sm);
+        }
+        /* 核心洞察综述 */
+        .summary-box {
+        background-color: #eff6ff;
+        border-left: 4px solid var(--accent-color);
+        padding: var(--spacing-lg);
+        font-size: 1.05rem;
+        color: var(--text-main);
+        }
+        .highlight-text {
+        color: var(--accent-color);
+        font-weight: 600;
+        }
+        .data-point {
+        font-weight: 700;
+        color: var(--primary-color);
+        background: rgba(37, 99, 235, 0.1);
+        padding: 0 4px;
+        border-radius: 4px;
+        }
+        /* 列表样式 */
+        ul {
+        list-style: none;
+        padding-left: 0;
+        }
+        ul.bullet-list li {
+        position: relative;
+        padding-left: 1.5rem;
+        margin-bottom: var(--spacing-sm);
+        }
+        ul.bullet-list li::before {
+        content: "•";
+        color: var(--accent-color);
+        font-weight: bold;
+        font-size: 1.2rem;
+        position: absolute;
+        left: 0;
+        top: -2px;
+        }
+        /* 来源链接样式 */
+        .source-link {
+        font-size: 0.85rem;
+        color: var(--text-secondary);
+        background-color: #f1f5f9;
+        padding: 2px 8px;
+        border-radius: 4px;
+        margin-left: 8px;
+        text-decoration: none;
+        vertical-align: middle;
+        border: 1px solid var(--border-color);
+        display: inline-block;
+        margin-top: -4px;
+        }
+        .source-link:hover {
+        background-color: #e2e8f0;
+        color: var(--primary-color);
+        text-decoration: none;
+        }
+        /* 资讯列表 */
+        .news-list {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+        }
+        .news-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        padding: var(--spacing-md);
+        background: white;
+        border-radius: var(--border-radius);
+        border: 1px solid var(--border-color);
+        flex-wrap: wrap;
+        gap: 10px;
+        }
+        .news-title {
+        font-weight: 600;
+        color: var(--text-main);
+        flex: 1;
+        min-width: 200px;
+        }
+        .news-date {
+        font-size: 0.85rem;
+        color: var(--text-secondary);
+        white-space: nowrap;
+        }
+        /* 标签 */
+        .tag {
+        display: inline-block;
+        font-size: 0.75rem;
+        padding: 2px 8px;
+        border-radius: 4px;
+        margin-right: 8px;
+        font-weight: 600;
+        }
+        .tag-blue { background: #dbeafe; color: #1e40af; }
+        .tag-green { background: #dcfce7; color: #166534; }
+        .tag-orange { background: #ffedd5; color: #9a3412; }
+        /* Footer */
+        footer {
+        background-color: var(--primary-color);
+        color: white;
+        text-align: center;
+        padding: var(--spacing-lg) 0;
+        margin-top: var(--spacing-lg);
+        font-size: 0.9rem;
+        }
+        /* =========================================
+        Responsive Design (Media Queries)
+        ========================================= */
+        @media (min-width: 768px) {
+        h1 { font-size: 2.25rem; }
+        /* 详细维度分析：两列布局 */
+        .analysis-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-lg);
+        }
+        .analysis-grid .card {
+        height: 100%; /* 让卡片高度一致 */
+        }
+        .news-list {
+        grid-template-columns: repeat(2, 1fr);
+        }
+        }
+        @media (max-width: 767px) {
+        .header-content {
+        flex-direction: column;
+        }
+        .quality-badge {
+        align-self: flex-start;
+        margin-top: var(--spacing-sm);
+        }
+        .news-item {
+        flex-direction: column;
+        }
+        .news-date {
+        order: -1; /* 日期显示在标题上方 */
+        margin-bottom: 4px;
+        color: var(--accent-color);
+        font-weight: 500;
+        }
+        }
+      </style>
+    </head>
+    <body>
+      <!-- 顶部导航与标题 -->
+      <header>
+        <div class="container header-content">
+          <div>
+            <h1>2026年08月01日中国算力发展洞察报告</h1>
+              <div class="report-meta">
+                <span>算电协同深化布局，西部算力崛起</span>
+                </div>
+              </div>
+              <!-- 质量标志：右上角显眼位置 -->
+              <div class="quality-badge">
+                质量标志：通过
+              </div>
+            </div>
+          </header>
+          <main class="container">
+            <!-- 核心洞察综述 -->
+            <section>
+              <h2 class="section-title">核心洞察综述</h2>
+                <div class="card summary-box">
+                  <p>
+                    当前我国算力建设进入<strong>“规模扩张+质量提升”</strong>的双轮驱动阶段，“东数西算”工程纵深推进，算电协同成为国家级战略核心抓手。2026年上半年智能算力规模达<span class="data-point">2185EFLOPS</span>，同比增长<span class="data-point">177%</span>，算力设施上架率稳定在<span class="data-point">71.4%</span>，东西部形成“东部低时延实时业务+西部训练备份基地”的梯次化空间格局。绿电直连、液冷温控等技术规模化应用，叠加“算电协同”政策落地，西部算力高地加速崛起（如四川2028年智算目标<span class="data-point">240EFLOPS</span>）。国家布局“8+10+3”架构（8大枢纽、10个集群、3个算电协同区），2028年将实现全国算力统一调度，同时通过“一带一路”（如喀什大会）强化西部辐射能力，算力价值分配机制探索从资本垄断向全民共享转型。
+                  </p>
+                </div>
+              </section>
+              <!-- 详细维度分析 -->
+              <section>
+                <h2 class="section-title">详细维度分析</h2>
+                  <div class="analysis-grid">
+                    <!-- 维度一 -->
+                    <article class="card">
+                      <h3>一、国家算力战略与空间布局</h3>
+                        <p style="margin-bottom: 1rem; font-weight: 600; color: var(--accent-color);">（1）“东数西算”纵深推进，算力格局成型</p>
+                          <ul class="bullet-list">
+                            <li>
+                              <strong>算力规模与分布</strong>：截至2026年6月底，全国智能算力规模达2185EFLOPS，同比增长177%，算力设施上架率稳定在71.4%。“东数西算”工程形成“80%资源集聚八大枢纽”的格局，东部京津冀、长三角、粤港澳聚焦低时延业务，西部贵州、甘肃、宁夏承接训练与备份，成渝定位“远端训练、本地推理”，内蒙古乌兰察布凭借时延<5ms、绿电占比超80%成为算力枢纽核心区<a href="#" class="source-link" title="查看来源">【来源】</a>。
+                              </li>
+                              <li>
+                                <strong>算电协同区建设</strong>：国家规划三个算电协同区，解决算力与能源供给矛盾，分别位于南方五省区、东北吉林及甘肃庆阳等区域。其中庆阳、乌兰察布等地已建成绿电聚合/直供试点，通过源网荷储一体化项目实现算力与绿电精准匹配<a href="#" class="source-link" title="查看来源">【来源】</a>。
+                                </li>
+                              </ul>
+                              <p style="margin-bottom: 1rem; margin-top: 1.5rem; font-weight: 600; color: var(--accent-color);">（2）全国算力调度框架完善</p>
+                                <ul class="bullet-list">
+                                  <li>
+                                    八大枢纽分工明确：东部聚焦低时延实时业务；内蒙古乌兰察布时延<5ms、绿电占比超80%；西部贵州、甘肃、宁夏承接训练与备份；郑州作为超算互联网核心节点充当全国算力调度“总台”<a href="#" class="source-link" title="查看来源">【来源】</a>。
+                                  </li>
+                                  <li>
+                                    2026年底前将建立<strong>算力互联互通标准体系</strong>，2028年实现全国公共算力标准化互联，解决跨区域调度标准不统一及绿电波动性问题<a href="#" class="source-link" title="查看来源">【来源】</a>。
+                                  </li>
+                                </ul>
+                              </article>
+                              <!-- 维度二 -->
+                              <article class="card">
+                                <h3>二、算电协同实践与技术突破</h3>
+                                  <p style="margin-bottom: 1rem; font-weight: 600; color: var(--accent-color);">（1）绿电直连/聚合模式规模化落地</p>
+                                    <ul class="bullet-list">
+                                      <li>
+                                        <strong>甘肃庆阳</strong>：国网投资4.71亿元推进“绿电聚合”，一期并网35万千瓦，计划9月底实现100万千瓦全容量并网，年发电量20亿千瓦时，园区电价稳定在0.4元/千瓦时，供电可靠率99.99%以上，清洁能源消费占比88%，2026年底算力规模预计突破30万P<a href="#" class="source-link" title="查看来源">【来源】</a>。
+                                        </li>
+                                        <li>
+                                          <strong>内蒙古乌兰察布</strong>：“绿电直连”模式覆盖绿电专线直供、绿电交易+绿证、算力弹性调度三大路径，依托冷、近、绿、稳禀赋建成源网荷储一体化项目，算力规模达16.5万P（占全国近9%），电价0.35元/度，PUE约1.2，年省电费数亿元，目标2028年算力突破20万P<a href="#" class="source-link" title="查看来源">【来源】</a>。
+                                          </li>
+                                        </ul>
+                                        <p style="margin-bottom: 1rem; margin-top: 1.5rem; font-weight: 600; color: var(--accent-color);">（2）政策与技术瓶颈突破</p>
+                                          <ul class="bullet-list">
+                                            <li>
+                                              <strong>政策保障</strong>：“算电协同”首次写入2026年政府工作报告，核心逻辑是“算力与电力相互依存”，引导离线训练向西部绿电富集区迁移<a href="#" class="source-link" title="查看来源">【来源】</a>。
+                                              </li>
+                                              <li>
+                                                <strong>技术创新</strong>：液冷技术规模化应用（如英维克液冷温控参与中卫项目）、全合成VAD+OVD工艺（远东光纤）、华为昇腾950超节点方案等，突破单芯片算力上限与高密度布线信号衰减问题<a href="#" class="source-link" title="查看来源">【来源】</a>。
+                                                </li>
+                                              </ul>
+                                            </article>
+                                            <!-- 维度三 -->
+                                            <article class="card">
+                                              <h3>三、算力技术与产业生态</h3>
+                                                <p style="margin-bottom: 1rem; font-weight: 600; color: var(--accent-color);">（1）智算集群加速投产</p>
+                                                  <ul class="bullet-list">
+                                                    <li>
+                                                      四川提出“一区一带两节点”布局，目标2026年底智算规模达60EFLOPS，2028年达240EFLOPS<a href="#" class="source-link" title="查看来源">【来源】</a>；乌兰察布、庆阳等地万卡级智算集群密集投产，全国算力集群呈现“东部高密度+西部规模化”特征<a href="#" class="source-link" title="查看来源">【来源】</a>。
+                                                    </li>
+                                                  </ul>
+                                                  <p style="margin-bottom: 1rem; margin-top: 1.5rem; font-weight: 600; color: var(--accent-color);">（2）产业链标的与投资机遇</p>
+                                                    <ul class="bullet-list">
+                                                      <li>
+                                                        <strong>全产业链覆盖</strong>：社保基金持仓12家算电协同核心企业，覆盖全链条：银轮股份(发电机组冷却)、英维克(液冷温控)、科士达(UPS电源)、华工科技(光
