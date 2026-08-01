@@ -1,0 +1,425 @@
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>英伟达RTX 50系列显卡价格走势分析报告</title>
+      <style>
+        :root {
+        /* 颜色方案 - 科技暗色主题 */
+        --primary-color: #76b900; /* NVIDIA Green */
+        --primary-hover: #5ca900;
+        --accent-color: #00d2ff; /* 科技蓝 */
+        --bg-body: #0f172a; /* 深蓝黑背景 */
+        --bg-card: #1e293b; /* 卡片背景 */
+        --bg-header: #1e293b;
+        --text-main: #f1f5f9;
+        --text-secondary: #94a3b8;
+        --border-color: #334155;
+        --highlight-bg: rgba(118, 185, 0, 0.1);
+        --danger-color: #ef4444;
+        --warning-color: #f59e0b;
+        /* 间距与尺寸 */
+        --spacing-sm: 0.5rem;
+        --spacing-md: 1rem;
+        --spacing-lg: 2rem;
+        --radius-md: 8px;
+        --radius-lg: 16px;
+        /* 字体 */
+        --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+        /* 基础重置 */
+        * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        }
+        body {
+        font-family: var(--font-family);
+        background-color: var(--bg-body);
+        color: var(--text-main);
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+        }
+        a {
+        color: var(--primary-color);
+        text-decoration: none;
+        transition: color 0.2s;
+        }
+        a:hover {
+        color: var(--primary-hover);
+        text-decoration: underline;
+        }
+        /* 布局容器 */
+        .container {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 0 var(--spacing-md);
+        }
+        /* 头部样式 */
+        header {
+        background-color: var(--bg-header);
+        border-bottom: 1px solid var(--border-color);
+        padding: var(--spacing-lg) 0;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        .header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+        }
+        h1 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--text-main);
+        line-height: 1.3;
+        }
+        .report-date {
+        font-size: 0.875rem;
+        color: var(--text-secondary);
+        margin-top: var(--spacing-sm);
+        display: block;
+        }
+        /* 质量标志 */
+        .quality-badge {
+        background-color: var(--primary-color);
+        color: #000;
+        padding: 0.25rem 0.75rem;
+        border-radius: 9999px;
+        font-size: 0.75rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.25rem;
+        box-shadow: 0 0 10px rgba(118, 185, 0, 0.4);
+        }
+        .quality-badge svg {
+        width: 14px;
+        height: 14px;
+        fill: currentColor;
+        }
+        /* 通用卡片样式 */
+        section {
+        margin: var(--spacing-lg) 0;
+        padding: var(--spacing-lg);
+        background-color: var(--bg-card);
+        border-radius: var(--radius-lg);
+        border: 1px solid var(--border-color);
+        }
+        h2 {
+        font-size: 1.25rem;
+        color: var(--primary-color);
+        margin-bottom: var(--spacing-lg);
+        border-left: 4px solid var(--primary-color);
+        padding-left: var(--spacing-md);
+        }
+        h3 {
+        font-size: 1.1rem;
+        color: var(--text-main);
+        margin: var(--spacing-md) 0 var(--spacing-sm);
+        }
+        p {
+        margin-bottom: var(--spacing-md);
+        color: var(--text-secondary);
+        }
+        /* 核心洞察综述 */
+        .core-insight {
+        background: linear-gradient(145deg, rgba(30, 41, 59, 0.9), rgba(15, 23, 42, 0.9));
+        border: 1px solid var(--primary-color);
+        position: relative;
+        overflow: hidden;
+        }
+        .core-insight::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 4px;
+        height: 100%;
+        background: var(--primary-color);
+        }
+        .highlight-text {
+        color: var(--text-main);
+        font-weight: 500;
+        }
+        .price-alert {
+        color: var(--danger-color);
+        font-weight: bold;
+        }
+        /* 来源链接样式 */
+        .source-link {
+        display: inline-flex;
+        align-items: center;
+        font-size: 0.75rem;
+        padding: 2px 8px;
+        background-color: rgba(255, 255, 255, 0.05);
+        border-radius: 4px;
+        color: var(--accent-color);
+        margin-left: var(--spacing-sm);
+        vertical-align: middle;
+        min-height: 24px; /* 触摸目标优化 */
+        }
+        .source-link:hover {
+        background-color: rgba(0, 210, 255, 0.1);
+        text-decoration: none;
+        }
+        /* 时间线样式 */
+        .timeline {
+        position: relative;
+        padding-left: var(--spacing-lg);
+        }
+        .timeline::before {
+        content: '';
+        position: absolute;
+        left: 7px;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background: var(--border-color);
+        }
+        .timeline-item {
+        position: relative;
+        margin-bottom: var(--spacing-lg);
+        }
+        .timeline-item::after {
+        content: '';
+        position: absolute;
+        left: calc(var(--spacing-lg) * -1 - 5px);
+        top: 6px;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background-color: var(--primary-color);
+        border: 2px solid var(--bg-card);
+        }
+        .timeline-date {
+        font-weight: bold;
+        color: var(--text-main);
+        display: block;
+        margin-bottom: 0.25rem;
+        }
+        /* 表格样式 */
+        .table-responsive {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        border-radius: var(--radius-md);
+        border: 1px solid var(--border-color);
+        }
+        table {
+        width: 100%;
+        border-collapse: collapse;
+        min-width: 600px; /* 强制在移动端滚动 */
+        font-size: 0.9rem;
+        }
+        th, td {
+        padding: var(--spacing-md);
+        text-align: left;
+        border-bottom: 1px solid var(--border-color);
+        }
+        th {
+        background-color: rgba(0, 0, 0, 0.2);
+        color: var(--text-main);
+        font-weight: 600;
+        }
+        tr:last-child td {
+        border-bottom: none;
+        }
+        /* 驱动因素网格 */
+        .drivers-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+        }
+        .driver-card {
+        background-color: rgba(255, 255, 255, 0.03);
+        padding: var(--spacing-md);
+        border-radius: var(--radius-md);
+        border: 1px solid transparent;
+        transition: border-color 0.3s;
+        }
+        .driver-card:hover {
+        border-color: var(--primary-color);
+        }
+        /* 资讯列表 */
+        .news-list {
+        list-style: none;
+        }
+        .news-item {
+        display: flex;
+        flex-direction: column;
+        padding: var(--spacing-md) 0;
+        border-bottom: 1px solid var(--border-color);
+        gap: 0.5rem;
+        }
+        .news-item:last-child {
+        border-bottom: none;
+        }
+        .news-meta {
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-sm);
+        font-size: 0.85rem;
+        flex-wrap: wrap;
+        }
+        .news-date {
+        background-color: rgba(118, 185, 0, 0.2);
+        color: var(--primary-color);
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-weight: 600;
+        }
+        .tag-old {
+        background-color: var(--border-color);
+        color: var(--text-secondary);
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-size: 0.75rem;
+        }
+        .news-content {
+        font-size: 0.95rem;
+        }
+        /* 页脚 */
+        footer {
+        text-align: center;
+        padding: var(--spacing-lg);
+        color: var(--text-secondary);
+        font-size: 0.875rem;
+        border-top: 1px solid var(--border-color);
+        margin-top: var(--spacing-lg);
+        }
+        /* 响应式媒体查询 */
+        @media (min-width: 768px) {
+        h1 {
+        font-size: 2rem;
+        }
+        .drivers-grid {
+        grid-template-columns: repeat(3, 1fr);
+        }
+        .news-item {
+        flex-direction: row;
+        align-items: baseline;
+        justify-content: space-between;
+        }
+        .news-meta {
+        width: 280px;
+        flex-shrink: 0;
+        }
+        .news-content {
+        flex-grow: 1;
+        text-align: right;
+        }
+        }
+      </style>
+    </head>
+    <body>
+      <!-- 顶部导航与标题 -->
+      <header>
+        <div class="container header-content">
+          <div>
+            <h1>英伟达RTX 50系列显卡价格走势分析报告</h1>
+              <span class="report-date">2026年08月01日</span>
+              </div>
+              <!-- 质量标志：右上角 -->
+              <div class="quality-badge">
+                <svg viewBox="0 0 24 24">
+                  <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                </svg>
+                质量标志：通过
+              </div>
+            </div>
+          </header>
+          <main class="container">
+            <!-- 核心洞察综述 -->
+            <section class="core-insight">
+              <h2>核心洞察综述</h2>
+                <p>
+                  2025年3月至2026年7月期间，英伟达RTX 50系列显卡价格经历了从高位震荡到持续暴涨的过程，核心驱动因素为AI算力需求爆发导致显存（尤其是HBM）产能结构性转移，GDDR6/7颗粒供应短缺，叠加厂商多次调价及经销商囤货惜售。
+                </p>
+                <p class="highlight-text">
+                  旗舰型号<span class="price-alert">RTX 5090</span>尤为显著：2025年6月首次降价后仍高于官方建议价，2026年下半年因显存成本飙升（16GB GDDR7涨幅超200%），价格突破4000美元（约3.4万元人民币），国内渠道逼近3.4万元，较官方1999美元建议价溢价超100%。
+                </p>
+                <p>
+                  2026年7月24日起，英伟达实施第三轮全系列涨价，部分型号单日涨幅超1400元，核心矛盾在于“AI越热、消费级显卡越贵”的循环，短期或因政策落地小幅回落，长期仍将上行。
+                </p>
+              </section>
+              <!-- 详细维度分析 -->
+              <section>
+                <h2>详细维度分析</h2>
+                  <h3>一、价格走势时间线（2025年3月-2026年7月）</h3>
+                    <div class="timeline">
+                      <div class="timeline-item">
+                        <span class="timeline-date">初期波动（2025年3月-2025年6月）</span>
+                          <p>
+                            <strong>2025年3月：</strong>RTX 5090公版二手价从1-2月的10000美元回落至3500-4000美元，仍高于官方75.14%<a href="#" class="source-link" title="查看来源">来源链接</a>。
+                            </p>
+                            <p>
+                              <strong>2025年6月：</strong>上市4个月后首次松动，日本RTX 5090定制版跌破40万日元（约1.98万元人民币），北美现货价降至2700-2800美元（约1.94-2.01万元人民币），欧洲价格2400-2500欧元（约1.99-2.07万元人民币），但均高于1999美元官方价，预计未来几周或低于2500美元<a href="#" class="source-link" title="查看来源">来源链接</a>。
+                              </p>
+                              <p>
+                                <strong>2025年12月-2026年1月：</strong>价格反弹，RTX 5090零售价从2400美元飙升至700万韩元（约3.4万元），零售商及华硕、微星等提价，RTX 5080溢价超65%<a href="#" class="source-link" title="查看来源">来源链接</a>。
+                                </p>
+                              </div>
+                              <div class="timeline-item">
+                                <span class="timeline-date">持续暴涨（2026年1月-2026年7月）</span>
+                                  <p>
+                                    <strong>2026年1月：</strong>英伟达7月24日发布第三轮涨价，GDDR6现货价涨3倍，RTX 5070 Ti单日涨1400元，累计涨幅近50%<a href="#" class="source-link" title="查看来源">来源链接</a>。
+                                    </p>
+                                    <p>
+                                      <strong>2026年7月：</strong>深圳华强北RTX 5090涨近4000元，部分型号日涨500-1000元，国内渠道逼近3.4万元，较官方1999美元建议价溢价超100%<a href="#" class="source-link" title="查看来源">来源链接</a>。
+                                      </p>
+                                      <p>
+                                        <strong>2026年7月24日：</strong>第三轮涨价落地，覆盖RTX 50系列全型号，厂商称“显存占成本超80%”，TrendForce预测Q3合约价再涨13%-18%<a href="#" class="source-link" title="查看来源">来源链接</a>。
+                                        </p>
+                                      </div>
+                                    </div>
+                                    <h3>二、区域价格差异（2025年6月-2026年7月）</h3>
+                                      <div class="table-responsive">
+                                        <table>
+                                          <thead>
+                                            <tr>
+                                              <th>区域</th>
+                                                <th>关键价格（2025年6月）</th>
+                                                  <th>关键价格（2026年7月）</th>
+                                                    <th>核心原因</th>
+                                                    </tr>
+                                                  </thead>
+                                                  <tbody>
+                                                    <tr>
+                                                      <td>日本</td>
+                                                        <td>RTX 5090定制版39.8万日元（约1.98万元）<a href="#" class="source-link">来源</a></td>
+                                                          <td>未具体提及，但需注意7月整体暴涨</td>
+                                                            <td>显存成本驱动+经销商囤货</td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>北美</td>
+                                                                <td>2700-2800美元（约1.94-2.01万元）<a href="#" class="source-link">来源</a></td>
+                                                                  <td>未具体提及，但7月高端型号涨至4000美元以上</td>
+                                                                    <td>供需紧张+AI服务器需求挤压</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                      <td>欧洲</td>
+                                                                        <td>2400-2500欧元（约1.99-2.07万元）<a href="#" class="source-link">来源</a></td>
+                                                                          <td>未具体提及，但7月跟风涨价</td>
+                                                                            <td>消费级显卡产能转移至AI HBM</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                              <td>国内</td>
+                                                                                <td>未具体提及</td>
+                                                                                  <td>深圳华强北RTX 5090逼近3.4万元<a href="#" class="source-link">来源</a></td>
+                                                                                    <td>英伟达涨价+AI需求挤压显存</td>
+                                                                                    </tr>
+                                                                                  </tbody>
+                                                                                </table>
+                                                                              </div>
+                                                                              <h3>三、核心驱动因素</h3>
+                                                                                <div class="drivers-grid">
+                                                                                  <div class="driver-card">
+                                                                                    <h4>显存产能结构性转移</h4>
+                                                                                      <p>HBM（高带宽显存）需求激增，挤占GDDR6/7消费级产能。2026年HBM缺口达50%-60%，GDDR6现货价涨3倍<a href="#" class="source-link">来源</a>，16GB GDDR7涨幅超200%<a href="#" class="source-link">来源</a>。</p>
+                                                                                        <p>存储原厂将70%以上产能转向AI服务器用HBM，消费级DRAM/GDDR产能缩减30%-40%
