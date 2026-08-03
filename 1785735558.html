@@ -1,0 +1,356 @@
+这是一个完整的、单文件的HTML5页面。我根据您的要求，采用了响应式设计，确保在手机和PC端都有良好的阅读体验。页面使用了中国联通的品牌色（红色）作为主色调，搭配专业的排版风格，并包含了所有指定的内容和链接。
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>中国联通2026年8月战略动态与业务布局洞察分析报告</title>
+      <style>
+        /* --- CSS 变量定义 --- */
+        :root {
+        --primary-color: #E60012; /* 联通红 */
+        --primary-hover: #c4000f;
+        --text-main: #333333;
+        --text-secondary: #666666;
+        --text-light: #999999;
+        --bg-body: #f5f7fa;
+        --bg-card: #ffffff;
+        --border-color: #e1e4e8;
+        --spacing-unit: 1rem;
+        --radius-md: 8px;
+        --radius-lg: 12px;
+        --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+        --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+        }
+        /* --- 全局重置与基础样式 --- */
+        * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        }
+        body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+        background-color: var(--bg-body);
+        color: var(--text-main);
+        line-height: 1.6;
+        font-size: 16px;
+        -webkit-font-smoothing: antialiased;
+        }
+        a {
+        color: var(--primary-color);
+        text-decoration: none;
+        transition: color 0.2s ease;
+        }
+        a:hover {
+        color: var(--primary-hover);
+        text-decoration: underline;
+        }
+        /* --- 布局容器 --- */
+        .container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 0 var(--spacing-unit);
+        }
+        /* --- 头部样式 --- */
+        header {
+        background-color: var(--bg-card);
+        padding: 2rem 0;
+        box-shadow: var(--shadow-sm);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        border-bottom: 3px solid var(--primary-color);
+        }
+        .header-content {
+        position: relative;
+        }
+        h1 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--text-main);
+        margin-bottom: 0.5rem;
+        padding-right: 100px; /* 为右侧标志留出空间 */
+        }
+        .report-meta {
+        font-size: 0.875rem;
+        color: var(--text-secondary);
+        }
+        /* 质量标志 */
+        .quality-badge {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: #28a745;
+        color: white;
+        padding: 0.25rem 0.75rem;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        box-shadow: 0 2px 4px rgba(40, 167, 69, 0.3);
+        white-space: nowrap;
+        }
+        /* --- 主要内容区域 --- */
+        main {
+        padding: 2rem 0;
+        }
+        section {
+        background-color: var(--bg-card);
+        border-radius: var(--radius-lg);
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+        box-shadow: var(--shadow-sm);
+        border: 1px solid var(--border-color);
+        }
+        h2 {
+        font-size: 1.25rem;
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 1px solid var(--border-color);
+        display: flex;
+        align-items: center;
+        }
+        h2::before {
+        content: '';
+        display: inline-block;
+        width: 4px;
+        height: 1.25rem;
+        background-color: var(--primary-color);
+        margin-right: 0.75rem;
+        border-radius: 2px;
+        }
+        h3 {
+        font-size: 1.1rem;
+        color: var(--text-main);
+        margin: 1.25rem 0 0.75rem 0;
+        font-weight: 600;
+        }
+        p {
+        margin-bottom: 0.75rem;
+        text-align: justify;
+        }
+        ul {
+        padding-left: 1.5rem;
+        margin-bottom: 1rem;
+        }
+        li {
+        margin-bottom: 0.5rem;
+        }
+        strong {
+        color: #000;
+        font-weight: 600;
+        }
+        .highlight-box {
+        background-color: #fff5f6;
+        border-left: 4px solid var(--primary-color);
+        padding: 1rem;
+        border-radius: 0 var(--radius-md) var(--radius-md) 0;
+        margin-bottom: 1.5rem;
+        }
+        .source-link {
+        display: inline-flex;
+        align-items: center;
+        font-size: 0.85rem;
+        color: var(--text-secondary);
+        background-color: #f0f2f5;
+        padding: 4px 10px;
+        border-radius: 4px;
+        margin-top: 0.5rem;
+        text-decoration: none;
+        transition: all 0.2s;
+        }
+        .source-link:hover {
+        background-color: #e1e4e8;
+        color: var(--primary-color);
+        text-decoration: none;
+        }
+        .source-link::before {
+        content: '🔗';
+        margin-right: 6px;
+        font-size: 0.9rem;
+        }
+        /* --- 数据卡片样式 (财务部分) --- */
+        .data-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
+        margin-top: 1rem;
+        }
+        .data-item {
+        background: #fafafa;
+        padding: 1rem;
+        border-radius: var(--radius-md);
+        border: 1px solid #eee;
+        }
+        .data-label {
+        font-size: 0.85rem;
+        color: var(--text-secondary);
+        margin-bottom: 0.25rem;
+        }
+        .data-value {
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: var(--text-main);
+        }
+        .data-value.down {
+        color: #28a745; /* 跌幅通常用绿色，但在股市中绿色代表跌，这里用中性色或根据语境，此处用绿色表示数值 */
+        }
+        /* --- 底部链接列表 --- */
+        .source-list-section {
+        background-color: transparent;
+        box-shadow: none;
+        border: none;
+        padding: 0;
+        }
+        .source-list-section h2 {
+        border-bottom: none;
+        margin-bottom: 1rem;
+        }
+        .source-list {
+        list-style: none;
+        padding: 0;
+        }
+        .source-list li {
+        background: var(--bg-card);
+        margin-bottom: 0.75rem;
+        padding: 1rem;
+        border-radius: var(--radius-md);
+        box-shadow: var(--shadow-sm);
+        border-left: 3px solid transparent;
+        transition: transform 0.2s, border-left-color 0.2s;
+        }
+        .source-list li:hover {
+        transform: translateY(-2px);
+        border-left-color: var(--primary-color);
+        }
+        .source-list a {
+        display: block;
+        font-weight: 500;
+        color: var(--text-main);
+        margin-bottom: 0.25rem;
+        }
+        .source-list .date-tag {
+        font-size: 0.75rem;
+        color: var(--text-light);
+        background: #eee;
+        padding: 2px 6px;
+        border-radius: 4px;
+        margin-right: 8px;
+        }
+        /* --- 响应式适配 --- */
+        @media (min-width: 768px) {
+        body {
+        font-size: 18px;
+        }
+        h1 {
+        font-size: 2rem;
+        }
+        h2 {
+        font-size: 1.5rem;
+        }
+        section {
+        padding: 2rem;
+        }
+        }
+        @media (max-width: 480px) {
+        h1 {
+        font-size: 1.25rem;
+        padding-right: 0;
+        margin-bottom: 1rem;
+        }
+        .quality-badge {
+        position: static;
+        display: inline-block;
+        margin-bottom: 0.5rem;
+        }
+        .header-content {
+        display: flex;
+        flex-direction: column;
+        }
+        }
+      </style>
+    </head>
+    <body>
+      <header>
+        <div class="container header-content">
+          <div class="quality-badge">质量标志：通过</div>
+            <h1>中国联通2026年8月战略动态与业务布局洞察分析报告</h1>
+              <p class="report-meta">报告生成日期：2026年08月03日</p>
+              </div>
+            </header>
+            <main class="container">
+              <!-- 核心洞察综述 -->
+              <section class="highlight-box">
+                <h2>核心洞察综述</h2>
+                  <p>2026年下半年，中国联通围绕<strong>“连接智能”战略转型</strong>，在技术架构（Token Net、智能体互联网）、行业应用（跨境产业服务、AI质检）、客户服务（暑期惠民、反诈科普）及合规管理（号卡业务规范）等维度多点发力，同时面临短期财务波动。核心表现为：以AI推理驱动的基础设施升级（Token Net架构）与智能体互联网（CubeMAP平台）构建技术壁垒，跨境产业服务（如轮胎行业）与客户服务活动（暑期课堂、银龄爱心课堂）强化品牌效能，联合行业规范号卡业务保障信息安全，机构评级仍看好其长期布局价值。</p>
+                  </section>
+                  <!-- 详细维度分析 -->
+                  <section>
+                    <h2>详细维度分析</h2>
+                      <h3>一、战略布局：AI驱动“连接智能”转型</h3>
+                        <p><strong>1. Token Net架构深化算力网络</strong><br>
+                          中国联通于2026年7月8日提出Token Net架构，推动互联网从“连接信息”向“连接智能”演进。架构分四层：算网资源（DCA/DCI/DCN一体贯通）、大模型服务（PD分离与分布式推理）、智能服务（智能体互联网六大能力）、Token运营（可运营的TDN分发网络），关键技术包括多要素路由调度、KV缓存三级分发等，目标实现商业模式从“卖流量”到“卖Token”的重构。</p>
+                          <a href="http://m.toutiao.com/group/7668310700879561235/" target="_blank" class="source-link">查看来源：Token Net架构提出</a>
+                            <p><strong>2. 智能体互联网技术落地</strong><br>
+                              7月28日，联通研究院在2026世界人工智能大会（WAIC）展示CubeMAP平台及协议框架，提出“连接智能”新范式，支撑人—智、智—智、智—算多维互联。平台验证三大场景：</p>
+                              <ul>
+                                <li>人—智互联：“电话号码即智能体接入点”；</li>
+                                  <li>智—智互联：多协议转换及跨机构统一纳管；</li>
+                                    <li>智—算互联：全链路调度体系。</li>
+                                    </ul>
+                                    <p>该平台具备协议转换、路由传输等核心能力，推动智能体业务网规模化应用。</p>
+                                      <a href="https://toutiao.com/group/7667490573976207908/" target="_blank" class="source-link">查看来源：WAIC展示智能体互联网成果</a>
+                                        <h3>二、业务拓展：行业赋能与合规管理</h3>
+                                          <p><strong>1. 跨境产业服务突破</strong><br>
+                                            针对山东轮胎产业（占全国出口60%以上），中国联通通过AI质检与跨境数智服务双轮驱动转型：</p>
+                                            <ul>
+                                              <li>自研X光AI质检系统在玲珑轮胎等企业应用，部分产线实现免人工质检，效率显著提升；</li>
+                                                <li>为福麦斯柬埔寨工厂、浦林成山马来西亚工厂提供智能化服务，近两年中标6个行业项目，形成品牌效应。</li>
+                                                </ul>
+                                                <a href="https://sdxw.iqilu.com/w/article/YS0yMS0xNzMyMTYyNA.html" target="_blank" class="source-link">查看来源：助力山东轮胎产业升级</a>
+                                                  <p><strong>2. 规范号卡业务安全管理</strong><br>
+                                                    7月31日，中国电信、中国移动、中国联通联合公告，自8月1日起规范互联网渠道号卡订购业务：用户仅能通过运营商官方App或官网办理，第三方渠道停止服务。此举旨在应对虚假售卡、窃取用户敏感数据等问题，保障信息安全。</p>
+                                                    <a href="http://m.toutiao.com/group/7668655146167845391/" target="_blank" class="source-link">查看来源：规范号卡订购业务公告</a>
+                                                      <h3>三、客户服务：惠民活动与公益实践</h3>
+                                                        <p><strong>1. 暑期客户服务活动</strong><br>
+                                                          7月30日，中国联通“暑期课堂”在山东全面开展，落地百余场线下活动：</p>
+                                                          <ul>
+                                                            <li>反诈科普：聚焦务工、青少年群体，通过案例拆解筑牢安全防线；</li>
+                                                              <li>实用技巧分享：“秒懂联通”直播讲解业务办理、宽带养护等；</li>
+                                                                <li>多元公益：为听障人士提供AR字幕眼镜、为环卫工送清凉、企业定制通信方案。</li>
+                                                                </ul>
+                                                                <a href="https://sdxw.iqilu.com/w/article/YS0yMS0xNzMyNzQ2MQ.html" target="_blank" class="source-link">查看来源：暑期课堂活动</a>
+                                                                  <p><strong>2. 银龄助老服务升级</strong><br>
+                                                                    7月30日，青岛市分公司台东营业厅开展“银龄爱心课堂”，覆盖养老理财、虚假推销等骗局科普，一对一教学智能手机使用（支付、挂号等），累计服务超3000人次，成功拦截电信诈骗14起，相关模式入选山东省科技助老示范项目库。</p>
+                                                                    <a href="https://sdxw.iqilu.com/w/article/YS0yMS0xNzMyNzQ0Nw.html" target="_blank" class="source-link">查看来源：银龄爱心课堂</a>
+                                                                      <h3>四、财务与市场表现</h3>
+                                                                        <p>7月31日数据显示，中国联通当日股价微跌0.45%，主力资金净卖出4128.27万元（占比4.62%），游资与散户分别净流入2353.91万和1774.37万元；融资净偿还314.01万元，融券余额1255.53万元。一季报显示营收1028.24亿元（同比降0.51%），归母净利润21.37亿元（同比降17.99%）。近90日获6家机构评级，其中买入4家、增持2家，目标均价6.7元。</p>
+                                                                          <div class="data-grid">
+                                                                            <div class="data-item">
+                                                                              <div class="data-label">当日股价涨跌</div>
+                                                                                <div class="data-value down">-0.45%</div>
+                                                                                </div>
+                                                                                <div class="data-item">
+                                                                                  <div class="data-label">主力资金净卖出</div>
+                                                                                    <div class="data-value">4128.27万元</div>
+                                                                                    </div>
+                                                                                    <div class="data-item">
+                                                                                      <div class="data-label">一季度营收</div>
+                                                                                        <div class="data-value">1028.24亿元</div>
+                                                                                        </div>
+                                                                                        <div class="data-item">
+                                                                                          <div class="data-label">机构评级</div>
+                                                                                            <div class="data-value">买入4家/增持2家</div>
+                                                                                            </div>
+                                                                                          </div>
+                                                                                          <a href="http://m.toutiao.com/group/7668855584666223130/" target="_blank" class="source-link">查看来源：股价与财务数据</a>
+                                                                                            <h3>五、老旧信息（距2026-08-03超60天）</h3>
+                                                                                              <p><strong>1. 服务理念践行与战略基础</strong><br>
+                                                                                                2026年1月18日，三位服务标兵以“用心为客户”理念开展服务：专员指导老人查流量、客服帮助视障用户缴费、热线代表排查呼叫转移故障，体现服务温度。</p>
+                                                                                                <a href="http://m.toutiao.com/group/7667797332234158635/" target="_blank" class="source-link">查看来源：服务标兵事迹</a>
+                                                                                                  <p><strong>2. 历史战略与业绩基础</strong></p>
+                                                                                                    <ul>
+                                                                                                      <li>2026年7月8日Token Net架构提出（非老旧，距8月3日不足60天，可保留）；</li>
+                                                                                                        <li>2022年11月定位“数字信息基础设施运营服务国家队”，主攻“五大赛道”，2022年前三季度营收2640亿元（同比增8%），净利润156亿元（同比增20.3%）；产业互联网收入531.5亿元（大增29.9%）；</li>
+                                                                                                          <li>202
