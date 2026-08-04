@@ -1,0 +1,403 @@
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>国电南瑞（600406）2026年08月04日分析洞察报告</title>
+      <style>
+        /* --- 全局变量与重置 --- */
+        :root {
+        --primary-color: #1a3c5e; /* 深蓝：专业稳重 */
+        --accent-color: #0066cc;  /* 亮蓝：链接与重点 */
+        --bg-color: #f4f6f9;      /* 浅灰背景 */
+        --card-bg: #ffffff;
+        --text-main: #333333;
+        --text-secondary: #666666;
+        --stock-up: #d32f2f;      /* 涨 - 红色 */
+        --stock-down: #2e7d32;    /* 跌 - 绿色 */
+        --border-radius: 12px;
+        --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        --spacing-unit: 1rem;
+        }
+        * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        }
+        body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        background-color: var(--bg-color);
+        color: var(--text-main);
+        line-height: 1.6;
+        font-size: 16px;
+        -webkit-font-smoothing: antialiased;
+        }
+        a {
+        color: var(--accent-color);
+        text-decoration: none;
+        transition: all 0.2s ease;
+        }
+        a:hover {
+        color: #004499;
+        text-decoration: underline;
+        }
+        /* --- 布局容器 --- */
+        .container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 0 var(--spacing-unit);
+        }
+        /* --- 头部 --- */
+        header {
+        background-color: var(--primary-color);
+        color: white;
+        padding: 1.5rem 0;
+        margin-bottom: 2rem;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        .header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 10px;
+        }
+        .header-title h1 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 0.25rem;
+        }
+        .header-title p {
+        font-size: 0.9rem;
+        opacity: 0.9;
+        }
+        .quality-badge {
+        background-color: #28a745; /* 绿色通过标志 */
+        color: white;
+        padding: 6px 12px;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        font-weight: bold;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        white-space: nowrap;
+        }
+        /* --- 核心洞察 Hero 区域 --- */
+        .hero-section {
+        background: var(--card-bg);
+        border-radius: var(--border-radius);
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+        box-shadow: var(--shadow);
+        border-left: 5px solid var(--accent-color);
+        }
+        .stock-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        margin-bottom: 1rem;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 1rem;
+        }
+        .stock-price-block {
+        display: flex;
+        align-items: baseline;
+        gap: 1rem;
+        }
+        .price-large {
+        font-size: 2.5rem;
+        font-weight: 800;
+        color: var(--text-main);
+        }
+        .price-change {
+        font-size: 1.25rem;
+        font-weight: 600;
+        padding: 4px 8px;
+        border-radius: 4px;
+        }
+        .up { color: var(--stock-up); }
+        .down { color: var(--stock-down); }
+        .core-insight h2 {
+        font-size: 1.1rem;
+        color: var(--primary-color);
+        margin-bottom: 0.5rem;
+        display: flex;
+        align-items: center;
+        }
+        .core-insight h2::before {
+        content: '';
+        display: inline-block;
+        width: 4px;
+        height: 16px;
+        background: var(--accent-color);
+        margin-right: 8px;
+        border-radius: 2px;
+        }
+        .core-insight p {
+        color: var(--text-secondary);
+        text-align: justify;
+        }
+        /* --- 详细维度网格 --- */
+        .analysis-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+        }
+        @media (min-width: 768px) {
+        .analysis-grid {
+        grid-template-columns: repeat(2, 1fr);
+        }
+        /* 让“风险提示”在PC端如果空间允许跨两列，或者保持正常 */
+        .risk-card {
+        grid-column: span 1;
+        }
+        }
+        .card {
+        background: var(--card-bg);
+        border-radius: var(--border-radius);
+        padding: 1.5rem;
+        box-shadow: var(--shadow);
+        transition: transform 0.2s;
+        }
+        .card:hover {
+        transform: translateY(-2px);
+        }
+        .card-title {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid #f0f0f0;
+        }
+        .card-content ul {
+        list-style: none;
+        }
+        .card-content li {
+        margin-bottom: 1rem;
+        position: relative;
+        padding-left: 1.2rem;
+        }
+        .card-content li::before {
+        content: "•";
+        color: var(--accent-color);
+        font-weight: bold;
+        position: absolute;
+        left: 0;
+        top: 0;
+        }
+        .card-content strong {
+        color: var(--text-main);
+        font-weight: 600;
+        }
+        /* 风险卡片特殊样式 */
+        .risk-card {
+        border-top: 4px solid var(--stock-up);
+        }
+        .risk-card .card-title {
+        color: var(--stock-up);
+        }
+        /* --- 总结与展望 --- */
+        .summary-section {
+        background: linear-gradient(135deg, #e3f2fd 0%, #ffffff 100%);
+        border: 1px solid #bbdefb;
+        border-radius: var(--border-radius);
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+        }
+        .summary-title {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+        text-align: center;
+        }
+        .summary-text {
+        text-align: justify;
+        color: var(--text-main);
+        }
+        /* --- 资讯来源列表 --- */
+        .sources-section {
+        background: #fff;
+        padding: 1.5rem;
+        border-radius: var(--border-radius);
+        margin-bottom: 3rem;
+        }
+        .sources-title {
+        font-size: 1.1rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        color: var(--text-secondary);
+        }
+        .sources-list {
+        padding-left: 1.5rem;
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+        }
+        .sources-list li {
+        margin-bottom: 0.5rem;
+        }
+        /* --- 辅助类 --- */
+        .source-link {
+        font-size: 0.8rem;
+        color: var(--accent-color);
+        margin-left: 5px;
+        white-space: nowrap;
+        display: inline-block;
+        vertical-align: middle;
+        }
+        .tag {
+        display: inline-block;
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-size: 0.8rem;
+        margin-right: 5px;
+        background-color: #eee;
+        color: #555;
+        }
+        /* 移动端优化 */
+        @media (max-width: 480px) {
+        .stock-header {
+        flex-direction: column;
+        align-items: flex-start;
+        }
+        .price-large {
+        font-size: 2rem;
+        }
+        .header-content {
+        flex-direction: column;
+        align-items: flex-start;
+        }
+        .quality-badge {
+        align-self: flex-end;
+        margin-top: -30px; /* Pull up to overlap slightly if desired, or just sit in corner */
+        }
+        }
+      </style>
+    </head>
+    <body>
+      <header>
+        <div class="container header-content">
+          <div class="header-title">
+            <h1>国电南瑞（600406）</h1>
+              <p>2026年08月04日分析洞察报告</p>
+              </div>
+              <div class="quality-badge">质量标志：通过</div>
+              </div>
+            </header>
+            <main class="container">
+              <!-- 核心洞察综述 -->
+              <section class="hero-section">
+                <div class="stock-header">
+                  <div class="stock-price-block">
+                    <span class="price-large">25.07</span>
+                      <span class="price-change up">+2.96% ▲</span>
+                      </div>
+                      <div style="text-align: right; color: var(--text-secondary); font-size: 0.9rem;">
+                        <span>收于 25.07元</span><br>
+                          <span>成交额: 未明确披露</span>
+                          </div>
+                        </div>
+                        <div class="core-insight">
+                          <h2>核心洞察综述</h2>
+                            <p>
+                              2026年08月04日，国电南瑞（600406）股价收于25.07元，涨2.96%，当日成交额未明确披露，但近期受电网投资政策利好及“十五五”电网建设规划推动，公司基本面稳健，2025年营收、净利润双增长，2026年一季度业绩延续扩张趋势，新签订单超758亿元。短期股价在23.3-24.5元区间震荡，面临资金面分歧与订单转化节奏考验；长期受益于能源转型与电网智能化升级，机构普遍看好其行业龙头地位。
+                            </p>
+                          </div>
+                        </section>
+                        <!-- 详细维度分析 -->
+                        <section class="analysis-grid">
+                          <!-- 维度一 -->
+                          <article class="card">
+                            <h3 class="card-title">一、股价走势与交易动态</h3>
+                              <div class="card-content">
+                                <ul>
+                                  <li>
+                                    <strong>近期表现</strong>：2026年08月04日当日股价收报25.07元（涨2.96%），较前一日（24.35元）小幅反弹；此前8月3日收出缩量十字星（微涨0.12%），成交额14.92亿元，较前期高点明显萎缩，短期支撑位23.9元，压力位24.5元
+                                      <a href="http://m.toutiao.com/group/7669595284292272646/" target="_blank" class="source-link" title="点击查看来源">[来源链接]</a>。
+                                      </li>
+                                      <li>
+                                        <strong>中期波动</strong>：2026年03月30日曾跌至26.63元（跌1.84%），受主力净流出、均线空头排列及行业ETF重仓股普跌影响，属阶段性调整
+                                          <a href="http://m.toutiao.com/group/7622960722745524746/" target="_blank" class="source-link">[来源链接]</a>；7月31日与8月3日股价均为24.35元，反映市场短期多空博弈激烈
+                                            <a href="https://wap.stockstar.com/detail/RB2026073100034659/" target="_blank" class="source-link">[来源链接]</a>。
+                                            </li>
+                                          </ul>
+                                        </div>
+                                      </article>
+                                      <!-- 维度二 -->
+                                      <article class="card">
+                                        <h3 class="card-title">二、公司基本面与业务布局</h3>
+                                          <div class="card-content">
+                                            <ul>
+                                              <li>
+                                                <strong>核心业务</strong>：主营电网智能、数能融合、能源低碳、轨道交通及工业自动化设备，聚焦六大底座技术，拥有487项授权专利，32项成果达国际领先水平
+                                                  <a href="https://xueqiu.com/S/sh600406" target="_blank" class="source-link">[来源链接]</a>。作为国网核心上市平台，具备调度、控制、保护、数字化全业务能力，系统完整性优势显著
+                                                    <a href="https://toutiao.com/group/7669873153476264474/" target="_blank" class="source-link">[来源链接]</a>。
+                                                    </li>
+                                                    <li>
+                                                      <strong>财务数据</strong>：2025年营收662.29亿元（同比+14.53%），净利润88.58亿元（同比+8.79%）；2026年一季度营收95.64亿元（同比+7.52%），净利润7.45亿元（同比+7.32%），新签订单758.68亿元（同比+14.40%）
+                                                        <a href="http://m.toutiao.com/group/7669595284292272646/" target="_blank" class="source-link">[来源链接]</a>。
+                                                        </li>
+                                                        <li>
+                                                          <strong>订单与业务结构</strong>：特高压中标份额近半，在手订单超600亿元，储能、数字化新业务占比提升是关键增长点
+                                                            <a href="https://toutiao.com/group/7669905176953668147/" target="_blank" class="source-link">[来源链接]</a>。
+                                                            </li>
+                                                          </ul>
+                                                        </div>
+                                                      </article>
+                                                      <!-- 维度三 -->
+                                                      <article class="card">
+                                                        <h3 class="card-title">三、机构持仓与资金流向</h3>
+                                                          <div class="card-content">
+                                                            <ul>
+                                                              <li>
+                                                                <strong>机构动向</strong>：国泰恒生A股电网设备ETF（561380）四季度增持185.69万股，持股233.64万股，浮盈超308万元，该基金近一年收益率113.1%
+                                                                  <a href="https://m.sohu.com/a/990286846_122066678/" target="_blank" class="source-link">[来源链接]</a>。
+                                                                  </li>
+                                                                  <li>
+                                                                    <strong>短期资金分歧</strong>：8月4日相关资讯显示，上周主力净流入1.44亿元，散户净流出2.49亿元，融资余额处高位，市场对“十五五”电网投资利好的预期已部分反映在股价中
+                                                                      <a href="https://toutiao.com/group/7669905176953668147/" target="_blank" class="source-link">[来源链接]</a>。
+                                                                      </li>
+                                                                    </ul>
+                                                                  </div>
+                                                                </article>
+                                                                <!-- 维度四 -->
+                                                                <article class="card">
+                                                                  <h3 class="card-title">四、行业与政策环境</h3>
+                                                                    <div class="card-content">
+                                                                      <ul>
+                                                                        <li>
+                                                                          <strong>行业机遇</strong>：“十五五”国家电网投资或达5万亿元，能源转型背景下电网自动化及新能源业务需求旺盛，公司在电网设备领域技术壁垒高，行业地位难以替代
+                                                                            <a href="https://m.toutiao.com/group/7669905176953668147/" target="_blank" class="source-link">[来源链接]</a>。
+                                                                            </li>
+                                                                            <li>
+                                                                              <strong>政策支持</strong>：东莞证券建议关注电网出海与算力配电机遇，公司在能源低碳领域布局契合政策导向
+                                                                                <a href="https://m.sohu.com/a/990286846_122066678/" target="_blank" class="source-link">[来源链接]</a>。
+                                                                                </li>
+                                                                              </ul>
+                                                                            </div>
+                                                                          </article>
+                                                                          <!-- 维度五 -->
+                                                                          <article class="card risk-card">
+                                                                            <h3 class="card-title">五、风险提示</h3>
+                                                                              <div class="card-content">
+                                                                                <ul>
+                                                                                  <li>
+                                                                                    <strong>短期风险</strong>：股价受国网招标节奏影响，订单转化偏慢，8月3日缩量十字星显示市场多空平衡，需警惕量能不足引发的回调
+                                                                                      <a href="http://m.toutiao.com/group/7669595284292272646/" target="_blank" class="source-link">[来源链接]</a>。
+                                                                                      </li>
+                                                                                      <li>
+                                                                                        <strong>市场分歧</strong>：投资者对利好反应分化，短线资金或借机兑现，需基于价值投资逻辑操作，避免追高
+                                                                                          <a href="https://mguba.eastmoney.com/mguba/list/600406,990389459/" target="_blank" class="source-link">[来源链接]</a>。
+                                                                                          </li>
+                                                                                        </ul>
+                                                                                      </div>
+                                                                                    </article>
+                                                                                  </section>
+                                                                                  <!-- 总结与展望 -->
+                                                                                  <section class="summary-section">
+                                                                                    <h3 class="summary-title">总结与展望</h3>
+                                                                                      <div class="summary-text">
+                                                                                        <p>
+                                                                                          国电南瑞作为能源电力领域龙头企业，基本面稳健、订单充裕、技术壁垒深厚，长期受益于“
