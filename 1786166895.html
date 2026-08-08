@@ -1,0 +1,340 @@
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>国电南瑞（600406）2026年8月8日市场分析报告</title>
+      <style>
+        /* CSS 变量定义 - 颜色方案 */
+        :root {
+        --primary-color: #0056b3; /* 专业蓝 */
+        --secondary-color: #004494;
+        --accent-color: #e3f2fd;
+        --text-main: #333333;
+        --text-secondary: #666666;
+        --bg-body: #f4f6f9;
+        --bg-card: #ffffff;
+        --highlight-green: #28a745; /* 上涨/利好 */
+        --highlight-red: #dc3545;   /* 下跌/风险 */
+        --highlight-orange: #fd7e14; /* 警示 */
+        --border-radius: 8px;
+        --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+        /* 全局重置与基础样式 */
+        * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        }
+        body {
+        font-family: var(--font-family);
+        background-color: var(--bg-body);
+        color: var(--text-main);
+        line-height: 1.6;
+        font-size: 16px;
+        -webkit-font-smoothing: antialiased;
+        }
+        a {
+        color: var(--primary-color);
+        text-decoration: none;
+        transition: color 0.2s;
+        }
+        a:hover {
+        color: var(--secondary-color);
+        text-decoration: underline;
+        }
+        /* 布局容器 */
+        .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        }
+        /* 头部样式 */
+        header {
+        background-color: var(--bg-card);
+        padding: 24px;
+        border-radius: var(--border-radius);
+        box-shadow: var(--shadow);
+        margin-bottom: 24px;
+        position: relative;
+        border-top: 4px solid var(--primary-color);
+        }
+        .header-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 16px;
+        }
+        .report-meta {
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+        }
+        /* 质量标志 */
+        .quality-badge {
+        background-color: var(--highlight-green);
+        color: white;
+        padding: 6px 12px;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        font-weight: bold;
+        box-shadow: 0 2px 4px rgba(40, 167, 69, 0.3);
+        white-space: nowrap;
+        }
+        h1 {
+        font-size: 1.75rem;
+        color: var(--primary-color);
+        margin-bottom: 8px;
+        line-height: 1.3;
+        }
+        /* 卡片通用样式 */
+        .card {
+        background-color: var(--bg-card);
+        border-radius: var(--border-radius);
+        padding: 24px;
+        margin-bottom: 20px;
+        box-shadow: var(--shadow);
+        }
+        h2 {
+        font-size: 1.35rem;
+        color: var(--text-main);
+        border-left: 5px solid var(--primary-color);
+        padding-left: 12px;
+        margin-bottom: 20px;
+        margin-top: 0;
+        }
+        h3 {
+        font-size: 1.15rem;
+        color: var(--secondary-color);
+        margin-top: 20px;
+        margin-bottom: 10px;
+        font-weight: 600;
+        }
+        p {
+        margin-bottom: 12px;
+        color: var(--text-main);
+        text-align: justify;
+        }
+        ul {
+        padding-left: 20px;
+        margin-bottom: 12px;
+        }
+        li {
+        margin-bottom: 8px;
+        }
+        /* 重点内容高亮 */
+        .highlight {
+        background-color: var(--accent-color);
+        padding: 2px 4px;
+        border-radius: 4px;
+        font-weight: 500;
+        }
+        .text-up { color: var(--highlight-green); font-weight: bold; }
+        .text-down { color: var(--highlight-red); font-weight: bold; }
+        .text-warning { color: var(--highlight-orange); font-weight: bold; }
+        /* 来源链接样式 */
+        .source-link {
+        display: inline-block;
+        font-size: 0.85rem;
+        color: var(--text-secondary);
+        background: #f0f0f0;
+        padding: 2px 8px;
+        border-radius: 4px;
+        margin-top: 4px;
+        border: 1px solid #e0e0e0;
+        }
+        .source-link:hover {
+        background: #e0e0e0;
+        color: var(--primary-color);
+        text-decoration: none;
+        }
+        /* 核心洞察区域特殊样式 */
+        .summary-box {
+        background: linear-gradient(to bottom right, #fff, #f8fbff);
+        border: 1px solid #dcebf7;
+        }
+        /* 风险提示区域 */
+        .risk-section {
+        border-left: 5px solid var(--highlight-red);
+        }
+        .risk-section h2 {
+        border-left: none;
+        color: var(--highlight-red);
+        }
+        /* 总结区域 */
+        .conclusion-box {
+        background-color: #fff8e1; /* 淡黄色背景强调总结 */
+        border: 1px solid #ffe082;
+        }
+        .conclusion-box h2 {
+        border-left-color: var(--highlight-orange);
+        }
+        /* 资讯列表 */
+        .reference-list {
+        counter-reset: ref-counter;
+        }
+        .reference-list li {
+        position: relative;
+        padding-left: 30px;
+        margin-bottom: 16px;
+        list-style: none;
+        }
+        .reference-list li::before {
+        counter-increment: ref-counter;
+        content: counter(ref-counter);
+        position: absolute;
+        left: 0;
+        top: 2px;
+        width: 22px;
+        height: 22px;
+        background-color: var(--primary-color);
+        color: white;
+        border-radius: 50%;
+        text-align: center;
+        line-height: 22px;
+        font-size: 0.8rem;
+        font-weight: bold;
+        }
+        .reference-list a {
+        font-weight: 500;
+        }
+        /* 页脚 */
+        footer {
+        text-align: center;
+        padding: 30px 0;
+        color: var(--text-secondary);
+        font-size: 0.9rem;
+        border-top: 1px solid #e0e0e0;
+        margin-top: 40px;
+        }
+        /* 响应式适配 */
+        @media (max-width: 600px) {
+        .container {
+        padding: 12px;
+        }
+        h1 {
+        font-size: 1.4rem;
+        }
+        h2 {
+        font-size: 1.2rem;
+        }
+        .card {
+        padding: 16px;
+        }
+        .header-top {
+        flex-direction: column;
+        gap: 10px;
+        }
+        .quality-badge {
+        align-self: flex-start;
+        }
+        }
+      </style>
+    </head>
+    <body>
+      <div class="container">
+        <!-- 头部区域 -->
+        <header>
+          <div class="header-top">
+            <div class="report-meta">
+              报告生成日期：2026年08月08日
+            </div>
+            <!-- 质量标志：显眼位置 -->
+            <div class="quality-badge">质量标志：通过</div>
+            </div>
+            <h1>国电南瑞（600406）2026年8月8日市场分析报告</h1>
+            </header>
+            <!-- 核心洞察综述 -->
+            <section class="card summary-box">
+              <h2>核心洞察综述</h2>
+                <p>
+                  截至2026年8月8日，国电南瑞股价收于<span class="text-up">24.12元/股</span>，处于短期震荡磨底阶段。核心看点包括：<span class="highlight">动态PE约23倍，机构目标价26-34元，估值修复基础明确</span>；<span class="highlight">基本面稳健</span>，2025年营收662.29亿元（+14.53%）、归母净利82.79亿元（+8.79%），2026年一季度延续增长，新签订单758.68亿元（+14.40%）；<span class="text-down">资金面短期承压</span>，主力近5日净流出超1.5亿元，散户小幅承接，融资盘平稳；<span class="text-warning">技术面支撑+阻力明确</span>，23.5元为强支撑，25元为压力位，短期或在23.5-25元箱体震荡。中长期受益于“十五五”电网投资4万亿规划，行业逻辑未变，但需关注短期资金流向与业绩兑现节奏。
+                </p>
+              </section>
+              <!-- 详细维度分析 -->
+              <section class="card">
+                <h2>详细维度分析</h2>
+                  <h3>一、股价与估值表现</h3>
+                    <ul>
+                      <li>
+                        <strong>近期股价动态</strong>：2026年8月7日收盘24.12元，微跌0.21%，成交额12.60亿元，动态市盈率67.15倍；8月3日收出缩量十字星（收盘价24.35元），短期多空平衡，处于区间震荡磨底阶段。
+                          <br><a href="https://www.stcn.com/quotes/index/sh600406.html" target="_blank" class="source-link">来源链接：证券时报网 (2026.08.07)</a>
+                        </li>
+                        <li>
+                          <strong>机构估值与目标价</strong>：当前动态PE 23倍，机构目标价区间26-34元，较当前股价存在8%-41%上行空间，估值低于历史中枢。
+                            <br><a href="https://toutiao.com/group/7671512682645864962/" target="_blank" class="source-link">来源链接：今日头条 (2026.08.08)</a>
+                          </li>
+                        </ul>
+                        <h3>二、资金面与机构动向</h3>
+                          <ul>
+                            <li>
+                              <strong>主力资金</strong>：2026年8月7日主力资金净流出5199.16万元（占比4.12%），游资净流入2692.6万元，散户净流入2506.56万元，短线资金分歧加大；近5日主力净流出超1.5亿元，融资盘平稳无大幅抛压。
+                                <br><a href="https://wap.stockstar.com/detail/RB2026080700035695" target="_blank" class="source-link">来源链接：证券之星 (2026.08.07)</a>
+                              </li>
+                              <li>
+                                <strong>北向资金</strong>：二季度末持股7.01亿股，较上季减持1.34%，反映外资短期谨慎。
+                                  <br><a href="https://www.stcn.com/quotes/index/sh600406.html" target="_blank" class="source-link">来源链接：证券时报网 (2026.08.07)</a>
+                                </li>
+                                <li>
+                                  <strong>ETF持仓分化</strong>：国泰恒生A股电网设备ETF为第二大重仓股（持股233.64万股），2026年二季度增持185.69万股，浮盈超300万元，基金今年收益率25.74%（近一年113.1%）；但国泰ETF（561380）连续6日净赎回，前十大权重股中国电南瑞在8月7日跌0.12%。
+                                    <br><a href="https://www.sohu.com/a/990286846_122066678/" target="_blank" class="source-link">来源链接：搜狐网 (2026.02.26)</a>
+                                    <br><a href="http://m.163.com/dy/article/L3NTH5NB05568W0A.html" target="_blank" class="source-link">来源链接：网易新闻 (2026.08.07)</a>
+                                  </li>
+                                </ul>
+                                <h3>三、基本面与业务结构</h3>
+                                  <ul>
+                                    <li>
+                                      <strong>业绩表现</strong>：2025年营收662.29亿元（+14.53%），归母净利82.79亿元（+8.79%）；2026年一季度营收95.64亿元（+7.52%），归母净利7.45亿元（+7.32%），新签订单758.68亿元（+14.40%），基本面稳健。
+                                        <br><a href="https://toutiao.com/group/7669595284292272646/" target="_blank" class="source-link">来源链接：今日头条 (2026.08.03)</a>
+                                      </li>
+                                      <li>
+                                        <strong>业务布局</strong>：电网智能业务占比50.43%，低碳能源、数能融合等新兴领域为增长动力；2025年拥有授权专利487项，国际领先成果32项，科研能力突出。
+                                          <br><a href="https://xueqiu.com/S/sh600406" target="_blank" class="source-link">来源链接：雪球 (2024.08.07)</a>
+                                          <br><a href="https://www.sohu.com/a/990286846_122066678/" target="_blank" class="source-link">来源链接：搜狐网 (2026.02.26)</a>
+                                        </li>
+                                        <li>
+                                          <strong>重大事件</strong>：7月20日董事长提议回购股份，7月28日发生大宗交易（1378.28万股，3.25亿元），8月1日公告职工董事辞职，半年报（8月27日预约披露）及2025年权益分派已实施。
+                                            <br><a href="https://quote.eastmoney.com/kcb/600406.html" target="_blank" class="source-link">来源链接：东方财富 (2026.08.01)</a>
+                                          </li>
+                                        </ul>
+                                        <h3>四、技术面与走势预判</h3>
+                                          <ul>
+                                            <li>
+                                              <strong>短期</strong>：股价24.12元，短期均线走弱，支撑23.5元、压力25元，处于上涨后正常休整；8月3日缩量十字星，多空平衡，观望情绪浓厚。
+                                                <br><a href="https://www.stcn.com/quotes/index/sh600406.html" target="_blank" class="source-link">来源链接：证券时报网 (2026.08.07)</a>
+                                                <br><a href="https://toutiao.com/group/7669595284292272646/" target="_blank" class="source-link">来源链接：今日头条 (2026.08.03)</a>
+                                              </li>
+                                              <li>
+                                                <strong>中长期</strong>：“十五五”电网投资4万亿明确，特高压需求复苏，公司作为行业龙头订单充足，下行有基本面支撑，若资金回流或突破25元压力位。
+                                                  <br><a href="https://toutiao.com/group/7669595284292272646/" target="_blank" class="source-link">来源链接：今日头条 (2026.08.03)</a>
+                                                </li>
+                                              </ul>
+                                              <h3>五、风险提示（需关注）</h3>
+                                                <ul>
+                                                  <li>
+                                                    <strong>短期资金面</strong>：主力净流出、散户承接有限，若跌破23.5元强支撑，或下探23元。
+                                                      <br><a href="https://toutiao.com/group/7671512682645864962/" target="_blank" class="source-link">来源链接：今日头条 (2026.08.08)</a>
+                                                    </li>
+                                                    <li>
+                                                      <strong>行业波动</strong>：新能源消纳政策及特高压招标进度影响短期业绩兑现。
+                                                        <br><a href="https://www.stcn.com/quotes/index/sh600406.html" target="_blank" class="source-link">来源链接：证券时报网 (2026.08.07)</a>
+                                                      </li>
+                                                    </ul>
+                                                  </section>
+                                                  <!-- 总结与展望 -->
+                                                  <section class="card conclusion-box">
+                                                    <h2>总结与展望</h2>
+                                                      <p>
+                                                        国电南瑞当前处于“短期震荡磨底、中长期趋势向上”的阶段：<span class="highlight">短期需关注23.5元支撑位与量能变化，若突破25元压力位可适度加仓；中长期依托电网投资政策红利，业绩确定性较强</span>。投资者建议采取“短线区间操作（23.5-25元）+中线逢低布局（仓位不超五成）”策略，严格执行止损纪律。
+                                                        <br><a href="https://toutiao.com/group/7671512682645864962/" target="_blank" class="source-link">来源链接：今日头条 (2026.08.08)</a>
+                                                      </p>
+                                                    </section>
+                                                    <!-- 资讯标题及链接列表 -->
+                                                    <section class="card">
+                                                      <h2>所有资讯标题及链接列表</h2>
+                                                        <p style="font-size: 0.9rem; color: #666; margin-bottom: 15px;">按发布日期由近到远</p>
+                                                          <ul class="reference-list">
+                                                            <li>
+                                                              国电南瑞动态PE 23倍，机构目标价26-34元，当前具备估值修复基础
+                                                              <br><a href="https
