@@ -1,0 +1,388 @@
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>国电南瑞（600406）2026年8月市场动态与投资分析报告</title>
+      <style>
+        /* --- CSS Reset & Variables --- */
+        :root {
+        --primary-color: #0056b3; /* 专业蓝 */
+        --secondary-color: #00a8e8; /* 亮蓝 */
+        --accent-color: #ff9f1c; /* 重点色 */
+        --bg-color: #f4f7f9;
+        --card-bg: #ffffff;
+        --text-main: #333333;
+        --text-light: #666666;
+        --border-color: #e1e4e8;
+        --success-color: #28a745;
+        --danger-color: #dc3545;
+        --spacing-unit: 1rem;
+        --radius: 8px;
+        --shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+        * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        }
+        html {
+        scroll-behavior: smooth;
+        font-size: 16px;
+        }
+        body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        line-height: 1.6;
+        color: var(--text-main);
+        background-color: var(--bg-color);
+        }
+        a {
+        color: var(--primary-color);
+        text-decoration: none;
+        transition: color 0.2s;
+        }
+        a:hover {
+        color: var(--secondary-color);
+        text-decoration: underline;
+        }
+        /* --- Header & Quality Badge --- */
+        header {
+        background: linear-gradient(135deg, var(--primary-color), #003d80);
+        color: white;
+        padding: 2rem 1rem;
+        position: relative;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .header-content {
+        max-width: 800px;
+        margin: 0 auto;
+        position: relative;
+        }
+        h1 {
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+        font-weight: 700;
+        padding-right: 120px; /* Space for badge */
+        }
+        .report-date {
+        font-size: 0.9rem;
+        opacity: 0.9;
+        }
+        .quality-badge {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: var(--success-color);
+        color: white;
+        padding: 0.25rem 0.75rem;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: bold;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        white-space: nowrap;
+        z-index: 10;
+        }
+        /* --- Navigation --- */
+        nav {
+        background: var(--card-bg);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        overflow-x: auto;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+        }
+        nav ul {
+        list-style: none;
+        display: flex;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 0 1rem;
+        }
+        nav li {
+        margin-right: 1.5rem;
+        }
+        nav a {
+        display: block;
+        padding: 1rem 0;
+        color: var(--text-light);
+        font-weight: 500;
+        border-bottom: 3px solid transparent;
+        text-decoration: none;
+        }
+        nav a:hover, nav a.active {
+        color: var(--primary-color);
+        border-bottom-color: var(--primary-color);
+        }
+        /* --- Main Layout --- */
+        main {
+        max-width: 800px;
+        margin: 1.5rem auto;
+        padding: 0 1rem;
+        }
+        section {
+        margin-bottom: 2rem;
+        }
+        .section-title {
+        font-size: 1.25rem;
+        color: var(--primary-color);
+        border-left: 4px solid var(--secondary-color);
+        padding-left: 0.75rem;
+        margin-bottom: 1rem;
+        background: #fff;
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+        border-radius: 0 var(--radius) var(--radius) 0;
+        box-shadow: var(--shadow);
+        }
+        /* --- Cards & Content --- */
+        .card {
+        background: var(--card-bg);
+        border-radius: var(--radius);
+        padding: 1.5rem;
+        margin-bottom: 1rem;
+        box-shadow: var(--shadow);
+        border: 1px solid var(--border-color);
+        }
+        .highlight-box {
+        background-color: rgba(0, 86, 179, 0.05);
+        border-left: 4px solid var(--primary-color);
+        padding: 1rem;
+        margin-bottom: 1rem;
+        border-radius: 0 var(--radius) var(--radius) 0;
+        }
+        .data-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
+        margin-bottom: 1rem;
+        }
+        .data-item {
+        background: #f8f9fa;
+        padding: 1rem;
+        border-radius: var(--radius);
+        text-align: center;
+        }
+        .data-label {
+        font-size: 0.85rem;
+        color: var(--text-light);
+        margin-bottom: 0.25rem;
+        }
+        .data-value {
+        font-size: 1.1rem;
+        font-weight: bold;
+        color: var(--primary-color);
+        }
+        .data-value.positive { color: var(--danger-color); /* A股红涨 */ }
+        .data-value.negative { color: var(--success-color); /* A股绿跌 */ }
+        h3 {
+        font-size: 1.1rem;
+        margin-bottom: 0.75rem;
+        color: #444;
+        border-bottom: 1px dashed #ddd;
+        padding-bottom: 0.5rem;
+        }
+        p {
+        margin-bottom: 0.75rem;
+        text-align: justify;
+        }
+        ul {
+        padding-left: 1.5rem;
+        margin-bottom: 1rem;
+        }
+        li {
+        margin-bottom: 0.5rem;
+        }
+        /* --- Source Links --- */
+        .source-link {
+        display: inline-flex;
+        align-items: center;
+        font-size: 0.85rem;
+        color: var(--secondary-color);
+        background: rgba(0, 168, 232, 0.1);
+        padding: 0.2rem 0.6rem;
+        border-radius: 4px;
+        margin-top: 0.5rem;
+        text-decoration: none;
+        }
+        .source-link:hover {
+        background: rgba(0, 168, 232, 0.2);
+        color: var(--primary-color);
+        }
+        .source-link::before {
+        content: "🔗";
+        margin-right: 0.3rem;
+        }
+        .old-info-tag {
+        background-color: #eee;
+        color: #666;
+        font-size: 0.75rem;
+        padding: 2px 6px;
+        border-radius: 4px;
+        margin-left: 0.5rem;
+        vertical-align: middle;
+        }
+        /* --- Footer --- */
+        footer {
+        text-align: center;
+        padding: 2rem;
+        background: #e9ecef;
+        color: var(--text-light);
+        font-size: 0.9rem;
+        margin-top: 2rem;
+        }
+        /* --- Responsive Tweaks --- */
+        @media (max-width: 600px) {
+        h1 {
+        font-size: 1.25rem;
+        padding-right: 0; /* Allow badge to float freely or adjust */
+        margin-top: 0.5rem;
+        }
+        .quality-badge {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        }
+        .header-content {
+        padding-top: 2rem; /* Make room for badge */
+        }
+        .data-grid {
+        grid-template-columns: 1fr 1fr;
+        }
+        .card {
+        padding: 1rem;
+        }
+        }
+      </style>
+    </head>
+    <body>
+      <header>
+        <div class="header-content">
+          <div class="quality-badge">质量标志：通过</div>
+            <h1>国电南瑞（600406）2026年8月市场动态与投资分析报告</h1>
+              <div class="report-date">发布日期：2026年08月09日</div>
+              </div>
+            </header>
+            <nav>
+              <ul>
+                <li><a href="#overview">核心洞察</a></li>
+                  <li><a href="#price">股价资金</a></li>
+                    <li><a href="#fundamentals">基本面</a></li>
+                      <li><a href="#institutions">机构行业</a></li>
+                        <li><a href="#technical">技术面</a></li>
+                          <li><a href="#summary">总结展望</a></li>
+                            <li><a href="#links">资讯链接</a></li>
+                            </ul>
+                          </nav>
+                          <main>
+                            <!-- 核心洞察综述 -->
+                            <section id="overview">
+                              <div class="section-title">核心洞察综述</div>
+                                <div class="card">
+                                  <div class="highlight-box">
+                                    <p>国电南瑞（600406）近期股价呈现区间震荡态势，截至2026年8月8日收盘报24.12元（跌0.21%），处于23.9-24.5元区间震荡。公司基本面稳健，2025年营收662.29亿元（同比+14.53%），净利润88.58亿元（同比+8.79%），2026年一季度延续增长。</p>
+                                    </div>
+                                    <div class="data-grid">
+                                      <div class="data-item">
+                                        <div class="data-label">最新股价</div>
+                                          <div class="data-value negative">24.12元</div>
+                                          </div>
+                                          <div class="data-item">
+                                            <div class="data-label">2025营收</div>
+                                              <div class="data-value">662.29亿</div>
+                                              </div>
+                                              <div class="data-item">
+                                                <div class="data-label">2025净利</div>
+                                                  <div class="data-value">88.58亿</div>
+                                                  </div>
+                                                  <div class="data-item">
+                                                    <div class="data-label">关注节点</div>
+                                                      <div class="data-value">8月27日</div>
+                                                      </div>
+                                                    </div>
+                                                    <p>机构层面，国泰恒生A股电网设备ETF近期动态分化，部分同赛道ETF获净申购，主力资金短期净流出但行业政策（5万亿电网投资、“算电协同”）长期利好。技术面显示短期多空平衡，需关注8月27日中报披露及量能变化。</p>
+                                                    </div>
+                                                  </section>
+                                                  <!-- 详细维度分析 -->
+                                                  <section id="price">
+                                                    <div class="section-title">一、股价走势与资金动态</div>
+                                                      <div class="card">
+                                                        <h3>近期股价表现（2026年8月）</h3>
+                                                          <ul>
+                                                            <li>
+                                                              <strong>2026年08月08日</strong>：当日收报24.12元，跌0.21%，成交额12.6亿元，资金流向显示主力资金净流出5199.16万元（占4.12%），游资净流入2692.6万元，散户净流入2506.56万元。
+                                                                <br>
+                                                                <a href="https://wap.stockstar.com/detail/RB2026080700035695" target="_blank" class="source-link">来源链接：证券之星</a>
+                                                                </li>
+                                                                <li>
+                                                                  <strong>2026年08月03日</strong>：收出缩量十字星，收盘24.35元（微涨0.12%），成交额14.92亿元，较前期高点缩量近半。短期支撑位23.9元，压力位24.5元，处于多空平衡阶段。
+                                                                    <br>
+                                                                    <a href="https://toutiao.com/group/7669595284292272646/" target="_blank" class="source-link">来源链接：今日头条</a>
+                                                                    </li>
+                                                                  </ul>
+                                                                </div>
+                                                                <div class="card">
+                                                                  <h3>历史资金动向（2025-2026年）</h3>
+                                                                    <ul>
+                                                                      <li>
+                                                                        <strong>2026年03月30日</strong>：股价26.63元（跌1.84%），主力净流出1.13亿元，跌破5日、10日、20日均线，技术面空头占优。
+                                                                          <br>
+                                                                          <a href="http://m.toutiao.com/group/7622960722745524746/" target="_blank" class="source-link">来源链接：今日头条</a>
+                                                                          </li>
+                                                                          <li>
+                                                                            <strong>2025年07月29日</strong>：大宗交易成交50万股（1105万元，22.10元/股），买方为国泰海通证券总部，卖方为华泰证券北京雍和宫营业部，当日股价跌0.18%，主力资金净流出1.37亿元。
+                                                                              <br>
+                                                                              <a href="https://www.stcn.com/article/detail/2811610.html" target="_blank" class="source-link">来源链接：证券时报</a>
+                                                                              </li>
+                                                                            </ul>
+                                                                          </div>
+                                                                        </section>
+                                                                        <section id="fundamentals">
+                                                                          <div class="section-title">二、公司基本面与财务表现</div>
+                                                                            <div class="card">
+                                                                              <h3>核心业务与定位</h3>
+                                                                                <p>主营电网智能（占比50.43%）、数能融合、能源低碳等自动化设备研发与工程服务，为能源电力领域高技术领军企业，实控人为国务院国资委，第一大股东国网电科院持股56.91%。</p>
+                                                                                  <a href="https://www.stcn.com/quotes/index/sh600406.html?u_atoken=6c8b11bb-f555-47b5-897e-8183048f4c8f&u_asig=bbbf3&u_aref=tDeXHI2puRUv3CzsWPhYUbmaMNM%3D" target="_blank" class="source-link">来源链接：证券时报</a>
+                                                                                  </div>
+                                                                                  <div class="card">
+                                                                                    <h3>财务数据</h3>
+                                                                                      <div class="data-grid">
+                                                                                        <div class="data-item">
+                                                                                          <div class="data-label">2025全年营收</div>
+                                                                                            <div class="data-value positive">662.29亿 <br><span style="font-size:0.8rem">(+14.53%)</span></div>
+                                                                                            </div>
+                                                                                            <div class="data-item">
+                                                                                              <div class="data-label">2025全年净利</div>
+                                                                                                <div class="data-value positive">88.58亿 <br><span style="font-size:0.8rem">(+8.79%)</span></div>
+                                                                                                </div>
+                                                                                                <div class="data-item">
+                                                                                                  <div class="data-label">2026 Q1 营收</div>
+                                                                                                    <div class="data-value positive">95.64亿 <br><span style="font-size:0.8rem">(+7.52%)</span></div>
+                                                                                                    </div>
+                                                                                                    <div class="data-item">
+                                                                                                      <div class="data-label">2026 Q1 净利</div>
+                                                                                                        <div class="data-value positive">7.45亿 <br><span style="font-size:0.8rem">(+7.32%)</span></div>
+                                                                                                        </div>
+                                                                                                      </div>
+                                                                                                      <p style="font-size: 0.9rem; color: #666;">* 2026年一季度增速稳健但低于历史高位。</p>
+                                                                                                        <br>
+                                                                                                        <a href="https://toutiao.com/group/7669591129364513303/" target="_blank" class="source-link">来源链接：今日头条</a>
+                                                                                                          <a href="https://www.stcn.com/quotes/index/sh600406.html?u_atoken=6c8b11bb-f555-47b5-897e-8183048f4c8f&u_asig=bbbf3&u_aref=tDeXHI2puRUv3CzsWPhYUbmaMNM%3D" target="_blank" class="source-link">来源链接：证券时报</a>
+                                                                                                          </div>
+                                                                                                        </section>
+                                                                                                        <section id="institutions">
+                                                                                                          <div class="section-title">三、机构持仓与行业动态</div>
+                                                                                                            <div class="card">
+                                                                                                              <h3>基金持仓变化</h3>
+                                                                                                                <ul>
+                                                                                                                  <li>
+                                                                                                                    <strong>国泰恒生A股电网设备ETF</strong>：2026年2月增持后浮盈超308万元，2025年7月减持8.1万股（浮亏46.1万元），2026年6月1日至6月2日连续6日净赎回1.24亿份。
+                                                                                                                    </li>
+                                                                                                                    <li>
+                                                                                                                      <strong>同赛道分化</strong>：易方达、广发旗下电网设备ETF获净申购，国泰ETF净赎回。
+                                                                                                                      </li>
+                                                                                                                    </ul>
+                                                                                                                    <a href="http://m.toutiao.com/group/7646736831091376683/" target="_blank" class="source-link">来源链接：今日头条</a>
+                                                                                                                      <a href="http://finance.sina
