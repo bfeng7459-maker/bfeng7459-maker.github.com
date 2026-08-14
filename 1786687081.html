@@ -1,0 +1,367 @@
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>2026年算力能源议题分析报告</title>
+      <style>
+        /* --- CSS 变量与重置 --- */
+        :root {
+        --primary-color: #0f172a; /* 深蓝：科技感 */
+        --secondary-color: #10b981; /* 翠绿：绿电/能源 */
+        --accent-color: #3b82f6; /* 亮蓝：链接/强调 */
+        --text-main: #334155;
+        --text-light: #64748b;
+        --bg-body: #f8fafc;
+        --bg-card: #ffffff;
+        --spacing-unit: 1rem;
+        --border-radius: 12px;
+        --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+        --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+        }
+        * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        }
+        body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        background-color: var(--bg-body);
+        color: var(--text-main);
+        line-height: 1.6;
+        font-size: 16px;
+        -webkit-font-smoothing: antialiased;
+        }
+        /* --- 布局容器 --- */
+        .container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 0 1.5rem;
+        }
+        /* --- 头部设计 --- */
+        header {
+        background: linear-gradient(135deg, var(--primary-color), #1e293b);
+        color: white;
+        padding: 3rem 0;
+        margin-bottom: 2rem;
+        position: relative;
+        box-shadow: var(--shadow-md);
+        }
+        .header-content {
+        position: relative;
+        z-index: 1;
+        }
+        h1 {
+        font-size: 1.75rem;
+        font-weight: 700;
+        line-height: 1.3;
+        margin-bottom: 0.5rem;
+        }
+        .subtitle {
+        font-size: 1rem;
+        color: #cbd5e1;
+        font-weight: 400;
+        }
+        /* 质量标志 */
+        .quality-badge {
+        position: absolute;
+        top: 1.5rem;
+        right: 1.5rem;
+        background-color: var(--secondary-color);
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 50px;
+        font-size: 0.875rem;
+        font-weight: 600;
+        box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        }
+        .quality-badge::before {
+        content: '✓';
+        font-weight: bold;
+        }
+        /* --- 通用组件 --- */
+        section {
+        margin-bottom: 3rem;
+        }
+        .card {
+        background: var(--bg-card);
+        border-radius: var(--border-radius);
+        padding: 2rem;
+        box-shadow: var(--shadow-sm);
+        margin-bottom: 1.5rem;
+        border-left: 4px solid transparent;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .card:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-md);
+        }
+        h2 {
+        font-size: 1.5rem;
+        color: var(--primary-color);
+        margin-bottom: 1.5rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid #e2e8f0;
+        display: flex;
+        align-items: center;
+        }
+        h2::before {
+        content: '';
+        display: inline-block;
+        width: 8px;
+        height: 1.5rem;
+        background-color: var(--secondary-color);
+        margin-right: 0.75rem;
+        border-radius: 4px;
+        }
+        h3 {
+        font-size: 1.25rem;
+        color: #1e293b;
+        margin: 1.5rem 0 1rem 0;
+        font-weight: 600;
+        }
+        p {
+        margin-bottom: 1rem;
+        text-align: justify;
+        }
+        ul, ol {
+        margin-bottom: 1rem;
+        padding-left: 1.5rem;
+        }
+        li {
+        margin-bottom: 0.5rem;
+        }
+        /* --- 链接样式 --- */
+        a {
+        color: var(--accent-color);
+        text-decoration: none;
+        border-bottom: 1px dotted var(--accent-color);
+        transition: all 0.2s;
+        }
+        a:hover {
+        color: #1d4ed8;
+        border-bottom-style: solid;
+        }
+        /* 来源链接特殊样式 */
+        .source-ref {
+        font-size: 0.85rem;
+        color: var(--text-light);
+        background-color: #f1f5f9;
+        padding: 0.2rem 0.6rem;
+        border-radius: 4px;
+        border: none;
+        margin-left: 0.5rem;
+        vertical-align: middle;
+        }
+        .source-ref:hover {
+        background-color: #e2e8f0;
+        color: var(--primary-color);
+        }
+        /* --- 核心洞察区域 --- */
+        .insight-card {
+        background: linear-gradient(to bottom right, #f0fdf4, #ffffff);
+        border-left-color: var(--secondary-color);
+        }
+        .insight-list {
+        list-style: none;
+        padding-left: 0;
+        }
+        .insight-list li {
+        background: rgba(255, 255, 255, 0.6);
+        margin-bottom: 1rem;
+        padding: 1rem;
+        border-radius: 8px;
+        border: 1px solid #dcfce7;
+        }
+        .insight-list strong {
+        color: #047857; /* 深绿色 */
+        display: block;
+        margin-bottom: 0.25rem;
+        }
+        /* --- 产业链列表 --- */
+        .company-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1rem;
+        }
+        .company-item {
+        background: #f8fafc;
+        padding: 1rem;
+        border-radius: 8px;
+        border: 1px solid #e2e8f0;
+        }
+        .company-item h4 {
+        color: var(--primary-color);
+        margin-bottom: 0.5rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        }
+        /* --- 资讯来源列表 --- */
+        .source-list {
+        list-style: none;
+        padding-left: 0;
+        }
+        .source-item {
+        display: flex;
+        flex-direction: column;
+        padding: 1rem;
+        border-bottom: 1px solid #e2e8f0;
+        }
+        .source-date {
+        font-weight: 700;
+        color: var(--secondary-color);
+        font-size: 0.9rem;
+        margin-bottom: 0.25rem;
+        }
+        .source-content {
+        font-size: 0.95rem;
+        color: var(--text-main);
+        }
+        /* --- 页脚 --- */
+        footer {
+        text-align: center;
+        padding: 3rem 0;
+        color: var(--text-light);
+        font-size: 0.875rem;
+        border-top: 1px solid #e2e8f0;
+        margin-top: 3rem;
+        }
+        /* --- 响应式适配 --- */
+        @media (min-width: 768px) {
+        h1 { font-size: 2.25rem; }
+        .subtitle { font-size: 1.25rem; }
+        /* 桌面端两列布局优化 */
+        .split-layout {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+        }
+        }
+        @media (max-width: 767px) {
+        .quality-badge {
+        position: relative;
+        top: 0;
+        right: 0;
+        margin-bottom: 1rem;
+        align-self: flex-start;
+        }
+        header {
+        padding: 2rem 0;
+        }
+        .card {
+        padding: 1.5rem;
+        }
+        /* 移动端优化：点击区域 */
+        a {
+        padding-bottom: 2px; /* 增加点击热区 */
+        }
+        }
+      </style>
+    </head>
+    <body>
+      <header>
+        <div class="container header-content">
+          <div class="quality-badge">质量标志：通过</div>
+            <h1>2026年8月14日算力能源议题分析报告</h1>
+              <p class="subtitle">算电协同与绿电驱动下的产业升级与投资机遇</p>
+              </div>
+            </header>
+            <main class="container">
+              <!-- 核心洞察综述 -->
+              <section>
+                <div class="card insight-card">
+                  <h2>核心洞察综述</h2>
+                    <p>2026年8月，“东数西算”工程进入效率竞争新阶段，算力与能源的协同发展成为核心战略，绿色算力建设趋势明确。万卡级智算集群日耗电量超20万度，电力需求激增背景下，绿电供给扩容与算电协同机制加速落地。国内外企业加速布局算力能源产业链（如储能、绿电直供、算电调度等），政策与市场双轮驱动下，算力基础设施建设从“规模扩张”转向“效率与绿色双提升”。</p>
+                      <ul class="insight-list">
+                        <li>
+                          <strong>1. 政策锚定效率竞争</strong>
+                            “东数西算”从规模转向“算电协同、能耗优化”，全国算力网监测平台覆盖超900个设施，绿电消费占比超80%的枢纽节点成为标杆。
+                          </li>
+                          <li>
+                            <strong>2. 算力能源矛盾凸显</strong>
+                              2025年中国算力中心用电量达1960亿千瓦时（增速为全社会5倍），42个万卡集群面临东西部电力结构性错配，国内外均将电力稳定性列为AI竞争关键。
+                            </li>
+                            <li>
+                              <strong>3. 产业链投资爆发</strong>
+                                储能电站直供、HVDC供电、算电协同调度等领域多家上市公司已进入规模化放量前夜，“十五五”新增直接投资4万亿元将重点投向算力调度与配套协同设施。
+                              </li>
+                            </ul>
+                          </div>
+                        </section>
+                        <!-- 详细维度分析 -->
+                        <section>
+                          <h2>详细维度分析</h2>
+                            <!-- 一、政策与战略方向 -->
+                            <article class="card">
+                              <h3>一、政策与战略方向：算电协同写入顶层设计</h3>
+                                <div class="split-layout">
+                                  <div>
+                                    <h4>政策演进</h4>
+                                      <ul>
+                                        <li><strong>“东数西算”效率转向</strong>：2026年8月13日央视报道显示，该工程四年撬动万亿投资后，发展重点从“建得多”转向“用得好”，三大方向明确：全国算力网跨域统一调度、算力与绿电深度协同、全链路效率优化。<a href="https://content-static.cctvnews.cctv.com/snow-book/index.html?item_id=14335997857961187829&source=50006&sub_source=50006_001" class="source-ref" target="_blank">查看来源</a></li>
+                                          <li><strong>算电协同首次入政府工作报告</strong>：通过“挪、搬、调、存”四策解决节奏、空间、时间三重错配，部分枢纽节点绿电消费占比超80%。<a href="http://toutiao.com/item/7673474050395603496/" class="source-ref" target="_blank">查看来源</a></li>
+                                          </ul>
+                                        </div>
+                                        <div>
+                                          <h4>市场信号</h4>
+                                            <ul>
+                                              <li><strong>用户“蝶光策略2”建议关注算电协同领域</strong>：2026年8月14日天天基金平台发帖指出，政策持续推进“东数西算”与“算电协同”，多地加速布局万卡级智算集群，相关领域投资机会明确。<a href="https://guba.eastmoney.com/news,of024460,1759223203.html" class="source-ref" target="_blank">查看来源</a></li>
+                                              </ul>
+                                            </div>
+                                          </div>
+                                        </article>
+                                        <!-- 二、算力能源矛盾与解决路径 -->
+                                        <article class="card">
+                                          <h3>二、算力能源矛盾与解决路径：绿电供给扩容</h3>
+                                            <h4>极端需求挑战</h4>
+                                              <ul>
+                                                <li><strong>万卡集群耗电规模</strong>：2026年8月13日央视报道，单个“万卡集群”日耗电超20万度，预计2030年全国算力用电将达8000亿千瓦时。<a href="https://content-static.cctvnews.cctv.com/snow-book/index.html?item_id=14335997857961187829&source=50006&sub_source=50006_001" class="source-ref" target="_blank">查看来源</a></li>
+                                                  <li><strong>区域错配压力</strong>：东部算力集中但绿电稀缺，西部绿电富余但输送滞后，42个万卡集群面临电力结构性矛盾。<a href="http://toutiao.com/item/7672810739555385902/" class="source-ref" target="_blank">查看来源</a></li>
+                                                  </ul>
+                                                  <h4>解决路径</h4>
+                                                    <ul>
+                                                      <li><strong>绿电直供与储能配套</strong>：甘肃庆阳、宁夏中卫等试点绿电直供项目，内蒙古、甘肃等地新建数据中心绿电消费占比超80%。<a href="http://toutiao.com/item/7672810739555385902/" class="source-ref" target="_blank">查看来源</a></li>
+                                                        <li><strong>算电协同调度</strong>：全国一体化算力网监测平台覆盖超900个设施，70余条算力大通道实现东西部毫秒级服务圈，HVDC供电、储能直供等技术成为刚需。<a href="http://toutiao.com/item/7673474050395603496/" class="source-ref" target="_blank">查看来源</a></li>
+                                                        </ul>
+                                                      </article>
+                                                      <!-- 三、产业链布局 -->
+                                                      <article class="card">
+                                                        <h3>三、产业链布局：上市公司加速卡位</h3>
+                                                          <p>多家上市公司已明确布局算力能源配套领域，覆盖供电、温控、硬件及平台服务：</p>
+                                                            <div class="company-grid">
+                                                              <div class="company-item">
+                                                                <h4>储能直供与算电协同</h4>
+                                                                  <p><strong>同力天启</strong>：推进储能电站直供数据中心。</p>
+                                                                    <p><strong>金开新能</strong>：确立“清洁电力、算电协同”战略，聚焦绿电与算力融合。</p>
+                                                                      <a href="https://m.sohu.com/a/1062471506_122014422/" class="source-ref" target="_blank">查看来源</a>
+                                                                      </div>
+                                                                      <div class="company-item">
+                                                                        <h4>供电与硬件方案</h4>
+                                                                          <p><strong>中恒电气</strong>：提供HVDC供电方案，适配高密度算力需求。</p>
+                                                                            <p><strong>安靠智电</strong>：中标绿算产业园变电站项目，强化算电协同硬件支撑。</p>
+                                                                              <a href="https://m.sohu.com/a/1062471506_122014422/" class="source-ref" target="_blank">查看来源</a>
+                                                                              </div>
+                                                                              <div class="company-item">
+                                                                                <h4>能源算力中心与合作</h4>
+                                                                                  <p><strong>协鑫能科</strong>：投运能源算力中心，构建“能源+算力”一体化平台。</p>
+                                                                                    <p><strong>科华数据</strong>：与腾讯签署11.7亿合作协议，拓展算电协同解决方案。</p>
+                                                                                      <a href="https://m.sohu.com/a/1062471506_122014422/" class="source-ref" target="_blank">查看来源</a>
+                                                                                      </div>
+                                                                                      <div class="company-item">
+                                                                                        <h4>绿电与储能融合</h4>
+                                                                                          <p><strong>横店东磁、韶能股份</strong>：通过绿电、储能及算力融合拓展业务，布局能源回收与绿电供给。</p>
+                                                                                            <a href="https://m.sohu.com/a/1062471506_122014422/" class="source-ref" target="_blank">查看来源</a>
+                                                                                            </div>
+                                                                                          </div>
+                                                                                        </article>
+                                                                                        <!-- 四、技术趋势 -->
+                                                                                        <article class="card">
+                                                                                          <h3>四、技术趋势：液冷、超节点与协同调度</h3>
+                                                                                            <h4>技术迭代方向</h4>
+                                                                                              <ul>
+                                                                                                <li><strong>液冷技术</strong>：从“可选”变为“准入门”，政策要求新建大型数据中心PUE低于1.3。<a href="https
