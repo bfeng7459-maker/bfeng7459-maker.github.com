@@ -1,0 +1,433 @@
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>中国联通数智化战略洞察分析报告</title>
+      <style>
+        /* --- CSS Reset & Variables --- */
+        :root {
+        --primary-color: #E60012; /* China Unicom Red */
+        --secondary-color: #2c3e50; /* Dark Blue/Grey */
+        --accent-color: #3498db; /* Tech Blue */
+        --bg-color: #f4f6f9;
+        --card-bg: #ffffff;
+        --text-main: #333333;
+        --text-light: #666666;
+        --border-radius: 12px;
+        --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        --shadow-hover: 0 8px 20px rgba(0, 0, 0, 0.12);
+        --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+        }
+        * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        }
+        body {
+        font-family: var(--font-family);
+        background-color: var(--bg-color);
+        color: var(--text-main);
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+        }
+        a {
+        color: var(--primary-color);
+        text-decoration: none;
+        transition: color 0.2s;
+        }
+        a:hover {
+        color: #c4000f;
+        text-decoration: underline;
+        }
+        /* --- Layout Container --- */
+        .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 1.5rem;
+        }
+        /* --- Header Section --- */
+        header {
+        background: linear-gradient(135deg, #1a1a1a 0%, #2c3e50 100%);
+        color: white;
+        padding: 4rem 0 3rem;
+        position: relative;
+        overflow: hidden;
+        margin-bottom: 2rem;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        /* Background image overlay for texture */
+        header::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: url('https://picsum.photos/seed/unicomtech/1200/400.jpg');
+        background-size: cover;
+        background-position: center;
+        opacity: 0.2;
+        z-index: 0;
+        }
+        .header-content {
+        position: relative;
+        z-index: 1;
+        }
+        .quality-badge {
+        position: absolute;
+        top: 1.5rem;
+        right: 1.5rem;
+        background-color: var(--primary-color);
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 50px;
+        font-size: 0.875rem;
+        font-weight: bold;
+        box-shadow: 0 2px 8px rgba(230, 0, 18, 0.4);
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        }
+        .quality-badge::before {
+        content: "★";
+        }
+        h1 {
+        font-size: 2.5rem;
+        margin-bottom: 0.5rem;
+        font-weight: 700;
+        }
+        .report-meta {
+        font-size: 1rem;
+        color: rgba(255, 255, 255, 0.8);
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        }
+        /* --- Core Summary Card --- */
+        .summary-card {
+        background: var(--card-bg);
+        padding: 2rem;
+        border-radius: var(--border-radius);
+        box-shadow: var(--shadow);
+        margin-bottom: 3rem;
+        border-left: 5px solid var(--primary-color);
+        }
+        .summary-card h2 {
+        font-size: 1.5rem;
+        color: var(--secondary-color);
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        }
+        .summary-card h2::before {
+        content: "";
+        display: inline-blockw;
+        width: 8px;
+        height: 24px;
+        background: var(--primary-color);
+        margin-right: 10px;
+        border-radius: 2px;
+        }
+        .highlight-text {
+        font-size: 1.1rem;
+        color: var(--text-main);
+        }
+        .highlight-text strong {
+        color: var(--primary-color);
+        font-weight: 600;
+        }
+        /* --- Section Styling --- */
+        section {
+        margin-bottom: 4rem;
+        }
+        .section-title {
+        font-size: 1.75rem;
+        color: var(--secondary-color);
+        margin-bottom: 1.5rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid #e0e0e0;
+        position: relative;
+        }
+        .section-title::after {
+        content: "";
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 60px;
+        height: 2px;
+        background-color: var(--primary-color);
+        }
+        /* --- Grid Layouts --- */
+        .grid-2 {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+        }
+        .grid-3 {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+        }
+        .grid-4 {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1.5rem;
+        }
+        /* --- Content Cards --- */
+        .content-card {
+        background: var(--card-bg);
+        border-radius: var(--border-radius);
+        padding: 1.5rem;
+        box-shadow: var(--shadow);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        border-top: 3px solid transparent;
+        }
+        .content-card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-hover);
+        border-top-color: var(--primary-color);
+        }
+        .content-card h3 {
+        font-size: 1.25rem;
+        margin-bottom: 1rem;
+        color: var(--secondary-color);
+        }
+        .content-card ul {
+        list-style: none;
+        margin-bottom: 1rem;
+        flex-grow: 1;
+        }
+        .content-card li {
+        margin-bottom: 0.8rem;
+        padding-left: 1rem;
+        position: relative;
+        font-size: 0.95rem;
+        color: var(--text-light);
+        }
+        .content-card li::before {
+        content: "•";
+        color: var(--primary-color);
+        position: absolute;
+        left: 0;
+        font-weight: bold;
+        }
+        .source-link {
+        font-size: 0.8rem;
+        color: #999;
+        margin-top: auto;
+        padding-top: 1rem;
+        border-top: 1px solid #eee;
+        display: block;
+        word-break: break-all;
+        }
+        .source-link a {
+        color: var(--accent-color);
+        }
+        /* --- List Layouts for Text Heavy Sections --- */
+        .list-group-item {
+        background: var(--card-bg);
+        border-radius: var(--border-radius);
+        padding: 2rem;
+        margin-bottom: 1.5rem;
+        box-shadow: var(--shadow);
+        }
+        .list-group-item h3 {
+        color: var(--secondary-color);
+        margin-bottom: 1rem;
+        font-size: 1.3rem;
+        }
+        .list-group-item p {
+        margin-bottom: 0.5rem;
+        color: var(--text-light);
+        }
+        /* --- Outlook Section --- */
+        .outlook-section {
+        background: linear-gradient(to right, #fff, #f9f9f9);
+        border: 1px solid #eee;
+        }
+        .outlook-list {
+        counter-reset: outlook-counter;
+        }
+        .outlook-list li {
+        position: relative;
+        padding-left: 2.5rem;
+        margin-bottom: 1rem;
+        }
+        .outlook-list li::before {
+        counter-increment: outlook-counter;
+        content: counter(outlook-counter);
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 1.8rem;
+        height: 1.8rem;
+        background-color: var(--primary-color);
+        color: white;
+        border-radius: 50%;
+        text-align: center;
+        line-height: 1.8rem;
+        font-weight: bold;
+        font-size: 0.9rem;
+        }
+        /* --- Links Table --- */
+        .links-container {
+        background: var(--card-bg);
+        border-radius: var(--border-radius);
+        padding: 2rem;
+        box-shadow: var(--shadow);
+        }
+        .link-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 0;
+        border-bottom: 1px solid #f0f0f0;
+        transition: background 0.2s;
+        }
+        .link-item:last-child {
+        border-bottom: none;
+        }
+        .link-item:hover {
+        background-color: #fafafa;
+        }
+        .link-title {
+        font-weight: 500;
+        color: var(--secondary-color);
+        flex: 1;
+        padding-right: 1rem;
+        }
+        .link-date {
+        color: var(--text-light);
+        font-size: 0.9rem;
+        white-space: nowrap;
+        }
+        /* --- Footer --- */
+        footer {
+        background-color: var(--secondary-color);
+        color: white;
+        text-align: center;
+        padding: 2rem 0;
+        margin-top: 4rem;
+        font-size: 0.9rem;
+        }
+        /* --- Responsive Design --- */
+        @media (max-width: 992px) {
+        .grid-4 {
+        grid-template-columns: repeat(2, 1fr);
+        }
+        .grid-3 {
+        grid-template-columns: repeat(2, 1fr);
+        }
+        }
+        @media (max-width: 768px) {
+        h1 {
+        font-size: 1.8rem;
+        }
+        .quality-badge {
+        position: relative;
+        top: 0;
+        right: 0;
+        margin-bottom: 1rem;
+        display: inline-block;
+        }
+        .grid-2, .grid-3, .grid-4 {
+        grid-template-columns: 1fr;
+        }
+        .link-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+        }
+        .content-card {
+        padding: 1.25rem;
+        }
+        }
+      </style>
+    </head>
+    <body>
+      <header>
+        <div class="container header-content">
+          <div class="quality-badge">高质量分析报告</div>
+            <h1>中国联通数智化战略洞察分析报告</h1>
+              <div class="report-meta">
+                <span>生成日期：2026年08月17日</span>
+                </div>
+              </div>
+            </header>
+            <main class="container">
+              <!-- 核心洞察综述 -->
+              <section class="summary-card">
+                <h2>核心洞察综述</h2>
+                  <div class="highlight-text">
+                    <p>中国联通以<strong>“数据+AI”</strong>双轮驱动，深度践行数智技术赋能实体经济与民生服务，构建“全域覆盖、全场景应用、全链路升级”的数智生态。2026年以来，公司聚焦<strong>民生保障、智慧交通、区域协同、数字经济、服务升级</strong>五大核心领域，通过技术创新与场景落地，实现效率提升、成本优化与新质生产力培育。</p>
+                      <br>
+                      <p>重点成果包括：民生领域“衣食住行”全场景渗透（产能提升<strong>60%</strong>、事故处置效率<strong>5分钟级</strong>）、智慧交通全链条解决方案（覆盖全国十余省份）、成渝双城经济圈“通信+算力+应用”一体化协同、数字乡村与反诈体系规模化落地等。战略布局呈现“技术领先、规模扩张、生态开放”特征，为中国式现代化注入通信科技动能。</p>
+                      </div>
+                    </section>
+                    <!-- 一、民生领域 -->
+                    <section>
+                      <h2 class="section-title">一、民生领域“衣食住行”全场景数智赋能</h2>
+                        <div class="grid-4">
+                          <!-- 衣 -->
+                          <article class="content-card">
+                            <h3>衣：非遗与质检</h3>
+                              <ul>
+                                <li><strong>非遗活化</strong>：利用AI大模型建立土家织锦数字基因库，实现非遗文化活态传承。</li>
+                                  <li><strong>产业升级</strong>：部署AI视觉系统助力潮汕纺织业质检升级，提升生产效率与品控精度。</li>
+                                  </ul>
+                                  <span class="source-link">来源：<a href="http://m.toutiao.com/group/7673710459656225332/" target="_blank">2026年01月18日</a> | <a href="https://sdxw.iqilu.com/w/article/YS0yMS0xNzM1MDE5Mg.html" target="_blank">2026年08月14日</a></span>
+                                  </article>
+                                  <!-- 食 -->
+                                  <article class="content-card">
+                                    <h3>食：农业物联网</h3>
+                                      <ul>
+                                        <li><strong>助农增收</strong>：山东莘县部署农业物联网与追溯体系；浙江仙居抢通深山基站保障杨梅季网络。</li>
+                                          <li><strong>跨区域覆盖</strong>：服务山东西瓜、辽宁葡萄等地，通过物联网技术提升种植、流通效率。</li>
+                                          </ul>
+                                          <span class="source-link">来源：<a href="http://m.toutiao.com/group/7673710459656225332/" target="_blank">2026年01月18日</a> | <a href="https://sdxw.iqilu.com/w/article/YS0yMS0xNzM1MDE5Mg.html" target="_blank">2026年08月14日</a></span>
+                                          </article>
+                                          <!-- 住 -->
+                                          <article class="content-card">
+                                            <h3>住：工业与智家</h3>
+                                              <ul>
+                                                <li><strong>工业效率</strong>：联合长虹美菱打造5G工业互联网平台，产能提升60%，实现规模化复制。</li>
+                                                  <li><strong>居家体验</strong>：推广全屋光宽带、智家服务包，提供家庭网络检测与定制化优化方案。</li>
+                                                  </ul>
+                                                  <span class="source-link">来源：<a href="http://m.toutiao.com/group/7673710459656225332/" target="_blank">2026年01月18日</a></span>
+                                                  </article>
+                                                  <!-- 行 -->
+                                                  <article class="content-card">
+                                                    <h3>行：通信与基建</h3>
+                                                      <ul>
+                                                        <li><strong>重点工程</strong>：保障西天山特长隧道施工通信，完成广湛高铁5G覆盖，构建“天地一体”网络。</li>
+                                                          <li><strong>交通延伸</strong>：赋能智慧港口、低空物流，在深海科考船等特殊载体建立通信枢纽。</li>
+                                                          </ul>
+                                                          <span class="source-link">来源：<a href="http://m.toutiao.com/group/7673710459656225332/" target="_blank">2026年01月18日</a> | <a href="https://sdxw.iqilu.com/w/article/YS0yMS0xNzM1MDE5Mg.html" target="_blank">2026年08月14日</a></span>
+                                                          </article>
+                                                        </div>
+                                                      </section>
+                                                      <!-- 二、智慧交通 -->
+                                                      <section>
+                                                        <h2 class="section-title">二、智慧交通全场景解决方案</h2>
+                                                          <div class="grid-3">
+                                                            <article class="content-card">
+                                                              <h3>智慧交管高效处置</h3>
+                                                                <ul>
+                                                                  <li><strong>线上快处</strong>：升级“交管12123”APP，推出轻微事故视频快处服务，平均5分钟处理一起事故。</li>
+                                                                    <li><strong>数据决策</strong>：通过AI算法优化信号配时，降低城市拥堵率，提升道路通行效率。</li>
+                                                                    </ul>
+                                                                    <span class="source-link">来源：<a href="http://m.toutiao.com/group/7673709905576051235/" target="_blank">2026年01月18日</a> | <a href="https://toutiao.com/group/7673709905576051235/" target="_blank">2026年08月14日</a></span>
+                                                                    </article>
+                                                                    <article class="content-card">
+                                                                      <h3>全域管控闭环管理</h3>
+                                                                        <ul>
+                                                                          <li><strong>架构升级</strong>：构建“一个底座+三大支撑+N项能力+X类场景”体系，业务效率提升80%、成本降低60%。</li>
+                                                                            <li><strong>区域联动</strong>：接入20余万辆营运车辆，实现汛期风险预判与联勤联动。</li>
+                                                                            </ul>
+                                                                            <span class="source-link">来源：<a href="http://m.toutiao.com/group/7673709905576051235/" target="_blank">2026年01月18日</a></span>
+                                                                            </
