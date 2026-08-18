@@ -1,0 +1,265 @@
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>分析报告：资讯素材缺失无法生成分析</title>
+      <style>
+        /* CSS 变量定义 - 颜色方案 */
+        :root {
+        --primary-color: #2c3e50;       /* 深蓝灰色 - 主标题 */
+        --accent-color: #3498db;        /* 亮蓝色 - 强调色 */
+        --bg-color: #f0f2f5;            /* 浅灰背景 - 页面背景 */
+        --card-bg: #ffffff;             /* 白色 - 卡片背景 */
+        --text-main: #333333;           /* 深灰 - 正文 */
+        --text-secondary: #666666;      /* 中灰 - 次要文字 */
+        --border-color: #e1e4e8;        /* 边框颜色 */
+        --badge-bg: #e74c3c;            /* 红色 - 质量标志背景 */
+        --badge-text: #ffffff;          /* 白色 - 质量标志文字 */
+        --empty-state-bg: #f8f9fa;      /* 空状态背景 */
+        --empty-state-border: #dee2e6;  /* 空状态边框 */
+        }
+        /* 全局重置与基础样式 */
+        * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        }
+        body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        background-color: var(--bg-color);
+        color: var(--text-main);
+        line-height: 1.6;
+        font-size: 16px;
+        padding: 20px;
+        }
+        /* 布局容器 */
+        .container {
+        max-width: 800px;
+        margin: 0 auto;
+        background-color: var(--card-bg);
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.1);
+        position: relative; /* 为绝对定位的质量标志提供参考 */
+        overflow: hidden;
+        }
+        /* 质量标志样式 - 右上角 */
+        .quality-badge {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background-color: var(--badge-bg);
+        color: var(--badge-text);
+        padding: 6px 12px;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        font-weight: bold;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        z-index: 10;
+        }
+        /* 头部区域 */
+        header {
+        padding: 40px 30px 20px 30px;
+        border-bottom: 1px solid var(--border-color);
+        }
+        h1 {
+        color: var(--primary-color);
+        font-size: 1.75rem;
+        margin-bottom: 10px;
+        line-height: 1.3;
+        padding-right: 140px; /* 防止标题与质量标志重叠 */
+        }
+        .report-date {
+        color: var(--text-secondary);
+        font-size: 0.9rem;
+        display: inline-block;
+        background: #eee;
+        padding: 2px 8px;
+        border-radius: 4px;
+        }
+        /* 主要内容区域 */
+        main {
+        padding: 30px;
+        }
+        section {
+        margin-bottom: 40px;
+        }
+        section:last-child {
+        margin-bottom: 0;
+        }
+        h2 {
+        color: var(--primary-color);
+        font-size: 1.4rem;
+        border-left: 5px solid var(--accent-color);
+        padding-left: 15px;
+        margin-bottom: 20px;
+        margin-top: 10px;
+        }
+        h3 {
+        color: var(--text-main);
+        font-size: 1.15rem;
+        margin-bottom: 15px;
+        margin-top: 25px;
+        font-weight: 600;
+        }
+        p {
+        margin-bottom: 15px;
+        color: var(--text-main);
+        text-align: justify;
+        }
+        strong {
+        color: var(--primary-color);
+        font-weight: 700;
+        }
+        /* 列表样式 */
+        ul {
+        list-style-type: none;
+        padding-left: 5px;
+        }
+        li {
+        position: relative;
+        padding-left: 25px;
+        margin-bottom: 12px;
+        color: var(--text-main);
+        }
+        li::before {
+        content: "•";
+        color: var(--accent-color);
+        font-weight: bold;
+        font-size: 1.2em;
+        position: absolute;
+        left: 0;
+        top: -2px;
+        }
+        /* 空状态/无内容样式 */
+        .empty-state {
+        background-color: var(--empty-state-bg);
+        border: 1px dashed var(--empty-state-border);
+        border-radius: 6px;
+        padding: 30px;
+        text-align: center;
+        color: var(--text-secondary);
+        }
+        .empty-state-icon {
+        font-size: 2rem;
+        margin-bottom: 10px;
+        display: block;
+        color: #ccc;
+        }
+        /* 链接样式 (虽然本报告无链接，但预留样式) */
+        a {
+        color: var(--accent-color);
+        text-decoration: none;
+        transition: color 0.2s;
+        }
+        a:hover {
+        color: #2980b9;
+        text-decoration: underline;
+        }
+        /* 页脚 */
+        footer {
+        background-color: #fafafa;
+        padding: 20px 30px;
+        border-top: 1px solid var(--border-color);
+        text-align: center;
+        color: var(--text-secondary);
+        font-size: 0.85rem;
+        }
+        /* 响应式设计 - 平板与手机 */
+        @media (max-width: 768px) {
+        body {
+        padding: 10px;
+        }
+        header {
+        padding: 30px 20px 15px 20px;
+        }
+        main {
+        padding: 20px;
+        }
+        h1 {
+        font-size: 1.5rem;
+        padding-right: 0; /* 移动端不再预留右侧空间，标志换行或调整 */
+        margin-bottom: 15px;
+        }
+        .quality-badge {
+        position: static; /* 移动端改为静态流，避免遮挡 */
+        display: inline-block;
+        margin-bottom: 10px;
+        float: right; /* 尝试浮动，如果空间不够则自然换行 */
+        }
+        /* 清除浮动，防止影响后续元素 */
+        header::after {
+        content: "";
+        display: table;
+        clear: both;
+        }
+        h2 {
+        font-size: 1.25rem;
+        padding-left: 10px;
+        border-left-width: 4px;
+        }
+        h3 {
+        font-size: 1.1rem;
+        }
+        }
+        @media (max-width: 480px) {
+        h1 {
+        font-size: 1.3rem;
+        }
+        .quality-badge {
+        float: none; /* 小屏幕完全取消浮动 */
+        margin-top: 10px;
+        font-size: 0.8rem;
+        }
+        }
+      </style>
+    </head>
+    <body>
+      <div class="container">
+        <!-- 质量标志 -->
+        <div class="quality-badge">质量标志：不完整（模型长度超过阈值）</div>
+          <header>
+            <h1>分析报告：资讯素材缺失无法生成分析[2026年08月18日]</h1>
+              <span class="report-date">2026年08月18日</span>
+              </header>
+              <main>
+                <!-- 核心洞察综述 -->
+                <section>
+                  <h2>核心洞察综述</h2>
+                    <p>由于用户提供的素材为空列表（[]），缺乏可分析的具体资讯内容，无法形成包含引用链接、分析结论及结构化内容的洞察报告。以下内容基于素材缺失情况说明，无实际分析结论。</p>
+                    </section>
+                    <!-- 详细维度分析 -->
+                    <section>
+                      <h2>详细维度分析</h2>
+                        <h3>一、素材缺失说明</h3>
+                          <p>根据用户提供的素材信息，<strong>无任何可分析的资讯内容</strong>，导致无法获取具体的文章标题、发布日期、来源链接及相关分析维度。所有分析结论均依赖于实际可验证的资讯素材，而当前素材为空，无法满足“分析完全依赖提供的素材”的要求。</p>
+                            <h3>二、无法生成分析的原因</h3>
+                              <ul>
+                                <li><strong>内容空白</strong>：提供的素材为“[]”，无任何可引用的原文内容、发布日期及来源链接，无法进行信息交叉验证和逻辑分析。</li>
+                                  <li><strong>引用缺失</strong>：分析报告要求“全文引用分析”并“给出来源链接”，但无素材则无内容可引用，无链接可标注。</li>
+                                    <li><strong>时效性验证失效</strong>：无具体资讯的发布日期，无法判断信息的时效性及准确性，不符合“距今天越近的信息采用率越高”的规则。</li>
+                                    </ul>
+                                  </section>
+                                  <!-- 总结与展望 -->
+                                  <section>
+                                    <h2>总结与展望</h2>
+                                      <p>本次分析因用户提供的素材为空，无法生成有效内容。未来需补充具体资讯素材（如文章标题、发布日期、来源链接及内容摘要等），方可按照要求完成包含引用链接、分析结论、结构化排版及质量验证的洞察报告。</p>
+                                      </section>
+                                      <!-- 资讯标题和链接列表 -->
+                                      <section>
+                                        <h2>资讯标题和链接列表</h2>
+                                          <div class="empty-state">
+                                            <span class="empty-state-icon">⚠️</span>
+                                              <p><strong>因素材缺失，无有效内容</strong></p>
+                                                <p style="font-size: 0.9rem; margin-top: 5px;">无可用资讯标题及链接。</p>
+                                                </div>
+                                              </section>
+                                            </main>
+                                            <footer>
+                                              &copy; 2026 分析报告生成系统 | 自动生成页面
+                                            </footer>
+                                          </div>
+                                        </body>
+                                      </html>
+                                      ```
