@@ -1,0 +1,447 @@
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>国电南瑞（600406）市场表现与基本面分析报告</title>
+      <style>
+        /* --- 基础设置与变量 --- */
+        :root {
+        --primary-color: #0056b3; /* 专业蓝 */
+        --secondary-color: #004494;
+        --accent-color: #f0ad4e; /* 重点高亮色 */
+        --text-main: #333333;
+        --text-secondary: #666666;
+        --bg-body: #f4f6f9;
+        --bg-card: #ffffff;
+        --border-color: #e1e4e8;
+        --stock-up: #e63946; /* A股红涨 */
+        --stock-down: #2a9d8f; /* A股绿跌 */
+        --spacing-unit: 1rem;
+        --radius: 8px;
+        --shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+        * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        -webkit-tap-highlight-color: transparent;
+        }
+        body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+        background-color: var(--bg-body);
+        color: var(--text-main);
+        line-height: 1.6;
+        font-size: 16px;
+        }
+        /* --- 布局容器 --- */
+        .container {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 0 var(--spacing-unit);
+        }
+        /* --- 头部区域 --- */
+        header {
+        background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+        color: white;
+        padding: 2rem var(--spacing-unit);
+        position: relative;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .header-content {
+        position: relative;
+        z-index: 2;
+        }
+        h1 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        line-height: 1.3;
+        }
+        .report-meta {
+        font-size: 0.875rem;
+        opacity: 0.9;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        }
+        /* 质量标志 */
+        .quality-badge {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        background-color: var(--accent-color);
+        color: #fff;
+        padding: 0.4rem 0.8rem;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: bold;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        z-index: 10;
+        }
+        .quality-badge::before {
+        content: "✓";
+        font-weight: 900;
+        }
+        /* --- 核心洞察卡片 --- */
+        .hero-card {
+        background: var(--bg-card);
+        margin: -1.5rem auto 1.5rem; /* 向上重叠头部 */
+        padding: 1.5rem;
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        position: relative;
+        z-index: 5;
+        }
+        .hero-title {
+        font-size: 1.1rem;
+        font-weight: bold;
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+        border-left: 4px solid var(--accent-color);
+        padding-left: 0.5rem;
+        }
+        .key-stats {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+        margin-bottom: 1rem;
+        }
+        .stat-item {
+        background: #f8f9fa;
+        padding: 0.8rem;
+        border-radius: 6px;
+        text-align: center;
+        }
+        .stat-label {
+        font-size: 0.8rem;
+        color: var(--text-secondary);
+        margin-bottom: 0.3rem;
+        }
+        .stat-value {
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: var(--text-main);
+        }
+        .stat-value.highlight {
+        color: var(--primary-color);
+        }
+        .hero-text {
+        font-size: 0.95rem;
+        color: var(--text-secondary);
+        text-align: justify;
+        }
+        /* --- 详细分析部分 --- */
+        section {
+        margin-bottom: 2rem;
+        }
+        .section-title {
+        font-size: 1.25rem;
+        font-weight: bold;
+        margin-bottom: 1rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid var(--border-color);
+        color: var(--text-main);
+        display: flex;
+        align-items: center;
+        }
+        .section-title::before {
+        content: "";
+        display: inline-block;
+        width: 8px;
+        height: 1.25rem;
+        background-color: var(--primary-color);
+        margin-right: 0.5rem;
+        border-radius: 2px;
+        }
+        .card {
+        background: var(--bg-card);
+        border-radius: var(--radius);
+        padding: 1.5rem;
+        box-shadow: var(--shadow);
+        margin-bottom: 1rem;
+        }
+        .card h3 {
+        font-size: 1.1rem;
+        margin-bottom: 0.8rem;
+        color: var(--secondary-color);
+        }
+        .data-list {
+        list-style: none;
+        }
+        .data-list li {
+        margin-bottom: 1rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px dashed var(--border-color);
+        }
+        .data-list li:last-child {
+        border-bottom: none;
+        margin-bottom: 0;
+        padding-bottom: 0;
+        }
+        .data-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        margin-bottom: 0.3rem;
+        flex-wrap: wrap;
+        }
+        .data-label {
+        font-weight: 600;
+        color: var(--text-main);
+        }
+        .data-value {
+        font-family: "SF Mono", "Roboto Mono", monospace;
+        font-weight: 500;
+        }
+        .trend-up { color: var(--stock-up); }
+        .trend-down { color: var(--stock-down); }
+        .source-link {
+        display: inline-block;
+        font-size: 0.75rem;
+        color: var(--primary-color);
+        text-decoration: none;
+        margin-top: 0.3rem;
+        border-bottom: 1px dotted var(--primary-color);
+        padding: 2px 0;
+        }
+        .source-link:hover {
+        color: var(--secondary-color);
+        border-bottom-style: solid;
+        }
+        /* --- 评级可视化 --- */
+        .rating-box {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-top: 0.5rem;
+        }
+        .rating-bar-bg {
+        flex-grow: 1;
+        height: 10px;
+        background: #eee;
+        border-radius: 5px;
+        overflow: hidden;
+        }
+        .rating-bar-fill {
+        height: 100%;
+        background: var(--accent-color);
+        }
+        .rating-text {
+        font-size: 0.9rem;
+        font-weight: bold;
+        }
+        /* --- 总结与展望 --- */
+        .summary-box {
+        background: linear-gradient(to right, #eef2f3, #ffffff);
+        border-left: 5px solid var(--primary-color);
+        padding: 1.2rem;
+        border-radius: 0 var(--radius) var(--radius) 0;
+        }
+        .summary-item {
+        margin-bottom: 0.8rem;
+        }
+        .summary-item strong {
+        color: var(--primary-color);
+        }
+        /* --- 来源列表 --- */
+        .sources-section {
+        background: #fff;
+        padding: 1.5rem;
+        border-radius: var(--radius);
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+        }
+        .sources-list {
+        counter-reset: source-counter;
+        list-style: none;
+        }
+        .sources-list li {
+        position: relative;
+        padding-left: 2rem;
+        margin-bottom: 1rem;
+        font-size: 0.9rem;
+        }
+        .sources-list li::before {
+        counter-increment: source-counter;
+        content: counter(source-counter);
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 1.5rem;
+        height: 1.5rem;
+        background-color: var(--border-color);
+        color: var(--text-main);
+        border-radius: 50%;
+        text-align: center;
+        line-height: 1.5rem;
+        font-size: 0.75rem;
+        font-weight: bold;
+        }
+        .sources-list a {
+        color: var(--primary-color);
+        text-decoration: none;
+        word-break: break-all;
+        }
+        .sources-list a:hover {
+        text-decoration: underline;
+        }
+        .tag-old {
+        display: inline-block;
+        background-color: #ffebee;
+        color: #c62828;
+        font-size: 0.7rem;
+        padding: 2px 6px;
+        border-radius: 4px;
+        margin-left: 5px;
+        vertical-align: middle;
+        }
+        /* --- Footer --- */
+        footer {
+        text-align: center;
+        padding: 2rem;
+        color: var(--text-secondary);
+        font-size: 0.8rem;
+        border-top: 1px solid var(--border-color);
+        }
+        /* --- 响应式适配 --- */
+        @media (min-width: 768px) {
+        h1 { font-size: 2rem; }
+        .key-stats { grid-template-columns: repeat(4, 1fr); }
+        .grid-2-col {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+        }
+        .hero-card {
+        margin-top: -2rem;
+        }
+        }
+        @media (max-width: 767px) {
+        .header-content { padding-right: 80px; /* 为质量标志留空间 */ }
+        .quality-badge { top: auto; bottom: 1rem; right: 1rem; }
+        .grid-2-col { grid-template-columns: 1fr; }
+        .data-row { flex-direction: column; }
+        .data-value { margin-bottom: 0.5rem; }
+        }
+      </style>
+    </head>
+    <body>
+      <header>
+        <div class="container">
+          <div class="quality-badge">质量标志：通过</div>
+            <div class="header-content">
+              <h1>国电南瑞（600406）市场表现与基本面分析报告</h1>
+                <div class="report-meta">
+                  <span>报告日期：2026年08月18日</span>
+                    <span>|</span>
+                      <span>午间简报</span>
+                      </div>
+                    </div>
+                  </div>
+                </header>
+                <main class="container">
+                  <!-- 核心洞察 -->
+                  <article class="hero-card">
+                    <h2 class="hero-title">核心洞察综述</h2>
+                      <div class="key-stats">
+                        <div class="stat-item">
+                          <div class="stat-label">当前股价</div>
+                            <div class="stat-value">23.55元</div>
+                            </div>
+                            <div class="stat-item">
+                              <div class="stat-label">主力资金</div>
+                                <div class="stat-value trend-up">+1111.96万</div>
+                                </div>
+                                <div class="stat-item">
+                                  <div class="stat-label">机构目标价</div>
+                                    <div class="stat-value highlight">28.88元</div>
+                                    </div>
+                                    <div class="stat-item">
+                                      <div class="stat-label">近1月ETF回报</div>
+                                        <div class="stat-value trend-up">+13.44%</div>
+                                        </div>
+                                      </div>
+                                      <p class="hero-text">
+                                        截至2026年08月18日午间，国电南瑞股价处于23.55元附近震荡。虽然电网设备ETF国泰（561380）近1月回报亮眼，但国电南瑞作为其权重股，短期受ETF资金净赎回及市场观望情绪影响承压。基本面稳健但增速存在放缓迹象，长期仍受益于国家电网投资政策红利。
+                                      </p>
+                                    </article>
+                                    <!-- 详细维度分析 -->
+                                    <section>
+                                      <h2 class="section-title">详细维度分析</h2>
+                                        <div class="grid-2-col">
+                                          <!-- 股价走势 -->
+                                          <div class="card">
+                                            <h3>一、股价走势与市场表现</h3>
+                                              <ul class="data-list">
+                                                <li>
+                                                  <div class="data-row">
+                                                    <span class="data-label">08月17日收盘</span>
+                                                      <span class="data-value trend-up">23.55元 (+1.38%)</span>
+                                                      </div>
+                                                      <div style="font-size: 0.85rem; color: #666;">成交额9.99亿 | 市盈率(TTM) 22.73倍</div>
+                                                        <a href="https://wap.stockstar.com/detail/RB2026081700029401" target="_blank" class="source-link">来源：证券之星</a>
+                                                        </li>
+                                                        <li>
+                                                          <div class="data-row">
+                                                            <span class="data-label">08月14日收盘</span>
+                                                              <span class="data-value trend-down">23.23元 (-1.94%)</span>
+                                                              </div>
+                                                              <div style="font-size: 0.85rem; color: #666;">总市值1865.78亿 | 支撑位23.1元</div>
+                                                                <a href="http://m.toutiao.com/group/7673816256587366953" target="_blank" class="source-link">来源：今日头条</a>
+                                                                </li>
+                                                                <li>
+                                                                  <div class="data-row">
+                                                                    <span class="data-label">08月03日表现</span>
+                                                                      <span class="data-value">缩量十字星</span>
+                                                                      </div>
+                                                                      <div style="font-size: 0.85rem; color: #666;">收盘24.35元，振幅2.01%，观望情绪浓</div>
+                                                                        <a href="http://m.toutiao.com/group/7669595284292272646" target="_blank" class="source-link">来源：今日头条</a>
+                                                                        </li>
+                                                                      </ul>
+                                                                    </div>
+                                                                    <!-- 机构资金与ETF -->
+                                                                    <div class="card">
+                                                                      <h3>二、机构资金流动与ETF影响</h3>
+                                                                        <ul class="data-list">
+                                                                          <li>
+                                                                            <div class="data-row">
+                                                                              <span class="data-label">国泰电网设备ETF (561380)</span>
+                                                                                <span class="data-value trend-down">0.775元 (-0.90%)</span>
+                                                                                </div>
+                                                                                <div style="font-size: 0.85rem; color: #666; margin-top:4px;">半日成交额6329.41万。重仓股分化：旭光电子涨停，国电南瑞小幅下跌。</div>
+                                                                                  <a href="https://cj.sina.cn/article/detail?url=http%3A%2F%2Ffinance.sina.cn%2F2026-08-18%2Fdetail-inintatv7413945.d.html" target="_blank" class="source-link">来源：新浪财经</a>
+                                                                                  </li>
+                                                                                  <li>
+                                                                                    <div class="data-row">
+                                                                                      <span class="data-label">资金净赎回压力</span>
+                                                                                        <span class="data-value">连续6日净赎回</span>
+                                                                                        </div>
+                                                                                        <div style="font-size: 0.85rem; color: #666; margin-top:4px;">此前净赎回1.24亿份，南瑞作为权重股曾跌2.30%拖累ETF。</div>
+                                                                                          <a href="http://finance.sina.com.cn/stock/zqgd/2026-06-02/doc-inhzzivn3117299.shtml" target="_blank" class="source-link">来源：新浪财经 (历史数据)</a>
+                                                                                          </li>
+                                                                                        </ul>
+                                                                                      </div>
+                                                                                      <!-- 基本面 -->
+                                                                                      <div class="card">
+                                                                                        <h3>三、公司基本面与业绩表现</h3>
+                                                                                          <ul class="data-list">
+                                                                                            <li>
+                                                                                              <div class="data-row">
+                                                                                                <span class="data-label">2025年全年</span>
+                                                                                                  <span class="data-value">营收+14.53% | 净利+8.79%</span>
+                                                                                                  </div>
+                                                                                                  <div style="font-size: 0.85rem; color: #666;">营收662.29亿，归母净利润82.79亿。</div>
+                                                                                                    <a href="http://m.toutiao.com/group/7669595284292272646" target="_blank" class="source-link">来源：今日头条</a>
+                                                                                                    </li>
+                                                                                                    <li>
+                                                                                                      <div class="data-row">
+                                                                                                        <span class="data-label">2026年Q1</span>
+                                                                                                          <span class="data-value">营收+7.52% | 净利+6.04%</span>
+                                                                                                          </div>
+                                                                                                          <div style="font-size: 0.85rem; color: #666;">增速较2025年有所放缓。</div>
+                                                                                                            <a href="https://wap.stockstar.com/detail/RB202
