@@ -1,0 +1,314 @@
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>中国联通2026年中期业绩洞察报告</title>
+      <style>
+        /* 全局变量定义：配色方案 */
+        :root {
+        --primary-color: #E60012; /* 联通红 */
+        --secondary-color: #2C3E50; /* 深蓝灰，用于标题 */
+        --accent-color: #3498DB; /* 链接蓝 */
+        --bg-color: #F5F7FA; /* 浅灰背景 */
+        --card-bg: #FFFFFF; /* 卡片白 */
+        --text-main: #333333; /* 主要文字 */
+        --text-light: #666666; /* 次要文字 */
+        --success-color: #27AE60; /* 增长/正面 */
+        --warning-color: #E67E22; /* 警告/中性 */
+        --danger-color: #C0392B; /* 下降/负面 */
+        --border-radius: 8px;
+        --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        --spacing-unit: 1rem;
+        }
+        /* 基础重置 */
+        * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        }
+        body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        background-color: var(--bg-color);
+        color: var(--text-main);
+        line-height: 1.6;
+        font-size: 16px;
+        -webkit-font-smoothing: antialiased;
+        }
+        /* 布局容器 */
+        .container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 20px;
+        }
+        /* 顶部 Header */
+        header {
+        background-color: var(--card-bg);
+        padding: 30px;
+        border-radius: var(--border-radius);
+        box-shadow: var(--box-shadow);
+        margin-bottom: 30px;
+        position: relative;
+        border-top: 5px solid var(--primary-color);
+        }
+        .report-date {
+        color: var(--text-light);
+        font-size: 0.9rem;
+        margin-bottom: 10px;
+        display: inline-block;
+        background: #eee;
+        padding: 4px 8px;
+        border-radius: 4px;
+        }
+        h1 {
+        color: var(--secondary-color);
+        font-size: 1.8rem;
+        line-height: 1.3;
+        margin-bottom: 15px;
+        padding-right: 120px; /* 为质量标志留空间 */
+        }
+        /* 质量标志 */
+        .quality-badge {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background-color: var(--success-color);
+        color: white;
+        padding: 8px 16px;
+        border-radius: 20px;
+        font-weight: bold;
+        font-size: 0.9rem;
+        box-shadow: 0 2px 4px rgba(39, 174, 96, 0.3);
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        }
+        .quality-badge::before {
+        content: "✓";
+        font-weight: 900;
+        }
+        /* 通用卡片样式 */
+        .card {
+        background-color: var(--card-bg);
+        border-radius: var(--border-radius);
+        padding: 25px;
+        margin-bottom: 25px;
+        box-shadow: var(--box-shadow);
+        }
+        /* 标题样式 */
+        h2 {
+        color: var(--secondary-color);
+        font-size: 1.4rem;
+        border-left: 4px solid var(--primary-color);
+        padding-left: 15px;
+        margin-bottom: 20px;
+        margin-top: 0;
+        }
+        h3 {
+        color: var(--secondary-color);
+        font-size: 1.15rem;
+        margin-top: 25px;
+        margin-bottom: 15px;
+        font-weight: 600;
+        }
+        p {
+        margin-bottom: 15px;
+        color: var(--text-main);
+        text-align: justify;
+        }
+        /* 列表样式 */
+        ul {
+        list-style: none;
+        padding-left: 5px;
+        }
+        ul li {
+        position: relative;
+        padding-left: 20px;
+        margin-bottom: 15px;
+        }
+        ul li::before {
+        content: "•";
+        color: var(--primary-color);
+        font-weight: bold;
+        position: absolute;
+        left: 0;
+        top: 0;
+        }
+        /* 链接样式 */
+        a {
+        color: var(--accent-color);
+        text-decoration: none;
+        border-bottom: 1px dotted var(--accent-color);
+        transition: all 0.2s ease;
+        }
+        a:hover {
+        color: var(--primary-color);
+        border-bottom-style: solid;
+        }
+        /* 重点高亮 */
+        .highlight-pos {
+        color: var(--success-color);
+        font-weight: bold;
+        }
+        .highlight-neg {
+        color: var(--danger-color);
+        font-weight: bold;
+        }
+        .highlight-key {
+        background-color: #fff3cd;
+        padding: 0 4px;
+        border-radius: 2px;
+        color: #856404;
+        }
+        /* 资讯列表特定样式 */
+        .source-list {
+        font-size: 0.9rem;
+        }
+        .source-list li {
+        margin-bottom: 12px;
+        padding-bottom: 12px;
+        border-bottom: 1px dashed #eee;
+        }
+        .source-list li::before {
+        content: counter(item) ".";
+        counter-increment: item;
+        color: var(--text-light);
+        font-weight: normal;
+        }
+        .source-list {
+        counter-reset: item;
+        }
+        .tag-old {
+        background-color: #95a5a6;
+        color: white;
+        font-size: 0.75rem;
+        padding: 2px 6px;
+        border-radius: 4px;
+        margin-left: 8px;
+        vertical-align: middle;
+        }
+        /* 页脚 */
+        footer {
+        text-align: center;
+        color: var(--text-light);
+        font-size: 0.85rem;
+        margin-top: 40px;
+        margin-bottom: 20px;
+        padding: 20px;
+        border-top: 1px solid #ddd;
+        }
+        /* 响应式适配 */
+        @media (max-width: 768px) {
+        .container {
+        padding: 15px;
+        }
+        header {
+        padding: 20px;
+        }
+        h1 {
+        font-size: 1.4rem;
+        padding-right: 0; /* 移动端让标题全宽 */
+        margin-bottom: 10px;
+        }
+        /* 移动端调整质量标志位置 */
+        .quality-badge {
+        position: static;
+        display: inline-flex;
+        float: right;
+        margin-top: -40px; /* 稍微上浮 */
+        margin-bottom: 10px;
+        font-size: 0.8rem;
+        padding: 6px 12px;
+        }
+        .card {
+        padding: 20px;
+        }
+        h2 {
+        font-size: 1.2rem;
+        }
+        h3 {
+        font-size: 1.1rem;
+        }
+        }
+        @media (max-width: 480px) {
+        h1 {
+        font-size: 1.25rem;
+        }
+        .quality-badge {
+        float: none;
+        display: block;
+        margin-top: 10px;
+        width: fit-content;
+        }
+        }
+      </style>
+    </head>
+    <body>
+      <div class="container">
+        <!-- 头部区域 -->
+        <header>
+          <span class="report-date">2026年08月20日</span>
+            <h1>中国联通2026年中期业绩洞察：转型阵痛与算力卡位的战略抉择</h1>
+              <div class="quality-badge">质量标志：通过</div>
+              </header>
+              <!-- 核心洞察综述 -->
+              <section class="card">
+                <h2>核心洞察综述</h2>
+                  <p>中国联通2026年中期业绩呈现<span class="highlight-key">“营收微增、利润承压、现金流改善、算力引领”</span>的分化态势。面对传统通信业务存量竞争加剧，公司以短期利润下滑为代价，加速向算力服务商转型，算力投资占比同比激增<span class="highlight-pos">80%</span>，算力业务收入增长<span class="highlight-pos">13%</span>成为重要增长极。现金流创近年新高为转型提供底气，国际业务与产品创新同步发力，但外部税费成本与内部重资产投入导致利润承压，全年利润降幅收窄预期明确。综合来看，算力业务能否持续双位数增长并跑通盈利模型，将决定转型成败。</p>
+                  </section>
+                  <!-- 详细维度分析 -->
+                  <section class="card">
+                    <h2>详细维度分析</h2>
+                      <h3>一、财务表现：营收微增与利润承压并存</h3>
+                        <ul>
+                          <li><strong>营收端</strong>：上半年营收2013.64亿元（同比<span class="highlight-pos">+0.6%</span>），延续低速增长态势，反映传统通信业务增长乏力。
+                            <br><a href="http://m.toutiao.com/group/7675346054207849000/" target="_blank">来源链接</a>、<a href="http://m.toutiao.com/group/7675577299051282959/" target="_blank">来源链接</a>、<a href="http://m.toutiao.com/group/7675365666765029914/" target="_blank">来源链接</a>、<a href="http://m.toutiao.com/group/7675548073057141302/" target="_blank">来源链接</a>
+                          </li>
+                          <li><strong>利润端</strong>：归母净利润41.39亿元（同比<span class="highlight-neg">-34.8%</span>），降幅超34%。主要因增值税税率从6%上调至9%（税金及附加增28.5%）、人工成本计提节奏变化（应付职工薪酬余额同比增80.2%），以及算力重资产投入短期压制盈利。
+                            <br><a href="http://m.toutiao.com/group/7675346054207849000/" target="_blank">来源链接</a>、<a href="http://m.toutiao.com/group/7675577299051282959/" target="_blank">来源链接</a>、<a href="http://m.toutiao.com/group/7675365666765029914/" target="_blank">来源链接</a>、<a href="http://m.toutiao.com/group/7675548073057141302/" target="_blank">来源链接</a>
+                          </li>
+                          <li><strong>现金流</strong>：经营现金流净额333亿元（同比<span class="highlight-pos">+13.6%</span>），创近年新高，得益于应收账款清单式管理与全流程管控，为转型提供资金保障。
+                            <br><a href="http://m.toutiao.com/group/7675346054207849000/" target="_blank">来源链接</a>、<a href="http://m.toutiao.com/group/7675577299051282959/" target="_blank">来源链接</a>、<a href="http://m.toutiao.com/group/7675365666765029914/" target="_blank">来源链接</a>、<a href="http://m.toutiao.com/group/7675548073057141302/" target="_blank">来源链接</a>
+                          </li>
+                        </ul>
+                        <h3>二、资本开支与算力投入：转型战略的核心支撑</h3>
+                          <ul>
+                            <li><strong>算力投资占比</strong>：37%，同比增幅超80%，资本开支总额241亿元中，算力投资成为绝对主导（传统业务资本开支收缩）。
+                              <br><a href="http://m.toutiao.com/group/7675346054207849000/" target="_blank">来源链接</a>、<a href="http://m.toutiao.com/group/7675577299051282959/" target="_blank">来源链接</a>、<a href="http://m.toutiao.com/group/7675365666765029914/" target="_blank">来源链接</a>
+                            </li>
+                            <li><strong>算力业务规模</strong>：收入419亿元（同比<span class="highlight-pos">+13%</span>），占服务收入23.6%，智算总规模超45EFLOPS，全网标准机架超115万架。
+                              <br><a href="http://m.toutiao.com/group/7675365666765029914/" target="_blank">来源链接</a>、<a href="http://m.toutiao.com/group/7675548073057141302/" target="_blank">来源链接</a>、<a href="http://m.toutiao.com/group/7675692871571341830/" target="_blank">来源链接</a>
+                            </li>
+                          </ul>
+                          <h3>三、传统业务与新业务布局：攻守兼备的业务结构</h3>
+                            <ul>
+                              <li><strong>传统连接业务</strong>：由“增长型”转向“守盘型”，宽带及移动数据收入同比降<span class="highlight-neg">4.05%</span>，资本开支全面向算力倾斜。
+                                <br><a href="http://m.toutiao.com/group/7675365666765029914/" target="_blank">来源链接</a>、<a href="http://m.toutiao.com/group/7675692871571341830/" target="_blank">来源链接</a>
+                              </li>
+                              <li><strong>国际业务</strong>：收入77亿元（同比<span class="highlight-pos">+14%</span>），成为传统业务外的新增长极。
+                                <br><a href="http://m.toutiao.com/group/7675346054207849000/" target="_blank">来源链接</a>、<a href="http://m.toutiao.com/group/7675365666765029914/" target="_blank">来源链接</a>、<a href="http://m.toutiao.com/group/7675548073057141302/" target="_blank">来源链接</a>
+                              </li>
+                              <li><strong>存量竞争应对</strong>：全面收敛在售套餐，推进资费精简专项，以客户价值提升替代规模扩张。
+                                <br><a href="http://m.toutiao.com/group/7675365666765029914/" target="_blank">来源链接</a>、<a href="http://m.toutiao.com/group/7675728049400201774/" target="_blank">来源链接</a>
+                              </li>
+                            </ul>
+                            <h3>四、组织与产品创新：内部改革赋能转型</h3>
+                              <ul>
+                                <li><strong>机构改革</strong>：集团管理部门缩减近四成，聚焦“精管理强运营”，从规模价值、产品竞争力、运营效率三维度优化。</li>
+                                  <li><strong>产品矩阵</strong>：推出“联通魔方”（销量破150万户）、UniClaw智能体，云智付费用户超1.16亿户，以产品创新承接算力服务需求。
+                                    <br><a href="http://m.toutiao.com/group/7675365666765029914/" target="_blank">来源链接</a>、<a href="http://m.toutiao.com/group/7675548073057141302/" target="_blank">来源链接</a>、<a href="http://m.toutiao.com/group/7675692871571341830/" target="_blank">来源链接</a>
+                                  </li>
+                                </ul>
+                                <h3>五、战略纵深：“六张网”与Token经济的生态构建</h3>
+                                  <ul>
+                                    <li><strong>“六张网”战略</strong>：与中国电信共建全球最大5G共享网络，节省投资565亿美元；智算规模超45EFLOPS，构建AI算力分发网络（AIDN）。
+                                      <br><a href="http://m.toutiao.com/group/7675365666765029914/" target="_blank">来源链接</a>、<a href="http://m.toutiao.com/group/7675548073057141302/" target="_blank">来源链接</a>
+                                    </li>
+                                    <li><strong>Token经济</strong>：构建“创造-转运-清洗-存放-应用”全流程模式，日调用量超400亿次，内部落地百余款智能体应用。
+                                      <br><a href="http://m.toutiao.com/group/7675548073057141302/" target="_blank">来源链接</a>、<a href="http://m.toutiao.com/group/7675692871571341830/" target="_blank">来源链接</a>
+                                    </li>
+                                  </ul>
+                                  <h3>六、数智化应用案例：业务场景落地验证</h3>
+                                    <ul>
+                                      <li><strong>物流供应链</strong>：云南保山保税仓仓储系统缩短通关至1天内，山东临沂AI专线系统降投诉<span class="highlight-pos">70
