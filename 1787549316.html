@@ -1,0 +1,397 @@
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>国电南瑞（600406）投资分析报告 - 2026年08月24日</title>
+      <style>
+        :root {
+        /* 颜色方案 */
+        --primary-color: #0056b3; /* 专业蓝 */
+        --secondary-color: #003d80;
+        --accent-color: #009688; /* 增长/正面 */
+        --warning-color: #f57c00; /* 警示/关注 */
+        --danger-color: #d32f2f; /* 下跌/风险 */
+        --bg-color: #f4f7f6;
+        --card-bg: #ffffff;
+        --text-main: #2c3e50;
+        --text-secondary: #546e7a;
+        --border-color: #e0e0e0;
+        --link-color: #1976d2;
+        /* 间距与圆角 */
+        --spacing-sm: 8px;
+        --spacing-md: 16px;
+        --spacing-lg: 24px;
+        --radius-md: 8px;
+        --radius-lg: 12px;
+        /* 阴影 */
+        --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+        --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+        }
+        /* 基础重置 */
+        * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        }
+        body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        background-color: var(--bg-color);
+        color: var(--text-main);
+        line-height: 1.6;
+        font-size: 16px;
+        -webkit-font-smoothing: antialiased;
+        }
+        a {
+        color: var(--link-color);
+        text-decoration: none;
+        transition: color 0.2s;
+        }
+        a:hover {
+        color: var(--primary-color);
+        text-decoration: underline;
+        }
+        /* 布局容器 */
+        .container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: var(--spacing-md);
+        }
+        /* 顶部 Header */
+        header {
+        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        color: white;
+        padding: 40px var(--spacing-md);
+        border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+        margin-bottom: var(--spacing-lg);
+        position: relative;
+        box-shadow: var(--shadow-md);
+        }
+        .header-content {
+        position: relative;
+        z-index: 2;
+        }
+        h1 {
+        font-size: 1.75rem;
+        font-weight: 700;
+        margin-bottom: var(--spacing-sm);
+        line-height: 1.3;
+        }
+        .report-date {
+        font-size: 0.9rem;
+        opacity: 0.9;
+        display: inline-block;
+        background: rgba(255,255,255,0.2);
+        padding: 4px 12px;
+        border-radius: 20px;
+        }
+        /* 质量标志 */
+        .quality-badge {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background-color: #fff;
+        color: var(--accent-color);
+        padding: 8px 16px;
+        border-radius: 30px;
+        font-size: 0.85rem;
+        font-weight: bold;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        z-index: 10;
+        }
+        .quality-badge svg {
+        width: 18px;
+        height: 18px;
+        fill: currentColor;
+        }
+        /* 核心洞察卡片 */
+        .summary-card {
+        background: var(--card-bg);
+        border-left: 5px solid var(--accent-color);
+        padding: var(--spacing-lg);
+        border-radius: var(--radius-md);
+        box-shadow: var(--shadow-sm);
+        margin-bottom: var(--spacing-lg);
+        }
+        .section-title {
+        font-size: 1.25rem;
+        color: var(--primary-color);
+        margin-bottom: var(--spacing-md);
+        display: flex;
+        align-items: center;
+        border-bottom: 2px solid var(--bg-color);
+        padding-bottom: var(--spacing-sm);
+        }
+        .section-title::before {
+        content: '';
+        display: inline-block;
+        width: 6px;
+        height: 24px;
+        background-color: var(--primary-color);
+        margin-right: 10px;
+        border-radius: 3px;
+        }
+        .highlight-text {
+        font-weight: 500;
+        }
+        .val-up { color: var(--danger-color); } /* 股市红涨 */
+        .val-down { color: var(--accent-color); } /* 股市绿跌 */
+        .text-bold { font-weight: 700; }
+        /* 详细维度网格 */
+        .analysis-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+        margin-bottom: var(--spacing-lg);
+        }
+        @media (min-width: 768px) {
+        .analysis-grid {
+        grid-template-columns: 1fr 1fr;
+        }
+        }
+        .card {
+        background: var(--card-bg);
+        border-radius: var(--radius-lg);
+        padding: var(--spacing-lg);
+        box-shadow: var(--shadow-sm);
+        transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .card:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-md);
+        }
+        .card h3 {
+        font-size: 1.1rem;
+        margin-bottom: var(--spacing-md);
+        color: var(--text-main);
+        }
+        .data-list {
+        list-style: none;
+        }
+        .data-list li {
+        margin-bottom: var(--spacing-md);
+        padding-bottom: var(--spacing-md);
+        border-bottom: 1px dashed var(--border-color);
+        }
+        .data-list li:last-child {
+        border-bottom: none;
+        margin-bottom: 0;
+        padding-bottom: 0;
+        }
+        .data-label {
+        display: block;
+        font-weight: 600;
+        color: var(--text-secondary);
+        font-size: 0.9rem;
+        margin-bottom: 4px;
+        }
+        .source-link {
+        display: inline-block;
+        font-size: 0.8rem;
+        color: var(--text-secondary);
+        margin-top: 6px;
+        padding: 4px 8px;
+        background: #f0f4f8;
+        border-radius: 4px;
+        text-decoration: none;
+        }
+        .source-link:hover {
+        background: #e1e8ed;
+        color: var(--primary-color);
+        }
+        /* 资讯列表 */
+        .news-section {
+        background: var(--card-bg);
+        border-radius: var(--radius-lg);
+        padding: var(--spacing-lg);
+        box-shadow: var(--shadow-sm);
+        }
+        .news-item {
+        display: flex;
+        flex-direction: column;
+        padding: var(--spacing-md) 0;
+        border-bottom: 1px solid var(--border-color);
+        gap: 8px;
+        }
+        @media (min-width: 600px) {
+        .news-item {
+        flex-direction: row;
+        align-items: baseline;
+        justify-content: space-between;
+        }
+        }
+        .news-item:last-child {
+        border-bottom: none;
+        }
+        .news-date {
+        font-size: 0.85rem;
+        color: var(--text-secondary);
+        min-width: 140px;
+        font-family: monospace;
+        }
+        .news-content {
+        flex: 1;
+        }
+        .news-title {
+        font-weight: 500;
+        color: var(--text-main);
+        margin-bottom: 4px;
+        display: block;
+        }
+        .news-link {
+        font-size: 0.85rem;
+        color: var(--link-color);
+        }
+        /* 标签 */
+        .tag {
+        display: inline-block;
+        font-size: 0.75rem;
+        padding: 2px 6px;
+        border-radius: 4px;
+        margin-right: 6px;
+        vertical-align: middle;
+        }
+        .tag-old { background-color: #ffebee; color: #c62828; }
+        .tag-new { background-color: #e8f5e9; color: #2e7d32; }
+        /* Footer */
+        footer {
+        margin-top: 40px;
+        padding: 20px;
+        text-align: center;
+        color: var(--text-secondary);
+        font-size: 0.85rem;
+        border-top: 1px solid var(--border-color);
+        }
+        /* 移动端优化 */
+        @media (max-width: 480px) {
+        h1 { font-size: 1.4rem; }
+        .quality-badge {
+        position: relative;
+        top: 0;
+        right: 0;
+        margin-bottom: 10px;
+        display: inline-flex;
+        }
+        .header-content { text-align: left; }
+        header { padding: 20px var(--spacing-md); }
+        }
+      </style>
+    </head>
+    <body>
+      <header>
+        <div class="quality-badge">
+          <svg viewBox="0 0 24 24">
+            <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/>
+          </svg>
+          专业分析报告
+        </div>
+        <div class="header-content">
+          <h1>国电南瑞（600406）股价调整至低位，中长期配置价值凸显</h1>
+            <div class="report-date">发布日期：2026年08月24日</div>
+            </div>
+          </header>
+          <main class="container">
+            <!-- 核心洞察 -->
+            <section class="summary-card">
+              <h2 class="section-title">核心洞察综述</h2>
+                <p>
+                  国电南瑞（600406）股价自年内高点 <span class="val-up text-bold">31.59元</span> 回调至 <span class="val-down text-bold">23元</span> 附近，跌幅超 <span class="val-up text-bold">26%</span>，当前处于估值历史低位（PE-TTM 22.37倍，历史分位 <span class="text-bold">2.9%</span>）。叠加公司8月再推 <span class="text-bold">5-10亿元</span> 回购计划，中长期配置价值凸显。但需警惕业绩增速放缓（2024-2025年利润增速降至个位数）及电网投资节奏影响。机构层面，国泰恒生A股电网设备ETF规模年内激增865.41%，投资者可关注23元附近左侧布局机会，等待放量阳线确认。
+                </p>
+              </section>
+              <!-- 详细维度分析 -->
+              <div class="analysis-grid">
+                <!-- 维度1 -->
+                <article class="card">
+                  <h3>1. 股价走势与市场情绪</h3>
+                    <ul class="data-list">
+                      <li>
+                        <span class="data-label">最新动态</span>
+                          2026年8月24日，网友“软玉温香”发帖称，股价调整接近尾声，23元附近或为较好买点，但建议等待放量阳线确认。
+                          <br><a href="https://guba.eastmoney.com/news,600406,1763187589.html" class="source-link" target="_blank">🔗 来源链接</a>
+                        </li>
+                        <li>
+                          <span class="data-label">回调幅度</span>
+                            截至8月23日，股价从年内高点31.59元回落至23元附近，跌幅超26%。
+                            <br><a href="https://toutiao.com/group/7677227405332808228/" class="source-link" target="_blank">🔗 来源链接</a>
+                          </li>
+                          <li>
+                            <span class="data-label">技术面特征</span>
+                              8月3日收出缩量十字星（24.35元，微涨0.12%），短期支撑23.9元，压力24.5元。
+                              <br><a href="https://toutiao.com/group/7669595284292272646/" class="source-link" target="_blank">🔗 来源链接</a>
+                            </li>
+                          </ul>
+                        </article>
+                        <!-- 维度2 -->
+                        <article class="card">
+                          <h3>2. 公司基本面与估值</h3>
+                            <ul class="data-list">
+                              <li>
+                                <span class="data-label">业务与竞争力</span>
+                                  主营电网自动化及新能源业务，电网智能业务占比50.43%，多元化布局增强行业竞争力。
+                                  <br><a href="https://m.sohu.com/a/990286846_122066678/" class="source-link" target="_blank">🔗 来源链接</a>
+                                </li>
+                                <li>
+                                  <span class="data-label">业绩表现</span>
+                                    2025年营收662.29亿元（+14.53%），归母净利82.79亿元（+8.79%）；2026年一季度净利7.21亿元（+6.04%），基本面稳健但增速放缓。
+                                    <br><a href="https://toutiao.com/group/7669595284292272646/" class="source-link" target="_blank">🔗 来源链接</a>
+                                  </li>
+                                  <li>
+                                    <span class="data-label">估值与回购</span>
+                                      PE-TTM 22.37倍，历史分位仅2.9%；8月14日再推5-10亿元回购计划。
+                                      <br><a href="https://toutiao.com/group/7677227405332808228/" class="source-link" target="_blank">🔗 来源链接</a>
+                                    </li>
+                                  </ul>
+                                </article>
+                                <!-- 维度3 -->
+                                <article class="card">
+                                  <h3>3. 机构持仓动向</h3>
+                                    <ul class="data-list">
+                                      <li>
+                                        <span class="data-label">国泰恒生A股电网设备ETF（561380）</span>
+                                          截至8月18日，份额68.54亿份，规模53.29亿元，今年以来份额增长1943.31%，规模增长865.41%。
+                                          <br><a href="https://cj.sina.cn/article/detail/2811610.html" class="source-link" target="_blank">🔗 来源链接</a>
+                                        </li>
+                                        <li>
+                                          <span class="data-label">历史操作</span>
+                                            2024年四季度增持185.69万股；但2026年6月连续6日净赎回1.24亿份，短期资金面承压。
+                                            <br><a href="http://finance.sina.com.cn/stock/zqgd/2026-06-02/doc-inhzzivn3117299.shtml" class="source-link" target="_blank">🔗 来源链接</a>
+                                          </li>
+                                        </ul>
+                                      </article>
+                                      <!-- 维度4 -->
+                                      <article class="card">
+                                        <h3>4. 投资者策略建议</h3>
+                                          <ul class="data-list">
+                                            <li>
+                                              <span class="data-label">中长期布局</span>
+                                                能源转型政策（电网投资、特高压建设、AI算力需求）加持下，行业基本面稳健，适合左侧分批布局。
+                                                <br><a href="https://toutiao.com/group/7677227405332808228/" class="source-link" target="_blank">🔗 来源链接</a>
+                                              </li>
+                                              <li>
+                                                <span class="data-label">短期操作</span>
+                                                  8月24日建议等待23元附近放量阳线确认后介入，警惕短线波动及业绩增速压力。
+                                                  <br><a href="https://guba.eastmoney.com/news,600406,1763187589.html" class="source-link" target="_blank">🔗 来源链接</a>
+                                                </li>
+                                              </ul>
+                                            </article>
+                                          </div>
+                                          <!-- 总结与展望 -->
+                                          <section class="summary-card" style="border-left-color: var(--primary-color);">
+                                            <h2 class="section-title">总结与展望</h2>
+                                              <p>
+                                                国电南瑞经深度回调后估值进入历史低位区间，基本面稳健但业绩增速中枢下移。电网投资政策红利下中长期配置价值突出，短期需等待资金面信号及放量确认。公司8月14日增发5-10亿元回购计划或提供估值支撑，投资者可关注23元附近左侧布局机会，同时警惕电网投资节奏及竞争加剧带来的短期波动。
+                                              </p>
+                                            </section>
+                                            <!-- 资讯列表 -->
+                                            <section class="news-section">
+                                              <h2 class="section-title">资讯列表（按发布日期由近到远）</h2>
+                                                <div class="news-item">
+                                                  <div class="news-date">2026-08-24</div>
+                                                    <div class="news-content">
+                                                      <span class="tag tag-new">最新</span>
+                                                        <span class="news-title">网友称国电南瑞23元附近或为买点，建议等待放量阳线确认</span>
+                                                          <a href="https://guba.eastmoney.com/news,600406
