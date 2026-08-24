@@ -1,0 +1,346 @@
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>2026年中国联通数智化布局与战略进展分析报告</title>
+      <style>
+        /* --- 全局变量与重置 --- */
+        :root {
+        --primary-color: #E60012; /* 联通红 */
+        --secondary-color: #003366; /* 商务蓝 */
+        --accent-color: #F0F4F8; /* 浅蓝背景 */
+        --text-main: #333333;
+        --text-secondary: #666666;
+        --bg-body: #F5F7FA;
+        --bg-card: #FFFFFF;
+        --success-color: #28a745;
+        --warning-color: #ffc107;
+        --danger-color: #dc3545;
+        --border-radius: 8px;
+        --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        --font-family: "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+        }
+        * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        }
+        body {
+        font-family: var(--font-family);
+        background-color: var(--bg-body);
+        color: var(--text-main);
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+        }
+        a {
+        color: var(--primary-color);
+        text-decoration: none;
+        transition: color 0.3s;
+        }
+        a:hover {
+        color: var(--secondary-color);
+        text-decoration: underline;
+        }
+        /* --- 布局容器 --- */
+        .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 1rem;
+        }
+        /* --- 头部设计 --- */
+        header {
+        background-color: var(--bg-card);
+        box-shadow: var(--box-shadow);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        padding: 1rem 0;
+        border-bottom: 3px solid var(--primary-color);
+        }
+        .header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        }
+        .header-title h1 {
+        font-size: 1.5rem;
+        color: var(--secondary-color);
+        font-weight: 700;
+        }
+        .header-date {
+        font-size: 0.875rem;
+        color: var(--text-secondary);
+        margin-top: 0.25rem;
+        }
+        /* 质量标志 */
+        .quality-badge {
+        background-color: var(--success-color);
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        font-weight: bold;
+        font-size: 0.9rem;
+        box-shadow: 0 2px 4px rgba(40, 167, 69, 0.3);
+        display: inline-flex;
+        align-items: center;
+        }
+        .quality-badge::before {
+        content: '✓';
+        margin-right: 0.5rem;
+        font-weight: 900;
+        }
+        /* --- 通用部分样式 --- */
+        section {
+        margin: 2rem 0;
+        }
+        .section-title {
+        font-size: 1.25rem;
+        color: var(--secondary-color);
+        border-left: 5px solid var(--primary-color);
+        padding-left: 1rem;
+        margin-bottom: 1.5rem;
+        font-weight: 600;
+        }
+        .card {
+        background-color: var(--bg-card);
+        border-radius: var(--border-radius);
+        padding: 1.5rem;
+        box-shadow: var(--box-shadow);
+        margin-bottom: 1.5rem;
+        height: 100%;
+        }
+        /* --- 核心洞察 --- */
+        .insight-box {
+        background: linear-gradient(135deg, #fff5f5 0%, #ffffff 100%);
+        border: 1px solid #ffdcdc;
+        padding: 1.5rem;
+        border-radius: var(--border-radius);
+        font-size: 1.1rem;
+        color: var(--text-main);
+        margin-top: 1.5rem;
+        position: relative;
+        }
+        .insight-box::before {
+        content: '💡 核心洞察';
+        display: block;
+        font-weight: bold;
+        color: var(--primary-color);
+        margin-bottom: 0.5rem;
+        font-size: 1rem;
+        }
+        /* --- 详细维度分析 (Grid布局) --- */
+        .grid-2 {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        }
+        .sub-title {
+        font-size: 1.1rem;
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 0.5rem;
+        }
+        .source-link {
+        display: block;
+        margin-top: 1rem;
+        font-size: 0.85rem;
+        color: var(--text-secondary);
+        background: #f8f9fa;
+        padding: 0.5rem;
+        border-radius: 4px;
+        word-break: break-all;
+        }
+        .source-link span {
+        font-weight: bold;
+        }
+        /* --- 财务数据 --- */
+        .financial-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1rem;
+        }
+        .stat-item {
+        background: #fff;
+        padding: 1rem;
+        border-left: 4px solid var(--secondary-color);
+        border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+        }
+        .stat-label {
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+        margin-bottom: 0.25rem;
+        }
+        .stat-value {
+        font-size: 1.25rem;
+        font-weight: bold;
+        color: var(--text-main);
+        }
+        .stat-trend.up { color: var(--success-color); }
+        .stat-trend.down { color: var(--danger-color); }
+        /* --- 资讯列表 --- */
+        .news-list {
+        list-style: none;
+        }
+        .news-item {
+        display: flex;
+        align-items: baseline;
+        padding: 1rem 0;
+        border-bottom: 1px solid #eee;
+        }
+        .news-date {
+        flex-shrink: 0;
+        width: 110px;
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+        font-family: monospace;
+        }
+        .news-content {
+        flex-grow: 1;
+        padding-left: 1rem;
+        }
+        .news-link {
+        color: var(--text-main);
+        font-weight: 500;
+        }
+        .news-link:hover {
+        color: var(--primary-color);
+        }
+        .tag-old {
+        display: inline-block;
+        font-size: 0.7rem;
+        background-color: #e9ecef;
+        color: #6c757d;
+        padding: 2px 6px;
+        border-radius: 4px;
+        margin-left: 0.5rem;
+        vertical-align: middle;
+        }
+        /* --- 总结与展望 --- */
+        .summary-section {
+        background-color: var(--secondary-color);
+        color: white;
+        padding: 2rem;
+        border-radius: var(--border-radius);
+        margin-top: 2rem;
+        }
+        .summary-section h2 {
+        color: white;
+        border-left-color: white;
+        margin-bottom: 1rem;
+        }
+        /* --- Footer --- */
+        footer {
+        text-align: center;
+        padding: 2rem 0;
+        color: var(--text-secondary);
+        font-size: 0.9rem;
+        margin-top: 2rem;
+        border-top: 1px solid #eee;
+        }
+        /* --- 响应式媒体查询 --- */
+        @media (min-width: 768px) {
+        .header-title h1 { font-size: 2rem; }
+        .grid-2 { grid-template-columns: 1fr 1fr; }
+        .insight-box { font-size: 1.25rem; padding: 2rem; }
+        .section-title { font-size: 1.5rem; }
+        }
+      </style>
+    </head>
+    <body>
+      <!-- 头部区域 -->
+      <header>
+        <div class="container header-content">
+          <div class="header-title">
+            <h1>2026年中国联通数智化布局与战略进展分析报告</h1>
+              <div class="header-date">发布日期：2026-08-24</div>
+              </div>
+              <!-- 质量标志：右上角显眼位置 -->
+              <div class="quality-badge">质量标志：通过</div>
+              </div>
+            </header>
+            <main class="container">
+              <!-- 核心洞察 -->
+              <div class="insight-box">
+                中国联通围绕“网络+AI+算力”三大技术底座，聚焦人形机器人赛事保障、物流供应链数智化等前沿领域，同时应对传统通信业务承压局面，通过算力业务增长和服务升级驱动新质生产力。近期赛事保障、物流赋能和半年报财务表现成为重点观察维度。
+              </div>
+              <!-- 详细维度分析 -->
+              <section>
+                <h2 class="section-title">详细维度分析</h2>
+                  <div class="grid-2">
+                    <!-- 维度一 -->
+                    <article class="card">
+                      <h3 class="sub-title">一、前沿技术与网络能力升级</h3>
+                        <div style="margin-bottom: 1.5rem;">
+                          <h4 style="font-size: 1rem; margin-bottom: 0.5rem;">1. 5G-A与Wi-Fi7网络覆盖</h4>
+                            <p style="font-size: 0.95rem; color: #555;">在第二届世界人形机器人运动会中，中国联通提供5G-A大上行专网（100MHz专属频段，端到端时延<30ms），并将场馆WiFi升级至WiFi 7标准（部署77个AP，时延稳定在10ms内），实现机器人、媒体、公众网络物理隔离，保障赛事通信需求。</p>
+                              <a href="https://toutiao.com/group/7676363309913833990/" target="_blank" class="source-link">来源：2026年8月21日，https://toutiao.com/group/7676363309913833990/</a>
+                              </div>
+                              <div>
+                                <h4 style="font-size: 1rem; margin-bottom: 0.5rem;">2. 具身智能与AI管理平台</h4>
+                                  <p style="font-size: 0.95rem; color: #555;">打造国内首个赛事场景具身智能管理平台，以MAC地址为“网络身份证”实现机器人统一建档、身份认证、状态感知与智能调度，服务团队规模升级至512人，联合北奥集团构建全流程数字化服务体系，为具身智能技术规模化应用完善行业标准。</p>
+                                    <a href="https://toutiao.com/group/7676363309913833990/" target="_blank" class="source-link">来源：2026年8月21日，https://toutiao.com/group/7676363309913833990/</a>
+                                    </div>
+                                  </article>
+                                  <!-- 维度二 -->
+                                  <article class="card">
+                                    <h3 class="sub-title">二、行业应用创新与场景落地</h3>
+                                      <div style="margin-bottom: 1.5rem;">
+                                        <h4 style="font-size: 1rem; margin-bottom: 0.5rem;">1. 人形机器人赛事保障</h4>
+                                          <p style="font-size: 0.95rem; color: #555;">赛事规模扩容至666支队伍、2056台机器人，通过5G-A、Wi-Fi7、具身智能管理平台及智慧网络运营体系，搭建“智慧办赛、参赛、观赛”一体化数字底座。</p>
+                                            <a href="http://m.toutiao.com/group/7676321542539608576/" target="_blank" class="source-link">来源：2025年8月22日（老旧），http://m.toutiao.com/group/7676321542539608576/</a>
+                                              <a href="https://toutiao.com/group/7676363309913833990/" target="_blank" class="source-link">来源：2026年8月21日（新增），https://toutiao.com/group/7676363309913833990/</a>
+                                              </div>
+                                              <div style="margin-bottom: 1.5rem;">
+                                                <h4 style="font-size: 1rem; margin-bottom: 0.5rem;">2. 物流供应链数智化赋能</h4>
+                                                  <ul style="font-size: 0.95rem; color: #555; padding-left: 1.2rem;">
+                                                    <li style="margin-bottom: 0.5rem;"><strong>云南保山咖啡保税仓</strong>：定制WMS系统实现仓关直连，通关时间由3-5天压缩至1天内；全域物联感知24小时监控温湿度，降低霉变损耗。</li>
+                                                      <li><strong>山东临沂物流AI专线</strong>：基于自研物流大模型，实现查件、投诉等高频业务自助办理。3家企业落地后，基础咨询AI办结率90%，日均投诉量降70%。</li>
+                                                      </ul>
+                                                      <a href="https://toutiao.com/group/7676396877583057451/" target="_blank" class="source-link">来源：2026年8月22日，https://toutiao.com/group/7676396877583057451/</a>
+                                                      </div>
+                                                      <div>
+                                                        <h4 style="font-size: 1rem; margin-bottom: 0.5rem;">3. 工业与跨境服务升级</h4>
+                                                          <p style="font-size: 0.95rem; color: #555;">在山东推出AI质检与跨境数智服务，针对海外工厂管理痛点，部署X光AI质检、智能密炼等产品，服务玲珑轮胎、浦林成山等企业，质检CP提升26.2%。</p>
+                                                            <a href="https://sdxw.iqilu.com/w/article/YS0yMS0xNzMyMTYyNA.html" target="_blank" class="source-link">来源：2026年7月27日，https://sdxw.iqilu.com/w/article/YS0yMS0xNzMyMTYyNA.html</a>
+                                                            </div>
+                                                          </article>
+                                                        </div>
+                                                        <!-- 维度三：财务表现 -->
+                                                        <article class="card" style="margin-top: 1.5rem;">
+                                                          <h3 class="sub-title">三、财务表现与战略转型（2026年半年报）</h3>
+                                                            <div class="financial-grid">
+                                                              <div class="stat-item">
+                                                                <div class="stat-label">营收</div>
+                                                                  <div class="stat-value">2013.64亿元 <small class="stat-trend up">↑0.6%</small></div>
+                                                                  </div>
+                                                                  <div class="stat-item">
+                                                                    <div class="stat-label">归母净利润</div>
+                                                                      <div class="stat-value">41.39亿元 <small class="stat-trend down">↓34.8%</small></div>
+                                                                      </div>
+                                                                      <div class="stat-item">
+                                                                        <div class="stat-label">算力业务收入</div>
+                                                                          <div class="stat-value">419亿元 <small class="stat-trend up">↑13%</small></div>
+                                                                            <div style="font-size: 0.8rem; color: #666; margin-top: 4px;">占服务收入比重 23.6%</div>
+                                                                            </div>
+                                                                            <div class="stat-item">
+                                                                              <div class="stat-label">智算规模</div>
+                                                                                <div class="stat-value">超45EFLOPS</div>
+                                                                                  <div style="font-size: 0.8rem; color: #666; margin-top: 4px;">资本开支算力投资占比 37%</div>
+                                                                                  </div>
+                                                                                </div>
+                                                                                <div style="margin-top: 1rem; font-size: 0.95rem; color: #555;">
+                                                                                  <p><strong>转型进展：</strong>Token经营转型日调用量超400亿次。机构评级连续下调（花旗下调预测，高盛评级“沽售”）。首次取消中期派息，主因人工成本激增19.3%。</p>
+                                                                                  </div>
+                                                                                  <a href="https://www.sohu.com/a/1064884544_122529857" target="_blank" class="source-link">来源：2026年8月19日，https://www.sohu.com/a/1064884544_122529857</a>
+                                                                                  </article>
+                                                                                  <!-- 维度四：其他业务 -->
+                                                                                  <article class="card" style="margin-top: 1.5rem; border-left: 4px solid #999;">
+                                                                                    <h3 class="sub-title" style="color: #555;">四、其他重要业务进展（老旧信息）</h3>
+                                                                                      <div style="opacity: 0.8;">
+                                                                                        <p style="margin-bottom: 0.8rem;"><strong>乡村振兴与民生服务：</strong>行政村网络覆盖率超99%，投入16亿元帮扶2500个智慧农业项目。</p>
+                                                                                          <p style="margin-bottom: 0.8rem;"><strong>智慧体育生态：</strong>“领跑行动”联动五城马拉松，提供AI影像、免费参赛名额等八大权益。</p
