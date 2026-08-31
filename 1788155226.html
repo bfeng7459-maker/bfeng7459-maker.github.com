@@ -1,0 +1,290 @@
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>基于空素材的洞察分析报告（2026年08月31日）</title>
+      <style>
+        /* CSS 变量定义 - 颜色方案 */
+        :root {
+        --primary-color: #2563eb;       /* 专业蓝 */
+        --primary-light: #eff6ff;       /* 浅蓝背景 */
+        --secondary-color: #475569;     /* 次要文字色 */
+        --text-color: #1e293b;          /* 主要文字色 */
+        --bg-color: #f8fafc;            /* 页面背景 */
+        --card-bg: #ffffff;             /* 卡片背景 */
+        --accent-warning: #f59e0b;      /* 警告/强调色 */
+        --accent-warning-bg: #fffbeb;   /* 警告背景 */
+        --border-color: #e2e8f0;        /* 边框颜色 */
+        --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        --radius: 12px;
+        --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+        /* 基础重置 */
+        * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        }
+        body {
+        font-family: var(--font-family);
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+        padding-bottom: 40px;
+        }
+        /* 布局容器 */
+        .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 0 20px;
+        }
+        /* 顶部 Header */
+        header {
+        background: linear-gradient(135deg, var(--primary-color), #1d4ed8);
+        color: white;
+        padding: 40px 0;
+        margin-bottom: 30px;
+        box-shadow: var(--shadow);
+        position: relative;
+        }
+        .header-content {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        position: relative;
+        }
+        h1 {
+        font-size: 1.75rem;
+        font-weight: 700;
+        line-height: 1.3;
+        }
+        .report-meta {
+        font-size: 0.9rem;
+        opacity: 0.9;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        }
+        /* 质量标志 - 右上角显眼位置 */
+        .quality-badge {
+        background-color: var(--accent-warning);
+        color: #fff;
+        padding: 6px 12px;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        white-space: nowrap;
+        }
+        /* 主体内容卡片 */
+        main {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        }
+        .card {
+        background-color: var(--card-bg);
+        border-radius: var(--radius);
+        padding: 24px;
+        box-shadow: var(--shadow);
+        border: 1px solid var(--border-color);
+        transition: transform 0.2s ease;
+        }
+        .card:hover {
+        transform: translateY(-2px);
+        }
+        h2 {
+        font-size: 1.25rem;
+        color: var(--primary-color);
+        margin-bottom: 16px;
+        border-bottom: 2px solid var(--primary-light);
+        padding-bottom: 10px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        }
+        h3 {
+        font-size: 1.1rem;
+        color: var(--text-color);
+        margin-top: 20px;
+        margin-bottom: 8px;
+        font-weight: 600;
+        }
+        p {
+        margin-bottom: 12px;
+        color: var(--secondary-color);
+        font-size: 1rem;
+        text-align: justify;
+        }
+        /* 特殊状态：空素材提示 */
+        .empty-notice {
+        background-color: var(--accent-warning-bg);
+        border-left: 4px solid var(--accent-warning);
+        padding: 16px;
+        border-radius: 4px;
+        margin-bottom: 16px;
+        }
+        .empty-notice p {
+        margin-bottom: 0;
+        color: #92400e;
+        font-weight: 500;
+        }
+        /* 列表区域 */
+        .list-placeholder {
+        text-align: center;
+        padding: 30px;
+        border: 2px dashed var(--border-color);
+        border-radius: 8px;
+        color: #94a3b8;
+        }
+        .list-placeholder svg {
+        width: 48px;
+        height: 48px;
+        margin-bottom: 10px;
+        opacity: 0.5;
+        }
+        /* 页脚 */
+        footer {
+        margin-top: 40px;
+        text-align: center;
+        font-size: 0.85rem;
+        color: #94a3b8;
+        padding: 20px;
+        border-top: 1px solid var(--border-color);
+        }
+        .footer-note {
+        margin-top: 8px;
+        font-style: italic;
+        }
+        /* 链接样式 */
+        a {
+        color: var(--primary-color);
+        text-decoration: none;
+        transition: color 0.2s;
+        }
+        a:hover {
+        text-decoration: underline;
+        color: #1d4ed8;
+        }
+        /* 响应式适配 */
+        @media (min-width: 768px) {
+        .header-content {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+        }
+        h1 {
+        font-size: 2rem;
+        max-width: 70%;
+        }
+        .header-controls {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 10px;
+        }
+        .card {
+        padding: 32px;
+        }
+        }
+        @media (max-width: 767px) {
+        /* 移动端优化 */
+        header {
+        padding: 30px 0;
+        }
+        .header-controls {
+        margin-top: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        }
+        .card {
+        padding: 20px;
+        }
+        h2 {
+        font-size: 1.15rem;
+        }
+        p {
+        font-size: 0.95rem; /* 移动端字体大小 */
+        }
+        }
+      </style>
+    </head>
+    <body>
+      <header>
+        <div class="container header-content">
+          <div>
+            <h1>基于空素材的洞察分析报告</h1>
+              <div class="report-meta">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                  <span>2026年08月31日</span>
+                  </div>
+                </div>
+                <!-- 质量标志显示在右上角 -->
+                <div class="header-controls">
+                  <div class="quality-badge">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                      质量标志：不完整（模型长度超过阈值，但受限于素材为空无法生成有效内容）
+                    </div>
+                  </div>
+                </div>
+              </header>
+              <div class="container">
+                <main>
+                  <!-- 核心洞察综述 -->
+                  <section class="card">
+                    <h2>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                        核心洞察综述
+                      </h2>
+                      <div class="empty-notice">
+                        <p>⚠️ 素材状态：空列表 []</p>
+                        </div>
+                        <p>由于用户提供的素材为空列表（<code>[]</code>），缺乏可用于分析的具体资讯内容，无法形成有效的洞察分析报告。以下报告框架及内容基于“素材为空”的特殊情况构建，需通过后续补充素材后进一步完善。</p>
+                        </section>
+                        <!-- 详细维度分析 -->
+                        <section class="card">
+                          <h2>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
+                              详细维度分析
+                            </h2>
+                            <h3>1. 资讯内容缺失</h3>
+                              <p>根据用户提供的素材，无任何可引用的资讯标题、发布日期及内容信息。因此，无法执行信息交叉验证、溯源引用及时效性评估等核心分析步骤。</p>
+                                <h3>2. 格式与结构说明</h3>
+                                  <p>报告生成严格遵循用户要求的规范排版格式，含标题、日期、核心洞察、详细分析及总结等部分，但因缺乏素材，各部分内容均为通用框架说明。</p>
+                                  </section>
+                                  <!-- 总结与展望 -->
+                                  <section class="card">
+                                    <h2>
+                                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+                                        总结与展望
+                                      </h2>
+                                      <p>当前素材为空，无法生成符合要求的洞察分析报告。建议用户补充具体资讯素材（含标题、发布日期、链接及内容）后，再进行分析。待素材补充后，将按发布日期排序，通过信息交叉验证形成结构化报告。</p>
+                                      </section>
+                                      <!-- 资讯列表 -->
+                                      <section class="card">
+                                        <h2>
+                                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+                                            资讯标题及链接列表
+                                          </h2>
+                                          <div class="list-placeholder">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"></line></svg>
+                                              <p>因素材为空，无有效资讯</p>
+                                                <p style="font-size: 0.85rem; margin-top: 5px;">（注：所有资讯需基于用户提供的素材生成，此处暂无内容）</p>
+                                                </div>
+                                              </section>
+                                            </main>
+                                            <footer>
+                                              <p><strong>报告生成日期：</strong>2026年08月31日</p>
+                                                <p class="footer-note">注：本报告因素材缺失无法完成深度分析，实际应用中需结合具体资讯素材进行交叉验证与溯源。</p>
+                                                </footer>
+                                              </div>
+                                            </body>
+                                          </html>
+                                          ```
